@@ -1,0 +1,396 @@
+---
+import Layout from '@layouts/Layout.astro';
+---
+
+<Layout title="Home">
+  <!-- Hero Section -->
+  <section class="relative min-h-screen flex items-center justify-center overflow-hidden">
+    <!-- Background Image with Parallax -->
+    <div
+      class="absolute inset-0 bg-cover bg-center bg-no-repeat parallax-bg"
+      style="background-image: url('/images/hero/reef-hero.jpg');"
+    >
+      <!-- Gradient Overlay -->
+      <div class="absolute inset-0 bg-gradient-to-b from-ink/60 via-ink/40 to-ink/70"></div>
+    </div>
+
+    <!-- Hero Content -->
+    <div class="relative z-10 container text-center text-white px-4 py-20">
+      <h1 class="hero-title text-white mb-4 opacity-0">
+        Ocean Recoveries Lab
+      </h1>
+      <p class="hero-tagline text-2xl md:text-3xl font-semibold text-white/90 mb-6 opacity-0">
+        Recovering ocean ecosystems
+      </p>
+      <p class="hero-description max-w-2xl mx-auto text-lg text-white/80 leading-relaxed opacity-0">
+        We study the recovery and resilience of ocean ecosystems through field experiments,
+        modeling, and synthesis — combining science with community partnerships to help coral reefs
+        and kelp forests regenerate.
+      </p>
+    </div>
+
+    <!-- Scroll Indicator -->
+    <div class="absolute bottom-8 left-1/2 -translate-x-1/2 z-10">
+      <a
+        href="#about"
+        class="flex flex-col items-center gap-2 text-white/70 hover:text-white transition-colors no-underline"
+        aria-label="Scroll to learn more"
+      >
+        <span class="text-sm font-medium">Explore</span>
+        <svg
+          class="w-6 h-6 animate-bounce-subtle"
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+        >
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+        </svg>
+      </a>
+    </div>
+  </section>
+
+  <!-- Who We Are Section -->
+  <section id="about" class="section bg-surface dark:bg-dark-surface">
+    <div class="container">
+      <div class="max-w-3xl mx-auto text-center scroll-reveal">
+        <span class="eyebrow">Who We Are</span>
+        <h2 class="mb-6">Understanding Ocean Resilience</h2>
+        <p class="lead mb-8">
+          Based at UC Santa Barbara, the Ocean Recoveries Lab investigates how marine ecosystems
+          recover from disturbance and how we can accelerate that recovery. Our work spans coral
+          reefs in French Polynesia to kelp forests along the California coast.
+        </p>
+        <a href="/people" class="btn btn-primary group">
+          Meet the Team
+          <svg class="w-4 h-4 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+          </svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Impact Metrics Section -->
+  <section class="section bg-line/30 dark:bg-dark-line/20">
+    <div class="container">
+      <div class="text-center mb-12 scroll-reveal">
+        <span class="eyebrow">Our Impact</span>
+        <h2>Research by the Numbers</h2>
+      </div>
+
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+        <div class="stat-card scroll-reveal stagger-1">
+          <span class="stat-number" data-target="85">0</span>
+          <span class="stat-label">Publications</span>
+        </div>
+        <div class="stat-card scroll-reveal stagger-2">
+          <span class="stat-number" data-target="12">0</span>
+          <span class="stat-label">Active Grants</span>
+        </div>
+        <div class="stat-card scroll-reveal stagger-3">
+          <span class="stat-number" data-target="25">0</span>
+          <span class="stat-label">Open Datasets</span>
+        </div>
+        <div class="stat-card scroll-reveal stagger-4">
+          <span class="stat-number" data-target="15">0</span>
+          <span class="stat-label">Research Partners</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Research Themes Section -->
+  <section class="section bg-surface dark:bg-dark-surface">
+    <div class="container">
+      <div class="text-center mb-12 scroll-reveal">
+        <span class="eyebrow">Research</span>
+        <h2>What We Study</h2>
+        <p class="lead max-w-2xl mx-auto">
+          Our research spans three interconnected themes, from ecosystem-scale dynamics to
+          organismal physiology.
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-3 gap-6">
+        <!-- Coral Reefs -->
+        <a href="/research/coral-reefs" class="research-card scroll-reveal stagger-1 group">
+          <div class="research-card-image img-zoom">
+            <img
+              src="/images/research/coral-card.jpg"
+              alt="Vibrant coral reef with colorful fish"
+              loading="lazy"
+            />
+            <div class="absolute inset-0 bg-gradient-to-t from-ink/80 via-ink/20 to-transparent"></div>
+          </div>
+          <div class="research-card-content">
+            <h3 class="text-white mb-2 group-hover:text-accent-2 transition-colors">Coral Reefs</h3>
+            <p class="text-white/80 text-sm">
+              Field experiments and models reveal how disturbance, biotic interactions, and
+              restoration actions shape coral resilience.
+            </p>
+          </div>
+        </a>
+
+        <!-- Kelp Forests -->
+        <a href="/research/kelp-forests" class="research-card scroll-reveal stagger-2 group">
+          <div class="research-card-image img-zoom">
+            <img
+              src="/images/research/kelp-card.jpg"
+              alt="Sunlit kelp forest underwater"
+              loading="lazy"
+            />
+            <div class="absolute inset-0 bg-gradient-to-t from-ink/80 via-ink/20 to-transparent"></div>
+          </div>
+          <div class="research-card-content">
+            <h3 class="text-white mb-2 group-hover:text-accent-2 transition-colors">Kelp Forests</h3>
+            <p class="text-white/80 text-sm">
+              Understanding predator-prey dynamics and ecosystem engineering along the California
+              coast.
+            </p>
+          </div>
+        </a>
+
+        <!-- Organismal Mechanisms -->
+        <a href="/research/organismal-mechanisms" class="research-card scroll-reveal stagger-3 group">
+          <div class="research-card-image img-zoom">
+            <img
+              src="/images/research/organismal-card.jpg"
+              alt="Close-up of coral polyps"
+              loading="lazy"
+            />
+            <div class="absolute inset-0 bg-gradient-to-t from-ink/80 via-ink/20 to-transparent"></div>
+          </div>
+          <div class="research-card-content">
+            <h3 class="text-white mb-2 group-hover:text-accent-2 transition-colors">
+              Organismal Mechanisms
+            </h3>
+            <p class="text-white/80 text-sm">
+              Investigating the physiological and molecular mechanisms underlying stress responses
+              and recovery.
+            </p>
+          </div>
+        </a>
+      </div>
+
+      <div class="text-center mt-10 scroll-reveal">
+        <a href="/research" class="btn btn-secondary">
+          Explore All Research
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Featured Papers Section -->
+  <section class="section bg-line/30 dark:bg-dark-line/20">
+    <div class="container">
+      <div class="text-center mb-12 scroll-reveal">
+        <span class="eyebrow">Publications</span>
+        <h2>Featured Research</h2>
+      </div>
+
+      <div class="grid md:grid-cols-2 gap-6">
+        <!-- Paper 1 -->
+        <article class="card scroll-reveal stagger-1">
+          <div class="flex flex-wrap gap-2 mb-3">
+            <span class="badge">Open Access</span>
+            <span class="badge badge-success">Data Available</span>
+          </div>
+          <h3 class="text-lg font-bold mb-2 text-ink dark:text-dark-ink">
+            Recovery potential of coral reefs following marine heatwaves
+          </h3>
+          <p class="text-sm text-muted dark:text-dark-muted mb-4 line-clamp-2">
+            This study examines the factors that promote rapid coral recovery after bleaching events,
+            identifying key interventions for restoration practitioners.
+          </p>
+          <div class="flex items-center justify-between">
+            <span class="text-sm text-muted-2 dark:text-dark-muted-2">Nature, 2024</span>
+            <a href="#" class="text-sm font-semibold text-accent dark:text-dark-accent hover:underline">
+              Read more &rarr;
+            </a>
+          </div>
+        </article>
+
+        <!-- Paper 2 -->
+        <article class="card scroll-reveal stagger-2">
+          <div class="flex flex-wrap gap-2 mb-3">
+            <span class="badge">Open Access</span>
+          </div>
+          <h3 class="text-lg font-bold mb-2 text-ink dark:text-dark-ink">
+            Predator reintroduction cascades through kelp forest food webs
+          </h3>
+          <p class="text-sm text-muted dark:text-dark-muted mb-4 line-clamp-2">
+            We demonstrate how restoring sea otters triggers trophic cascades that restructure kelp
+            forest communities along the California coast.
+          </p>
+          <div class="flex items-center justify-between">
+            <span class="text-sm text-muted-2 dark:text-dark-muted-2">Ecology Letters, 2023</span>
+            <a href="#" class="text-sm font-semibold text-accent dark:text-dark-accent hover:underline">
+              Read more &rarr;
+            </a>
+          </div>
+        </article>
+      </div>
+
+      <div class="text-center mt-10 scroll-reveal">
+        <a href="/publications" class="btn btn-secondary">
+          View All Publications
+        </a>
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  /* Hero animations */
+  .hero-title {
+    animation: fadeUp 0.8s ease-out 0.2s forwards;
+  }
+
+  .hero-tagline {
+    animation: fadeUp 0.8s ease-out 0.4s forwards;
+  }
+
+  .hero-description {
+    animation: fadeUp 0.8s ease-out 0.6s forwards;
+  }
+
+  @keyframes fadeUp {
+    from {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  /* Parallax effect */
+  .parallax-bg {
+    transform: translateZ(0);
+    will-change: transform;
+  }
+
+  /* Stat cards */
+  .stat-card {
+    @apply bg-white dark:bg-dark-card rounded-lg p-6 text-center shadow;
+    @apply transition-all duration-300 hover:-translate-y-1 hover:shadow-lg;
+  }
+
+  .stat-number {
+    @apply block text-4xl md:text-5xl font-black text-accent dark:text-dark-accent mb-2;
+  }
+
+  .stat-label {
+    @apply text-sm font-semibold text-muted dark:text-dark-muted uppercase tracking-wide;
+  }
+
+  /* Research cards */
+  .research-card {
+    @apply relative rounded-lg overflow-hidden aspect-[4/5] no-underline block;
+    @apply transition-all duration-300 hover:-translate-y-2 hover:shadow-xl;
+  }
+
+  .research-card-image {
+    @apply absolute inset-0;
+  }
+
+  .research-card-image img {
+    @apply w-full h-full object-cover;
+  }
+
+  .research-card-content {
+    @apply absolute bottom-0 left-0 right-0 p-6;
+  }
+
+  /* Reduced motion */
+  @media (prefers-reduced-motion: reduce) {
+    .hero-title,
+    .hero-tagline,
+    .hero-description {
+      animation: none;
+      opacity: 1;
+    }
+
+    .animate-bounce-subtle {
+      animation: none;
+    }
+  }
+</style>
+
+<script>
+  // Parallax effect for hero
+  const initParallax = () => {
+    const parallaxBg = document.querySelector('.parallax-bg') as HTMLElement;
+    if (!parallaxBg) return;
+
+    const handleScroll = () => {
+      const scrolled = window.scrollY;
+      const rate = scrolled * 0.4;
+      parallaxBg.style.transform = `translateY(${rate}px)`;
+    };
+
+    // Check for reduced motion preference
+    if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      window.addEventListener('scroll', handleScroll, { passive: true });
+    }
+  };
+
+  // Count-up animation for stats
+  const initCountUp = () => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            const el = entry.target as HTMLElement;
+            const target = parseInt(el.dataset.target || '0', 10);
+            animateCount(el, target);
+            observer.unobserve(el);
+          }
+        });
+      },
+      { threshold: 0.5 }
+    );
+
+    document.querySelectorAll('.stat-number[data-target]').forEach((el) => {
+      observer.observe(el);
+    });
+  };
+
+  const animateCount = (el: HTMLElement, target: number) => {
+    const duration = 1500;
+    const start = performance.now();
+
+    const update = (currentTime: number) => {
+      const elapsed = currentTime - start;
+      const progress = Math.min(elapsed / duration, 1);
+
+      // Easing function (ease-out)
+      const eased = 1 - Math.pow(1 - progress, 3);
+      const current = Math.round(eased * target);
+
+      el.textContent = current.toString();
+
+      if (progress < 1) {
+        requestAnimationFrame(update);
+      }
+    };
+
+    // Check for reduced motion
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      el.textContent = target.toString();
+    } else {
+      requestAnimationFrame(update);
+    }
+  };
+
+  // Initialize
+  initParallax();
+  initCountUp();
+
+  // Re-init after view transitions
+  document.addEventListener('astro:after-swap', () => {
+    initParallax();
+    initCountUp();
+  });
+</script>
