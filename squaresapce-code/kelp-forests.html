@@ -1,0 +1,761 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Kelp Forest Research | Ocean Recoveries Lab</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300..900&display=swap" rel="stylesheet"/>
+
+<style>
+  /* =====================
+     Ocean Recoveries — Kelp Research (aligned to Join Us white theme)
+     - Inter, white surfaces, crisp cards
+     - Same tokens & rhythm as Join Us
+     - No side gutters; vertical rhythm only
+  ====================== */
+
+  :root { color-scheme: light; }
+  html, body{ background:#ffffff !important; }
+  body{ margin:0; }
+
+  .orlUX{
+    /* Brand (from Join Us) */
+    --ink:#0b2545; --ink-2:#173451;
+    --muted:#566579; --muted-2:#6e7d8a;
+    --accent:#117db2; --accent-2:#11c5b3; --accent-warm:#ff6f5b;
+
+    /* Surfaces */
+    --bg:#ffffff; --card:#ffffff; --line:#e6edf6; --line-2:#dbe7f3; --glass:rgba(255,255,255,.78);
+
+    /* Elevation tuned for white */
+    --shadow:0 6px 16px rgba(17,34,68,.08);
+    --shadow-lg:0 18px 42px rgba(17,34,68,.14);
+
+    /* Rhythm */
+    --s-1:8px; --s0:12px; --s1:18px; --s2:24px; --s3:32px;
+    --s4:clamp(48px,8vw,72px); --s5:clamp(72px,10vw,96px);
+
+    /* Shape & touch */
+    --r:16px; --r-lg:22px; --tap:44px;
+
+    /* Gutters */
+    --edge:clamp(18px,5vw,48px);
+    --edge-r:clamp(18px,5vw,48px);
+
+    /* Readability */
+    --lh:1.6; --measure:65ch;
+
+    font:16px/var(--lh) Inter, system-ui,-apple-system, Segoe UI, Roboto, Arial, sans-serif;
+    color:var(--ink); background:var(--bg); isolation:isolate;
+    -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale;
+  }
+  .orlUX, .orlUX *{ box-sizing:border-box; }
+  html{ scroll-behavior:smooth }
+  .orlUX ::selection{ background:#dff2ff }
+
+  /* Motion hygiene */
+  .orlUX *,.orlUX *::before,.orlUX *::after{ transition:all .2s ease }
+  @media (prefers-reduced-motion:reduce){ .orlUX *,.orlUX *::before,.orlUX *::after{ transition:none!important } }
+
+  /* Skip link */
+  .skip{position:absolute;left:-9999px;top:auto;width:1px;height:1px;overflow:hidden}
+  .skip:focus{position:fixed;left:16px;top:16px;padding:8px 12px;background:#000;color:#fff;border-radius:8px;z-index:1000}
+
+  /* Layout */
+  .container{ max-width:1100px; margin:0 auto; padding-left:var(--edge); padding-right:var(--edge-r); }
+  @media (max-width:520px){
+    .container{ padding-left:12px; padding-right:12px; }
+  }
+  .section{ margin:var(--s4) 0 0; }
+  .section:first-of-type{ margin-top:var(--s3); }
+  @media (max-width:640px){ .section{ margin-top:var(--s3); } }
+
+  .grid{ display:grid; gap:var(--s1); }
+  @media (min-width:980px){ .grid{ gap:var(--s2); } }
+  .g4{ grid-template-columns:repeat(4,1fr); }
+  @media (max-width:980px){ .g4{ grid-template-columns:1fr 1fr; } }
+  @media (max-width:640px){ .g4{ grid-template-columns:1fr; } }
+
+  .row{ display:flex; gap:var(--s0); flex-wrap:wrap; align-items:center }
+
+  /* Type (aligned to Join Us) */
+  h1{ margin:0 0 var(--s1); font-weight:900; font-size:clamp(34px,4.8vw,46px); line-height:1.12; letter-spacing:-0.02em; color:#0b2545 }
+  h2{ margin:0 0 var(--s1); font-weight:900; font-size:clamp(24px,3vw,32px); line-height:1.18; letter-spacing:-0.015em; color:#0b2545 }
+  h3{ margin:0 0 var(--s0); font-weight:800; color:var(--ink-2); font-size:clamp(18px,2.2vw,20px); }
+  p{ margin:0; color:var(--muted); max-width:var(--measure); }
+  .eyebrow{ letter-spacing:.12em; text-transform:uppercase; font-size:11px; font-weight:800; color:var(--muted); margin-bottom:8px; }
+  .lead-strong{ font-weight:800; color:var(--ink-2) }
+
+  /* Chips & buttons (Join Us styling) */
+  a{ color:var(--accent); text-decoration-color:rgba(17,125,178,.4); text-underline-offset:2px; }
+  a:hover{ text-decoration-thickness:2px; }
+  a:focus-visible{ outline:2px solid var(--accent); outline-offset:3px; border-radius:8px; }
+
+  .chip{ display:inline-flex; align-items:center; gap:8px; padding:8px 12px; border:1.5px solid var(--line-2); border-radius:12px; background:#fff; color:var(--ink); text-decoration:none !important; font-weight:700; min-height:38px; box-shadow:0 4px 12px rgba(17,34,68,.08); }
+  .chip:hover{ transform:translateY(-1px); box-shadow:0 10px 24px rgba(17,34,68,.12); }
+  .chip.ghost{ background:#fff; }
+
+  .btn{ display:inline-block; border-radius:12px; padding:12px 16px; font-weight:800; font-size:14px; text-decoration:none; line-height:1; min-height:var(--tap); }
+  .btn.primary{ background:var(--ink); color:#fff; box-shadow:0 8px 18px rgba(17,34,68,.18) }
+  .btn.ghost{ background:#fff; border:1.5px solid var(--line-2); color:var(--ink) }
+  .btn.sm{ padding:10px 12px; font-size:13px; border-radius:10px }
+
+
+  /* Hero — apply Join Us glass panel look on your hero */
+  header.hero{ position:relative; max-width:none; margin:0 0 var(--s2); overflow:hidden }
+  .hero-media{ position:relative; width:100%; aspect-ratio:16/9; min-height: clamp(320px, 46vh, 560px); }
+  .hero-media img{ position:absolute; inset:0; width:100%; height:100%; object-fit:cover; object-position:center 35% }
+  .hero-scrim{ position:absolute; inset:0; background:linear-gradient(180deg, rgba(11,37,69,0) 0%, rgba(11,37,69,.14) 50%, rgba(11,37,69,.28) 100%); }
+  .hero-inner{ position:absolute; inset:auto 0 0 0; padding:clamp(20px,3vw,28px); display:flex; align-items:flex-end; }
+  .hero-inner::before{
+    content:""; position:absolute; left:0; right:0; bottom:0; height:42%;
+    background:linear-gradient(to top, rgba(255,255,255,.70) 0%, rgba(255,255,255,.40) 35%, rgba(255,255,255,0) 72%);
+    pointer-events:none; z-index:0;
+  }
+  .hero-panel{
+    position:relative; z-index:1;
+    background:linear-gradient(145deg, rgba(255,255,255,.70), rgba(255,255,255,.44));
+    backdrop-filter:blur(8px) saturate(1.05);
+    border:1px solid rgba(255,255,255,.52);
+    border-radius:12px;
+    padding:12px 16px;
+    width:calc(100% - 32px);
+    margin:0 16px 16px;
+    box-shadow:0 8px 22px rgba(11,37,69,.10);
+  }
+  .hero-lead{ color:#0f2a4b; font-weight:700; }
+
+  /* Cards (crisp white) */
+  .card{ background:var(--card); border:1px solid var(--line); border-radius:var(--r-lg); box-shadow:var(--shadow); padding:clamp(18px,2.5vw,28px) clamp(16px,2vw,24px); color:var(--ink); }
+  .card:hover{ transform:translateY(-2px); box-shadow:var(--shadow-lg); }
+  .container > .card p{ max-width:var(--measure) }
+
+  .theme-intro{ display:grid; gap:var(--s1); align-items:center; margin-bottom:var(--s2); }
+  @media (min-width:880px){ .theme-intro{ grid-template-columns:minmax(0,1.05fr) minmax(0,1fr); gap:var(--s2); } }
+  .theme-copy h2{ margin:0 0 var(--s0); font-size:clamp(26px,3.4vw,38px); line-height:1.12; }
+  .theme-copy p{ font-size:clamp(16px,1.6vw,18px); max-width:640px; }
+  .theme-hero img{ display:block; width:100%; height:auto; border-radius:22px; box-shadow:var(--shadow); }
+  .theme-grid{ display:grid; gap:var(--s1); grid-template-columns:repeat(2,minmax(0,1fr)); }
+  @media (max-width:720px){ .theme-grid{ grid-template-columns:1fr; } }
+
+  /* Themes (card grid) */
+  .theme-card{ display:grid; grid-template-rows:auto 1fr auto; gap:14px; border-radius:22px; overflow:hidden; border:1px solid var(--line); background:#fff; box-shadow:var(--shadow); transition:transform .25s ease, box-shadow .25s ease, border-color .25s ease; position:relative; }
+  .theme-card:hover{ transform:translateY(-6px); box-shadow:var(--shadow-lg); border-color:rgba(17,34,68,.16); }
+  .theme-media{ position:relative; aspect-ratio:16/9; overflow:hidden }
+  .theme-media img{ width:100%; height:100%; object-fit:cover; transition:transform .28s ease; }
+  .theme-card:hover .theme-media img{ transform:scale(1.06); }
+  .theme-body{ padding:18px 18px 10px }
+  .theme-icon{ display:inline-flex; align-items:center; justify-content:center; width:48px; height:48px; border-radius:16px; background:rgba(17,125,178,.12); color:var(--accent); margin-bottom:12px; box-shadow:inset 0 0 0 1px rgba(17,125,178,.18); }
+  .theme-icon svg{ width:26px; height:26px; }
+  .theme-cta{ padding:0 18px 18px }
+
+  /* Carousel (pure CSS; keep your structure) */
+  .carousel{ position:relative }
+  .carousel-rail{ display:flex; gap:14px; overflow:auto; scroll-snap-type:x mandatory; padding-bottom:6px }
+  .carousel-rail .item{ flex:0 0 86%; max-width:86%; scroll-snap-align:start }
+  @media (min-width:900px){ .carousel-rail .item{ flex-basis:48%; max-width:48% } }
+  .proj{ border-radius:22px; overflow:hidden; border:1px solid var(--line); background:#fff; box-shadow:var(--shadow); display:grid; grid-template-columns:minmax(0,1.1fr) minmax(0,1fr); align-items:stretch; gap:0; }
+  @media (max-width:760px){ .proj{ grid-template-columns:1fr; } }
+  .proj-media{ position:relative; overflow:hidden; }
+  .proj-media::before{ content:""; display:block; padding-bottom:62%; }
+  .proj-media img{ position:absolute; inset:0; width:100%; height:100%; object-fit:cover; transition:transform .28s ease; }
+  .proj:hover .proj-media img{ transform:scale(1.05); }
+  .proj-body{ padding:clamp(16px,2.2vw,22px); display:flex; flex-direction:column; gap:var(--s0); justify-content:center; }
+  .carousel-nav{ display:flex; gap:8px; align-items:center; margin-top:8px; justify-content:center; }
+  .carousel-nav button{ border:1.5px solid var(--line-2); background:#fff; color:#0b2545; border-radius:10px; min-height:var(--tap); padding:6px 10px; cursor:pointer; font-weight:800; }
+  .carousel-nav button:disabled{ opacity:.45; cursor:not-allowed; }
+  .carousel-thumbs{ display:flex; gap:10px; margin-top:12px; justify-content:center; flex-wrap:wrap; }
+  .carousel-thumbs .thumb{ border:2px solid transparent; border-radius:12px; overflow:hidden; padding:0; background:transparent; cursor:pointer; transition:border-color .2s ease, transform .2s ease; }
+  .carousel-thumbs .thumb[aria-current="true"]{ border-color:var(--accent); }
+  .carousel-thumbs .thumb:hover{ transform:translateY(-2px); }
+  .carousel-thumbs img{ display:block; width:72px; height:48px; object-fit:cover; }
+
+  /* Findings */
+  .finding-grid{ display:grid; gap:var(--s1); grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); margin-bottom:var(--s2); }
+  .finding-card{ position:relative; height:100%; min-height:240px; border-radius:20px; box-shadow:var(--shadow); background:#fff; border:1px solid var(--line); padding:0; transform-style:preserve-3d; transition:transform .5s ease; }
+  .finding-card:focus-visible{ outline:3px solid var(--accent); outline-offset:4px; }
+  .finding-card:hover,
+  .finding-card:focus-within{ transform:rotateY(180deg); }
+  .finding-face{ position:absolute; inset:0; backface-visibility:hidden; border-radius:20px; padding:clamp(16px,2.4vw,24px); display:flex; flex-direction:column; gap:var(--s0); justify-content:center; }
+  .finding-front{ background:#fff; }
+  .finding-back{ background:linear-gradient(160deg,rgba(17,125,178,.12),rgba(17,125,178,.28)); transform:rotateY(180deg); color:#0b2545; }
+  .finding-icon{ width:48px; height:48px; border-radius:14px; background:rgba(17,125,178,.12); display:grid; place-items:center; color:var(--accent); box-shadow:inset 0 0 0 1px rgba(17,125,178,.18); }
+  .finding-icon svg{ width:26px; height:26px; stroke:currentColor; stroke-width:2; fill:none; }
+  .finding-headline{ margin:0; font-weight:800; font-size:clamp(18px,2.4vw,22px); color:var(--ink-2); }
+  .finding-summary{ margin:0; color:var(--muted); }
+  .finding-back p{ margin:0; font-weight:600; line-height:1.45; }
+  .finding-back a{ margin-top:var(--s0); font-weight:700; text-decoration:none; color:var(--ink-2); }
+  .finding-back a:hover{ text-decoration:underline; color:var(--accent); }
+  .related-pubs{ display:flex; flex-direction:column; gap:var(--s0); }
+  .related-pubs h3{ margin:0; font-size:clamp(18px,2.4vw,22px); font-weight:800; color:var(--ink-2); }
+  .related-track{ display:flex; gap:12px; overflow-x:auto; padding:6px 0; scroll-snap-type:x mandatory; }
+  .related-track::-webkit-scrollbar{ height:6px; }
+  .related-track::-webkit-scrollbar-thumb{ background:rgba(17,125,178,.35); border-radius:999px; }
+  .related-card{ flex:0 0 auto; min-width:220px; background:#fff; border:1px solid var(--line); border-radius:16px; padding:12px 16px; box-shadow:var(--shadow); scroll-snap-align:start; text-decoration:none; color:var(--ink); transition:transform .2s ease, box-shadow .2s ease; }
+  .related-card:hover{ transform:translateY(-4px); box-shadow:var(--shadow-lg); }
+  .related-card span{ display:block; margin-top:6px; font-size:0.85rem; color:var(--muted); }
+  .finding{ background:#fff; border:1px solid var(--line); border-radius:18px; padding:16px; box-shadow:var(--shadow); display:grid; gap:8px }
+  .finding .stat{ font-weight:900; font-size:clamp(18px,2.6vw,22px); color:var(--ink-2) }
+  .finding .sum{ font-size:15px }
+  .finding .icon{ width:44px; height:44px; border-radius:12px; background:#fff; display:grid; place-items:center; border:1.6px solid #dbe7f3; color:var(--ink); box-shadow:0 6px 14px rgba(11,37,69,.08) }
+  .finding .icon svg{ width:22px; height:22px; stroke:currentColor; stroke-width:2; fill:none }
+
+  /* Publications (semantic, badges to match Join Us) */
+  .pubs-list{ list-style:none; margin:0; padding:0 }
+  .pubs-list .pub{ display:grid; grid-template-columns:1fr auto; gap:10px; border-bottom:1px solid var(--line); padding:12px 0 }
+  .pubs-list .pub:last-child{ border-bottom:none }
+  .pubs-list .title a{ text-decoration:none; color:var(--ink-2) }
+  .pubs-list .title a:hover{ text-decoration:underline }
+  .pubs-list .meta{ display:flex; gap:8px; align-items:center; color:#7a8a99 }
+  .badge{ display:inline-block; padding:4px 8px; border:1px solid #d7e2ee; border-radius:999px; font-size:12px; font-weight:800; color:#506073; background:#f8fbff }
+
+  .logos-row{ align-items:center }
+  .logos-row img{ filter:grayscale(1) contrast(.9); opacity:.9; mix-blend-mode:multiply }
+
+  /* Divider */
+  .divider{ display:flex; justify-content:center; align-items:center; margin:var(--s2) 0 0 }
+  .divider svg{ opacity:.35 }
+
+  /* Anchor offsets */
+  #vision,#themes,#projects,#findings,#publications,#get-involved{ scroll-margin-top:124px }
+
+  /* A11y utility */
+  .visually-hidden{ position:absolute!important; clip:rect(1px,1px,1px,1px); padding:0; border:0; height:1px; width:1px; overflow:hidden; white-space:nowrap }
+
+  /* ==== Force white surfaces even in dark mode ==== */
+  @media (prefers-color-scheme:dark){
+    html, body, .orlUX{ background:#ffffff !important; color:#0b2545 !important; }
+    .card, .theme-card, .proj, .finding-card{ background:#ffffff !important; color:#0b2545 !important; border:1px solid #e6edf6 !important; }
+    .chip{ background:#ffffff !important; color:#0b2545 !important; border-color:#dbe7f3 !important; }
+    .btn.primary{ background:#0b2545 !important; color:#ffffff !important; }
+  }
+</style>
+</head>
+
+<body>
+<!-- Ocean Recoveries — Kelp Forest Research (no-JS mobile menu, CMS-safe, OA images) -->
+<section class="orlUX" aria-label="Kelp Forest Research">
+  <a href="#main" class="skip">Skip to content</a>
+
+  <!-- HERO (styled to Join Us) -->
+  <header class="hero" role="banner" aria-label="Understanding Kelp Forest Dynamics and Recovery">
+    <div class="hero-media" aria-hidden="true">
+      <img loading="eager" decoding="async" fetchpriority="high"
+           src="https://static1.squarespace.com/static/5a033287be42d65267fc9a14/t/68dbd82c991d4c2fd78a0270/1759238245848/kelp-hero.jpeg"
+           alt="Dramatic shot looking up through a dense kelp canopy with light filtering down"
+           width="2400" height="1400"
+           srcset="
+             https://static1.squarespace.com/static/5a033287be42d65267fc9a14/t/68dbd82c991d4c2fd78a0270/1759238245848/kelp-hero.jpeg 1200w,
+             https://static1.squarespace.com/static/5a033287be42d65267fc9a14/t/68dbd82c991d4c2fd78a0270/1759238245848/kelp-hero.jpeg 1600w,
+             https://static1.squarespace.com/static/5a033287be42d65267fc9a14/t/68dbd82c991d4c2fd78a0270/1759238245848/kelp-hero.jpeg 2000w,
+             https://static1.squarespace.com/static/5a033287be42d65267fc9a14/t/68dbd82c991d4c2fd78a0270/1759238245848/kelp-hero.jpeg 2400w"
+           sizes="100vw">
+      <div class="hero-scrim" aria-hidden="true"></div>
+    </div>
+    <div class="hero-inner">
+      <div class="hero-panel">
+        <p class="eyebrow">Ocean Recoveries Lab</p>
+        <h1>Scaling resilience in giant kelp forests</h1>
+        <p class="hero-lead">We study foundation species dynamics, storms, herbivory, and management to understand and restore kelp forests.</p>
+        <div class="row" role="group" aria-label="Primary actions" style="margin-top:12px">
+          <a class="btn primary" href="#themes">Explore Our Research</a>
+          <a class="btn ghost" href="/publications">Publications</a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main id="main" tabindex="-1">
+    <!-- Vision -->
+    <section class="vision section" id="vision" aria-label="Our research vision">
+      <div class="container">
+        <div class="card">
+          <h2>Our research vision</h2>
+          <p class="lead-strong">Giant kelp (<em>Macrocystis pyrifera</em>) is a dynamic foundation species that structures temperate reefs.</p>
+          <p class="lead-strong">By linking long-term data, field experiments, and models, we identify bottlenecks to recovery and design decision-relevant strategies for resilient kelp forests.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Themes -->
+    <section class="section" id="themes" aria-label="Research themes">
+      <div class="container theme-intro">
+        <div class="theme-copy">
+          <h2>Research themes</h2>
+          <p>We combine experiments, long-term observations, and decision tools to reveal how kelp forests resist collapse, rebound faster, and support coastal communities.</p>
+        </div>
+        <figure class="theme-hero">
+          <img loading="lazy" decoding="async" src="https://images.unsplash.com/photo-1505761671935-60b3a7427bad?q=80&w=1600&auto=format&fit=crop" alt="Sunlit canopy of Macrocystis pyrifera swaying in blue water">
+        </figure>
+      </div>
+
+      <div class="container theme-grid">
+        <!-- Foundation Species & Stability -->
+        <article class="card theme-card">
+          <div class="theme-media">
+            <img loading="lazy" decoding="async"
+                 src="https://static1.squarespace.com/static/5a033287be42d65267fc9a14/t/68dbd82ceecce5451bf2bed7/1759238191166/kelp_canopy.jpg"
+                 alt="Close-up underwater photo showing dense kelp fronds filling the water column"
+                 width="1600" height="900"
+                 srcset="
+                   https://static1.squarespace.com/static/5a033287be42d65267fc9a14/t/68dbd82ceecce5451bf2bed7/1759238191166/kelp_canopy.jpg 800w,
+                   https://static1.squarespace.com/static/5a033287be42d65267fc9a14/t/68dbd82ceecce5451bf2bed7/1759238191166/kelp_canopy.jpg 1200w,
+                   https://static1.squarespace.com/static/5a033287be42d65267fc9a14/t/68dbd82ceecce5451bf2bed7/1759238191166/kelp_canopy.jpg 1600w"
+                 sizes="(max-width:980px) 100vw, 25vw">
+          </div>
+          <div class="theme-body">
+            <div class="theme-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" focusable="false">
+                <path d="M12 3v18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M7 8c2.5 2.5 7.5 2.5 10 0M7 16c2.5-2.5 7.5-2.5 10 0" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+            <h3>Foundation Species &amp; Stability</h3>
+            <p>How kelp biomass stability and canopy shading shape benthic communities and biodiversity.</p>
+          </div>
+          <div class="theme-cta"><a class="btn ghost sm" href="#publications">Read more →</a></div>
+        </article>
+
+        <!-- Storms, Disturbance & Coexistence -->
+        <article class="card theme-card">
+          <div class="theme-media">
+            <img loading="lazy" decoding="async"
+                 src="https://static1.squarespace.com/static/5a033287be42d65267fc9a14/t/68dbd82c806e7d02099ce22b/1759238245132/kelp-waves.jpeg"
+                 alt="High-energy underwater scene illustrating wave action or turbulence near the reef"
+                 width="1600" height="900"
+                 srcset="
+                   https://static1.squarespace.com/static/5a033287be42d65267fc9a14/t/68dbd82c806e7d02099ce22b/1759238245132/kelp-waves.jpeg 800w,
+                   https://static1.squarespace.com/static/5a033287be42d65267fc9a14/t/68dbd82c806e7d02099ce22b/1759238245132/kelp-waves.jpeg 1200w,
+                   https://static1.squarespace.com/static/5a033287be42d65267fc9a14/t/68dbd82c806e7d02099ce22b/1759238245132/kelp-waves.jpeg 1600w"
+                 sizes="(max-width:980px) 100vw, 25vw">
+          </div>
+          <div class="theme-body">
+            <div class="theme-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" focusable="false">
+                <path d="M4 12c1.5 1.5 3.5 1.5 5 0s3.5-1.5 5 0 3.5 1.5 5 0" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M6 5l2 2-2 2" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M18 5l-2 2 2 2" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+            <h3>Storms, Disturbance &amp; Coexistence</h3>
+            <p>How variable storm regimes alter light, promote coexistence, and shift community composition.</p>
+          </div>
+          <div class="theme-cta"><a class="btn ghost sm" href="#publications">Read more →</a></div>
+        </article>
+
+        <!-- Urchin Barrens & Thresholds -->
+        <article class="card theme-card">
+          <div class="theme-media">
+            <img loading="lazy" decoding="async"
+                 src="https://static1.squarespace.com/static/5a033287be42d65267fc9a14/t/68dbd82c9adc7c75ac38fcf6/1759238191332/urchin-barron.jpg"
+                 alt="Rocky seafloor covered densely with sea urchins with visible lack of kelp"
+                 width="1600" height="900"
+                 srcset="
+                   https://static1.squarespace.com/static/5a033287be42d65267fc9a14/t/68dbd82c9adc7c75ac38fcf6/1759238191332/urchin-barron.jpg 800w,
+                   https://static1.squarespace.com/static/5a033287be42d65267fc9a14/t/68dbd82c9adc7c75ac38fcf6/1759238191332/urchin-barron.jpg 1200w,
+                   https://static1.squarespace.com/static/5a033287be42d65267fc9a14/t/68dbd82c9adc7c75ac38fcf6/1759238191332/urchin-barron.jpg 1600w"
+                 sizes="(max-width:980px) 100vw, 25vw">
+          </div>
+          <div class="theme-body">
+            <div class="theme-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" focusable="false">
+                <path d="M12 4v16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                <path d="M4 12h16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                <circle cx="12" cy="12" r="5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+            <h3>Urchin Barrens &amp; Thresholds</h3>
+            <p>Detrital supply vs. grazing capacity; behavioral switches that trigger deforestation.</p>
+          </div>
+          <div class="theme-cta"><a class="btn ghost sm" href="#publications">Read more →</a></div>
+        </article>
+
+        <!-- Predators, MPAs & Management -->
+        <article class="card theme-card">
+          <div class="theme-media">
+            <img loading="lazy" decoding="async"
+                 src="https://static1.squarespace.com/static/5a033287be42d65267fc9a14/t/68dd5178811da540b0f016b4/1759334810044/lobster.jpeg"
+                 alt="California spiny lobster on rocky reef"
+                 width="1600" height="900"
+                 srcset="
+                   https://static1.squarespace.com/static/5a033287be42d65267fc9a14/t/68dd5178811da540b0f016b4/1759334810044/lobster.jpeg 800w,
+                   https://static1.squarespace.com/static/5a033287be42d65267fc9a14/t/68dd5178811da540b0f016b4/1759334810044/lobster.jpeg 1200w,
+                   https://static1.squarespace.com/static/5a033287be42d65267fc9a14/t/68dd5178811da540b0f016b4/1759334810044/lobster.jpeg 1600w"
+                 sizes="(max-width:980px) 100vw, 25vw">
+          </div>
+          <div class="theme-body">
+            <div class="theme-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" focusable="false">
+                <path d="M6 8l6 4 6-4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M6 12l6 4 6-4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M6 16l6 4 6-4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+            <h3>Predators, MPAs &amp; Management</h3>
+            <p>Body-size dependent predation, lobster–urchin interactions, and the value of monitoring.</p>
+          </div>
+          <div class="theme-cta"><a class="btn ghost sm" href="#publications">See publications →</a></div>
+        </article>
+
+        <!-- Predators: California Sheephead -->
+        <article class="card theme-card">
+          <div class="theme-media">
+            <img loading="lazy" decoding="async"
+                 src="https://static1.squarespace.com/static/5a033287be42d65267fc9a14/t/68dd522dcf55a5742587888e/1759334972819/sheephead.jpeg"
+                 alt="California Sheephead in kelp forest"
+                 width="1600" height="900"
+                 srcset="
+                   https://static1.squarespace.com/static/5a033287be42d65267fc9a14/t/68dd522dcf55a5742587888e/1759334972819/sheephead.jpeg 800w,
+                   https://static1.squarespace.com/static/5a033287be42d65267fc9a14/t/68dd522dcf55a5742587888e/1759334972819/sheephead.jpeg 1200w,
+                   https://static1.squarespace.com/static/5a033287be42d65267fc9a14/t/68dd522dcf55a5742587888e/1759334972819/sheephead.jpeg 1600w"
+                 sizes="(max-width:980px) 100vw, 25vw">
+          </div>
+          <div class="theme-body">
+            <div class="theme-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" focusable="false">
+                <path d="M3 12s3-4 9-4 9 4 9 4-3 4-9 4-9-4-9-4z" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                <circle cx="12" cy="12" r="1.5" fill="currentColor"/>
+              </svg>
+            </div>
+            <h3>Predators: California Sheephead</h3>
+            <p>Iconic kelp forest predator that crushes urchins; complements lobster in controlling grazing pressure.</p>
+          </div>
+          <div class="theme-cta"><a class="btn ghost sm" href="#publications">See publications →</a></div>
+        </article>
+      </div>
+    </section>
+
+    <!-- Projects -->
+    <section class="section" id="projects" aria-label="Featured projects">
+      <div class="container">
+        <h2>Featured projects</h2>
+        <div class="carousel">
+          <div class="carousel-rail" id="projRailKelp" aria-live="polite">
+            <!-- Project 1 -->
+            <article class="item">
+              <div class="proj">
+                <div class="proj-media">
+                  <img loading="lazy" decoding="async"
+                       src="https://static1.squarespace.com/static/5a033287be42d65267fc9a14/t/68dbd82ceecce5451bf2bed7/1759238191166/kelp_canopy.jpg"
+                       alt="Kelp canopy used in long-term monitoring"
+                       width="1600" height="900"
+                       srcset="
+                         https://static1.squarespace.com/static/5a033287be42d65267fc9a14/t/68dbd82ceecce5451bf2bed7/1759238191166/kelp_canopy.jpg 800w,
+                         https://static1.squarespace.com/static/5a033287be42d65267fc9a14/t/68dbd82ceecce5451bf2bed7/1759238191166/kelp_canopy.jpg 1200w,
+                         https://static1.squarespace.com/static/5a033287be42d65267fc9a14/t/68dbd82ceecce5451bf2bed7/1759238191166/kelp_canopy.jpg 1600w"
+                       sizes="(max-width:900px) 86vw, 48vw">
+                </div>
+                <div class="proj-body">
+                  <h3>SBC LTER time-series + models</h3>
+                  <p>Coupling decades of data with process models to reveal storm and herbivory effects.</p>
+                  <a class="btn primary sm" href="#publications">Learn more</a>
+                </div>
+              </div>
+            </article>
+
+            <!-- Project 2 -->
+            <article class="item">
+              <div class="proj">
+                <div class="proj-media">
+                  <img loading="lazy" decoding="async"
+                       src="https://static1.squarespace.com/static/5a033287be42d65267fc9a14/t/68dbd82c1165b6299be215d7/1759238244686/purple-urchin.jpeg"
+                       alt="Close-up shot of a single purple urchin, useful for detailing removal projects"
+                       width="1600" height="900"
+                       srcset="
+                         https://static1.squarespace.com/static/5a033287be42d65267fc9a14/t/68dbd82c1165b6299be215d7/1759238244686/purple-urchin.jpeg 800w,
+                         https://static1.squarespace.com/static/5a033287be42d65267fc9a14/t/68dbd82c1165b6299be215d7/1759238244686/purple-urchin.jpeg 1200w,
+                         https://static1.squarespace.com/static/5a033287be42d65267fc9a14/t/68dbd82c1165b6299be215d7/1759238244686/purple-urchin.jpeg 1600w"
+                       sizes="(max-width:900px) 86vw, 48vw">
+                </div>
+                <div class="proj-body">
+                  <h3>Urchin removal &amp; recovery</h3>
+                  <p>Testing when manual removal leads to self-sustaining kelp forests.</p>
+                  <a class="btn primary sm" href="#publications">Learn more</a>
+                </div>
+              </div>
+            </article>
+
+            <!-- Project 3 -->
+            <article class="item">
+              <div class="proj">
+                <div class="proj-media">
+                  <img loading="lazy" decoding="async"
+                       src="https://static1.squarespace.com/static/5a033287be42d65267fc9a14/t/68dd5178811da540b0f016b4/1759334810044/lobster.jpeg"
+                       alt="California spiny lobster inside kelp forest"
+                       width="1600" height="900"
+                       srcset="
+                         https://static1.squarespace.com/static/5a033287be42d65267fc9a14/t/68dd5178811da540b0f016b4/1759334810044/lobster.jpeg 800w,
+                         https://static1.squarespace.com/static/5a033287be42d65267fc9a14/t/68dd5178811da540b0f016b4/1759334810044/lobster.jpeg 1200w,
+                         https://static1.squarespace.com/static/5a033287be42d65267fc9a14/t/68dd5178811da540b0f016b4/1759334810044/lobster.jpeg 1600w"
+                       sizes="(max-width:900px) 86vw, 48vw">
+                </div>
+                <div class="proj-body">
+                  <h3>Lobster–urchin interaction strength</h3>
+                  <p>How body size and behavior predict predation and forest resilience.</p>
+                  <a class="btn primary sm" href="#publications">Learn more</a>
+                </div>
+              </div>
+            </article>
+
+            <!-- Project 4 -->
+            <article class="item">
+              <div class="proj">
+                <div class="proj-media">
+                  <img loading="lazy" decoding="async"
+                       src="https://www.usgs.gov/media/images/wave-breaking-over-coral-reef/@@images/image/large"
+                       alt="Wave crest breaking over reef as a disturbance indicator"
+                       width="1600" height="900"
+                       srcset="
+                         https://www.usgs.gov/media/images/wave-breaking-over-coral-reef/@@images/image/large 800w,
+                         https://www.usgs.gov/media/images/wave-breaking-over-coral-reef/@@images/image/large 1200w,
+                         https://www.usgs.gov/media/images/wave-breaking-over-coral-reef/@@images/image/large 1600w"
+                       sizes="(max-width:900px) 86vw, 48vw">
+                </div>
+                <div class="proj-body">
+                  <h3>Monitoring near thresholds</h3>
+                  <p>When information is most valuable for avoiding collapses and regime shifts.</p>
+                  <a class="btn primary sm" href="/publications">Learn more</a>
+                </div>
+              </div>
+            </article>
+          </div>
+          <div class="carousel-nav">
+            <button id="prevProjKelp" aria-label="Previous projects">‹ Prev</button>
+            <button id="nextProjKelp" aria-label="Next projects">Next ›</button>
+          </div>
+          <div class="carousel-thumbs" role="tablist" aria-label="Project thumbnails">
+            <button type="button" class="thumb" data-target="0" aria-label="SBC LTER time-series" aria-current="true">
+              <img src="https://static1.squarespace.com/static/5a033287be42d65267fc9a14/t/68dbd82ceecce5451bf2bed7/1759238191166/kelp_canopy.jpg?format=400w" alt="">
+            </button>
+            <button type="button" class="thumb" data-target="1" aria-label="Urchin removal experiment">
+              <img src="https://static1.squarespace.com/static/5a033287be42d65267fc9a14/t/68dbd82c1165b6299be215d7/1759238244686/purple-urchin.jpeg?format=400w" alt="">
+            </button>
+            <button type="button" class="thumb" data-target="2" aria-label="Lobster-urchin study">
+              <img src="https://static1.squarespace.com/static/5a033287be42d65267fc9a14/t/68dd5178811da540b0f016b4/1759334810044/lobster.jpeg?format=400w" alt="">
+            </button>
+            <button type="button" class="thumb" data-target="3" aria-label="Restoration monitoring tools">
+              <img src="https://www.usgs.gov/media/images/wave-breaking-over-coral-reef/@@images/image/large" alt="">
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Findings -->
+    <section class="section" id="findings" aria-label="Key findings and impact">
+      <div class="container">
+        <div class="finding-grid">
+          <article class="finding">
+            <div class="finding-card" tabindex="0" aria-label="Stable kelp canopy boosts community stability.">
+              <div class="finding-face finding-front">
+                <div class="finding-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M11 3C7 3 3 7 3 11s4 8 8 8 8-4 8-8V3Z"/><path d="M12 12 7 17"/></svg></div>
+                <p class="finding-headline">Stable kelp canopy, stable reef.</p>
+                <p class="finding-summary">Lower canopy fluctuation correlates with richer, more even benthic communities.</p>
+              </div>
+              <div class="finding-face finding-back">
+                <p>Canopy stability moderates light and detrital subsidies, buffering benthic assemblages from swings in dominance.</p>
+                <a href="https://doi.org/10.1002/ecy.2987" target="_blank" rel="noopener">Read the canopy stability study →</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="finding">
+            <div class="finding-card" tabindex="0" aria-label="Storm variability promotes coexistence.">
+              <div class="finding-face finding-front">
+                <div class="finding-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M3 12h14a3 3 0 1 0-3-3"/><path d="M3 18h10a3 3 0 1 1-3 3"/><path d="M3 6h6"/></svg></div>
+                <p class="finding-headline">Storm pulses foster coexistence.</p>
+                <p class="finding-summary">Wave-driven light variability keeps kelp, understory algae, and invertebrates in balance.</p>
+              </div>
+              <div class="finding-face finding-back">
+                <p>Disturbance regimes tune shade, nutrient flux, and recruitment—key levers for coexistence management.</p>
+                <a href="https://doi.org/10.1002/ecy.3304" target="_blank" rel="noopener">Mechanistic wave–light model →</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="finding">
+            <div class="finding-card" tabindex="0" aria-label="Urchin barrens emerge when grazing exceeds detritus supply.">
+              <div class="finding-face finding-front">
+                <div class="finding-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="m10.3 2.3-8 14A2 2 0 0 0 4 19h16a2 2 0 0 0 1.7-2.7l-8-14a2 2 0 0 0-3.4 0Z"/><path d="M12 9v4"/><path d="M12 17h.01"/></svg></div>
+                <p class="finding-headline">Barrens emerge when drift runs out.</p>
+                <p class="finding-summary">Urchins switch to active grazing once detrital subsidies drop below demand.</p>
+              </div>
+              <div class="finding-face finding-back">
+                <p>This behavioral threshold is a practical metric for identifying forests on the brink of deforestation.</p>
+                <a href="https://doi.org/10.1002/ecy.3673" target="_blank" rel="noopener">See the threshold analysis →</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="finding">
+            <div class="finding-card" tabindex="0" aria-label="Predator recovery through MPAs reinforces kelp resilience.">
+              <div class="finding-face finding-front">
+                <div class="finding-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 22c7-3 8-10 8-13V5l-8-3-8 3v4c0 3 1 10 8 13"/><path d="m9 12 2 2 4-4"/></svg></div>
+                <p class="finding-headline">MPAs magnify predator services.</p>
+                <p class="finding-summary">Large lobsters in reserves reduce urchin pressure and feed adjacent fisheries.</p>
+              </div>
+              <div class="finding-face finding-back">
+                <p>Predator body size links biodiversity goals with fishery wins—underscoring reserve network design.</p>
+                <a href="https://doi.org/10.1111/1365-2656.13918" target="_blank" rel="noopener">Explore the predator effects →</a>
+              </div>
+            </div>
+          </article>
+        </div>
+
+        <div class="related-pubs" aria-label="Related publications">
+          <h3>Related publications</h3>
+          <div class="related-track">
+            <a class="related-card" href="https://doi.org/10.1002/ecy.2987" target="_blank" rel="noopener">Foundation species promote community stability by increasing diversity in a giant kelp forest<span>Ecology (2020)</span></a>
+            <a class="related-card" href="https://doi.org/10.1002/ecy.3304" target="_blank" rel="noopener">Variation in disturbance to a foundation species structures the dynamics of a benthic reef community<span>Ecology (2021)</span></a>
+            <a class="related-card" href="https://doi.org/10.1002/ecy.3673" target="_blank" rel="noopener">Detrital supply suppresses deforestation to maintain healthy kelp forest ecosystems<span>Ecology (2022)</span></a>
+            <a class="related-card" href="https://doi.org/10.1111/1365-2656.13918" target="_blank" rel="noopener">Variation in body size drives spatial and temporal variation in lobster–urchin interaction strength<span>Journal of Animal Ecology (2023)</span></a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Publications -->
+    <section class="section" id="publications" aria-label="Publications and highlights">
+      <div class="container">
+        <h2>Publications &amp; highlights</h2>
+
+        <div class="card">
+          <ul class="pubs-list" role="list">
+            <li class="pub">
+              <div>
+                <p class="title"><a href="https://doi.org/10.1002/ecy.2987" target="_blank" rel="noopener">Foundation species promote community stability by increasing diversity in a giant kelp forest</a></p>
+                <p class="sum">Linking long-term kelp biomass variation to richer, more stable benthic assemblages.</p>
+              </div>
+              <div class="meta"><time datetime="2020">2020</time><span class="badge">Ecology</span></div>
+            </li>
+            <li class="pub">
+              <div>
+                <p class="title"><a href="https://doi.org/10.1002/ecy.3304" target="_blank" rel="noopener">Variation in disturbance to a foundation species structures the dynamics of a benthic reef community</a></p>
+                <p class="sum">Mechanistic models show how waves alter shade and shift community outcomes.</p>
+              </div>
+              <div class="meta"><time datetime="2021">2021</time><span class="badge">Ecology</span></div>
+            </li>
+            <li class="pub">
+              <div>
+                <p class="title"><a href="https://doi.org/10.1002/ecy.3673" target="_blank" rel="noopener">Detrital supply suppresses deforestation to maintain healthy kelp forest ecosystems</a></p>
+                <p class="sum">A practical metric to identify forests at risk of urchin-driven collapse.</p>
+              </div>
+              <div class="meta"><time datetime="2022">2022</time><span class="badge">Ecology</span></div>
+            </li>
+            <li class="pub">
+              <div>
+                <p class="title"><a href="https://doi.org/10.1111/1365-2656.13918" target="_blank" rel="noopener">Variation in body size drives spatial and temporal variation in lobster–urchin interaction strength</a></p>
+                <p class="sum">Large lobsters inside reserves increase predation strength and fishery spillover.</p>
+              </div>
+              <div class="meta"><time datetime="2023">2023</time><span class="badge">J Anim Ecol</span></div>
+            </li>
+          </ul>
+        </div>
+
+        <div class="card logos" style="margin-top:10px">
+          <div class="row logos-row">
+            <span class="eyebrow" style="color:var(--muted)">FEATURED IN</span>
+            <img loading="lazy" decoding="async" src="https://dummyimage.com/120x34/ffffff/cccccc.png&text=Ecology" alt="Ecology">
+            <img loading="lazy" decoding="async" src="https://dummyimage.com/160x34/ffffff/cccccc.png&text=J+Animal+Ecology" alt="Journal of Animal Ecology">
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="section cta-band" id="get-involved" aria-label="Get involved">
+      <div class="container">
+        <div class="card">
+          <h2>Get involved</h2>
+          <p>Collaborate on experiments and syntheses, join the lab, or support decision-relevant kelp forest science.</p>
+          <div class="row" style="margin-top:10px">
+            <a class="btn primary" href="/people">Collaborate with us</a>
+            <a class="btn ghost" href="/join">Join the lab</a>
+            <a class="btn ghost" href="mailto:astier@ucsb.edu?subject=Support Ocean Recoveries Lab">Support our work</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Image credits -->
+    <section class="section" aria-label="Image credits">
+      <div class="container">
+        <p style="font-size:13px;color:#6c7b89">
+          Images: Ocean Recoveries Lab (Squarespace-hosted); NOAA Photo Library / Channel Islands NMS (Public Domain); USGS (Public Domain). Where applicable, credit required and appreciated.
+        </p>
+      </div>
+    </section>
+  </main>
+</section>
+<script>
+(function(){
+  const rail = document.getElementById('projRailKelp');
+  if(!rail) return;
+  const carousel = rail.closest('.carousel');
+  const items = Array.from(rail.querySelectorAll('.item'));
+  const prev = document.getElementById('prevProjKelp');
+  const next = document.getElementById('nextProjKelp');
+  const thumbs = carousel ? Array.from(carousel.querySelectorAll('.carousel-thumbs .thumb')) : [];
+  let isGliding = false;
+
+  const clamp = (idx) => Math.max(0, Math.min(items.length - 1, idx));
+
+  const goTo = (index) => {
+    const targetIndex = clamp(index);
+    const target = items[targetIndex];
+    if (!target) return;
+    isGliding = true;
+    rail.scrollTo({ left: target.offsetLeft, behavior: 'smooth' });
+    window.setTimeout(() => {
+      isGliding = false;
+      update();
+    }, 420);
+  };
+
+  const activeIndex = () => {
+    const midpoint = rail.scrollLeft + rail.clientWidth / 2;
+    let best = 0;
+    let bestDistance = Infinity;
+    items.forEach((item, idx) => {
+      const itemCenter = item.offsetLeft + item.clientWidth / 2;
+      const distance = Math.abs(midpoint - itemCenter);
+      if (distance < bestDistance) {
+        bestDistance = distance;
+        best = idx;
+      }
+    });
+    return clamp(best);
+  };
+
+  const updateThumbs = (idx) => {
+    thumbs.forEach((btn, i) => btn.setAttribute('aria-current', i === idx ? 'true' : 'false'));
+  };
+
+  const update = () => {
+    const idx = activeIndex();
+    if (prev) prev.disabled = idx === 0;
+    if (next) next.disabled = idx === items.length - 1;
+    updateThumbs(idx);
+  };
+
+  prev && prev.addEventListener('click', () => goTo(activeIndex() - 1));
+  next && next.addEventListener('click', () => goTo(activeIndex() + 1));
+  thumbs.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const idx = Number(btn.getAttribute('data-target'));
+      goTo(idx);
+    });
+  });
+
+  rail.addEventListener('scroll', () => {
+    if (!isGliding) window.requestAnimationFrame(update);
+  }, { passive: true });
+  window.addEventListener('resize', () => window.requestAnimationFrame(update));
+  update();
+})();
+</script>
+</body>
+</html>

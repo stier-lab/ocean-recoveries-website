@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Research Accordions</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+</head>
+<body style="margin:0;">
+
+<style>
+/* =====================
+   SQUARESPACE 7.1 FLUID ENGINE ISOLATION
+   Prevents Squarespace from overriding custom styles
+====================== */
+
+/* Kill ALL Squarespace containers - nuclear option */
+body .sqs-block-code,
+body .sqs-block-code *,
+body .sqs-block-content,
+body .sqs-block-content *,
+body .fe-block,
+body .fe-block * {
+  background: transparent !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  box-sizing: border-box !important;
+}
+
+/* Force white background on outer wrapper only */
+body .orlUX-wrapper {
+  background: #ffffff !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  display: block !important;
+  position: relative !important;
+}
+
+body .orlUX {
+  background: #ffffff !important;
+  margin: 0 auto !important;
+  padding: 0 !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  display: block !important;
+  position: relative !important;
+}
+
+/* Restore proper box model to content inside .orlUX */
+body .orlUX * {
+  box-sizing: border-box !important;
+}
+
+/* Force typography - prevent Squarespace font inheritance */
+body .orlUX,
+body .orlUX *,
+body .orlUX *::before,
+body .orlUX *::after {
+  font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif !important;
+  -webkit-font-smoothing: antialiased !important;
+  -moz-osx-font-smoothing: grayscale !important;
+}
+
+/* AGGRESSIVE COLOR OVERRIDES - prevent Squarespace theme colors */
+
+/* Primary headings - dark blue */
+body .orlUX h1,
+body .orlUX h2,
+body .orlUX h3 {
+  color: #0b2545 !important;
+  background: transparent !important;
+}
+
+/* Body text */
+body .orlUX p,
+body .orlUX li {
+  color: #566579 !important;
+  background: transparent !important;
+}
+
+/* Links */
+body .orlUX a {
+  color: #117db2 !important;
+}
+
+body .orlUX a:hover {
+  color: #0a5a85 !important;
+}
+
+/* End Squarespace isolation */
+
+.orlA-section3 {
+  font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  color: #0b2545;
+  line-height: 1.58;
+  font-size: 17px;
+  background: #ffffff;
+  padding: 0;
+  margin: 0;
+}
+
+.orlA-section3 h2,
+.orlA-section3 h3 {
+  line-height: 1.2;
+  margin: 0;
+}
+
+.orlA-accs {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: clamp(48px, 8vw, 96px) clamp(24px, 5vw, 48px) clamp(64px, 10vw, 120px);
+}
+
+/* ACCORDIONS (details/summary) */
+.acc {
+  background: #ffffff;
+  border-radius: 20px;
+  box-shadow: 0 4px 20px rgba(11, 37, 69, 0.06), 0 1px 3px rgba(11, 37, 69, 0.04);
+  overflow: hidden;
+  border: 1px solid rgba(17, 125, 178, 0.08);
+  transition: all 0.3s ease;
+}
+
+.acc:hover {
+  box-shadow: 0 8px 32px rgba(11, 37, 69, 0.12), 0 2px 6px rgba(11, 37, 69, 0.06);
+  border-color: rgba(17, 125, 178, 0.15);
+  transform: translateY(-2px);
+}
+
+.acc + .acc {
+  margin-top: clamp(1.5rem, 3vw, 2rem);
+}
+
+.acc > summary {
+  list-style: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1.75rem 2rem;
+  min-height: 80px;
+  background: linear-gradient(to right, rgba(17, 125, 178, 0.02), transparent);
+  transition: background 0.2s ease;
+}
+
+.acc > summary:hover {
+  background: linear-gradient(to right, rgba(17, 125, 178, 0.04), transparent);
+}
+
+.acc > summary::-webkit-details-marker {
+  display: none;
+}
+
+.acc-tag {
+  font-size: 0.75rem;
+  color: #0b2545;
+  background: linear-gradient(135deg, #e6f5fc 0%, #d4ebf7 100%);
+  border: 1px solid #b8dcef;
+  border-radius: 999px;
+  padding: 0.4rem 0.9rem;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  flex-shrink: 0;
+  box-shadow: 0 2px 4px rgba(17, 125, 178, 0.08);
+}
+
+.pill-head {
+  font-weight: 800;
+  font-size: clamp(19px, 2.5vw, 26px);
+  flex: 1;
+  color: #0b2545;
+  letter-spacing: -0.02em;
+}
+
+.acc-chevron {
+  margin-left: auto;
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  font-size: 28px;
+  flex-shrink: 0;
+  color: #117db2;
+  font-weight: 300;
+}
+
+.acc[open] .acc-chevron {
+  transform: rotate(90deg);
+}
+
+.acc-panel {
+  padding: 0 2rem 2rem;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  border-top: 1px solid rgba(17, 125, 178, 0.08);
+  background: linear-gradient(to bottom, rgba(247, 250, 251, 0.3), transparent);
+}
+
+.acc[open] .acc-panel {
+  opacity: 1;
+}
+
+.acc-inner {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+  padding-top: 1.5rem;
+}
+
+@media (min-width: 900px) {
+  .acc-inner {
+    grid-template-columns: minmax(0, 1.25fr) minmax(0, 0.9fr);
+    gap: 2.5rem;
+  }
+}
+
+.acc-media img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  border-radius: 16px;
+  background: #ffffff;
+  aspect-ratio: 16/10;
+  box-shadow: 0 8px 24px rgba(11, 37, 69, 0.12);
+  border: 1px solid rgba(17, 125, 178, 0.1);
+}
+
+.sub {
+  font-weight: 800;
+  margin: 1.5rem 0 0.75rem;
+  font-size: clamp(18px, 2vw, 22px);
+}
+
+.mini {
+  font-size: 0.9rem;
+  color: #566579;
+  margin-left: 0.25rem;
+}
+
+.flash {
+  background: linear-gradient(135deg, #f7fafb 0%, #ffffff 100%);
+  border: 1px solid #d4e4f0;
+  border-left: 4px solid #117db2;
+  border-radius: 12px;
+  padding: 1rem 1.25rem;
+  margin: 0 0 1.25rem;
+  box-shadow: 0 2px 8px rgba(11, 37, 69, 0.04);
+}
+
+.flash b {
+  color: #08365f;
+}
+
+.ul,
+.refs {
+  margin: 0.5rem 0 1.5rem;
+  padding-left: 1.5rem;
+}
+
+.ul li,
+.refs li {
+  margin: 0.65rem 0;
+  overflow-wrap: anywhere;
+  line-height: 1.6;
+}
+
+.ul li b {
+  color: #082f56;
+}
+
+.refs a {
+  color: #117db2;
+  text-decoration: none;
+}
+
+.refs a:hover {
+  text-decoration: underline;
+}
+
+.refs small {
+  color: #566579;
+}
+
+.morepub[hidden] {
+  display: none;
+}
+
+.more-toggle {
+  background: linear-gradient(135deg, #e6f5fc 0%, #d4ebf7 100%);
+  border: 1px solid #b8dcef;
+  color: #0b2545;
+  font-weight: 800;
+  cursor: pointer;
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  transition: all 0.2s ease;
+  font-size: 0.9rem;
+}
+
+.more-toggle:hover {
+  background: linear-gradient(135deg, #d4ebf7 0%, #c2e3f3 100%);
+  border-color: #a5d2ec;
+  transform: translateY(-1px);
+  box-shadow: 0 2px 8px rgba(17, 125, 178, 0.15);
+}
+
+.gterm {
+  border-bottom: 1px dotted #ff6f5b;
+  cursor: help;
+  position: relative;
+}
+
+/* Ensure no decorative symbol is appended by any theme overrides */
+.gterm::after {
+  content: none !important;
+  display: none !important;
+}
+
+/* Mobile edge padding reduction */
+@media (max-width: 520px) {
+  .orlA-accs {
+    padding-left: 6px;
+    padding-right: 6px;
+  }
+}
+</style>
+
+<div class="orlUX-wrapper">
+  <div class="orlUX">
+    <div class="orlA-section3">
+      <!-- ACCORDIONS -->
+      <section class="orlA-accs" aria-label="Pillar details">
+        <!-- Pillar 1 -->
+        <details class="acc" id="p1">
+          <summary>
+            <span class="acc-tag">Pillar 1</span>
+            <h2 class="pill-head">Marine Ecosystem Dynamics &amp; Resilience</h2>
+            <span class="acc-chevron" aria-hidden="true">›</span>
+          </summary>
+          <div class="acc-panel" role="region" aria-labelledby="p1">
+            <div class="acc-inner">
+              <div>
+                <div class="flash"><b>At a glance:</b> We study how kelp and corals build habitat, how species interactions (e.g., lobster–urchin) drive change, and what pushes reefs across <span class="gterm" title="A flip from one stable state to another (e.g., coral → algae).">tipping points</span>—and how to pull them back.</div>
+
+                <h3 class="sub">Key Research Areas <span class="mini">(What this means)</span></h3>
+                <ul class="ul">
+                  <li><b>Foundation species &amp; habitat:</b> kelp &amp; corals build homes → stability.</li>
+                  <li><b>Species interactions &amp; food webs:</b> predators, prey, and mutualists (cleaners, "bodyguards," fertilizers).</li>
+                  <li><b>Disturbance &amp; tipping points:</b> storms/bleaching; <span class="gterm" title="Structures left after disturbance that bias future recovery.">material legacies</span> can favor algae.</li>
+                  <li><b>Function &amp; nutrients:</b> detritus in kelp; fish recycle nitrogen that boosts coral growth.</li>
+                </ul>
+
+                <h3 class="sub">Representative Publications (with outcomes)</h3>
+                <ul class="refs">
+                  <li><strong>Stier &amp; Osenberg (2024).</strong> <a target="_blank" rel="noopener" href="https://doi.org/10.1016/j.cub.2024.05.071"><cite>How fishes and invertebrates impact coral resilience</cite></a>. <small>Current Biology</small> — practical guidance to harness "CAFI" services.</li>
+                  <li><strong>Stier &amp; Osenberg (2024).</strong> <a target="_blank" rel="noopener" href="https://doi.org/10.1016/j.cub.2023.10.067"><cite>Coral guard crabs</cite></a>. <small>Current Biology</small> — natural, low-cost coral defense.</li>
+                  <li>
+                    <strong>Kopecky et&nbsp;al. (2023).</strong> <a target="_blank" rel="noopener" href="https://doi.org/10.1002/ecy.4147"><cite>Material legacies degrade resilience</cite></a>. <small>Ecology</small>
+                    <ul id="p1-more" class="morepub" hidden>
+                      <li><strong>Detmer et&nbsp;al. (2022).</strong> <a target="_blank" rel="noopener" href="https://doi.org/10.1016/j.jtbi.2022.111087"><cite>Fish fertilization promotes coral growth</cite></a>. <small>J. Theor. Biol.</small></li>
+                      <li><strong>DiFiore &amp; Stier (2023).</strong> <a target="_blank" rel="noopener" href="https://doi.org/10.1111/1365-2656.14008"><cite>Body size &amp; lobster–urchin interaction strength</cite></a>. <small>J. Animal Ecology</small></li>
+                      <li><strong>Lamy et&nbsp;al. (2020).</strong> <a target="_blank" rel="noopener" href="https://doi.org/10.1002/ecy.3165"><cite>Foundation species promote stability</cite></a>. <small>Ecology</small></li>
+                      <li><strong>Stier et&nbsp;al. (2014).</strong> <a target="_blank" rel="noopener" href="https://doi.org/10.1038/ncomms6575"><cite>Larval dispersal drives trophic structure</cite></a>. <small>Nat. Comm.</small></li>
+                      <li><strong>Curtis et&nbsp;al. (2023).</strong> <a target="_blank" rel="noopener" href="https://doi.org/10.1007/s00338-023-02367-7"><cite>3D photogrammetry improves coral estimates</cite></a>. <small>Coral Reefs</small></li>
+                    </ul>
+                  </li>
+                </ul>
+
+                <p>
+                  <button class="more-toggle" aria-expanded="false" aria-controls="p1-more">View more publications</button>
+                  · <a href="https://www.oceanrecoveries.com/new-page">See all publications</a>
+                </p>
+              </div>
+              <div class="acc-media" aria-label="Kelp forest imagery">
+                <img
+                  src="https://static1.squarespace.com/static/5a033287be42d65267fc9a14/t/68cb2c74c5ef1d4194ba1061/1758145653960/AdobeStock_658768154_webready.jpg"
+                  alt="Sunlit giant kelp canopy" width="1280" height="800" loading="lazy" decoding="async"
+                  srcset="
+                    https://static1.squarespace.com/static/5a033287be42d65267fc9a14/t/68cb2c74c5ef1d4194ba1061/1758145653960/AdobeStock_658768154_webready.jpg?format=800w 800w,
+                    https://static1.squarespace.com/static/5a033287be42d65267fc9a14/t/68cb2c74c5ef1d4194ba1061/1758145653960/AdobeStock_658768154_webready.jpg?format=1200w 1200w,
+                    https://static1.squarespace.com/static/5a033287be42d65267fc9a14/t/68cb2c74c5ef1d4194ba1061/1758145653960/AdobeStock_658768154_webready.jpg?format=1600w 1600w"
+                  sizes="(max-width:900px) 100vw, 45vw">
+              </div>
+            </div>
+          </div>
+        </details>
+
+        <!-- Pillar 2 -->
+        <details class="acc" id="p2">
+          <summary>
+            <span class="acc-tag">Pillar 2</span>
+            <h2 class="pill-head">Conservation Science &amp; Human Dimensions</h2>
+            <span class="acc-chevron" aria-hidden="true">›</span>
+          </summary>
+          <div class="acc-panel" role="region" aria-labelledby="p2">
+            <div class="acc-inner">
+              <div>
+                <div class="flash"><b>At a glance:</b> We co-design solutions with agencies and communities—testing what works (<span class="gterm" title="Fish/larvae leaving MPAs to fished areas.">spillover</span>), setting thresholds for action, and reducing conflict so decisions stick.</div>
+
+                <h3 class="sub">Key Research Areas</h3>
+                <ul class="ul">
+                  <li><b>MPAs &amp; fisheries:</b> benefits to wildlife and nearby fishers; measure spillover.</li>
+                  <li><b>Recovery strategies:</b> synchronize predator–prey recovery when it outperforms single-species efforts.</li>
+                  <li><b>Human impacts &amp; SES:</b> cities and behavior changes can cascade through ecosystems.</li>
+                  <li><b>Stakeholders &amp; policy:</b> align perceptions, lower participation costs, co-produce decisions.</li>
+                  <li><b>Restoration &amp; climate:</b> science-based methods to restore biodiversity and store carbon.</li>
+                </ul>
+
+                <h3 class="sub">Representative Publications (with outcomes)</h3>
+                <ul class="refs">
+                  <li><strong>Lenihan et&nbsp;al. (2021).</strong> <a target="_blank" rel="noopener" href="https://doi.org/10.1038/s41598-021-82371-5"><cite>Spillover benefits to the spiny lobster fishery</cite></a>. <small>Sci. Reports</small> — evidence used by California stakeholders to communicate MPA benefits.</li>
+                  <li><strong>Okamoto et&nbsp;al. (2020).</strong> <a target="_blank" rel="noopener" href="https://doi.org/10.1002/eap.2051"><cite>Spatial exploitation creates cryptic collapses</cite></a>. <small>Ecological Applications</small></li>
+                  <li>
+                    <strong>Samhouri et&nbsp;al. (2017).</strong> <a target="_blank" rel="noopener" href="https://doi.org/10.1038/s41559-016-0068"><cite>Synchronized predator–prey recovery</cite></a>. <small>Nat. Ecol. Evol.</small>
+                    <ul id="p2-more" class="morepub" hidden>
+                      <li><strong>Levin et&nbsp;al. (2020).</strong> <a target="_blank" rel="noopener" href="https://doi.org/10.1093/biosci/biaa117"><cite>The Rashomon Effect</cite></a>. <small>BioScience</small></li>
+                      <li><strong>Lynham et&nbsp;al. (2016).</strong> <a target="_blank" rel="noopener" href="https://doi.org/10.1016/j.marpol.2016.01.019"><cite>Participation costs &amp; policy inertia</cite></a>. <small>Marine Policy</small></li>
+                      <li><strong>Dundas et&nbsp;al. (2020).</strong> <a target="_blank" rel="noopener" href="https://doi.org/10.1111/conl.12674"><cite>Oceans in climate policy</cite></a>. <small>Conservation Letters</small></li>
+                      <li><strong>Ingeman et&nbsp;al. (2019).</strong> <a target="_blank" rel="noopener" href="https://doi.org/10.1126/science.aav1004"><cite>Ocean recoveries</cite></a>. <small>Science</small></li>
+                      <li><strong>Stier et&nbsp;al. (2022).</strong> <a target="_blank" rel="noopener" href="https://doi.org/10.1098/rspb.2022.0526"><cite>Monitoring precision &amp; collapse risk</cite></a>. <small>Proc. B</small></li>
+                    </ul>
+                  </li>
+                </ul>
+
+                <p>
+                  <button class="more-toggle" aria-expanded="false" aria-controls="p2-more">View more publications</button>
+                  · <a href="https://www.oceanrecoveries.com/new-page">See all publications</a>
+                </p>
+              </div>
+              <div class="acc-media" aria-label="Conservation & communities imagery">
+                <img
+                  src="https://static1.squarespace.com/static/5a033287be42d65267fc9a14/t/68cb2c74ee43ff7e346e506f/1758145654055/AdobeStock_233483513_webready.jpg"
+                  alt="Research vessel near rocky coastline" width="1280" height="800" loading="lazy" decoding="async"
+                  srcset="
+                    https://static1.squarespace.com/static/5a033287be42d65267fc9a14/t/68cb2c74ee43ff7e346e506f/1758145654055/AdobeStock_233483513_webready.jpg?format=800w 800w,
+                    https://static1.squarespace.com/static/5a033287be42d65267fc9a14/t/68cb2c74ee43ff7e346e506f/1758145654055/AdobeStock_233483513_webready.jpg?format=1200w 1200w,
+                    https://static1.squarespace.com/static/5a033287be42d65267fc9a14/t/68cb2c74ee43ff7e346e506f/1758145654055/AdobeStock_233483513_webready.jpg?format=1600w 1600w"
+                  sizes="(max-width:900px) 100vw, 45vw">
+              </div>
+            </div>
+          </div>
+        </details>
+
+        <!-- Pillar 3 -->
+        <details class="acc" id="p3">
+          <summary>
+            <span class="acc-tag">Pillar 3</span>
+            <h2 class="pill-head">Ecological Theory &amp; Quantitative Methods</h2>
+            <span class="acc-chevron" aria-hidden="true">›</span>
+          </summary>
+          <div class="acc-panel" role="region" aria-labelledby="p3">
+            <div class="acc-inner">
+              <div>
+                <div class="flash"><b>At a glance:</b> We build simple, powerful models and tools—paired with new measurements (e.g., 3D imaging)—so managers can forecast, test "what-ifs," and scale solutions.</div>
+
+                <h3 class="sub">Key Research Areas</h3>
+                <ul class="ul">
+                  <li><b>Theory:</b> mutualisms, food webs, species–area rules explain why some reefs bounce back while others stall.</li>
+                  <li><b>Methods:</b> <span class="gterm" title="Combines data with prior knowledge.">Bayesian models</span>, <span class="gterm" title="Structural Equation Modeling: trace direct & indirect drivers.">SEM</span>, <span class="gterm" title="Management Strategy Evaluation: test policies in a simulator first.">MSE</span>.</li>
+                  <li><b>Experiments &amp; data:</b> field/lab studies; 3D photogrammetry for accurate growth &amp; diversity; physiology &amp; functional responses.</li>
+                  <li><b>Data systems:</b> ILTER observatories; long-term comparable data with robotics/ML/-omics potential.</li>
+                </ul>
+
+                <h3 class="sub">Representative Publications (with outcomes)</h3>
+                <ul class="refs">
+                  <li><strong>Stier &amp; Osenberg (2024).</strong> <a target="_blank" rel="noopener" href="https://doi.org/10.1016/j.cub.2024.05.071"><cite>Mutualisms &amp; coral resilience</cite></a>. <small>Current Biology</small></li>
+                  <li>
+                    <strong>Detmer et&nbsp;al. (2021).</strong> <a target="_blank" rel="noopener" href="https://doi.org/10.1002/ecy.3449"><cite>Disturbance to a foundation species structures communities</cite></a>. <small>Ecology</small>
+                    <ul id="p3-more" class="morepub" hidden>
+                      <li><strong>Detmer et&nbsp;al. (2022).</strong> <a target="_blank" rel="noopener" href="https://doi.org/10.1016/j.jtbi.2022.111087"><cite>Dynamic bioenergetic model of symbiosis</cite></a>. <small>J. Theor. Biol.</small></li>
+                      <li><strong>Csik et&nbsp;al. (2023).</strong> <a target="_blank" rel="noopener" href="https://doi.org/10.3389/fmars.2023.1072807"><cite>Temperature-dependent predation (Bayesian)</cite></a>. <small>Frontiers in Marine Science</small></li>
+                      <li><strong>Okamoto et&nbsp;al. (2020).</strong> <a target="_blank" rel="noopener" href="https://doi.org/10.1002/eap.2051"><cite>Analytical/Bayesian/numerical metapopulation models</cite></a>. <small>Ecological Applications</small></li>
+                      <li><strong>Holt et&nbsp;al. (2021).</strong> <a target="_blank" rel="noopener" href="https://doi.org/10.1017/9781108569422.017"><cite>Food webs &amp; the species–area relationship</cite></a>. <small>Book chapter</small></li>
+                      <li><strong>Curtis et&nbsp;al. (2023).</strong> <a target="_blank" rel="noopener" href="https://doi.org/10.1007/s00338-023-02367-7"><cite>Photogrammetry for growth &amp; diversity</cite></a>. <small>Coral Reefs</small></li>
+                    </ul>
+                  </li>
+                </ul>
+
+                <p>
+                  <button class="more-toggle" aria-expanded="false" aria-controls="p3-more">View more publications</button>
+                  · <a href="https://www.oceanrecoveries.com/new-page">See all publications</a>
+                </p>
+              </div>
+              <div class="acc-media" aria-label="Quantitative & methods imagery">
+                <img
+                  src="https://static1.squarespace.com/static/5a033287be42d65267fc9a14/t/68cb2c74dfdd2b081f5c96d3/1758145653949/AdobeStock_670271098_webready.jpg"
+                  alt="Abstract visualization of nonlinear ecological dynamics" width="1280" height="800" loading="lazy" decoding="async"
+                  srcset="
+                    https://static1.squarespace.com/static/5a033287be42d65267fc9a14/t/68cb2c74dfdd2b081f5c96d3/1758145653949/AdobeStock_670271098_webready.jpg?format=800w 800w,
+                    https://static1.squarespace.com/static/5a033287be42d65267fc9a14/t/68cb2c74dfdd2b081f5c96d3/1758145653949/AdobeStock_670271098_webready.jpg?format=1200w 1200w,
+                    https://static1.squarespace.com/static/5a033287be42d65267fc9a14/t/68cb2c74dfdd2b081f5c96d3/1758145653949/AdobeStock_670271098_webready.jpg?format=1600w 1600w"
+                  sizes="(max-width:900px) 100vw, 45vw">
+              </div>
+            </div>
+          </div>
+        </details>
+      </section>
+    </div>
+  </div>
+</div>
+
+<script>
+/* More publications toggles */
+document.querySelectorAll('.more-toggle').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const tgt = document.getElementById(btn.getAttribute('aria-controls'));
+    const expanded = btn.getAttribute('aria-expanded') === 'true';
+    btn.setAttribute('aria-expanded', String(!expanded));
+    btn.textContent = expanded ? 'View more publications' : 'Hide publications';
+    tgt.hidden = expanded;
+  });
+});
+</script>
+
+</body>
+</html>

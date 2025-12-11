@@ -1,0 +1,1257 @@
+<!--
+  SQUARESPACE 7.1 CODE BLOCK - JOIN US PAGE
+  Copy from <style> to </script> and paste into a Squarespace Code Block
+-->
+
+<style>
+  /* =====================
+     SQUARESPACE 7.1 ISOLATION
+  ====================== */
+
+  /* Kill all Squarespace spacing/backgrounds */
+  .sqs-block-code,
+  .sqs-block-code .sqs-block-content {
+    padding: 0 !important;
+    margin: 0 !important;
+    background: #ffffff !important;
+  }
+
+  /* Force transparent on parent containers */
+  [class*="fe-block"] {
+    background: transparent !important;
+  }
+
+  /* Main wrapper */
+  .orl-join-wrapper {
+    background: #ffffff !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    display: block !important;
+    position: relative !important;
+  }
+
+  /* Reset box-sizing */
+  .orl-join-wrapper,
+  .orl-join-wrapper *,
+  .orl-join,
+  .orl-join *,
+  .orl-join *::before,
+  .orl-join *::after {
+    box-sizing: border-box !important;
+  }
+
+  /* =====================
+     DESIGN TOKENS
+  ====================== */
+
+  .orl-join {
+    /* Brand colors */
+    --ink: #0b2545;
+    --ink-2: #173451;
+    --muted: #566579;
+    --muted-2: #6e7d8a;
+    --accent: #117db2;
+    --accent-2: #11c5b3;
+    --accent-warm: #ff6f5b;
+
+    /* Surfaces */
+    --bg: #ffffff;
+    --card: #ffffff;
+    --line: #e6edf6;
+    --line-2: #dbe7f3;
+    --glass: rgba(255,255,255,.78);
+
+    /* Elevation */
+    --shadow: 0 6px 16px rgba(17,34,68,.08);
+    --shadow-lg: 0 18px 42px rgba(17,34,68,.14);
+
+    /* Spacing */
+    --s-1: 8px;
+    --s0: 12px;
+    --s1: 18px;
+    --s2: 24px;
+    --s3: 32px;
+    --s4: clamp(48px,8vw,72px);
+    --s5: clamp(72px,10vw,96px);
+
+    /* Shape */
+    --r: 16px;
+    --r-lg: 22px;
+    --tap: 44px;
+
+    /* Edge padding */
+    --edge: clamp(18px,5vw,48px);
+    --edge-r: clamp(18px,5vw,48px);
+
+    /* Typography */
+    --lh: 1.6;
+    --measure: 65ch;
+    --ck: "\2713";
+
+    background: var(--bg) !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    display: block !important;
+    position: relative !important;
+
+    font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif !important;
+    font-size: 16px !important;
+    line-height: var(--lh) !important;
+    color: var(--ink) !important;
+    isolation: isolate;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  .orl-join ::selection {
+    background: #dff2ff;
+  }
+
+  /* Motion */
+  .orl-join *,
+  .orl-join *::before,
+  .orl-join *::after {
+    transition: all .2s ease !important;
+  }
+
+  @media (prefers-reduced-motion:reduce) {
+    .orl-join *,
+    .orl-join *::before,
+    .orl-join *::after {
+      transition: none !important;
+    }
+  }
+
+  /* =====================
+     LAYOUT
+  ====================== */
+
+  .orl-join .container {
+    max-width: 1100px !important;
+    margin: 0 auto !important;
+    padding-left: var(--edge) !important;
+    padding-right: var(--edge-r) !important;
+    background: transparent !important;
+  }
+
+  @media (max-width:520px) {
+    .orl-join .container {
+      padding-left: 12px !important;
+      padding-right: 12px !important;
+    }
+  }
+
+  .orl-join .section {
+    margin: var(--s4) 0 0 !important;
+    background: transparent !important;
+  }
+
+  .orl-join .section:first-of-type {
+    margin-top: var(--s3) !important;
+  }
+
+  @media (max-width:640px) {
+    .orl-join .section {
+      margin-top: var(--s3) !important;
+    }
+  }
+
+  /* Grid */
+  .orl-join .grid {
+    display: grid !important;
+    gap: var(--s1) !important;
+    background: transparent !important;
+  }
+
+  @media (min-width:980px) {
+    .orl-join .grid {
+      gap: var(--s2) !important;
+    }
+  }
+
+  .orl-join .g2 {
+    grid-template-columns: 1fr 1fr !important;
+  }
+
+  .orl-join .g3 {
+    grid-template-columns: repeat(3,1fr) !important;
+  }
+
+  .orl-join .g4 {
+    grid-template-columns: repeat(4,1fr) !important;
+  }
+
+  @media (max-width:1024px) {
+    .orl-join .g4 {
+      grid-template-columns: 1fr 1fr !important;
+    }
+  }
+
+  @media (max-width:768px) {
+    .orl-join .g3 {
+      grid-template-columns: 1fr 1fr !important;
+    }
+  }
+
+  @media (max-width:640px) {
+    .orl-join .g2,
+    .orl-join .g3,
+    .orl-join .g4 {
+      grid-template-columns: 1fr !important;
+    }
+  }
+
+  /* =====================
+     TYPOGRAPHY
+  ====================== */
+
+  .orl-join h1,
+  .orl-join h2,
+  .orl-join h3,
+  .orl-join h4,
+  .orl-join h5,
+  .orl-join h6 {
+    font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    background: transparent !important;
+  }
+
+  .orl-join h1 {
+    margin: 0 0 var(--s1) !important;
+    font-weight: 900 !important;
+    font-size: clamp(34px,4.8vw,46px) !important;
+    line-height: 1.12 !important;
+    letter-spacing: -0.02em !important;
+    color: var(--ink) !important;
+  }
+
+  .orl-join h2 {
+    margin: 0 0 var(--s1) !important;
+    font-weight: 900 !important;
+    font-size: clamp(24px,3vw,32px) !important;
+    line-height: 1.18 !important;
+    letter-spacing: -0.015em !important;
+    color: var(--ink) !important;
+  }
+
+  .orl-join h3 {
+    margin: 0 0 var(--s0) !important;
+    font-weight: 800 !important;
+    font-size: clamp(18px,2.2vw,20px) !important;
+    color: var(--ink-2) !important;
+  }
+
+  .orl-join p {
+    margin: 0 !important;
+    padding: 0 !important;
+    color: var(--muted) !important;
+    max-width: var(--measure) !important;
+    font-size: 16px !important;
+    line-height: var(--lh) !important;
+    background: transparent !important;
+  }
+
+  .orl-join .eyebrow {
+    letter-spacing: .12em !important;
+    text-transform: uppercase !important;
+    font-size: 11px !important;
+    font-weight: 800 !important;
+    color: var(--muted) !important;
+    margin-bottom: 8px !important;
+  }
+
+  /* Links */
+  .orl-join a {
+    color: var(--accent) !important;
+    text-decoration-color: rgba(17,125,178,.4) !important;
+    text-underline-offset: 2px !important;
+  }
+
+  .orl-join a:hover {
+    text-decoration-thickness: 2px !important;
+  }
+
+  .orl-join a:focus-visible {
+    outline: 2px solid var(--accent) !important;
+    outline-offset: 3px !important;
+    border-radius: 8px !important;
+  }
+
+  /* =====================
+     CHIPS & BUTTONS
+  ====================== */
+
+  .orl-join .chip {
+    display: inline-flex !important;
+    align-items: center !important;
+    gap: 8px !important;
+    padding: 8px 12px !important;
+    border: 1.5px solid var(--line-2) !important;
+    border-radius: 12px !important;
+    background: #fff !important;
+    color: var(--ink) !important;
+    text-decoration: none !important;
+    font-weight: 700 !important;
+    min-height: 38px !important;
+    box-shadow: 0 4px 12px rgba(17,34,68,.08) !important;
+    transition: all .2s ease !important;
+  }
+
+  .orl-join .chip:hover {
+    transform: translateY(-1px) !important;
+    box-shadow: 0 10px 24px rgba(17,34,68,.12) !important;
+  }
+
+  .orl-join .chip-solid {
+    background: var(--ink) !important;
+    color: #fff !important;
+    border-color: transparent !important;
+    box-shadow: 0 5px 14px rgba(17,34,68,.12) !important;
+  }
+
+  .orl-join .chip svg {
+    width: 16px !important;
+    height: 16px !important;
+    opacity: .92 !important;
+  }
+
+  /* =====================
+     HERO
+  ====================== */
+
+  .orl-join header.hero {
+    position: relative !important;
+    max-width: none !important;
+    margin: 0 0 var(--s2) !important;
+    overflow: hidden !important;
+    background: transparent !important;
+  }
+
+  @media (min-width:880px) {
+    .orl-join header.hero {
+      margin-bottom: var(--s3) !important;
+    }
+  }
+
+  @media (min-width:1280px) {
+    .orl-join header.hero {
+      margin-bottom: var(--s4) !important;
+    }
+  }
+
+  .orl-join .hero-media {
+    position: relative !important;
+    width: 100% !important;
+    aspect-ratio: 16/9 !important;
+    min-height: clamp(320px, 46vh, 560px) !important;
+    background: transparent !important;
+  }
+
+  @media (min-width:1440px) {
+    .orl-join .hero-media {
+      min-height: 650px !important;
+    }
+  }
+
+  .orl-join .hero-media > img {
+    position: absolute !important;
+    inset: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+    object-position: center 35% !important;
+    display: block !important;
+  }
+
+  .orl-join .hero-scrim {
+    position: absolute !important;
+    inset: 0 !important;
+    background: linear-gradient(180deg, rgba(11,37,69,0) 0%, rgba(11,37,69,.14) 50%, rgba(11,37,69,.28) 100%) !important;
+    pointer-events: none !important;
+  }
+
+  .orl-join .hero-inner {
+    position: absolute !important;
+    inset: auto 0 0 0 !important;
+    padding: 0 var(--edge) var(--s2) var(--edge) !important;
+    display: flex !important;
+    align-items: flex-end !important;
+    background: transparent !important;
+  }
+
+  .orl-join .hero-inner::before {
+    content: "" !important;
+    position: absolute !important;
+    left: 0 !important;
+    right: 0 !important;
+    bottom: 0 !important;
+    height: 42% !important;
+    background: linear-gradient(to top, rgba(255,255,255,.70) 0%, rgba(255,255,255,.40) 35%, rgba(255,255,255,0) 72%) !important;
+    pointer-events: none !important;
+    z-index: 0 !important;
+  }
+
+  .orl-join .hero-panel {
+    position: relative !important;
+    z-index: 1 !important;
+    background: linear-gradient(145deg, rgba(255,255,255,.70), rgba(255,255,255,.44)) !important;
+    backdrop-filter: blur(8px) saturate(1.05) !important;
+    border: 1px solid rgba(255,255,255,.52) !important;
+    border-radius: 12px !important;
+    padding: 12px 16px !important;
+    width: 100% !important;
+    max-width: 900px !important;
+    margin: 0 !important;
+    box-shadow: 0 8px 22px rgba(11,37,69,.10) !important;
+  }
+
+  @media (min-width:768px) {
+    .orl-join .hero-panel {
+      padding: 20px 28px !important;
+    }
+  }
+
+  @media (min-width:1280px) {
+    .orl-join .hero-panel {
+      padding: 24px 32px !important;
+      max-width: 1000px !important;
+    }
+  }
+
+  .orl-join .hero-lead {
+    color: #0f2a4b !important;
+    font-weight: 700 !important;
+    font-size: clamp(15px,1.5vw,18px) !important;
+    max-width: 100% !important;
+  }
+
+  .orl-join .cta-chips {
+    display: flex !important;
+    gap: 10px !important;
+    flex-wrap: wrap !important;
+    margin-top: 12px !important;
+  }
+
+  @media (max-width:520px) {
+    .orl-join .hero-inner {
+      padding: 0 12px var(--s1) 12px !important;
+    }
+    .orl-join .hero-panel {
+      padding: 10px 12px !important;
+    }
+    .orl-join .cta-chips {
+      gap: 8px !important;
+    }
+  }
+
+  /* =====================
+     CARDS
+  ====================== */
+
+  .orl-join .card {
+    background: var(--card) !important;
+    border: 1px solid var(--line) !important;
+    border-radius: var(--r-lg) !important;
+    box-shadow: var(--shadow) !important;
+    padding: clamp(18px,2.5vw,28px) clamp(16px,2vw,24px) !important;
+    color: var(--ink) !important;
+    transition: all .2s ease !important;
+  }
+
+  .orl-join .card:hover {
+    transform: translateY(-2px) !important;
+    box-shadow: var(--shadow-lg) !important;
+  }
+
+  /* =====================
+     LISTS
+  ====================== */
+
+  .orl-join .ul {
+    list-style: none !important;
+    padding-left: 0 !important;
+    margin: var(--s1) 0 !important;
+  }
+
+  .orl-join .ul li {
+    position: relative !important;
+    padding-left: 28px !important;
+    font-size: 15px !important;
+    color: var(--ink) !important;
+    line-height: var(--lh) !important;
+    margin-top: 10px !important;
+  }
+
+  .orl-join .ul li:first-child {
+    margin-top: 0 !important;
+  }
+
+  .orl-join .ul li::before {
+    content: var(--ck) !important;
+    position: absolute !important;
+    left: 0 !important;
+    top: 0.12em !important;
+    color: var(--accent) !important;
+    font-weight: 900 !important;
+    width: 20px !important;
+    text-align: center !important;
+  }
+
+  /* =====================
+     FLASH & CALLOUT
+  ====================== */
+
+  .orl-join .flash {
+    background: rgba(246,249,252,1) !important;
+    border: 1px solid var(--line) !important;
+    border-radius: 12px !important;
+    padding: 12px 14px !important;
+    margin: 0 0 var(--s1) !important;
+  }
+
+  .orl-join .flash b {
+    color: var(--ink-2) !important;
+  }
+
+  .orl-join .callout {
+    border: 1.5px solid var(--line-2) !important;
+    border-left: 6px solid #ffb48f !important;
+    background: linear-gradient(0deg,#fff7f3,#ffffff 60%) !important;
+    color: var(--ink) !important;
+    border-radius: 14px !important;
+    box-shadow: var(--shadow) !important;
+    padding: 14px 16px !important;
+    display: flex !important;
+    gap: 12px !important;
+    align-items: flex-start !important;
+  }
+
+  .orl-join .callout svg {
+    width: 22px !important;
+    height: 22px !important;
+    color: #c75a2b !important;
+    flex: 0 0 auto !important;
+    margin-top: 2px !important;
+  }
+
+  .orl-join .callout b {
+    color: var(--ink-2) !important;
+  }
+
+  .orl-join .callout small {
+    display: block !important;
+    color: var(--muted-2) !important;
+    margin-top: 6px !important;
+  }
+
+  /* =====================
+     STATUS BADGE
+  ====================== */
+
+  .orl-join .status-badge {
+    display: inline-flex !important;
+    align-items: center !important;
+    gap: 8px !important;
+    background: #fff !important;
+    border: 1.5px solid #ffd9c9 !important;
+    color: #7a2d12 !important;
+    border-radius: 999px !important;
+    padding: 6px 10px !important;
+    font-weight: 800 !important;
+    box-shadow: 0 6px 14px rgba(122,45,18,.08) !important;
+    margin-bottom: 10px !important;
+  }
+
+  .orl-join .status-badge svg {
+    width: 16px !important;
+    height: 16px !important;
+  }
+
+  /* =====================
+     TILES
+  ====================== */
+
+  .orl-join .tiles {
+    display: grid !important;
+    gap: var(--s1) !important;
+  }
+
+  @media (min-width:880px) {
+    .orl-join .tiles {
+      grid-template-columns: repeat(3,1fr) !important;
+    }
+  }
+
+  @media (min-width:1200px) {
+    .orl-join .tiles {
+      gap: var(--s2) !important;
+    }
+  }
+
+  .orl-join .tile {
+    position: relative !important;
+    border-radius: 22px !important;
+    overflow: hidden !important;
+    box-shadow: var(--shadow) !important;
+    background: #fff !important;
+    isolation: isolate !important;
+  }
+
+  .orl-join .tile img {
+    display: block !important;
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+    aspect-ratio: 4/3 !important;
+    filter: saturate(1.05) contrast(1.02) !important;
+    transition: transform .2s ease !important;
+  }
+
+  .orl-join .tile:hover img {
+    transform: scale(1.04) !important;
+  }
+
+  .orl-join .tile::after {
+    content: "" !important;
+    position: absolute !important;
+    inset: 0 !important;
+    z-index: 1 !important;
+    background: linear-gradient(180deg,transparent 40%,rgba(0,0,0,.55) 100%) !important;
+  }
+
+  .orl-join .tile .tx {
+    position: absolute !important;
+    inset: auto var(--s1) var(--s1) var(--s1) !important;
+    z-index: 2 !important;
+    color: #fff !important;
+  }
+
+  .orl-join .tile h3 {
+    color: #fff !important;
+    text-shadow: 0 2px 8px rgba(0,0,0,.5) !important;
+    font-size: clamp(18px,2.1vw,22px) !important;
+    margin: 0 !important;
+  }
+
+  /* =====================
+     APPROACH ICONS
+  ====================== */
+
+  .orl-join .approach-card {
+    text-align: center !important;
+  }
+
+  .orl-join .icon-wrap {
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    width: 64px !important;
+    height: 64px !important;
+    background: linear-gradient(135deg,var(--accent),#56b3e0) !important;
+    border-radius: 18px !important;
+    box-shadow: 0 8px 16px rgba(17,125,178,.2) !important;
+    margin-bottom: var(--s1) !important;
+  }
+
+  .orl-join .icon-wrap svg {
+    width: 36px !important;
+    height: 36px !important;
+    color: #fff !important;
+  }
+
+  .orl-join .approach-card h3 {
+    font-size: 18px !important;
+    color: var(--ink) !important;
+  }
+
+  .orl-join .approach-card p {
+    font-size: 15px !important;
+    line-height: 1.6 !important;
+    max-width: 42ch !important;
+    margin: 0 auto !important;
+  }
+
+  @media (max-width:980px) {
+    .orl-join .approach-card {
+      text-align: left !important;
+      display: flex !important;
+      align-items: center !important;
+      gap: var(--s1) !important;
+    }
+    .orl-join .icon-wrap {
+      margin-bottom: 0 !important;
+      width: 56px !important;
+      height: 56px !important;
+      flex-shrink: 0 !important;
+    }
+    .orl-join .icon-wrap svg {
+      width: 30px !important;
+      height: 30px !important;
+    }
+    .orl-join .approach-card p {
+      margin: 0 !important;
+    }
+  }
+
+  /* =====================
+     TIMELINE
+  ====================== */
+
+  .orl-join .months {
+    display: grid !important;
+    grid-template-columns: repeat(6,1fr) !important;
+    gap: var(--s0) !important;
+    margin: var(--s1) 0 var(--s2) !important;
+  }
+
+  @media (max-width:820px) {
+    .orl-join .months {
+      grid-template-columns: repeat(4,1fr) !important;
+    }
+  }
+
+  @media (max-width:520px) {
+    .orl-join .months {
+      grid-template-columns: repeat(3,1fr) !important;
+    }
+  }
+
+  .orl-join .m {
+    position: relative !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    padding: 10px 0 !important;
+    border-radius: 999px !important;
+    background: #fff !important;
+    border: 1.5px solid var(--line-2) !important;
+    color: var(--muted-2) !important;
+    font-weight: 750 !important;
+  }
+
+  .orl-join .m.dim {
+    opacity: .6 !important;
+  }
+
+  .orl-join .m.key {
+    background: linear-gradient(0deg,#eaf7ff,#fff 70%) !important;
+    border-color: #a6dffd !important;
+    color: var(--ink) !important;
+    font-weight: 800 !important;
+    box-shadow: 0 0 8px rgba(17,125,178,.15) !important;
+  }
+
+  .orl-join .m.decision {
+    background: linear-gradient(0deg,#eefaf2,#fff 70%) !important;
+    border-color: #bfe6cb !important;
+    color: var(--ink) !important;
+    font-weight: 800 !important;
+  }
+
+  .orl-join .m.final {
+    background: linear-gradient(0deg,#fff3ee,#fff 70%) !important;
+    border-color: #ffd2c7 !important;
+    color: var(--ink) !important;
+    font-weight: 800 !important;
+  }
+
+  .orl-join .legend {
+    display: flex !important;
+    gap: 10px !important;
+    flex-wrap: wrap !important;
+  }
+
+  .orl-join .legend .pill {
+    display: inline-flex !important;
+    align-items: center !important;
+    gap: 8px !important;
+    padding: 6px 10px !important;
+    border-radius: 999px !important;
+    font-size: 13px !important;
+    border: 1px solid var(--line-2) !important;
+    background: #fff !important;
+    color: var(--muted) !important;
+  }
+
+  .orl-join .legend .pill.key {
+    border-color: #a6dffd !important;
+  }
+
+  .orl-join .legend .pill.decision {
+    border-color: #bfe6cb !important;
+  }
+
+  .orl-join .legend .pill.final {
+    border-color: #ffd2c7 !important;
+  }
+
+  /* =====================
+     TESTIMONIALS
+  ====================== */
+
+  .orl-join blockquote {
+    position: relative !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    border: none !important;
+  }
+
+  .orl-join blockquote p {
+    color: var(--ink-2) !important;
+    font-size: 1.05em !important;
+    position: relative !important;
+  }
+
+  .orl-join blockquote p::before {
+    content: "\201C" !important;
+    display: inline-block !important;
+    margin-right: 8px !important;
+    font-weight: 900 !important;
+    font-size: 2.6rem !important;
+    line-height: 0 !important;
+    color: var(--line) !important;
+    transform: translateY(-0.28em) !important;
+    pointer-events: none !important;
+  }
+
+  .orl-join blockquote cite {
+    display: block !important;
+    margin-top: 10px !important;
+    font-style: normal !important;
+    font-weight: 700 !important;
+    color: var(--muted) !important;
+  }
+
+  /* =====================
+     DOCKED NAV
+  ====================== */
+
+  .orl-join .docked {
+    position: fixed !important;
+    left: 0 !important;
+    right: 0 !important;
+    top: 0 !important;
+    z-index: 9999 !important;
+    background: rgba(255,255,255,.92) !important;
+    backdrop-filter: blur(10px) saturate(1.08) !important;
+    border-bottom: 1px solid var(--line) !important;
+    transform: translateY(-110%) !important;
+    opacity: 0 !important;
+    transition: transform .28s ease, opacity .28s ease !important;
+  }
+
+  .orl-join .docked.is-visible {
+    transform: translateY(0) !important;
+    opacity: 1 !important;
+  }
+
+  .orl-join .docked .wrap {
+    max-width: 1100px !important;
+    margin: 0 auto !important;
+    padding: 0 var(--edge) !important;
+    display: flex !important;
+    align-items: center !important;
+    gap: var(--s0) !important;
+  }
+
+  @media (max-width:520px) {
+    .orl-join .docked .wrap {
+      padding-left: 12px !important;
+      padding-right: 12px !important;
+    }
+  }
+
+  .orl-join .docked .links {
+    display: flex !important;
+    gap: var(--s0) !important;
+    align-items: center !important;
+    overflow-x: auto !important;
+  }
+
+  .orl-join .docked a.chip {
+    position: relative !important;
+    font-weight: 700 !important;
+    font-size: 15px !important;
+    letter-spacing: .01em !important;
+    color: var(--muted-2) !important;
+    padding: 10px 8px !important;
+    border-radius: 8px !important;
+    min-height: var(--tap) !important;
+    text-decoration: none !important;
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+  }
+
+  .orl-join .docked a.chip:hover {
+    color: var(--ink) !important;
+    background: rgba(8,30,53,.05) !important;
+    transform: none !important;
+  }
+
+  .orl-join .docked a.chip[aria-current="true"] {
+    color: var(--ink) !important;
+    font-weight: 800 !important;
+  }
+
+  .orl-join .docked a.chip::after {
+    content: "" !important;
+    position: absolute !important;
+    left: 8px !important;
+    right: 8px !important;
+    bottom: -8px !important;
+    height: 2px !important;
+    background: transparent !important;
+    border-radius: 2px !important;
+    transform: scaleX(0) !important;
+    transform-origin: left !important;
+  }
+
+  .orl-join .docked a.chip[aria-current="true"]::after {
+    background: var(--accent) !important;
+    transform: scaleX(1) !important;
+  }
+
+  /* =====================
+     ANCHOR OFFSETS
+  ====================== */
+
+  .orl-join #roles,
+  .orl-join #apply,
+  .orl-join #timeline,
+  .orl-join #distinctives,
+  .orl-join #mentoring,
+  .orl-join #testimonials {
+    scroll-margin-top: 124px !important;
+  }
+
+  /* SVG fixes */
+  .orl-join svg {
+    display: inline-block !important;
+  }
+</style>
+
+<!-- WRAPPER FOR SQUARESPACE ISOLATION -->
+<div class="orl-join-wrapper">
+  <div class="orl-join">
+
+    <!-- Docked nav -->
+    <nav class="docked" aria-label="On-page section navigation">
+      <div class="wrap">
+        <div class="links" role="tablist">
+          <a href="#apply" class="chip" aria-current="true" role="tab">Apply</a>
+          <a href="#roles" class="chip" role="tab">Opportunities</a>
+          <a href="#distinctives" class="chip" role="tab">Our Approach</a>
+          <a href="#timeline" class="chip" role="tab">Timeline</a>
+          <a href="#mentoring" class="chip" role="tab">Mentoring</a>
+          <a href="#testimonials" class="chip" role="tab">Testimonials</a>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Hero -->
+    <header class="hero" role="banner">
+      <div class="hero-media" aria-hidden="true">
+        <img src="https://static1.squarespace.com/static/5a033287be42d65267fc9a14/t/68cc49e2f0804870c455f775/1758218734743/moorea_island_view.jpeg" alt="Moorea island with vibrant coral reef ecosystem" loading="eager" />
+        <div class="hero-scrim"></div>
+      </div>
+      <div class="hero-inner">
+        <div class="hero-panel">
+          <span class="status-badge" aria-live="polite">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86 1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0Z"/><path d="M12 9v4"/><path d="M12 17h.01"/></svg>
+            Limited recruitment (see details)
+          </span>
+          <p class="eyebrow">Join the Lab</p>
+          <h1>Advance the science of ocean recovery.</h1>
+          <p class="hero-lead">We integrate field experiments, quantitative models, and synthesis to find solutions that work.</p>
+          <div class="cta-chips" role="group" aria-label="Primary actions">
+            <a class="chip chip-solid" href="#roles" aria-label="See open roles">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+              See Open Roles
+            </a>
+            <a class="chip" href="/publications" aria-label="Explore our publications">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 7v11a1 1 0 0 0 1 1h7"/><path d="M22 7v11a1 1 0 0 1-1 1h-7"/><path d="M3 7a2 2 0 0 1 2-2h6v14H5a2 2 0 0 1-2-2Z"/><path d="M21 7a2 2 0 0 0-2-2h-6v14h6a2 2 0 0 0 2-2Z"/></svg>
+              Our Work
+            </a>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <!-- Status callout -->
+      <section class="container" aria-label="Current recruiting status" style="margin:var(--s1) 0 var(--s2)">
+        <div class="callout" role="status">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86 1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0Z"/><path d="M12 9v4"/><path d="M12 17h.01"/></svg>
+          <div>
+            <b>Status (Fall 2025):</b>
+            Due to budget cuts at NSF and within the University of California system, I'm not accepting new students this fall
+            <em>unless</em> they already have external fellowship support (e.g., NSF GRFP, Fulbright).
+            <small>If you do have funding or are applying for it, I'm happy to chat about fit and projects.</small>
+          </div>
+        </div>
+      </section>
+
+      <!-- Feature tiles -->
+      <section class="container section" aria-label="Focus areas">
+        <div class="tiles">
+          <article class="tile" aria-label="Field Work">
+            <img loading="lazy" src="https://static1.squarespace.com/static/5a033287be42d65267fc9a14/t/68cc71e098d25a62bac24f5a/1758228961869/IMG_8734.JPG" alt="Field work"/>
+            <div class="tx"><h3>Field Work</h3></div>
+          </article>
+          <article class="tile" aria-label="Quantitative Tools">
+            <img loading="lazy" src="https://static1.squarespace.com/static/5a033287be42d65267fc9a14/t/68cc727ee319104cc3630d63/1758229128550/quant.jpeg" alt="Quantitative tools"/>
+            <div class="tx"><h3>Quantitative Tools</h3></div>
+          </article>
+          <article class="tile" aria-label="Team Culture">
+            <img loading="lazy" src="https://static1.squarespace.com/static/5a033287be42d65267fc9a14/t/68cc72d2c2fe6006dd6f6af7/1758229207200/AdobeStock_527203214.jpeg" alt="Team culture"/>
+            <div class="tx"><h3>Team Culture</h3></div>
+          </article>
+        </div>
+      </section>
+
+      <!-- Our Approach -->
+      <section class="container section" id="distinctives" aria-labelledby="approach-h">
+        <h2 id="approach-h">Our Approach</h2>
+        <div class="grid g4">
+          <article class="approach-card">
+            <div class="icon-wrap">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path><polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline><line x1="12" y1="22.08" x2="12" y2="12"></line></svg>
+            </div>
+            <div>
+              <h3>Field ⨉ Quant ⨉ Synthesis</h3>
+              <p>We connect experiments to models and meta-analysis to inform action.</p>
+            </div>
+          </article>
+          <article class="approach-card">
+            <div class="icon-wrap">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 16 12 14 15 10 9 8 12 2 12"></polyline><path d="M5.45 5.11 2 12v6a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-6l-3.45-6.89A2 2 0 0 0 16.76 4H7.24a2 2 0 0 0-1.79 1.11z"></path></svg>
+            </div>
+            <div>
+              <h3>Decision Relevance</h3>
+              <p>We co-design studies with agencies and NGOs for immediate, real-world use.</p>
+            </div>
+          </article>
+          <article class="approach-card">
+            <div class="icon-wrap">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+            </div>
+            <div>
+              <h3>Place-Based Partnerships</h3>
+              <p>Long-term collaborations in key reef and kelp systems drive our work.</p>
+            </div>
+          </article>
+          <article class="approach-card">
+            <div class="icon-wrap">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg>
+            </div>
+            <div>
+              <h3>Career Outcomes</h3>
+              <p>Our alumni thrive in academia, government, NGOs, and data science.</p>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <!-- Roles -->
+      <section class="container section" id="roles" aria-labelledby="roles-h">
+        <h2 id="roles-h">Opportunities by Role</h2>
+        <div class="grid g3">
+          <article class="card">
+            <h3>Undergraduates</h3>
+            <div class="flash"><b>Typical projects:</b> field surveys, 3D image annotation, data QA/QC, literature curation.</div>
+            <ul class="ul">
+              <li><b>Compensation:</b> Course credit or hourly stipend <em>(funding-dependent)</em>.</li>
+              <li><b>Hours/week:</b> 6–10 during term; 15–20 in summer.</li>
+              <li><b>Programs:</b> <a href="#">UCSB research credit</a>, <a href="#">REU</a>.</li>
+            </ul>
+          </article>
+          <article class="card">
+            <h3>Graduate (MS/PhD)</h3>
+            <div class="flash"><b>Typical projects:</b> Field experiments, quantitative models, and synthesis for recovery.</div>
+            <ul class="ul">
+              <li><b>Support:</b> Fellowships, TA-ships, and grants.</li>
+              <li><b>Expectations:</b> Full-time, collaborative work producing publishable chapters.</li>
+              <li><b>Programs:</b> <a href="#">EEMB</a>, <a href="#">IGPMS</a>.</li>
+            </ul>
+          </article>
+          <article class="card">
+            <h3>Postdocs</h3>
+            <div class="flash"><b>Typical projects:</b> Lead multi-site experiments, develop quantitative pipelines, co-produce tools.</div>
+            <ul class="ul">
+              <li><b>Funding:</b> Typically external with co-developed proposals.</li>
+              <li><b>Term:</b> 18–24 months, renewal funding-dependent.</li>
+              <li>Strategic advising, leadership, and co-mentoring provided.</li>
+            </ul>
+          </article>
+        </div>
+      </section>
+
+      <!-- Timeline -->
+      <section class="container section" id="timeline" aria-labelledby="timeline-h">
+        <div class="card">
+          <h2 id="timeline-h">Application Timeline</h2>
+          <p style="margin:8px 0 12px;color:var(--muted-2)"><b>Note:</b> Recruitment is limited this cycle; applicants with secured external fellowships will be prioritized.</p>
+          <p><b>Typical PhD cycle (EEMB/UCSB)</b> — Opens <b>late Aug</b> → <b>Dec 1</b> application deadline → decisions <b>late Feb–Mar</b> → national decision <b>Apr 15</b>.</p>
+
+          <div class="months" role="list" aria-label="Application months">
+            <div class="m" role="listitem">Aug</div>
+            <div class="m" role="listitem">Sep</div>
+            <div class="m" role="listitem">Oct</div>
+            <div class="m" role="listitem">Nov</div>
+            <div class="m key" role="listitem" aria-label="Dec – application deadline">Dec</div>
+            <div class="m" role="listitem">Jan</div>
+            <div class="m decision" role="listitem" aria-label="Feb – typical decisions">Feb</div>
+            <div class="m decision" role="listitem" aria-label="Mar – typical decisions">Mar</div>
+            <div class="m final" role="listitem" aria-label="Apr 15 – national decision">Apr</div>
+            <div class="m dim" role="listitem">May</div>
+            <div class="m dim" role="listitem">Jun</div>
+            <div class="m dim" role="listitem">Jul</div>
+          </div>
+
+          <div class="legend" aria-hidden="true">
+            <span class="pill key">Dec 1 deadline</span>
+            <span class="pill decision">Feb–Mar decisions</span>
+            <span class="pill final">Apr 15 national decision</span>
+          </div>
+
+          <p style="font-size:14px; color:var(--muted-2); margin-top:var(--s1);">Please verify all dates on the official EEMB and UCSB Graduate Division websites.</p>
+        </div>
+      </section>
+
+      <!-- Apply -->
+      <section class="container section" id="apply" aria-labelledby="apply-h">
+        <h2 id="apply-h">How to Apply</h2>
+        <div class="grid g2">
+          <article class="card">
+            <h3>Initial Inquiry</h3>
+            <p>Before your formal application, send a brief email to introduce yourself and your interests.</p>
+            <ul class="ul">
+              <li>Attach a <b>1-page CV</b> (PDF).</li>
+              <li>Briefly cover your interests, experience, and career goals.</li>
+              <li>Explain why our lab is a good fit, citing 2–3 of our publications.</li>
+            </ul>
+          </article>
+          <article class="card">
+            <h3>We're a strong fit if you…</h3>
+            <ul class="ul">
+              <li>Thrive at the intersection of organismal and ecosystem ecology.</li>
+              <li>Enjoy connecting field experiments to quantitative models.</li>
+              <li>Are passionate about decision-relevant science for restoration.</li>
+              <li>Value collaborative, interdisciplinary teamwork.</li>
+            </ul>
+          </article>
+        </div>
+      </section>
+
+      <!-- Mentoring -->
+      <section class="container section" id="mentoring" aria-labelledby="mentoring-h">
+        <h2 id="mentoring-h">Mentoring & Development</h2>
+        <div class="grid g3">
+          <article class="card">
+            <h3>Cadence</h3>
+            <ul class="ul">
+              <li>PI meetings: bi-weekly</li>
+              <li>Lab meeting: weekly</li>
+              <li>Peer pods: bi-weekly</li>
+            </ul>
+          </article>
+          <article class="card">
+            <h3>Skill Development</h3>
+            <ul class="ul">
+              <li>Stats/modeling workshops</li>
+              <li>Field methods & safety</li>
+              <li>Communication training</li>
+            </ul>
+          </article>
+          <article class="card">
+            <h3>Writing & Proposals</h3>
+            <ul class="ul">
+              <li>Paper sprints & feedback</li>
+              <li>Fellowship/proposal reviews</li>
+              <li>Conference prep</li>
+            </ul>
+          </article>
+        </div>
+      </section>
+
+      <!-- Testimonials -->
+      <section class="container section" id="testimonials" aria-labelledby="testimonials-h">
+        <h2 id="testimonials-h">What Our People Say</h2>
+        <div class="grid g3">
+          <article class="card">
+            <blockquote>
+              <p>I got to jump between the reef and R scripts in the same week. That mix made me faster and more confident as a researcher.</p>
+              <cite>- undergraduate</cite>
+            </blockquote>
+          </article>
+          <article class="card">
+            <blockquote>
+              <p>Mentorship here is hands‑on without micromanaging. I received concrete feedback on proposals and papers, not just vibes.</p>
+              <cite>- graduate student</cite>
+            </blockquote>
+          </article>
+          <article class="card">
+            <blockquote>
+              <p>Working with partner agencies meant our results didn't sit on a shelf—people actually used them to make decisions.</p>
+              <cite>- postdoctoral researcher</cite>
+            </blockquote>
+          </article>
+        </div>
+      </section>
+    </main>
+
+  </div>
+</div>
+
+<script>
+(function(){
+  const links = [...document.querySelectorAll('.orl-join .docked .links a.chip')];
+  const targets = links.map(a => {
+    const href = a.getAttribute('href');
+    return href ? document.querySelector(href) : null;
+  }).filter(Boolean);
+
+  // Click: reflect active immediately
+  links.forEach(a => a.addEventListener('click', () => {
+    links.forEach(x => x.setAttribute('aria-current','false'));
+    a.setAttribute('aria-current','true');
+  }));
+
+  // ScrollSpy
+  if (targets.length > 0) {
+    const obs = new IntersectionObserver((entries)=>{
+      entries.forEach(entry=>{
+        if(entry.isIntersecting){
+          const id = '#' + entry.target.id;
+          links.forEach(a => a.setAttribute('aria-current', a.getAttribute('href')===id ? 'true' : 'false'));
+        }
+      })
+    },{ rootMargin: '-50% 0px -40% 0px', threshold: [0, 0.25, 0.5, 1] });
+    targets.forEach(t => t && obs.observe(t));
+  }
+
+  // Show docked nav after hero is out of view
+  const secNav = document.querySelector('.orl-join .docked');
+  const heroEl = document.querySelector('.orl-join .hero');
+  if (secNav && heroEl) {
+    const showNavObs = new IntersectionObserver(([e]) => {
+      if (e.isIntersecting) {
+        secNav.classList.remove('is-visible');
+      } else {
+        secNav.classList.add('is-visible');
+      }
+    }, { threshold: 0 });
+    showNavObs.observe(heroEl);
+
+    // Initialize state if user lands mid-page
+    const rect = heroEl.getBoundingClientRect();
+    if (rect.bottom <= 0) secNav.classList.add('is-visible');
+  }
+})();
+</script>

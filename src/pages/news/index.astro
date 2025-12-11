@@ -1,0 +1,232 @@
+---
+import Layout from '@layouts/Layout.astro';
+import { posts } from '@data/posts';
+
+// Sort posts by date (newest first)
+const sortedPosts = [...posts].sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
+
+// Get unique tags
+const allTags = [...new Set(posts.flatMap((p) => p.tags))].sort();
+
+// Format date
+const formatDate = (dateStr: string) => {
+  return new Date(dateStr).toLocaleDateString('en-US', {
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric',
+  });
+};
+---
+
+<Layout
+  title="News"
+  description="Latest news, research updates, and stories from the Ocean Recoveries Lab at UC Santa Barbara."
+>
+  <!-- Hero -->
+  <section class="relative py-16 md:py-20 overflow-hidden bg-ink dark:bg-dark-card">
+    <div class="container text-center text-white">
+      <h1 class="text-white mb-4">News & Updates</h1>
+      <p class="text-xl text-white/80 max-w-2xl mx-auto">
+        Research highlights, lab news, and stories from the field.
+      </p>
+    </div>
+  </section>
+
+  <!-- Posts Grid -->
+  <section class="section bg-surface dark:bg-dark-surface">
+    <div class="container">
+      <!-- Tag filters -->
+      <div class="flex flex-wrap gap-2 mb-10 scroll-reveal">
+        <button class="chip active" data-tag="all">All Posts</button>
+        {allTags.map((tag) => (
+          <button class="chip" data-tag={tag}>{tag}</button>
+        ))}
+      </div>
+
+      <!-- Posts -->
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6" id="posts-grid">
+        {sortedPosts.map((post, i) => (
+          <article
+            class={`post-card scroll-reveal stagger-${(i % 6) + 1}`}
+            data-tags={post.tags.join(',')}
+          >
+            <a href={`/news/${post.slug}`} class="post-link">
+              <div class="post-image img-zoom">
+                <img src={post.featuredImage} alt={post.title} loading="lazy" />
+              </div>
+              <div class="post-content">
+                <div class="post-meta">
+                  <time datetime={post.date}>{formatDate(post.date)}</time>
+                  <span class="meta-sep">•</span>
+                  <span>{post.author}</span>
+                </div>
+                <h2 class="post-title">{post.title}</h2>
+                <p class="post-excerpt">{post.excerpt}</p>
+                <div class="post-tags">
+                  {post.tags.slice(0, 3).map((tag) => (
+                    <span class="tag">{tag}</span>
+                  ))}
+                </div>
+              </div>
+            </a>
+          </article>
+        ))}
+      </div>
+
+      <!-- Empty state -->
+      <div id="no-posts" class="hidden text-center py-16">
+        <p class="text-muted dark:text-dark-muted text-lg">
+          No posts found with that tag.
+        </p>
+        <button class="btn btn-secondary mt-4" id="clear-filter">
+          Show All Posts
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Subscribe CTA -->
+  <section class="section bg-line/30 dark:bg-dark-line/20">
+    <div class="container">
+      <div class="max-w-xl mx-auto text-center scroll-reveal">
+        <h2 class="mb-4">Stay Updated</h2>
+        <p class="text-muted dark:text-dark-muted mb-6">
+          Follow our lab on social media or check back here for the latest updates on our research.
+        </p>
+        <div class="flex justify-center gap-4">
+          <a
+            href="https://twitter.com/staboratory"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="btn btn-secondary"
+          >
+            Follow on Twitter
+          </a>
+          <a
+            href="https://scholar.google.com/citations?user=YOUR_ID"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="btn btn-secondary"
+          >
+            Google Scholar
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .post-card {
+    @apply bg-white dark:bg-dark-card rounded-xl border border-line dark:border-dark-line overflow-hidden;
+    @apply transition-all duration-300;
+  }
+
+  .post-card:hover {
+    @apply -translate-y-1 shadow-lg border-accent/30;
+  }
+
+  .post-card.hidden {
+    @apply !hidden;
+  }
+
+  .post-link {
+    @apply block no-underline;
+  }
+
+  .post-image {
+    @apply aspect-video overflow-hidden;
+  }
+
+  .post-image img {
+    @apply w-full h-full object-cover;
+  }
+
+  .post-content {
+    @apply p-5;
+  }
+
+  .post-meta {
+    @apply flex items-center gap-2 text-sm text-muted dark:text-dark-muted mb-2;
+  }
+
+  .meta-sep {
+    @apply text-line dark:text-dark-line;
+  }
+
+  .post-title {
+    @apply text-lg font-bold text-ink dark:text-dark-ink mb-2 line-clamp-2;
+    @apply transition-colors;
+  }
+
+  .post-card:hover .post-title {
+    @apply text-accent dark:text-dark-accent;
+  }
+
+  .post-excerpt {
+    @apply text-sm text-muted dark:text-dark-muted line-clamp-2 mb-4;
+  }
+
+  .post-tags {
+    @apply flex flex-wrap gap-2;
+  }
+
+  .post-tags .tag {
+    @apply px-2 py-1 text-xs font-semibold rounded-md;
+    @apply bg-line/50 dark:bg-dark-line/50 text-muted dark:text-dark-muted;
+  }
+
+  /* Filter chip states */
+  .chip {
+    @apply cursor-pointer;
+  }
+
+  .chip:not(.active) {
+    @apply opacity-70;
+  }
+
+  .chip:not(.active):hover {
+    @apply opacity-100;
+  }
+</style>
+
+<script>
+  const initFilters = () => {
+    const chips = document.querySelectorAll('.chip[data-tag]');
+    const posts = document.querySelectorAll('.post-card');
+    const noPosts = document.getElementById('no-posts');
+    const clearBtn = document.getElementById('clear-filter');
+
+    const filterPosts = (tag: string) => {
+      let visibleCount = 0;
+
+      posts.forEach((post) => {
+        const postTags = (post as HTMLElement).dataset.tags?.split(',') || [];
+        const show = tag === 'all' || postTags.includes(tag);
+
+        post.classList.toggle('hidden', !show);
+        if (show) visibleCount++;
+      });
+
+      // Show/hide empty state
+      noPosts?.classList.toggle('hidden', visibleCount > 0);
+
+      // Update active chip
+      chips.forEach((chip) => {
+        chip.classList.toggle('active', (chip as HTMLElement).dataset.tag === tag);
+      });
+    };
+
+    chips.forEach((chip) => {
+      chip.addEventListener('click', () => {
+        const tag = (chip as HTMLElement).dataset.tag || 'all';
+        filterPosts(tag);
+      });
+    });
+
+    clearBtn?.addEventListener('click', () => filterPosts('all'));
+  };
+
+  initFilters();
+  document.addEventListener('astro:after-swap', initFilters);
+</script>

@@ -1,0 +1,675 @@
+<!-- People Page — Ocean Recoveries Lab (Drop-in section) -->
+<!--
+  Notes:
+  • Paste inside your People page template below your global header/nav.
+  • Replace image src values with your paths (recommended 1200×1400px portrait crops + 2000×1200 action shots).
+  • Contact button is the only CTA on member cards and is pinned bottom-left.
+  • The alumni list is collapsible and searchable.
+  • Minimal vanilla JS; no external deps. All styles are locally scoped under .orlPeople.
+-->
+
+<!-- Font Import (same as research_clean.html) -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+<section class="orlPeople" aria-label="Our Team">
+  <style>
+    /* === Inherit OceanRecoveries aesthetics === */
+    .orlPeople{--space-xxs:6px;--space-xs:10px;--space-sm:14px;--space-md:18px;--space-lg:26px;--space-xl:36px;--space-2xl:56px}
+    .orlPeople{
+      --ink:#0b2545;--ink-2:#173451;
+      --muted:#566579;--muted-2:#6e7d8a;
+      --bg:transparent;--card:#ffffff;
+      --line:#e6edf6;--line-2:#dbe7f3;
+      --accent:#117db2;--accent-2:#11c5b3;
+      --warm:#ff6f5b;
+      --r:16px;--r-lg:20px;
+      --s-1:6px;--s0:10px;--s1:14px;--s2:18px;--s3:26px;--s4:36px;--s5:56px;
+      --shadow:0 8px 22px rgba(17,34,68,.12);
+      --edge:clamp(18px,5vw,48px);
+    }
+    .orlPeople{background:transparent;position:relative;z-index:2;font-family:'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif;color:var(--ink)}
+    .orlPeople, .orlPeople *{font-family:'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif;color:inherit}
+    .orlPeople a{color:var(--accent)}
+    .orlPeople .wrap{max-width:1100px;margin:0 auto;padding:var(--space-2xl) var(--edge);color:inherit}
+    @media (max-width:520px){
+      .orlPeople .wrap{padding-left:16px;padding-right:16px}
+    }
+    .orlPeople h2{margin:0 0 var(--space-lg);font-weight:800;font-size:clamp(24px,3vw,34px);line-height:1.1;text-align:center;color:inherit}
+    .orlPeople p.lede{margin:-6px auto var(--s4);max-width:880px;color:var(--muted);font-size:clamp(15px,1.6vw,18px);line-height:1.6;text-align:center}
+
+    /* Controls (kept for future use) */
+    .orlPeople .controls{display:flex;gap:10px;flex-wrap:wrap;align-items:center;justify-content:center;margin:0 auto var(--space-xl);padding:8px;border:1px solid var(--line);border-radius:999px;background:transparent}
+    .orlPeople .search{display:flex;align-items:center;gap:8px;padding:10px 14px;border:1px solid var(--line);border-radius:999px;background:transparent}
+    .orlPeople .search input{border:0;outline:0;width:min(42vw,360px);font-size:15px;color:var(--ink);background:transparent}
+    .orlPeople .chip{padding:8px 12px;border:1px solid var(--line);border-radius:999px;background:transparent;cursor:pointer;font-weight:600;font-size:13px;color:var(--muted-2);letter-spacing:.2px;transition:.25s}
+    .orlPeople .chip[aria-pressed="true"], .orlPeople .chip:hover{color:#fff;background:var(--accent);border-color:var(--accent)}
+
+    /* Grid */
+    .orlPeople .grid{display:grid;grid-template-columns:repeat(12,1fr);gap:18px}
+    @media (max-width:900px){.orlPeople .grid{gap:14px}}
+
+    /* Person Card */
+    .orlPeople .card{
+      grid-column:span 4;
+      display:flex;flex-direction:column;
+      border:1px solid var(--line);border-radius:var(--r-lg);
+      background:#fff;box-shadow:var(--shadow);overflow:hidden;
+      transition:transform .25s, box-shadow .25s;min-height:100%;
+    }
+    .orlPeople .card:hover{transform:translateY(-3px);box-shadow:0 16px 36px rgba(15,35,65,.12)}
+    .orlPeople .card{cursor:pointer}
+    .orlPeople .card:focus-visible{outline:3px solid var(--accent); outline-offset:4px; box-shadow:0 0 0 4px rgba(17,125,178,.25)}
+    .orlPeople .chip:focus-visible,.orlPeople .btn:focus-visible{outline:3px solid var(--accent); outline-offset:3px}
+    @media (max-width:1024px){.orlPeople .card{grid-column:span 6}}
+    @media (max-width:720px){.orlPeople .card{grid-column:span 12}}
+
+    .orlPeople .photoWrap{position:relative;aspect-ratio:5/6;background:#eaf2f8}
+    .orlPeople .photoWrap::before{content:"";position:absolute;inset:0;pointer-events:none;z-index:1;background:linear-gradient(180deg, rgba(0,0,0,.55), rgba(0,0,0,0) 48%)}
+    .orlPeople .photo,.orlPeople .photo img,
+    .orlPeople .actionPhoto,.orlPeople .actionPhoto img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+    .orlPeople .actionPhoto{opacity:0;transition:opacity .35s}
+    .orlPeople .card:hover .actionPhoto{opacity:1}
+
+    /* Badge */
+    .orlPeople .roleTag{
+      position:absolute;left:12px;top:12px;z-index:2;
+      background:rgba(11,37,69,.92);color:#fff;padding:8px 12px;border-radius:999px;
+      font-weight:900;font-size:12px;line-height:1.1;letter-spacing:.25px;border:1px solid rgba(255,255,255,.5);
+      box-shadow:0 6px 14px rgba(11,37,69,.25);text-shadow:0 1px 1px rgba(0,0,0,.4)
+    }
+
+    /* Body + bottom-left CTA pin */
+    .orlPeople .body{
+      display:flex;flex-direction:column;flex:1;
+      padding:18px 18px 16px
+    }
+    .orlPeople .name{margin:0 0 6px;font-weight:800;font-size:20px;line-height:1.15}
+    .orlPeople .title{margin:0 0 10px;font-weight:700;font-size:12px;line-height:1.2;letter-spacing:.3px;text-transform:uppercase}
+    .orlPeople .hook{margin:0 0 12px;color:var(--muted);font-weight:500;font-size:14px;line-height:1.5}
+    .orlPeople .tags{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 14px}
+    .orlPeople .tag{font-weight:700;font-size:11px;line-height:1;border:1px solid var(--line);border-radius:999px;padding:6px 10px;background:#fff}
+
+    .orlPeople .ctaRow{
+      margin-top:auto;          /* push to the bottom */
+      display:flex;gap:12px;flex-wrap:wrap;align-items:center;
+      justify-content:flex-start; /* bottom-left */
+    }
+    .orlPeople .btn{
+      display:inline-flex;align-items:center;gap:8px;
+      padding:10px 12px;border:1px solid var(--line-2);
+      border-radius:12px;background:#fff;text-decoration:none;font-weight:600;font-size:13px;line-height:1;
+      min-height:44px;box-sizing:border-box;transition:.25s;color:var(--accent)
+    }
+    .orlPeople .btn .ico{display:inline-flex;align-items:center;justify-content:center;width:18px;height:18px;flex:0 0 18px}
+    .orlPeople .btn .ico svg{width:18px;height:18px;display:block}
+    .orlPeople .btn:hover{border-color:var(--accent);background:var(--accent);color:#fff}
+
+    /* Section dividers */
+    .orlPeople .sectionHd{display:flex;align-items:center;gap:12px;margin:var(--s5) 0 var(--s3)}
+    .orlPeople .sectionHd h3{margin:0;font-weight:800;font-size:clamp(18px,2.2vw,22px);line-height:1.1}
+    .orlPeople .rule{height:1px;background:var(--line);flex:1}
+
+    /* Alumni */
+    .orlPeople details{border:1px solid var(--line);border-radius:18px;background:#fff;overflow:hidden}
+    .orlPeople summary{list-style:none;cursor:pointer;padding:16px 18px;display:flex;align-items:center;gap:12px}
+    .orlPeople summary::marker{display:none}
+    .orlPeople summary span{font-weight:800;font-size:16px}
+    .orlPeople .alumniWrap{padding:8px 18px 18px;border-top:1px solid var(--line)}
+    .orlPeople .alumniGrid{display:grid;grid-template-columns:repeat(12,1fr);gap:16px}
+    .orlPeople .alumni{grid-column:span 6;display:flex;gap:14px;padding:14px;border:1px solid var(--line);border-radius:16px;background:#fff}
+    .orlPeople .alumni .thumb{flex:0 0 76px;height:76px;border-radius:12px;object-fit:cover;background:#ecf2f7}
+    .orlPeople .alumni .info{display:flex;flex-direction:column;gap:6px}
+    .orlPeople .alumni .who{font-weight:800;font-size:15px}
+    .orlPeople .alumni .when{font-weight:700;font-size:12px;color:var(--accent-2)}
+    .orlPeople .alumni .now{font-weight:500;font-size:13px;line-height:1.4;color:var(--muted)}
+    @media (max-width:900px){.orlPeople .alumni{grid-column:span 12}}
+
+    /* Utilities */
+    .orlPeople .is-stretch{align-items:stretch}
+    .orlPeople .span-7{grid-column:span 7}
+    .orlPeople .span-5{grid-column:span 5}
+    .orlPeople .is-block{display:block}
+    .orlPeople .ratio-16x9{aspect-ratio:16/9}
+    .sr-only{position:absolute!important;left:-9999px!important}
+
+    /* ===== WEBBY AWARD ENHANCEMENTS ===== */
+
+    /* Scroll-triggered fade-in animations */
+    .orlPeople .fadeIn {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.8s cubic-bezier(0.34, 1.56, 0.64, 1), transform 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+    .orlPeople .fadeIn.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    /* Staggered delays */
+    .orlPeople .fadeIn:nth-child(1) { transition-delay: 0.1s; }
+    .orlPeople .fadeIn:nth-child(2) { transition-delay: 0.2s; }
+    .orlPeople .fadeIn:nth-child(3) { transition-delay: 0.3s; }
+    .orlPeople .fadeIn:nth-child(4) { transition-delay: 0.4s; }
+    .orlPeople .fadeIn:nth-child(5) { transition-delay: 0.5s; }
+    .orlPeople .fadeIn:nth-child(6) { transition-delay: 0.6s; }
+
+    /* Enhanced card hover */
+    .orlPeople .card {
+      position: relative;
+      transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.4s ease !important;
+    }
+    .orlPeople .card::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border-radius: var(--r-lg);
+      padding: 1px;
+      background: linear-gradient(135deg, rgba(17,125,178,0.3), rgba(17,197,179,0.3));
+      -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+      -webkit-mask-composite: xor;
+      mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+      mask-composite: exclude;
+      opacity: 0;
+      transition: opacity 0.4s ease;
+      pointer-events: none;
+    }
+    .orlPeople .card:hover::before {
+      opacity: 1;
+    }
+    .orlPeople .card:hover {
+      transform: translateY(-6px) !important;
+      box-shadow: 0 20px 60px rgba(17, 125, 178, 0.18) !important;
+    }
+
+    /* Enhanced photo crossfade */
+    .orlPeople .actionPhoto {
+      transition: opacity 0.5s cubic-bezier(0.4, 0, 0.2, 1) !important;
+    }
+    .orlPeople .photo img,
+    .orlPeople .actionPhoto img {
+      transition: transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+    .orlPeople .card:hover .photo img {
+      transform: scale(1.05);
+    }
+
+    /* Role tag glow */
+    .orlPeople .roleTag {
+      transition: all 0.3s ease;
+    }
+    .orlPeople .card:hover .roleTag {
+      box-shadow: 0 8px 24px rgba(11, 37, 69, 0.4), 0 0 20px rgba(17, 125, 178, 0.3);
+      transform: translateY(-2px);
+    }
+
+    /* Button ripple effect */
+    .orlPeople .btn {
+      position: relative;
+      overflow: hidden;
+      transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1) !important;
+    }
+    .orlPeople .btn::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 0;
+      height: 0;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.4);
+      transform: translate(-50%, -50%);
+      transition: width 0.6s ease, height 0.6s ease;
+    }
+    .orlPeople .btn:hover::before {
+      width: 300px;
+      height: 300px;
+    }
+    .orlPeople .btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(17, 125, 178, 0.25);
+    }
+
+    /* Tag animations */
+    .orlPeople .tag {
+      transition: all 0.2s ease;
+    }
+    .orlPeople .card:hover .tag {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(17, 125, 178, 0.2);
+      border-color: var(--accent);
+    }
+
+    /* Alumni card enhancements */
+    .orlPeople .alumni {
+      transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+    .orlPeople .alumni:hover {
+      box-shadow: 0 12px 32px rgba(17, 125, 178, 0.15);
+      transform: translateY(-4px);
+      border-color: var(--accent);
+    }
+
+    /* Enhanced search input */
+    .orlPeople .search {
+      transition: all 0.3s ease;
+    }
+    .orlPeople .search:focus-within {
+      border-color: var(--accent);
+      box-shadow: 0 4px 12px rgba(17, 125, 178, 0.15);
+      transform: translateY(-2px);
+    }
+
+    /* Smooth accordion animation */
+    .orlPeople details[open] .alumniWrap {
+      animation: orlSlideDown 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+    @keyframes orlSlideDown {
+      from {
+        opacity: 0;
+        transform: translateY(-10px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* Respect reduced motion preferences */
+    @media (prefers-reduced-motion: reduce) {
+      .orlPeople .fadeIn,
+      .orlPeople .card,
+      .orlPeople .alumni,
+      .orlPeople .btn,
+      .orlPeople .tag,
+      .orlPeople .roleTag {
+        transition: none !important;
+        animation: none !important;
+      }
+      .orlPeople .fadeIn {
+        opacity: 1 !important;
+        transform: none !important;
+      }
+      .orlPeople .card:hover,
+      .orlPeople .alumni:hover {
+        transform: none !important;
+      }
+    }
+  </style>
+
+  <div class="wrap">
+    <h2>Our Team</h2>
+    <p class="lede">We study the recovery and resilience of ocean ecosystems using field experiments, modeling, and synthesis — and we try to have fun doing it.</p>
+
+    <div class="sectionHd" id="current"><h3>Current Members</h3><div class="rule" aria-hidden="true"></div></div>
+
+    <div id="peopleGrid" class="grid" aria-live="polite">
+      <!-- Adrian -->
+      <article class="card fadeIn" data-role="pi" data-tags="coral resilience restoration community-assembly management" tabindex="0">
+        <div class="photoWrap">
+          <picture class="photo">
+            <source srcset="https://static1.squarespace.com/static/5a033287be42d65267fc9a14/t/68d07e25782504712d689bee/1758494260106/adrian.png" media="(min-width: 900px)">
+            <img src="https://static1.squarespace.com/static/5a033287be42d65267fc9a14/t/68d07e25782504712d689bee/1758494260106/adrian.png" alt="Adrian Stier portrait" loading="lazy" />
+          </picture>
+          <picture class="actionPhoto">
+            <source srcset="https://static1.squarespace.com/static/5a033287be42d65267fc9a14/t/68d07e25782504712d689bee/1758494260106/adrian.png" media="(min-width: 900px)">
+            <img src="https://static1.squarespace.com/static/5a033287be42d65267fc9a14/t/68d07e25782504712d689bee/1758494260106/adrian.png" alt="Adrian Stier fieldwork" loading="lazy" />
+          </picture>
+          <span class="roleTag">PI</span>
+        </div>
+        <div class="body">
+          <h4 class="name">Adrian Stier</h4>
+          <p class="title">Principal Investigator • Ecology, Conservation & Management</p>
+          <p class="hook">Focus: recovery & resilience of ocean ecosystems; linking assembly rules to restoration.</p>
+          <div class="tags">
+            <span class="tag">Coral resilience</span>
+            <span class="tag">Predator–prey</span>
+            <span class="tag">Restoration</span>
+          </div>
+          <div class="ctaRow">
+            <a class="btn" href="mailto:adrian.stier@ucsb.edu" aria-label="Email Adrian">
+              <span class="ico" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M20 6H4a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2Zm0 2v.01L12 13 4 8.01V8h16ZM4 16V9.24l8 4.99l8-4.99V16H4Z" fill="currentColor"/></svg>
+              </span>
+              <span>Contact</span>
+            </a>
+          </div>
+        </div>
+      </article>
+
+      <!-- Raine -->
+      <article class="card fadeIn" data-role="postdoc" data-tags="theory restoration-modeling kelp coral-reefs resilience" tabindex="0">
+        <div class="photoWrap">
+          <picture class="photo">
+            <source srcset="https://static1.squarespace.com/static/5a033287be42d65267fc9a14/t/68d1b86167021e166685f62a/1758574690458/Raine+picture.jpeg" media="(min-width: 900px)">
+            <img src="https://static1.squarespace.com/static/5a033287be42d65267fc9a14/t/68d1b86167021e166685f62a/1758574690458/Raine+picture.jpeg" alt="Raine Detmer portrait" loading="lazy" />
+          </picture>
+          <picture class="actionPhoto">
+            <source srcset="https://static1.squarespace.com/static/5a033287be42d65267fc9a14/t/68d1b86167021e166685f62a/1758574690458/Raine+picture.jpeg" media="(min-width: 900px)">
+            <img src="https://static1.squarespace.com/static/5a033287be42d65267fc9a14/t/68d1b86167021e166685f62a/1758574690458/Raine+picture.jpeg" alt="Raine Detmer fieldwork" loading="lazy" />
+          </picture>
+          <span class="roleTag">Postdoc</span>
+        </div>
+        <div class="body">
+          <h4 class="name">Raine Detmer</h4>
+          <p class="title">Postdoctoral Researcher • Theoretical ecology & restoration modeling</p>
+          <p class="hook">Theoretician modeling kelp and coral reef ecosystems; building a restoration strategy evaluation tool to guide effective coral recovery.</p>
+          <div class="tags">
+            <span class="tag">Theory</span>
+            <span class="tag">Kelp</span>
+            <span class="tag">Coral reefs</span>
+            <span class="tag">Restoration modeling</span>
+          </div>
+          <div class="ctaRow">
+            <a class="btn" href="mailto:raine@ucsb.edu" aria-label="Email Raine">
+              <span class="ico" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M20 6H4a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2Zm0 2v.01L12 13 4 8.01V8h16ZM4 16V9.24l8 4.99l8-4.99V16H4Z" fill="currentColor"/></svg>
+              </span>
+              <span>Contact</span>
+            </a>
+          </div>
+        </div>
+      </article>
+
+      <!-- Adnan -->
+      <article class="card fadeIn" data-role="phd" data-tags="coral restoration bioacoustics artificial-reefs thermal-stress" tabindex="0">
+        <div class="photoWrap">
+          <picture class="photo">
+            <source srcset="https://static1.squarespace.com/static/5a033287be42d65267fc9a14/t/68d078a667c2010c384549ec/1758492838412/adnan.jpg" media="(min-width: 900px)">
+            <img src="https://static1.squarespace.com/static/5a033287be42d65267fc9a14/t/68d078a667c2010c384549ec/1758492838412/adnan.jpg" alt="Adnan Alalawi portrait" loading="lazy" />
+          </picture>
+          <picture class="actionPhoto">
+            <source srcset="https://static1.squarespace.com/static/5a033287be42d65267fc9a14/t/68d078a667c2010c384549ec/1758492838412/adnan.jpg" media="(min-width: 900px)">
+            <img src="https://static1.squarespace.com/static/5a033287be42d65267fc9a14/t/68d078a667c2010c384549ec/1758492838412/adnan.jpg" alt="Adnan Alalawi fieldwork" loading="lazy" />
+          </picture>
+          <span class="roleTag">PhD</span>
+        </div>
+        <div class="body">
+          <h4 class="name">Adnan Alalawi</h4>
+          <p class="title">PhD Student • Coral reef restoration & bioacoustics</p>
+          <p class="hook">Designs artificial reefs and uses soundscapes to accelerate recovery on degraded reefs.</p>
+          <div class="tags">
+            <span class="tag">Restoration</span>
+            <span class="tag">Bioacoustics</span>
+            <span class="tag">Artificial reefs</span>
+          </div>
+          <div class="ctaRow">
+            <a class="btn" href="mailto:adnan@ucsb.edu" aria-label="Email Adnan">
+              <span class="ico" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M20 6H4a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2Zm0 2v.01L12 13 4 8.01V8h16ZM4 16V9.24l8 4.99l8-4.99V16H4Z" fill="currentColor"/></svg>
+              </span>
+              <span>Contact</span>
+            </a>
+          </div>
+        </div>
+      </article>
+
+      <!-- Molly -->
+      <article class="card fadeIn" data-role="manager" data-tags="lab-manager molecular-ecology coral-resilience wound-healing climate-stress genomics field" tabindex="0">
+        <div class="photoWrap">
+          <picture class="photo">
+            <source srcset="https://static1.squarespace.com/static/5a033287be42d65267fc9a14/t/68d07cdec60e98756decb6cd/1758493918811/molly.jpg" media="(min-width: 900px)">
+            <img src="https://static1.squarespace.com/static/5a033287be42d65267fc9a14/t/68d07cdec60e98756decb6cd/1758493918811/molly.jpg" alt="Molly Brzezinski portrait" loading="lazy" />
+          </picture>
+          <picture class="actionPhoto">
+            <source srcset="https://static1.squarespace.com/static/5a033287be42d65267fc9a14/t/68d07cdec60e98756decb6cd/1758493918811/molly.jpg" media="(min-width: 900px)">
+            <img src="https://static1.squarespace.com/static/5a033287be42d65267fc9a14/t/68d07cdec60e98756decb6cd/1758493918811/molly.jpg" alt="Molly Brzezinski in the field" loading="lazy" />
+          </picture>
+          <span class="roleTag">Lab Manager</span>
+        </div>
+        <div class="body">
+          <h4 class="name">Molly Brzezinski</h4>
+          <p class="title">Lab Manager • Coral resilience & climate stress</p>
+          <p class="hook">Marine molecular biologist integrating genomic and field approaches to understand coral wound healing and resilience under climate stress; building workflows that inform restoration and management.</p>
+          <div class="tags">
+            <span class="tag">Molecular ecology</span>
+            <span class="tag">Coral resilience</span>
+            <span class="tag">Wound healing</span>
+            <span class="tag">Climate stress</span>
+            <span class="tag">Genomics</span>
+          </div>
+          <div class="ctaRow">
+            <a class="btn" href="mailto:molly@ucsb.edu" aria-label="Email Molly">
+              <span class="ico" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M20 6H4a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2Zm0 2v.01L12 13 4 8.01V8h16ZM4 16V9.24l8 4.99l8-4.99V16H4Z" fill="currentColor"/></svg>
+              </span>
+              <span>Contact</span>
+            </a>
+          </div>
+        </div>
+      </article>
+
+      <!-- Hayden (no contact available, no CTA shown) -->
+      <article class="card fadeIn" data-role="ug" data-tags="undergraduate algae-traits coral-regeneration bio-art coal-oil-point" tabindex="0">
+        <div class="photoWrap">
+          <picture class="photo">
+            <source srcset="https://static1.squarespace.com/static/5a033287be42d65267fc9a14/t/68d07d5b6b49747d92bd66e2/1758494043898/hayden.jpg" media="(min-width: 900px)">
+            <img src="https://static1.squarespace.com/static/5a033287be42d65267fc9a14/t/68d07d5b6b49747d92bd66e2/1758494043898/hayden.jpg" alt="Hayden Vega portrait" loading="lazy" />
+          </picture>
+          <picture class="actionPhoto">
+            <source srcset="https://static1.squarespace.com/static/5a033287be42d65267fc9a14/t/68d07d5b6b49747d92bd66e2/1758494043898/hayden.jpg" media="(min-width: 900px)">
+            <img src="https://static1.squarespace.com/static/5a033287be42d65267fc9a14/t/68d07d5b6b49747d92bd66e2/1758494043898/hayden.jpg" alt="Hayden Vega in the field" loading="lazy" />
+          </picture>
+          <span class="roleTag">Undergraduate</span>
+        </div>
+        <div class="body">
+          <h4 class="name">Hayden Vega</h4>
+          <p class="title">Undergraduate Researcher • Algae traits, coral regeneration, bio art</p>
+          <p class="hook">Works on algal functional traits and coral regeneration experiments; currently creating bio-art in collaboration with the Coal Oil Point Reserve.</p>
+          <div class="tags">
+            <span class="tag">Algae traits</span>
+            <span class="tag">Coral regeneration</span>
+            <span class="tag">Bio art</span>
+            <span class="tag">Coal Oil Point</span>
+          </div>
+          <!-- No CTA shown (no email provided) -->
+        </div>
+      </article>
+
+      <!-- Jaden (removed LinkedIn CTA to keep "Contact only") -->
+      <article class="card fadeIn" data-role="ug" data-tags="undergraduate fisheries-modeling mpas lobster" tabindex="0">
+        <div class="photoWrap">
+          <picture class="photo">
+            <source srcset="https://static1.squarespace.com/static/5a033287be42d65267fc9a14/t/68d0801cc60e98756ded220d/1758494748066/jaden.jpg" media="(min-width: 900px)">
+            <img src="https://static1.squarespace.com/static/5a033287be42d65267fc9a14/t/68d0801cc60e98756ded220d/1758494748066/jaden.jpg" alt="Jaden Orli portrait" loading="lazy" />
+          </picture>
+          <picture class="actionPhoto">
+            <source srcset="https://static1.squarespace.com/static/5a033287be42d65267fc9a14/t/68d0801cc60e98756ded220d/1758494748066/jaden.jpg" media="(min-width: 900px)">
+            <img src="https://static1.squarespace.com/static/5a033287be42d65267fc9a14/t/68d0801cc60e98756ded220d/1758494748066/jaden.jpg" alt="Jaden Orli in the field" loading="lazy" />
+          </picture>
+          <span class="roleTag">Undergraduate</span>
+        </div>
+        <div class="body">
+          <h4 class="name">Jaden Orli</h4>
+          <p class="title">Undergraduate Researcher • Fisheries modeling & MPAs</p>
+          <p class="hook">Exploring alternative fisheries strategies that integrate marine protected areas to optimize the California spiny lobster fishery.</p>
+          <div class="tags">
+            <span class="tag">Fisheries modeling</span>
+            <span class="tag">MPAs</span>
+            <span class="tag">Lobster fishery</span>
+          </div>
+          <!-- No CTA (no email provided); contact-only policy respected -->
+        </div>
+      </article>
+    </div>
+
+    <div class="sectionHd" id="alumni"><h3>Alumni</h3><div class="rule" aria-hidden="true"></div></div>
+
+    <details open>
+      <summary>
+        <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 15.5L5 8.5l1.4-1.4L12 12.7l5.6-5.6L19 8.5z"/></svg>
+        <span>See our alumni and where they are now</span>
+      </summary>
+      <div class="alumniWrap">
+        <div class="search" style="margin:0 0 12px;max-width:520px">
+          <svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M10 4a6 6 0 1 1 0 12a6 6 0 0 1 0-12m8.32 12.9l4.39 4.39l-1.42 1.42l-4.39-4.39A8 8 0 1 1 10 2a8 8 0 0 1 8 8c0 1.83-.62 3.51-1.68 4.9"/></svg>
+          <input id="alumniSearch" type="search" placeholder="Filter alumni by name or year…" aria-label="Search alumni" />
+        </div>
+        <div id="alumniGrid" class="alumniGrid" aria-live="polite">
+          <div class="alumni" data-year="2023" data-tags="undergrad trapezia coral mutualism fieldwork">
+            <img class="thumb" src="https://static1.squarespace.com/static/5a033287be42d65267fc9a14/t/68d079cb5247a17ae3cad54c/1758493132497/jada.jpg" alt="Jada Alexander" loading="lazy"/>
+            <div class="info">
+              <div class="who">Jada Alexander <span class="when">• Undergraduate Researcher 2021–2023</span></div>
+              <div class="now">Studied <em>Trapezia</em>–coral mutualism, combining field surveys and lab work to quantify benefits to coral resilience. <a href="https://www.linkedin.com/in/jadaaalexander/" target="_blank" rel="noopener">LinkedIn</a></div>
+            </div>
+          </div>
+          <div class="alumni" data-year="UCSB" data-tags="undergrad ucsb coral kelp research">
+            <img class="thumb" src="https://static1.squarespace.com/static/5a033287be42d65267fc9a14/t/68d07fb640f8067868123d41/1758494648117/alexis.webp" alt="Alexis Sitt Park" loading="lazy"/>
+            <div class="info">
+              <div class="who">Alexis Sitt Park <span class="when">• Undergraduate Researcher (UCSB)</span></div>
+              <div class="now">Contributed to field and lab projects during her undergraduate at UCSB; now an ORL alum. <a href="https://www.linkedin.com/in/alexissittpark/" target="_blank" rel="noopener">LinkedIn</a></div>
+            </div>
+          </div>
+          <div class="alumni" data-year="2024" data-tags="postdoc kelp physiology global-change">
+            <img class="thumb" src="https://static1.squarespace.com/static/5a033287be42d65267fc9a14/t/68d078a6249680506cc61e94/1758492842779/Emily.jpg" alt="Emily Donham" loading="lazy"/>
+            <div class="info">
+              <div class="who">Emily Donham <span class="when">• Postdoc 2024–2025</span></div>
+              <div class="now">Kelp eco-physiology & global change biology; integrated sensors, diver surveys, and lab experiments. Now ORL alum.</div>
+            </div>
+          </div>
+          <div class="alumni" data-year="2020" data-tags="ms data-analyst lobster temperature">
+            <img class="thumb" src="https://static1.squarespace.com/static/5a033287be42d65267fc9a14/t/68d079cb6bd757160ac10f0a/1758493133475/sam.jpg" alt="Samantha Csik" loading="lazy"/>
+            <div class="info">
+              <div class="who">Samantha Csik <span class="when">• MS 2020</span></div>
+              <div class="now">Thesis on temperature effects on lobster physiology & feeding. Now Data Analyst at NCEAS.</div>
+            </div>
+          </div>
+          <div class="alumni" data-year="2022" data-tags="manager moorea phds">
+            <img class="thumb" src="https://static1.squarespace.com/static/5a033287be42d65267fc9a14/t/68d079cb35054d672c2abe22/1758493131598/joe.jpg" alt="Joseph Curtis" loading="lazy"/>
+            <div class="info">
+              <div class="who">Joseph Curtis <span class="when">• Lab manager 2019–2022</span></div>
+              <div class="now">Led coral, lobster & kelp work in Moorea and Santa Barbara. Now PhD student in New Zealand.</div>
+            </div>
+          </div>
+          <div class="alumni" data-year="2024" data-tags="phd coral resilience postdoc">
+            <img class="thumb" src="https://static1.squarespace.com/static/5a033287be42d65267fc9a14/t/68d079cb96485107f538d60d/1758493131781/kai.jpg" alt="Kai Kopecky" loading="lazy"/>
+            <div class="info">
+              <div class="who">Dr. Kai Kopecky <span class="when">• PhD 2024</span></div>
+              <div class="now">Worked on coral reef resilience. Now postdoc at CU Boulder.</div>
+            </div>
+          </div>
+          <div class="alumni" data-year="2020" data-tags="postdoc smith conservation analyst">
+            <img class="thumb" src="https://static1.squarespace.com/static/5a033287be42d65267fc9a14/t/68d078a6b358076c2b9e7dca/1758492838354/kingeman.jpg" alt="Kurt Ingeman" loading="lazy"/>
+            <div class="info">
+              <div class="who">Dr. Kurt Ingeman <span class="when">• Postdoc 2018–2020</span></div>
+              <div class="now">Synthesized moving targets in recoveries; later Smith Conservation Biology fellow. Now analyst at SOEST, UH Mānoa.</div>
+            </div>
+          </div>
+          <div class="alumni" data-year="2023" data-tags="phd kelp fishing postdoc">
+            <img class="thumb" src="https://static1.squarespace.com/static/5a033287be42d65267fc9a14/t/68d078a6b31a261dddc0153e/1758492838228/bart.jpg" alt="Bart Difiore" loading="lazy"/>
+            <div class="info">
+              <div class="who">Dr. Bart Difiore <span class="when">• PhD 2023</span></div>
+              <div class="now">Studied fishing impacts on kelp forest ecology. Now postdoc at Gulf of Maine Research Institute.</div>
+            </div>
+          </div>
+          <div class="alumni" data-year="2020" data-tags="postdoc jsmf eBM NOAA">
+            <img class="thumb" src="https://static1.squarespace.com/static/5a033287be42d65267fc9a14/t/68d078a6ec689b43ed71fca2/1758492838192/megsie.webp" alt="Megsie Siple" loading="lazy"/>
+            <div class="info">
+              <div class="who">Dr. Megsie Siple <span class="when">• Postdoc 2019–2020</span></div>
+              <div class="now">Linked ecosystem monitoring to EBM. Now fisheries scientist at NOAA AFSC (Seattle).</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </details>
+
+    <div class="sectionHd"><h3>Meet the Lab</h3><div class="rule" aria-hidden="true"></div></div>
+    <div class="grid is-stretch">
+      <div class="card span-7 is-block">
+        <div class="photoWrap ratio-16x9">
+          <img class="photo" src="https://static1.squarespace.com/static/5a033287be42d65267fc9a14/t/68d0928cb358076c2ba1ed72/1758499503104/IMG_1010.jpeg" alt="Ocean Recoveries Lab group photo" />
+        </div>
+        <div class="body">
+          <p class="hook">We’re a collaborative, field-forward team based at UCSB. We value kindness, curiosity, and rigorous, open science.</p>
+          <div class="ctaRow">
+            <a class="btn" href="/join" aria-label="Join our lab">
+              <span class="ico" aria-hidden="true">
+                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path fill="currentColor" d="M12 2l2.2 5.2L19 9l-4.4 2.1L12 16l-2.6-4.9L5 9l4.8-1.8L12 2Z"/></svg>
+              </span>
+              <span>Join Us</span>
+            </a>
+            <a class="btn" href="/research" aria-label="Explore research">
+              <span class="ico" aria-hidden="true">
+                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path fill="currentColor" d="M7 4a1 1 0 0 0-1 1v11.5a.5.5 0 0 0 .79.41L9 16h8a2 2 0 0 0 2-2V5a1 1 0 0 0-1-1H7Zm1 2h10v8H9.5l-1.5 1.1V6Z"/></svg>
+              </span>
+              <span>Research</span>
+            </a>
+          </div>
+        </div>
+      </div>
+      <div class="card span-5">
+        <div class="body">
+          <h4 class="name">How we work</h4>
+          <p class="hook">Mentorship, safety, and growth — with lots of time in the water. Alumni go on to PhDs, postdocs, agencies, and NGOs.</p>
+          <ul class="how-list">
+            <li>Weekly lab meetings + code/data clubs</li>
+            <li>Fieldwork in California & Moorea</li>
+            <li>Reproducible workflows & open data</li>
+          </ul>
+          <div class="ctaRow">
+            <a class="btn" href="mailto:adrian.stier@ucsb.edu">📧 Contact Adrian</a>
+            <a class="btn" href="/publications">📚 Publications</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <script>
+    (function(){
+      const $$ = (sel,root=document)=>Array.from(root.querySelectorAll(sel));
+      const grid=document.getElementById('peopleGrid');
+      const cards=[...grid.querySelectorAll('.card')];
+
+      // Make cards clickable (navigate to the first link in the card body, if present)
+      cards.forEach(card=>{
+        const firstLink = card.querySelector('.body a[href]'); // body link only (e.g., Contact)
+        if (!firstLink) return;
+        card.setAttribute('tabindex','0');
+        card.setAttribute('role','link');
+        card.addEventListener('click', (e)=>{
+          if ((e.target).closest && (e.target).closest('.btn,a')) return; // avoid double-activation
+          const url = firstLink.getAttribute('href');
+          if (url) window.open(url, firstLink.getAttribute('target')||'_self');
+        });
+        card.addEventListener('keydown', (e)=>{
+          if (e.key==='Enter' || e.key===' '){ e.preventDefault(); firstLink.click(); }
+        });
+      });
+
+      // Alumni filter
+      const alumniSearch = document.getElementById('alumniSearch');
+      if (alumniSearch){
+        alumniSearch.addEventListener('input',()=>{
+          const q=(alumniSearch.value||'').toLowerCase().trim();
+          $$('#alumniGrid .alumni').forEach(a=>{
+            const t=(a.innerText+' '+(a.dataset.year||'')+' '+(a.dataset.tags||'')).toLowerCase();
+            a.style.display = q==='' || t.includes(q) ? 'flex' : 'none';
+          });
+        });
+      }
+
+      // ===== WEBBY ENHANCEMENT: Scroll-triggered animations =====
+      const observerOptions = {
+        root: null,
+        rootMargin: '0px 0px -100px 0px',
+        threshold: 0.1
+      };
+
+      const fadeInObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            fadeInObserver.unobserve(entry.target); // Only animate once
+          }
+        });
+      }, observerOptions);
+
+      // Observe all fade-in elements
+      $$('.fadeIn').forEach(el => {
+        fadeInObserver.observe(el);
+      });
+    })();
+  </script>
+</section>

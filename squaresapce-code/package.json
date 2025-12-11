@@ -1,0 +1,19 @@
+{
+  "name": "webby",
+  "version": "1.0.0",
+  "description": "Front-end project with Playwright visual testing",
+  "scripts": {
+    "test": "playwright test",
+    "test:headed": "playwright test --headed",
+    "test:ui": "playwright test --ui",
+    "test:debug": "playwright test --debug",
+    "screenshot": "playwright test --grep @screenshot"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.40.0",
+    "http-server": "^14.1.1"
+  },
+  "dependencies": {
+    "puppeteer": "^24.25.0"
+  }
+}

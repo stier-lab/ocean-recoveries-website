@@ -1,0 +1,732 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Organismal Mechanisms | Ocean Recoveries Lab</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300..900&display=swap" rel="stylesheet"/>
+
+<style>
+  /* =====================
+     Ocean Recoveries — Organismal Research (aligned to Kelp white theme)
+     - Inter, white surfaces, crisp cards
+     - Same tokens & rhythm as Kelp
+     - No side gutters; vertical rhythm only
+  ====================== */
+
+  :root { color-scheme: light; }
+  html, body{ background:#ffffff !important; }
+  body{ margin:0; }
+
+  .orlUX{
+    /* Brand */
+    --ink:#0b2545; --ink-2:#173451;
+    --muted:#566579; --muted-2:#6e7d8a;
+    --accent:#117db2; --accent-2:#11c5b3; --accent-warm:#ff6f5b;
+
+    /* Surfaces */
+    --bg:#ffffff; --card:#ffffff; --line:#e6edf6; --line-2:#dbe7f3; --glass:rgba(255,255,255,.78);
+
+    /* Elevation tuned for white */
+    --shadow:0 6px 16px rgba(17,34,68,.08);
+    --shadow-lg:0 18px 42px rgba(17,34,68,.14);
+
+    /* Rhythm */
+    --s-1:8px; --s0:12px; --s1:18px; --s2:24px; --s3:32px;
+    --s4:clamp(48px,8vw,72px); --s5:clamp(72px,10vw,96px);
+
+    /* Shape & touch */
+    --r:16px; --r-lg:22px; --tap:44px;
+
+    /* Gutters */
+    --edge:clamp(18px,5vw,48px);
+    --edge-r:clamp(18px,5vw,48px);
+
+    /* Readability */
+    --lh:1.6; --measure:65ch;
+
+    font:16px/var(--lh) Inter, system-ui,-apple-system, Segoe UI, Roboto, Arial, sans-serif;
+    color:var(--ink); background:var(--bg); isolation:isolate;
+    -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale;
+  }
+  .orlUX, .orlUX *{ box-sizing:border-box; }
+  html{ scroll-behavior:smooth }
+  .orlUX ::selection{ background:#dff2ff }
+
+  /* Motion hygiene */
+  .orlUX *,.orlUX *::before,.orlUX *::after{ transition:all .2s ease }
+  @media (prefers-reduced-motion:reduce){ .orlUX *,.orlUX *::before,.orlUX *::after{ transition:none!important } }
+
+  /* Skip link */
+  .skip{position:absolute;left:-9999px;top:auto;width:1px;height:1px;overflow:hidden}
+  .skip:focus{position:fixed;left:16px;top:16px;padding:8px 12px;background:#000;color:#fff;border-radius:8px;z-index:1000}
+
+  /* Layout */
+  .container{ max-width:1100px; margin:0 auto; padding-left:var(--edge); padding-right:var(--edge-r); }
+  @media (max-width:520px){
+    .container{ padding-left:12px; padding-right:12px; }
+  }
+  .section{ margin:var(--s4) 0 0; }
+  .section:first-of-type{ margin-top:var(--s3); }
+  @media (max-width:640px){ .section{ margin-top:var(--s3); } }
+
+  .grid{ display:grid; gap:var(--s1); }
+  @media (min-width:980px){ .grid{ gap:var(--s2); } }
+  .g4{ grid-template-columns:repeat(4,1fr); }
+  @media (max-width:980px){ .g4{ grid-template-columns:1fr 1fr; } }
+  @media (max-width:640px){ .g4{ grid-template-columns:1fr; } }
+
+  .row{ display:flex; gap:var(--s0); flex-wrap:wrap; align-items:center }
+
+  /* Type */
+  h1{ margin:0 0 var(--s1); font-weight:900; font-size:clamp(34px,4.8vw,46px); line-height:1.12; letter-spacing:-0.02em; color:#0b2545 }
+  h2{ margin:0 0 var(--s1); font-weight:900; font-size:clamp(24px,3vw,32px); line-height:1.18; letter-spacing:-0.015em; color:#0b2545 }
+  h3{ margin:0 0 var(--s0); font-weight:800; color:var(--ink-2); font-size:clamp(18px,2.2vw,20px); }
+  p{ margin:0; color:var(--muted); max-width:var(--measure); }
+  .eyebrow{ letter-spacing:.12em; text-transform:uppercase; font-size:11px; font-weight:800; color:var(--muted); margin-bottom:8px; }
+  .lead-strong{ font-weight:800; color:var(--ink-2) }
+
+  /* Chips & buttons */
+  a{ color:var(--accent); text-decoration-color:rgba(17,125,178,.4); text-underline-offset:2px; }
+  a:hover{ text-decoration-thickness:2px; }
+  a:focus-visible{ outline:2px solid var(--accent); outline-offset:3px; border-radius:8px; }
+
+  .chip{ display:inline-flex; align-items:center; gap:8px; padding:8px 12px; border:1.5px solid var(--line-2); border-radius:12px; background:#fff; color:var(--ink); text-decoration:none !important; font-weight:700; min-height:38px; box-shadow:0 4px 12px rgba(17,34,68,.08); }
+  .chip:hover{ transform:translateY(-1px); box-shadow:0 10px 24px rgba(17,34,68,.12); }
+  .chip.ghost{ background:#fff; }
+
+  .btn{ display:inline-block; border-radius:12px; padding:12px 16px; font-weight:800; font-size:14px; text-decoration:none; line-height:1; min-height:var(--tap); }
+  .btn.primary{ background:var(--ink); color:#fff; box-shadow:0 8px 18px rgba(17,34,68,.18) }
+  .btn.ghost{ background:#fff; border:1.5px solid var(--line-2); color:var(--ink) }
+  .btn.sm{ padding:10px 12px; font-size:13px; border-radius:10px }
+
+  /* Hero — glass panel look */
+  header.hero{ position:relative; max-width:none; margin:0 0 var(--s2); overflow:hidden }
+  .hero-media{ position:relative; width:100%; aspect-ratio:16/9; min-height: clamp(320px, 46vh, 560px); }
+  .hero-media img{ position:absolute; inset:0; width:100%; height:100%; object-fit:cover; object-position:center 35% }
+  .hero-scrim{ position:absolute; inset:0; background:linear-gradient(180deg, rgba(11,37,69,0) 0%, rgba(11,37,69,.14) 50%, rgba(11,37,69,.28) 100%); }
+  .hero-inner{ position:absolute; inset:auto 0 0 0; padding:clamp(20px,3vw,28px); display:flex; align-items:flex-end; }
+  .hero-inner::before{
+    content:""; position:absolute; left:0; right:0; bottom:0; height:42%;
+    background:linear-gradient(to top, rgba(255,255,255,.70) 0%, rgba(255,255,255,.40) 35%, rgba(255,255,255,0) 72%);
+    pointer-events:none; z-index:0;
+  }
+  .hero-panel{
+    position:relative; z-index:1;
+    background:linear-gradient(145deg, rgba(255,255,255,.70), rgba(255,255,255,.44));
+    backdrop-filter:blur(8px) saturate(1.05);
+    border:1px solid rgba(255,255,255,.52);
+    border-radius:12px;
+    padding:12px 16px;
+    width:calc(100% - 32px);
+    margin:0 16px 16px;
+    box-shadow:0 8px 22px rgba(11,37,69,.10);
+  }
+  .hero-lead{ color:#0f2a4b; font-weight:700; }
+
+  /* Cards (crisp white) */
+  .card{ background:var(--card); border:1px solid var(--line); border-radius:var(--r-lg); box-shadow:var(--shadow); padding:clamp(18px,2.5vw,28px) clamp(16px,2vw,24px); color:var(--ink); }
+  .card:hover{ transform:translateY(-2px); box-shadow:var(--shadow-lg); }
+  .container > .card p{ max-width:var(--measure) }
+
+  .theme-intro{ display:grid; gap:var(--s1); align-items:center; margin-bottom:var(--s2); }
+  @media (min-width:880px){ .theme-intro{ grid-template-columns:minmax(0,1.05fr) minmax(0,1fr); gap:var(--s2); } }
+  .theme-copy h2{ margin:0 0 var(--s0); font-size:clamp(26px,3.4vw,38px); line-height:1.12; }
+  .theme-copy p{ font-size:clamp(16px,1.6vw,18px); max-width:640px; }
+  .theme-hero img{ display:block; width:100%; height:auto; border-radius:22px; box-shadow:var(--shadow); }
+  .theme-grid{ display:grid; gap:var(--s1); grid-template-columns:repeat(2,minmax(0,1fr)); }
+  @media (max-width:720px){ .theme-grid{ grid-template-columns:1fr; } }
+
+  /* Themes (card grid) */
+  .theme-card{ display:grid; grid-template-rows:auto 1fr auto; gap:14px; border-radius:22px; overflow:hidden; border:1px solid var(--line); background:#fff; box-shadow:var(--shadow); transition:transform .25s ease, box-shadow .25s ease, border-color .25s ease; position:relative; }
+  .theme-card:hover{ transform:translateY(-6px); box-shadow:var(--shadow-lg); border-color:rgba(17,34,68,.16); }
+  .theme-media{ position:relative; aspect-ratio:16/9; overflow:hidden }
+  .theme-media img{ width:100%; height:100%; object-fit:cover; transition:transform .28s ease; }
+  .theme-card:hover .theme-media img{ transform:scale(1.06); }
+  .theme-body{ padding:18px 18px 10px }
+  .theme-icon{ display:inline-flex; align-items:center; justify-content:center; width:48px; height:48px; border-radius:16px; background:rgba(17,125,178,.12); color:var(--accent); margin-bottom:12px; box-shadow:inset 0 0 0 1px rgba(17,125,178,.18); }
+  .theme-icon svg{ width:26px; height:26px; }
+  .theme-cta{ padding:0 18px 18px }
+
+  /* Carousel */
+  .carousel{ position:relative }
+  .carousel-rail{ display:flex; gap:14px; overflow:auto; scroll-snap-type:x mandatory; padding-bottom:6px }
+  .carousel-rail .item{ flex:0 0 86%; max-width:86%; scroll-snap-align:start }
+  @media (min-width:900px){ .carousel-rail .item{ flex-basis:48%; max-width:48% } }
+  .proj{ border-radius:22px; overflow:hidden; border:1px solid var(--line); background:#fff; box-shadow:var(--shadow); display:grid; grid-template-columns:minmax(0,1.1fr) minmax(0,1fr); align-items:stretch; gap:0; }
+  @media (max-width:760px){ .proj{ grid-template-columns:1fr; } }
+  .proj-media{ position:relative; overflow:hidden; }
+  .proj-media::before{ content:""; display:block; padding-bottom:62%; }
+  .proj-media img{ position:absolute; inset:0; width:100%; height:100%; object-fit:cover; transition:transform .28s ease; }
+  .proj:hover .proj-media img{ transform:scale(1.05); }
+  .proj-body{ padding:clamp(16px,2.2vw,22px); display:flex; flex-direction:column; gap:var(--s0); justify-content:center; }
+  .carousel-nav{ display:flex; gap:8px; align-items:center; margin-top:8px; justify-content:center; }
+  .carousel-nav button{ border:1.5px solid var(--line-2); background:#fff; color:#0b2545; border-radius:10px; min-height:var(--tap); padding:6px 10px; cursor:pointer; font-weight:800; }
+  .carousel-nav button:disabled{ opacity:.45; cursor:not-allowed; }
+  .carousel-thumbs{ display:flex; gap:10px; margin-top:12px; justify-content:center; flex-wrap:wrap; }
+  .carousel-thumbs .thumb{ border:2px solid transparent; border-radius:12px; overflow:hidden; padding:0; background:transparent; cursor:pointer; transition:border-color .2s ease, transform .2s ease; }
+  .carousel-thumbs .thumb[aria-current="true"]{ border-color:var(--accent); }
+  .carousel-thumbs .thumb:hover{ transform:translateY(-2px); }
+  .carousel-thumbs img{ display:block; width:72px; height:48px; object-fit:cover; }
+
+  /* Findings */
+  .finding-grid{ display:grid; gap:var(--s1); grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); margin-bottom:var(--s2); }
+  .finding-card{ position:relative; height:100%; min-height:240px; border-radius:20px; box-shadow:var(--shadow); background:#fff; border:1px solid var(--line); padding:0; transform-style:preserve-3d; transition:transform .5s ease; }
+  .finding-card:focus-visible{ outline:3px solid var(--accent); outline-offset:4px; }
+  .finding-card:hover,
+  .finding-card:focus-within{ transform:rotateY(180deg); }
+  .finding-face{ position:absolute; inset:0; backface-visibility:hidden; border-radius:20px; padding:clamp(16px,2.4vw,24px); display:flex; flex-direction:column; gap:var(--s0); justify-content:center; }
+  .finding-front{ background:#fff; }
+  .finding-back{ background:linear-gradient(160deg,rgba(17,125,178,.12),rgba(17,125,178,.28)); transform:rotateY(180deg); color:#0b2545; }
+  .finding-icon{ width:48px; height:48px; border-radius:14px; background:rgba(17,125,178,.12); display:grid; place-items:center; color:var(--accent); box-shadow:inset 0 0 0 1px rgba(17,125,178,.18); }
+  .finding-icon svg{ width:26px; height:26px; stroke:currentColor; stroke-width:2; fill:none; }
+  .finding-headline{ margin:0; font-weight:800; font-size:clamp(18px,2.4vw,22px); color:var(--ink-2); }
+  .finding-summary{ margin:0; color:var(--muted); }
+  .finding-back p{ margin:0; font-weight:600; line-height:1.45; }
+  .finding-back a{ margin-top:var(--s0); font-weight:700; text-decoration:none; color:var(--ink-2); }
+  .finding-back a:hover{ text-decoration:underline; color:var(--accent); }
+  .related-pubs{ display:flex; flex-direction:column; gap:var(--s0); }
+  .related-pubs h3{ margin:0; font-size:clamp(18px,2.4vw,22px); font-weight:800; color:var(--ink-2); }
+  .related-track{ display:flex; gap:12px; overflow-x:auto; padding:6px 0; scroll-snap-type:x mandatory; }
+  .related-track::-webkit-scrollbar{ height:6px; }
+  .related-track::-webkit-scrollbar-thumb{ background:rgba(17,125,178,.35); border-radius:999px; }
+  .related-card{ flex:0 0 auto; min-width:220px; background:#fff; border:1px solid var(--line); border-radius:16px; padding:12px 16px; box-shadow:var(--shadow); scroll-snap-align:start; text-decoration:none; color:var(--ink); transition:transform .2s ease, box-shadow .2s ease; }
+  .related-card:hover{ transform:translateY(-4px); box-shadow:var(--shadow-lg); }
+  .related-card span{ display:block; margin-top:6px; font-size:0.85rem; color:var(--muted); }
+  .finding{ background:#fff; border:1px solid var(--line); border-radius:18px; padding:16px; box-shadow:var(--shadow); display:grid; gap:8px }
+  .finding .stat{ font-weight:900; font-size:clamp(18px,2.6vw,22px); color:var(--ink-2) }
+  .finding .sum{ font-size:15px }
+  .finding .icon{ width:44px; height:44px; border-radius:12px; background:#fff; display:grid; place-items:center; border:1.6px solid #dbe7f3; color:var(--ink); box-shadow:0 6px 14px rgba(11,37,69,.08) }
+  .finding .icon svg{ width:22px; height:22px; stroke:currentColor; stroke-width:2; fill:none }
+
+  /* Publications */
+  .pubs-list{ list-style:none; margin:0; padding:0 }
+  .pubs-list .pub{ display:grid; grid-template-columns:1fr auto; gap:10px; border-bottom:1px solid var(--line); padding:12px 0 }
+  .pubs-list .pub:last-child{ border-bottom:none }
+  .pubs-list .title a{ text-decoration:none; color:var(--ink-2) }
+  .pubs-list .title a:hover{ text-decoration:underline }
+  .pubs-list .meta{ display:flex; gap:8px; align-items:center; color:#7a8a99 }
+  .badge{ display:inline-block; padding:4px 8px; border:1px solid #d7e2ee; border-radius:999px; font-size:12px; font-weight:800; color:#506073; background:#f8fbff }
+
+  .logos-row{ align-items:center }
+  .logos-row img{ filter:grayscale(1) contrast(.9); opacity:.9; mix-blend-mode:multiply }
+
+  /* Divider */
+  .divider{ display:flex; justify-content:center; align-items:center; margin:var(--s2) 0 0 }
+  .divider svg{ opacity:.35 }
+
+  /* Anchor offsets */
+  #vision,#themes,#projects,#findings,#publications,#get-involved{ scroll-margin-top:124px }
+
+  /* A11y utility */
+  .visually-hidden{ position:absolute!important; clip:rect(1px,1px,1px,1px); padding:0; border:0; height:1px; width:1px; overflow:hidden; white-space:nowrap }
+
+  /* Force white surfaces even in dark mode */
+  @media (prefers-color-scheme:dark){
+    html, body, .orlUX{ background:#ffffff !important; color:#0b2545 !important; }
+    .card, .theme-card, .proj, .finding-card{ background:#ffffff !important; color:#0b2545 !important; border:1px solid #e6edf6 !important; }
+    .chip{ background:#ffffff !important; color:#0b2545 !important; border-color:#dbe7f3 !important; }
+    .btn.primary{ background:#0b2545 !important; color:#ffffff !important; }
+  }
+</style>
+</head>
+
+<body>
+<section class="orlUX" aria-label="Organismal Mechanisms Research">
+  <a href="#main" class="skip">Skip to content</a>
+
+  <!-- HERO -->
+  <header class="hero" role="banner" aria-label="Organismal Mechanisms of Resilience">
+    <div class="hero-media" aria-hidden="true">
+      <img loading="eager" decoding="async" fetchpriority="high"
+           src="https://static1.squarespace.com/static/5a033287be42d65267fc9a14/t/68cd7d2a25a0e851f36b5bbb/1758297393836/P5222206.JPG"
+           alt="Coral tissue repair and wound healing close-up"
+           width="2400" height="1400"
+           srcset="
+             https://static1.squarespace.com/static/5a033287be42d65267fc9a14/t/68cd7d2a25a0e851f36b5bbb/1758297393836/P5222206.JPG?format=1200w 1200w,
+             https://static1.squarespace.com/static/5a033287be42d65267fc9a14/t/68cd7d2a25a0e851f36b5bbb/1758297393836/P5222206.JPG?format=1600w 1600w,
+             https://static1.squarespace.com/static/5a033287be42d65267fc9a14/t/68cd7d2a25a0e851f36b5bbb/1758297393836/P5222206.JPG?format=2000w 2000w,
+             https://static1.squarespace.com/static/5a033287be42d65267fc9a14/t/68cd7d2a25a0e851f36b5bbb/1758297393836/P5222206.JPG 2400w"
+           sizes="100vw">
+      <div class="hero-scrim" aria-hidden="true"></div>
+    </div>
+    <div class="hero-inner">
+      <div class="hero-panel">
+        <p class="eyebrow">Ocean Recoveries Lab</p>
+        <h1>Organismal mechanisms of resilience</h1>
+        <p class="hero-lead">We test how temperature, injury, and physiology shape performance—from individual thresholds to ecosystem recovery.</p>
+        <div class="row" role="group" aria-label="Primary actions" style="margin-top:12px">
+          <a class="btn primary" href="#themes">Explore Our Research</a>
+          <a class="btn ghost" href="/publications">Publications</a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main id="main" tabindex="-1">
+    <!-- Vision -->
+    <section class="vision section" id="vision" aria-label="Our research vision">
+      <div class="container">
+        <div class="card">
+          <h2>Our research vision</h2>
+          <p class="lead-strong">We study organismal thresholds and repair—thermal tolerance, metabolic limits, and wound healing—to explain when individuals recover and how those mechanisms scale to populations and ecosystems.</p>
+          <p class="lead-strong">By pairing field experiments with lab assays and quantitative models, we identify the physiological bottlenecks—and leverage points—for climate adaptation and restoration.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Themes -->
+    <section class="section" id="themes" aria-label="Research themes">
+      <div class="container theme-intro">
+        <div class="theme-copy">
+          <h2>Research themes</h2>
+          <p>We examine how physiology, injury, and partnerships determine whether corals and kelp forest organisms endure stress—and translate those insights into tools for restoration.</p>
+        </div>
+        <figure class="theme-hero">
+          <img loading="lazy" decoding="async" src="https://static1.squarespace.com/static/5a033287be42d65267fc9a14/t/68cc81510e96ef6fe595d2f2/1758232914073/image_2_inline.webp" alt="Coral-dwelling organisms and close interactions">
+        </figure>
+      </div>
+
+      <div class="container theme-grid">
+        <!-- Thermal Limits & Climate Stress -->
+        <article class="card theme-card">
+          <div class="theme-media">
+            <img loading="lazy" decoding="async"
+                 src="https://static1.squarespace.com/static/5a033287be42d65267fc9a14/t/68dd5178811da540b0f016b4/1759334810044/lobster.jpeg"
+                 alt="California spiny lobster - key predator for thermal studies"
+                 width="1600" height="900"
+                 srcset="
+                   https://static1.squarespace.com/static/5a033287be42d65267fc9a14/t/68dd5178811da540b0f016b4/1759334810044/lobster.jpeg?format=800w 800w,
+                   https://static1.squarespace.com/static/5a033287be42d65267fc9a14/t/68dd5178811da540b0f016b4/1759334810044/lobster.jpeg?format=1200w 1200w,
+                   https://static1.squarespace.com/static/5a033287be42d65267fc9a14/t/68dd5178811da540b0f016b4/1759334810044/lobster.jpeg?format=1600w 1600w"
+                 sizes="(max-width:980px) 100vw, 50vw">
+          </div>
+          <div class="theme-body">
+            <div class="theme-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" focusable="false">
+                <path d="M12 3l3 6h6l-4.5 4 1.5 7-6-3.5L6 20l1.5-7L3 9h6z" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+            <h3>Thermal Limits &amp; Climate Stress</h3>
+            <p>Temperature-dependent metabolism and performance (CTmax, acclimation) shaping survival and interactions under warming.</p>
+          </div>
+          <div class="theme-cta"><a class="btn ghost sm" href="#publications">Read more →</a></div>
+        </article>
+
+        <!-- Wound Healing & Regeneration -->
+        <article class="card theme-card">
+          <div class="theme-media">
+            <img loading="lazy" decoding="async"
+                 src="https://static1.squarespace.com/static/5a033287be42d65267fc9a14/t/68cd7d2a25a0e851f36b5bbb/1758297393836/P5222206.JPG"
+                 alt="Tissue repair on a coral"
+                 width="1600" height="900"
+                 srcset="
+                   https://static1.squarespace.com/static/5a033287be42d65267fc9a14/t/68cd7d2a25a0e851f36b5bbb/1758297393836/P5222206.JPG?format=800w 800w,
+                   https://static1.squarespace.com/static/5a033287be42d65267fc9a14/t/68cd7d2a25a0e851f36b5bbb/1758297393836/P5222206.JPG?format=1200w 1200w,
+                   https://static1.squarespace.com/static/5a033287be42d65267fc9a14/t/68cd7d2a25a0e851f36b5bbb/1758297393836/P5222206.JPG?format=1600w 1600w"
+                 sizes="(max-width:980px) 100vw, 50vw">
+          </div>
+          <div class="theme-body">
+            <div class="theme-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" focusable="false">
+                <path d="M12 5a5 5 0 0 0-5 5v2a5 5 0 0 0 10 0v-2" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M8 14l-2 4m10-4 2 4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+            <h3>Wound Healing &amp; Regeneration</h3>
+            <p>Rates and trajectories of tissue repair after lesions; how mutualists and cleaning alter recovery.</p>
+          </div>
+          <div class="theme-cta"><a class="btn ghost sm" href="#publications">Read more →</a></div>
+        </article>
+
+        <!-- Physiology–Behavior Links -->
+        <article class="card theme-card">
+          <div class="theme-media">
+            <img loading="lazy" decoding="async"
+                 src="https://static1.squarespace.com/static/5a033287be42d65267fc9a14/t/68dd522dcf55a5742587888e/1759334972819/sheephead.jpeg"
+                 alt="California sheephead - linking physiology to predation"
+                 width="1600" height="900"
+                 srcset="
+                   https://static1.squarespace.com/static/5a033287be42d65267fc9a14/t/68dd522dcf55a5742587888e/1759334972819/sheephead.jpeg?format=800w 800w,
+                   https://static1.squarespace.com/static/5a033287be42d65267fc9a14/t/68dd522dcf55a5742587888e/1759334972819/sheephead.jpeg?format=1200w 1200w,
+                   https://static1.squarespace.com/static/5a033287be42d65267fc9a14/t/68dd522dcf55a5742587888e/1759334972819/sheephead.jpeg?format=1600w 1600w"
+                 sizes="(max-width:980px) 100vw, 50vw">
+          </div>
+          <div class="theme-body">
+            <div class="theme-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" focusable="false">
+                <path d="M5 7h6l2 4-2 4H5l2-4-2-4z" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M13 7h6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M13 17h6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+            <h3>Physiology–Behavior Links</h3>
+            <p>How warming reshapes foraging, predation, and mutualism—linking energetics to interaction strength.</p>
+          </div>
+          <div class="theme-cta"><a class="btn ghost sm" href="#publications">Read more →</a></div>
+        </article>
+
+        <!-- Decision-Relevant Physiology -->
+        <article class="card theme-card">
+          <div class="theme-media">
+            <img loading="lazy" decoding="async"
+                 src="https://static1.squarespace.com/static/5a033287be42d65267fc9a14/t/68cd7e95d84ea11e9e1877a9/1758297753368/IMG_8632.JPG"
+                 alt="Field experiments and monitoring"
+                 width="1600" height="900"
+                 srcset="
+                   https://static1.squarespace.com/static/5a033287be42d65267fc9a14/t/68cd7e95d84ea11e9e1877a9/1758297753368/IMG_8632.JPG?format=800w 800w,
+                   https://static1.squarespace.com/static/5a033287be42d65267fc9a14/t/68cd7e95d84ea11e9e1877a9/1758297753368/IMG_8632.JPG?format=1200w 1200w,
+                   https://static1.squarespace.com/static/5a033287be42d65267fc9a14/t/68cd7e95d84ea11e9e1877a9/1758297753368/IMG_8632.JPG?format=1600w 1600w"
+                 sizes="(max-width:980px) 100vw, 50vw">
+          </div>
+          <div class="theme-body">
+            <div class="theme-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" focusable="false">
+                <path d="M4 12h7l-3 3m3-3-3-3" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M20 12a8 8 0 1 1-8-8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+            <h3>Decision-Relevant Physiology</h3>
+            <p>From thresholds to tools: translating organismal metrics into monitoring and restoration guidance.</p>
+          </div>
+          <div class="theme-cta"><a class="btn ghost sm" href="#publications">See publications →</a></div>
+        </article>
+      </div>
+    </section>
+
+    <!-- Projects -->
+    <section class="section" id="projects" aria-label="Featured projects">
+      <div class="container">
+        <h2>Featured projects</h2>
+        <div class="carousel">
+          <div class="carousel-rail" id="projRailOrg" aria-live="polite">
+            <!-- Project 1 -->
+            <article class="item">
+              <div class="proj">
+                <div class="proj-media">
+                  <img loading="lazy" decoding="async"
+                       src="https://static1.squarespace.com/static/5a033287be42d65267fc9a14/t/68cd7d2a25a0e851f36b5bbb/1758297393836/P5222206.JPG"
+                       alt="In-situ tracking of coral lesion recovery"
+                       width="1600" height="900"
+                       srcset="
+                         https://static1.squarespace.com/static/5a033287be42d65267fc9a14/t/68cd7d2a25a0e851f36b5bbb/1758297393836/P5222206.JPG?format=800w 800w,
+                         https://static1.squarespace.com/static/5a033287be42d65267fc9a14/t/68cd7d2a25a0e851f36b5bbb/1758297393836/P5222206.JPG?format=1200w 1200w,
+                         https://static1.squarespace.com/static/5a033287be42d65267fc9a14/t/68cd7d2a25a0e851f36b5bbb/1758297393836/P5222206.JPG?format=1600w 1600w"
+                       sizes="(max-width:900px) 86vw, 48vw">
+                </div>
+                <div class="proj-body">
+                  <h3>Coral wound healing trajectories</h3>
+                  <p>Field assays quantify repair rates and the role of guardians/housekeepers in speeding recovery.</p>
+                  <a class="btn primary sm" href="#publications">Learn more</a>
+                </div>
+              </div>
+            </article>
+
+            <!-- Project 2 -->
+            <article class="item">
+              <div class="proj">
+                <div class="proj-media">
+                  <img loading="lazy" decoding="async"
+                       src="https://static1.squarespace.com/static/5a033287be42d65267fc9a14/t/68dd5178811da540b0f016b4/1759334810044/lobster.jpeg"
+                       alt="Lobster thermal tolerance experiments"
+                       width="1600" height="900"
+                       srcset="
+                         https://static1.squarespace.com/static/5a033287be42d65267fc9a14/t/68dd5178811da540b0f016b4/1759334810044/lobster.jpeg?format=800w 800w,
+                         https://static1.squarespace.com/static/5a033287be42d65267fc9a14/t/68dd5178811da540b0f016b4/1759334810044/lobster.jpeg?format=1200w 1200w,
+                         https://static1.squarespace.com/static/5a033287be42d65267fc9a14/t/68dd5178811da540b0f016b4/1759334810044/lobster.jpeg?format=1600w 1600w"
+                       sizes="(max-width:900px) 86vw, 48vw">
+                </div>
+                <div class="proj-body">
+                  <h3>Thermal tolerance &amp; acclimation</h3>
+                  <p>Lab ramping & field validation link CTmax/acclimation to growth, survival, and behavior.</p>
+                  <a class="btn primary sm" href="#publications">Learn more</a>
+                </div>
+              </div>
+            </article>
+
+            <!-- Project 3 -->
+            <article class="item">
+              <div class="proj">
+                <div class="proj-media">
+                  <img loading="lazy" decoding="async"
+                       src="https://static1.squarespace.com/static/5a033287be42d65267fc9a14/t/68dd522dcf55a5742587888e/1759334972819/sheephead.jpeg"
+                       alt="Sheephead metabolic and behavioral studies"
+                       width="1600" height="900"
+                       srcset="
+                         https://static1.squarespace.com/static/5a033287be42d65267fc9a14/t/68dd522dcf55a5742587888e/1759334972819/sheephead.jpeg?format=800w 800w,
+                         https://static1.squarespace.com/static/5a033287be42d65267fc9a14/t/68dd522dcf55a5742587888e/1759334972819/sheephead.jpeg?format=1200w 1200w,
+                         https://static1.squarespace.com/static/5a033287be42d65267fc9a14/t/68dd522dcf55a5742587888e/1759334972819/sheephead.jpeg?format=1600w 1600w"
+                       sizes="(max-width:900px) 86vw, 48vw">
+                </div>
+                <div class="proj-body">
+                  <h3>Metabolism &amp; interaction strength</h3>
+                  <p>Temperature–metabolism links predict shifts in predation and mutualist services under warming.</p>
+                  <a class="btn primary sm" href="#publications">Learn more</a>
+                </div>
+              </div>
+            </article>
+
+            <!-- Project 4 -->
+            <article class="item">
+              <div class="proj">
+                <div class="proj-media">
+                  <img loading="lazy" decoding="async"
+                       src="https://static1.squarespace.com/static/5a033287be42d65267fc9a14/t/68cc81510e96ef6fe595d2f2/1758232914073/image_2_inline.webp"
+                       alt="Coral-dwelling fish near a colony"
+                       width="1600" height="900"
+                       srcset="
+                         https://static1.squarespace.com/static/5a033287be42d65267fc9a14/t/68cc81510e96ef6fe595d2f2/1758232914073/image_2_inline.webp?format=800w 800w,
+                         https://static1.squarespace.com/static/5a033287be42d65267fc9a14/t/68cc81510e96ef6fe595d2f2/1758232914073/image_2_inline.webp?format=1200w 1200w,
+                         https://static1.squarespace.com/static/5a033287be42d65267fc9a14/t/68cc81510e96ef6fe595d2f2/1758232914073/image_2_inline.webp?format=1600w 1600w"
+                       sizes="(max-width:900px) 86vw, 48vw">
+                </div>
+                <div class="proj-body">
+                  <h3>Mutualists &amp; fertilization</h3>
+                  <p>Fish associates fertilize and defend corals—boosting growth and recovery after stress.</p>
+                  <a class="btn primary sm" href="/publications">Learn more</a>
+                </div>
+              </div>
+            </article>
+          </div>
+          <div class="carousel-nav">
+            <button id="prevProjOrg" aria-label="Previous projects">‹ Prev</button>
+            <button id="nextProjOrg" aria-label="Next projects">Next ›</button>
+          </div>
+          <div class="carousel-thumbs" role="tablist" aria-label="Project thumbnails">
+            <button type="button" class="thumb" data-target="0" aria-label="Wound healing" aria-current="true">
+              <img src="https://static1.squarespace.com/static/5a033287be42d65267fc9a14/t/68cd7d2a25a0e851f36b5bbb/1758297393836/P5222206.JPG?format=200w" alt="">
+            </button>
+            <button type="button" class="thumb" data-target="1" aria-label="Thermal tolerance">
+              <img src="https://static1.squarespace.com/static/5a033287be42d65267fc9a14/t/68dd5178811da540b0f016b4/1759334810044/lobster.jpeg?format=200w" alt="">
+            </button>
+            <button type="button" class="thumb" data-target="2" aria-label="Metabolism study">
+              <img src="https://static1.squarespace.com/static/5a033287be42d65267fc9a14/t/68dd522dcf55a5742587888e/1759334972819/sheephead.jpeg?format=200w" alt="">
+            </button>
+            <button type="button" class="thumb" data-target="3" aria-label="Mutualists">
+              <img src="https://static1.squarespace.com/static/5a033287be42d65267fc9a14/t/68cc81510e96ef6fe595d2f2/1758232914073/image_2_inline.webp?format=200w" alt="">
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Findings -->
+    <section class="section" id="findings" aria-label="Key findings and impact">
+      <div class="container">
+        <div class="finding-grid">
+          <article class="finding">
+            <div class="finding-card" tabindex="0" aria-label="Thermal limits rewire interactions.">
+              <div class="finding-face finding-front">
+                <div class="finding-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 3 4 7l4 4"/><path d="M4 7h16"/><path d="m16 21 4-4-4-4"/><path d="M20 17H4"/></svg></div>
+                <p class="finding-headline">Thermal limits rewire interactions.</p>
+                <p class="finding-summary">Metabolic scaling forecasts temperature-dependent mutualist and predator performance.</p>
+              </div>
+              <div class="finding-face finding-back">
+                <p>As oceans warm, metabolism-driven interaction strengths can flip from facilitation to stress—central to forecasting resilience.</p>
+                <a href="https://doi.org/10.3389/fmars.2023.1072807" target="_blank" rel="noopener">Read the thermal scaling study →</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="finding">
+            <div class="finding-card" tabindex="0" aria-label="Mutualists accelerate healing.">
+              <div class="finding-face finding-front">
+                <div class="finding-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 22c7-3 8-10 8-13V5l-8-3-8 3v4c0 3 1 10 8 13"/><path d="m9 12 2 2 4-4"/></svg></div>
+                <p class="finding-headline">Mutualists accelerate healing.</p>
+                <p class="finding-summary">Guardians and cleaners shrink lesion area and boost growth.</p>
+              </div>
+              <div class="finding-face finding-back">
+                <p>Cleaning, anti-predator defence, and fertilisation (CAFI) services can be engineered into restoration designs.</p>
+                <a href="https://doi.org/10.1016/j.cub.2024.05.071" target="_blank" rel="noopener">Explore CAFI services →</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="finding">
+            <div class="finding-card" tabindex="0" aria-label="Fertilisation boosts recovery.">
+              <div class="finding-face finding-front">
+                <div class="finding-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8Z"/><circle cx="12" cy="12" r="3"/></svg></div>
+                <p class="finding-headline">Fertilisation boosts recovery.</p>
+                <p class="finding-summary">Coral-dwelling fishes provide nutrients that raise calcification and healing.</p>
+              </div>
+              <div class="finding-face finding-back">
+                <p>Partner species can be leveraged as living fertilisers—informing which mutualists to protect or seed.</p>
+                <a href="https://doi.org/10.1016/j.jtbi.2022.111087" target="_blank" rel="noopener">See the bioenergetic model →</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="finding">
+            <div class="finding-card" tabindex="0" aria-label="Physiology guides triage.">
+              <div class="finding-face finding-front">
+                <div class="finding-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="m10.3 2.3-8 14A2 2 0 0 0 4 19h16a2 2 0 0 0 1.7-2.7l-8-14a2 2 0 0 0-3.4 0Z"/><path d="M12 9v4"/><path d="M12 17h.01"/></svg></div>
+                <p class="finding-headline">Physiology guides triage.</p>
+                <p class="finding-summary">Thresholds and CTmax inform which reefs to prioritise—and how.</p>
+              </div>
+              <div class="finding-face finding-back">
+                <p>Embedding organismal limits into decision frameworks helps managers triage interventions under budget constraints.</p>
+                <a href="https://doi.org/10.1111/conl.12716" target="_blank" rel="noopener">Link to climate policy guidance →</a>
+              </div>
+            </div>
+          </article>
+        </div>
+
+        <div class="related-pubs" aria-label="Related publications">
+          <h3>Related publications</h3>
+          <div class="related-track">
+            <a class="related-card" href="https://doi.org/10.3389/fmars.2023.1072807" target="_blank" rel="noopener">The metabolic underpinnings of temperature-dependent predation in a key marine predator<span>Frontiers in Marine Science (2023)</span></a>
+            <a class="related-card" href="https://doi.org/10.1016/j.jtbi.2022.111087" target="_blank" rel="noopener">Fertilization by coral-dwelling fish promotes coral growth but can exacerbate bleaching response<span>Journal of Theoretical Biology (2022)</span></a>
+            <a class="related-card" href="https://doi.org/10.3389/fphys.2019.01166" target="_blank" rel="noopener">Strong Evidence for an Intraspecific Metabolic Scaling Coefficient Near 0.89 in Fish<span>Frontiers in Physiology (2019)</span></a>
+            <a class="related-card" href="https://doi.org/10.1111/conl.12716" target="_blank" rel="noopener">Integrating oceans into climate policy<span>Conservation Letters (2020)</span></a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Publications -->
+    <section class="section" id="publications" aria-label="Publications and highlights">
+      <div class="container">
+        <h2>Publications &amp; highlights</h2>
+
+        <div class="card">
+          <ul class="pubs-list" role="list">
+            <li class="pub">
+              <div>
+                <p class="title"><a href="https://doi.org/10.3389/fmars.2023.1072807" target="_blank" rel="noopener">The metabolic underpinnings of temperature-dependent predation</a></p>
+                <p class="sum">Mechanistic link between temperature, metabolism, and interaction strength in a key marine predator.</p>
+              </div>
+              <div class="meta"><time datetime="2023">2023</time><span class="badge">Front Mar Sci</span></div>
+            </li>
+            <li class="pub">
+              <div>
+                <p class="title"><a href="https://doi.org/10.1016/j.jtbi.2022.111087" target="_blank" rel="noopener">Fertilization by coral-dwelling fish promotes coral growth</a></p>
+                <p class="sum">Mutualist fishes subsidize corals via nutrient inputs, enhancing performance under some conditions.</p>
+              </div>
+              <div class="meta"><time datetime="2022">2022</time><span class="badge">J Theor Biol</span></div>
+            </li>
+            <li class="pub">
+              <div>
+                <p class="title"><a href="https://doi.org/10.3389/fphys.2019.01166" target="_blank" rel="noopener">Strong evidence for intraspecific metabolic scaling near 0.89</a></p>
+                <p class="sum">Performance and energetics framework relevant to thermal tolerance and climate adaptation.</p>
+              </div>
+              <div class="meta"><time datetime="2019">2019</time><span class="badge">Front Physiol</span></div>
+            </li>
+            <li class="pub">
+              <div>
+                <p class="title"><a href="https://doi.org/10.1111/conl.12716" target="_blank" rel="noopener">Integrating oceans into climate policy</a></p>
+                <p class="sum">Policy pathways for climate-smart conservation with organismal implications.</p>
+              </div>
+              <div class="meta"><time datetime="2020">2020</time><span class="badge">Conserv Lett</span></div>
+            </li>
+          </ul>
+        </div>
+
+        <div class="card logos" style="margin-top:10px">
+          <div class="row logos-row">
+            <span class="eyebrow" style="color:var(--muted)">FEATURED IN</span>
+            <img loading="lazy" decoding="async" src="https://dummyimage.com/160x34/ffffff/cccccc.png&text=Front+Mar+Sci" alt="Frontiers in Marine Science">
+            <img loading="lazy" decoding="async" src="https://dummyimage.com/140x34/ffffff/cccccc.png&text=J+Theor+Biol" alt="Journal of Theoretical Biology">
+            <img loading="lazy" decoding="async" src="https://dummyimage.com/140x34/ffffff/cccccc.png&text=Front+Physiol" alt="Frontiers in Physiology">
+            <img loading="lazy" decoding="async" src="https://dummyimage.com/140x34/ffffff/cccccc.png&text=Conserv+Lett" alt="Conservation Letters">
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="section cta-band" id="get-involved" aria-label="Get involved">
+      <div class="container">
+        <div class="card">
+          <h2>Get involved</h2>
+          <p>Collaborate on lab & field experiments, join the lab, or co-develop tools for climate-smart restoration.</p>
+          <div class="row" style="margin-top:10px">
+            <a class="btn primary" href="/people">Collaborate with us</a>
+            <a class="btn ghost" href="/join">Join the lab</a>
+            <a class="btn ghost" href="mailto:astier@ucsb.edu?subject=Support Ocean Recoveries Lab">Support our work</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Image credits -->
+    <section class="section" aria-label="Image credits">
+      <div class="container">
+        <p style="font-size:13px;color:#6c7b89">
+          Images: Ocean Recoveries Lab (Squarespace-hosted); Unsplash (CC0). Where applicable, credit required and appreciated.
+        </p>
+      </div>
+    </section>
+  </main>
+</section>
+<script>
+(function(){
+  const rail = document.getElementById('projRailOrg');
+  if(!rail) return;
+  const carousel = rail.closest('.carousel');
+  const items = Array.from(rail.querySelectorAll('.item'));
+  const prev = document.getElementById('prevProjOrg');
+  const next = document.getElementById('nextProjOrg');
+  const thumbs = carousel ? Array.from(carousel.querySelectorAll('.carousel-thumbs .thumb')) : [];
+  let isGliding = false;
+
+  const clamp = (idx) => Math.max(0, Math.min(items.length - 1, idx));
+
+  const goTo = (index) => {
+    const targetIndex = clamp(index);
+    const target = items[targetIndex];
+    if (!target) return;
+    isGliding = true;
+    rail.scrollTo({ left: target.offsetLeft, behavior: 'smooth' });
+    window.setTimeout(() => {
+      isGliding = false;
+      update();
+    }, 420);
+  };
+
+  const activeIndex = () => {
+    const midpoint = rail.scrollLeft + rail.clientWidth / 2;
+    let best = 0;
+    let bestDistance = Infinity;
+    items.forEach((item, idx) => {
+      const itemCenter = item.offsetLeft + item.clientWidth / 2;
+      const distance = Math.abs(midpoint - itemCenter);
+      if (distance < bestDistance) {
+        bestDistance = distance;
+        best = idx;
+      }
+    });
+    return clamp(best);
+  };
+
+  const updateThumbs = (idx) => {
+    thumbs.forEach((btn, i) => btn.setAttribute('aria-current', i === idx ? 'true' : 'false'));
+  };
+
+  const update = () => {
+    const idx = activeIndex();
+    if (prev) prev.disabled = idx === 0;
+    if (next) next.disabled = idx === items.length - 1;
+    updateThumbs(idx);
+  };
+
+  prev && prev.addEventListener('click', () => goTo(activeIndex() - 1));
+  next && next.addEventListener('click', () => goTo(activeIndex() + 1));
+  thumbs.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const idx = Number(btn.getAttribute('data-target'));
+      goTo(idx);
+    });
+  });
+
+  rail.addEventListener('scroll', () => {
+    if (!isGliding) window.requestAnimationFrame(update);
+  }, { passive: true });
+  window.addEventListener('resize', () => window.requestAnimationFrame(update));
+  update();
+})();
+</script>
+</body>
+</html>

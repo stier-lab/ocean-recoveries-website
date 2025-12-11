@@ -1,0 +1,195 @@
+---
+interface Props {
+  name: string;
+  role: string;
+  title: string;
+  image: string;
+  actionImage?: string;
+  hook: string;
+  tags: string[];
+  email?: string;
+  website?: string;
+  orcid?: string;
+  github?: string;
+}
+
+const { name, role, title, image, actionImage, hook, tags, email, website, orcid, github } = Astro.props;
+
+const roleLabels: Record<string, string> = {
+  pi: 'PI',
+  postdoc: 'Postdoc',
+  phd: 'PhD',
+  manager: 'Lab Manager',
+  undergrad: 'Undergraduate',
+};
+
+const roleLabel = roleLabels[role] || role;
+---
+
+<article class="person-card group">
+  <div class="photo-wrap">
+    <img
+      src={image}
+      alt={`${name} portrait`}
+      class="photo"
+      loading="lazy"
+    />
+    {actionImage && (
+      <img
+        src={actionImage}
+        alt={`${name} in the field`}
+        class="action-photo"
+        loading="lazy"
+      />
+    )}
+    <span class="role-tag">{roleLabel}</span>
+  </div>
+
+  <div class="body">
+    <h3 class="name">{name}</h3>
+    <p class="title-text">{title}</p>
+    <p class="hook">{hook}</p>
+
+    <div class="tags">
+      {tags.map((tag) => (
+        <span class="tag">{tag}</span>
+      ))}
+    </div>
+
+    <div class="cta-row">
+      {email && (
+        <a href={`mailto:${email}`} class="btn-contact" aria-label={`Email ${name}`}>
+          <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
+            <polyline points="22,6 12,13 2,6" />
+          </svg>
+          <span>Contact</span>
+        </a>
+      )}
+
+      {website && (
+        <a href={website} target="_blank" rel="noopener noreferrer" class="btn-icon" aria-label={`${name}'s website`}>
+          <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="12" cy="12" r="10" />
+            <line x1="2" y1="12" x2="22" y2="12" />
+            <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" />
+          </svg>
+        </a>
+      )}
+
+      {orcid && (
+        <a href={`https://orcid.org/${orcid}`} target="_blank" rel="noopener noreferrer" class="btn-icon" aria-label={`${name}'s ORCID`}>
+          <svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M12 0C5.372 0 0 5.372 0 12s5.372 12 12 12 12-5.372 12-12S18.628 0 12 0zM7.369 4.378c.525 0 .947.431.947.947s-.422.947-.947.947a.95.95 0 01-.947-.947c0-.525.422-.947.947-.947zm-.722 3.038h1.444v10.041H6.647V7.416zm3.562 0h3.9c3.712 0 5.344 2.653 5.344 5.025 0 2.578-2.016 5.025-5.325 5.025h-3.919V7.416zm1.444 1.303v7.444h2.297c3.272 0 4.022-2.484 4.022-3.722 0-2.016-1.284-3.722-4.097-3.722h-2.222z" />
+          </svg>
+        </a>
+      )}
+
+      {github && (
+        <a href={`https://github.com/${github}`} target="_blank" rel="noopener noreferrer" class="btn-icon" aria-label={`${name}'s GitHub`}>
+          <svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
+          </svg>
+        </a>
+      )}
+    </div>
+  </div>
+</article>
+
+<style>
+  .person-card {
+    @apply bg-white dark:bg-dark-card border border-line dark:border-dark-line rounded-lg overflow-hidden shadow;
+    @apply transition-all duration-300 ease-spring;
+    @apply flex flex-col h-full;
+  }
+
+  .person-card:hover {
+    @apply -translate-y-1 shadow-lg;
+  }
+
+  .photo-wrap {
+    @apply relative aspect-[5/6] bg-line/30 dark:bg-dark-line/30 overflow-hidden;
+  }
+
+  .photo-wrap::before {
+    content: "";
+    @apply absolute inset-0 z-10 pointer-events-none;
+    background: linear-gradient(180deg, rgba(0,0,0,0.5) 0%, transparent 40%);
+  }
+
+  .photo {
+    @apply absolute inset-0 w-full h-full object-cover;
+    @apply transition-transform duration-500;
+  }
+
+  .action-photo {
+    @apply absolute inset-0 w-full h-full object-cover opacity-0;
+    @apply transition-opacity duration-500;
+  }
+
+  .person-card:hover .photo {
+    @apply scale-105;
+  }
+
+  .person-card:hover .action-photo {
+    @apply opacity-100;
+  }
+
+  .role-tag {
+    @apply absolute top-3 left-3 z-20;
+    @apply px-3 py-1.5 rounded-full;
+    @apply bg-ink/90 text-white text-xs font-bold uppercase tracking-wide;
+    @apply border border-white/30 shadow-lg;
+  }
+
+  .body {
+    @apply flex flex-col flex-1 p-5;
+  }
+
+  .name {
+    @apply text-lg font-extrabold text-ink dark:text-dark-ink mb-1;
+  }
+
+  .title-text {
+    @apply text-xs font-bold uppercase tracking-wide text-muted dark:text-dark-muted mb-2;
+  }
+
+  .hook {
+    @apply text-sm text-muted dark:text-dark-muted leading-relaxed mb-3 flex-1;
+  }
+
+  .tags {
+    @apply flex flex-wrap gap-2 mb-4;
+  }
+
+  .tag {
+    @apply px-2 py-1 text-xs font-semibold rounded-md;
+    @apply bg-line/50 dark:bg-dark-line/50 text-ink dark:text-dark-ink;
+    @apply border border-line dark:border-dark-line;
+  }
+
+  .cta-row {
+    @apply flex items-center gap-2 mt-auto;
+  }
+
+  .btn-contact {
+    @apply inline-flex items-center gap-2 px-3 py-2;
+    @apply text-sm font-semibold text-accent dark:text-dark-accent;
+    @apply border border-line dark:border-dark-line rounded-lg bg-white dark:bg-dark-card;
+    @apply transition-all duration-200 no-underline;
+  }
+
+  .btn-contact:hover {
+    @apply bg-accent text-white border-accent;
+  }
+
+  .btn-icon {
+    @apply p-2 rounded-lg text-muted dark:text-dark-muted;
+    @apply border border-line dark:border-dark-line bg-white dark:bg-dark-card;
+    @apply transition-all duration-200 no-underline;
+  }
+
+  .btn-icon:hover {
+    @apply text-accent dark:text-dark-accent border-accent dark:border-dark-accent;
+  }
+</style>

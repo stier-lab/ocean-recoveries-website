@@ -1,0 +1,733 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Research • Ocean Recoveries Lab</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+</head>
+<body style="margin:0;">
+
+<style>
+/* =====================
+   SQUARESPACE ISOLATION
+====================== */
+body .sqs-block-code,
+body .sqs-block-code *,
+body .sqs-block-content,
+body .sqs-block-content *,
+body .fe-block,
+body .fe-block * {
+  background: transparent !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  box-sizing: border-box !important;
+}
+
+body .orlUX-wrapper {
+  background: #ffffff !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  display: block !important;
+  position: relative !important;
+}
+
+body .orlUX {
+  background: #ffffff !important;
+  margin: 0 auto !important;
+  padding: 0 !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  display: block !important;
+  position: relative !important;
+}
+
+body .orlUX * {
+  box-sizing: border-box !important;
+}
+
+body .orlUX,
+body .orlUX *,
+body .orlUX *::before,
+body .orlUX *::after {
+  font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif !important;
+  -webkit-font-smoothing: antialiased !important;
+  -moz-osx-font-smoothing: grayscale !important;
+}
+
+/* Color overrides */
+body .orlUX h1,
+body .orlUX h2,
+body .orlUX h3 {
+  color: #0b2545 !important;
+  background: transparent !important;
+}
+
+body .orlUX p,
+body .orlUX li {
+  color: #566579 !important;
+  background: transparent !important;
+}
+
+body .orlUX a {
+  color: #117db2 !important;
+}
+
+body .orlUX a:hover {
+  color: #0a5a85 !important;
+}
+
+/* =====================
+   NOVEL LAYOUT STYLES
+====================== */
+
+.research-redesign {
+  font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  color: #0b2545;
+  line-height: 1.6;
+  background: #ffffff;
+}
+
+/* SPLIT HERO SECTION */
+.hero-split {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 3rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: clamp(64px, 10vw, 120px) clamp(24px, 5vw, 48px);
+  margin-bottom: clamp(80px, 12vw, 120px);
+}
+
+@media (min-width: 900px) {
+  .hero-split {
+    grid-template-columns: 1.1fr 0.9fr;
+    align-items: center;
+    gap: 4rem;
+  }
+}
+
+.hero-content h1 {
+  font-size: clamp(38px, 6vw, 56px);
+  font-weight: 900;
+  line-height: 1.1;
+  margin: 0 0 1.5rem;
+  letter-spacing: -0.02em;
+}
+
+.hero-content .lead {
+  font-size: clamp(19px, 2.5vw, 22px);
+  font-weight: 600;
+  color: #0b2545;
+  margin: 0 0 1rem;
+  line-height: 1.5;
+}
+
+.hero-content p {
+  font-size: clamp(16px, 2vw, 18px);
+  color: #566579;
+  margin: 0 0 2rem;
+  line-height: 1.7;
+}
+
+.hero-image {
+  position: relative;
+  border-radius: 24px;
+  overflow: hidden;
+  box-shadow: 0 20px 60px rgba(11, 37, 69, 0.15);
+}
+
+.hero-image img {
+  width: 100%;
+  height: auto;
+  display: block;
+  aspect-ratio: 4/3;
+  object-fit: cover;
+}
+
+.hero-ctas {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 800;
+  text-decoration: none;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+  transition: all 0.2s ease;
+}
+
+.btn.primary {
+  background: linear-gradient(135deg, #0b2545 0%, #173451 100%);
+  color: #fff;
+  border-radius: 12px;
+  padding: 1rem 1.75rem;
+  box-shadow: 0 8px 24px rgba(11, 37, 69, 0.25);
+}
+
+.btn.primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 32px rgba(11, 37, 69, 0.35);
+}
+
+.btn.secondary {
+  background: transparent;
+  color: #0b2545;
+  border: 2px solid #0b2545;
+  border-radius: 12px;
+  padding: 0.9rem 1.65rem;
+}
+
+.btn.secondary:hover {
+  background: #0b2545;
+  color: #fff;
+}
+
+/* STAGGERED PILLAR CARDS */
+.pillars-staggered {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: clamp(64px, 10vw, 120px) clamp(24px, 5vw, 48px);
+  margin-bottom: clamp(80px, 12vw, 120px);
+}
+
+.pillars-staggered h2 {
+  font-size: clamp(32px, 5vw, 42px);
+  font-weight: 900;
+  text-align: center;
+  margin: 0 0 clamp(56px, 10vw, 88px);
+}
+
+.pillar-card {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2.5rem;
+  margin-bottom: clamp(48px, 8vw, 72px);
+  background: linear-gradient(135deg, #f7fafb 0%, #ffffff 100%);
+  border-radius: 28px;
+  padding: clamp(40px, 7vw, 56px);
+  box-shadow: 0 8px 32px rgba(11, 37, 69, 0.08);
+  border: 1px solid rgba(17, 125, 178, 0.1);
+  transition: all 0.3s ease;
+}
+
+.pillar-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 16px 48px rgba(11, 37, 69, 0.15);
+}
+
+@media (min-width: 900px) {
+  .pillar-card {
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+  }
+
+  .pillar-card:nth-child(even) .pillar-content {
+    order: 2;
+  }
+
+  .pillar-card:nth-child(even) .pillar-image {
+    order: 1;
+  }
+}
+
+.pillar-tag {
+  display: inline-block;
+  font-size: 0.75rem;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #117db2;
+  background: linear-gradient(135deg, #e6f5fc 0%, #d4ebf7 100%);
+  padding: 0.5rem 1rem;
+  border-radius: 999px;
+  margin-bottom: 1.25rem;
+  box-shadow: 0 2px 8px rgba(17, 125, 178, 0.15);
+}
+
+.pillar-content h3 {
+  font-size: clamp(24px, 4vw, 32px);
+  font-weight: 800;
+  margin: 0 0 1rem;
+  line-height: 1.25;
+}
+
+.pillar-content p {
+  color: #566579;
+  font-size: clamp(16px, 2vw, 18px);
+  margin: 0 0 1.5rem;
+  line-height: 1.7;
+}
+
+.pillar-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-weight: 700;
+  color: #117db2;
+  text-decoration: none;
+  transition: gap 0.2s ease;
+}
+
+.pillar-link:hover {
+  gap: 0.75rem;
+}
+
+.pillar-image {
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 12px 36px rgba(11, 37, 69, 0.15);
+}
+
+.pillar-image img {
+  width: 100%;
+  height: auto;
+  display: block;
+  aspect-ratio: 16/11;
+  object-fit: cover;
+  transition: transform 0.4s ease;
+}
+
+.pillar-card:hover .pillar-image img {
+  transform: scale(1.05);
+}
+
+/* TABBED INTERFACE */
+.research-tabs {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: clamp(64px, 10vw, 120px) clamp(24px, 5vw, 48px) clamp(80px, 12vw, 140px);
+  background: linear-gradient(180deg, #f7fafb 0%, #ffffff 100%);
+}
+
+.research-tabs h2 {
+  font-size: clamp(32px, 5vw, 42px);
+  font-weight: 900;
+  text-align: center;
+  margin: 0 0 clamp(40px, 8vw, 64px);
+}
+
+.tab-nav {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 2.5rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.tab-button {
+  background: #ffffff;
+  border: 2px solid #e6edf6;
+  border-radius: 12px;
+  padding: 1rem 1.5rem;
+  font-weight: 700;
+  font-size: 15px;
+  color: #566579;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.tab-button:hover {
+  border-color: #117db2;
+  color: #117db2;
+}
+
+.tab-button.active {
+  background: linear-gradient(135deg, #117db2 0%, #0a5a85 100%);
+  border-color: #117db2;
+  color: #ffffff;
+  box-shadow: 0 4px 16px rgba(17, 125, 178, 0.25);
+}
+
+.tab-content {
+  display: none;
+  animation: fadeIn 0.3s ease;
+}
+
+.tab-content.active {
+  display: block;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.tab-panel {
+  background: #ffffff;
+  border-radius: 20px;
+  padding: clamp(40px, 7vw, 64px);
+  box-shadow: 0 8px 32px rgba(11, 37, 69, 0.08);
+  border: 1px solid rgba(17, 125, 178, 0.1);
+}
+
+.flash-box {
+  background: linear-gradient(135deg, #f7fafb 0%, #ffffff 100%);
+  border-left: 4px solid #117db2;
+  border-radius: 12px;
+  padding: 1.75rem;
+  margin-bottom: 2.5rem;
+  box-shadow: 0 2px 12px rgba(11, 37, 69, 0.06);
+}
+
+.flash-box strong {
+  color: #0b2545;
+  font-weight: 800;
+}
+
+.tab-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 3rem;
+}
+
+@media (min-width: 900px) {
+  .tab-grid {
+    grid-template-columns: 1.2fr 0.8fr;
+  }
+}
+
+.research-list {
+  margin: 2rem 0;
+  padding-left: 1.5rem;
+}
+
+.research-list li {
+  margin: 1.25rem 0;
+  line-height: 1.8;
+}
+
+.research-list strong {
+  color: #0b2545;
+  font-weight: 700;
+}
+
+.pubs-list {
+  margin: 2rem 0;
+  padding-left: 0;
+  list-style: none;
+}
+
+.pubs-list li {
+  margin: 1.5rem 0;
+  line-height: 1.8;
+  padding-left: 1.5rem;
+  position: relative;
+}
+
+.pubs-list li::before {
+  content: "→";
+  position: absolute;
+  left: 0;
+  color: #117db2;
+  font-weight: 700;
+}
+
+.pubs-list a {
+  color: #117db2;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.pubs-list a:hover {
+  text-decoration: underline;
+}
+
+.tab-image {
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 12px 36px rgba(11, 37, 69, 0.12);
+}
+
+.tab-image img {
+  width: 100%;
+  height: auto;
+  display: block;
+  aspect-ratio: 4/3;
+  object-fit: cover;
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+  .hero-split {
+    gap: 2rem;
+  }
+
+  .pillar-card {
+    padding: 24px;
+  }
+
+  .tab-panel {
+    padding: 24px;
+  }
+}
+</style>
+
+<div class="orlUX-wrapper">
+  <div class="orlUX">
+    <div class="research-redesign">
+
+      <!-- SPLIT HERO -->
+      <section class="hero-split">
+        <div class="hero-content">
+          <h1>Understanding, Restoring, and Scaling Ocean Resilience</h1>
+          <p class="lead">Science and community partnerships to help coral reefs and kelp forests recover.</p>
+          <p>We integrate ecosystem dynamics, conservation with communities, and quantitative methods to guide funders and partners toward actions with outsized impact.</p>
+          <div class="hero-ctas">
+            <a class="btn primary" href="#pillars">Explore our research</a>
+            <a class="btn secondary" href="https://www.oceanrecoveries.com/new-page">See publications</a>
+          </div>
+        </div>
+        <div class="hero-image">
+          <img
+            src="https://images.unsplash.com/photo-1559827260-dc66d52bef19?q=80&w=1200&auto=format"
+            alt="Vibrant coral reef ecosystem"
+            loading="eager">
+        </div>
+      </section>
+
+      <!-- STAGGERED PILLAR CARDS -->
+      <section id="pillars" class="pillars-staggered">
+        <h2>Our Research Pillars</h2>
+
+        <!-- Pillar 1 -->
+        <article class="pillar-card">
+          <div class="pillar-content">
+            <span class="pillar-tag">Pillar 1</span>
+            <h3>Marine Ecosystem Dynamics & Resilience</h3>
+            <p>We study how kelp and corals build habitat, how species interactions drive change, and what pushes reefs across tipping points—and how to pull them back.</p>
+            <a href="#tab1" class="pillar-link" onclick="switchTab('tab1', event)">
+              Explore this pillar →
+            </a>
+          </div>
+          <div class="pillar-image">
+            <img
+              src="https://static1.squarespace.com/static/5a033287be42d65267fc9a14/t/68cb2c74c5ef1d4194ba1061/1758145653960/AdobeStock_658768154_webready.jpg"
+              alt="Kelp forest canopy"
+              loading="lazy">
+          </div>
+        </article>
+
+        <!-- Pillar 2 -->
+        <article class="pillar-card">
+          <div class="pillar-content">
+            <span class="pillar-tag">Pillar 2</span>
+            <h3>Conservation Science & Human Dimensions</h3>
+            <p>We co-design solutions with agencies and communities—testing what works, setting thresholds for action, and reducing conflict so decisions stick.</p>
+            <a href="#tab2" class="pillar-link" onclick="switchTab('tab2', event)">
+              Explore this pillar →
+            </a>
+          </div>
+          <div class="pillar-image">
+            <img
+              src="https://static1.squarespace.com/static/5a033287be42d65267fc9a14/t/68cb2c74ee43ff7e346e506f/1758145654055/AdobeStock_233483513_webready.jpg"
+              alt="Research vessel"
+              loading="lazy">
+          </div>
+        </article>
+
+        <!-- Pillar 3 -->
+        <article class="pillar-card">
+          <div class="pillar-content">
+            <span class="pillar-tag">Pillar 3</span>
+            <h3>Ecological Theory & Quantitative Methods</h3>
+            <p>We build simple, powerful models and tools—paired with new measurements—so managers can forecast, test "what-ifs," and scale solutions.</p>
+            <a href="#tab3" class="pillar-link" onclick="switchTab('tab3', event)">
+              Explore this pillar →
+            </a>
+          </div>
+          <div class="pillar-image">
+            <img
+              src="https://static1.squarespace.com/static/5a033287be42d65267fc9a14/t/68cb2c74dfdd2b081f5c96d3/1758145653949/AdobeStock_670271098_webready.jpg"
+              alt="Complex dynamics visualization"
+              loading="lazy">
+          </div>
+        </article>
+      </section>
+
+      <!-- TABBED DETAILS -->
+      <section class="research-tabs">
+        <h2>Research Deep Dive</h2>
+
+        <nav class="tab-nav" role="tablist">
+          <button class="tab-button active" onclick="switchTab('tab1')" role="tab">
+            Ecosystem Dynamics
+          </button>
+          <button class="tab-button" onclick="switchTab('tab2')" role="tab">
+            Conservation & Human Dimensions
+          </button>
+          <button class="tab-button" onclick="switchTab('tab3')" role="tab">
+            Theory & Methods
+          </button>
+        </nav>
+
+        <!-- Tab 1 -->
+        <div id="tab1" class="tab-content active" role="tabpanel">
+          <div class="tab-panel">
+            <div class="flash-box">
+              <strong>At a glance:</strong> We study how kelp and corals build habitat, how species interactions (e.g., lobster–urchin) drive change, and what pushes reefs across tipping points—and how to pull them back.
+            </div>
+
+            <div class="tab-grid">
+              <div>
+                <h3>Key Research Areas</h3>
+                <ul class="research-list">
+                  <li><strong>Foundation species & habitat:</strong> kelp & corals build homes → stability.</li>
+                  <li><strong>Species interactions & food webs:</strong> predators, prey, and mutualists.</li>
+                  <li><strong>Disturbance & tipping points:</strong> storms/bleaching; material legacies can favor algae.</li>
+                  <li><strong>Function & nutrients:</strong> detritus in kelp; fish recycle nitrogen that boosts coral growth.</li>
+                </ul>
+
+                <h3 style="margin-top:2rem;">Representative Publications</h3>
+                <ul class="pubs-list">
+                  <li><strong>Stier & Osenberg (2024).</strong> <a href="https://doi.org/10.1016/j.cub.2024.05.071" target="_blank">How fishes and invertebrates impact coral resilience</a>. <em>Current Biology</em></li>
+                  <li><strong>Stier & Osenberg (2024).</strong> <a href="https://doi.org/10.1016/j.cub.2023.10.067" target="_blank">Coral guard crabs</a>. <em>Current Biology</em></li>
+                  <li><strong>White et al. (2023).</strong> <a href="https://doi.org/10.1002/ecy.4147" target="_blank">Kelp detritus fuels nearshore food webs</a>. <em>Ecology</em></li>
+                </ul>
+              </div>
+
+              <div class="tab-image">
+                <img
+                  src="https://static1.squarespace.com/static/5a033287be42d65267fc9a14/t/68cb2c74c5ef1d4194ba1061/1758145653960/AdobeStock_658768154_webready.jpg"
+                  alt="Kelp forest"
+                  loading="lazy">
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tab 2 -->
+        <div id="tab2" class="tab-content" role="tabpanel">
+          <div class="tab-panel">
+            <div class="flash-box">
+              <strong>At a glance:</strong> We co-design solutions with agencies and communities—testing what works, setting thresholds for action, and reducing conflict so decisions stick.
+            </div>
+
+            <div class="tab-grid">
+              <div>
+                <h3>Key Research Areas</h3>
+                <ul class="research-list">
+                  <li><strong>MPAs & fisheries:</strong> benefits to wildlife and nearby fishers; measure spillover.</li>
+                  <li><strong>Recovery strategies:</strong> synchronize predator–prey recovery.</li>
+                  <li><strong>Stakeholders & policy:</strong> align perceptions, lower participation costs.</li>
+                  <li><strong>Restoration & climate:</strong> science-based methods to restore biodiversity.</li>
+                </ul>
+
+                <h3 style="margin-top:2rem;">Representative Publications</h3>
+                <ul class="pubs-list">
+                  <li><strong>Lenihan et al. (2021).</strong> <a href="https://doi.org/10.1038/s41598-021-82371-5" target="_blank">Spillover benefits to the spiny lobster fishery</a>. <em>Sci. Reports</em></li>
+                  <li><strong>White et al. (2019).</strong> <a href="https://doi.org/10.1002/eap.2051" target="_blank">Restoration enhances kelp biodiversity</a>. <em>Ecol. Appl.</em></li>
+                  <li><strong>Samhouri et al. (2017).</strong> <a href="https://doi.org/10.1038/s41559-016-0068" target="_blank">Synchronized predator–prey recovery</a>. <em>Nat. Ecol. Evol.</em></li>
+                </ul>
+              </div>
+
+              <div class="tab-image">
+                <img
+                  src="https://static1.squarespace.com/static/5a033287be42d65267fc9a14/t/68cb2c74ee43ff7e346e506f/1758145654055/AdobeStock_233483513_webready.jpg"
+                  alt="Research vessel"
+                  loading="lazy">
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tab 3 -->
+        <div id="tab3" class="tab-content" role="tabpanel">
+          <div class="tab-panel">
+            <div class="flash-box">
+              <strong>At a glance:</strong> We build simple, powerful models and tools—paired with new measurements (e.g., 3D imaging)—so managers can forecast, test "what-ifs," and scale solutions.
+            </div>
+
+            <div class="tab-grid">
+              <div>
+                <h3>Key Research Areas</h3>
+                <ul class="research-list">
+                  <li><strong>Theory:</strong> mutualisms, food webs, species–area rules explain why some reefs bounce back.</li>
+                  <li><strong>Methods:</strong> Bayesian models, SEM, MSE.</li>
+                  <li><strong>Experiments & data:</strong> field/lab studies; 3D photogrammetry.</li>
+                  <li><strong>Data systems:</strong> ILTER observatories; long-term comparable data.</li>
+                </ul>
+
+                <h3 style="margin-top:2rem;">Representative Publications</h3>
+                <ul class="pubs-list">
+                  <li><strong>Stier & Osenberg (2024).</strong> <a href="https://doi.org/10.1016/j.cub.2024.05.071" target="_blank">Mutualisms & coral resilience</a>. <em>Current Biology</em></li>
+                  <li><strong>Detmer et al. (2021).</strong> <a href="https://doi.org/10.1002/ecy.3449" target="_blank">Disturbance to a foundation species structures communities</a>. <em>Ecology</em></li>
+                </ul>
+              </div>
+
+              <div class="tab-image">
+                <img
+                  src="https://static1.squarespace.com/static/5a033287be42d65267fc9a14/t/68cb2c74dfdd2b081f5c96d3/1758145653949/AdobeStock_670271098_webready.jpg"
+                  alt="Data visualization"
+                  loading="lazy">
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+    </div>
+  </div>
+</div>
+
+<script>
+function switchTab(tabId, event) {
+  if (event) event.preventDefault();
+
+  // Hide all tabs
+  document.querySelectorAll('.tab-content').forEach(tab => {
+    tab.classList.remove('active');
+  });
+
+  // Remove active from all buttons
+  document.querySelectorAll('.tab-button').forEach(btn => {
+    btn.classList.remove('active');
+  });
+
+  // Show selected tab
+  const selectedTab = document.getElementById(tabId);
+  if (selectedTab) {
+    selectedTab.classList.add('active');
+
+    // Find and activate corresponding button
+    const buttons = document.querySelectorAll('.tab-button');
+    const tabIndex = tabId === 'tab1' ? 0 : tabId === 'tab2' ? 1 : 2;
+    if (buttons[tabIndex]) {
+      buttons[tabIndex].classList.add('active');
+    }
+
+    // Smooth scroll to tabs section
+    document.querySelector('.research-tabs').scrollIntoView({
+      behavior: 'smooth',
+      block: 'start'
+    });
+  }
+}
+
+// Smooth scrolling for anchor links
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+  anchor.addEventListener('click', function (e) {
+    const href = this.getAttribute('href');
+    if (href.startsWith('#tab')) return; // Let switchTab handle these
+
+    e.preventDefault();
+    const target = document.querySelector(href);
+    if (target) {
+      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  });
+});
+</script>
+
+</body>
+</html>

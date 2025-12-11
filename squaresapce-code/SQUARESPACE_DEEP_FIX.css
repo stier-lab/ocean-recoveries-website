@@ -1,0 +1,302 @@
+/* =====================
+   SQUARESPACE 7.1 DEEP FIX - Maximum Isolation
+   Addresses: light-on-light text, navy backgrounds, spacing issues
+====================== */
+
+/* ========== CONTAINER & BACKGROUND FIXES ========== */
+
+/* Kill ALL Squarespace containers and backgrounds */
+.sqs-block-code,
+.sqs-block-code *,
+.sqs-block-content,
+.sqs-block-content * {
+  background: transparent !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+/* Force the code block itself to have NO background */
+.sqs-block-code {
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+
+/* Remove Fluid Engine grid backgrounds */
+[class*="fe-block"],
+[class*="fluid-engine"],
+.fe-block,
+section[data-section-theme],
+.page-section,
+.content-wrapper {
+  background: transparent !important;
+  background-color: transparent !important;
+}
+
+/* Force page-level backgrounds to white */
+body,
+#page,
+.site-wrapper,
+main#page-content {
+  background: #ffffff !important;
+  background-color: #ffffff !important;
+}
+
+/* ========== WRAPPER ISOLATION ========== */
+
+.orlUX-wrapper {
+  background: #ffffff !important;
+  background-color: #ffffff !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  min-width: 100% !important;
+  display: block !important;
+  position: relative !important;
+  isolation: isolate !important;
+}
+
+.orlUX {
+  background: #ffffff !important;
+  background-color: #ffffff !important;
+  color: #0b2545 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  display: block !important;
+  position: relative !important;
+  isolation: isolate !important;
+}
+
+/* ========== TEXT COLOR FIXES ========== */
+
+/* DARK TEXT ON WHITE - Primary headings */
+.orlUX h1,
+.orlUX h2,
+.orlUX h3,
+.orlUX h4,
+.orlUX h5,
+.orlUX h6,
+.orlUX .hero h1,
+.orlUX .section-header h2,
+.orlUX .vision-card h2,
+.orlUX .theme-body h3,
+.orlUX .project-body h3,
+.orlUX .finding-headline,
+.orlUX .pub-title {
+  color: #0b2545 !important;
+  background: transparent !important;
+}
+
+/* Body text - Must be dark gray, NOT light gray */
+.orlUX p,
+.orlUX .hero-lead,
+.orlUX .theme-body p,
+.orlUX .project-body p,
+.orlUX .finding-summary,
+.orlUX .pub-summary,
+.orlUX .vision-card p,
+.orlUX li {
+  color: #566579 !important;
+  background: transparent !important;
+}
+
+/* Links - Blue and readable */
+.orlUX a,
+.orlUX a:link,
+.orlUX a:visited {
+  color: #117db2 !important;
+  background: transparent !important;
+}
+
+.orlUX a:hover {
+  color: #0a5a85 !important;
+}
+
+/* ========== HERO SECTION - WHITE TEXT ON DARK ========== */
+
+/* Force hero to have proper dark background */
+.orlUX .hero,
+.orlUX header.hero {
+  background: linear-gradient(135deg, #0b2545 0%, #117db2 100%) !important;
+  color: #ffffff !important;
+}
+
+/* Hero text MUST be white */
+.orlUX .hero h1,
+.orlUX .hero .hero-panel h1,
+.orlUX header.hero h1 {
+  color: #ffffff !important;
+  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.5) !important;
+  background: transparent !important;
+}
+
+.orlUX .hero p,
+.orlUX .hero .hero-lead,
+.orlUX header.hero p {
+  color: #ffffff !important;
+  text-shadow: 0 1px 8px rgba(0, 0, 0, 0.4) !important;
+  background: transparent !important;
+}
+
+.orlUX .hero .eyebrow,
+.orlUX header.hero .eyebrow {
+  color: #ffffff !important;
+  background: rgba(255, 255, 255, 0.2) !important;
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.3) !important;
+}
+
+/* Hero buttons */
+.orlUX .hero .btn--primary {
+  background: #ffffff !important;
+  color: #0b2545 !important;
+}
+
+.orlUX .hero .btn--secondary {
+  background: #117db2 !important;
+  color: #ffffff !important;
+}
+
+.orlUX .hero .btn--ghost {
+  background: rgba(255, 255, 255, 0.1) !important;
+  color: #ffffff !important;
+  border: 2px solid rgba(255, 255, 255, 0.7) !important;
+}
+
+/* ========== CARD BACKGROUNDS ========== */
+
+/* All cards must be white */
+.orlUX .card,
+.orlUX .vision-card,
+.orlUX .theme-card,
+.orlUX .project-card,
+.orlUX .finding-card,
+.orlUX .cta-section {
+  background: #ffffff !important;
+  background-color: #ffffff !important;
+}
+
+/* ========== SECTION BACKGROUNDS ========== */
+
+/* All sections must have transparent or white backgrounds */
+.orlUX section,
+.orlUX main,
+.orlUX article,
+.orlUX div {
+  background: transparent !important;
+}
+
+/* Specific sections that need white */
+.orlUX section#vision,
+.orlUX section#themes,
+.orlUX section#projects,
+.orlUX section#publications {
+  background: transparent !important;
+}
+
+/* ========== BUTTON FIXES ========== */
+
+.orlUX .btn {
+  font-family: Inter, system-ui, sans-serif !important;
+  font-weight: 800 !important;
+}
+
+.orlUX .btn--primary {
+  background: #ffffff !important;
+  color: #0b2545 !important;
+  border: 2px solid #dbe7f3 !important;
+}
+
+.orlUX .btn--secondary {
+  background: #117db2 !important;
+  color: #ffffff !important;
+  border: none !important;
+}
+
+.orlUX .btn--dark {
+  background: #ffffff !important;
+  color: #0b2545 !important;
+  border: 2px solid #dbe7f3 !important;
+}
+
+/* ========== SPACING & LAYOUT FIXES ========== */
+
+/* Remove Squarespace's default padding/margins */
+.orlUX-wrapper > *:first-child {
+  margin-top: 0 !important;
+  padding-top: 0 !important;
+}
+
+.orlUX-wrapper > *:last-child {
+  margin-bottom: 0 !important;
+  padding-bottom: 0 !important;
+}
+
+/* Container must respect our spacing */
+.orlUX .container {
+  padding-left: clamp(18px, 5vw, 48px) !important;
+  padding-right: clamp(18px, 5vw, 48px) !important;
+  max-width: 1200px !important;
+  margin: 0 auto !important;
+  background: transparent !important;
+}
+
+/* ========== TYPOGRAPHY ENFORCEMENT ========== */
+
+.orlUX,
+.orlUX *,
+.orlUX *::before,
+.orlUX *::after {
+  font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif !important;
+  -webkit-font-smoothing: antialiased !important;
+  -moz-osx-font-smoothing: grayscale !important;
+}
+
+/* ========== SQUARESPACE OVERRIDE SPECIFICITY ========== */
+
+/* Target Squarespace's specific classes if they exist */
+body .sqs-block-code .orlUX h1 { color: #0b2545 !important; }
+body .sqs-block-code .orlUX h2 { color: #0b2545 !important; }
+body .sqs-block-code .orlUX h3 { color: #173451 !important; }
+body .sqs-block-code .orlUX p { color: #566579 !important; }
+body .sqs-block-code .orlUX a { color: #117db2 !important; }
+
+/* Override hero specifically */
+body .sqs-block-code .orlUX .hero h1 { color: #ffffff !important; }
+body .sqs-block-code .orlUX .hero p { color: #ffffff !important; }
+
+/* ========== CONTRAST ENFORCEMENT ========== */
+
+/* Ensure minimum contrast ratios */
+.orlUX h1 { color: #0b2545 !important; font-weight: 900 !important; }
+.orlUX h2 { color: #0b2545 !important; font-weight: 900 !important; }
+.orlUX h3 { color: #173451 !important; font-weight: 800 !important; }
+.orlUX p  { color: #566579 !important; font-weight: 400 !important; }
+
+/* ========== THEME ICON FIXES ========== */
+
+.orlUX .theme-icon {
+  background: rgba(17, 125, 178, 0.12) !important;
+  color: #117db2 !important;
+}
+
+/* ========== FOOTER ========== */
+
+.orlUX footer {
+  background: #0b2545 !important;
+  color: #ffffff !important;
+}
+
+.orlUX footer * {
+  color: rgba(255, 255, 255, 0.9) !important;
+}
+
+.orlUX footer a {
+  color: #11c5b3 !important;
+}
+
+.orlUX footer strong {
+  color: #ffffff !important;
+}

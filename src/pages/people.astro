@@ -1,0 +1,255 @@
+---
+import Layout from '@layouts/Layout.astro';
+import PersonCard from '@components/people/PersonCard.astro';
+import { currentTeam, alumni } from '@data/team';
+
+// Group team members by role
+const pi = currentTeam.filter((m) => m.role === 'pi');
+const postdocs = currentTeam.filter((m) => m.role === 'postdoc');
+const phds = currentTeam.filter((m) => m.role === 'phd');
+const managers = currentTeam.filter((m) => m.role === 'manager');
+const undergrads = currentTeam.filter((m) => m.role === 'undergrad');
+---
+
+<Layout
+  title="People"
+  description="Meet the Ocean Recoveries Lab team - researchers studying coral reef and kelp forest recovery at UC Santa Barbara."
+>
+  <!-- Hero -->
+  <section class="relative py-20 md:py-28 overflow-hidden">
+    <div
+      class="absolute inset-0 bg-cover bg-center"
+      style="background-image: url('/images/research-team-group-photo-beach.jpeg');"
+    >
+      <div class="absolute inset-0 bg-ink/60"></div>
+    </div>
+
+    <div class="relative container text-center text-white">
+      <h1 class="text-white mb-4">Our Team</h1>
+      <p class="text-xl text-white/80 max-w-2xl mx-auto">
+        We study the recovery and resilience of ocean ecosystems using field experiments,
+        modeling, and synthesis — and we try to have fun doing it.
+      </p>
+    </div>
+  </section>
+
+  <!-- Current Members -->
+  <section class="section bg-surface dark:bg-dark-surface">
+    <div class="container">
+      <!-- Principal Investigator -->
+      {pi.length > 0 && (
+        <div class="mb-12">
+          <div class="section-header scroll-reveal">
+            <h2 class="text-2xl font-bold">Principal Investigator</h2>
+            <div class="header-line"></div>
+          </div>
+          <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {pi.map((member, i) => (
+              <div class={`scroll-reveal stagger-${i + 1}`}>
+                <PersonCard {...member} />
+              </div>
+            ))}
+          </div>
+        </div>
+      )}
+
+      <!-- Postdocs -->
+      {postdocs.length > 0 && (
+        <div class="mb-12">
+          <div class="section-header scroll-reveal">
+            <h2 class="text-2xl font-bold">Postdoctoral Researchers</h2>
+            <div class="header-line"></div>
+          </div>
+          <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {postdocs.map((member, i) => (
+              <div class={`scroll-reveal stagger-${i + 1}`}>
+                <PersonCard {...member} />
+              </div>
+            ))}
+          </div>
+        </div>
+      )}
+
+      <!-- PhD Students -->
+      {phds.length > 0 && (
+        <div class="mb-12">
+          <div class="section-header scroll-reveal">
+            <h2 class="text-2xl font-bold">PhD Students</h2>
+            <div class="header-line"></div>
+          </div>
+          <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {phds.map((member, i) => (
+              <div class={`scroll-reveal stagger-${i + 1}`}>
+                <PersonCard {...member} />
+              </div>
+            ))}
+          </div>
+        </div>
+      )}
+
+      <!-- Lab Manager -->
+      {managers.length > 0 && (
+        <div class="mb-12">
+          <div class="section-header scroll-reveal">
+            <h2 class="text-2xl font-bold">Lab Staff</h2>
+            <div class="header-line"></div>
+          </div>
+          <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {managers.map((member, i) => (
+              <div class={`scroll-reveal stagger-${i + 1}`}>
+                <PersonCard {...member} />
+              </div>
+            ))}
+          </div>
+        </div>
+      )}
+
+      <!-- Undergraduates -->
+      {undergrads.length > 0 && (
+        <div class="mb-12">
+          <div class="section-header scroll-reveal">
+            <h2 class="text-2xl font-bold">Undergraduate Researchers</h2>
+            <div class="header-line"></div>
+          </div>
+          <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {undergrads.map((member, i) => (
+              <div class={`scroll-reveal stagger-${i + 1}`}>
+                <PersonCard {...member} />
+              </div>
+            ))}
+          </div>
+        </div>
+      )}
+    </div>
+  </section>
+
+  <!-- Alumni -->
+  <section class="section bg-line/30 dark:bg-dark-line/20">
+    <div class="container">
+      <div class="section-header scroll-reveal">
+        <h2 class="text-2xl font-bold">Alumni</h2>
+        <div class="header-line"></div>
+      </div>
+
+      <details class="alumni-accordion scroll-reveal" open>
+        <summary class="alumni-summary">
+          <svg class="w-5 h-5 chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+          </svg>
+          <span>View {alumni.length} Alumni</span>
+        </summary>
+
+        <div class="alumni-grid">
+          {alumni.map((alum, i) => (
+            <div class={`alumni-card scroll-reveal stagger-${(i % 6) + 1}`}>
+              {alum.image && (
+                <img src={alum.image} alt={alum.name} class="alumni-photo" loading="lazy" />
+              )}
+              <div class="alumni-info">
+                <span class="alumni-name">{alum.name}</span>
+                <span class="alumni-years">{alum.years}</span>
+                <span class="alumni-role">{alum.role}</span>
+                <span class="alumni-current">{alum.currentPosition}</span>
+              </div>
+            </div>
+          ))}
+        </div>
+      </details>
+    </div>
+  </section>
+
+  <!-- Join CTA -->
+  <section class="section bg-ink dark:bg-dark-card">
+    <div class="container text-center">
+      <h2 class="text-white mb-4 scroll-reveal">Interested in Joining?</h2>
+      <p class="text-white/70 max-w-xl mx-auto mb-8 scroll-reveal">
+        We're always looking for motivated researchers passionate about ocean conservation
+        and ecosystem recovery.
+      </p>
+      <a href="/join-us" class="btn btn-primary scroll-reveal">
+        View Opportunities
+      </a>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .section-header {
+    @apply flex items-center gap-4 mb-8;
+  }
+
+  .header-line {
+    @apply flex-1 h-px bg-line dark:bg-dark-line;
+  }
+
+  /* Alumni styles */
+  .alumni-accordion {
+    @apply bg-white dark:bg-dark-card rounded-lg border border-line dark:border-dark-line overflow-hidden;
+  }
+
+  .alumni-summary {
+    @apply flex items-center gap-3 p-5 cursor-pointer select-none;
+    @apply font-bold text-ink dark:text-dark-ink;
+  }
+
+  .alumni-summary::-webkit-details-marker {
+    display: none;
+  }
+
+  .alumni-summary .chevron {
+    @apply transition-transform duration-300;
+  }
+
+  details[open] .alumni-summary .chevron {
+    @apply rotate-180;
+  }
+
+  .alumni-grid {
+    @apply grid md:grid-cols-2 gap-4 p-5 pt-0 border-t border-line dark:border-dark-line;
+    animation: slideDown 0.3s ease-out;
+  }
+
+  @keyframes slideDown {
+    from {
+      opacity: 0;
+      transform: translateY(-10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .alumni-card {
+    @apply flex gap-4 p-4 rounded-lg border border-line dark:border-dark-line bg-surface dark:bg-dark-surface;
+    @apply transition-all duration-300;
+  }
+
+  .alumni-card:hover {
+    @apply -translate-y-1 shadow-md border-accent/30;
+  }
+
+  .alumni-photo {
+    @apply w-16 h-16 rounded-xl object-cover flex-shrink-0 bg-line/30 dark:bg-dark-line/30;
+  }
+
+  .alumni-info {
+    @apply flex flex-col gap-1;
+  }
+
+  .alumni-name {
+    @apply font-bold text-ink dark:text-dark-ink;
+  }
+
+  .alumni-years {
+    @apply text-sm font-semibold text-accent-2;
+  }
+
+  .alumni-role {
+    @apply text-xs uppercase tracking-wide text-muted dark:text-dark-muted;
+  }
+
+  .alumni-current {
+    @apply text-sm text-muted dark:text-dark-muted;
+  }
+</style>

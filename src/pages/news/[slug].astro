@@ -1,0 +1,187 @@
+---
+import Layout from '@layouts/Layout.astro';
+import { posts } from '@data/posts';
+
+export function getStaticPaths() {
+  return posts.map((post) => ({
+    params: { slug: post.slug },
+    props: { post },
+  }));
+}
+
+const { post } = Astro.props;
+
+const formatDate = (dateStr: string) => {
+  return new Date(dateStr).toLocaleDateString('en-US', {
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric',
+  });
+};
+
+// Get related posts (same tags, excluding current)
+const relatedPosts = posts
+  .filter((p) => p.slug !== post.slug && p.tags.some((t) => post.tags.includes(t)))
+  .slice(0, 2);
+---
+
+<Layout title={post.title} description={post.excerpt}>
+  <article>
+    <!-- Hero -->
+    <header class="relative py-20 md:py-28 overflow-hidden">
+      <div
+        class="absolute inset-0 bg-cover bg-center"
+        style={`background-image: url('${post.featuredImage}');`}
+      >
+        <div class="absolute inset-0 bg-ink/70"></div>
+      </div>
+
+      <div class="relative container text-white">
+        <a
+          href="/news"
+          class="inline-flex items-center gap-2 text-white/70 hover:text-white mb-6 no-underline transition-colors"
+        >
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+          </svg>
+          Back to News
+        </a>
+
+        <div class="flex flex-wrap gap-2 mb-4">
+          {post.tags.map((tag) => (
+            <span class="px-3 py-1 rounded-full bg-white/20 text-white text-sm font-medium">
+              {tag}
+            </span>
+          ))}
+        </div>
+
+        <h1 class="text-white mb-4 max-w-3xl">{post.title}</h1>
+
+        <div class="flex items-center gap-4 text-white/80">
+          <time datetime={post.date}>{formatDate(post.date)}</time>
+          <span>•</span>
+          <span>By {post.author}</span>
+        </div>
+      </div>
+    </header>
+
+    <!-- Content -->
+    <div class="section bg-surface dark:bg-dark-surface">
+      <div class="container">
+        <div class="max-w-3xl mx-auto">
+          <div class="prose dark:prose-invert prose-lg">
+            {post.content.split('\n\n').map((block) => {
+              if (block.startsWith('## ')) {
+                return <h2 class="text-2xl font-bold mt-8 mb-4 text-ink dark:text-dark-ink">{block.replace('## ', '')}</h2>;
+              } else if (block.startsWith('**') && block.endsWith('**')) {
+                return <p class="font-bold text-ink dark:text-dark-ink">{block.replace(/\*\*/g, '')}</p>;
+              } else if (block.startsWith('- ')) {
+                const items = block.split('\n').map(item => item.replace('- ', ''));
+                return (
+                  <ul class="list-disc pl-6 space-y-2 text-muted dark:text-dark-muted">
+                    {items.map(item => <li>{item}</li>)}
+                  </ul>
+                );
+              } else if (block.startsWith('1. ')) {
+                const items = block.split('\n').map(item => item.replace(/^\d+\. /, ''));
+                return (
+                  <ol class="list-decimal pl-6 space-y-2 text-muted dark:text-dark-muted">
+                    {items.map(item => <li set:html={item.replace(/\*\*([^*]+)\*\*/g, '<strong class="text-ink dark:text-dark-ink">$1</strong>')} />)}
+                  </ol>
+                );
+              } else {
+                return <p class="text-muted dark:text-dark-muted leading-relaxed" set:html={block.replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2" class="text-accent dark:text-dark-accent hover:underline">$1</a>')} />;
+              }
+            })}
+          </div>
+
+          <!-- Share -->
+          <div class="mt-12 pt-8 border-t border-line dark:border-dark-line">
+            <h3 class="text-lg font-bold mb-4">Share this post</h3>
+            <div class="flex gap-3">
+              <a
+                href={`https://twitter.com/intent/tweet?text=${encodeURIComponent(post.title)}&url=${encodeURIComponent(Astro.url.href)}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="btn btn-secondary"
+              >
+                Twitter
+              </a>
+              <a
+                href={`https://www.linkedin.com/shareArticle?mini=true&url=${encodeURIComponent(Astro.url.href)}&title=${encodeURIComponent(post.title)}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="btn btn-secondary"
+              >
+                LinkedIn
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Related Posts -->
+    {relatedPosts.length > 0 && (
+      <section class="section bg-line/30 dark:bg-dark-line/20">
+        <div class="container">
+          <h2 class="text-2xl font-bold mb-8 text-center">Related Posts</h2>
+          <div class="grid md:grid-cols-2 gap-6 max-w-3xl mx-auto">
+            {relatedPosts.map((related) => (
+              <a href={`/news/${related.slug}`} class="related-card group">
+                <div class="related-image img-zoom">
+                  <img src={related.featuredImage} alt={related.title} loading="lazy" />
+                </div>
+                <div class="related-content">
+                  <time class="text-sm text-muted dark:text-dark-muted">
+                    {formatDate(related.date)}
+                  </time>
+                  <h3 class="text-lg font-bold text-ink dark:text-dark-ink group-hover:text-accent dark:group-hover:text-dark-accent transition-colors">
+                    {related.title}
+                  </h3>
+                </div>
+              </a>
+            ))}
+          </div>
+        </div>
+      </section>
+    )}
+  </article>
+</Layout>
+
+<style>
+  .prose h2 {
+    @apply text-ink dark:text-dark-ink;
+  }
+
+  .prose p {
+    @apply mb-4;
+  }
+
+  .prose ul,
+  .prose ol {
+    @apply mb-4;
+  }
+
+  .related-card {
+    @apply flex gap-4 p-4 rounded-xl no-underline;
+    @apply bg-white dark:bg-dark-card border border-line dark:border-dark-line;
+    @apply transition-all duration-300;
+  }
+
+  .related-card:hover {
+    @apply -translate-y-1 shadow-lg border-accent/30;
+  }
+
+  .related-image {
+    @apply w-24 h-24 rounded-lg overflow-hidden flex-shrink-0;
+  }
+
+  .related-image img {
+    @apply w-full h-full object-cover;
+  }
+
+  .related-content {
+    @apply flex flex-col gap-1;
+  }
+</style>

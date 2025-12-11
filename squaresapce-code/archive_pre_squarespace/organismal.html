@@ -1,0 +1,1541 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Organismal Mechanisms of Resilience | Ocean Recoveries Lab</title>
+  <meta name="description" content="Research on climate stress, wound healing, and thermal limits in marine organisms.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    /* ===== Design System - Ocean Recoveries Lab ===== */
+    :root {
+      /* Colors - Light Mode */
+      --ink: #0b2545;
+      --ink-2: #173451;
+      --muted: #566579;
+      --muted-2: #6e7d8a;
+      --accent: #117db2;
+      --accent-2: #11c5b3;
+      --accent-warm: #ff6f5b;
+      --bg: #ffffff;
+      --bg-subtle: #f7fafb;
+      --card: #ffffff;
+      --line: #e6edf6;
+      --line-2: #dbe7f3;
+      --sand: #f3ede4;
+
+      /* Shadows */
+      --shadow: 0 6px 16px rgba(17, 34, 68, 0.08);
+      --shadow-lg: 0 18px 42px rgba(17, 34, 68, 0.14);
+      --shadow-soft: 0 10px 26px rgba(11, 27, 36, 0.12);
+
+      /* Border Radius */
+      --r: 18px;
+      --r-lg: 24px;
+
+      /* Spacing */
+      --s-1: 8px;
+      --s0: 12px;
+      --s1: 18px;
+      --s2: 24px;
+      --s3: 32px;
+      --s4: clamp(48px, 8vw, 72px);
+      --s5: clamp(72px, 10vw, 96px);
+      --edge: clamp(18px, 5vw, 48px);
+
+      /* Typography */
+      --fs-sm: clamp(13px, 1.4vw, 14px);
+      --fs-base: clamp(15px, 1.6vw, 17px);
+      --fs-md: clamp(17px, 1.8vw, 19px);
+      --fs-lg: clamp(20px, 2.2vw, 24px);
+      --fs-xl: clamp(24px, 3vw, 34px);
+      --fs-2xl: clamp(32px, 4.5vw, 48px);
+      --fs-3xl: clamp(40px, 5.5vw, 64px);
+    }
+
+    /* Dark Mode */
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --ink: #e9f2fa;
+        --ink-2: #d4e4f0;
+        --muted: #9db1c5;
+        --muted-2: #87a0b7;
+        --accent: #4d9dd6;
+        --accent-2: #3dd6c4;
+        --bg: #0a1929;
+        --bg-subtle: #0f2338;
+        --card: #132942;
+        --line: #1e3a54;
+        --line-2: #2a4968;
+        --sand: #1a2f43;
+        --shadow: 0 6px 16px rgba(0, 0, 0, 0.3);
+        --shadow-lg: 0 18px 42px rgba(0, 0, 0, 0.5);
+        --shadow-soft: 0 10px 26px rgba(0, 0, 0, 0.35);
+      }
+    }
+
+    /* ===== Base Styles ===== */
+    *, *::before, *::after {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Inter', system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      font-size: var(--fs-base);
+      line-height: 1.6;
+      color: var(--ink);
+      background: var(--bg);
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      text-rendering: optimizeLegibility;
+    }
+
+    img {
+      max-width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    a {
+      color: var(--accent);
+      text-decoration-color: rgba(17, 125, 178, 0.4);
+      text-underline-offset: 3px;
+      text-decoration-thickness: 2px;
+      transition: all 0.2s ease;
+    }
+
+    a:hover {
+      text-decoration-thickness: 3px;
+      color: var(--accent-2);
+    }
+
+    a:focus-visible {
+      outline: 3px solid var(--accent-2);
+      outline-offset: 4px;
+      border-radius: 8px;
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+      margin: 0;
+      font-weight: 900;
+      line-height: 1.2;
+      letter-spacing: -0.02em;
+    }
+
+    h1 {
+      font-size: var(--fs-3xl);
+      color: var(--ink);
+    }
+
+    /* Hero h1 override for light text on dark hero backgrounds */
+    .hero h1 {
+      color: #fff;
+      text-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+    }
+
+    h2 {
+      font-size: var(--fs-xl);
+      color: var(--ink);
+      margin-bottom: var(--s2);
+    }
+
+    h3 {
+      font-size: var(--fs-lg);
+      color: var(--ink-2);
+      font-weight: 800;
+    }
+
+    p {
+      margin: 0;
+      color: var(--muted);
+    }
+
+    /* ===== Layout ===== */
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding-left: var(--edge);
+      padding-right: var(--edge);
+    }
+
+    .skip-link {
+      position: absolute;
+      left: -9999px;
+      top: auto;
+      width: 1px;
+      height: 1px;
+      overflow: hidden;
+    }
+
+    .skip-link:focus {
+      position: fixed;
+      left: 16px;
+      top: 16px;
+      padding: 12px 18px;
+      background: var(--ink);
+      color: var(--bg);
+      border-radius: 12px;
+      z-index: 1000;
+      width: auto;
+      height: auto;
+      text-decoration: none;
+      font-weight: 700;
+    }
+
+    /* ===== Top Navigation ===== */
+    .top-nav {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background: rgba(255, 255, 255, 0.85);
+      backdrop-filter: blur(10px) saturate(1.08);
+      border-bottom: 1px solid var(--line);
+      padding: var(--s1) 0;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      .top-nav {
+        background: rgba(19, 41, 66, 0.85);
+      }
+    }
+
+    .top-nav-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 var(--edge);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: var(--s1);
+    }
+
+    .nav-brand {
+      font-weight: 900;
+      font-size: clamp(16px, 2vw, 18px);
+      color: var(--ink);
+      text-decoration: none;
+      letter-spacing: -0.01em;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: var(--s1);
+      align-items: center;
+    }
+
+    .nav-link {
+      font-weight: 600;
+      font-size: 15px;
+      color: var(--muted-2);
+      text-decoration: none;
+      padding: 8px 12px;
+      border-radius: 8px;
+      transition: all 0.2s ease;
+    }
+
+    .nav-link:hover {
+      color: var(--ink);
+      background: rgba(8, 30, 53, 0.05);
+    }
+
+    @media (prefers-color-scheme: dark) {
+      .nav-link:hover {
+        background: rgba(255, 255, 255, 0.1);
+      }
+    }
+
+    @media (max-width: 640px) {
+      .nav-links {
+        display: none;
+      }
+    }
+
+    /* ===== Navigation (Floating TOC Button) ===== */
+    .page-nav-toggle {
+      position: fixed;
+      right: max(20px, env(safe-area-inset-right));
+      top: 100px;
+      z-index: 1000;
+      width: 52px;
+      height: 52px;
+      border-radius: 50%;
+      background: var(--accent);
+      color: #fff;
+      border: none;
+      cursor: pointer;
+      box-shadow: 0 8px 20px rgba(17, 125, 178, 0.3);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 24px;
+      font-weight: 700;
+      transition: all 0.3s ease;
+    }
+
+    .page-nav-toggle:hover {
+      transform: scale(1.05);
+      box-shadow: 0 10px 24px rgba(17, 125, 178, 0.4);
+    }
+
+    .page-nav-panel {
+      position: fixed;
+      right: max(20px, env(safe-area-inset-right));
+      top: 160px;
+      z-index: 999;
+      min-width: 240px;
+      max-width: 300px;
+      background: #fff;
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      box-shadow: 0 12px 32px rgba(11, 37, 69, 0.15);
+      padding: 16px 0;
+      display: none;
+    }
+
+    .page-nav-panel.open {
+      display: block;
+      animation: slideIn 0.2s ease;
+    }
+
+    @keyframes slideIn {
+      from { opacity: 0; transform: translateY(-10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .page-nav-panel h4 {
+      margin: 0 0 12px 0;
+      padding: 0 16px;
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--muted-2);
+    }
+
+    .page-nav-list {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    .page-nav-list a {
+      display: block;
+      padding: 10px 16px;
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--ink);
+      text-decoration: none;
+      transition: all 0.2s ease;
+    }
+
+    .page-nav-list a:hover {
+      background: rgba(17, 125, 178, 0.06);
+      color: var(--accent);
+      padding-left: 20px;
+    }
+
+    @media (max-width: 768px) {
+      .page-nav-toggle {
+        width: 48px;
+        height: 48px;
+        font-size: 20px;
+        right: 16px;
+        top: 80px;
+      }
+
+      .page-nav-panel {
+        right: 16px;
+        top: 136px;
+        min-width: 200px;
+      }
+    }
+
+    /* Mobile Menu */
+    .mobile-menu {
+      display: none;
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+      background: var(--card);
+    }
+
+    @media (max-width: 768px) {
+      .mobile-menu {
+        display: block;
+      }
+    }
+
+    .mobile-menu summary {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: var(--s1) var(--edge);
+      cursor: pointer;
+      font-weight: 800;
+      color: var(--ink);
+    }
+
+    .mobile-menu summary::marker {
+      content: '';
+    }
+
+    .mobile-menu[open] summary {
+      border-bottom: 1px solid var(--line);
+    }
+
+    .menu-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 10px;
+      padding: var(--s1) var(--edge);
+    }
+
+    .menu-grid a {
+      padding: 12px;
+      border: 2px solid var(--line);
+      border-radius: 12px;
+      text-align: center;
+      text-decoration: none;
+      font-weight: 700;
+      color: var(--ink);
+      transition: all 0.2s ease;
+    }
+
+    .menu-grid a:hover {
+      border-color: var(--accent);
+      background: var(--bg-subtle);
+    }
+
+    /* ===== Hero ===== */
+    .hero {
+      position: relative;
+      min-height: clamp(500px, 60vw, 700px);
+      overflow: hidden;
+    }
+
+    .hero-media {
+      position: absolute;
+      inset: 0;
+    }
+
+    .hero-media img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      filter: brightness(0.75) contrast(1.05);
+    }
+
+    .hero-scrim {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        135deg,
+        rgba(11, 37, 69, 0.88) 0%,
+        rgba(11, 37, 69, 0.7) 50%,
+        rgba(17, 125, 178, 0.6) 100%
+      );
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 1;
+      min-height: clamp(500px, 60vw, 700px);
+      display: flex;
+      align-items: flex-end;
+      padding: var(--s4) 0;
+    }
+
+    .hero-panel {
+      max-width: 720px;
+    }
+
+    .eyebrow {
+      display: inline-block;
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: rgba(255, 255, 255, 0.85);
+      margin-bottom: var(--s1);
+      background: rgba(255, 255, 255, 0.15);
+      backdrop-filter: blur(10px);
+      padding: 8px 14px;
+      border-radius: 999px;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+    .hero-lead {
+      color: #e6edf3;
+      font-size: var(--fs-md);
+      line-height: 1.6;
+      margin: var(--s2) 0;
+    }
+
+    .hero-buttons {
+      display: flex;
+      gap: var(--s0);
+      flex-wrap: wrap;
+      margin-top: var(--s2);
+    }
+
+    /* ===== Buttons ===== */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 14px 24px;
+      border-radius: 12px;
+      text-decoration: none;
+      font-weight: 800;
+      font-size: var(--fs-sm);
+      letter-spacing: 0.01em;
+      transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+      min-height: 48px;
+      border: none;
+      cursor: pointer;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .btn::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(255,255,255,0.2), transparent);
+      opacity: 0;
+      transition: opacity 0.25s ease;
+    }
+
+    .btn:hover::before {
+      opacity: 1;
+    }
+
+    .btn--primary {
+      background: #fff;
+      color: var(--ink);
+      box-shadow: 0 8px 20px rgba(255, 255, 255, 0.25);
+    }
+
+    .btn--primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 12px 28px rgba(255, 255, 255, 0.35);
+    }
+
+    .btn--secondary {
+      background: var(--accent);
+      color: #fff;
+      box-shadow: 0 8px 20px rgba(17, 125, 178, 0.3);
+    }
+
+    .btn--secondary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 12px 28px rgba(17, 125, 178, 0.4);
+    }
+
+    .btn--ghost {
+      background: transparent;
+      border: 2px solid rgba(255, 255, 255, 0.5);
+      color: #fff;
+    }
+
+    .btn--ghost:hover {
+      background: rgba(255, 255, 255, 0.15);
+      border-color: #fff;
+    }
+
+    .btn--dark {
+      background: var(--card);
+      border: 2px solid var(--line-2);
+      color: var(--ink);
+      box-shadow: var(--shadow);
+    }
+
+    .btn--dark:hover {
+      transform: translateY(-2px);
+      border-color: var(--accent);
+      box-shadow: var(--shadow-lg);
+    }
+
+    /* ===== Sections ===== */
+    section {
+      padding: var(--s4) 0;
+    }
+
+    .section-divider {
+      display: flex;
+      justify-content: center;
+      margin: var(--s3) 0;
+      opacity: 0.3;
+    }
+
+    /* ===== Cards ===== */
+    .card {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: var(--r-lg);
+      padding: var(--s3);
+      box-shadow: var(--shadow);
+    }
+
+    .vision-card {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .vision-card p {
+      font-size: var(--fs-md);
+      font-weight: 600;
+      color: var(--ink-2);
+      line-height: 1.7;
+      margin-bottom: var(--s2);
+    }
+
+    .vision-card p:last-child {
+      margin-bottom: 0;
+    }
+
+    /* ===== Theme Grid ===== */
+    .theme-intro {
+      display: grid;
+      gap: var(--s2);
+      align-items: start;
+      margin-bottom: var(--s3);
+    }
+
+    @media (min-width: 900px) {
+      .theme-intro {
+        grid-template-columns: 1.2fr 1fr;
+        gap: var(--s4);
+        align-items: center;
+      }
+    }
+
+    .theme-intro figure {
+      margin: 0;
+    }
+
+    .theme-intro figure img {
+      border-radius: var(--r-lg);
+      box-shadow: var(--shadow-lg);
+    }
+
+    .theme-grid {
+      display: grid;
+      gap: var(--s2);
+      grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr));
+    }
+
+    .theme-card {
+      border: 1px solid var(--line);
+      border-radius: var(--r-lg);
+      overflow: hidden;
+      background: var(--card);
+      box-shadow: var(--shadow);
+      display: grid;
+      grid-template-rows: auto 1fr auto;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .theme-card:hover {
+      transform: translateY(-8px);
+      box-shadow: var(--shadow-lg);
+    }
+
+    .theme-media {
+      aspect-ratio: 16/9;
+      overflow: hidden;
+      background: var(--bg-subtle);
+    }
+
+    .theme-media img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.4s ease;
+    }
+
+    .theme-card:hover .theme-media img {
+      transform: scale(1.08);
+    }
+
+    .theme-body {
+      padding: var(--s2);
+    }
+
+    .theme-icon {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 52px;
+      height: 52px;
+      border-radius: 14px;
+      background: rgba(17, 125, 178, 0.12);
+      color: var(--accent);
+      margin-bottom: var(--s1);
+      box-shadow: inset 0 0 0 1px rgba(17, 125, 178, 0.18);
+    }
+
+    .theme-icon svg {
+      width: 28px;
+      height: 28px;
+      stroke: currentColor;
+      stroke-width: 2;
+      fill: none;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    .theme-body h3 {
+      margin-bottom: var(--s0);
+    }
+
+    .theme-cta {
+      padding: 0 var(--s2) var(--s2);
+    }
+
+    /* ===== Projects Carousel ===== */
+    .carousel {
+      position: relative;
+      margin-top: var(--s2);
+    }
+
+    .carousel-rail {
+      display: flex;
+      gap: var(--s2);
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      padding-bottom: 8px;
+      scrollbar-width: thin;
+      scrollbar-color: var(--accent-2) var(--line);
+    }
+
+    .carousel-rail::-webkit-scrollbar {
+      height: 8px;
+    }
+
+    .carousel-rail::-webkit-scrollbar-track {
+      background: var(--line);
+      border-radius: 999px;
+    }
+
+    .carousel-rail::-webkit-scrollbar-thumb {
+      background: var(--accent-2);
+      border-radius: 999px;
+    }
+
+    .carousel-item {
+      flex: 0 0 min(90%, 550px);
+      scroll-snap-align: start;
+    }
+
+    .project-card {
+      border: 1px solid var(--line);
+      border-radius: var(--r-lg);
+      overflow: hidden;
+      background: var(--card);
+      box-shadow: var(--shadow);
+      display: grid;
+      grid-template-columns: 1.2fr 1fr;
+      align-items: stretch;
+      transition: all 0.3s ease;
+    }
+
+    .project-card:hover {
+      box-shadow: var(--shadow-lg);
+    }
+
+    @media (max-width: 640px) {
+      .project-card {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .project-media {
+      aspect-ratio: 4/3;
+      overflow: hidden;
+      background: var(--bg-subtle);
+    }
+
+    .project-media img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.4s ease;
+    }
+
+    .project-card:hover .project-media img {
+      transform: scale(1.06);
+    }
+
+    .project-body {
+      padding: var(--s2);
+      display: flex;
+      flex-direction: column;
+      gap: var(--s1);
+      justify-content: center;
+    }
+
+    .carousel-nav {
+      display: flex;
+      gap: 10px;
+      justify-content: center;
+      margin-top: var(--s2);
+    }
+
+    .carousel-nav button {
+      padding: 10px 18px;
+      border: 2px solid var(--line-2);
+      background: var(--card);
+      color: var(--ink);
+      border-radius: 10px;
+      font-weight: 800;
+      font-size: var(--fs-sm);
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .carousel-nav button:hover:not(:disabled) {
+      border-color: var(--accent);
+      background: var(--bg-subtle);
+    }
+
+    .carousel-nav button:disabled {
+      opacity: 0.4;
+      cursor: not-allowed;
+    }
+
+    /* ===== Key Findings ===== */
+    .findings-grid {
+      display: grid;
+      gap: var(--s2);
+      grid-template-columns: repeat(auto-fit, minmax(min(280px, 100%), 1fr));
+    }
+
+    .finding-card {
+      position: relative;
+      min-height: 280px;
+      border-radius: var(--r-lg);
+      border: 1px solid var(--line);
+      background: var(--card);
+      box-shadow: var(--shadow);
+      cursor: pointer;
+      transform-style: preserve-3d;
+      transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .finding-card:hover {
+      transform: rotateY(180deg);
+    }
+
+    .finding-face {
+      position: absolute;
+      inset: 0;
+      padding: var(--s2);
+      border-radius: var(--r-lg);
+      backface-visibility: hidden;
+      display: flex;
+      flex-direction: column;
+      gap: var(--s1);
+      justify-content: center;
+    }
+
+    .finding-front {
+      background: var(--card);
+    }
+
+    .finding-back {
+      background: linear-gradient(135deg, rgba(17, 125, 178, 0.12), rgba(17, 197, 179, 0.18));
+      transform: rotateY(180deg);
+    }
+
+    .finding-headline {
+      font-size: var(--fs-lg);
+      font-weight: 800;
+      color: var(--ink);
+      margin: 0;
+    }
+
+    .finding-summary {
+      color: var(--muted);
+    }
+
+    .finding-back p {
+      font-weight: 600;
+      color: var(--ink-2);
+      line-height: 1.6;
+    }
+
+    .finding-back a {
+      margin-top: var(--s0);
+      font-weight: 700;
+    }
+
+    /* ===== Publications ===== */
+    .pubs-list {
+      display: grid;
+      gap: var(--s1);
+    }
+
+    .pub-item {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: var(--s1);
+      align-items: start;
+      padding: var(--s2);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .pub-item:last-child {
+      border-bottom: none;
+    }
+
+    .pub-title {
+      font-weight: 800;
+      color: var(--ink-2);
+      margin-bottom: 6px;
+    }
+
+    .pub-summary {
+      color: var(--muted);
+      font-size: var(--fs-base);
+    }
+
+    /* ===== CTA Section ===== */
+    .cta-section {
+      background: linear-gradient(135deg, var(--bg-subtle), var(--sand));
+      border-radius: var(--r-lg);
+      padding: var(--s4);
+      text-align: center;
+      box-shadow: var(--shadow);
+    }
+
+    .cta-section h2 {
+      margin-bottom: var(--s1);
+    }
+
+    .cta-section p {
+      max-width: 640px;
+      margin: 0 auto var(--s3);
+      font-size: var(--fs-md);
+    }
+
+    .cta-buttons {
+      display: flex;
+      gap: var(--s0);
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .cta-buttons .btn {
+      min-width: 180px;
+    }
+
+    @media (max-width: 640px) {
+      .cta-buttons {
+        flex-direction: column;
+        width: 100%;
+      }
+
+      .cta-buttons .btn {
+        width: 100%;
+      }
+    }
+
+    /* ===== Footer ===== */
+    footer {
+      background: var(--ink);
+      color: var(--bg);
+      padding: var(--s4) 0;
+      border-top: 4px solid var(--accent-2);
+      margin-top: var(--s5);
+    }
+
+    footer .container {
+      display: grid;
+      gap: var(--s0);
+      font-size: var(--fs-sm);
+      color: rgba(255, 255, 255, 0.75);
+    }
+
+    footer strong {
+      font-weight: 800;
+      color: #fff;
+      font-size: var(--fs-md);
+    }
+
+    footer a {
+      color: var(--accent-2);
+      text-decoration-color: rgba(61, 214, 196, 0.4);
+    }
+
+    footer a:hover {
+      color: #fff;
+    }
+
+    /* ===== Responsive ===== */
+    @media (max-width: 768px) {
+      .hero-buttons {
+        flex-direction: column;
+        width: 100%;
+      }
+
+      .hero-buttons .btn {
+        width: 100%;
+      }
+
+      .btn--ghost {
+        display: none;
+      }
+
+      .cta-buttons {
+        flex-direction: column;
+        align-items: stretch;
+      }
+    }
+
+    @media (max-width: 520px) {
+      .container {
+        padding-left: 16px;
+        padding-right: 16px;
+      }
+    }
+
+    /* ===== Scroll Margin ===== */
+    section[id] {
+      scroll-margin-top: 80px;
+    }
+
+    /* ===== Accessibility ===== */
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+      }
+
+      .finding-card:hover {
+        transform: none;
+      }
+    }
+
+    @media print {
+      .skip-link,
+      .sticky-nav,
+      .mobile-menu,
+      .hero-buttons,
+      .btn,
+      .carousel-nav {
+        display: none;
+      }
+    }
+  </style>
+</head>
+<body>
+  <a href="#main" class="skip-link">Skip to main content</a>
+
+  <!-- Hero -->
+  <header class="hero">
+    <div class="hero-media" aria-hidden="true">
+      <img
+        src="https://static1.squarespace.com/static/5a033287be42d65267fc9a14/t/68cd7d2a25a0e851f36b5bbb/1758297393836/P5222206.JPG"
+        alt="Close-up of a coral colony with healing tissue"
+      >
+      <div class="hero-scrim"></div>
+    </div>
+    <div class="hero-content">
+      <div class="container">
+        <div class="hero-panel">
+          <span class="eyebrow">Ocean Recoveries Lab</span>
+          <h1>
+            Organismal mechanisms of resilience: climate stress, wound healing, and thermal limits
+          </h1>
+          <p class="hero-lead">
+            We test how temperature, injury, and physiology shape performance—from individual thresholds to ecosystem recovery.
+          </p>
+          <div class="hero-buttons">
+            <a href="#themes" class="btn btn--primary">Explore Our Research</a>
+            <a href="#publications" class="btn btn--secondary">Publications</a>
+            <a href="#get-involved" class="btn btn--ghost">Get Involved</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main id="main">
+    <!-- Vision -->
+    <section id="vision">
+      <div class="container">
+        <div class="card vision-card">
+          <h2>Our research vision</h2>
+          <p>
+            We study organismal thresholds and repair—thermal tolerance, metabolic limits, and wound healing—to explain when individuals recover and how those mechanisms scale to populations and ecosystems.
+          </p>
+          <p>
+            By pairing field experiments with lab assays and quantitative models, we identify the physiological bottlenecks—and leverage points—for climate adaptation and restoration.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Themes -->
+    <section id="themes">
+      <div class="container">
+        <div class="theme-intro">
+          <div>
+            <h2>Research themes</h2>
+            <p style="color: var(--muted); font-size: var(--fs-md);">
+              We examine how physiology, injury, and partnerships determine whether corals and kelp forest organisms endure stress—and translate those insights into tools for restoration.
+            </p>
+          </div>
+          <figure>
+            <img
+              src="https://images.unsplash.com/photo-1470165510417-7d5d3446de4c?q=80&w=1600&auto=format&fit=crop"
+              alt="Scientist assessing coral physiology underwater"
+            >
+          </figure>
+        </div>
+
+        <div class="theme-grid">
+          <article class="theme-card">
+            <div class="theme-media">
+              <img
+                src="https://images.unsplash.com/photo-1501594907352-04cda38ebc29?q=80&w=1600&auto=format&fit=crop"
+                alt="Coral polyps under warm light"
+              >
+            </div>
+            <div class="theme-body">
+              <div class="theme-icon">
+                <svg viewBox="0 0 24 24">
+                  <path d="M12 3l3 6h6l-4.5 4 1.5 7-6-3.5L6 20l1.5-7L3 9h6z"/>
+                </svg>
+              </div>
+              <h3>Thermal Limits & Climate Stress</h3>
+              <p>
+                Temperature-dependent metabolism and performance (CTmax, acclimation) shaping survival and interactions under warming.
+              </p>
+            </div>
+            <div class="theme-cta">
+              <a href="#publications" class="btn btn--dark" style="width: 100%;">Read more</a>
+            </div>
+          </article>
+
+          <article class="theme-card">
+            <div class="theme-media">
+              <img
+                src="https://static1.squarespace.com/static/5a033287be42d65267fc9a14/t/68cd7e95d84ea11e9e1877a9/1758297753368/IMG_8632.JPG"
+                alt="Tissue repair on a coral"
+              >
+            </div>
+            <div class="theme-body">
+              <div class="theme-icon">
+                <svg viewBox="0 0 24 24">
+                  <path d="M12 5a5 5 0 0 0-5 5v2a5 5 0 0 0 10 0v-2"/>
+                  <path d="M8 14l-2 4m10-4 2 4"/>
+                </svg>
+              </div>
+              <h3>Wound Healing & Regeneration</h3>
+              <p>
+                Rates and trajectories of tissue repair after lesions; how mutualists and cleaning alter recovery.
+              </p>
+            </div>
+            <div class="theme-cta">
+              <a href="#publications" class="btn btn--dark" style="width: 100%;">Read more</a>
+            </div>
+          </article>
+
+          <article class="theme-card">
+            <div class="theme-media">
+              <img
+                src="https://images.unsplash.com/photo-1526318472351-c75fcf070305?q=80&w=1600&auto=format&fit=crop"
+                alt="Reef fish near branching coral"
+              >
+            </div>
+            <div class="theme-body">
+              <div class="theme-icon">
+                <svg viewBox="0 0 24 24">
+                  <path d="M5 7h6l2 4-2 4H5l2-4-2-4z"/>
+                  <path d="M13 7h6"/>
+                  <path d="M13 17h6"/>
+                </svg>
+              </div>
+              <h3>Physiology–Behavior Links</h3>
+              <p>
+                How warming reshapes foraging, predation, and mutualism—linking energetics to interaction strength.
+              </p>
+            </div>
+            <div class="theme-cta">
+              <a href="#publications" class="btn btn--dark" style="width: 100%;">Read more</a>
+            </div>
+          </article>
+
+          <article class="theme-card">
+            <div class="theme-media">
+              <img
+                src="https://images.unsplash.com/photo-1505764706515-aa95265c5abc?q=80&w=1600&auto=format&fit=crop"
+                alt="Diver surveying reef with slate"
+              >
+            </div>
+            <div class="theme-body">
+              <div class="theme-icon">
+                <svg viewBox="0 0 24 24">
+                  <path d="M4 12h7l-3 3m3-3-3-3"/>
+                  <path d="M20 12a8 8 0 1 1-8-8"/>
+                </svg>
+              </div>
+              <h3>Decision-Relevant Physiology</h3>
+              <p>
+                From thresholds to tools: translating organismal metrics into monitoring and restoration guidance.
+              </p>
+            </div>
+            <div class="theme-cta">
+              <a href="#publications" class="btn btn--dark" style="width: 100%;">Read more</a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Projects -->
+    <section id="projects">
+      <div class="container">
+        <h2>Featured projects</h2>
+        <div class="carousel">
+          <div class="carousel-rail" id="projectsRail">
+            <div class="carousel-item">
+              <div class="project-card">
+                <div class="project-media">
+                  <img
+                    src="https://static1.squarespace.com/static/5a033287be42d65267fc9a14/t/68cd7d2a25a0e851f36b5bbb/1758297393836/P5222206.JPG"
+                    alt="In-situ tracking of coral lesion recovery"
+                  >
+                </div>
+                <div class="project-body">
+                  <h3>Coral wound healing trajectories</h3>
+                  <p>
+                    Field assays quantify repair rates and the role of guardians/housekeepers in speeding recovery.
+                  </p>
+                  <a href="#publications" class="btn btn--primary" style="margin-top: auto;">Learn more</a>
+                </div>
+              </div>
+            </div>
+
+            <div class="carousel-item">
+              <div class="project-card">
+                <div class="project-media">
+                  <img
+                    src="https://images.unsplash.com/photo-1544551763-7ef4200df164?q=80&w=1600&auto=format&fit=crop"
+                    alt="Lab setup for temperature ramping"
+                  >
+                </div>
+                <div class="project-body">
+                  <h3>Thermal tolerance & acclimation</h3>
+                  <p>
+                    Lab ramping & field validation link CTmax/acclimation to growth, survival, and behavior.
+                  </p>
+                  <a href="#publications" class="btn btn--primary" style="margin-top: auto;">Learn more</a>
+                </div>
+              </div>
+            </div>
+
+            <div class="carousel-item">
+              <div class="project-card">
+                <div class="project-media">
+                  <img
+                    src="https://images.unsplash.com/photo-1455762279210-ae6b56c7ad7d?q=80&w=1600&auto=format&fit=crop"
+                    alt="Predator-prey interaction in warm water"
+                  >
+                </div>
+                <div class="project-body">
+                  <h3>Metabolism & interaction strength</h3>
+                  <p>
+                    Temperature–metabolism links predict shifts in predation and mutualist services under warming.
+                  </p>
+                  <a href="#publications" class="btn btn--primary" style="margin-top: auto;">Learn more</a>
+                </div>
+              </div>
+            </div>
+
+            <div class="carousel-item">
+              <div class="project-card">
+                <div class="project-media">
+                  <img
+                    src="https://static1.squarespace.com/static/5a033287be42d65267fc9a14/t/68cc81510e96ef6fe595d2f2/1758232914073/image_2_inline.webp"
+                    alt="Coral-dwelling fish near a colony"
+                  >
+                </div>
+                <div class="project-body">
+                  <h3>Mutualists & fertilization</h3>
+                  <p>
+                    Fish associates fertilize and defend corals—boosting growth and recovery after stress.
+                  </p>
+                  <a href="#publications" class="btn btn--primary" style="margin-top: auto;">Learn more</a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="carousel-nav">
+            <button id="prevProj">← Previous</button>
+            <button id="nextProj">Next →</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Findings -->
+    <section id="findings">
+      <div class="container">
+        <h2>Key findings and impact</h2>
+        <div class="findings-grid">
+          <div class="finding-card" tabindex="0">
+            <div class="finding-face finding-front">
+              <div class="theme-icon">
+                <svg viewBox="0 0 24 24">
+                  <path d="M8 3 4 7l4 4"/>
+                  <path d="M4 7h16"/>
+                  <path d="m16 21 4-4-4-4"/>
+                  <path d="M20 17H4"/>
+                </svg>
+              </div>
+              <p class="finding-headline">Thermal limits rewire interactions</p>
+              <p class="finding-summary">
+                Metabolic scaling forecasts temperature-dependent mutualist and predator performance.
+              </p>
+            </div>
+            <div class="finding-face finding-back">
+              <p>
+                As oceans warm, metabolism-driven interaction strengths can flip from facilitation to stress—central to forecasting resilience.
+              </p>
+              <a href="https://doi.org/10.3389/fmars.2023.1072807" target="_blank" rel="noopener">
+                Read the thermal scaling study →
+              </a>
+            </div>
+          </div>
+
+          <div class="finding-card" tabindex="0">
+            <div class="finding-face finding-front">
+              <div class="theme-icon">
+                <svg viewBox="0 0 24 24">
+                  <path d="M12 22c7-3 8-10 8-13V5l-8-3-8 3v4c0 3 1 10 8 13"/>
+                  <path d="m9 12 2 2 4-4"/>
+                </svg>
+              </div>
+              <p class="finding-headline">Mutualists accelerate healing</p>
+              <p class="finding-summary">
+                Guardians and cleaners shrink lesion area and boost growth.
+              </p>
+            </div>
+            <div class="finding-face finding-back">
+              <p>
+                Cleaning, anti-predator defence, and fertilisation (CAFI) services can be engineered into restoration designs.
+              </p>
+              <a href="https://doi.org/10.1016/j.cub.2024.05.071" target="_blank" rel="noopener">
+                Explore CAFI services →
+              </a>
+            </div>
+          </div>
+
+          <div class="finding-card" tabindex="0">
+            <div class="finding-face finding-front">
+              <div class="theme-icon">
+                <svg viewBox="0 0 24 24">
+                  <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8Z"/>
+                  <circle cx="12" cy="12" r="3"/>
+                </svg>
+              </div>
+              <p class="finding-headline">Fertilisation boosts recovery</p>
+              <p class="finding-summary">
+                Coral-dwelling fishes provide nutrients that raise calcification and healing.
+              </p>
+            </div>
+            <div class="finding-face finding-back">
+              <p>
+                Partner species can be leveraged as living fertilisers—informing which mutualists to protect or seed.
+              </p>
+              <a href="https://doi.org/10.1016/j.jtbi.2022.111087" target="_blank" rel="noopener">
+                See the bioenergetic model →
+              </a>
+            </div>
+          </div>
+
+          <div class="finding-card" tabindex="0">
+            <div class="finding-face finding-front">
+              <div class="theme-icon">
+                <svg viewBox="0 0 24 24">
+                  <path d="m10.3 2.3-8 14A2 2 0 0 0 4 19h16a2 2 0 0 0 1.7-2.7l-8-14a2 2 0 0 0-3.4 0Z"/>
+                  <path d="M12 9v4"/>
+                  <path d="M12 17h.01"/>
+                </svg>
+              </div>
+              <p class="finding-headline">Physiology guides triage</p>
+              <p class="finding-summary">
+                Thresholds and CTmax inform which reefs to prioritise—and how.
+              </p>
+            </div>
+            <div class="finding-face finding-back">
+              <p>
+                Embedding organismal limits into decision frameworks helps managers triage interventions under budget constraints.
+              </p>
+              <a href="https://doi.org/10.1111/conl.12716" target="_blank" rel="noopener">
+                Link to climate policy guidance →
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Publications -->
+    <section id="publications">
+      <div class="container">
+        <h2>Publications & highlights</h2>
+        <div class="card">
+          <div class="pubs-list">
+            <div class="pub-item">
+              <div>
+                <p class="pub-title">The metabolic underpinnings of temperature-dependent predation</p>
+                <p class="pub-summary">
+                  Mechanistic link between temperature, metabolism, and interaction strength.
+                </p>
+              </div>
+              <a
+                href="https://doi.org/10.3389/fmars.2023.1072807"
+                target="_blank"
+                rel="noopener"
+                class="btn btn--primary"
+              >
+                Open
+              </a>
+            </div>
+
+            <div class="pub-item">
+              <div>
+                <p class="pub-title">Fertilization by coral-dwelling fish promotes coral growth</p>
+                <p class="pub-summary">
+                  Mutualist fishes subsidize corals via nutrient inputs, enhancing performance.
+                </p>
+              </div>
+              <a
+                href="https://doi.org/10.1016/j.jtbi.2022.111087"
+                target="_blank"
+                rel="noopener"
+                class="btn btn--primary"
+              >
+                Open
+              </a>
+            </div>
+
+            <div class="pub-item">
+              <div>
+                <p class="pub-title">Strong evidence for an intraspecific metabolic scaling of performance</p>
+                <p class="pub-summary">
+                  Performance and energetics framework relevant to thermal tolerance.
+                </p>
+              </div>
+              <a
+                href="https://doi.org/10.3389/fphys.2019.01166"
+                target="_blank"
+                rel="noopener"
+                class="btn btn--primary"
+              >
+                Open
+              </a>
+            </div>
+
+            <div class="pub-item">
+              <div>
+                <p class="pub-title">Integrating oceans into climate policy</p>
+                <p class="pub-summary">
+                  Policy pathways for climate-smart conservation with organismal implications.
+                </p>
+              </div>
+              <a
+                href="https://doi.org/10.1111/conl.12716"
+                target="_blank"
+                rel="noopener"
+                class="btn btn--primary"
+              >
+                Open
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Get Involved -->
+    <section id="get-involved">
+      <div class="container">
+        <div class="cta-section">
+          <h2>Get involved</h2>
+          <p>
+            Collaborate on lab & field experiments, join the lab, or co-develop tools for climate-smart restoration.
+          </p>
+          <div class="cta-buttons">
+            <a href="/people" class="btn btn--primary">Collaborate with us</a>
+            <a href="/join" class="btn btn--dark">Join the lab</a>
+            <a href="mailto:astier@ucsb.edu?subject=Support Ocean Recoveries Lab" class="btn btn--secondary">
+              Support our work
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <strong>Ocean Recoveries Lab</strong>
+      <span>UCSB Ecology, Evolution & Marine Biology</span>
+      <span>
+        Questions? Contact <a href="mailto:astier@ucsb.edu">astier@ucsb.edu</a>
+      </span>
+    </div>
+  </footer>
+
+  <script>
+    // Carousel controls
+    (function() {
+      const rail = document.getElementById('projectsRail');
+      const prevBtn = document.getElementById('prevProj');
+      const nextBtn = document.getElementById('nextProj');
+
+      if (!rail || !prevBtn || !nextBtn) return;
+
+      const items = Array.from(rail.querySelectorAll('.carousel-item'));
+      let currentIndex = 0;
+
+      function updateButtons() {
+        prevBtn.disabled = currentIndex === 0;
+        nextBtn.disabled = currentIndex === items.length - 1;
+      }
+
+      function scrollToIndex(index) {
+        currentIndex = Math.max(0, Math.min(index, items.length - 1));
+        const target = items[currentIndex];
+        if (target) {
+          rail.scrollTo({
+            left: target.offsetLeft,
+            behavior: 'smooth'
+          });
+        }
+        updateButtons();
+      }
+
+      prevBtn.addEventListener('click', () => scrollToIndex(currentIndex - 1));
+      nextBtn.addEventListener('click', () => scrollToIndex(currentIndex + 1));
+
+      updateButtons();
+    })();
+  </script>
+</body>
+</html>

@@ -1,0 +1,361 @@
+---
+import Layout from '@layouts/Layout.astro';
+---
+
+<Layout
+  title="Join Us"
+  description="Join the Ocean Recoveries Lab - opportunities for undergraduates, graduate students, and postdocs at UC Santa Barbara."
+>
+  <!-- Hero -->
+  <section class="relative py-20 md:py-28 overflow-hidden">
+    <div
+      class="absolute inset-0 bg-cover bg-center"
+      style="background-image: url('/images/researcher-on-boat-ocean-fieldwork.jpg');"
+    >
+      <div class="absolute inset-0 bg-ink/60"></div>
+    </div>
+
+    <div class="relative container text-center text-white">
+      <h1 class="text-white mb-4">Join Our Team</h1>
+      <p class="text-xl text-white/80 max-w-2xl mx-auto">
+        We're always looking for curious, motivated people who want to help understand and
+        restore ocean ecosystems.
+      </p>
+    </div>
+  </section>
+
+  <!-- Lab Culture -->
+  <section class="section bg-surface dark:bg-dark-surface">
+    <div class="container">
+      <div class="max-w-3xl mx-auto text-center mb-16 scroll-reveal">
+        <span class="eyebrow">Our Lab</span>
+        <h2 class="mb-6">What We're About</h2>
+        <p class="lead">
+          The Ocean Recoveries Lab is a collaborative, inclusive research group where we value
+          curiosity, creativity, and mutual support. We believe the best science happens when
+          people with diverse backgrounds and perspectives work together.
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-3 gap-6 mb-12">
+        <div class="value-card scroll-reveal stagger-1">
+          <div class="value-icon">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
+            </svg>
+          </div>
+          <h3 class="text-lg font-bold mb-2">Collaborative</h3>
+          <p class="text-sm text-muted dark:text-dark-muted">
+            We work together, share ideas freely, and celebrate each other's successes.
+          </p>
+        </div>
+
+        <div class="value-card scroll-reveal stagger-2">
+          <div class="value-icon">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
+            </svg>
+          </div>
+          <h3 class="text-lg font-bold mb-2">Creative</h3>
+          <p class="text-sm text-muted dark:text-dark-muted">
+            We encourage unconventional thinking and aren't afraid to try new approaches.
+          </p>
+        </div>
+
+        <div class="value-card scroll-reveal stagger-3">
+          <div class="value-icon">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
+            </svg>
+          </div>
+          <h3 class="text-lg font-bold mb-2">Supportive</h3>
+          <p class="text-sm text-muted dark:text-dark-muted">
+            We prioritize well-being and help each other navigate challenges.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Opportunities -->
+  <section class="section bg-line/30 dark:bg-dark-line/20">
+    <div class="container">
+      <div class="text-center mb-12 scroll-reveal">
+        <span class="eyebrow">Opportunities</span>
+        <h2>Open Positions</h2>
+      </div>
+
+      <div class="space-y-6 max-w-3xl mx-auto">
+        <!-- Postdoc -->
+        <details class="opportunity-accordion scroll-reveal">
+          <summary class="opportunity-summary">
+            <div class="opportunity-header">
+              <span class="opportunity-badge">Open</span>
+              <h3 class="opportunity-title">Postdoctoral Researchers</h3>
+            </div>
+            <svg class="w-5 h-5 chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+            </svg>
+          </summary>
+          <div class="opportunity-content">
+            <p class="mb-4">
+              We're always interested in hearing from potential postdocs who want to work on
+              questions related to marine ecosystem recovery, resilience, and restoration.
+            </p>
+            <h4 class="font-bold mb-2">What we're looking for:</h4>
+            <ul class="checklist mb-4">
+              <li>PhD in ecology, marine biology, or related field</li>
+              <li>Strong quantitative skills (modeling, statistics, or both)</li>
+              <li>Track record of independent research</li>
+              <li>Interest in applied conservation questions</li>
+            </ul>
+            <h4 class="font-bold mb-2">Funding:</h4>
+            <p class="mb-4">
+              We can help identify and apply for postdoc fellowships. Check out the
+              <a href="https://www.nsf.gov/funding/pgm_summ.jsp?pims_id=503622" target="_blank" rel="noopener">NSF Ocean Sciences Postdoctoral Fellowship</a>,
+              <a href="https://www.smithfellows.org/" target="_blank" rel="noopener">Smith Fellows</a>, and
+              <a href="https://lfrp.ucsb.edu/" target="_blank" rel="noopener">LFRP postdoctoral positions</a>.
+            </p>
+            <a href="mailto:adrian.stier@ucsb.edu?subject=Postdoc%20Inquiry" class="btn btn-primary">
+              Contact Adrian
+            </a>
+          </div>
+        </details>
+
+        <!-- Graduate -->
+        <details class="opportunity-accordion scroll-reveal">
+          <summary class="opportunity-summary">
+            <div class="opportunity-header">
+              <span class="opportunity-badge">Open</span>
+              <h3 class="opportunity-title">Graduate Students</h3>
+            </div>
+            <svg class="w-5 h-5 chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+            </svg>
+          </summary>
+          <div class="opportunity-content">
+            <p class="mb-4">
+              I typically take 1-2 graduate students per year through the UCSB
+              <a href="https://www.eemb.ucsb.edu/graduate" target="_blank" rel="noopener">Ecology, Evolution & Marine Biology</a> or
+              <a href="https://www.bren.ucsb.edu/" target="_blank" rel="noopener">Bren School</a> programs.
+            </p>
+            <h4 class="font-bold mb-2">What we're looking for:</h4>
+            <ul class="checklist mb-4">
+              <li>Passion for marine ecology and conservation</li>
+              <li>Research experience (field, lab, or computational)</li>
+              <li>Curiosity and self-motivation</li>
+              <li>Ability to work both independently and collaboratively</li>
+            </ul>
+            <h4 class="font-bold mb-2">To apply:</h4>
+            <p class="mb-4">
+              Please email me a brief statement of your research interests, your CV, and why
+              you're interested in our lab. I'll respond to let you know if we might be a good fit
+              before you apply to the program.
+            </p>
+            <a href="mailto:adrian.stier@ucsb.edu?subject=Graduate%20Student%20Inquiry" class="btn btn-primary">
+              Contact Adrian
+            </a>
+          </div>
+        </details>
+
+        <!-- Undergraduate -->
+        <details class="opportunity-accordion scroll-reveal">
+          <summary class="opportunity-summary">
+            <div class="opportunity-header">
+              <span class="opportunity-badge">Open</span>
+              <h3 class="opportunity-title">Undergraduate Researchers</h3>
+            </div>
+            <svg class="w-5 h-5 chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+            </svg>
+          </summary>
+          <div class="opportunity-content">
+            <p class="mb-4">
+              We welcome UCSB undergraduates who want to gain research experience. Undergraduate
+              researchers work closely with graduate students and postdocs on ongoing projects.
+            </p>
+            <h4 class="font-bold mb-2">Opportunities include:</h4>
+            <ul class="checklist mb-4">
+              <li>Independent research projects for course credit</li>
+              <li>Summer research through UCSB URCA or REU programs</li>
+              <li>Lab and field assistant positions (paid when available)</li>
+              <li>Thesis research for honors students</li>
+            </ul>
+            <h4 class="font-bold mb-2">Time commitment:</h4>
+            <p class="mb-4">
+              We ask for a minimum commitment of 10 hours/week for at least two quarters.
+              Research takes time to learn, and we want to make sure you get a meaningful
+              experience.
+            </p>
+            <a href="mailto:adrian.stier@ucsb.edu?subject=Undergraduate%20Research%20Inquiry" class="btn btn-primary">
+              Contact Adrian
+            </a>
+          </div>
+        </details>
+
+        <!-- Visiting -->
+        <details class="opportunity-accordion scroll-reveal">
+          <summary class="opportunity-summary">
+            <div class="opportunity-header">
+              <span class="opportunity-badge secondary">Limited</span>
+              <h3 class="opportunity-title">Visiting Researchers</h3>
+            </div>
+            <svg class="w-5 h-5 chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+            </svg>
+          </summary>
+          <div class="opportunity-content">
+            <p class="mb-4">
+              We occasionally host visiting researchers for sabbaticals or short-term
+              collaborative projects. Space and timing vary, so please reach out early if
+              you're interested.
+            </p>
+            <a href="mailto:adrian.stier@ucsb.edu?subject=Visiting%20Researcher%20Inquiry" class="btn btn-secondary">
+              Contact Adrian
+            </a>
+          </div>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- Life at UCSB -->
+  <section class="section bg-surface dark:bg-dark-surface">
+    <div class="container">
+      <div class="grid md:grid-cols-2 gap-12 items-center">
+        <div class="scroll-reveal">
+          <span class="eyebrow">Location</span>
+          <h2 class="mb-6">Life at UCSB</h2>
+          <p class="text-muted dark:text-dark-muted mb-4">
+            UC Santa Barbara is located on a stunning coastal campus overlooking the Pacific Ocean.
+            Our department has strong research programs in marine ecology, and we benefit from
+            easy access to diverse marine habitats.
+          </p>
+          <p class="text-muted dark:text-dark-muted mb-4">
+            Santa Barbara offers year-round sunshine, world-class outdoor recreation, and a
+            welcoming community. The cost of living is high, but graduate stipends are competitive
+            and we work to ensure all lab members are supported.
+          </p>
+          <div class="flex flex-wrap gap-3">
+            <span class="chip">Marine Science Institute</span>
+            <span class="chip">LTER Site</span>
+            <span class="chip">Coastal Research</span>
+          </div>
+        </div>
+        <div class="scroll-reveal">
+          <img
+            src="/images/california-coastline-rocky-shore.jpg"
+            alt="California coastline near UCSB"
+            class="rounded-xl shadow-lg"
+            loading="lazy"
+          />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact CTA -->
+  <section class="section bg-ink dark:bg-dark-card">
+    <div class="container text-center">
+      <h2 class="text-white mb-4 scroll-reveal">Ready to Apply?</h2>
+      <p class="text-white/70 max-w-xl mx-auto mb-8 scroll-reveal">
+        Send Adrian an email introducing yourself and your interests. We look forward to hearing
+        from you!
+      </p>
+      <a href="mailto:adrian.stier@ucsb.edu" class="btn btn-primary scroll-reveal">
+        Get in Touch
+      </a>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .value-card {
+    @apply bg-white dark:bg-dark-card p-6 rounded-xl border border-line dark:border-dark-line;
+    @apply transition-all duration-300;
+  }
+
+  .value-card:hover {
+    @apply -translate-y-1 shadow-lg;
+  }
+
+  .value-icon {
+    @apply w-12 h-12 rounded-xl mb-4;
+    @apply bg-accent/10 dark:bg-dark-accent/20 text-accent dark:text-dark-accent;
+    @apply flex items-center justify-center;
+  }
+
+  /* Accordion styles */
+  .opportunity-accordion {
+    @apply bg-white dark:bg-dark-card rounded-xl border border-line dark:border-dark-line overflow-hidden;
+    @apply transition-all duration-300;
+  }
+
+  .opportunity-accordion:hover {
+    @apply border-accent/30;
+  }
+
+  .opportunity-summary {
+    @apply flex items-center justify-between gap-4 p-5 cursor-pointer select-none;
+    @apply transition-colors;
+  }
+
+  .opportunity-summary::-webkit-details-marker {
+    display: none;
+  }
+
+  .opportunity-header {
+    @apply flex items-center gap-3;
+  }
+
+  .opportunity-badge {
+    @apply px-2.5 py-1 rounded-full text-xs font-bold uppercase tracking-wide;
+    @apply bg-accent/10 text-accent dark:bg-dark-accent/20 dark:text-dark-accent;
+  }
+
+  .opportunity-badge.secondary {
+    @apply bg-muted/10 text-muted dark:bg-dark-muted/20 dark:text-dark-muted;
+  }
+
+  .opportunity-title {
+    @apply text-lg font-bold text-ink dark:text-dark-ink;
+  }
+
+  .opportunity-summary .chevron {
+    @apply text-muted dark:text-dark-muted transition-transform duration-300;
+  }
+
+  details[open] .opportunity-summary .chevron {
+    @apply rotate-180;
+  }
+
+  .opportunity-content {
+    @apply p-5 pt-0 border-t border-line dark:border-dark-line;
+    @apply text-muted dark:text-dark-muted;
+    animation: slideDown 0.3s ease-out;
+  }
+
+  @keyframes slideDown {
+    from {
+      opacity: 0;
+      transform: translateY(-10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .checklist {
+    @apply space-y-2 pl-0 list-none;
+  }
+
+  .checklist li {
+    @apply flex items-start gap-3;
+  }
+
+  .checklist li::before {
+    content: "✓";
+    @apply text-accent dark:text-dark-accent font-bold flex-shrink-0;
+  }
+</style>

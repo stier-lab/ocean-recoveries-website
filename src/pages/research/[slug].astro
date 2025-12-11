@@ -1,0 +1,258 @@
+---
+import Layout from '@layouts/Layout.astro';
+import { researchThemes } from '@data/research';
+
+export function getStaticPaths() {
+  return researchThemes.map((theme) => ({
+    params: { slug: theme.slug },
+    props: { theme },
+  }));
+}
+
+const { theme } = Astro.props;
+---
+
+<Layout title={theme.title} description={theme.tagline}>
+  <!-- Hero -->
+  <section class="relative py-24 md:py-32 overflow-hidden">
+    <div
+      class="absolute inset-0 bg-cover bg-center parallax-bg"
+      style={`background-image: url('${theme.heroImage}');`}
+    >
+      <div class="absolute inset-0 bg-gradient-to-b from-ink/50 via-ink/40 to-ink/70"></div>
+    </div>
+
+    <div class="relative container text-white">
+      <a
+        href="/research"
+        class="inline-flex items-center gap-2 text-white/70 hover:text-white mb-6 no-underline transition-colors"
+      >
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+        </svg>
+        Back to Research
+      </a>
+      <h1 class="text-white mb-4 hero-title">{theme.title}</h1>
+      <p class="text-xl text-white/80 max-w-3xl hero-tagline">{theme.tagline}</p>
+    </div>
+  </section>
+
+  <!-- Overview -->
+  <section class="section bg-surface dark:bg-dark-surface">
+    <div class="container">
+      <div class="max-w-3xl scroll-reveal">
+        <span class="eyebrow">Overview</span>
+        <div class="prose dark:prose-invert">
+          {theme.description.split('\n\n').map((paragraph) => (
+            <p class="text-lg text-muted dark:text-dark-muted leading-relaxed mb-4">
+              {paragraph}
+            </p>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Key Questions -->
+  <section class="section bg-line/30 dark:bg-dark-line/20">
+    <div class="container">
+      <div class="text-center mb-12 scroll-reveal">
+        <span class="eyebrow">Research Focus</span>
+        <h2>Key Questions</h2>
+      </div>
+
+      <div class="grid md:grid-cols-2 gap-6 max-w-4xl mx-auto">
+        {theme.questions.map((question, i) => (
+          <div class={`question-card scroll-reveal stagger-${i + 1}`}>
+            <span class="question-number">{i + 1}</span>
+            <p class="text-ink dark:text-dark-ink font-medium">{question}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Key Findings -->
+  <section class="section bg-surface dark:bg-dark-surface">
+    <div class="container">
+      <div class="text-center mb-12 scroll-reveal">
+        <span class="eyebrow">Discoveries</span>
+        <h2>Key Findings</h2>
+      </div>
+
+      <div class="grid md:grid-cols-3 gap-6">
+        {theme.findings.map((finding, i) => (
+          <div class={`finding-card scroll-reveal stagger-${i + 1}`}>
+            <div class="finding-front">
+              <div class="finding-icon">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
+                </svg>
+              </div>
+              <h3 class="finding-title">{finding.title}</h3>
+              <p class="finding-summary">{finding.summary}</p>
+              <span class="finding-hint">Hover for details</span>
+            </div>
+            <div class="finding-back">
+              <p class="finding-detail">{finding.detail}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Related Publications CTA -->
+  <section class="section bg-ink dark:bg-dark-card">
+    <div class="container text-center">
+      <h2 class="text-white mb-4 scroll-reveal">Explore Our Publications</h2>
+      <p class="text-white/70 max-w-xl mx-auto mb-8 scroll-reveal">
+        Dive deeper into our {theme.title.toLowerCase()} research through our peer-reviewed publications.
+      </p>
+      <a href="/publications" class="btn btn-primary scroll-reveal">
+        View Publications
+      </a>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .hero-title {
+    animation: fadeUp 0.6s ease-out forwards;
+  }
+
+  .hero-tagline {
+    opacity: 0;
+    animation: fadeUp 0.6s ease-out 0.2s forwards;
+  }
+
+  @keyframes fadeUp {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .parallax-bg {
+    transform: translateZ(0);
+    will-change: transform;
+  }
+
+  .question-card {
+    @apply flex gap-4 p-5 rounded-xl;
+    @apply bg-white dark:bg-dark-card border border-line dark:border-dark-line;
+    @apply transition-all duration-300;
+  }
+
+  .question-card:hover {
+    @apply -translate-y-1 shadow-lg border-accent/30;
+  }
+
+  .question-number {
+    @apply flex-shrink-0 w-8 h-8 rounded-full;
+    @apply bg-accent/10 dark:bg-dark-accent/20 text-accent dark:text-dark-accent;
+    @apply flex items-center justify-center font-bold text-sm;
+  }
+
+  /* Flip card styles */
+  .finding-card {
+    @apply relative h-64 rounded-xl;
+    perspective: 1000px;
+  }
+
+  .finding-front,
+  .finding-back {
+    @apply absolute inset-0 rounded-xl p-6;
+    @apply flex flex-col;
+    backface-visibility: hidden;
+    transition: transform 0.6s ease;
+  }
+
+  .finding-front {
+    @apply bg-white dark:bg-dark-card border border-line dark:border-dark-line;
+  }
+
+  .finding-back {
+    @apply bg-gradient-to-br from-accent/20 to-accent-2/20 dark:from-dark-accent/30 dark:to-accent-2/30;
+    @apply border border-accent/30 dark:border-dark-accent/30;
+    @apply justify-center;
+    transform: rotateY(180deg);
+  }
+
+  .finding-card:hover .finding-front {
+    transform: rotateY(-180deg);
+  }
+
+  .finding-card:hover .finding-back {
+    transform: rotateY(0deg);
+  }
+
+  .finding-icon {
+    @apply w-12 h-12 rounded-xl mb-4;
+    @apply bg-accent/10 dark:bg-dark-accent/20 text-accent dark:text-dark-accent;
+    @apply flex items-center justify-center;
+  }
+
+  .finding-title {
+    @apply font-bold text-lg text-ink dark:text-dark-ink mb-2;
+  }
+
+  .finding-summary {
+    @apply text-sm text-muted dark:text-dark-muted flex-1;
+  }
+
+  .finding-hint {
+    @apply text-xs text-accent dark:text-dark-accent font-medium mt-2;
+  }
+
+  .finding-detail {
+    @apply text-sm text-ink dark:text-dark-ink leading-relaxed font-medium;
+  }
+
+  /* Reduced motion */
+  @media (prefers-reduced-motion: reduce) {
+    .hero-title,
+    .hero-tagline {
+      animation: none;
+      opacity: 1;
+    }
+
+    .finding-front,
+    .finding-back {
+      transition: none;
+    }
+
+    .finding-card:hover .finding-front {
+      transform: none;
+    }
+
+    .finding-card:hover .finding-back {
+      transform: rotateY(180deg);
+    }
+  }
+</style>
+
+<script>
+  // Parallax effect
+  const initParallax = () => {
+    const parallaxBg = document.querySelector('.parallax-bg') as HTMLElement;
+    if (!parallaxBg) return;
+
+    const handleScroll = () => {
+      const scrolled = window.scrollY;
+      const rate = scrolled * 0.3;
+      parallaxBg.style.transform = `translateY(${rate}px)`;
+    };
+
+    if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      window.addEventListener('scroll', handleScroll, { passive: true });
+    }
+  };
+
+  initParallax();
+  document.addEventListener('astro:after-swap', initParallax);
+</script>
