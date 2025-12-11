@@ -98,7 +98,7 @@ const roleLabel = roleLabels[role] || role;
 
 <style>
   .person-card {
-    @apply bg-white dark:bg-dark-card border border-line dark:border-dark-line rounded-lg overflow-hidden shadow;
+    @apply bg-surface-card border border-line rounded-lg overflow-hidden shadow;
     @apply transition-all duration-300 ease-spring;
     @apply flex flex-col h-full;
   }
@@ -108,7 +108,7 @@ const roleLabel = roleLabels[role] || role;
   }
 
   .photo-wrap {
-    @apply relative aspect-[5/6] bg-line/30 dark:bg-dark-line/30 overflow-hidden;
+    @apply relative aspect-[5/6] bg-line/30 overflow-hidden;
   }
 
   .photo-wrap::before {
@@ -138,8 +138,9 @@ const roleLabel = roleLabels[role] || role;
   .role-tag {
     @apply absolute top-3 left-3 z-20;
     @apply px-3 py-1.5 rounded-full;
-    @apply bg-ink/90 text-white text-xs font-bold uppercase tracking-wide;
+    @apply text-white text-xs font-bold uppercase tracking-wide;
     @apply border border-white/30 shadow-lg;
+    background-color: rgba(11, 37, 69, 0.9);
   }
 
   .body {
@@ -147,15 +148,15 @@ const roleLabel = roleLabels[role] || role;
   }
 
   .name {
-    @apply text-lg font-extrabold text-ink dark:text-dark-ink mb-1;
+    @apply text-lg font-extrabold text-ink mb-1;
   }
 
   .title-text {
-    @apply text-xs font-bold uppercase tracking-wide text-muted dark:text-dark-muted mb-2;
+    @apply text-xs font-bold uppercase tracking-wide text-muted mb-2;
   }
 
   .hook {
-    @apply text-sm text-muted dark:text-dark-muted leading-relaxed mb-3 flex-1;
+    @apply text-sm text-muted leading-relaxed mb-3 flex-1;
   }
 
   .tags {
@@ -164,8 +165,8 @@ const roleLabel = roleLabels[role] || role;
 
   .tag {
     @apply px-2 py-1 text-xs font-semibold rounded-md;
-    @apply bg-line/50 dark:bg-dark-line/50 text-ink dark:text-dark-ink;
-    @apply border border-line dark:border-dark-line;
+    @apply bg-line/50 text-ink;
+    @apply border border-line;
   }
 
   .cta-row {
@@ -174,8 +175,8 @@ const roleLabel = roleLabels[role] || role;
 
   .btn-contact {
     @apply inline-flex items-center gap-2 px-3 py-2;
-    @apply text-sm font-semibold text-accent dark:text-dark-accent;
-    @apply border border-line dark:border-dark-line rounded-lg bg-white dark:bg-dark-card;
+    @apply text-sm font-semibold text-accent;
+    @apply border border-line rounded-lg bg-surface-card;
     @apply transition-all duration-200 no-underline;
   }
 
@@ -184,12 +185,12 @@ const roleLabel = roleLabels[role] || role;
   }
 
   .btn-icon {
-    @apply p-2 rounded-lg text-muted dark:text-dark-muted;
-    @apply border border-line dark:border-dark-line bg-white dark:bg-dark-card;
+    @apply p-2 rounded-lg text-muted;
+    @apply border border-line bg-surface-card;
     @apply transition-all duration-200 no-underline;
   }
 
   .btn-icon:hover {
-    @apply text-accent dark:text-dark-accent border-accent dark:border-dark-accent;
+    @apply text-accent border-accent;
   }
 </style>

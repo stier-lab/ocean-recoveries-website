@@ -49,3 +49,11 @@ ehthumbs.db
 *.local
 *.bak
 *.tmp
+
+# Large media files
+*.mov
+*.avi
+*.mp4
+*.AVI
+*.MOV
+*.MP4

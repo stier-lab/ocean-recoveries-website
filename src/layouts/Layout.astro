@@ -60,26 +60,6 @@ const siteTitle = title === 'Home' ? 'Ocean Recoveries Lab' : `${title} | Ocean 
 
     <!-- View Transitions -->
     <ViewTransitions />
-
-    <!-- Theme Script (runs before page renders to prevent flash) -->
-    <script is:inline>
-      const getThemePreference = () => {
-        if (typeof localStorage !== 'undefined' && localStorage.getItem('theme')) {
-          return localStorage.getItem('theme');
-        }
-        return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
-      };
-
-      const theme = getThemePreference();
-      document.documentElement.classList.toggle('dark', theme === 'dark');
-
-      // Listen for system preference changes
-      window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
-        if (!localStorage.getItem('theme')) {
-          document.documentElement.classList.toggle('dark', e.matches);
-        }
-      });
-    </script>
   </head>
   <body class="min-h-screen flex flex-col antialiased">
     <a href="#main-content" class="skip-link">Skip to main content</a>

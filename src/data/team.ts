@@ -18,7 +18,9 @@ export interface AlumniMember {
   image?: string;
   years: string;
   role: string;
-  currentPosition: string;
+  currentPosition?: string;
+  focus?: string;
+  linkedin?: string;
 }
 
 export const currentTeam: TeamMember[] = [
@@ -86,45 +88,74 @@ export const currentTeam: TeamMember[] = [
 
 export const alumni: AlumniMember[] = [
   {
-    name: 'Samantha Hamilton',
-    image: '/images/sam.jpg',
-    years: '2019-2023',
-    role: 'PhD Student',
-    currentPosition: 'Postdoc at Stanford Hopkins Marine Station',
-  },
-  {
-    name: 'Joseph Peters',
-    image: '/images/joe.jpg',
-    years: '2020-2024',
-    role: 'PhD Student',
-    currentPosition: 'Research Scientist at NOAA',
-  },
-  {
-    name: 'Emily Chen',
-    image: '/images/Emily.jpg',
-    years: '2018-2022',
-    role: 'Postdoc',
-    currentPosition: 'Assistant Professor at Oregon State',
-  },
-  {
-    name: 'Bartholomew King',
-    image: '/images/bart.jpg',
+    name: 'Jada Alexander',
+    image: '/images/jada.jpg',
     years: '2021-2023',
-    role: 'Lab Manager',
-    currentPosition: 'PhD Student at UC Davis',
+    role: 'Undergraduate Researcher',
+    focus: 'Studied Trapezia-coral mutualism combining field surveys and lab work',
+    linkedin: 'https://linkedin.com/in/jadaaalexander/',
   },
   {
-    name: 'Kai Mitchell',
-    image: '/images/kai.jpg',
-    years: '2022-2024',
-    role: 'Undergraduate',
-    currentPosition: 'Masters Student at Scripps',
-  },
-  {
-    name: 'Alexis Rivera',
+    name: 'Alexis Sitt Park',
     image: '/images/alexis.webp',
-    years: '2020-2022',
-    role: 'Undergraduate',
-    currentPosition: 'Research Technician at Monterey Bay Aquarium',
+    years: '2022-2023',
+    role: 'Undergraduate Researcher',
+    focus: 'Contributed to field and lab projects',
+    linkedin: 'https://linkedin.com/in/alexissittpark/',
+  },
+  {
+    name: 'Emily Donham',
+    image: '/images/Emily.jpg',
+    years: '2024-2025',
+    role: 'Postdoc',
+    focus: 'Kelp eco-physiology & global change biology; integrated sensors, diver surveys, and lab experiments',
+  },
+  {
+    name: 'Samantha Csik',
+    image: '/images/sam.jpg',
+    years: '2020',
+    role: 'MS Student',
+    focus: 'Thesis on temperature effects on lobster physiology & feeding',
+    currentPosition: 'Data Analyst at NCEAS',
+  },
+  {
+    name: 'Joseph Curtis',
+    image: '/images/joe.jpg',
+    years: '2019-2022',
+    role: 'Lab Manager',
+    focus: 'Led coral, lobster & kelp work in Moorea and Santa Barbara',
+    currentPosition: 'PhD student in New Zealand',
+  },
+  {
+    name: 'Dr. Kai Kopecky',
+    image: '/images/kai.jpg',
+    years: '2024',
+    role: 'PhD',
+    focus: 'Worked on coral reef resilience',
+    currentPosition: 'Postdoc at CU Boulder',
+  },
+  {
+    name: 'Dr. Kurt Ingeman',
+    image: '/images/kingeman.jpg',
+    years: '2018-2020',
+    role: 'Postdoc',
+    focus: 'Synthesized moving targets in recoveries',
+    currentPosition: 'Analyst at SOEST, UH Mānoa',
+  },
+  {
+    name: 'Dr. Bart Difiore',
+    image: '/images/bart.jpg',
+    years: '2023',
+    role: 'PhD',
+    focus: 'Studied fishing impacts on kelp forest ecology',
+    currentPosition: 'Postdoc at Gulf of Maine Research Institute',
+  },
+  {
+    name: 'Dr. Megsie Siple',
+    image: '/images/megsie.webp',
+    years: '2019-2020',
+    role: 'Postdoc',
+    focus: 'Linked ecosystem monitoring to EBM',
+    currentPosition: 'Fisheries scientist at NOAA AFSC (Seattle)',
   },
 ];

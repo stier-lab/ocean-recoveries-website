@@ -68,19 +68,19 @@ export default function PublicationList({ publications, themes }: Props) {
   const highlightAuthor = (authors: string) => {
     return authors.replace(
       /(Stier\s*AC?)/gi,
-      '<strong class="text-ink dark:text-dark-ink">$1</strong>'
+      '<strong class="text-ink">$1</strong>'
     );
   };
 
   return (
     <div>
       {/* Filter Bar */}
-      <div className="sticky top-16 md:top-20 z-40 -mx-4 px-4 py-4 bg-surface/95 dark:bg-dark-surface/95 backdrop-blur-sm border-b border-line dark:border-dark-line mb-8">
+      <div className="sticky top-16 md:top-20 z-40 -mx-4 px-4 py-4 bg-surface/95 backdrop-blur-sm border-b border-line mb-8">
         {/* Search */}
         <div className="flex flex-col md:flex-row gap-4 mb-4">
           <div className="relative flex-1">
             <svg
-              className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-muted dark:text-dark-muted"
+              className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-muted"
               fill="none"
               stroke="currentColor"
               viewBox="0 0 24 24"
@@ -97,7 +97,7 @@ export default function PublicationList({ publications, themes }: Props) {
               placeholder="Search publications..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              className="w-full pl-10 pr-4 py-2.5 rounded-xl border border-line dark:border-dark-line bg-white dark:bg-dark-card text-ink dark:text-dark-ink placeholder:text-muted dark:placeholder:text-dark-muted focus:outline-none focus:ring-2 focus:ring-accent dark:focus:ring-dark-accent"
+              className="w-full pl-10 pr-4 py-2.5 rounded-xl border border-line bg-surface-card text-ink placeholder:text-muted focus:outline-none focus:ring-2 focus:ring-accent"
             />
           </div>
 
@@ -106,7 +106,7 @@ export default function PublicationList({ publications, themes }: Props) {
             <select
               value={sortBy}
               onChange={(e) => setSortBy(e.target.value as typeof sortBy)}
-              className="px-4 py-2.5 rounded-xl border border-line dark:border-dark-line bg-white dark:bg-dark-card text-ink dark:text-dark-ink text-sm font-medium focus:outline-none focus:ring-2 focus:ring-accent dark:focus:ring-dark-accent"
+              className="px-4 py-2.5 rounded-xl border border-line bg-surface-card text-ink text-sm font-medium focus:outline-none focus:ring-2 focus:ring-accent"
             >
               <option value="year-desc">Newest First</option>
               <option value="year-asc">Oldest First</option>
@@ -118,7 +118,7 @@ export default function PublicationList({ publications, themes }: Props) {
               className={`px-4 py-2.5 rounded-xl border text-sm font-medium transition-colors ${
                 openAccessOnly
                   ? 'bg-accent text-white border-accent'
-                  : 'bg-white dark:bg-dark-card border-line dark:border-dark-line text-ink dark:text-dark-ink'
+                  : 'bg-surface-card border-line text-ink'
               }`}
             >
               Open Access
@@ -135,7 +135,7 @@ export default function PublicationList({ publications, themes }: Props) {
               className={`px-3 py-1.5 rounded-full text-sm font-medium transition-all ${
                 selectedThemes.includes(theme)
                   ? 'bg-accent text-white'
-                  : 'bg-white dark:bg-dark-card border border-line dark:border-dark-line text-muted dark:text-dark-muted hover:border-accent hover:text-accent'
+                  : 'bg-surface-card border border-line text-muted hover:border-accent hover:text-accent'
               }`}
             >
               {theme}
@@ -145,7 +145,7 @@ export default function PublicationList({ publications, themes }: Props) {
           {hasFilters && (
             <button
               onClick={clearFilters}
-              className="px-3 py-1.5 rounded-full text-sm font-medium text-accent dark:text-dark-accent hover:underline"
+              className="px-3 py-1.5 rounded-full text-sm font-medium text-accent hover:underline"
             >
               Clear all
             </button>
@@ -155,8 +155,8 @@ export default function PublicationList({ publications, themes }: Props) {
 
       {/* Results count */}
       <div className="flex items-center justify-between mb-6">
-        <p className="text-sm text-muted dark:text-dark-muted">
-          Showing <strong className="text-ink dark:text-dark-ink">{filteredPubs.length}</strong> of{' '}
+        <p className="text-sm text-muted">
+          Showing <strong className="text-ink">{filteredPubs.length}</strong> of{' '}
           {publications.length} publications
         </p>
       </div>
@@ -172,7 +172,7 @@ export default function PublicationList({ publications, themes }: Props) {
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.95 }}
               transition={{ duration: 0.2 }}
-              className="bg-white dark:bg-dark-card border border-line dark:border-dark-line rounded-xl p-5 hover:shadow-lg hover:-translate-y-0.5 transition-all"
+              className="bg-surface-card border border-line rounded-xl p-5 hover:shadow-lg hover:-translate-y-0.5 transition-all"
             >
               {/* Badges */}
               <div className="flex flex-wrap gap-2 mb-3">
@@ -182,7 +182,7 @@ export default function PublicationList({ publications, themes }: Props) {
                   </span>
                 )}
                 {pub.openAccess && (
-                  <span className="px-2 py-0.5 rounded-full bg-accent/10 text-accent dark:text-dark-accent text-xs font-bold uppercase">
+                  <span className="px-2 py-0.5 rounded-full bg-accent/10 text-accent text-xs font-bold uppercase">
                     Open Access
                   </span>
                 )}
@@ -194,18 +194,18 @@ export default function PublicationList({ publications, themes }: Props) {
               </div>
 
               {/* Title */}
-              <h3 className="text-lg font-bold text-ink dark:text-dark-ink mb-2 leading-tight">
+              <h3 className="text-lg font-bold text-ink mb-2 leading-tight">
                 {pub.title}
               </h3>
 
               {/* Authors */}
               <p
-                className="text-sm text-muted dark:text-dark-muted mb-2"
+                className="text-sm text-muted mb-2"
                 dangerouslySetInnerHTML={{ __html: highlightAuthor(pub.authors) }}
               />
 
               {/* Journal & Year */}
-              <p className="text-sm text-muted-2 dark:text-dark-muted-2 mb-3">
+              <p className="text-sm text-muted-2 mb-3">
                 <em>{pub.journal}</em> ({pub.year})
               </p>
 
@@ -214,7 +214,7 @@ export default function PublicationList({ publications, themes }: Props) {
                 {pub.themes.map((theme) => (
                   <span
                     key={theme}
-                    className="px-2 py-0.5 rounded text-xs font-medium bg-line/50 dark:bg-dark-line/50 text-muted dark:text-dark-muted"
+                    className="px-2 py-0.5 rounded text-xs font-medium bg-line/50 text-muted"
                   >
                     {theme}
                   </span>
@@ -226,7 +226,7 @@ export default function PublicationList({ publications, themes }: Props) {
                 <div>
                   <button
                     onClick={() => setExpandedId(expandedId === pub.id ? null : pub.id)}
-                    className="text-sm font-semibold text-accent dark:text-dark-accent hover:underline mb-2"
+                    className="text-sm font-semibold text-accent hover:underline mb-2"
                   >
                     {expandedId === pub.id ? 'Hide abstract' : 'Show abstract'}
                   </button>
@@ -240,7 +240,7 @@ export default function PublicationList({ publications, themes }: Props) {
                         transition={{ duration: 0.2 }}
                         className="overflow-hidden"
                       >
-                        <p className="text-sm text-muted dark:text-dark-muted leading-relaxed py-2 border-t border-line dark:border-dark-line">
+                        <p className="text-sm text-muted leading-relaxed py-2 border-t border-line">
                           {pub.abstract}
                         </p>
                       </motion.div>
@@ -250,13 +250,13 @@ export default function PublicationList({ publications, themes }: Props) {
               )}
 
               {/* Links */}
-              <div className="flex flex-wrap gap-3 mt-3 pt-3 border-t border-line dark:border-dark-line">
+              <div className="flex flex-wrap gap-3 mt-3 pt-3 border-t border-line">
                 {pub.doi && (
                   <a
                     href={`https://doi.org/${pub.doi}`}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-sm font-semibold text-accent dark:text-dark-accent hover:underline"
+                    className="text-sm font-semibold text-accent hover:underline"
                   >
                     DOI →
                   </a>
@@ -266,7 +266,7 @@ export default function PublicationList({ publications, themes }: Props) {
                     href={pub.pdfUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-sm font-semibold text-accent dark:text-dark-accent hover:underline"
+                    className="text-sm font-semibold text-accent hover:underline"
                   >
                     PDF →
                   </a>
@@ -276,7 +276,7 @@ export default function PublicationList({ publications, themes }: Props) {
                     href={pub.codeUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-sm font-semibold text-accent dark:text-dark-accent hover:underline"
+                    className="text-sm font-semibold text-accent hover:underline"
                   >
                     Code →
                   </a>
@@ -293,7 +293,7 @@ export default function PublicationList({ publications, themes }: Props) {
             animate={{ opacity: 1 }}
             className="text-center py-16"
           >
-            <p className="text-muted dark:text-dark-muted text-lg mb-4">
+            <p className="text-muted text-lg mb-4">
               No publications match your filters.
             </p>
             <button

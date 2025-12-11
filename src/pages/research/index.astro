@@ -5,7 +5,7 @@ import { researchThemes } from '@data/research';
 
 <Layout
   title="Research"
-  description="Ocean Recoveries Lab research themes: coral reefs, kelp forests, and organismal mechanisms."
+  description="Ocean Recoveries Lab research: understanding, restoring, and scaling ocean resilience through ecosystem dynamics, conservation science, and quantitative methods."
 >
   <!-- Hero -->
   <section class="relative py-20 md:py-28 overflow-hidden">
@@ -13,77 +13,154 @@ import { researchThemes } from '@data/research';
       class="absolute inset-0 bg-cover bg-center"
       style="background-image: url('/images/tropical-island-split-view-coral-reef-shark.jpeg');"
     >
-      <div class="absolute inset-0 bg-ink/60"></div>
+      <div class="absolute inset-0 bg-navy-deep/70"></div>
     </div>
 
     <div class="relative container text-center text-white">
       <span class="eyebrow text-white/70">Our Research</span>
-      <h1 class="text-white mb-4">Understanding Ocean Resilience</h1>
-      <p class="text-xl text-white/80 max-w-2xl mx-auto">
-        We combine field experiments, mathematical models, and molecular approaches to understand
-        how marine ecosystems recover from disturbance — and how we can help them along.
+      <h1 class="text-white mb-4">Understanding, Restoring & Scaling Ocean Resilience</h1>
+      <p class="text-xl text-white/80 max-w-3xl mx-auto">
+        We integrate ecological theory, quantitative methods, and field studies with a commitment to open science
+        and decision support — moving insights from lab and field to classrooms, observatories, and coastal decision tables.
       </p>
     </div>
   </section>
 
-  <!-- Research Approach -->
-  <section class="section bg-surface dark:bg-dark-surface">
+  <!-- Three Pillars -->
+  <section id="orl-pillars" class="section bg-surface">
     <div class="container">
-      <div class="max-w-3xl mx-auto text-center mb-16 scroll-reveal">
-        <h2 class="mb-6">Our Approach</h2>
-        <p class="lead">
-          Ocean ecosystems face unprecedented challenges from climate change, overfishing, and
-          habitat degradation. Our lab tackles these challenges through three interconnected
-          research themes, working from ecosystem dynamics down to molecular mechanisms.
+      <div class="text-center mb-16 scroll-reveal">
+        <span class="eyebrow">Our Framework</span>
+        <h2>Three Research Pillars</h2>
+        <p class="lead max-w-3xl mx-auto mt-4">
+          Our work is organized around three interconnected pillars that span from fundamental science to applied solutions.
         </p>
       </div>
 
-      <!-- Approach pillars -->
       <div class="grid md:grid-cols-3 gap-8 mb-16">
-        <div class="approach-card scroll-reveal stagger-1">
-          <div class="approach-icon">
-            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7" />
-            </svg>
-          </div>
-          <h3 class="text-lg font-bold mb-2">Field Experiments</h3>
-          <p class="text-sm text-muted dark:text-dark-muted">
-            Long-term manipulative experiments in coral reefs and kelp forests reveal cause-and-effect
-            relationships that observational studies cannot.
+        <!-- Pillar 1 -->
+        <div class="pillar-card scroll-reveal stagger-1">
+          <div class="pillar-number">1</div>
+          <h3 class="text-xl font-bold mb-3">Marine Ecosystem Dynamics & Resilience</h3>
+          <p class="text-muted mb-4">
+            How do kelp and corals establish habitat? What species interactions drive ecological change?
+            What mechanisms push reefs across tipping points — and how can we help them recover?
           </p>
+          <ul class="pillar-list">
+            <li>Foundation species create habitat stability</li>
+            <li>Predator-prey relationships & trophic cascades</li>
+            <li>Disturbance events and tipping points</li>
+            <li>Storm & bleaching legacies</li>
+          </ul>
         </div>
 
-        <div class="approach-card scroll-reveal stagger-2">
-          <div class="approach-icon">
-            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <!-- Pillar 2 -->
+        <div class="pillar-card scroll-reveal stagger-2">
+          <div class="pillar-number">2</div>
+          <h3 class="text-xl font-bold mb-3">Conservation Science & Human Dimensions</h3>
+          <p class="text-muted mb-4">
+            We co-design solutions with agencies and communities, testing effectiveness, establishing
+            action thresholds, and reducing conflict in decision-making processes.
+          </p>
+          <ul class="pillar-list">
+            <li>Marine Protected Areas & fisheries benefits</li>
+            <li>Predator-prey recovery synchronization</li>
+            <li>Stakeholder engagement & policy alignment</li>
+            <li>Restoration & climate adaptation methods</li>
+          </ul>
+        </div>
+
+        <!-- Pillar 3 -->
+        <div class="pillar-card scroll-reveal stagger-3">
+          <div class="pillar-number">3</div>
+          <h3 class="text-xl font-bold mb-3">Ecological Theory & Quantitative Methods</h3>
+          <p class="text-muted mb-4">
+            We develop simple yet powerful models and tools paired with new measurement approaches,
+            enabling managers to forecast scenarios and scale solutions.
+          </p>
+          <ul class="pillar-list">
+            <li>Food web & species-area models</li>
+            <li>Bayesian & structural equation modeling</li>
+            <li>3D photogrammetry & field experiments</li>
+            <li>Long-term observatory data systems</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Impact Pathway -->
+  <section class="section bg-navy-deep">
+    <div class="container">
+      <div class="text-center mb-12 scroll-reveal">
+        <span class="eyebrow text-accent">From Questions to Action</span>
+        <h2 class="text-white">Our Impact Pathway</h2>
+      </div>
+
+      <div class="pathway-grid scroll-reveal">
+        <div class="pathway-step">
+          <div class="pathway-icon">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
+          </div>
+          <h4 class="text-white font-bold mb-2">First Principles</h4>
+          <p class="text-white/70 text-sm">Fundamental questions about ecosystem dynamics</p>
+        </div>
+
+        <div class="pathway-arrow">
+          <svg class="w-6 h-6 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+          </svg>
+        </div>
+
+        <div class="pathway-step">
+          <div class="pathway-icon">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z" />
             </svg>
           </div>
-          <h3 class="text-lg font-bold mb-2">Mathematical Models</h3>
-          <p class="text-sm text-muted dark:text-dark-muted">
-            Dynamical models and simulations help us understand complex ecosystem dynamics and
-            evaluate potential management strategies.
-          </p>
+          <h4 class="text-white font-bold mb-2">Quantitative Models</h4>
+          <p class="text-white/70 text-sm">Predictive tools and scenario forecasting</p>
         </div>
 
-        <div class="approach-card scroll-reveal stagger-3">
-          <div class="approach-icon">
-            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z" />
+        <div class="pathway-arrow">
+          <svg class="w-6 h-6 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+          </svg>
+        </div>
+
+        <div class="pathway-step">
+          <div class="pathway-icon">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4" />
             </svg>
           </div>
-          <h3 class="text-lg font-bold mb-2">Molecular Tools</h3>
-          <p class="text-sm text-muted dark:text-dark-muted">
-            Genomic and physiological approaches reveal the mechanisms underlying organism-level
-            responses to environmental change.
-          </p>
+          <h4 class="text-white font-bold mb-2">Reproducible Data</h4>
+          <p class="text-white/70 text-sm">Open science and shared datasets</p>
+        </div>
+
+        <div class="pathway-arrow">
+          <svg class="w-6 h-6 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+          </svg>
+        </div>
+
+        <div class="pathway-step">
+          <div class="pathway-icon">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+            </svg>
+          </div>
+          <h4 class="text-white font-bold mb-2">Tools & Protocols</h4>
+          <p class="text-white/70 text-sm">Practical implementation guides</p>
         </div>
       </div>
     </div>
   </section>
 
   <!-- Research Themes -->
-  <section class="section bg-line/30 dark:bg-dark-line/20">
+  <section class="section bg-navy-highlight">
     <div class="container">
       <div class="text-center mb-12 scroll-reveal">
         <span class="eyebrow">Research Themes</span>
@@ -94,18 +171,18 @@ import { researchThemes } from '@data/research';
         {researchThemes.map((theme, i) => (
           <a
             href={`/research/${theme.slug}`}
-            class={`theme-row scroll-reveal ${i % 2 === 1 ? 'md:flex-row-reverse' : ''}`}
+            class={`theme-row group scroll-reveal ${i % 2 === 1 ? 'md:flex-row-reverse' : ''}`}
           >
             <div class="theme-image img-zoom">
               <img src={theme.heroImage} alt={theme.title} loading="lazy" />
             </div>
             <div class="theme-content">
               <span class="eyebrow">{`Theme ${i + 1}`}</span>
-              <h3 class="text-2xl font-bold mb-3 text-ink dark:text-dark-ink group-hover:text-accent">
+              <h3 class="text-2xl font-bold mb-3 text-ink group-hover:text-accent">
                 {theme.title}
               </h3>
-              <p class="text-muted dark:text-dark-muted mb-4">{theme.tagline}</p>
-              <span class="inline-flex items-center gap-2 text-accent dark:text-dark-accent font-semibold">
+              <p class="text-muted mb-4">{theme.tagline}</p>
+              <span class="inline-flex items-center gap-2 text-accent font-semibold">
                 Learn more
                 <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
@@ -118,13 +195,47 @@ import { researchThemes } from '@data/research';
     </div>
   </section>
 
+  <!-- Field Sites -->
+  <section class="section bg-surface">
+    <div class="container">
+      <div class="text-center mb-12 scroll-reveal">
+        <span class="eyebrow">Where We Work</span>
+        <h2>Field Sites</h2>
+      </div>
+
+      <div class="grid md:grid-cols-2 gap-8">
+        <div class="site-card scroll-reveal stagger-1">
+          <img src="/images/aerial-view-island-lagoon-barrier-reef.jpeg" alt="Moorea, French Polynesia" class="site-image" loading="lazy" />
+          <div class="site-content">
+            <h3 class="text-xl font-bold mb-2">Moorea, French Polynesia</h3>
+            <p class="text-muted text-sm">
+              Our primary coral reef field site, home to long-term experiments on reef recovery,
+              mutualist communities, and restoration approaches. Part of the Moorea Coral Reef LTER.
+            </p>
+          </div>
+        </div>
+
+        <div class="site-card scroll-reveal stagger-2">
+          <img src="/images/kelp-forest-garibaldi-california.jpeg" alt="Santa Barbara Channel" class="site-image" loading="lazy" />
+          <div class="site-content">
+            <h3 class="text-xl font-bold mb-2">Santa Barbara Channel</h3>
+            <p class="text-muted text-sm">
+              Giant kelp forests along the California coast where we study predator-prey dynamics,
+              fisheries interactions, and ecosystem resilience. Part of the Santa Barbara Coastal LTER.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- Collaborators CTA -->
-  <section class="section bg-surface dark:bg-dark-surface">
+  <section class="section bg-navy-deep">
     <div class="container">
       <div class="cta-card scroll-reveal">
         <div class="cta-content">
-          <h2 class="text-2xl font-bold mb-4">Interested in Collaborating?</h2>
-          <p class="text-muted dark:text-dark-muted mb-6">
+          <h2 class="text-2xl font-bold mb-4 text-white">Interested in Collaborating?</h2>
+          <p class="text-white/70 mb-6">
             We work with researchers, conservation organizations, and communities worldwide.
             If you're interested in partnering on research or applying our findings to your work,
             we'd love to hear from you.
@@ -146,25 +257,57 @@ import { researchThemes } from '@data/research';
 </Layout>
 
 <style>
-  .approach-card {
-    @apply bg-white dark:bg-dark-card p-6 rounded-lg border border-line dark:border-dark-line;
+  .pillar-card {
+    @apply bg-surface-card p-6 rounded-xl border border-line;
     @apply transition-all duration-300;
   }
 
-  .approach-card:hover {
+  .pillar-card:hover {
     @apply -translate-y-1 shadow-lg;
   }
 
-  .approach-icon {
-    @apply w-14 h-14 rounded-xl mb-4;
-    @apply bg-accent/10 dark:bg-dark-accent/20 text-accent dark:text-dark-accent;
+  .pillar-number {
+    @apply w-10 h-10 rounded-full mb-4;
+    @apply bg-accent text-white;
     @apply flex items-center justify-center;
+    @apply text-lg font-bold;
+  }
+
+  .pillar-list {
+    @apply space-y-2 text-sm;
+  }
+
+  .pillar-list li {
+    @apply flex items-start gap-2 text-muted;
+  }
+
+  .pillar-list li::before {
+    content: '';
+    @apply w-1.5 h-1.5 rounded-full bg-accent mt-2 flex-shrink-0;
+  }
+
+  .pathway-grid {
+    @apply flex flex-wrap items-center justify-center gap-4;
+  }
+
+  .pathway-step {
+    @apply text-center p-4;
+  }
+
+  .pathway-icon {
+    @apply w-12 h-12 rounded-full mx-auto mb-3;
+    @apply bg-white/10 text-accent;
+    @apply flex items-center justify-center;
+  }
+
+  .pathway-arrow {
+    @apply hidden md:block;
   }
 
   .theme-row {
     @apply flex flex-col md:flex-row gap-6 p-4 rounded-xl;
-    @apply bg-white dark:bg-dark-card border border-line dark:border-dark-line;
-    @apply transition-all duration-300 no-underline group;
+    @apply bg-surface-card border border-line;
+    @apply transition-all duration-300 no-underline;
   }
 
   .theme-row:hover {
@@ -183,9 +326,26 @@ import { researchThemes } from '@data/research';
     @apply flex flex-col justify-center py-4;
   }
 
+  .site-card {
+    @apply bg-surface-card rounded-xl border border-line overflow-hidden;
+    @apply transition-all duration-300;
+  }
+
+  .site-card:hover {
+    @apply -translate-y-1 shadow-lg;
+  }
+
+  .site-image {
+    @apply w-full aspect-video object-cover;
+  }
+
+  .site-content {
+    @apply p-5;
+  }
+
   .cta-card {
     @apply flex flex-col md:flex-row gap-8 p-8 rounded-xl;
-    @apply bg-line/30 dark:bg-dark-line/20 border border-line dark:border-dark-line;
+    @apply bg-white/5 border border-white/10;
   }
 
   .cta-content {

@@ -1,44 +1,36 @@
 /** @type {import('tailwindcss').Config} */
 export default {
   content: ['./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}'],
-  darkMode: 'class',
   theme: {
     extend: {
       colors: {
-        // Light mode colors
+        // Navy-based color palette
         ink: {
-          DEFAULT: '#0b2545',
-          2: '#173451',
+          DEFAULT: '#f1f5f9',  // Light text on dark bg
+          2: '#e2e8f0',
         },
         muted: {
-          DEFAULT: '#566579',
-          2: '#6e7d8a',
+          DEFAULT: '#94a3b8',  // Muted text on dark bg
+          2: '#64748b',
         },
         accent: {
-          DEFAULT: '#117db2',
-          2: '#11c5b3',
-          warm: '#ff6f5b',
+          DEFAULT: '#38bdf8',  // Sky blue accent
+          2: '#2dd4bf',        // Teal accent
+          warm: '#ff6f5b',     // Coral/warm accent
         },
         surface: {
-          DEFAULT: '#ffffff',
-          card: '#ffffff',
+          DEFAULT: '#0f172a',  // Dark navy background
+          card: '#1e293b',     // Slightly lighter card bg
         },
         line: {
-          DEFAULT: '#e6edf6',
-          2: '#dbe7f3',
+          DEFAULT: '#334155',  // Border/line color
+          2: '#475569',
         },
-        // Dark mode specific
-        dark: {
-          ink: '#f1f5f9',
-          'ink-2': '#e2e8f0',
-          muted: '#94a3b8',
-          'muted-2': '#64748b',
-          accent: '#38bdf8',
-          'accent-2': '#2dd4bf',
-          surface: '#0f172a',
-          card: '#1e293b',
-          line: '#334155',
-        },
+        // Semantic background colors (flattened for opacity support)
+        'navy-deep': '#0b2545',    // Deepest navy (bg-primary)
+        'navy-dark': '#0f172a',    // Dark slate (bg-secondary)
+        'navy-card': '#1e293b',    // Card background
+        'navy-highlight': '#1e3a5f', // Highlighted sections
       },
       fontFamily: {
         sans: [
@@ -79,9 +71,9 @@ export default {
         lg: '1.375rem',     // 22px
       },
       boxShadow: {
-        DEFAULT: '0 6px 16px rgba(17, 34, 68, 0.08)',
-        lg: '0 18px 42px rgba(17, 34, 68, 0.14)',
-        glow: '0 0 20px rgba(17, 125, 178, 0.3)',
+        DEFAULT: '0 6px 16px rgba(0, 0, 0, 0.2)',
+        lg: '0 18px 42px rgba(0, 0, 0, 0.3)',
+        glow: '0 0 20px rgba(56, 189, 248, 0.3)',
       },
       animation: {
         'fade-in': 'fadeIn 0.6s ease-out forwards',

@@ -11,7 +11,7 @@ import Layout from '@layouts/Layout.astro';
       style="background-image: url('/images/coral-reef-panorama-anthias-fish.jpeg');"
     >
       <!-- Gradient Overlay -->
-      <div class="absolute inset-0 bg-gradient-to-b from-ink/60 via-ink/40 to-ink/70"></div>
+      <div class="absolute inset-0 bg-gradient-to-b from-bg-primary/60 via-bg-primary/40 to-bg-primary/70"></div>
     </div>
 
     <!-- Hero Content -->
@@ -50,7 +50,7 @@ import Layout from '@layouts/Layout.astro';
   </section>
 
   <!-- Who We Are Section -->
-  <section id="about" class="section bg-surface dark:bg-dark-surface">
+  <section id="about" class="section bg-surface">
     <div class="container">
       <div class="max-w-3xl mx-auto text-center scroll-reveal">
         <span class="eyebrow">Who We Are</span>
@@ -71,7 +71,7 @@ import Layout from '@layouts/Layout.astro';
   </section>
 
   <!-- Impact Metrics Section -->
-  <section class="section bg-line/30 dark:bg-dark-line/20">
+  <section class="section bg-navy-highlight">
     <div class="container">
       <div class="text-center mb-12 scroll-reveal">
         <span class="eyebrow">Our Impact</span>
@@ -100,7 +100,7 @@ import Layout from '@layouts/Layout.astro';
   </section>
 
   <!-- Research Themes Section -->
-  <section class="section bg-surface dark:bg-dark-surface">
+  <section class="section bg-surface">
     <div class="container">
       <div class="text-center mb-12 scroll-reveal">
         <span class="eyebrow">Research</span>
@@ -120,7 +120,7 @@ import Layout from '@layouts/Layout.astro';
               alt="Vibrant coral reef with colorful fish"
               loading="lazy"
             />
-            <div class="absolute inset-0 bg-gradient-to-t from-ink/80 via-ink/20 to-transparent"></div>
+            <div class="absolute inset-0 bg-gradient-to-t from-bg-primary/80 via-bg-primary/20 to-transparent"></div>
           </div>
           <div class="research-card-content">
             <h3 class="text-white mb-2 group-hover:text-accent-2 transition-colors">Coral Reefs</h3>
@@ -139,7 +139,7 @@ import Layout from '@layouts/Layout.astro';
               alt="Sunlit kelp forest underwater"
               loading="lazy"
             />
-            <div class="absolute inset-0 bg-gradient-to-t from-ink/80 via-ink/20 to-transparent"></div>
+            <div class="absolute inset-0 bg-gradient-to-t from-bg-primary/80 via-bg-primary/20 to-transparent"></div>
           </div>
           <div class="research-card-content">
             <h3 class="text-white mb-2 group-hover:text-accent-2 transition-colors">Kelp Forests</h3>
@@ -158,7 +158,7 @@ import Layout from '@layouts/Layout.astro';
               alt="Close-up of coral polyps"
               loading="lazy"
             />
-            <div class="absolute inset-0 bg-gradient-to-t from-ink/80 via-ink/20 to-transparent"></div>
+            <div class="absolute inset-0 bg-gradient-to-t from-bg-primary/80 via-bg-primary/20 to-transparent"></div>
           </div>
           <div class="research-card-content">
             <h3 class="text-white mb-2 group-hover:text-accent-2 transition-colors">
@@ -181,7 +181,7 @@ import Layout from '@layouts/Layout.astro';
   </section>
 
   <!-- Featured Papers Section -->
-  <section class="section bg-line/30 dark:bg-dark-line/20">
+  <section class="section bg-navy-highlight">
     <div class="container">
       <div class="text-center mb-12 scroll-reveal">
         <span class="eyebrow">Publications</span>
@@ -195,16 +195,16 @@ import Layout from '@layouts/Layout.astro';
             <span class="badge">Open Access</span>
             <span class="badge badge-success">Data Available</span>
           </div>
-          <h3 class="text-lg font-bold mb-2 text-ink dark:text-dark-ink">
+          <h3 class="text-lg font-bold mb-2 text-ink">
             Recovery potential of coral reefs following marine heatwaves
           </h3>
-          <p class="text-sm text-muted dark:text-dark-muted mb-4 line-clamp-2">
+          <p class="text-sm text-muted mb-4 line-clamp-2">
             This study examines the factors that promote rapid coral recovery after bleaching events,
             identifying key interventions for restoration practitioners.
           </p>
           <div class="flex items-center justify-between">
-            <span class="text-sm text-muted-2 dark:text-dark-muted-2">Nature, 2024</span>
-            <a href="#" class="text-sm font-semibold text-accent dark:text-dark-accent hover:underline">
+            <span class="text-sm text-muted-2">Nature, 2024</span>
+            <a href="#" class="text-sm font-semibold text-accent hover:underline">
               Read more &rarr;
             </a>
           </div>
@@ -215,16 +215,16 @@ import Layout from '@layouts/Layout.astro';
           <div class="flex flex-wrap gap-2 mb-3">
             <span class="badge">Open Access</span>
           </div>
-          <h3 class="text-lg font-bold mb-2 text-ink dark:text-dark-ink">
+          <h3 class="text-lg font-bold mb-2 text-ink">
             Predator reintroduction cascades through kelp forest food webs
           </h3>
-          <p class="text-sm text-muted dark:text-dark-muted mb-4 line-clamp-2">
+          <p class="text-sm text-muted mb-4 line-clamp-2">
             We demonstrate how restoring sea otters triggers trophic cascades that restructure kelp
             forest communities along the California coast.
           </p>
           <div class="flex items-center justify-between">
-            <span class="text-sm text-muted-2 dark:text-dark-muted-2">Ecology Letters, 2023</span>
-            <a href="#" class="text-sm font-semibold text-accent dark:text-dark-accent hover:underline">
+            <span class="text-sm text-muted-2">Ecology Letters, 2023</span>
+            <a href="#" class="text-sm font-semibold text-accent hover:underline">
               Read more &rarr;
             </a>
           </div>
@@ -273,16 +273,16 @@ import Layout from '@layouts/Layout.astro';
 
   /* Stat cards */
   .stat-card {
-    @apply bg-white dark:bg-dark-card rounded-lg p-6 text-center shadow;
+    @apply bg-surface-card rounded-lg p-6 text-center shadow;
     @apply transition-all duration-300 hover:-translate-y-1 hover:shadow-lg;
   }
 
   .stat-number {
-    @apply block text-4xl md:text-5xl font-black text-accent dark:text-dark-accent mb-2;
+    @apply block text-4xl md:text-5xl font-black text-accent mb-2;
   }
 
   .stat-label {
-    @apply text-sm font-semibold text-muted dark:text-dark-muted uppercase tracking-wide;
+    @apply text-sm font-semibold text-muted uppercase tracking-wide;
   }
 
   /* Research cards */

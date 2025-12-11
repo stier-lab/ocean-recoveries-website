@@ -4,6 +4,7 @@
 
 /* ============================================
    Ocean Recoveries Lab - Global Styles
+   Navy Theme (No Light/Dark Toggle)
    ============================================ */
 
 @layer base {
@@ -35,18 +36,9 @@
     min-height: 100vh;
   }
 
-  /* Dark mode base */
-  .dark body {
-    @apply bg-dark-surface text-dark-ink;
-  }
-
   /* Selection */
   ::selection {
-    @apply bg-accent/20;
-  }
-
-  .dark ::selection {
-    @apply bg-dark-accent/30;
+    @apply bg-accent/30;
   }
 
   /* Focus styles */
@@ -54,17 +46,9 @@
     @apply outline-2 outline-offset-2 outline-accent;
   }
 
-  .dark :focus-visible {
-    @apply outline-dark-accent;
-  }
-
   /* Headings */
   h1, h2, h3, h4, h5, h6 {
     @apply font-sans font-extrabold leading-tight tracking-tight text-ink;
-  }
-
-  .dark h1, .dark h2, .dark h3, .dark h4, .dark h5, .dark h6 {
-    @apply text-dark-ink;
   }
 
   h1 {
@@ -81,10 +65,6 @@
     @apply text-fluid-2xl font-extrabold text-ink-2;
   }
 
-  .dark h3 {
-    @apply text-dark-ink-2;
-  }
-
   h4 {
     @apply text-fluid-xl font-bold;
   }
@@ -94,10 +74,6 @@
     @apply text-muted max-w-prose;
   }
 
-  .dark p {
-    @apply text-dark-muted;
-  }
-
   /* Links */
   a {
     @apply text-accent underline-offset-2 decoration-accent/40 transition-colors duration-200;
@@ -105,10 +81,6 @@
 
   a:hover {
     @apply decoration-2;
-  }
-
-  .dark a {
-    @apply text-dark-accent decoration-dark-accent/40;
   }
 
   /* Images */
@@ -124,7 +96,7 @@
   }
 
   .skip-link:focus {
-    @apply fixed left-4 top-4 px-3 py-2 bg-ink text-white rounded-lg z-[1000] w-auto h-auto;
+    @apply fixed left-4 top-4 px-3 py-2 bg-accent text-white rounded-lg z-[1000] w-auto h-auto;
   }
 
   /* Container */
@@ -142,25 +114,18 @@
     @apply -translate-y-1 shadow-lg;
   }
 
-  .dark .card {
-    @apply bg-dark-card border-dark-line;
-  }
-
   /* Buttons */
   .btn {
     @apply inline-flex items-center justify-center gap-2;
     @apply px-4 py-3 rounded-xl font-bold text-sm leading-none;
     @apply transition-all duration-200 ease-spring;
-    @apply min-h-[44px];
+    @apply min-h-[44px] no-underline;
   }
 
   .btn-primary {
-    @apply bg-ink text-white;
+    @apply bg-accent text-white;
     @apply shadow-lg hover:shadow-xl hover:-translate-y-0.5;
-  }
-
-  .dark .btn-primary {
-    @apply bg-dark-accent text-dark-surface;
+    @apply hover:bg-accent/90;
   }
 
   .btn-secondary {
@@ -168,20 +133,15 @@
     @apply hover:border-accent hover:text-accent;
   }
 
-  .dark .btn-secondary {
-    @apply border-dark-line text-dark-ink;
-    @apply hover:border-dark-accent hover:text-dark-accent;
-  }
-
   .btn-ghost {
-    @apply bg-white border border-line-2 text-ink;
-    @apply hover:border-accent hover:bg-accent hover:text-white;
+    @apply bg-white/10 border border-white/20 text-white;
+    @apply hover:bg-white/20;
   }
 
   /* Chips / Tags */
   .chip {
     @apply inline-flex items-center gap-2 px-3 py-2;
-    @apply border border-line-2 rounded-xl bg-white;
+    @apply border border-line rounded-xl bg-surface-card;
     @apply font-bold text-sm text-ink;
     @apply transition-all duration-200;
     @apply min-h-[38px] shadow-sm;
@@ -195,27 +155,15 @@
     @apply bg-accent border-accent text-white;
   }
 
-  .dark .chip {
-    @apply bg-dark-card border-dark-line text-dark-ink;
-  }
-
-  .dark .chip.active {
-    @apply bg-dark-accent border-dark-accent text-dark-surface;
-  }
-
   /* Badge */
   .badge {
     @apply inline-flex items-center px-2.5 py-1 rounded-full;
     @apply text-xs font-bold uppercase tracking-wide;
-    @apply bg-accent/10 text-accent;
+    @apply bg-accent/20 text-accent;
   }
 
   .badge-success {
-    @apply bg-accent-2/10 text-accent-2;
-  }
-
-  .dark .badge {
-    @apply bg-dark-accent/20 text-dark-accent;
+    @apply bg-accent-2/20 text-accent-2;
   }
 
   /* Section spacing */
@@ -225,20 +173,12 @@
 
   /* Eyebrow text */
   .eyebrow {
-    @apply uppercase tracking-[0.12em] text-xs font-extrabold text-muted mb-2;
-  }
-
-  .dark .eyebrow {
-    @apply text-dark-muted;
+    @apply uppercase tracking-[0.12em] text-xs font-extrabold text-accent mb-2 block;
   }
 
   /* Lead text */
   .lead {
     @apply text-fluid-lg text-muted leading-relaxed;
-  }
-
-  .dark .lead {
-    @apply text-dark-muted;
   }
 }
 
@@ -269,11 +209,7 @@
 
   /* Glassmorphism */
   .glass {
-    @apply bg-white/70 backdrop-blur-md border border-white/50;
-  }
-
-  .dark .glass {
-    @apply bg-dark-surface/70 border-dark-line/50;
+    @apply bg-surface/70 backdrop-blur-md border border-line/50;
   }
 
   /* Text gradient */

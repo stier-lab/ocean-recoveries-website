@@ -19,7 +19,7 @@ const { theme } = Astro.props;
       class="absolute inset-0 bg-cover bg-center parallax-bg"
       style={`background-image: url('${theme.heroImage}');`}
     >
-      <div class="absolute inset-0 bg-gradient-to-b from-ink/50 via-ink/40 to-ink/70"></div>
+      <div class="absolute inset-0 bg-gradient-to-b from-bg-primary/50 via-bg-primary/40 to-bg-primary/70"></div>
     </div>
 
     <div class="relative container text-white">
@@ -38,13 +38,13 @@ const { theme } = Astro.props;
   </section>
 
   <!-- Overview -->
-  <section class="section bg-surface dark:bg-dark-surface">
+  <section class="section bg-surface">
     <div class="container">
       <div class="max-w-3xl scroll-reveal">
         <span class="eyebrow">Overview</span>
-        <div class="prose dark:prose-invert">
+        <div class="prose prose-invert">
           {theme.description.split('\n\n').map((paragraph) => (
-            <p class="text-lg text-muted dark:text-dark-muted leading-relaxed mb-4">
+            <p class="text-lg text-muted leading-relaxed mb-4">
               {paragraph}
             </p>
           ))}
@@ -54,7 +54,7 @@ const { theme } = Astro.props;
   </section>
 
   <!-- Key Questions -->
-  <section class="section bg-line/30 dark:bg-dark-line/20">
+  <section class="section bg-navy-highlight">
     <div class="container">
       <div class="text-center mb-12 scroll-reveal">
         <span class="eyebrow">Research Focus</span>
@@ -65,7 +65,7 @@ const { theme } = Astro.props;
         {theme.questions.map((question, i) => (
           <div class={`question-card scroll-reveal stagger-${i + 1}`}>
             <span class="question-number">{i + 1}</span>
-            <p class="text-ink dark:text-dark-ink font-medium">{question}</p>
+            <p class="text-ink font-medium">{question}</p>
           </div>
         ))}
       </div>
@@ -73,7 +73,7 @@ const { theme } = Astro.props;
   </section>
 
   <!-- Key Findings -->
-  <section class="section bg-surface dark:bg-dark-surface">
+  <section class="section bg-surface">
     <div class="container">
       <div class="text-center mb-12 scroll-reveal">
         <span class="eyebrow">Discoveries</span>
@@ -103,7 +103,7 @@ const { theme } = Astro.props;
   </section>
 
   <!-- Related Publications CTA -->
-  <section class="section bg-ink dark:bg-dark-card">
+  <section class="section bg-navy-deep">
     <div class="container text-center">
       <h2 class="text-white mb-4 scroll-reveal">Explore Our Publications</h2>
       <p class="text-white/70 max-w-xl mx-auto mb-8 scroll-reveal">
@@ -144,7 +144,7 @@ const { theme } = Astro.props;
 
   .question-card {
     @apply flex gap-4 p-5 rounded-xl;
-    @apply bg-white dark:bg-dark-card border border-line dark:border-dark-line;
+    @apply bg-surface-card border border-line;
     @apply transition-all duration-300;
   }
 
@@ -154,7 +154,7 @@ const { theme } = Astro.props;
 
   .question-number {
     @apply flex-shrink-0 w-8 h-8 rounded-full;
-    @apply bg-accent/10 dark:bg-dark-accent/20 text-accent dark:text-dark-accent;
+    @apply bg-accent/20 text-accent;
     @apply flex items-center justify-center font-bold text-sm;
   }
 
@@ -173,12 +173,12 @@ const { theme } = Astro.props;
   }
 
   .finding-front {
-    @apply bg-white dark:bg-dark-card border border-line dark:border-dark-line;
+    @apply bg-surface-card border border-line;
   }
 
   .finding-back {
-    @apply bg-gradient-to-br from-accent/20 to-accent-2/20 dark:from-dark-accent/30 dark:to-accent-2/30;
-    @apply border border-accent/30 dark:border-dark-accent/30;
+    @apply bg-gradient-to-br from-accent/20 to-accent-2/20;
+    @apply border border-accent/30;
     @apply justify-center;
     transform: rotateY(180deg);
   }
@@ -193,24 +193,24 @@ const { theme } = Astro.props;
 
   .finding-icon {
     @apply w-12 h-12 rounded-xl mb-4;
-    @apply bg-accent/10 dark:bg-dark-accent/20 text-accent dark:text-dark-accent;
+    @apply bg-accent/20 text-accent;
     @apply flex items-center justify-center;
   }
 
   .finding-title {
-    @apply font-bold text-lg text-ink dark:text-dark-ink mb-2;
+    @apply font-bold text-lg text-ink mb-2;
   }
 
   .finding-summary {
-    @apply text-sm text-muted dark:text-dark-muted flex-1;
+    @apply text-sm text-muted flex-1;
   }
 
   .finding-hint {
-    @apply text-xs text-accent dark:text-dark-accent font-medium mt-2;
+    @apply text-xs text-accent font-medium mt-2;
   }
 
   .finding-detail {
-    @apply text-sm text-ink dark:text-dark-ink leading-relaxed font-medium;
+    @apply text-sm text-ink leading-relaxed font-medium;
   }
 
   /* Reduced motion */

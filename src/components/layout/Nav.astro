@@ -1,6 +1,4 @@
 ---
-import ThemeToggle from '@components/shared/ThemeToggle.astro';
-
 const currentPath = Astro.url.pathname;
 
 const navLinks = [
@@ -27,7 +25,7 @@ const isActive = (href: string) => {
     <!-- Logo -->
     <a
       href="/"
-      class="flex items-center gap-2 text-ink dark:text-dark-ink font-black text-lg md:text-xl no-underline hover:no-underline transition-colors"
+      class="flex items-center gap-2 text-ink font-black text-lg md:text-xl no-underline hover:no-underline transition-colors"
     >
       <span class="nav-logo-text">Ocean Recoveries</span>
     </a>
@@ -40,27 +38,23 @@ const isActive = (href: string) => {
           class:list={[
             'nav-link relative px-3 py-2 text-sm font-semibold no-underline transition-colors duration-200',
             isActive(link.href)
-              ? 'text-accent dark:text-dark-accent'
-              : 'text-ink/80 dark:text-dark-ink/80 hover:text-accent dark:hover:text-dark-accent',
+              ? 'text-accent'
+              : 'text-ink/80 hover:text-accent',
           ]}
           aria-current={isActive(link.href) ? 'page' : undefined}
         >
           {link.label}
           {isActive(link.href) && (
-            <span class="absolute bottom-0 left-3 right-3 h-0.5 bg-accent dark:bg-dark-accent rounded-full" />
+            <span class="absolute bottom-0 left-3 right-3 h-0.5 bg-accent rounded-full" />
           )}
         </a>
       ))}
-
-      <div class="ml-2 pl-2 border-l border-line dark:border-dark-line">
-        <ThemeToggle />
-      </div>
     </div>
 
     <!-- Mobile Menu Button -->
     <button
       type="button"
-      class="md:hidden p-2 -mr-2 text-ink dark:text-dark-ink"
+      class="md:hidden p-2 -mr-2 text-ink"
       aria-label="Toggle navigation menu"
       aria-expanded="false"
       aria-controls="mobile-menu"
@@ -101,7 +95,7 @@ const isActive = (href: string) => {
   <!-- Mobile Menu -->
   <div
     id="mobile-menu"
-    class="md:hidden fixed inset-0 top-16 bg-surface/95 dark:bg-dark-surface/95 backdrop-blur-lg transform translate-x-full transition-transform duration-300 ease-spring"
+    class="md:hidden fixed inset-0 top-16 bg-surface/95 backdrop-blur-lg transform translate-x-full transition-transform duration-300 ease-spring"
     aria-hidden="true"
   >
     <nav class="container py-8 flex flex-col gap-2" aria-label="Mobile navigation">
@@ -112,8 +106,8 @@ const isActive = (href: string) => {
             'mobile-nav-link py-3 px-4 text-lg font-semibold no-underline rounded-xl transition-all duration-200',
             'opacity-0 translate-x-4',
             isActive(link.href)
-              ? 'text-accent dark:text-dark-accent bg-accent/5 dark:bg-dark-accent/10'
-              : 'text-ink dark:text-dark-ink hover:bg-line/50 dark:hover:bg-dark-line/50',
+              ? 'text-accent bg-accent/10'
+              : 'text-ink hover:bg-line/50',
           ]}
           style={`transition-delay: ${index * 50}ms`}
           aria-current={isActive(link.href) ? 'page' : undefined}
@@ -121,11 +115,6 @@ const isActive = (href: string) => {
           {link.label}
         </a>
       ))}
-
-      <div class="mt-4 pt-4 border-t border-line dark:border-dark-line px-4 flex items-center justify-between">
-        <span class="text-sm text-muted dark:text-dark-muted">Theme</span>
-        <ThemeToggle />
-      </div>
     </nav>
   </div>
 </header>
@@ -136,11 +125,11 @@ const isActive = (href: string) => {
 <style>
   /* Glassmorphism when scrolled */
   #nav-header.scrolled {
-    @apply bg-white/80 dark:bg-dark-surface/80 backdrop-blur-lg shadow-sm;
+    @apply bg-surface/80 backdrop-blur-lg shadow-sm;
   }
 
   #nav-header.scrolled .nav-logo-text {
-    @apply text-ink dark:text-dark-ink;
+    @apply text-ink;
   }
 
   /* Transparent state (over hero) */
