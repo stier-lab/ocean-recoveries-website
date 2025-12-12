@@ -107,15 +107,108 @@ function getDate(year, index) {
 }
 
 /**
- * Clean text for display
+ * Clean text for display - removes academic artifacts
  */
 function cleanText(text) {
   if (!text) return '';
   return text
+    // Remove abstract label
     .replace(/^Abstract\s*/i, '')
+    // Remove journal metadata (Vol., DOI in header, etc.)
+    .replace(/Vol\.\:\([^)]+\)[^.]+\./g, '')
+    .replace(/Vol\.\:[^\n]+/g, '')
+    // Remove author affiliations with superscripts (e.g., "Curtis 1,2 ·")
+    .replace(/\b[A-Z][a-z]+\s+\d+,?\d*\s*·/g, '')
+    // Remove DOIs appearing in text (not citations)
+    .replace(/https:\/\/doi\.org\/[^\s\)]+\s*/g, '')
+    // Remove table/figure references - comprehensive
+    .replace(/\(Table \d+[^)]*\)/gi, '')
+    .replace(/\(Fig\.\s*\d+[^)]*\)/gi, '')
+    .replace(/\(Figure \d+[^)]*\)/gi, '')
+    .replace(/Table \d+\b[^.]*?\./gi, '')
+    .replace(/Table \d+\b/gi, '')
+    .replace(/Figure \d+\./gi, '')
+    .replace(/\(see Table[^)]+\)/gi, '')
+    .replace(/\(see Fig[^)]+\)/gi, '')
+    .replace(/\(Table S\d+\)/gi, '')
+    .replace(/Table S\d+/gi, '')
+    // Remove statistical notation
+    .replace(/\bp\s*[<>=]\s*0\.\d+/gi, '')
+    .replace(/\bchi-squared\s*=\s*[\d.]+/gi, '')
+    .replace(/\bF\s*\d+,\d+\s*=?\s*[\d.]+/gi, '')
+    .replace(/\banova\b/gi, 'analysis')
+    .replace(/\bTukey'?s?\s+(HSD\s+)?test/gi, 'statistical test')
+    .replace(/\bTukey'?s?\s+post\s*hoc/gi, 'follow-up analysis')
+    // Remove incomplete references like "(i." or "(e."
+    .replace(/\(i\.\s*$/gm, '')
+    .replace(/\(e\.\s*$/gm, '')
+    .replace(/\(i\.\s*,/g, ',')
+    // Remove copyright/journal header artifacts
+    .replace(/©\s*\d{4}[^.]+\./g, '')
+    .replace(/Received:.*?Accepted:[^©]+/g, '')
+    // Remove weird spacing from PDF extraction (e.g., "1 3 Coral")
+    .replace(/(\d)\s+(\d)\s+([A-Z])/g, '$3')
+    // Clean up multiple spaces
     .replace(/\s+/g, ' ')
+    // Clean up multiple newlines
     .replace(/\n+/g, '\n\n')
     .trim();
+}
+
+/**
+ * Clean key findings - more aggressive cleaning for bullet points
+ */
+function cleanKeyFinding(text) {
+  if (!text) return '';
+
+  let cleaned = text
+    // Remove all statistical notation and p-values
+    .replace(/\bp\s*[<>=]\s*[\d.]+/gi, '')
+    .replace(/\bp\s*10\s*\d+/gi, '') // p 10 15 format
+    .replace(/\bchi-squared[^.]*\./gi, '')
+    .replace(/\bF\s*[\d,]+\s*[=≈]\s*[\d.]+/gi, '')
+    .replace(/\bF\s*\d+,\d+[^.]+/gi, '')
+    .replace(/ANOVA[^,.;]*/gi, '')
+    .replace(/Tukey'?s?\s*(HSD\s*)?(test|post[- ]?hoc)?[^,.;]*/gi, '')
+    .replace(/MANOVA[^,.;]*/gi, '')
+    // Remove table/figure references - more comprehensive
+    .replace(/\([^)]*Table\s*\d+[^)]*\)/gi, '')
+    .replace(/\([^)]*Fig\.?\s*\d*[^)]*\)/gi, '')
+    .replace(/\([^)]*Figure\s*\d+[^)]*\)/gi, '')
+    .replace(/\([^)]*Appendix[^)]*\)/gi, '')
+    .replace(/\([^)]*Supplement[^)]*\)/gi, '')
+    .replace(/Table\s*\d+\./gi, '')
+    .replace(/\(Table\s*\d+/gi, '(')
+    .replace(/\(Fig\.\s*\d*/gi, '(')
+    .replace(/\(Figure\s*\d+/gi, '(')
+    // Remove parentheses that now only contain punctuation or spaces
+    .replace(/\(\s*[,.:;\s]*\s*\)/g, '')
+    // Remove journal artifacts
+    .replace(/Coral Reefs \d+ \d+/gi, '')
+    .replace(/\d+ \d+ [A-Z][a-z]+/g, '') // Pattern like "1 3 Coral"
+    // Remove incomplete parenthetical refs
+    .replace(/\([^)]{0,3}$/g, '')
+    .replace(/\([^)]*$/g, '') // Remove unclosed parentheses at end
+    // Remove "We found that" style starts - make more direct
+    .replace(/^we found (that\s+)?/i, '')
+    .replace(/^we show (that\s+)?/i, '')
+    .replace(/^we observed (that\s+)?/i, '')
+    .replace(/^our results (show|indicate|suggest) (that\s+)?/i, '')
+    .replace(/^our findings (show|indicate|suggest) (that\s+)?/i, '')
+    .replace(/^results (show|indicate|reveal) (that\s+)?/i, '')
+    .replace(/^significant\s+(differences?|effects?)\s+/i, 'There were differences ')
+    // Clean up hyphenated line breaks from PDFs
+    .replace(/(\w)- (\w)/g, '$1$2')
+    // Clean up multiple spaces
+    .replace(/\s+/g, ' ')
+    .trim();
+
+  // Skip findings that are too short after cleaning or look broken
+  if (cleaned.length < 20) return '';
+  if (cleaned.match(/^[^a-zA-Z]*$/)) return ''; // No letters
+  if (cleaned.match(/^\d+[\s,.\d]*$/)) return ''; // Just numbers
+
+  return cleaned;
 }
 
 /**
@@ -152,17 +245,29 @@ function generateContent(pub) {
 
   // Key Findings section (if available)
   if (keyFindings.length > 0) {
-    parts.push('\n\n## Key Findings\n');
-    const uniqueFindings = [...new Set(keyFindings)].slice(0, 5);
-    uniqueFindings.forEach(finding => {
-      // Clean up the finding text
-      let cleanFinding = finding.trim();
-      // Capitalize first letter if needed
-      if (cleanFinding.charAt(0) === cleanFinding.charAt(0).toLowerCase()) {
-        cleanFinding = cleanFinding.charAt(0).toUpperCase() + cleanFinding.slice(1);
-      }
-      parts.push(`- ${cleanFinding}`);
-    });
+    const cleanedFindings = keyFindings
+      .map(f => cleanKeyFinding(f))
+      .filter(f => f.length > 20 && f.length < 400) // Filter out too short/long
+      .filter(f => !f.match(/^\d+$/)) // Filter out just numbers
+      .filter(f => !f.match(/^[^a-zA-Z]*$/)); // Filter out non-text
+
+    const uniqueFindings = [...new Set(cleanedFindings)].slice(0, 5);
+
+    if (uniqueFindings.length > 0) {
+      parts.push('\n\n## Key Findings\n');
+      uniqueFindings.forEach(finding => {
+        // Capitalize first letter if needed
+        let cleanFinding = finding;
+        if (cleanFinding.charAt(0) === cleanFinding.charAt(0).toLowerCase()) {
+          cleanFinding = cleanFinding.charAt(0).toUpperCase() + cleanFinding.slice(1);
+        }
+        // Ensure it ends with a period
+        if (!cleanFinding.match(/[.!?]$/)) {
+          cleanFinding += '.';
+        }
+        parts.push(`- ${cleanFinding}`);
+      });
+    }
   }
 
   // Research Context paragraph (from methods, region, keywords)
@@ -232,8 +337,20 @@ function generateContent(pub) {
  * Generate excerpt from abstract or summary
  */
 function generateExcerpt(pub) {
-  let text = pub.plainSummary || pub.abstract || pub.pdfContent?.abstractExtracted || '';
+  let text = pub.plainSummary || pub.abstract || '';
+
+  // Don't use PDF abstract for excerpt - it often has formatting issues
+  // Only fall back to it if we have nothing else
+  if (!text && pub.pdfContent?.abstractExtracted) {
+    text = pub.pdfContent.abstractExtracted;
+  }
+
   text = cleanText(text);
+
+  // Skip if it looks like journal metadata
+  if (text.match(/^Vol\.|^\d+\s+\d+\s+[A-Z]/)) {
+    return `New research from the Ocean Recoveries Lab published in ${pub.journal}.`;
+  }
 
   if (text.length > 200) {
     // Find a good break point
