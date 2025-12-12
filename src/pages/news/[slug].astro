@@ -1,5 +1,6 @@
 ---
 import Layout from '@layouts/Layout.astro';
+import Breadcrumbs from '@components/layout/Breadcrumbs.astro';
 import { posts } from '@data/posts';
 
 export function getStaticPaths() {
@@ -23,6 +24,11 @@ const formatDate = (dateStr: string) => {
 const relatedPosts = posts
   .filter((p) => p.slug !== post.slug && p.tags.some((t) => post.tags.includes(t)))
   .slice(0, 2);
+
+const breadcrumbs = [
+  { label: 'News', href: '/news' },
+  { label: post.title.length > 40 ? post.title.substring(0, 40) + '...' : post.title },
+];
 ---
 
 <Layout title={post.title} description={post.excerpt}>
@@ -37,15 +43,7 @@ const relatedPosts = posts
       </div>
 
       <div class="relative container text-white">
-        <a
-          href="/news"
-          class="inline-flex items-center gap-2 text-white/70 hover:text-white mb-6 no-underline transition-colors"
-        >
-          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
-          </svg>
-          Back to News
-        </a>
+        <Breadcrumbs items={breadcrumbs} class="mb-6" />
 
         <div class="flex flex-wrap gap-2 mb-4">
           {post.tags.map((tag) => (
