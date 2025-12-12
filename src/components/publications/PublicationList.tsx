@@ -7,12 +7,15 @@ interface Props {
   themes: string[];
 }
 
+const ITEMS_PER_PAGE = 20;
+
 export default function PublicationList({ publications, themes }: Props) {
   const [selectedThemes, setSelectedThemes] = useState<string[]>([]);
   const [searchQuery, setSearchQuery] = useState('');
   const [sortBy, setSortBy] = useState<'year-desc' | 'year-asc'>('year-desc');
   const [openAccessOnly, setOpenAccessOnly] = useState(false);
   const [expandedId, setExpandedId] = useState<string | null>(null);
+  const [visibleCount, setVisibleCount] = useState(ITEMS_PER_PAGE);
 
   // Filter and sort publications
   const filteredPubs = useMemo(() => {
@@ -54,15 +57,32 @@ export default function PublicationList({ publications, themes }: Props) {
     setSelectedThemes((prev) =>
       prev.includes(theme) ? prev.filter((t) => t !== theme) : [...prev, theme]
     );
+    setVisibleCount(ITEMS_PER_PAGE);
   };
 
   const clearFilters = () => {
     setSelectedThemes([]);
     setSearchQuery('');
     setOpenAccessOnly(false);
+    setVisibleCount(ITEMS_PER_PAGE);
   };
 
   const hasFilters = selectedThemes.length > 0 || searchQuery || openAccessOnly;
+
+  // Paginated publications
+  const visiblePubs = useMemo(() => {
+    return filteredPubs.slice(0, visibleCount);
+  }, [filteredPubs, visibleCount]);
+
+  const hasMore = visibleCount < filteredPubs.length;
+
+  const loadMore = () => {
+    setVisibleCount((prev) => Math.min(prev + ITEMS_PER_PAGE, filteredPubs.length));
+  };
+
+  const showAll = () => {
+    setVisibleCount(filteredPubs.length);
+  };
 
   // Highlight author name (Stier)
   const highlightAuthor = (authors: string) => {
@@ -156,15 +176,24 @@ export default function PublicationList({ publications, themes }: Props) {
       {/* Results count */}
       <div className="flex items-center justify-between mb-6">
         <p className="text-sm text-muted">
-          Showing <strong className="text-ink">{filteredPubs.length}</strong> of{' '}
-          {publications.length} publications
+          Showing <strong className="text-ink">{visiblePubs.length}</strong> of{' '}
+          {filteredPubs.length} publications
+          {hasFilters && ` (${publications.length} total)`}
         </p>
+        {hasMore && (
+          <button
+            onClick={showAll}
+            className="text-sm font-medium text-accent hover:underline"
+          >
+            Show all {filteredPubs.length}
+          </button>
+        )}
       </div>
 
       {/* Publications list */}
       <div className="space-y-4">
         <AnimatePresence mode="popLayout">
-          {filteredPubs.map((pub) => (
+          {visiblePubs.map((pub) => (
             <motion.article
               key={pub.id}
               layout
@@ -256,9 +285,13 @@ export default function PublicationList({ publications, themes }: Props) {
                     href={`https://doi.org/${pub.doi}`}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-sm font-semibold text-accent hover:underline"
+                    className="flex items-center gap-1.5 text-sm font-semibold text-accent hover:text-accent/80 transition-colors"
+                    title="View Article"
                   >
-                    DOI →
+                    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                    </svg>
+                    Article
                   </a>
                 )}
                 {pub.pdfUrl && (
@@ -266,9 +299,14 @@ export default function PublicationList({ publications, themes }: Props) {
                     href={pub.pdfUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-sm font-semibold text-accent hover:underline"
+                    className="flex items-center gap-1.5 text-sm font-semibold text-accent hover:text-accent/80 transition-colors"
+                    title="Download PDF"
                   >
-                    PDF →
+                    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z" />
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 11v6m0 0l-2-2m2 2l2-2" />
+                    </svg>
+                    PDF
                   </a>
                 )}
                 {pub.codeUrl && (
@@ -276,9 +314,13 @@ export default function PublicationList({ publications, themes }: Props) {
                     href={pub.codeUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-sm font-semibold text-accent hover:underline"
+                    className="flex items-center gap-1.5 text-sm font-semibold text-accent hover:text-accent/80 transition-colors"
+                    title="View Code"
                   >
-                    Code →
+                    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
+                    </svg>
+                    Code
                   </a>
                 )}
               </div>
@@ -301,6 +343,22 @@ export default function PublicationList({ publications, themes }: Props) {
               className="px-4 py-2 rounded-xl bg-accent text-white font-semibold hover:bg-accent/90 transition-colors"
             >
               Clear Filters
+            </button>
+          </motion.div>
+        )}
+
+        {/* Load more button */}
+        {hasMore && filteredPubs.length > 0 && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            className="text-center pt-8"
+          >
+            <button
+              onClick={loadMore}
+              className="px-6 py-3 rounded-xl bg-accent text-white font-semibold hover:bg-accent/90 transition-colors"
+            >
+              Load More ({filteredPubs.length - visibleCount} remaining)
             </button>
           </motion.div>
         )}

@@ -139,10 +139,18 @@ const isActive = (href: string) => {
 
   #nav-header[data-transparent="true"]:not(.scrolled) .nav-logo-text,
   #nav-header[data-transparent="true"]:not(.scrolled) .nav-link {
+    @apply text-white/90;
+  }
+
+  #nav-header[data-transparent="true"]:not(.scrolled) .nav-link:hover {
     @apply text-white;
   }
 
   #nav-header[data-transparent="true"]:not(.scrolled) .nav-link.text-accent {
+    @apply text-accent-2 font-bold;
+  }
+
+  #nav-header[data-transparent="true"]:not(.scrolled) #mobile-menu-button {
     @apply text-white;
   }
 

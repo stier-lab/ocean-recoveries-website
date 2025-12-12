@@ -1,0 +1,91 @@
+---
+import Layout from '@layouts/Layout.astro';
+---
+
+<Layout
+  title="Accessibility"
+  description="Accessibility statement for the Ocean Recoveries Lab website."
+>
+  <section class="section bg-surface">
+    <div class="container max-w-3xl">
+      <h1 class="mb-8">Accessibility Statement</h1>
+
+      <div class="prose prose-lg">
+        <p class="lead">
+          The Ocean Recoveries Lab is committed to ensuring digital accessibility for all users,
+          including those with disabilities.
+        </p>
+
+        <h2>Our Commitment</h2>
+        <p>
+          We strive to meet WCAG 2.1 Level AA standards. Our website is designed to be:
+        </p>
+        <ul>
+          <li>Navigable using keyboard alone</li>
+          <li>Compatible with screen readers</li>
+          <li>Readable with sufficient color contrast</li>
+          <li>Responsive across different devices and screen sizes</li>
+          <li>Respectful of user preferences for reduced motion</li>
+        </ul>
+
+        <h2>Accessibility Features</h2>
+        <ul>
+          <li>Skip navigation links for keyboard users</li>
+          <li>Alt text for images</li>
+          <li>Semantic HTML structure</li>
+          <li>ARIA labels where appropriate</li>
+          <li>Focus indicators for interactive elements</li>
+          <li>Dark mode support following system preferences</li>
+        </ul>
+
+        <h2>Known Limitations</h2>
+        <p>
+          While we work to ensure accessibility, some content may have limitations:
+        </p>
+        <ul>
+          <li>Some older PDF documents may not be fully accessible</li>
+          <li>Third-party content (embedded maps, external links) may have varying accessibility</li>
+        </ul>
+
+        <h2>Feedback</h2>
+        <p>
+          We welcome your feedback on the accessibility of this website. If you encounter
+          barriers or have suggestions for improvement, please contact us:
+        </p>
+        <ul>
+          <li>Email: <a href="mailto:adrian.stier@ucsb.edu">adrian.stier@ucsb.edu</a></li>
+        </ul>
+
+        <h2>UC Santa Barbara Resources</h2>
+        <p>
+          For more information about accessibility at UC Santa Barbara, visit the
+          <a href="https://www.accessibility.ucsb.edu/" target="_blank" rel="noopener noreferrer">
+            UCSB Accessibility website
+          </a>.
+        </p>
+
+        <p class="text-sm text-muted mt-8">
+          Last updated: December 2024
+        </p>
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .prose h2 {
+    @apply text-xl font-bold mt-8 mb-4;
+  }
+
+  .prose p {
+    @apply text-muted mb-4 leading-relaxed;
+  }
+
+  .prose ul {
+    @apply list-disc list-inside text-muted mb-4 space-y-1;
+  }
+
+  .prose a {
+    @apply text-accent hover:underline;
+  }
+</style>

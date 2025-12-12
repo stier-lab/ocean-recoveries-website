@@ -195,6 +195,9 @@ stierPubs.forEach((pub, i) => {
   // Check open_access - can be TRUE/FALSE string or boolean
   const isOpenAccess = pub.open_access === 'TRUE' || pub.open_access === true || pub.open_access === 'true';
 
+  // Get PDF URL from "pdf link " column (note the space in the header)
+  const pdfUrl = pub['pdf link '] || pub['pdf link'] || pub.pdf_link || '';
+
   output += `  {
     id: '${i + 1}',
     title: ${JSON.stringify(cleanTitle(pub.title))},
@@ -207,6 +210,7 @@ stierPubs.forEach((pub, i) => {
     featured: ${featured},
     openAccess: ${isOpenAccess},
     dataAvailable: ${!!(pub.data_code_links && pub.data_code_links.trim())},
+    pdfUrl: ${pdfUrl.trim() ? JSON.stringify(pdfUrl.trim()) : 'undefined'},
     citationCount: ${parseInt(pub.citation_count) || 0},
   },
 `;

@@ -1,4 +1,4 @@
-export interface ResearchTheme {
+export interface StudySystem {
   slug: string;
   title: string;
   tagline: string;
@@ -12,7 +12,14 @@ export interface ResearchTheme {
   }[];
 }
 
-export const researchThemes: ResearchTheme[] = [
+export interface ResearchPillar {
+  title: string;
+  description: string;
+  topics: string[];
+}
+
+// Study Systems - The ecosystems where we work
+export const studySystems: StudySystem[] = [
   {
     slug: 'coral-reefs',
     title: 'Coral Reefs',
@@ -77,36 +84,44 @@ Our kelp forest research examines how predator-prey dynamics shape ecosystem str
       },
     ],
   },
-  {
-    slug: 'organismal-mechanisms',
-    title: 'Organismal Mechanisms',
-    tagline: 'Investigating the physiological and molecular mechanisms underlying stress responses and recovery.',
-    heroImage: '/images/trapezia-coral-crab-red-spotted.jpg',
-    description: `Understanding how marine organisms respond to stress at the molecular and physiological level is essential for predicting ecosystem responses to climate change. Our mechanistic research bridges the gap between genes and ecosystems.
+];
 
-We use a combination of genomic approaches, physiological measurements, and field experiments to understand how organisms cope with environmental stressors. This work informs predictions about which species and populations are most likely to persist under future conditions.`,
-    questions: [
-      'What molecular pathways govern coral stress responses and wound healing?',
-      'How do symbiotic relationships affect host stress tolerance?',
-      'Can we identify genetic markers of stress resilience?',
-      'How do developmental conditions affect adult performance?',
+// Research Pillars - How we approach research (methodological framework)
+export const researchPillars: ResearchPillar[] = [
+  {
+    title: 'Marine Ecosystem Dynamics & Resilience',
+    description: 'How do kelp and corals establish habitat? What species interactions drive ecological change? What mechanisms push reefs across tipping points — and how can we help them recover?',
+    topics: [
+      'Foundation species create habitat stability',
+      'Predator-prey relationships & trophic cascades',
+      'Disturbance events and tipping points',
+      'Storm & bleaching legacies',
     ],
-    findings: [
-      {
-        title: 'Wound healing genes predict recovery',
-        summary: 'Gene expression patterns can forecast coral survival after injury.',
-        detail: 'Corals showing rapid upregulation of immune and tissue repair genes within 24 hours of injury have 3x higher survival rates.',
-      },
-      {
-        title: 'Symbiont identity matters',
-        summary: 'Different symbiont types confer varying stress tolerance.',
-        detail: 'Corals hosting heat-tolerant Durusdinium symbionts show 50% less bleaching during thermal stress compared to those with Cladocopium.',
-      },
-      {
-        title: 'Early life history effects persist',
-        summary: 'Conditions during development shape adult performance.',
-        detail: 'Fish exposed to elevated CO2 during larval development show altered behavior and reduced survival as adults, even when returned to normal conditions.',
-      },
+  },
+  {
+    title: 'Conservation Science & Human Dimensions',
+    description: 'We co-design solutions with agencies and communities, testing effectiveness, establishing action thresholds, and reducing conflict in decision-making processes.',
+    topics: [
+      'Marine Protected Areas & fisheries benefits',
+      'Predator-prey recovery synchronization',
+      'Stakeholder engagement & policy alignment',
+      'Restoration & climate adaptation methods',
+    ],
+  },
+  {
+    title: 'Ecological Theory & Quantitative Methods',
+    description: 'We develop simple yet powerful models and tools paired with new measurement approaches, enabling managers to forecast scenarios and scale solutions.',
+    topics: [
+      'Food web & species-area models',
+      'Bayesian & structural equation modeling',
+      '3D photogrammetry & field experiments',
+      'Long-term observatory data systems',
     ],
   },
 ];
+
+// Combined for backward compatibility with existing pages
+export const researchThemes: StudySystem[] = [...studySystems];
+
+// Legacy export alias
+export type ResearchTheme = StudySystem;

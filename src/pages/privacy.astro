@@ -1,0 +1,71 @@
+---
+import Layout from '@layouts/Layout.astro';
+---
+
+<Layout
+  title="Privacy Policy"
+  description="Privacy policy for the Ocean Recoveries Lab website."
+>
+  <section class="section bg-surface">
+    <div class="container max-w-3xl">
+      <h1 class="mb-8">Privacy Policy</h1>
+
+      <div class="prose prose-lg">
+        <p class="lead">
+          The Ocean Recoveries Lab at UC Santa Barbara is committed to protecting your privacy.
+          This policy explains how we handle information collected through this website.
+        </p>
+
+        <h2>Information We Collect</h2>
+        <p>
+          This website does not collect personal information unless you voluntarily provide it
+          (for example, by emailing us directly). We do not use cookies for tracking purposes.
+        </p>
+
+        <h2>Analytics</h2>
+        <p>
+          We may use privacy-respecting analytics to understand how visitors use our site.
+          This data is aggregated and does not identify individual visitors.
+        </p>
+
+        <h2>External Links</h2>
+        <p>
+          This site contains links to external websites (Google Scholar, GitHub, ORCID, etc.).
+          We are not responsible for the privacy practices of these external sites.
+        </p>
+
+        <h2>Contact Information</h2>
+        <p>
+          If you have questions about this privacy policy, please contact us at
+          <a href="mailto:adrian.stier@ucsb.edu">adrian.stier@ucsb.edu</a>.
+        </p>
+
+        <h2>UC Santa Barbara Privacy</h2>
+        <p>
+          As part of the University of California system, this website is also subject to the
+          <a href="https://www.policy.ucsb.edu/policies/all-policies/information-technology/information-privacy" target="_blank" rel="noopener noreferrer">
+            UC Santa Barbara privacy policies
+          </a>.
+        </p>
+
+        <p class="text-sm text-muted mt-8">
+          Last updated: December 2024
+        </p>
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .prose h2 {
+    @apply text-xl font-bold mt-8 mb-4;
+  }
+
+  .prose p {
+    @apply text-muted mb-4 leading-relaxed;
+  }
+
+  .prose a {
+    @apply text-accent hover:underline;
+  }
+</style>

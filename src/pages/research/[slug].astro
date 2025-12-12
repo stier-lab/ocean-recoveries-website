@@ -1,6 +1,8 @@
 ---
 import Layout from '@layouts/Layout.astro';
+import Breadcrumbs from '@components/layout/Breadcrumbs.astro';
 import { researchThemes } from '@data/research';
+import { publications } from '@data/publications';
 
 export function getStaticPaths() {
   return researchThemes.map((theme) => ({
@@ -10,6 +12,25 @@ export function getStaticPaths() {
 }
 
 const { theme } = Astro.props;
+
+// Map slug to publication theme
+const themeToPublicationMap: Record<string, string> = {
+  'coral-reefs': 'Coral',
+  'kelp-forests': 'Kelp',
+};
+
+const publicationTheme = themeToPublicationMap[theme.slug] || theme.title;
+
+// Get related publications (matching theme, sorted by year and citations)
+const relatedPubs = publications
+  .filter(pub => pub.themes.some(t => t.toLowerCase().includes(publicationTheme.toLowerCase())))
+  .sort((a, b) => b.year - a.year || (b.citationCount || 0) - (a.citationCount || 0))
+  .slice(0, 6);
+
+const breadcrumbs = [
+  { label: 'Research', href: '/research' },
+  { label: theme.title },
+];
 ---
 
 <Layout title={theme.title} description={theme.tagline}>
@@ -23,15 +44,7 @@ const { theme } = Astro.props;
     </div>
 
     <div class="relative container text-white">
-      <a
-        href="/research"
-        class="inline-flex items-center gap-2 text-white/70 hover:text-white mb-6 no-underline transition-colors"
-      >
-        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
-        </svg>
-        Back to Research
-      </a>
+      <Breadcrumbs items={breadcrumbs} class="mb-6" />
       <h1 class="text-white mb-4 hero-title">{theme.title}</h1>
       <p class="text-xl text-white/80 max-w-3xl hero-tagline">{theme.tagline}</p>
     </div>
@@ -78,11 +91,16 @@ const { theme } = Astro.props;
       <div class="text-center mb-12 scroll-reveal">
         <span class="eyebrow">Discoveries</span>
         <h2>Key Findings</h2>
+        <p class="text-sm text-muted mt-2 md:hidden">Tap cards to reveal details</p>
       </div>
 
       <div class="grid md:grid-cols-3 gap-6">
         {theme.findings.map((finding, i) => (
-          <div class={`finding-card scroll-reveal stagger-${i + 1}`}>
+          <button
+            type="button"
+            class={`finding-card scroll-reveal stagger-${i + 1}`}
+            aria-label={`${finding.title}. Tap to reveal details.`}
+          >
             <div class="finding-front">
               <div class="finding-icon">
                 <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -91,27 +109,81 @@ const { theme } = Astro.props;
               </div>
               <h3 class="finding-title">{finding.title}</h3>
               <p class="finding-summary">{finding.summary}</p>
-              <span class="finding-hint">Hover for details</span>
+              <span class="finding-hint hidden md:block">Hover for details</span>
+              <span class="finding-hint md:hidden">Tap for details</span>
             </div>
             <div class="finding-back">
               <p class="finding-detail">{finding.detail}</p>
+              <span class="finding-hint md:hidden mt-4">Tap to go back</span>
             </div>
-          </div>
+          </button>
         ))}
       </div>
     </div>
   </section>
 
-  <!-- Related Publications CTA -->
+  <!-- Related Publications -->
+  {relatedPubs.length > 0 && (
+    <section class="section bg-navy-highlight">
+      <div class="container">
+        <div class="text-center mb-12 scroll-reveal">
+          <span class="eyebrow">Featured Research</span>
+          <h2>Related Publications</h2>
+        </div>
+
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {relatedPubs.map((pub, i) => (
+            <article class={`pub-card scroll-reveal stagger-${(i % 3) + 1}`}>
+              <div class="pub-year">{pub.year}</div>
+              <h3 class="pub-title">{pub.title}</h3>
+              <p class="pub-authors">{pub.authors.split(',').slice(0, 3).join(', ')}{pub.authors.split(',').length > 3 ? ' et al.' : ''}</p>
+              <div class="pub-meta">
+                <span class="pub-journal">{pub.journal}</span>
+                {pub.citationCount && pub.citationCount > 0 && (
+                  <span class="pub-citations">{pub.citationCount} citations</span>
+                )}
+              </div>
+              {pub.doi && (
+                <a
+                  href={`https://doi.org/${pub.doi}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="pub-link"
+                >
+                  View Paper
+                  <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                  </svg>
+                </a>
+              )}
+            </article>
+          ))}
+        </div>
+
+        <div class="text-center mt-10 scroll-reveal">
+          <a href="/publications" class="btn btn-secondary">
+            View All Publications
+          </a>
+        </div>
+      </div>
+    </section>
+  )}
+
+  <!-- CTA -->
   <section class="section bg-navy-deep">
     <div class="container text-center">
-      <h2 class="text-white mb-4 scroll-reveal">Explore Our Publications</h2>
+      <h2 class="text-white mb-4 scroll-reveal">Want to Learn More?</h2>
       <p class="text-white/70 max-w-xl mx-auto mb-8 scroll-reveal">
-        Dive deeper into our {theme.title.toLowerCase()} research through our peer-reviewed publications.
+        Explore our other research areas or get in touch to discuss potential collaborations.
       </p>
-      <a href="/publications" class="btn btn-primary scroll-reveal">
-        View Publications
-      </a>
+      <div class="flex flex-wrap justify-center gap-4 scroll-reveal">
+        <a href="/research" class="btn btn-primary">
+          All Research Areas
+        </a>
+        <a href="/join-us" class="btn btn-secondary">
+          Join the Lab
+        </a>
+      </div>
     </div>
   </section>
 </Layout>
@@ -160,8 +232,15 @@ const { theme } = Astro.props;
 
   /* Flip card styles */
   .finding-card {
-    @apply relative h-64 rounded-xl;
+    @apply relative h-64 rounded-xl w-full text-left cursor-pointer;
     perspective: 1000px;
+    background: transparent;
+    border: none;
+    padding: 0;
+  }
+
+  .finding-card:focus {
+    @apply outline-none ring-2 ring-accent ring-offset-2;
   }
 
   .finding-front,
@@ -183,12 +262,28 @@ const { theme } = Astro.props;
     transform: rotateY(180deg);
   }
 
-  .finding-card:hover .finding-front {
-    transform: rotateY(-180deg);
+  /* Desktop: hover to flip */
+  @media (min-width: 768px) {
+    .finding-card:hover .finding-front,
+    .finding-card:focus .finding-front {
+      transform: rotateY(-180deg);
+    }
+
+    .finding-card:hover .finding-back,
+    .finding-card:focus .finding-back {
+      transform: rotateY(0deg);
+    }
   }
 
-  .finding-card:hover .finding-back {
-    transform: rotateY(0deg);
+  /* Mobile: tap to flip via .flipped class */
+  @media (max-width: 767px) {
+    .finding-card.flipped .finding-front {
+      transform: rotateY(-180deg);
+    }
+
+    .finding-card.flipped .finding-back {
+      transform: rotateY(0deg);
+    }
   }
 
   .finding-icon {
@@ -234,6 +329,47 @@ const { theme } = Astro.props;
       transform: rotateY(180deg);
     }
   }
+
+  /* Publication card styles */
+  .pub-card {
+    @apply flex flex-col p-5 rounded-xl;
+    @apply bg-surface-card border border-line;
+    @apply transition-all duration-300;
+  }
+
+  .pub-card:hover {
+    @apply -translate-y-1 shadow-lg border-accent/30;
+  }
+
+  .pub-year {
+    @apply text-xs font-bold text-accent mb-2;
+  }
+
+  .pub-title {
+    @apply text-base font-bold text-ink mb-2 line-clamp-3;
+  }
+
+  .pub-authors {
+    @apply text-sm text-muted mb-3 line-clamp-1;
+  }
+
+  .pub-meta {
+    @apply flex items-center gap-3 text-xs text-muted-2 mb-4;
+  }
+
+  .pub-journal {
+    @apply italic;
+  }
+
+  .pub-citations {
+    @apply flex items-center gap-1;
+  }
+
+  .pub-link {
+    @apply inline-flex items-center gap-2 text-sm font-medium;
+    @apply text-accent hover:text-accent-2 no-underline;
+    @apply mt-auto pt-2 border-t border-line;
+  }
 </style>
 
 <script>
@@ -253,6 +389,24 @@ const { theme } = Astro.props;
     }
   };
 
+  // Tap-to-flip for finding cards on mobile
+  const initFlipCards = () => {
+    const isMobile = window.innerWidth < 768;
+    const cards = document.querySelectorAll('.finding-card');
+
+    cards.forEach((card) => {
+      card.addEventListener('click', () => {
+        if (isMobile) {
+          card.classList.toggle('flipped');
+        }
+      });
+    });
+  };
+
   initParallax();
-  document.addEventListener('astro:after-swap', initParallax);
+  initFlipCards();
+  document.addEventListener('astro:after-swap', () => {
+    initParallax();
+    initFlipCards();
+  });
 </script>

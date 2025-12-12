@@ -28,6 +28,7 @@ export const publications: Publication[] = [
     featured: false,
     openAccess: false,
     dataAvailable: false,
+    pdfUrl: "https://drive.google.com/open?id=1s57zCfPWOFHnLOLfWo1SQEt5WvTKN-wY&usp=drive_fs",
     citationCount: 1,
   },
   {
@@ -42,6 +43,7 @@ export const publications: Publication[] = [
     featured: false,
     openAccess: false,
     dataAvailable: false,
+    pdfUrl: "https://drive.google.com/open?id=1_ZhkTPhOsBwk9A2eGL-KiRbatUNEx5Fd&usp=drive_fs",
     citationCount: 4,
   },
   {
@@ -56,6 +58,7 @@ export const publications: Publication[] = [
     featured: false,
     openAccess: false,
     dataAvailable: false,
+    pdfUrl: "https://drive.google.com/open?id=1To0L_2GipgvHlqLfXexs6iY1wzU6Lgf5&usp=drive_fs",
     citationCount: 3,
   },
   {
@@ -70,6 +73,7 @@ export const publications: Publication[] = [
     featured: false,
     openAccess: true,
     dataAvailable: false,
+    pdfUrl: "https://drive.google.com/open?id=1BtbzNUQ6W8m1CT-3Jo6zO9JEydrlDl9e&authuser=astier@ucsb.edu&usp=drive_fs",
     citationCount: 13,
   },
   {
@@ -84,6 +88,7 @@ export const publications: Publication[] = [
     featured: false,
     openAccess: false,
     dataAvailable: false,
+    pdfUrl: "https://drive.google.com/file/d/1FHoXPnZ2CGCEzsN6XrIhf87Pd4pYAHvc/view?usp=share_link",
     citationCount: 10,
   },
   {
@@ -98,6 +103,7 @@ export const publications: Publication[] = [
     featured: false,
     openAccess: false,
     dataAvailable: false,
+    pdfUrl: "https://drive.google.com/file/d/1K9NuYufF_rB-h6ROnkDEZ86oln9BTbIM/view?usp=share_link",
     citationCount: 9,
   },
   {
@@ -112,6 +118,7 @@ export const publications: Publication[] = [
     featured: false,
     openAccess: true,
     dataAvailable: false,
+    pdfUrl: "https://drive.google.com/open?id=1-cHREoQ0iNe5KmNjBuIkVCkd_ue_TggN&authuser=astier@ucsb.edu&usp=drive_fs",
     citationCount: 8,
   },
   {
@@ -126,6 +133,7 @@ export const publications: Publication[] = [
     featured: false,
     openAccess: true,
     dataAvailable: false,
+    pdfUrl: "https://drive.google.com/open?authuser=astier%40ucsb.edu&id=1KjyXlLHc1Zq4DfqZ_7vxhFBtNJsUWmDd&usp=drive_fs",
     citationCount: 3,
   },
   {
@@ -140,6 +148,7 @@ export const publications: Publication[] = [
     featured: true,
     openAccess: true,
     dataAvailable: false,
+    pdfUrl: "https://drive.google.com/open?authuser=astier%40ucsb.edu&id=1j7AncajkDuM-FAtl3yBUhyHUV66xXoo5&usp=drive_fs",
     citationCount: 34,
   },
   {
@@ -154,6 +163,7 @@ export const publications: Publication[] = [
     featured: true,
     openAccess: true,
     dataAvailable: false,
+    pdfUrl: "https://drive.google.com/open?authuser=astier%40ucsb.edu&id=1D46ynLQw4LAcMqAtk86PalpNZ70ytJLE&usp=drive_fs",
     citationCount: 24,
   },
   {
@@ -168,6 +178,7 @@ export const publications: Publication[] = [
     featured: true,
     openAccess: true,
     dataAvailable: false,
+    pdfUrl: "https://drive.google.com/open?id=1lzmygs-zbu9cSlXlRYjk7B5I1dW4leDy&usp=drive_fs",
     citationCount: 24,
   },
   {
@@ -182,6 +193,7 @@ export const publications: Publication[] = [
     featured: true,
     openAccess: true,
     dataAvailable: false,
+    pdfUrl: "https://drive.google.com/open?authuser=astier%40ucsb.edu&id=1aV60WNbrmwNzmBe1ImLu0_LzXxh6MW5I&usp=drive_fs",
     citationCount: 22,
   },
   {
@@ -196,6 +208,7 @@ export const publications: Publication[] = [
     featured: false,
     openAccess: true,
     dataAvailable: false,
+    pdfUrl: "https://drive.google.com/open?id=1h6m52Nzym0PJTG4kTdYVUMMIwVWS5lip&usp=drive_fs",
     citationCount: 10,
   },
   {
@@ -210,6 +223,7 @@ export const publications: Publication[] = [
     featured: false,
     openAccess: true,
     dataAvailable: false,
+    pdfUrl: "https://drive.google.com/open?id=1VTeIR-Zv66JOx7UVg7_cYenlwP9zxsoh&authuser=astier@ucsb.edu&usp=drive_fs",
     citationCount: 9,
   },
   {
@@ -224,6 +238,7 @@ export const publications: Publication[] = [
     featured: false,
     openAccess: true,
     dataAvailable: false,
+    pdfUrl: "https://drive.google.com/open?id=1h8LwgdQKDdLfnKotlaIDcY5SU2rQ6E4A&usp=drive_fs",
     citationCount: 5,
   },
   {
@@ -238,6 +253,7 @@ export const publications: Publication[] = [
     featured: false,
     openAccess: true,
     dataAvailable: false,
+    pdfUrl: "https://drive.google.com/open?id=1lt_EPPWaTVwVbhUY3xkb57SRm4ciYamb&usp=drive_fs",
     citationCount: 2,
   },
   {
@@ -252,6 +268,7 @@ export const publications: Publication[] = [
     featured: true,
     openAccess: true,
     dataAvailable: false,
+    pdfUrl: "https://drive.google.com/open?id=1JGQfehS-RGz_IsffmgDAdaPC3xy22OrG&usp=drive_fs",
     citationCount: 66,
   },
   {
@@ -266,6 +283,7 @@ export const publications: Publication[] = [
     featured: false,
     openAccess: false,
     dataAvailable: false,
+    pdfUrl: "https://drive.google.com/open?id=1iOnkG-A1jkIuBSybyqtSBzEZgXho9GKG&usp=drive_fs",
     citationCount: 22,
   },
   {
@@ -280,6 +298,7 @@ export const publications: Publication[] = [
     featured: false,
     openAccess: false,
     dataAvailable: false,
+    pdfUrl: "https://drive.google.com/open?id=1AQU-MIiBqn99T_U8GGIBX3Nb8KBG6-Xk&usp=drive_fs",
     citationCount: 15,
   },
   {
@@ -294,6 +313,7 @@ export const publications: Publication[] = [
     featured: false,
     openAccess: true,
     dataAvailable: false,
+    pdfUrl: "https://drive.google.com/open?id=15I51j8vgjIGNoo_GjOEUuH9eglDxOqgz&usp=drive_fs",
     citationCount: 10,
   },
   {
@@ -308,6 +328,7 @@ export const publications: Publication[] = [
     featured: false,
     openAccess: true,
     dataAvailable: false,
+    pdfUrl: "https://drive.google.com/open?id=1A9mev7M8cI1PhYV-daLPqISci8eVQY-b&usp=drive_fs",
     citationCount: 9,
   },
   {
@@ -322,6 +343,7 @@ export const publications: Publication[] = [
     featured: false,
     openAccess: true,
     dataAvailable: false,
+    pdfUrl: "https://drive.google.com/open?id=1DOXpn6YWBxrGjDXRZr1x7M9uOv79TgXP&usp=drive_fs",
     citationCount: 8,
   },
   {
@@ -336,6 +358,7 @@ export const publications: Publication[] = [
     featured: false,
     openAccess: false,
     dataAvailable: false,
+    pdfUrl: "https://drive.google.com/open?id=1ZMBdWT7AmosWZ_fLywSaKhW4oFVcA5DP&usp=drive_fs",
     citationCount: 0,
   },
   {
@@ -350,6 +373,7 @@ export const publications: Publication[] = [
     featured: true,
     openAccess: false,
     dataAvailable: false,
+    pdfUrl: "https://drive.google.com/open?id=1b4UqrHI4Q-SlQCaghSEJs7A0ZHmV5YY5&usp=drive_fs",
     citationCount: 205,
   },
   {
@@ -364,6 +388,7 @@ export const publications: Publication[] = [
     featured: false,
     openAccess: false,
     dataAvailable: false,
+    pdfUrl: "https://drive.google.com/open?id=19RVogu8m9SGTr4DzsUjx72WPab0p-gQN&usp=drive_fs",
     citationCount: 77,
   },
   {
@@ -378,6 +403,7 @@ export const publications: Publication[] = [
     featured: false,
     openAccess: true,
     dataAvailable: false,
+    pdfUrl: "https://drive.google.com/open?id=15E1ewttqQ9n5iUcekIEA7UOOIX1hT4gp&usp=drive_fs",
     citationCount: 34,
   },
   {
@@ -392,6 +418,7 @@ export const publications: Publication[] = [
     featured: false,
     openAccess: true,
     dataAvailable: false,
+    pdfUrl: "https://drive.google.com/open?id=1HOprjkpdM2JMnZ9k_YpqJYdk7bGYNl_v&usp=drive_fs",
     citationCount: 24,
   },
   {
@@ -406,6 +433,7 @@ export const publications: Publication[] = [
     featured: false,
     openAccess: true,
     dataAvailable: false,
+    pdfUrl: "https://drive.google.com/open?id=1yeMMwIsfA8TP9KnUPsA4j41mT9YJCu0q&usp=drive_fs",
     citationCount: 23,
   },
   {
@@ -420,6 +448,7 @@ export const publications: Publication[] = [
     featured: false,
     openAccess: true,
     dataAvailable: false,
+    pdfUrl: "https://drive.google.com/open?id=14AFSyczhrNE0uytf2ql358gNBLzK-oJH&usp=drive_fs",
     citationCount: 73,
   },
   {
@@ -434,6 +463,7 @@ export const publications: Publication[] = [
     featured: false,
     openAccess: true,
     dataAvailable: false,
+    pdfUrl: "https://drive.google.com/open?id=106GtE_QWH5fCIeJ22qP7-yVDPl3A8vrH&usp=drive_fs",
     citationCount: 63,
   },
   {
@@ -448,6 +478,7 @@ export const publications: Publication[] = [
     featured: false,
     openAccess: true,
     dataAvailable: false,
+    pdfUrl: "https://drive.google.com/open?id=1ReBpBG-2nx6mEnmrADRKh3h7uJK3Xy46&usp=drive_fs",
     citationCount: 56,
   },
   {
@@ -462,6 +493,7 @@ export const publications: Publication[] = [
     featured: false,
     openAccess: false,
     dataAvailable: false,
+    pdfUrl: "https://drive.google.com/open?id=1r_4hN4yHw_met53B5hUwfYRB9SeVrV8U&usp=drive_fs",
     citationCount: 23,
   },
   {
@@ -476,6 +508,7 @@ export const publications: Publication[] = [
     featured: false,
     openAccess: false,
     dataAvailable: false,
+    pdfUrl: "https://drive.google.com/open?id=1y5X-IbM4uA58DMaN_M26fh0WzbTeR6hu&usp=drive_fs",
     citationCount: 11,
   },
   {
@@ -490,6 +523,7 @@ export const publications: Publication[] = [
     featured: false,
     openAccess: true,
     dataAvailable: false,
+    pdfUrl: "https://drive.google.com/open?id=1scWQi1U6s_r96IBjUp4lZBTlAAt5TipV&usp=drive_fs",
     citationCount: 7,
   },
   {
@@ -504,6 +538,7 @@ export const publications: Publication[] = [
     featured: false,
     openAccess: false,
     dataAvailable: false,
+    pdfUrl: "https://drive.google.com/open?id=1QXHBCA6eoJnD_iGBRtx115DarRHmNZu1&usp=drive_fs",
     citationCount: 6,
   },
   {
@@ -518,6 +553,7 @@ export const publications: Publication[] = [
     featured: false,
     openAccess: true,
     dataAvailable: false,
+    pdfUrl: "https://drive.google.com/open?id=1Rgu0gVVio1EosG6UZNgqZpotcdVOPEGr&usp=drive_fs",
     citationCount: 79,
   },
   {
@@ -532,6 +568,7 @@ export const publications: Publication[] = [
     featured: false,
     openAccess: true,
     dataAvailable: false,
+    pdfUrl: "https://drive.google.com/open?id=1OmZXlJGjfUqw3YhDTCK4nvWDpPBdQf2t&usp=drive_fs",
     citationCount: 50,
   },
   {
@@ -546,6 +583,7 @@ export const publications: Publication[] = [
     featured: false,
     openAccess: false,
     dataAvailable: false,
+    pdfUrl: "https://drive.google.com/open?id=1R9a3lPr5HiOt41JkmUC_YjUA1yxe-PQH&usp=drive_fs",
     citationCount: 44,
   },
   {
@@ -560,6 +598,7 @@ export const publications: Publication[] = [
     featured: false,
     openAccess: false,
     dataAvailable: false,
+    pdfUrl: "https://drive.google.com/open?id=1R60A-C1S4L9vAfcIU0uBlAVX4ZWYsYtr&usp=drive_fs",
     citationCount: 27,
   },
   {
@@ -574,6 +613,7 @@ export const publications: Publication[] = [
     featured: false,
     openAccess: false,
     dataAvailable: false,
+    pdfUrl: "https://drive.google.com/open?id=1P9QIJFiVwz8gN01Ib8QTRV93sUDa1GAI&usp=drive_fs",
     citationCount: 15,
   },
   {
@@ -588,6 +628,7 @@ export const publications: Publication[] = [
     featured: false,
     openAccess: false,
     dataAvailable: false,
+    pdfUrl: "https://drive.google.com/open?id=1Rj6NBWymoBVPvLPPmWTCOF3UDbrtvgCy&usp=drive_fs",
     citationCount: 10,
   },
   {
@@ -602,6 +643,7 @@ export const publications: Publication[] = [
     featured: true,
     openAccess: true,
     dataAvailable: false,
+    pdfUrl: "https://drive.google.com/open?id=1Rr2qZUoRnWt-uFi5v_5DmMUb6VQ3rYcZ&usp=drive_fs",
     citationCount: 113,
   },
   {
@@ -616,6 +658,7 @@ export const publications: Publication[] = [
     featured: false,
     openAccess: true,
     dataAvailable: false,
+    pdfUrl: "https://drive.google.com/open?id=1PxnpQ7CByKoGVpK33ecxF11x-aPZTdgk&usp=drive_fs",
     citationCount: 83,
   },
   {
@@ -630,6 +673,7 @@ export const publications: Publication[] = [
     featured: false,
     openAccess: true,
     dataAvailable: false,
+    pdfUrl: "https://drive.google.com/open?id=1PltOrLzlagWarLGrX8fdNCZmsVre9gHB&usp=drive_fs",
     citationCount: 27,
   },
   {
@@ -644,6 +688,7 @@ export const publications: Publication[] = [
     featured: false,
     openAccess: true,
     dataAvailable: false,
+    pdfUrl: "https://drive.google.com/open?id=1Qhlany_GtqcMs0laDm9VueyeiKlCmYO-&usp=drive_fs",
     citationCount: 6,
   },
   {
@@ -658,6 +703,7 @@ export const publications: Publication[] = [
     featured: true,
     openAccess: true,
     dataAvailable: false,
+    pdfUrl: "https://drive.google.com/open?id=1RsV0IERxwPOtcFFpJeYkWsk0Hc8QY09E&usp=drive_fs",
     citationCount: 196,
   },
   {
@@ -672,6 +718,7 @@ export const publications: Publication[] = [
     featured: false,
     openAccess: true,
     dataAvailable: false,
+    pdfUrl: "https://drive.google.com/open?id=1ReNl-2BVrxQloQ2HQj0UumC78zF8JJJW&usp=drive_fs",
     citationCount: 50,
   },
   {
@@ -686,6 +733,7 @@ export const publications: Publication[] = [
     featured: false,
     openAccess: false,
     dataAvailable: false,
+    pdfUrl: "https://drive.google.com/open?id=1QjafQTm9QN0AWQ-9lh0moCdY4bHKjHZm&usp=drive_fs",
     citationCount: 0,
   },
   {
@@ -700,6 +748,7 @@ export const publications: Publication[] = [
     featured: true,
     openAccess: true,
     dataAvailable: false,
+    pdfUrl: "https://drive.google.com/open?id=1QCDP72DWr55PdWBqt4z4GfwbN8Y7eOaO&usp=drive_fs",
     citationCount: 387,
   },
   {
@@ -714,6 +763,7 @@ export const publications: Publication[] = [
     featured: false,
     openAccess: true,
     dataAvailable: false,
+    pdfUrl: "https://drive.google.com/open?id=1RO77g1kvd18rIxLWxU3ypMyPRfd6LJ9h&usp=drive_fs",
     citationCount: 85,
   },
   {
@@ -728,6 +778,7 @@ export const publications: Publication[] = [
     featured: false,
     openAccess: false,
     dataAvailable: false,
+    pdfUrl: "https://drive.google.com/open?id=1PePYxFPREF5LErevVtsWHu4CUsr9ljZ_&usp=drive_fs",
     citationCount: 38,
   },
   {
@@ -742,6 +793,7 @@ export const publications: Publication[] = [
     featured: false,
     openAccess: true,
     dataAvailable: false,
+    pdfUrl: "https://drive.google.com/open?id=1Q470bFdnijQ0tjne2h1nCRw45WiItLNT&usp=drive_fs",
     citationCount: 37,
   },
   {
@@ -756,6 +808,7 @@ export const publications: Publication[] = [
     featured: false,
     openAccess: true,
     dataAvailable: false,
+    pdfUrl: "https://drive.google.com/open?id=1S-F4rVBQ4D5DuIvpQfbwc8DgjFWaKOp2&usp=drive_fs",
     citationCount: 29,
   },
   {
@@ -770,6 +823,7 @@ export const publications: Publication[] = [
     featured: false,
     openAccess: false,
     dataAvailable: false,
+    pdfUrl: "https://drive.google.com/open?id=1S1qmMMgIU1hP5w8fq0myRSEcg8EUgZ4F&usp=drive_fs",
     citationCount: 24,
   },
   {
@@ -784,6 +838,7 @@ export const publications: Publication[] = [
     featured: false,
     openAccess: false,
     dataAvailable: false,
+    pdfUrl: "https://drive.google.com/open?id=1PmJB59Rfiw4cDBGVRYh2__Mh2Q5hKUfs&usp=drive_fs",
     citationCount: 18,
   },
   {
@@ -798,6 +853,7 @@ export const publications: Publication[] = [
     featured: false,
     openAccess: false,
     dataAvailable: false,
+    pdfUrl: "https://drive.google.com/open?id=1Q0xBHh5AGkeZnpXZYfKLqncp3hvR4yod&usp=drive_fs",
     citationCount: 77,
   },
   {
@@ -812,6 +868,7 @@ export const publications: Publication[] = [
     featured: false,
     openAccess: false,
     dataAvailable: false,
+    pdfUrl: "https://drive.google.com/open?id=1QZ1drzDH-XFlTMreKXYZnyAiCU3baz8h&usp=drive_fs",
     citationCount: 74,
   },
   {
@@ -826,6 +883,7 @@ export const publications: Publication[] = [
     featured: false,
     openAccess: true,
     dataAvailable: false,
+    pdfUrl: "https://drive.google.com/open?id=1RDOXUttmzTUmFccxoEYX9KLuxCaRDpe9&usp=drive_fs",
     citationCount: 11,
   },
   {
@@ -840,6 +898,7 @@ export const publications: Publication[] = [
     featured: false,
     openAccess: false,
     dataAvailable: false,
+    pdfUrl: "https://drive.google.com/open?id=1Ps810gnS2zkD8IHYS2n7WfF584rGhAjf&usp=drive_fs",
     citationCount: 4,
   },
   {
@@ -854,6 +913,7 @@ export const publications: Publication[] = [
     featured: true,
     openAccess: false,
     dataAvailable: false,
+    pdfUrl: "https://drive.google.com/open?id=1RTBjCF53CsqFf6GgmGXuP1kh39Zc368v&usp=drive_fs",
     citationCount: 121,
   },
   {
@@ -868,6 +928,7 @@ export const publications: Publication[] = [
     featured: false,
     openAccess: false,
     dataAvailable: false,
+    pdfUrl: "https://drive.google.com/open?id=1RcKwNv3l-kYqMJlthVveQEl609tZxt--&usp=drive_fs",
     citationCount: 80,
   },
   {
@@ -882,6 +943,7 @@ export const publications: Publication[] = [
     featured: false,
     openAccess: false,
     dataAvailable: false,
+    pdfUrl: "https://drive.google.com/open?id=1Rlmh8Uk1ENpPHLb-rOqQ2BOlAlhoAfqk&usp=drive_fs",
     citationCount: 77,
   },
   {
@@ -896,6 +958,7 @@ export const publications: Publication[] = [
     featured: false,
     openAccess: true,
     dataAvailable: false,
+    pdfUrl: "https://drive.google.com/open?id=1PB7HJWHODJyEUtImtqQ47-ev10MEM6EG&usp=drive_fs",
     citationCount: 46,
   },
   {
@@ -910,6 +973,7 @@ export const publications: Publication[] = [
     featured: false,
     openAccess: true,
     dataAvailable: false,
+    pdfUrl: "https://drive.google.com/open?id=1RhJxuIYkZ6TVuzdXTW-9jb0ld9Ax8NCt&usp=drive_fs",
     citationCount: 4916,
   },
   {
@@ -924,6 +988,7 @@ export const publications: Publication[] = [
     featured: false,
     openAccess: false,
     dataAvailable: false,
+    pdfUrl: "https://drive.google.com/open?id=1RsuvlmfKlkg9vzqT1vYiyoWjTwYph6VE&usp=drive_fs",
     citationCount: 18,
   },
   {
@@ -938,6 +1003,7 @@ export const publications: Publication[] = [
     featured: false,
     openAccess: false,
     dataAvailable: false,
+    pdfUrl: "https://drive.google.com/open?id=1Q3og1LVm2kPRAQCesI9V8bbLFgeSgVAK&usp=drive_fs",
     citationCount: 69,
   },
   {
@@ -952,6 +1018,7 @@ export const publications: Publication[] = [
     featured: false,
     openAccess: false,
     dataAvailable: false,
+    pdfUrl: "https://drive.google.com/open?id=1QOeao-MJL0JXc4FoO4v2nsrigxDOKU50&usp=drive_fs",
     citationCount: 54,
   },
   {
@@ -966,6 +1033,7 @@ export const publications: Publication[] = [
     featured: false,
     openAccess: true,
     dataAvailable: false,
+    pdfUrl: "https://drive.google.com/open?id=1S-hafYLKE6Kd2mLSBTfeEjljq-4H_AEL&usp=drive_fs",
     citationCount: 46,
   },
   {
@@ -980,6 +1048,7 @@ export const publications: Publication[] = [
     featured: false,
     openAccess: false,
     dataAvailable: false,
+    pdfUrl: "https://drive.google.com/open?id=1QW57TYlz9HwPIvqFpjygzFea3N-SlqsD&usp=drive_fs",
     citationCount: 43,
   },
   {
@@ -994,6 +1063,7 @@ export const publications: Publication[] = [
     featured: false,
     openAccess: false,
     dataAvailable: false,
+    pdfUrl: "https://drive.google.com/open?id=1QqAPbD0DEe_dRgw-p3oLSCMnnZsLWa1B&usp=drive_fs",
     citationCount: 34,
   },
   {
@@ -1008,6 +1078,7 @@ export const publications: Publication[] = [
     featured: false,
     openAccess: false,
     dataAvailable: false,
+    pdfUrl: "https://drive.google.com/open?id=1OoorYJc7-DFjnvg8bykoQpGPsfqLWwUB&usp=drive_fs",
     citationCount: 34,
   },
   {
@@ -1022,6 +1093,7 @@ export const publications: Publication[] = [
     featured: false,
     openAccess: false,
     dataAvailable: false,
+    pdfUrl: "https://drive.google.com/open?id=1RVz1OnswyuVKM-rsLjmkhLsl34HKjngU&usp=drive_fs",
     citationCount: 6,
   },
   {
@@ -1036,6 +1108,7 @@ export const publications: Publication[] = [
     featured: false,
     openAccess: false,
     dataAvailable: false,
+    pdfUrl: "https://drive.google.com/open?id=1QbeCX2ga0H5B7Gaug1ikbt4h4vQrUwYu&usp=drive_fs",
     citationCount: 84,
   },
   {
@@ -1050,6 +1123,7 @@ export const publications: Publication[] = [
     featured: false,
     openAccess: false,
     dataAvailable: false,
+    pdfUrl: "https://drive.google.com/open?id=1QsNItSXvXFKm9B9DNBiDwq02QZPhCbWS&usp=drive_fs",
     citationCount: 33,
   },
   {
@@ -1064,6 +1138,7 @@ export const publications: Publication[] = [
     featured: false,
     openAccess: true,
     dataAvailable: false,
+    pdfUrl: "https://drive.google.com/open?id=1PCbMyF2sjw6RuSb6BJMsaa_KV-f8YXLu&usp=drive_fs",
     citationCount: 4,
   },
 ];
