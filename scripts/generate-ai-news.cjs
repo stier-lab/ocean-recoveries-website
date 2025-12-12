@@ -32,7 +32,7 @@ const CONFIG = {
   PROGRESS_FILE: path.join(__dirname, '../publications/.news_progress.json'),
   API_KEY: process.env.ANTHROPIC_API_KEY,
   MODEL: 'claude-sonnet-4-20250514',
-  MAX_TOKENS: 2000,
+  MAX_TOKENS: 4000, // Increased for longer, more detailed articles
   // Rate limiting
   DELAY_BETWEEN_CALLS: 1500, // ms
   MAX_RETRIES: 3,
@@ -313,26 +313,38 @@ function buildPrompt(pub) {
 async function generateNewsArticle(pub) {
   const systemPrompt = `You are a science writer for the Ocean Recoveries Lab at UC Santa Barbara. Your job is to write engaging, accessible news articles about our lab's scientific publications for our website audience.
 
+ARTICLE STRUCTURE (REQUIRED):
+Write a comprehensive article with 3-5 substantial paragraphs that explain the research in lay terms:
+
+1. **Opening paragraph**: Hook the reader with the key discovery or finding. What did the researchers discover? Make it vivid and concrete.
+
+2. **Background paragraph**: Why does this matter? Set the context. What problem were they trying to solve? Why is this ecosystem/species/interaction important?
+
+3. **Methods & Approach paragraph**: How did they study this? Where did they do the research? What was their approach? (Keep it accessible - no jargon)
+
+4. **Key Findings paragraph**: What specifically did they find? Include numbers or specific results when available. What surprised them or confirmed their hypotheses?
+
+5. **Implications paragraph**: What does this mean for ocean conservation? How might this change how we think about or manage marine ecosystems?
+
 STYLE GUIDELINES:
 - Write in an engaging, accessible style for a general audience interested in marine science
-- Lead with the most interesting or impactful finding
-- Explain why this research matters for ocean conservation
-- Use vivid, concrete language rather than jargon
-- Keep paragraphs short (2-3 sentences)
-- Include a "Why This Matters" section
-- The article should be 300-500 words (not counting citation)
+- Use vivid, concrete language - paint a picture for the reader
+- Avoid scientific jargon; when technical terms are necessary, explain them
+- Each paragraph should be 3-5 sentences
+- Total article should be 500-800 words (not counting citation)
+- Use specific details from the paper when available
 
 OUTPUT FORMAT:
 Return ONLY the article content in this exact structure:
 ---
 TITLE: [A compelling headline - not the paper title]
-EXCERPT: [A 1-2 sentence hook for preview cards]
+EXCERPT: [A 2-3 sentence hook that summarizes the key finding for preview cards]
 CONTENT:
-[The full article in markdown format]
+[The full 3-5 paragraph article in markdown format]
 
 ## Why This Matters
 
-[2-3 sentences on broader implications]
+[A substantial paragraph (3-4 sentences) on broader implications for ocean health, conservation, or our understanding of marine ecosystems]
 
 ## Citation
 
@@ -341,7 +353,7 @@ CONTENT:
 [Read the full paper](DOI_URL)
 ---`;
 
-  const userPrompt = `Write a news article about this publication from the Ocean Recoveries Lab:
+  const userPrompt = `Write a comprehensive, accessible news article about this publication from the Ocean Recoveries Lab. Include 3-5 substantial paragraphs that explain the research, its methods, findings, and implications in lay terms:
 
 ${buildPrompt(pub)}
 
@@ -349,9 +361,11 @@ DOI URL: ${pub.doiUrl || `https://doi.org/${pub.doi}`}
 
 Remember to:
 1. Create an engaging headline (not just the paper title)
-2. Write for a general audience
-3. Focus on why this matters for ocean conservation
-4. Include the citation at the end`;
+2. Write 3-5 substantive paragraphs explaining the research in accessible language
+3. Include specific findings and details from the paper
+4. Explain the methods in simple terms
+5. Focus on why this matters for ocean conservation
+6. Include the citation at the end`;
 
   if (DRY_RUN) {
     logVerbose('--- DRY RUN PROMPT ---');
@@ -532,10 +546,9 @@ async function main() {
     toProcess = publications.slice(0, RECENT_COUNT);
     log(`\n📌 Processing ${RECENT_COUNT} most recent publications`, colors.blue);
   } else {
-    // Filter to publications that would make good news articles
+    // Process all publications that have content to work with
     toProcess = publications.filter(p =>
-      (p.abstract || p.plainSummary || p.pdfContent?.abstractExtracted) &&
-      p.year >= 2015 // Include more publications
+      (p.abstract || p.plainSummary || p.pdfContent?.abstractExtracted || p.title)
     );
     log(`\n📌 Processing ${toProcess.length} eligible publications`, colors.blue);
   }
