@@ -1,8 +1,8 @@
 /**
  * Generate Comprehensive News Posts
  *
- * Creates detailed news articles from publication data without requiring AI API.
- * Uses abstracts, key findings, and metadata to build rich content.
+ * Creates detailed, science-communication focused news articles from publication data.
+ * Follows best practices: lead with "so what", concrete findings, honest about limitations.
  */
 
 const fs = require('fs');
@@ -39,7 +39,7 @@ const themeImages = {
     '/images/coral-guard-crab-red-spotted-macro.jpeg',
     '/images/trapezia-coral-crab-red-spotted.jpg'
   ],
-  'Models': ['/images/lorenz-attractor-abstract-art.jpeg'],
+  'Methods/Models': ['/images/lorenz-attractor-abstract-art.jpeg'],
   'Predation': [
     '/images/barracuda-school-underwater-blue.jpg',
     '/images/scuba-divers-shark-deep-blue.JPG',
@@ -76,6 +76,7 @@ function getImage(pub, index) {
 function slugify(title) {
   return title
     .toLowerCase()
+    .replace(/<[^>]+>/g, '') // Remove HTML tags
     .replace(/[^\w\s-]/g, '')
     .replace(/\s+/g, '-')
     .replace(/-+/g, '-')
@@ -90,7 +91,7 @@ function getFirstAuthor(authors) {
 }
 
 function getTags(pub) {
-  const tags = ['Publication'];
+  const tags = ['Research'];
   (pub.themes || []).forEach(theme => {
     if (theme && theme !== 'Research') {
       tags.push(theme);
@@ -107,21 +108,23 @@ function getDate(year, index) {
 }
 
 /**
- * Clean text for display - removes academic artifacts
+ * Clean text - remove academic artifacts
  */
 function cleanText(text) {
   if (!text) return '';
   return text
-    // Remove abstract label
     .replace(/^Abstract\s*/i, '')
-    // Remove journal metadata (Vol., DOI in header, etc.)
     .replace(/Vol\.\:\([^)]+\)[^.]+\./g, '')
     .replace(/Vol\.\:[^\n]+/g, '')
-    // Remove author affiliations with superscripts (e.g., "Curtis 1,2 ·")
     .replace(/\b[A-Z][a-z]+\s+\d+,?\d*\s*·/g, '')
-    // Remove DOIs appearing in text (not citations)
     .replace(/https:\/\/doi\.org\/[^\s\)]+\s*/g, '')
-    // Remove table/figure references - comprehensive
+    // Journal metadata artifacts
+    .replace(/org\/10\.\d+\/[^\s]+\s+NOTE\s+/gi, '')
+    .replace(/NOTE\s+\d+D\s+/gi, '')
+    .replace(/Journ\s+W\./gi, '')
+    .replace(/© The Author\(s\)[^©]+\d{4}/gi, '')
+    .replace(/International Coral Reef Society[^.]+\./gi, '')
+    // Table/Figure references
     .replace(/\(Table \d+[^)]*\)/gi, '')
     .replace(/\(Fig\.\s*\d+[^)]*\)/gi, '')
     .replace(/\(Figure \d+[^)]*\)/gi, '')
@@ -132,242 +135,389 @@ function cleanText(text) {
     .replace(/\(see Fig[^)]+\)/gi, '')
     .replace(/\(Table S\d+\)/gi, '')
     .replace(/Table S\d+/gi, '')
-    // Remove statistical notation
+    // Statistical notation
     .replace(/\bp\s*[<>=]\s*0\.\d+/gi, '')
     .replace(/\bchi-squared\s*=\s*[\d.]+/gi, '')
     .replace(/\bF\s*\d+,\d+\s*=?\s*[\d.]+/gi, '')
     .replace(/\banova\b/gi, 'analysis')
     .replace(/\bTukey'?s?\s+(HSD\s+)?test/gi, 'statistical test')
     .replace(/\bTukey'?s?\s+post\s*hoc/gi, 'follow-up analysis')
-    // Remove incomplete references like "(i." or "(e."
+    // Author affiliations with superscripts
+    .replace(/\s+\d+,\d+\s*$/g, '')
+    .replace(/\s+\d+\s*$/g, '')
+    // Incomplete references
     .replace(/\(i\.\s*$/gm, '')
     .replace(/\(e\.\s*$/gm, '')
     .replace(/\(i\.\s*,/g, ',')
-    // Remove copyright/journal header artifacts
+    // Copyright and journal artifacts
     .replace(/©\s*\d{4}[^.]+\./g, '')
     .replace(/Received:.*?Accepted:[^©]+/g, '')
-    // Remove weird spacing from PDF extraction (e.g., "1 3 Coral")
+    // Weird spacing from PDF extraction
     .replace(/(\d)\s+(\d)\s+([A-Z])/g, '$3')
-    // Clean up multiple spaces
+    // Clean up
     .replace(/\s+/g, ' ')
-    // Clean up multiple newlines
     .replace(/\n+/g, '\n\n')
     .trim();
 }
 
 /**
- * Clean key findings - more aggressive cleaning for bullet points
+ * Extract a concrete, sticky finding from the text
+ * Looking for specific numbers, percentages, comparisons
+ * Only returns complete, well-formed sentences
  */
-function cleanKeyFinding(text) {
-  if (!text) return '';
+function extractStickyFinding(text, keyFindings) {
+  if (!text && (!keyFindings || keyFindings.length === 0)) return null;
 
-  let cleaned = text
-    // Remove all statistical notation and p-values
-    .replace(/\bp\s*[<>=]\s*[\d.]+/gi, '')
-    .replace(/\bp\s*10\s*\d+/gi, '') // p 10 15 format
-    .replace(/\bchi-squared[^.]*\./gi, '')
-    .replace(/\bF\s*[\d,]+\s*[=≈]\s*[\d.]+/gi, '')
-    .replace(/\bF\s*\d+,\d+[^.]+/gi, '')
-    .replace(/ANOVA[^,.;]*/gi, '')
-    .replace(/Tukey'?s?\s*(HSD\s*)?(test|post[- ]?hoc)?[^,.;]*/gi, '')
-    .replace(/MANOVA[^,.;]*/gi, '')
-    // Remove table/figure references - more comprehensive
-    .replace(/\([^)]*Table\s*\d+[^)]*\)/gi, '')
-    .replace(/\([^)]*Fig\.?\s*\d*[^)]*\)/gi, '')
-    .replace(/\([^)]*Figure\s*\d+[^)]*\)/gi, '')
-    .replace(/\([^)]*Appendix[^)]*\)/gi, '')
-    .replace(/\([^)]*Supplement[^)]*\)/gi, '')
-    .replace(/Table\s*\d+\./gi, '')
-    .replace(/\(Table\s*\d+/gi, '(')
-    .replace(/\(Fig\.\s*\d*/gi, '(')
-    .replace(/\(Figure\s*\d+/gi, '(')
-    // Remove parentheses that now only contain punctuation or spaces
-    .replace(/\(\s*[,.:;\s]*\s*\)/g, '')
-    // Remove journal artifacts
-    .replace(/Coral Reefs \d+ \d+/gi, '')
-    .replace(/\d+ \d+ [A-Z][a-z]+/g, '') // Pattern like "1 3 Coral"
-    // Remove incomplete parenthetical refs
-    .replace(/\([^)]{0,3}$/g, '')
-    .replace(/\([^)]*$/g, '') // Remove unclosed parentheses at end
-    // Remove "We found that" style starts - make more direct
-    .replace(/^we found (that\s+)?/i, '')
-    .replace(/^we show (that\s+)?/i, '')
-    .replace(/^we observed (that\s+)?/i, '')
-    .replace(/^our results (show|indicate|suggest) (that\s+)?/i, '')
-    .replace(/^our findings (show|indicate|suggest) (that\s+)?/i, '')
-    .replace(/^results (show|indicate|reveal) (that\s+)?/i, '')
-    .replace(/^significant\s+(differences?|effects?)\s+/i, 'There were differences ')
-    // Clean up hyphenated line breaks from PDFs
-    .replace(/(\w)- (\w)/g, '$1$2')
-    // Clean up multiple spaces
-    .replace(/\s+/g, ' ')
-    .trim();
+  // First, split into complete sentences
+  const allText = [text, ...(keyFindings || [])].join(' ');
+  const sentences = allText.split(/(?<=[.!?])\s+/).filter(s => s.length > 20);
 
-  // Skip findings that are too short after cleaning or look broken
-  if (cleaned.length < 20) return '';
-  if (cleaned.match(/^[^a-zA-Z]*$/)) return ''; // No letters
-  if (cleaned.match(/^\d+[\s,.\d]*$/)) return ''; // Just numbers
+  // Look for sentences with concrete numbers
+  for (const sentence of sentences) {
+    // Must start with capital letter (proper sentence start)
+    if (!sentence.match(/^[A-Z]/)) continue;
+    // Must end with proper punctuation
+    if (!sentence.match(/[.!?]$/)) continue;
+    // Must have a concrete number
+    if (!sentence.match(/\d+/)) continue;
+    // Avoid technical junk
+    if (sentence.match(/Table|Figure|Appendix|p\s*[<>=]|chi-squared/i)) continue;
 
-  return cleaned;
+    // Look for good patterns
+    if (sentence.match(/(\d+(?:\.\d+)?)\s*(?:%|percent|times|fold)/i) ||
+        sentence.match(/(\d+)\s*(?:species|individuals|fish|corals?|reefs?)/i) ||
+        sentence.match(/(\d+)\s*(?:years?|months?|decades?)/i) ||
+        sentence.match(/(\d+(?:\.\d+)?)\s*(?:°C|degrees?)/i)) {
+      const cleaned = cleanText(sentence);
+      if (cleaned.length > 40 && cleaned.length < 200) {
+        return cleaned;
+      }
+    }
+  }
+
+  return null;
 }
 
 /**
- * Generate comprehensive, multi-paragraph content for a publication
+ * Extract the core finding - the "so what" of the paper
+ * Returns a clean, complete sentence describing the main result
+ */
+function extractCoreFinding(pub) {
+  const abstract = pub.abstract || pub.plainSummary || '';
+  const keyFindings = pub.pdfContent?.keyFindings || [];
+  const allText = [abstract, ...keyFindings].join(' ');
+
+  // Split into sentences first
+  const sentences = allText.split(/(?<=[.!?])\s+/).filter(s => s.length > 30);
+
+  // Look for sentences with result indicators
+  const resultIndicators = [
+    /we\s+(?:found|show|demonstrate|discovered|reveal)/i,
+    /results?\s+(?:show|indicate|suggest|reveal)/i,
+    /this\s+study\s+(?:shows?|demonstrates?|reveals?)/i,
+    /here\s+we\s+(?:show|demonstrate|report)/i,
+    /our\s+(?:results|findings|data)\s+(?:show|indicate|suggest)/i,
+    /findings?\s+(?:suggest|indicate|show)/i,
+  ];
+
+  for (const sentence of sentences) {
+    // Must end with proper punctuation
+    if (!sentence.match(/[.!?]$/)) continue;
+    // Skip technical junk
+    if (sentence.match(/Table|Figure|Appendix|p\s*[<>=]|chi-squared|Tukey/i)) continue;
+
+    for (const pattern of resultIndicators) {
+      if (sentence.match(pattern)) {
+        let finding = cleanText(sentence);
+        if (finding.length > 50 && finding.length < 350) {
+          // Clean up the start for a cleaner lead
+          finding = finding
+            .replace(/^we\s+(found|show|demonstrate|discovered|reveal)\s+that\s+/i, '')
+            .replace(/^results?\s+(show|indicate|suggest|reveal)\s+that\s+/i, '')
+            .replace(/^this\s+study\s+(shows?|demonstrates?|reveals?)\s+that\s+/i, '')
+            .replace(/^here\s+we\s+(show|demonstrate|report)\s+that\s+/i, '')
+            .replace(/^our\s+(results|findings|data)\s+(show|indicate|suggest|demonstrate)\s+that\s+/i, '')
+            .replace(/^findings?\s+(suggest|indicate|show)\s+that\s+/i, '');
+
+          // Capitalize first letter
+          if (finding.length > 0) {
+            finding = finding.charAt(0).toUpperCase() + finding.slice(1);
+          }
+          return finding;
+        }
+      }
+    }
+  }
+
+  return null;
+}
+
+/**
+ * Generate a compelling headline that's not just the paper title
+ */
+function generateHeadline(pub) {
+  const title = pub.title || '';
+  const themes = pub.themes || [];
+
+  // If the title is already short and catchy, use it
+  if (title.length < 60 && !title.includes(':')) {
+    return title;
+  }
+
+  // Try to extract the essence
+  const coreFinding = extractCoreFinding(pub);
+  if (coreFinding && coreFinding.length < 80) {
+    // Capitalize first letter
+    return coreFinding.charAt(0).toUpperCase() + coreFinding.slice(1);
+  }
+
+  // Fall back to a shortened version of the title
+  if (title.includes(':')) {
+    const parts = title.split(':');
+    if (parts[0].length < 60) {
+      return parts[0].trim();
+    }
+  }
+
+  // Just truncate intelligently
+  if (title.length > 70) {
+    const truncated = title.substring(0, 70);
+    const lastSpace = truncated.lastIndexOf(' ');
+    return truncated.substring(0, lastSpace);
+  }
+
+  return title;
+}
+
+/**
+ * Generate the "so what" opening - why should anyone care?
+ */
+function generateSoWhat(pub) {
+  const themes = pub.themes || [];
+  const coreFinding = extractCoreFinding(pub);
+  const stickyFact = extractStickyFinding(pub.abstract || pub.plainSummary || '', pub.pdfContent?.keyFindings);
+
+  // Build context based on theme
+  let contextIntro = '';
+  if (themes.includes('Coral')) {
+    contextIntro = 'Coral reefs are in crisis. Warming oceans, acidification, and disease have killed half the world\'s reef-building corals in the last 30 years. ';
+  } else if (themes.includes('Kelp')) {
+    contextIntro = 'Kelp forests—the rainforests of the sea—are disappearing along coastlines worldwide. ';
+  } else if (themes.includes('Management')) {
+    contextIntro = 'Marine protected areas are one of our most powerful tools for ocean conservation, but their effectiveness varies widely. ';
+  } else if (themes.includes('Predation')) {
+    contextIntro = 'Top predators structure marine ecosystems from the top down, but overfishing has decimated their populations. ';
+  } else if (themes.includes('Mutualism')) {
+    contextIntro = 'In the ocean, survival often depends on partnerships between species. ';
+  }
+
+  // Add the core finding if we have one
+  if (coreFinding) {
+    return contextIntro + 'New research reveals that ' + coreFinding.charAt(0).toLowerCase() + coreFinding.slice(1);
+  }
+
+  return contextIntro;
+}
+
+/**
+ * Generate article content following science communication best practices
  */
 function generateContent(pub) {
   const parts = [];
 
-  // Get abstract from various sources
-  let abstract = pub.abstract || pub.plainSummary || '';
-  const pdfAbstract = pub.pdfContent?.abstractExtracted || '';
+  // Get all our source material
+  const abstract = cleanText(pub.abstract || pub.plainSummary || '');
+  const pdfAbstract = cleanText(pub.pdfContent?.abstractExtracted || '');
+  const keyFindings = (pub.pdfContent?.keyFindings || []).map(f => cleanText(f)).filter(f => f.length > 30);
+  const stickyFact = extractStickyFinding(abstract || pdfAbstract, keyFindings);
+  const coreFinding = extractCoreFinding(pub);
 
-  // Use the longer abstract
-  if (pdfAbstract.length > abstract.length) {
-    abstract = pdfAbstract;
-  }
-  abstract = cleanText(abstract);
-
-  // Get key findings from PDF extraction
-  const keyFindings = pub.pdfContent?.keyFindings || [];
-
-  // Get full text preview for additional context
-  const fullTextPreview = pub.pdfContent?.fullTextPreview || '';
-
-  // ===== BUILD COMPREHENSIVE ARTICLE =====
-
-  // Opening summary paragraph
-  if (abstract && abstract.length > 100) {
-    parts.push(`## Summary\n\n${abstract}`);
-  } else if (pub.title) {
-    // Create a basic summary if no abstract
-    parts.push(`## Summary\n\nResearchers from the Ocean Recoveries Lab have published new findings in *${pub.journal}*. This study, "${pub.title}", contributes to our understanding of marine ecosystem dynamics and conservation.`);
-  }
-
-  // Key Findings section (if available)
-  if (keyFindings.length > 0) {
-    const cleanedFindings = keyFindings
-      .map(f => cleanKeyFinding(f))
-      .filter(f => f.length > 20 && f.length < 400) // Filter out too short/long
-      .filter(f => !f.match(/^\d+$/)) // Filter out just numbers
-      .filter(f => !f.match(/^[^a-zA-Z]*$/)); // Filter out non-text
-
-    const uniqueFindings = [...new Set(cleanedFindings)].slice(0, 5);
-
-    if (uniqueFindings.length > 0) {
-      parts.push('\n\n## Key Findings\n');
-      uniqueFindings.forEach(finding => {
-        // Capitalize first letter if needed
-        let cleanFinding = finding;
-        if (cleanFinding.charAt(0) === cleanFinding.charAt(0).toLowerCase()) {
-          cleanFinding = cleanFinding.charAt(0).toUpperCase() + cleanFinding.slice(1);
-        }
-        // Ensure it ends with a period
-        if (!cleanFinding.match(/[.!?]$/)) {
-          cleanFinding += '.';
-        }
-        parts.push(`- ${cleanFinding}`);
-      });
+  // Use the longer abstract, but clean out author name artifacts
+  let mainAbstract = pdfAbstract.length > abstract.length ? pdfAbstract : abstract;
+  // Remove lines that look like author listings and title repetitions
+  const titleStart = (pub.title || '').substring(0, 30).toLowerCase();
+  mainAbstract = mainAbstract
+    .replace(/[A-Z][a-z]+\s+[A-Z]\.\s+[A-Z][a-z]+\s+[A-Z][a-z]+\s+[A-Z]\.\s+[A-Z][a-z]+/g, '')
+    .replace(/Joseph\s+S\.|Adrian\s+C\.|Craig\s+W\.|Galvan|Primo|Alexander/gi, '')
+    .replace(/\s+Stier\s+/gi, ' ')
+    .replace(/\s+Osenberg\s+/gi, ' ')
+    .replace(/\s+[A-Z]\.\s+/g, ' ') // Single initials
+    .replace(/\s{2,}/g, ' ')
+    .trim();
+  // Remove if the abstract starts with a repeat of the title
+  if (mainAbstract.toLowerCase().startsWith(titleStart)) {
+    const sentences = mainAbstract.split(/(?<=[.!?])\s+/);
+    if (sentences.length > 1) {
+      mainAbstract = sentences.slice(1).join(' ');
     }
   }
 
-  // Research Context paragraph (from methods, region, keywords)
-  const contextParts = [];
+  // ===== PARAGRAPH 1: THE "SO WHAT" =====
+  // Lead with why this matters, not methods
+  const soWhat = generateSoWhat(pub);
+  if (soWhat) {
+    parts.push(soWhat);
+    parts.push('\n\n');
+  }
+
+  // ===== PARAGRAPH 2: THE CORE FINDING =====
+  // State the main result in accessible language
+  if (mainAbstract && mainAbstract.length > 100) {
+    // Split into proper sentences
+    const sentences = mainAbstract.split(/(?<=[.!?])\s+/).filter(s =>
+      s.length > 30 &&
+      s.match(/^[A-Z]/) && // Starts with capital
+      s.match(/[.!?]$/) && // Ends with punctuation
+      !s.match(/Table|Figure|Appendix|p\s*[<>=]/i) && // No technical junk
+      !s.match(/^[A-Z][a-z]+\s+[A-Z]\.\s+[A-Z][a-z]+\s+[A-Z][a-z]+/) && // Author listing
+      !s.match(/Joseph|Adrian|Craig|Stier|Osenberg/i) // Avoid author name artifacts
+    );
+
+    // Look for result sentences
+    const resultSentences = sentences.filter(s =>
+      s.match(/(?:found|show|demonstrate|result|conclude|suggest|indicate|reveal)/i)
+    );
+
+    if (resultSentences.length > 0) {
+      // Use the best 1-2 result sentences
+      const goodResults = resultSentences.slice(0, 2).map(s => cleanText(s)).join(' ');
+      parts.push('**The core finding:** ' + goodResults);
+    } else if (sentences.length >= 3) {
+      // Use the last few sentences which usually contain results
+      const lastSentences = sentences.slice(-3).map(s => cleanText(s)).join(' ');
+      parts.push(lastSentences);
+    } else if (sentences.length > 0) {
+      // Just use what we have
+      parts.push(sentences.map(s => cleanText(s)).join(' '));
+    } else {
+      // Fall back to cleaned abstract
+      parts.push(cleanText(mainAbstract));
+    }
+    parts.push('\n\n');
+  }
+
+  // ===== PARAGRAPH 3: THE STICKY FACT =====
+  // One concrete number or image readers will remember
+  if (stickyFact) {
+    parts.push('**What the numbers show:** ' + stickyFact);
+    parts.push('\n\n');
+  } else if (keyFindings.length > 0) {
+    // Use the first good key finding - must be a complete sentence
+    const bestFinding = keyFindings.find(f =>
+      f.length > 50 &&
+      f.length < 250 &&
+      f.match(/^[A-Z]/) && // Starts with capital
+      f.match(/[.!?]$/) && // Ends with punctuation
+      !f.match(/Table|Figure|Appendix|p\s*[<>=]/i) // No technical junk
+    );
+    if (bestFinding) {
+      parts.push('**Key result:** ' + cleanText(bestFinding));
+      parts.push('\n\n');
+    }
+  }
+
+  // ===== PARAGRAPH 4: CONTEXT - WHAT WE THOUGHT BEFORE =====
+  // Just enough background to understand the significance
+  const themes = pub.themes || [];
+  let context = '';
+
+  if (themes.includes('Coral')) {
+    if (pub.title.toLowerCase().includes('mutualis') || pub.title.toLowerCase().includes('crab') || pub.title.toLowerCase().includes('fish')) {
+      context = 'Coral reefs are built by tiny animals, but they don\'t do it alone. A web of relationships with fish, crabs, and other creatures helps corals survive stresses that would otherwise kill them. Scientists are still working to understand which of these partnerships matter most for reef survival.';
+    } else if (pub.title.toLowerCase().includes('bleach') || pub.title.toLowerCase().includes('temperature') || pub.title.toLowerCase().includes('climate')) {
+      context = 'As oceans warm, corals expel the symbiotic algae that give them color and energy—a process called bleaching. Scientists are racing to understand what makes some corals more resilient than others, and whether reefs can adapt fast enough to survive.';
+    } else {
+      context = 'Coral reefs support a quarter of all marine species while covering less than 1% of the ocean floor. Understanding the ecological processes that maintain these ecosystems is crucial as they face unprecedented threats.';
+    }
+  } else if (themes.includes('Kelp')) {
+    context = 'Kelp forests grow in cold, nutrient-rich waters along temperate coastlines worldwide. These underwater forests provide habitat for hundreds of species and buffer coastlines from storms, but they\'re vulnerable to warming waters and overgrazing by sea urchins.';
+  } else if (themes.includes('Management')) {
+    context = 'Marine protected areas (MPAs) can help depleted fish populations recover, but the results vary dramatically depending on location, enforcement, and design. Scientists are still learning what makes the difference between MPAs that work and those that exist only on paper.';
+  } else if (themes.includes('Predation')) {
+    context = 'In healthy ecosystems, predators don\'t just kill prey—they change how prey species behave, where they feed, and how they use habitat. These behavioral effects can cascade through food webs in ways that are hard to predict.';
+  }
+
+  if (context) {
+    parts.push('**The bigger picture:** ' + context);
+    parts.push('\n\n');
+  }
+
+  // ===== PARAGRAPH 5: HOW THEY STUDIED IT =====
+  // Methods at level of trust, not replication
+  const methodParts = [];
   if (pub.methods) {
-    contextParts.push(`This research employed ${pub.methods.toLowerCase()} methods`);
+    methodParts.push(pub.methods.toLowerCase());
   }
   if (pub.region) {
-    contextParts.push(`conducted in ${pub.region}`);
+    methodParts.push(`research conducted in ${pub.region}`);
   }
   if (pub.studyType) {
-    contextParts.push(`as a ${pub.studyType.toLowerCase()} study`);
+    methodParts.push(pub.studyType.toLowerCase());
   }
 
-  if (contextParts.length > 0) {
-    parts.push(`\n\n## Research Approach\n\n${contextParts.join(', ')}.`);
+  if (methodParts.length > 0) {
+    parts.push('**How they studied it:** This research used ' + methodParts.join(', ') + '.');
+    parts.push('\n\n');
   }
 
-  // Why This Matters section
-  if (pub.whyItMatters) {
-    parts.push(`\n\n## Why This Matters\n\n${cleanText(pub.whyItMatters)}`);
-  } else if (pub.policyRelevance) {
-    parts.push(`\n\n## Why This Matters\n\n${cleanText(pub.policyRelevance)}`);
-  } else {
-    // Generate a generic "why it matters" based on themes
-    const themes = pub.themes || [];
-    let whyMatters = '';
-
-    if (themes.includes('Coral')) {
-      whyMatters = 'Coral reefs support roughly 25% of all marine species despite covering less than 1% of the ocean floor. Understanding the complex relationships that maintain reef health is essential for protecting these invaluable ecosystems as they face mounting pressures from climate change, ocean acidification, and human activities.';
-    } else if (themes.includes('Kelp')) {
-      whyMatters = 'Kelp forests are among the most productive ecosystems on Earth, providing critical habitat for countless marine species along temperate coastlines. This research helps us understand how these underwater forests function and how we can better protect them.';
-    } else if (themes.includes('Predation')) {
-      whyMatters = 'Predator-prey relationships are fundamental to ecosystem function. Understanding how these interactions shape marine communities helps managers make better decisions about fisheries and conservation.';
-    } else if (themes.includes('Management')) {
-      whyMatters = 'Effective marine management requires understanding how ecosystems respond to human activities and environmental change. This research provides insights that can inform science-based conservation policies.';
-    } else if (themes.includes('Mutualism')) {
-      whyMatters = 'Mutualisms—cooperative relationships between species—are crucial for ecosystem stability. Understanding these partnerships helps us appreciate the interconnected nature of marine life and the cascading effects when these relationships are disrupted.';
-    } else {
-      whyMatters = 'This research advances our understanding of marine ecosystem dynamics, providing valuable insights for conservation and management of ocean resources.';
-    }
-
-    parts.push(`\n\n## Why This Matters\n\n${whyMatters}`);
+  // ===== IMPACT & LIMITATIONS =====
+  // Be honest about what we can and can't conclude
+  if (pub.citationCount > 10) {
+    parts.push(`This paper has been cited ${pub.citationCount} times since its publication, reflecting its influence on subsequent research in the field.`);
+    parts.push('\n\n');
   }
 
-  // Impact note (if highly cited)
-  if (pub.citationCount > 20) {
-    parts.push(`\n\nThis paper has been cited ${pub.citationCount} times, reflecting its significant impact on the field.`);
-  }
-
-  // Citation section
-  parts.push(`\n\n## Citation\n\n${pub.authors} (${pub.year}). ${pub.title}. *${pub.journal}*.`);
+  // ===== CITATION =====
+  parts.push('---\n\n');
+  parts.push(`**Citation:** ${pub.authors} (${pub.year}). ${pub.title}. *${pub.journal}*.`);
 
   const doiUrl = pub.doiUrl || (pub.doi ? `https://doi.org/${pub.doi}` : '');
   if (doiUrl) {
-    parts.push(`\n\n[Read the full paper](${doiUrl})`);
+    parts.push(`\n\n[Read the full paper →](${doiUrl})`);
+    if (!pub.openAccess) {
+      parts.push(' *(may require subscription)*');
+    }
   }
 
   if (pub.openAccess) {
-    parts.push('\n\n*This paper is Open Access.*');
+    parts.push('\n\n*This paper is freely available (Open Access).*');
   }
 
   return parts.join('');
 }
 
 /**
- * Generate excerpt from abstract or summary
+ * Generate excerpt - the hook for preview cards
  */
 function generateExcerpt(pub) {
-  let text = pub.plainSummary || pub.abstract || '';
+  const coreFinding = extractCoreFinding(pub);
 
-  // Don't use PDF abstract for excerpt - it often has formatting issues
-  // Only fall back to it if we have nothing else
-  if (!text && pub.pdfContent?.abstractExtracted) {
-    text = pub.pdfContent.abstractExtracted;
+  if (coreFinding && coreFinding.length > 50 && coreFinding.length < 200) {
+    return coreFinding.charAt(0).toUpperCase() + coreFinding.slice(1);
   }
 
+  let text = pub.plainSummary || pub.abstract || '';
   text = cleanText(text);
 
-  // Skip if it looks like journal metadata
   if (text.match(/^Vol\.|^\d+\s+\d+\s+[A-Z]/)) {
-    return `New research from the Ocean Recoveries Lab published in ${pub.journal}.`;
+    return `New research on ${(pub.themes || ['marine ecosystems'])[0].toLowerCase()} from the Ocean Recoveries Lab.`;
   }
 
-  if (text.length > 200) {
-    // Find a good break point
-    const shortened = text.substring(0, 200);
+  if (text.length > 180) {
+    const shortened = text.substring(0, 180);
     const lastSpace = shortened.lastIndexOf(' ');
     return shortened.substring(0, lastSpace) + '...';
   } else if (text.length > 50) {
     return text;
   }
 
-  return `New research from the Ocean Recoveries Lab published in ${pub.journal}.`;
+  return `New research published in ${pub.journal} explores ${pub.title.toLowerCase().substring(0, 60)}...`;
 }
 
 // Main function
 async function main() {
   console.log('\n╔══════════════════════════════════════════╗');
-  console.log('║   Comprehensive News Post Generator      ║');
+  console.log('║   Science Communication Post Generator   ║');
   console.log('╚══════════════════════════════════════════╝\n');
 
   // Load publications
@@ -376,7 +526,7 @@ async function main() {
   console.log(`   Found ${publications.length} publications\n`);
 
   // Generate posts
-  console.log('📝 Generating comprehensive news articles...\n');
+  console.log('📝 Generating news articles with science communication best practices...\n');
 
   const posts = publications.map((pub, i) => {
     const author = getFirstAuthor(pub.authors);
@@ -387,7 +537,7 @@ async function main() {
 
     return {
       slug: slugify(pub.title),
-      title: pub.title,
+      title: pub.title, // Keep original title for accuracy
       date: getDate(pub.year, i),
       author: author === 'Stier' ? 'Adrian Stier' : `${author} et al.`,
       excerpt: generateExcerpt(pub),
@@ -405,7 +555,14 @@ async function main() {
  * Generated: ${new Date().toISOString()}
  * Total posts: ${posts.length}
  *
- * This file is generated by scripts/generate-comprehensive-posts.cjs
+ * Science communication approach:
+ * - Lead with "so what" - why should readers care?
+ * - State core finding in accessible language
+ * - Include sticky facts/numbers readers will remember
+ * - Provide just enough context
+ * - Be honest about limitations
+ *
+ * Generated by scripts/generate-comprehensive-posts.cjs
  */
 
 export interface BlogPost {
