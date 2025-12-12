@@ -1,6 +1,6 @@
 /**
  * Auto-generated news posts from publications
- * Generated: 2025-12-12T18:35:13.559Z
+ * Generated: 2025-12-12T18:45:40.245Z
  * Total posts: 75
  *
  * Science communication approach:
@@ -34,6 +34,8 @@ export const posts: BlogPost[] = [
     featuredImage: "/images/chromis-acropora.jpeg",
     tags: ["Research","Coral","2025"],
     content: `Coral reefs are in crisis. Warming oceans, acidification, and disease have killed half the world's reef-building corals in the last 30 years. 
+
+**The core finding:** The fishes can also benefit the corals, through fish-derived services resulting from, for example, diurnal and nocturnal movements, foraging, and nutrient excretion.
 
 **The bigger picture:** Coral reefs are built by tiny animals, but they don't do it alone. A web of relationships with fish, crabs, and other creatures helps corals survive stresses that would otherwise kill them. Scientists are still working to understand which of these partnerships matter most for reef survival.
 
@@ -261,9 +263,9 @@ This paper has been cited 24 times since its publication, reflecting its influen
     tags: ["Research","Coral","2022"],
     content: `Coral reefs are in crisis. Warming oceans, acidification, and disease have killed half the world's reef-building corals in the last 30 years. New research reveals that surprisingly, we found no relationship between human influence and resistance to disturbance and some evidence that areas with greater human development may recover from disturbance faster than their more isolated counterparts.
 
-**The core finding:** Surprisingly, we found no relationship between human influence and resist- ance to disturbance and some evidence that areas with greater human development may recover from disturbance faster than their more isolated counterparts. Our re- sults suggest remote coral reefs are imperiled by climate change, like so many other geographically isolated ecosystems, and are unlikely to serve as effective biodiver- sity arks.
+Even when monitoring is imprecise, very con- servative harvest rates still lead to very high relative resource biomass through time. However, the relative benefits of heavy monitoring decline somewhat as populations spend increasingly high amounts of time overhar- vested at very high harvest rates > 1.0H MSY . Populations that are poorly monitored and heavily harvested tend to regularly dip into the danger zone .
 
-**Key result:** Our results suggest that reef re- moteness does not enhance resilience to disturbance.
+**Key result:** We show that precautionary buffers that trigger increased monitoring precision as resource levels decline may offer a way to minimize monitoring costs and maximize profits.
 
 **The bigger picture:** Coral reefs support a quarter of all marine species while covering less than 1% of the ocean floor. Understanding the ecological processes that maintain these ecosystems is crucial as they face unprecedented threats.
 
@@ -336,6 +338,8 @@ This paper has been cited 34 times since its publication, reflecting its influen
     content: `New research reveals that precautionary buffers that trigger increased monitoring precision as resource levels decline may offer a way to minimize monitoring costs and maximize profits.
 
 **The core finding:** We show that precautionary buffers that trigger increased monitoring precision as resource levels decline may offer a way to minimize monitoring costs and maximize profits.
+
+**Key result:** Our results suggest that the effects of urbanization can be complex and that attention to terrestrial, freshwater, and coastal marine systems in concert will produce more effective, ecosystem-based management.
 
 ---
 
@@ -515,7 +519,11 @@ This paper has been cited 15 times since its publication, reflecting its influen
     excerpt: "Conflict is a common feature in conservation and resource management. Environmental conflicts are frequently attributed to differences in values; however, variability in the...",
     featuredImage: "/images/giant-kelp-sunlight-underwater.jpeg",
     tags: ["Research","2021"],
-    content: `**The core finding:** In the present article, we explore a conservation Rashomon effect—a phenomenon that results from a combination of differences in perspective, plausible alternative perspectives of a conservation issue, and the absence of evidence to elevate one perspective above others. We evaluate this supposition and suggest that scientists, themselves, display Rashomon effects.
+    content: `New research reveals that we found no relationship between human influence and resist- ance to disturbance and some evidence that areas with greater human development may recover from disturbance faster than their more isolated counterparts.
+
+**The core finding:** In the present article, we explore a conservation Rashomon effect—a phenomenon that results from a combination of differences in perspective, plausible alternative perspectives of a conservation issue, and the absence of evidence to elevate one perspective above others. We evaluate this supposition and suggest that scientists, themselves, display Rashomon effects.
+
+**Key result:** Our results suggest that reef re- moteness does not enhance resilience to disturbance.
 
 This paper has been cited 22 times since its publication, reflecting its influence on subsequent research in the field.
 
@@ -688,10 +696,14 @@ This paper has been cited 77 times since its publication, reflecting its influen
     title: "Temporal variation in dispersal modifies dispersal-diversity relationships in an experimental seagrass metacommunity",
     date: "2019-09-01",
     author: "Adrian Stier",
-    excerpt: "MEPS Marine Ecology Progress Series Contact the journal Facebook Twitter RSS Mailing List Subscribe to our mailing list via Mailchimp HomeLatest VolumeAbout the...",
+    excerpt: "A comprehensive coastal and marine ecosystem monitoring system could benefit from collaboration and synergy with the ILTER network.",
     featuredImage: "/images/coral-reef-panorama-anthias-fish.jpeg",
     tags: ["Research","2019"],
-    content: `**The core finding:** Our results provide the first empirical evidence that temporal variation in dispersal can substantially modify the well-described dispersal-diversity relationship for both alpha and beta diversity. Broadly, our results provide increasing evidence for the effects of spatial and temporal variability in modifying the role of the ecological processes driving marine metacommunity structure.
+    content: `New research reveals that a comprehensive coastal and marine ecosystem monitoring system could benefit from collaboration and synergy with the ILTER network.
+
+**The core finding:** Our results provide the first empirical evidence that temporal variation in dispersal can substantially modify the well-described dispersal-diversity relationship for both alpha and beta diversity. Broadly, our results provide increasing evidence for the effects of spatial and temporal variability in modifying the role of the ecological processes driving marine metacommunity structure.
+
+**Key result:** These results show that a comprehensive coastal and marine ecosystem monitoring system could benefit from collaboration and synergy with the ILTER network.
 
 **How they studied it:** This research used meta-analysis.
 
@@ -708,10 +720,10 @@ This paper has been cited 11 times since its publication, reflecting its influen
     title: "Grazing halos on coral reefs: predation risk, herbivore density, and habitat size influence grazing patterns that are visible from space",
     date: "2019-08-22",
     author: "DiFiore et al.",
-    excerpt: "We found no evidence for spatial autocorrelation in PCA 1 or predator density between nearby patch reefs.",
+    excerpt: "A comprehensive coastal and marine ecosystem monitoring system could benefit from collaboration and synergy with the ILTER network.",
     featuredImage: "/images/coral-reef-panorama-anthias-fish.jpeg",
     tags: ["Research","Coral","2019"],
-    content: `Coral reefs are in crisis. Warming oceans, acidification, and disease have killed half the world's reef-building corals in the last 30 years. New research reveals that we found no evidence for spatial autocorrelation in PCA 1 or predator density between nearby patch reefs.
+    content: `Coral reefs are in crisis. Warming oceans, acidification, and disease have killed half the world's reef-building corals in the last 30 years. New research reveals that a comprehensive coastal and marine ecosystem monitoring system could benefit from collaboration and synergy with the ILTER network.
 
 **The core finding:** Our results contribute to a growing body of research suggesting that halos may function as footprints of ecological processes, such as herbivory, that can be quantified using remote sensing, and offer a potential avenue to improve monitoring of coral reef management.
 
@@ -804,12 +816,14 @@ This paper has been cited 73 times since its publication, reflecting its influen
     title: "Landscape configuration drives persistent spatial patterns of occupant distributions",
     date: "2018-11-15",
     author: "Hamman et al.",
-    excerpt: "New research published in Theoretical Ecology explores landscape configuration drives persistent spatial patterns o...",
+    excerpt: "We found cryptic agreement surrounding scenarios despite divergent perceptions of herring ecosystem structure.",
     featuredImage: "/images/tropical-island-split-view-coral-reef-shark.jpeg",
     tags: ["Research","2018"],
-    content: `New research reveals that spatial variation in colonization is retained when the supply of colonists is not too high, post- colonization density-dependent survival is not too strong, Electronic supplementary materialThe online version of this article (https://doi.
+    content: `New research reveals that we found cryptic agreement surrounding scenarios despite divergent perceptions of herring ecosystem structure.
 
-**The core finding:** We demonstrate that spatial variation in colonization is retained when the supply of colonists is not too high, post- colonization density-dependent survival is not too strong, Electronic supplementary materialThe online version of this article () contains supplementary material, which is available to authorized users. Using a reef fish system, we show that the spatial variation produced by propagule redirection is comparable to spatial variation expected when patch quality varies.
+**The core finding:** Expert perceptions of the herring food web varied markedly in structure, and a simulated herring recovery with each of these unique mental models demonstrated wide variability in the perceived impor- tance of herring to the surrounding food web.
+
+**Key result:** We show here that among-expert differences in perceptions of ecosystem structure are log- ically tied to consequences for how an individual might view the outcomes or impacts of predicted future change.
 
 ---
 
@@ -846,14 +860,14 @@ This paper has been cited 79 times since its publication, reflecting its influen
     title: "The relative influence of abundance and priority effects on colonization success in a coral-reef fish",
     date: "2017-05-01",
     author: "Geange et al.",
-    excerpt: "New research published in Coral Reefs explores the relative influence of abundance and priority effects on ...",
+    excerpt: "We found reefs with mesopredators had on average 15% higher beta diversity (Q=19.",
     featuredImage: "/images/chromis-acropora.jpeg",
     tags: ["Research","Coral","2017"],
-    content: `Coral reefs are in crisis. Warming oceans, acidification, and disease have killed half the world's reef-building corals in the last 30 years. New research reveals that results suggest priority effects are more important than colonizer abundance and should motivate the integration of priority effects into future studies of density dependence to determine their relative importance.
+    content: `Coral reefs are in crisis. Warming oceans, acidification, and disease have killed half the world's reef-building corals in the last 30 years. New research reveals that we found reefs with mesopredators had on average 15% higher beta diversity (Q=19.
 
-**The core finding:** These results suggest priority effects are more important than colonizer abundance and should motivate the integration of priority effects into future studies of density dependence to determine their relative importance.
+Here, we synthesize existing experiments that have isolated the effects of mesopredators to quantify the role of predation in driving changes in the abundance and biodi- versity of recently settled reef fishes. On average, predators reduced prey abundance through generalist foraging behavior, which, through a statistical sampling artifact, caused a reduction in alpha diversity and an increase in beta diversity. Thus, the synthesized experiments provide evidence that predation reduces overall abundance within prey communities, but—after accounting for sampling effects—does not cause disproportionate effects on biodiversity.
 
-**Key result:** These results suggest priority effects are more important than colonizer abundance and should motivate the integration of priority effects into future studies of density dependence to determine their relative importance.
+**What the numbers show:** We found reefs with mesopredators had on average 15% higher beta diversity (Q=19.
 
 **The bigger picture:** Coral reefs are built by tiny animals, but they don't do it alone. A web of relationships with fish, crabs, and other creatures helps corals survive stresses that would otherwise kill them. Scientists are still working to understand which of these partnerships matter most for reef survival.
 
@@ -870,10 +884,14 @@ This paper has been cited 79 times since its publication, reflecting its influen
     title: "Biodiversity effects of the predation gauntlet",
     date: "2017-04-22",
     author: "Adrian Stier",
-    excerpt: "New research published in Coral Reefs explores biodiversity effects of the predation gauntlet...",
+    excerpt: "We found reefs with mesopredators had on average 15% higher beta diversity (Q=19.",
     featuredImage: "/images/tropical-island-aerial-view-lagoon-reef.jpeg",
     tags: ["Research","Coral","2017"],
-    content: `Coral reefs are in crisis. Warming oceans, acidification, and disease have killed half the world's reef-building corals in the last 30 years. 
+    content: `Coral reefs are in crisis. Warming oceans, acidification, and disease have killed half the world's reef-building corals in the last 30 years. New research reveals that we found reefs with mesopredators had on average 15% higher beta diversity (Q=19.
+
+Here, we synthesize existing experiments that have isolated the effects of mesopredators to quantify the role of predation in driving changes in the abundance and biodi- versity of recently settled reef fishes. On average, predators reduced prey abundance through generalist foraging behavior, which, through a statistical sampling artifact, caused a reduction in alpha diversity and an increase in beta diversity. Thus, the synthesized experiments provide evidence that predation reduces overall abundance within prey communities, but—after accounting for sampling effects—does not cause disproportionate effects on biodiversity.
+
+**What the numbers show:** We found reefs with mesopredators had on average 15% higher beta diversity (Q=19.
 
 **The bigger picture:** Coral reefs support a quarter of all marine species while covering less than 1% of the ocean floor. Understanding the ecological processes that maintain these ecosystems is crucial as they face unprecedented threats.
 
@@ -892,10 +910,14 @@ This paper has been cited 15 times since its publication, reflecting its influen
     title: "Costly stakeholder participation creates inertia in marine ecosystems",
     date: "2017-03-15",
     author: "Lynham et al.",
-    excerpt: "New research published in Marine Policy explores costly stakeholder participation creates inertia in marine e...",
+    excerpt: "We found reefs with mesopredators had on average 15% higher beta diversity (Q=19.",
     featuredImage: "/images/tropical-island-split-view-coral-reef-shark.jpeg",
     tags: ["Research","Policy/Management","2017"],
-    content: `Public stakeholder meetings often have high costs of participation, thus economic theory predicts they will be dominated by extreme views and often lead to decisions that do not represent the majority viewpoint. Such extreme viewpoints can create strong inertia even when there is broad consensus to manage an ecosystem towards a different regime. In the same manner that reinforcing ecological feedback loops make it harder to exit an ecosystem regime, there are decision-making feedback loops that contribute additional inertia.
+    content: `New research reveals that we found reefs with mesopredators had on average 15% higher beta diversity (Q=19.
+
+Here, we synthesize existing experiments that have isolated the effects of mesopredators to quantify the role of predation in driving changes in the abundance and biodi- versity of recently settled reef fishes. On average, predators reduced prey abundance through generalist foraging behavior, which, through a statistical sampling artifact, caused a reduction in alpha diversity and an increase in beta diversity. Thus, the synthesized experiments provide evidence that predation reduces overall abundance within prey communities, but—after accounting for sampling effects—does not cause disproportionate effects on biodiversity.
+
+**What the numbers show:** We found reefs with mesopredators had on average 15% higher beta diversity (Q=19.
 
 This paper has been cited 27 times since its publication, reflecting its influence on subsequent research in the field.
 
@@ -910,10 +932,16 @@ This paper has been cited 27 times since its publication, reflecting its influen
     title: "Rapid and direct recoveries of predators and prey through synchronized ecosystem management",
     date: "2017-02-08",
     author: "Samhouri et al.",
-    excerpt: "New research published in Nature Ecology &amp; Evolution explores rapid and direct recoveries of predators and prey through sy...",
+    excerpt: "We found two significant threshold relationships in the full GAM analyses with plausible mechanistic under- pinnings.",
     featuredImage: "/images/giant-kelp-sunlight-underwater.jpeg",
     tags: ["Research","Policy/Management","2017"],
-    content: `**How they studied it:** This research used meta-analysis.
+    content: `New research reveals that we found two significant threshold relationships in the full GAM analyses with plausible mechanistic under- pinnings.
+
+**The core finding:** To demonstrate how to apply the framework, we explored two dec- ades of data using gradient forest and generalized additive model analyses, screening for nonlinearities and potential threshold responses of ecosystem states (n=9) across environmental (n=6) and human (n=10) pressures. This result is consistent with the idea that the influence of the PDO extends across multiple trophic levels, but extends current knowledge by defining the nonlinear nature of these responses.
+
+**Key result:** Our analysis reveals effects of both environmen- tal and human pressures as major predictors of individual and aggregated ecosystem states in the CCS.
+
+**How they studied it:** This research used meta-analysis.
 
 This paper has been cited 44 times since its publication, reflecting its influence on subsequent research in the field.
 
@@ -928,10 +956,14 @@ This paper has been cited 44 times since its publication, reflecting its influen
     title: "Integrating Expert Perceptions into Food Web Conservation and Management",
     date: "2017-01-01",
     author: "Adrian Stier",
-    excerpt: "Decision‐makers often rely on expert knowledge, especially in complex and data‐poor social‐ecological systems (SESs). However, expert knowledge and perceptions of SES structure...",
+    excerpt: "We found two significant threshold relationships in the full GAM analyses with plausible mechanistic under- pinnings.",
     featuredImage: "/images/coral-reef-panorama-anthias-fish.jpeg",
     tags: ["Research","Policy/Management","2017"],
-    content: `**The core finding:** Expert perceptions of the herring food web varied markedly in structure, and a simulated herring recovery with each of these unique mental models demonstrated wide variability in the perceived importance of herring to the surrounding food web.
+    content: `New research reveals that we found two significant threshold relationships in the full GAM analyses with plausible mechanistic under- pinnings.
+
+**The core finding:** To demonstrate how to apply the framework, we explored two dec- ades of data using gradient forest and generalized additive model analyses, screening for nonlinearities and potential threshold responses of ecosystem states (n=9) across environmental (n=6) and human (n=10) pressures. This result is consistent with the idea that the influence of the PDO extends across multiple trophic levels, but extends current knowledge by defining the nonlinear nature of these responses.
+
+**Key result:** Our analysis reveals effects of both environmen- tal and human pressures as major predictors of individual and aggregated ecosystem states in the CCS.
 
 This paper has been cited 50 times since its publication, reflecting its influence on subsequent research in the field.
 
@@ -1016,10 +1048,14 @@ This paper has been cited 83 times since its publication, reflecting its influen
     title: "Conservation Challenges of Predator Recovery: Conservation challenges of predator recovery",
     date: "2016-06-08",
     author: "Marshall et al.",
-    excerpt: "Predators are critical components of ecosystems. Globally, conservation efforts have targeted depleted populations of top predators for legal protection, and in many cases, this...",
+    excerpt: "We show the effects of predators on abundance, richness, Jaccard index of beta diversity, and the proposed rarefied Jaccard index.",
     featuredImage: "/images/giant-kelp-sunlight-underwater.jpeg",
     tags: ["Research","2016"],
-    content: `**The core finding:** We use two food webs with parallel conservation challenges, the Northeast Pacific Ocean and the Greater Yellowstone Ecosystem, to demonstrate legal/policy conflicts and the policy levers that exist to ameliorate conflicts. We suggest a framework that incorporates multispecies science, policy tools, and tradeoff analyses into management.
+    content: `New research reveals that we show the effects of predators on abundance, richness, Jaccard index of beta diversity, and the proposed rarefied Jaccard index.
+
+**The core finding:** We use two food webs with parallel conservation challenges, the Northeast Pacific Ocean and the Greater Yellowstone Ecosystem, to demonstrate legal/policy conflicts and the policy levers that exist to ameliorate conflicts. We suggest a framework that incorporates multispecies science, policy tools, and tradeoff analyses into management.
+
+**Key result:** We show the effects of predators on abundance, richness, Jaccard index of beta diversity, and the proposed rarefied Jaccard index.
 
 This paper has been cited 113 times since its publication, reflecting its influence on subsequent research in the field.
 
@@ -1105,7 +1141,11 @@ This paper has been cited 196 times since its publication, reflecting its influe
     excerpt: "New research published in Coral Reefs explores predator density and the functional responses of coral reef ...",
     featuredImage: "/images/tropical-island-aerial-view-lagoon-reef.jpeg",
     tags: ["Research","Coral","2014"],
-    content: `Coral reefs are in crisis. Warming oceans, acidification, and disease have killed half the world's reef-building corals in the last 30 years. 
+    content: `Coral reefs are in crisis. Warming oceans, acidification, and disease have killed half the world's reef-building corals in the last 30 years. New research reveals that both flame hawkfish and coral crouchers substantially alter fish and crustacean community organization, and we discuss the implications of shifts in community structure for coral growth and resilience.
+
+**The core finding:** Here, we experimentally quantify the role of predation in driving the community organization of small fishes and decapods that live embedded withinPo- cillopora eydouxi, a structurally complex, reef-building coral found widely across the Indo-Pacific. Rarefaction revealed that observed reductions in species richness were primarily driven by changes in abundance.
+
+**What the numbers show:** Predators reduced abundance (34 %), species richness (20 %), and modified species composition.
 
 **The bigger picture:** Coral reefs are built by tiny animals, but they don't do it alone. A web of relationships with fish, crabs, and other creatures helps corals survive stresses that would otherwise kill them. Scientists are still working to understand which of these partnerships matter most for reef survival.
 
@@ -1284,14 +1324,14 @@ This paper has been cited 387 times since its publication, reflecting its influe
     title: "Competitive hierarchies among three species of juvenile coral reef fishes",
     date: "2013-10-08",
     author: "Geange et al.",
-    excerpt: "MEPS Marine Ecology Progress Series Contact the journal Facebook Twitter RSS Mailing List Subscribe to our mailing list via Mailchimp HomeLatest VolumeAbout the...",
+    excerpt: "The timing of predator arrival can be as important as predator density in modifying prey abundance and community composition.",
     featuredImage: "/images/damselfish-pair-acropora-coral.jpeg",
     tags: ["Research","Coral","2013"],
-    content: `Coral reefs are in crisis. Warming oceans, acidification, and disease have killed half the world's reef-building corals in the last 30 years. 
+    content: `Coral reefs are in crisis. Warming oceans, acidification, and disease have killed half the world's reef-building corals in the last 30 years. New research reveals that the timing of predator arrival can be as important as predator density in modifying prey abundance and community composition.
 
 **The core finding:** We controlled for intrinsic variation in survivorship among species and found that competition among these 3 species was highly asymmetric, resulting in a simple competitive hierarchy (sequence of competitive ability from superior to inferior competitors): fivestripe wrasse > bird wrasse > sixbar wrasse. Our work demonstrates that intense asymmetric competition and the formation of competitive hierarchies may be an important determinant of resource monopolization and patterns of distribution and abundance in reef fishes.
 
-**What the numbers show:** We observed 127 fish (all either bird wrasse, sixbar wrasse or fivestripe wrasse) on 55 of the 96 reefs sur- veyed.
+**What the numbers show:** We found hawkfish on 66 of the 192 surveyed patch reefs; we focus our analysis on 55 of the 66 reefs where hawkfish were observed at least twice.
 
 **The bigger picture:** Coral reefs are built by tiny animals, but they don't do it alone. A web of relationships with fish, crabs, and other creatures helps corals survive stresses that would otherwise kill them. Scientists are still working to understand which of these partnerships matter most for reef survival.
 
@@ -1406,14 +1446,14 @@ This paper has been cited 46 times since its publication, reflecting its influen
     title: "The influence of fundamental traits on mechanisms controlling appendage regeneration",
     date: "2012-02-08",
     author: "Seifert et al.",
-    excerpt: "One of the most compelling questions in evolutionary biology is why some animals can regenerate injured structures while others cannot. Appendage regeneration appears to be common...",
+    excerpt: "Symbiont density is restricted by intraspecific competition.",
     featuredImage: "/images/giant-kelp-sunlight-underwater.jpeg",
     tags: ["Research","2012"],
-    content: `New research reveals that these findings suggest that nucleostemin may contribute to cell cycle re- entry in other cell types, and supports a role for theInk4alocus in restricting de-differentiation in mammalian cells through multiple pathways.
+    content: `New research reveals that symbiont density is restricted by intraspecific competition.
 
-**The core finding:** Future studies that explore regeneration in organisms across a broad phylogenetic scale, and within an ontogenetic framework, will help elucidate the proxi- mate mechanisms that modulate regeneration and may reveal new biomedical applications for use in regenerative medicine.
+**The core finding:** Our field survey showed that all common symbionts typically occur as pairs and never at greater abundances. Our results suggest that symbiont density is restricted by intraspecific competition.
 
-**Key result:** These findings suggest that nucleostemin may contribute to cell cycle re- entry in other cell types, and supports a role for theInk4alocus in restricting de-differentiation in mammalian cells through multiple pathways.
+**Key result:** Our results suggest that symbiont density is restricted by intraspecific competition.
 
 This paper has been cited 77 times since its publication, reflecting its influence on subsequent research in the field.
 
@@ -1623,6 +1663,8 @@ This paper has been cited 46 times since its publication, reflecting its influen
     tags: ["Research","Coral","2010"],
     content: `Coral reefs are in crisis. Warming oceans, acidification, and disease have killed half the world's reef-building corals in the last 30 years. 
 
+Stony corals provide important structural hab- itat for microbes, invertebrates, and fishes, which in some cases has led to the evolution of beneficial interactions that may protect corals from environmental factors such as thermal stress, nutrient limitation, competitors, or preda- tors. For example, guard crabs (Trapeziaspp.) protect corals (Pocilloporasp.) from attacks by crown-of-thorn seastar and sedimentation. Here, a field experiment dem- onstrates that guard crabs (Trapezia serenei) also amelio- rate the strong negative effects of the giant vermetid (Dendropoma maximum) on growth ofPocillopora.This experiment highlights the importance of this crab-coral mutualism: guard crabs facilitate the growth of corals in stressful environments (e.g., where vermetids are abun- dant), thereby preserving the ecological goods and services (e.g., food and shelter) that these corals may provide to other reef-associated species.
+
 **The bigger picture:** Coral reefs are built by tiny animals, but they don't do it alone. A web of relationships with fish, crabs, and other creatures helps corals survive stresses that would otherwise kill them. Scientists are still working to understand which of these partnerships matter most for reef survival.
 
 This paper has been cited 54 times since its publication, reflecting its influence on subsequent research in the field.
@@ -1638,10 +1680,10 @@ This paper has been cited 54 times since its publication, reflecting its influen
     title: "Synthesizing mechanisms of density dependence in reef fishes: behavior, habitat configuration, and observational scale",
     date: "2010-06-08",
     author: "White et al.",
-    excerpt: "Results suggesting that some reef fish species experience inversely density- dependent (IDD) postsettlement mortality",
+    excerpt: "Coral and rocky reef fish populations are widely used as model systems for the experimental exploration of density‐dependent vital rates, but patterns of density‐dependent...",
     featuredImage: "/images/chromis-acropora.jpeg",
     tags: ["Research","Coral","2010"],
-    content: `Coral reefs are in crisis. Warming oceans, acidification, and disease have killed half the world's reef-building corals in the last 30 years. New research reveals that results suggesting that some reef fish species experience inversely density- dependent (IDD) postsettlement mortality
+    content: `Coral reefs are in crisis. Warming oceans, acidification, and disease have killed half the world's reef-building corals in the last 30 years. 
 
 **The core finding:** As a result, DDD mortality may be more common than IDD mortality on patch reefs, which tend to constrain predator foraging to the same scale as prey aggregation, eliminating attack‐abatement effects. The results of nearly all prior reef fish studies fit within this framework, although additional work is needed to test many of the predicted outcomes.
 
@@ -1660,10 +1702,14 @@ This paper has been cited 69 times since its publication, reflecting its influen
     title: "Coral reef fishes use crown-of-thorns seastar as habitat",
     date: "2009-03-15",
     author: "Adrian Stier",
-    excerpt: "New research published in Coral Reefs explores coral reef fishes use crown-of-thorns seastar as habitat...",
+    excerpt: "Results suggest the repeated use of clove oil (even without a solvent) can deleteriously affect corals.",
     featuredImage: "/images/tropical-island-aerial-view-lagoon-reef.jpeg",
     tags: ["Research","Coral","2009"],
-    content: `Coral reefs are in crisis. Warming oceans, acidification, and disease have killed half the world's reef-building corals in the last 30 years. 
+    content: `Coral reefs are in crisis. Warming oceans, acidification, and disease have killed half the world's reef-building corals in the last 30 years. New research reveals that results suggest the repeated use of clove oil (even without a solvent) can deleteriously affect corals.
+
+article info Article history: Received 29 April 2008 Received in revised form 15 October 2008 Accepted 17 October
+
+**What the numbers show:** Our results suggest that repeated applications of concentrations of clove oil≥14% can, on average, reduce growth by 30- 40%, and increase bleaching by 20-80%, relative to controls.
 
 **The bigger picture:** Coral reefs are built by tiny animals, but they don't do it alone. A web of relationships with fish, crabs, and other creatures helps corals survive stresses that would otherwise kill them. Scientists are still working to understand which of these partnerships matter most for reef survival.
 
@@ -1680,14 +1726,14 @@ This paper has been cited 69 times since its publication, reflecting its influen
     title: "Effects of the fish anesthetic, clove oil (eugenol), on coral health and growth",
     date: "2009-02-08",
     author: "Boyer et al.",
-    excerpt: "Results suggest the repeated use of clove oil (even without a solvent) can deleteriously affect corals.",
+    excerpt: "New research published in Journal of Experimental Marine Biology and Ecology explores effects of the fish anesthetic, clove oil (eugenol), on cora...",
     featuredImage: "/images/coral-guard-crab-red-spotted-macro.jpeg",
     tags: ["Research","Coral","2009"],
-    content: `Coral reefs are in crisis. Warming oceans, acidification, and disease have killed half the world's reef-building corals in the last 30 years. New research reveals that results suggest the repeated use of clove oil (even without a solvent) can deleteriously affect corals.
+    content: `Coral reefs are in crisis. Warming oceans, acidification, and disease have killed half the world's reef-building corals in the last 30 years. New research reveals that the strength of competition depends not only on the identity of competitors, but also on the sequence and timing of their interactions, suggesting that when examining interaction strengths, it is important to identify temporal variability in the direction and magnitude of their effects.
 
-article info Article history: Received 29 April 2008 Received in revised form 15 October 2008 Accepted 17 October
+**The core finding:** This study shows that the strength of competition depends not only on the identity of competitors, but also on the sequence and timing of their interactions, suggesting that when examining interaction strengths, it is important to identify temporal variability in the direction and magnitude of their effects.
 
-**What the numbers show:** Our results suggest that repeated applications of concentrations of clove oil≥14% can, on average, reduce growth by 30- 40%, and increase bleaching by 20-80%, relative to controls.
+**Key result:** We found no immigrants or emigrants, and previous research has shown that small reef fish rarely move between reefs separated by as little as 15 m (Caselle 1999, Shima 2001).
 
 **The bigger picture:** Coral reefs are built by tiny animals, but they don't do it alone. A web of relationships with fish, crabs, and other creatures helps corals survive stresses that would otherwise kill them. Scientists are still working to understand which of these partnerships matter most for reef survival.
 

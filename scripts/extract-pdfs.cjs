@@ -212,13 +212,18 @@ function cleanText(text) {
 
 /**
  * Improved PDF to publication matching
+ * Uses score-based matching with journal name as key discriminator
  */
 function matchPDFToPublication(pdfName, publications) {
   const baseName = path.basename(pdfName, '.pdf').toLowerCase();
 
-  // Extract year and author from filename
+  // Extract year from filename
   const yearMatch = baseName.match(/\d{4}/);
   const year = yearMatch ? yearMatch[0] : null;
+
+  // Extract journal from filename (in parentheses)
+  const journalMatch = baseName.match(/\(([^)]+)\)/);
+  const filenameJournal = journalMatch ? journalMatch[1].toLowerCase() : null;
 
   // Try to extract first author (handles "Stier et al." format)
   const authorPatterns = [
@@ -248,9 +253,32 @@ function matchPDFToPublication(pdfName, publications) {
     const pubTitle = (pub.title || '').toLowerCase();
     const pubJournal = (pub.journal || '').toLowerCase();
 
-    // Year match is important
+    // Year match is critical - must match for recent papers
     if (year && pubYear === year) {
       score += 10;
+    } else if (year) {
+      // Year mismatch is a strong negative signal
+      continue; // Skip if years don't match
+    }
+
+    // Journal match from filename is VERY important (highest weight)
+    if (filenameJournal && pubJournal) {
+      // Check various journal name formats
+      const journalWords = filenameJournal.split(/\s+/);
+      const pubJournalWords = pubJournal.split(/\s+/);
+
+      // Direct substring match
+      if (pubJournal.includes(filenameJournal) || filenameJournal.includes(pubJournal.split(' ')[0])) {
+        score += 25;
+      }
+      // First word match (e.g., "Coral" in "Coral Reefs")
+      else if (journalWords[0] && pubJournalWords[0] && journalWords[0] === pubJournalWords[0]) {
+        score += 20;
+      }
+      // Abbreviation match (e.g., "JAE" for "Journal of Animal Ecology")
+      else if (filenameJournal.length <= 4 && pubJournalWords.map(w => w[0]).join('').toLowerCase().includes(filenameJournal)) {
+        score += 15;
+      }
     }
 
     // First author match
@@ -438,16 +466,74 @@ async function main() {
   // Build full database
   log('\n📊 Building unified publications database...', colors.blue);
 
+  // Create a function to find the BEST PDF match for a publication
+  // This does Publication→PDF matching with scoring
+  function findBestPDFForPublication(pub, extractedData) {
+    let bestMatch = null;
+    let bestScore = 0;
+
+    const pubYear = String(pub.year || '');
+    const pubJournal = (pub.journal || '').toLowerCase();
+    const pubAuthors = (pub.authors || '').toLowerCase();
+
+    for (const extracted of extractedData) {
+      if (!extracted.success) continue;
+
+      const filename = (extracted.filename || '').toLowerCase();
+
+      // Extract year from filename
+      const yearMatch = filename.match(/\d{4}/);
+      const fileYear = yearMatch ? yearMatch[0] : null;
+
+      // Extract journal from filename (in parentheses)
+      const journalMatch = filename.match(/\(([^)]+)\)/);
+      const fileJournal = journalMatch ? journalMatch[1].toLowerCase() : null;
+
+      let score = 0;
+
+      // Year MUST match
+      if (fileYear && pubYear && fileYear === pubYear) {
+        score += 10;
+      } else {
+        continue; // Skip if year doesn't match
+      }
+
+      // Journal match is critical
+      if (fileJournal && pubJournal) {
+        const pubJournalFirst = pubJournal.split(' ')[0];
+        const fileJournalFirst = fileJournal.split(' ')[0];
+
+        if (pubJournal.includes(fileJournal) || fileJournal.includes(pubJournalFirst)) {
+          score += 30; // Strong journal match
+        } else if (pubJournalFirst === fileJournalFirst) {
+          score += 25; // First word match
+        }
+      }
+
+      // Author match
+      const authorPatterns = [/^([a-z]+)\s+et\s+al/i, /^([a-z]+)\s+and/i, /^([a-z]+)/i];
+      for (const pattern of authorPatterns) {
+        const match = filename.match(pattern);
+        if (match && pubAuthors.includes(match[1])) {
+          score += 15;
+          break;
+        }
+      }
+
+      if (score > bestScore) {
+        bestScore = score;
+        bestMatch = extracted;
+      }
+    }
+
+    return bestMatch;
+  }
+
   const fullDatabase = publications
     .filter(pub => pub.authors && pub.authors.toLowerCase().includes('stier'))
     .map((pub, index) => {
-      const pdfMatch = extractedData.find(e => {
-        if (e.matchedPublication) {
-          return e.matchedPublication.doi === pub.doi ||
-                 e.matchedPublication.title === pub.title;
-        }
-        return false;
-      });
+      // Find the best PDF for this specific publication
+      const pdfMatch = findBestPDFForPublication(pub, extractedData);
 
       return {
         id: String(index + 1),
