@@ -60,6 +60,33 @@ const breadcrumbs = [
           <span>•</span>
           <span>By {post.author}</span>
         </div>
+
+        {/* DOI and Open Access badges */}
+        {(post.doiUrl || post.openAccess) && (
+          <div class="flex items-center gap-3 mt-4">
+            {post.openAccess && (
+              <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-green-500/20 text-green-300 text-sm font-medium">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 11V7a4 4 0 118 0m-4 8v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2z" />
+                </svg>
+                Open Access
+              </span>
+            )}
+            {post.doiUrl && (
+              <a
+                href={post.doiUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/20 text-white text-sm font-medium hover:bg-white/30 transition-colors"
+              >
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                </svg>
+                View Paper (DOI)
+              </a>
+            )}
+          </div>
+        )}
       </div>
     </header>
 
@@ -69,7 +96,9 @@ const breadcrumbs = [
         <div class="max-w-3xl mx-auto">
           <div class="prose prose-invert prose-lg">
             {post.content.split('\n\n').map((block) => {
-              if (block.startsWith('## ')) {
+              if (block.trim() === '---') {
+                return <hr class="my-8 border-t border-line" />;
+              } else if (block.startsWith('## ')) {
                 return <h2 class="text-2xl font-bold mt-8 mb-4 text-ink">{block.replace('## ', '')}</h2>;
               } else if (block.startsWith('**') && block.endsWith('**')) {
                 return <p class="font-bold text-ink">{block.replace(/\*\*/g, '')}</p>;
@@ -88,7 +117,11 @@ const breadcrumbs = [
                   </ol>
                 );
               } else {
-                return <p class="text-muted leading-relaxed" set:html={block.replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2" class="text-accent hover:underline">$1</a>')} />;
+                // Handle bold text and links within paragraphs
+                const processed = block
+                  .replace(/\*\*([^*]+)\*\*/g, '<strong class="text-ink">$1</strong>')
+                  .replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2" class="text-accent hover:underline" target="_blank" rel="noopener noreferrer">$1</a>');
+                return <p class="text-muted leading-relaxed" set:html={processed} />;
               }
             })}
           </div>

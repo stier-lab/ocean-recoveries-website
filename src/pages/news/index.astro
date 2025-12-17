@@ -59,6 +59,12 @@ const formatDate = (dateStr: string) => {
                   <time datetime={post.date}>{formatDate(post.date)}</time>
                   <span class="meta-sep">•</span>
                   <span>{post.author}</span>
+                  {post.openAccess && (
+                    <>
+                      <span class="meta-sep">•</span>
+                      <span class="open-access-badge">Open Access</span>
+                    </>
+                  )}
                 </div>
                 <h2 class="post-title">{post.title}</h2>
                 <p class="post-excerpt">{post.excerpt}</p>
@@ -174,6 +180,10 @@ const formatDate = (dateStr: string) => {
   .post-tags .tag {
     @apply px-2 py-1 text-xs font-semibold rounded-md;
     @apply bg-line/50 text-muted;
+  }
+
+  .open-access-badge {
+    @apply text-green-400 font-medium;
   }
 
   /* Filter chip states */

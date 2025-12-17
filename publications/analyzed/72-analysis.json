@@ -1,0 +1,82 @@
+{
+  "publicationId": "72",
+  "title": "Synthesizing mechanisms of density dependence in reef fishes: behavior, habitat configuration, and observational scale",
+  "authors": "White, J. Wilson; Samhouri, Jameal F.; Stier, Adrian C.; Wormald, Clare L.; Hamilton, Scott L.; Sandin, Stuart A.",
+  "year": 2010,
+  "journal": "Ecology",
+  "doi": "10.1890/09-0298.1",
+  "doiUrl": "https://doi.org/10.1890/09-0298.1",
+  "openAccess": false,
+  "analyzedAt": "2025-12-17T15:42:24.934Z",
+  "expertReviewed": true,
+  "accuracyScore": 4,
+  "issuesFound": 5,
+  "analysis": {
+    "summary": "Researchers tested whether adding new coral reef habitat simply attracts more fish larvae (Field-of-Dreams) or redirects them away from existing sites (Propagule Redirection). They found evidence for both effects, with important implications for reef restoration.",
+    "keyQuestion": "When new coral reef habitat is added, does it attract additional fish larvae or simply redirect larvae away from existing habitat patches?",
+    "approach": "They created artificial reef patches in Moorea, French Polynesia, comparing fish settlement on isolated coral heads versus coral heads surrounded by neighbors. They monitored daily settlement for 28 days and used mathematical models to predict recruitment outcomes.",
+    "keyFindings": [
+      "Isolated reefs received 2-4 times more fish settlers than reefs with neighboring habitat, proving that larvae are redirected away from sites with more competition",
+      "Total colonization across all reefs increased only 1.3-fold despite a sixfold increase in reef area, showing propagule redirection limits the Field-of-Dreams effect",
+      "Mathematical modeling predicted that habitat addition increases recruitment primarily by reducing competition at existing sites rather than increasing colonization at new sites",
+      "The reality falls between the two competing hypotheses - new habitat both attracts some new larvae and redirects others"
+    ],
+    "stickyFact": "Focal reefs without neighboring reefs received two to four times more settlers than reefs with adjacent habitat",
+    "whyItMatters": "This research reveals that coral reef restoration may work differently than expected - new reefs don't just attract more fish, they also reduce crowding at existing sites. This has major implications for where and how we should restore damaged reefs to maximize fish populations.",
+    "location": "Moorea, French Polynesia",
+    "species": "Coral reef fishes including Dascyllus aruanus, Dascyllus flavicaudus, Halichoeres trimaculatus, and Paragobiodon lacunicolus",
+    "themes": [
+      "Marine ecology",
+      "Habitat restoration",
+      "Fish settlement patterns",
+      "Density dependence"
+    ],
+    "newsHeadline": "New Coral Reefs Don't Just Attract Fish - They Steal Them From Neighbors",
+    "essay": "When researchers placed artificial coral reefs on the sandy bottom around Moorea, they expected the 'Field of Dreams' effect - build it and they will come. Instead, they discovered something far more complex about how baby fish choose their homes. Working with colleagues Wilson White, Jameal Samhouri, Clare Wormald, Scott Hamilton, and Stuart Sandin, the team found that focal reefs without neighboring reefs received two to four times more settlers than reefs with adjacent habitat.\n\nThe researchers wanted to understand a fundamental question in marine ecology: when new habitat appears, does it simply attract additional colonists, or does it redirect them away from existing sites? They spent 28 days collecting newly settled fish every morning from 168 standardized coral heads carefully arranged on the seafloor. Each day between 7:30 and 11:30 AM, they removed all the fish that had settled overnight using hand nets and anesthetic, creating a clean slate for the next night's arrivals.\n\nTheir results split the difference between two competing theories. Total colonization increased 1.3-fold when they increased reef area sixfold - evidence supporting the Field-of-Dreams hypothesis. But isolated reefs captured dramatically more settlers than those surrounded by neighbors, proving that propagule redirection was also occurring. They studied four abundant species that comprised over 88% of all settlers, and the pattern held across all of them.\n\nThe mathematical modeling revealed the deeper story. Using existing data on density-dependent survival, they predicted that habitat addition increases recruitment primarily by reducing competition at existing sites rather than increasing colonization at new sites. This was counterintuitive - the real benefit wasn't necessarily more fish overall, but less crowding everywhere.\n\nThis research matters because it challenges how we think about coral reef restoration. If new reefs primarily work by reducing density at existing sites rather than attracting entirely new colonists, then the spatial arrangement of restored habitat becomes critical. Restoration projects might be more effective if designed to optimize this redistribution effect rather than simply maximizing total habitat area.\n\nThe authors note that understanding long-term implications of these effects depends upon the interplay among habitat dynamics, population connectivity, colonization dynamics, and density dependence - crucial factors for predicting the success of restoration efforts in our rapidly changing oceans."
+  },
+  "reviewDetails": {
+    "overallAssessment": "The article contains several significant fabrications including incorrect authorship attribution, first-person narrative from a non-author, invented research questions not posed in the paper, and speculative statements about behavioral mechanisms not discussed in the source. There's also confusion between settlement and recruitment concepts.",
+    "issues": [
+      {
+        "type": "fabrication",
+        "location": "essay",
+        "claim": "Working with my colleagues Jameal Samhouri, Clare Wormald, Scott Hamilton, Stuart Sandin, and Craig Osenberg",
+        "problem": "The paper shows the actual authors are White, Samhouri, Stier, Wormald, Hamilton, and Sandin. Craig Osenberg is listed as from the Department but is not an author of this paper.",
+        "paperSays": "Authors: White, J. Wilson; Samhouri, Jameal F.; Stier, Adrian C.; Wormald, Clare L.; Hamilton, Scott L.; Sandin, Stuart A.",
+        "suggestedFix": "Working with my colleagues Wilson White, Jameal Samhouri, Clare Wormald, Scott Hamilton, and Stuart Sandin"
+      },
+      {
+        "type": "fabrication",
+        "location": "essay",
+        "claim": "I spent 28 days diving in the shallow lagoons of French Polynesia, collecting newly settled fish every morning from 168 standardized coral heads",
+        "problem": "This is written in first person as if the article author conducted the research, but the article author is not one of the paper authors. Also, the paper doesn't specify that anyone was 'diving' to collect fish.",
+        "paperSays": "We constructed 168 Standardized Habitat Units... We monitored settlement daily for 28 days",
+        "suggestedFix": "The researchers spent 28 days collecting newly settled fish every morning from 168 standardized coral heads"
+      },
+      {
+        "type": "fabrication",
+        "location": "essay",
+        "claim": "The paper doesn't explain exactly how larvae detect and avoid crowded areas, leaving a crucial behavioral mystery unsolved",
+        "problem": "The paper doesn't discuss behavioral mechanisms of larval detection or state this as an unsolved mystery",
+        "paperSays": "The paper discusses redirection but doesn't characterize the mechanism as a 'crucial behavioral mystery'",
+        "suggestedFix": "Remove this speculative statement as it's not supported by the paper"
+      },
+      {
+        "type": "fabrication",
+        "location": "essay",
+        "claim": "The biggest question remaining is temporal - our experiment lasted only 28 days. Do these settlement patterns translate to long-term population changes? How do seasonal variations in larval supply affect propagule redirection?",
+        "problem": "These specific research questions about temporal effects and seasonal variations are not posed in the paper",
+        "paperSays": "Understanding long-term implications of these effects depends upon the interplay among habitat dynamics, population connectivity, colonization dynamics, and density dependence",
+        "suggestedFix": "The authors note that understanding long-term implications depends upon the interplay among habitat dynamics, population connectivity, colonization dynamics, and density dependence"
+      },
+      {
+        "type": "error",
+        "location": "essay",
+        "claim": "we predicted that habitat addition increases recruitment primarily by reducing competition at existing sites rather than by increasing total settlement",
+        "problem": "This mixes up settlement vs. recruitment - the paper distinguishes between these concepts",
+        "paperSays": "habitat addition increases recruitment primarily by ameliorating the negative effects of competition at existing sites rather than increasing colonization at the new sites per se",
+        "suggestedFix": "we predicted that habitat addition increases recruitment primarily by reducing competition at existing sites rather than increasing colonization at new sites"
+      }
+    ]
+  }
+}
