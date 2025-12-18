@@ -661,7 +661,7 @@ Lenihan, Hunter S.; Gallagher, Jordan P.; Peters, Joseph R.; Stier, Adrian C.; H
     date: "2021-01-15",
     author: "Levin et al.",
     excerpt: "This paper explores how differences in perception, not just differences in values, drive conflicts in conservation and resource management. Named after the Kurosawa film, the 'Rashomon effect' describes how different observers can have plausible but conflicting interpretations of the same events.",
-    featuredImage: "/images/kelp-forest-sunlight-underwater.jpg",
+    featuredImage: "/images/conflict-image.jpg",
     tags: ["Publication","2021","Conservation"],
     doiUrl: "https://doi.org/10.1093/biosci/biaa117",
     openAccess: false,
