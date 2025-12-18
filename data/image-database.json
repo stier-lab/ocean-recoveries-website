@@ -1,0 +1,653 @@
+{
+  "images": [
+    {
+      "filename": "chromis-acropora.jpeg",
+      "description": "School of blue-green chromis damselfish and striped humbug dascyllus swimming around a brown staghorn Acropora coral colony on sandy reef bottom",
+      "species": ["chromis", "damselfish", "dascyllus", "humbug"],
+      "habitat": ["coral reef", "acropora", "staghorn coral"],
+      "themes": ["fish-coral interactions", "coral reef", "damselfish", "reef fish school"],
+      "location": "tropical pacific"
+    },
+    {
+      "filename": "coral-reef-panorama-anthias-fish.jpeg",
+      "description": "Panoramic view of vibrant coral reef wall with orange anthias fish schooling in deep blue water",
+      "species": ["anthias", "reef fish"],
+      "habitat": ["coral reef", "reef wall"],
+      "themes": ["coral reef", "reef fish", "biodiversity"],
+      "location": "tropical"
+    },
+    {
+      "filename": "trapezia-coral-crab-hiding.jpg",
+      "description": "Red-spotted Trapezia coral guard crab with yellow eyes hiding between brown Pocillopora coral branches",
+      "species": ["trapezia", "coral guard crab", "pocillopora"],
+      "habitat": ["coral", "pocillopora"],
+      "themes": ["mutualism", "symbiosis", "coral guard crab", "coral defense"],
+      "location": "pacific"
+    },
+    {
+      "filename": "trapezia-coral-crab-red-spotted.jpg",
+      "description": "Close-up of red-spotted Trapezia coral guard crab with distinctive pattern nestled in coral",
+      "species": ["trapezia", "coral guard crab"],
+      "habitat": ["coral"],
+      "themes": ["mutualism", "symbiosis", "coral guard crab"],
+      "location": "pacific"
+    },
+    {
+      "filename": "coral-guard-crab-red-spotted-macro.jpeg",
+      "description": "Macro shot of red-spotted coral guard crab (Trapezia) with yellow eyes and orange claws facing camera",
+      "species": ["trapezia", "coral guard crab"],
+      "habitat": ["pocillopora coral"],
+      "themes": ["mutualism", "coral defense", "guard crab"],
+      "location": "pacific"
+    },
+    {
+      "filename": "kelp-hero.jpeg",
+      "description": "Towering giant kelp forest underwater with sunlight filtering through canopy, creating dramatic blue-green atmosphere",
+      "species": ["giant kelp", "macrocystis"],
+      "habitat": ["kelp forest", "temperate reef"],
+      "themes": ["kelp forest", "kelp ecosystem", "temperate marine"],
+      "location": "california"
+    },
+    {
+      "filename": "giant-kelp-sunlight-underwater.jpeg",
+      "description": "Giant kelp fronds reaching toward surface with sunlight streaming through",
+      "species": ["giant kelp"],
+      "habitat": ["kelp forest"],
+      "themes": ["kelp forest", "primary production"],
+      "location": "temperate pacific"
+    },
+    {
+      "filename": "kelp-forest-fish-school-underwater.jpeg",
+      "description": "Fish schooling among kelp forest fronds",
+      "species": ["kelp forest fish"],
+      "habitat": ["kelp forest"],
+      "themes": ["kelp ecosystem", "fish habitat"],
+      "location": "california"
+    },
+    {
+      "filename": "bleach-coral.jpeg",
+      "description": "Bleached white coral colony on reef with small fish swimming above, surrounded by colorful soft corals",
+      "species": ["coral", "reef fish"],
+      "habitat": ["coral reef", "bleached reef"],
+      "themes": ["coral bleaching", "climate change", "heat stress", "coral mortality"],
+      "location": "tropical"
+    },
+    {
+      "filename": "deadcoral.jpeg",
+      "description": "Severely bleached white Pocillopora coral colony in shallow water with surface reflection visible",
+      "species": ["pocillopora", "cauliflower coral"],
+      "habitat": ["shallow reef", "bleached reef"],
+      "themes": ["coral bleaching", "coral death", "climate impacts", "marine heatwave"],
+      "location": "tropical pacific"
+    },
+    {
+      "filename": "lionfish.jpeg",
+      "description": "Red lionfish with distinctive striped pattern and venomous spines swimming over coral reef",
+      "species": ["lionfish", "pterois"],
+      "habitat": ["coral reef"],
+      "themes": ["invasive species", "lionfish invasion", "predator"],
+      "location": "caribbean atlantic"
+    },
+    {
+      "filename": "spiny-lobsters-group-reef-hideout.jpeg",
+      "description": "Group of California spiny lobsters with long antennae sheltering under reef ledge covered in colorful invertebrates",
+      "species": ["spiny lobster", "panulirus"],
+      "habitat": ["rocky reef", "reef crevice"],
+      "themes": ["lobster", "aggregation", "shelter", "fishery species"],
+      "location": "california"
+    },
+    {
+      "filename": "lobster.jpeg",
+      "description": "Single spiny lobster on reef",
+      "species": ["spiny lobster"],
+      "habitat": ["reef"],
+      "themes": ["lobster", "crustacean"],
+      "location": "pacific"
+    },
+    {
+      "filename": "parrotfish.jpeg",
+      "description": "Colorful stoplight parrotfish with turquoise and pink scales swimming over coral reef with sea fan",
+      "species": ["parrotfish", "stoplight parrotfish"],
+      "habitat": ["coral reef"],
+      "themes": ["herbivore", "grazing", "bioerosion", "reef fish"],
+      "location": "caribbean"
+    },
+    {
+      "filename": "purple-urchin.jpeg",
+      "description": "Purple sea urchin with long spines on dark rocky substrate",
+      "species": ["purple sea urchin", "strongylocentrotus"],
+      "habitat": ["rocky reef", "kelp forest"],
+      "themes": ["urchin", "herbivore", "grazing", "kelp deforestation", "urchin barren"],
+      "location": "california pacific"
+    },
+    {
+      "filename": "fishing-harbor-marina-mountains.JPG",
+      "description": "Commercial fishing harbor with boats docked at marina, mountains and water in background",
+      "species": [],
+      "habitat": ["harbor", "marina"],
+      "themes": ["fisheries", "fishing industry", "management", "commercial fishing"],
+      "location": "pacific northwest"
+    },
+    {
+      "filename": "fishing-boat-seagulls-rocky-coast.jpeg",
+      "description": "Fishing boat near rocky coastline with seagulls",
+      "species": ["seagulls"],
+      "habitat": ["coastal", "rocky shore"],
+      "themes": ["fisheries", "fishing", "coastal"],
+      "location": "temperate"
+    },
+    {
+      "filename": "lorenz-attractor-abstract-art.jpeg",
+      "description": "Abstract visualization of Lorenz attractor mathematical pattern with blue and pink gradient spirals on black background",
+      "species": [],
+      "habitat": [],
+      "themes": ["mathematical model", "chaos theory", "simulation", "theoretical ecology", "population dynamics"],
+      "location": "abstract"
+    },
+    {
+      "filename": "Leopard-1-2.jpg",
+      "description": "African leopard walking on fallen log at night under starry sky, camera trap style photo",
+      "species": ["leopard", "big cat"],
+      "habitat": ["terrestrial", "savanna"],
+      "themes": ["predator", "carnivore", "large predator recovery", "apex predator"],
+      "location": "africa"
+    },
+    {
+      "filename": "CheetahFam-1.jpg",
+      "description": "Cheetah family group in African savanna",
+      "species": ["cheetah"],
+      "habitat": ["terrestrial", "savanna"],
+      "themes": ["predator", "carnivore recovery", "large carnivore"],
+      "location": "africa"
+    },
+    {
+      "filename": "blacktip-reef-shark-swimming.jpg",
+      "description": "Blacktip reef shark swimming in clear blue tropical water, side profile view",
+      "species": ["blacktip reef shark", "carcharhinus melanopterus"],
+      "habitat": ["coral reef", "tropical ocean"],
+      "themes": ["shark", "predator", "apex predator", "reef shark"],
+      "location": "tropical pacific"
+    },
+    {
+      "filename": "blacktip-reef-sharks-split-view-island.jpeg",
+      "description": "Split-level view of blacktip reef sharks swimming near tropical island",
+      "species": ["blacktip reef shark"],
+      "habitat": ["tropical lagoon"],
+      "themes": ["shark", "predator", "split view"],
+      "location": "tropical"
+    },
+    {
+      "filename": "scuba-divers-shark-deep-blue.JPG",
+      "description": "Silhouettes of scuba divers descending in deep blue water with shark swimming between them",
+      "species": ["shark"],
+      "habitat": ["open ocean", "pelagic"],
+      "themes": ["shark", "predator", "diving research"],
+      "location": "tropical"
+    },
+    {
+      "filename": "damselfish-pair-acropora-coral.jpeg",
+      "description": "Pair of striped humbug damselfish (Dascyllus) with blue chromis school around brown Acropora coral",
+      "species": ["dascyllus", "damselfish", "chromis"],
+      "habitat": ["acropora coral", "coral reef"],
+      "themes": ["damselfish", "fish-coral interactions", "coral-associated fish"],
+      "location": "pacific"
+    },
+    {
+      "filename": "damselfish-pair-pink-coral.jpeg",
+      "description": "Damselfish pair near pink coral",
+      "species": ["damselfish"],
+      "habitat": ["coral reef"],
+      "themes": ["damselfish", "coral reef fish"],
+      "location": "tropical"
+    },
+    {
+      "filename": "damselfish-single-coral-closeup.jpeg",
+      "description": "Single damselfish close-up with coral",
+      "species": ["damselfish"],
+      "habitat": ["coral"],
+      "themes": ["damselfish", "coral-associated fish"],
+      "location": "tropical"
+    },
+    {
+      "filename": "blue-green-chromis-coral-school.JPG",
+      "description": "Large school of blue-green chromis damselfish hovering over coral",
+      "species": ["chromis viridis", "blue-green chromis"],
+      "habitat": ["coral reef"],
+      "themes": ["chromis", "schooling fish", "coral-associated fish"],
+      "location": "pacific"
+    },
+    {
+      "filename": "pacific-herring-net.jpeg",
+      "description": "Dense school of Pacific herring caught in commercial fishing net",
+      "species": ["pacific herring", "clupea pallasii"],
+      "habitat": ["coastal", "pelagic"],
+      "themes": ["herring", "forage fish", "fisheries", "commercial fishing"],
+      "location": "pacific northwest"
+    },
+    {
+      "filename": "green-sea-turtle-swimming-blue.JPG",
+      "description": "Green sea turtle swimming in clear blue water, side view showing flippers and shell",
+      "species": ["green sea turtle", "chelonia mydas"],
+      "habitat": ["tropical ocean", "coral reef"],
+      "themes": ["sea turtle", "marine reptile", "conservation"],
+      "location": "tropical"
+    },
+    {
+      "filename": "tropical-island-aerial-view-lagoon-reef.jpeg",
+      "description": "Aerial panoramic view of Moorea island with lagoon, barrier reef, and mountains - French Polynesia",
+      "species": [],
+      "habitat": ["tropical island", "lagoon", "barrier reef"],
+      "themes": ["tropical reef", "island ecosystem", "moorea", "french polynesia"],
+      "location": "french polynesia moorea"
+    },
+    {
+      "filename": "moorea-mountain-tropical-island-view.jpeg",
+      "description": "Scenic view of Moorea's volcanic mountains from water with tropical vegetation",
+      "species": [],
+      "habitat": ["tropical island"],
+      "themes": ["moorea", "french polynesia", "field site"],
+      "location": "french polynesia moorea"
+    },
+    {
+      "filename": "aerial-view-island-lagoon-barrier-reef.jpeg",
+      "description": "Aerial view of tropical island with lagoon and surrounding barrier reef",
+      "species": [],
+      "habitat": ["tropical island", "lagoon", "barrier reef"],
+      "themes": ["aerial", "reef ecosystem", "island"],
+      "location": "tropical pacific"
+    },
+    {
+      "filename": "overwater-bungalows-split-view-reef-fish.jpeg",
+      "description": "Split-level view showing overwater bungalows above and colorful reef fish below",
+      "species": ["reef fish"],
+      "habitat": ["coral reef", "lagoon"],
+      "themes": ["tropical reef", "tourism", "reef fish"],
+      "location": "tropical pacific"
+    },
+    {
+      "filename": "cauliflower-coral-damselfish-reef.jpeg",
+      "description": "Cauliflower coral (Pocillopora) with damselfish on reef",
+      "species": ["damselfish", "pocillopora"],
+      "habitat": ["coral reef"],
+      "themes": ["pocillopora", "coral-fish interactions"],
+      "location": "pacific"
+    },
+    {
+      "filename": "butterflyfish-eating-coral.jpeg",
+      "description": "Butterflyfish feeding on coral polyps",
+      "species": ["butterflyfish", "chaetodontidae"],
+      "habitat": ["coral reef"],
+      "themes": ["corallivore", "butterflyfish", "coral predation"],
+      "location": "tropical"
+    },
+    {
+      "filename": "red-pencil-urchin-coral-reef.JPG",
+      "description": "Red pencil urchin with thick spines on coral reef",
+      "species": ["pencil urchin", "heterocentrotus"],
+      "habitat": ["coral reef"],
+      "themes": ["urchin", "reef invertebrate"],
+      "location": "tropical pacific"
+    },
+    {
+      "filename": "red-spotted-coral-crab-macro.jpeg",
+      "description": "Macro photo of red-spotted coral crab",
+      "species": ["coral crab", "trapezia"],
+      "habitat": ["coral"],
+      "themes": ["crab", "coral symbiont"],
+      "location": "pacific"
+    },
+    {
+      "filename": "schooling-jacks-fish-underwater.jpeg",
+      "description": "Large school of jacks or trevally swimming in formation underwater",
+      "species": ["jacks", "trevally", "carangidae"],
+      "habitat": ["reef", "pelagic"],
+      "themes": ["schooling fish", "predatory fish"],
+      "location": "tropical"
+    },
+    {
+      "filename": "barracuda-school-underwater-blue.jpg",
+      "description": "School of barracuda in blue water",
+      "species": ["barracuda", "sphyraena"],
+      "habitat": ["pelagic", "reef"],
+      "themes": ["schooling fish", "predator"],
+      "location": "tropical"
+    },
+    {
+      "filename": "manta-ray-silhouette-underwater.JPG",
+      "description": "Silhouette of manta ray swimming overhead in blue water",
+      "species": ["manta ray", "mobula"],
+      "habitat": ["pelagic", "open ocean"],
+      "themes": ["manta", "ray", "megafauna"],
+      "location": "tropical"
+    },
+    {
+      "filename": "manta.jpg",
+      "description": "Manta ray swimming",
+      "species": ["manta ray"],
+      "habitat": ["open ocean"],
+      "themes": ["manta", "megafauna"],
+      "location": "tropical"
+    },
+    {
+      "filename": "stingrays-group-sandy-bottom.JPG",
+      "description": "Group of stingrays resting on sandy bottom",
+      "species": ["stingray"],
+      "habitat": ["sandy bottom", "lagoon"],
+      "themes": ["ray", "benthic"],
+      "location": "tropical"
+    },
+    {
+      "filename": "squid-silhouette-blue-ocean.JPG",
+      "description": "Squid silhouette swimming in blue ocean water",
+      "species": ["squid"],
+      "habitat": ["pelagic"],
+      "themes": ["cephalopod", "squid"],
+      "location": "ocean"
+    },
+    {
+      "filename": "dungeness-crab-beach-closeup.jpeg",
+      "description": "Dungeness crab on beach, close-up view",
+      "species": ["dungeness crab", "metacarcinus magister"],
+      "habitat": ["beach", "coastal"],
+      "themes": ["crab", "fishery species", "crustacean"],
+      "location": "pacific northwest"
+    },
+    {
+      "filename": "rock-crab-kelp-tidepool.jpg",
+      "description": "Rock crab in kelp-covered tidepool",
+      "species": ["rock crab"],
+      "habitat": ["tidepool", "intertidal"],
+      "themes": ["crab", "intertidal"],
+      "location": "california"
+    },
+    {
+      "filename": "sally-lightfoot-crab-galapagos.jpg",
+      "description": "Bright red Sally Lightfoot crab on volcanic rock in Galapagos",
+      "species": ["sally lightfoot crab", "grapsus grapsus"],
+      "habitat": ["rocky intertidal"],
+      "themes": ["crab", "galapagos", "intertidal"],
+      "location": "galapagos"
+    },
+    {
+      "filename": "gooseneck-barnacles-cluster-tidepool.jpg",
+      "description": "Cluster of gooseneck barnacles in tidepool",
+      "species": ["gooseneck barnacles", "pollicipes"],
+      "habitat": ["intertidal", "tidepool"],
+      "themes": ["barnacles", "intertidal", "filter feeder"],
+      "location": "temperate pacific"
+    },
+    {
+      "filename": "marine-iguana-galapagos-beach.jpg",
+      "description": "Marine iguana on beach in Galapagos Islands",
+      "species": ["marine iguana", "amblyrhynchus cristatus"],
+      "habitat": ["beach", "rocky shore"],
+      "themes": ["marine iguana", "galapagos", "herbivore", "endemic species"],
+      "location": "galapagos"
+    },
+    {
+      "filename": "marine-iguana-sand-galapagos.jpg",
+      "description": "Marine iguana on sandy beach in Galapagos",
+      "species": ["marine iguana"],
+      "habitat": ["beach"],
+      "themes": ["galapagos", "marine iguana"],
+      "location": "galapagos"
+    },
+    {
+      "filename": "beach-sunset-sea-lion-silhouette.jpg",
+      "description": "Silhouette of sea lion on beach at sunset",
+      "species": ["sea lion"],
+      "habitat": ["beach"],
+      "themes": ["sea lion", "marine mammal", "pinniped"],
+      "location": "pacific"
+    },
+    {
+      "filename": "flatfish-flounder-camouflage-sand.JPG",
+      "description": "Flatfish (flounder or sole) camouflaged on sandy bottom",
+      "species": ["flatfish", "flounder"],
+      "habitat": ["sandy bottom"],
+      "themes": ["flatfish", "camouflage", "benthic fish"],
+      "location": "temperate"
+    },
+    {
+      "filename": "california-coastline-rocky-shore.jpg",
+      "description": "Rocky California coastline with waves and cliffs",
+      "species": [],
+      "habitat": ["rocky shore", "coastline"],
+      "themes": ["california", "temperate coast", "rocky intertidal"],
+      "location": "california"
+    },
+    {
+      "filename": "california-sheephead-kelp-forest.jpeg",
+      "description": "California sheephead fish in kelp forest",
+      "species": ["california sheephead", "semicossyphus pulcher"],
+      "habitat": ["kelp forest"],
+      "themes": ["sheephead", "kelp forest fish", "predator"],
+      "location": "california"
+    },
+    {
+      "filename": "garibaldi-fish-orange-kelp-forest.jpeg",
+      "description": "Bright orange garibaldi fish in California kelp forest",
+      "species": ["garibaldi", "hypsypops rubicundus"],
+      "habitat": ["kelp forest", "rocky reef"],
+      "themes": ["garibaldi", "california state fish", "damselfish"],
+      "location": "california"
+    },
+    {
+      "filename": "sheephead.jpeg",
+      "description": "California sheephead close-up",
+      "species": ["california sheephead"],
+      "habitat": ["kelp forest"],
+      "themes": ["sheephead", "wrasse", "kelp fish"],
+      "location": "california"
+    },
+    {
+      "filename": "ocean-wave-kelp-breaking.jpeg",
+      "description": "Ocean wave breaking with kelp visible in surf",
+      "species": ["kelp"],
+      "habitat": ["nearshore", "surf zone"],
+      "themes": ["kelp", "wave energy", "coastal"],
+      "location": "california"
+    },
+    {
+      "filename": "kelp_canopy.jpg",
+      "description": "Dense kelp forest canopy at surface viewed from below",
+      "species": ["giant kelp"],
+      "habitat": ["kelp forest"],
+      "themes": ["kelp canopy", "primary production"],
+      "location": "california"
+    },
+    {
+      "filename": "hurricane-earth-from-space.jpeg",
+      "description": "Hurricane viewed from space showing spiral cloud formation over ocean",
+      "species": [],
+      "habitat": ["atmosphere", "ocean"],
+      "themes": ["hurricane", "storm", "climate", "disturbance"],
+      "location": "atlantic"
+    },
+    {
+      "filename": "coral-bleaching-timelapse-study.jpeg",
+      "description": "Scientific study setup showing coral bleaching progression",
+      "species": ["coral"],
+      "habitat": ["coral reef"],
+      "themes": ["coral bleaching", "research", "climate impacts"],
+      "location": "tropical"
+    },
+    {
+      "filename": "coral-reef-bleached-anemone-fish-school.jpeg",
+      "description": "Bleached anemone with fish school on reef showing bleaching impacts",
+      "species": ["anemone", "anemonefish"],
+      "habitat": ["coral reef"],
+      "themes": ["bleaching", "anemone", "climate impacts"],
+      "location": "tropical"
+    },
+    {
+      "filename": "seattle-urban-coastline.jpeg",
+      "description": "Seattle urban waterfront skyline with mountains in background",
+      "species": [],
+      "habitat": ["urban coast"],
+      "themes": ["urban marine", "seattle", "puget sound", "urban ecology"],
+      "location": "pacific northwest seattle"
+    },
+    {
+      "filename": "norht-sea-fishing.jpeg",
+      "description": "Fishing vessel in North Sea conditions",
+      "species": [],
+      "habitat": ["temperate ocean"],
+      "themes": ["north sea", "european fisheries", "commercial fishing"],
+      "location": "north sea europe"
+    },
+    {
+      "filename": "forested-islands-aerial-ocean-view.JPG",
+      "description": "Aerial view of forested islands surrounded by ocean",
+      "species": [],
+      "habitat": ["islands", "temperate forest"],
+      "themes": ["islands", "aerial", "pacific northwest"],
+      "location": "pacific northwest"
+    },
+    {
+      "filename": "tropical-beach-palm-trees-waves.JPG",
+      "description": "Tropical beach with palm trees and waves",
+      "species": [],
+      "habitat": ["tropical beach"],
+      "themes": ["tropical", "beach", "coastline"],
+      "location": "tropical pacific"
+    },
+    {
+      "filename": "rocky-beach-cove-panorama.jpeg",
+      "description": "Panoramic view of rocky beach cove",
+      "species": [],
+      "habitat": ["rocky shore", "cove"],
+      "themes": ["coastline", "beach", "rocky shore"],
+      "location": "temperate"
+    },
+    {
+      "filename": "rocky-tidepool-coastline-sunset.jpg",
+      "description": "Rocky tidepool area at sunset on coastline",
+      "species": [],
+      "habitat": ["intertidal", "tidepool"],
+      "themes": ["tidepool", "intertidal", "sunset"],
+      "location": "pacific"
+    },
+    {
+      "filename": "research-team-boats-turquoise-lagoon.webp",
+      "description": "Research team with boats in turquoise lagoon conducting fieldwork",
+      "species": [],
+      "habitat": ["lagoon"],
+      "themes": ["research", "fieldwork", "monitoring"],
+      "location": "tropical"
+    },
+    {
+      "filename": "research-team-group-photo-beach.jpeg",
+      "description": "Research team group photo on beach",
+      "species": [],
+      "habitat": ["beach"],
+      "themes": ["research team", "fieldwork"],
+      "location": "tropical"
+    },
+    {
+      "filename": "researcher-on-boat-ocean-fieldwork.jpg",
+      "description": "Researcher working on boat during ocean fieldwork",
+      "species": [],
+      "habitat": ["ocean"],
+      "themes": ["research", "fieldwork", "marine science"],
+      "location": "ocean"
+    },
+    {
+      "filename": "seagrass.jpeg",
+      "description": "Seagrass bed underwater",
+      "species": ["seagrass"],
+      "habitat": ["seagrass meadow"],
+      "themes": ["seagrass", "blue carbon", "coastal habitat"],
+      "location": "tropical"
+    },
+    {
+      "filename": "halo-grazing.png",
+      "description": "Aerial view of grazing halos around coral patches showing herbivore impacts",
+      "species": [],
+      "habitat": ["seagrass", "coral reef"],
+      "themes": ["grazing halo", "herbivory", "landscape ecology"],
+      "location": "tropical"
+    },
+    {
+      "filename": "conifer-forest-sunlight-trees.jpg",
+      "description": "Sunlight streaming through conifer forest trees",
+      "species": ["conifers"],
+      "habitat": ["forest", "terrestrial"],
+      "themes": ["forest", "terrestrial ecology"],
+      "location": "temperate"
+    },
+    {
+      "filename": "bear-mural-street-art.jpg",
+      "description": "Street art mural featuring a bear",
+      "species": ["bear"],
+      "habitat": ["urban"],
+      "themes": ["urban", "wildlife art"],
+      "location": "urban"
+    },
+    {
+      "filename": "axolotl.jpeg",
+      "description": "Mexican axolotl salamander, pink coloration",
+      "species": ["axolotl", "ambystoma mexicanum"],
+      "habitat": ["freshwater"],
+      "themes": ["amphibian", "axolotl", "endemic species"],
+      "location": "mexico"
+    },
+    {
+      "filename": "fish-eggs-roe-hand-closeup.JPG",
+      "description": "Close-up of fish eggs (roe) in hand showing spawning",
+      "species": ["fish eggs"],
+      "habitat": ["spawning ground"],
+      "themes": ["reproduction", "spawning", "fish eggs", "herring roe"],
+      "location": "pacific"
+    },
+    {
+      "filename": "lobster-in-underwater-trap-cage.jpeg",
+      "description": "Lobster inside underwater trap/cage",
+      "species": ["lobster"],
+      "habitat": ["reef"],
+      "themes": ["lobster fishing", "trap", "fisheries"],
+      "location": "pacific"
+    },
+    {
+      "filename": "Arete indicus - ML.jpg",
+      "description": "Arete indicus shrimp (coral-associated)",
+      "species": ["arete indicus", "shrimp"],
+      "habitat": ["coral"],
+      "themes": ["shrimp", "coral symbiont", "crustacean"],
+      "location": "pacific"
+    },
+    {
+      "filename": "Hawkf_Tetralia_rubridactyla.jpg",
+      "description": "Tetralia rubridactyla coral crab on Acropora coral",
+      "species": ["tetralia", "coral crab"],
+      "habitat": ["acropora coral"],
+      "themes": ["coral crab", "symbiont", "acropora"],
+      "location": "pacific"
+    }
+  ],
+  "excludedImages": [
+    "adrian.png",
+    "alexis.webp",
+    "bart.jpg",
+    "Emily.jpg",
+    "hayden.jpg",
+    "jada.jpg",
+    "jaden.jpg",
+    "joe.jpg",
+    "kai.jpg",
+    "kingeman.jpg",
+    "megsie.webp",
+    "molly.jpg",
+    "raine.jpg",
+    "sam.jpg",
+    "og-default.jpg",
+    "conflict-image.jpg",
+    "man-portrait-marina-boats-background.jpg",
+    "man-portrait-selfie-outdoors.jpeg",
+    "man-scuba-diver-on-boat.jpg",
+    "hero/reef-hero.jpg",
+    "research/coral-card.jpg",
+    "research/kelp-card.jpg",
+    "research/organismal-card.jpg"
+  ]
+}

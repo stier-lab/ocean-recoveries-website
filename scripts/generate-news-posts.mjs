@@ -1,38 +1,11 @@
-/**
- * Generate News Posts from Analyzed Publications
- *
- * This script reads the analyzed publication JSON files and generates
- * news blog posts with the AI-generated essays and headlines.
- *
- * USAGE:
- *   node scripts/generate-news.cjs
- */
-
-const fs = require('fs');
-const path = require('path');
+import fs from 'fs';
+import path from 'path';
 
 const analyzedDir = './publications/analyzed';
-const publicationsFullPath = './publications/publications_full.json';
-
-// Load publications_full.json to get PDF URLs
-let publicationsPdfMap = {};
-if (fs.existsSync(publicationsFullPath)) {
-  const publicationsFull = JSON.parse(fs.readFileSync(publicationsFullPath, 'utf-8'));
-  publicationsFull.forEach(pub => {
-    publicationsPdfMap[pub.id] = pub.pdfUrl;
-  });
-  console.log(`Loaded ${Object.keys(publicationsPdfMap).length} PDF URLs from publications_full.json`);
-}
-
-// Check if analyzed directory exists
-if (!fs.existsSync(analyzedDir)) {
-  console.error('Analyzed publications directory not found:', analyzedDir);
-  process.exit(1);
-}
+const postsFile = './src/data/posts.ts';
 
 // Read all analysis JSON files
 const files = fs.readdirSync(analyzedDir).filter(f => f.endsWith('-analysis.json'));
-console.log(`Found ${files.length} analyzed publications`);
 
 // Theme to image mapping
 const themeImages = {
@@ -166,34 +139,12 @@ for (const file of files) {
   }
 
   const slug = slugify(data.analysis.newsHeadline || data.title);
-  // Use the assigned featuredImage from the analysis file (assigned by assign-publication-images.cjs)
-  // Fall back to theme-based selection only if no image assigned
-  const image = data.featuredImage || getImageForPost(data);
+  const image = getImageForPost(data);
   const tags = getTagsForPost(data);
   const author = formatAuthorsForDisplay(data.authors);
 
   // Format the date from the year
-  // Use publication year with month based on when it was analyzed or a default
-  // For 2025 publications, use more recent months to show they're new
-  let month = '01';
-  let day = '15';
-
-  if (data.year === 2025) {
-    // For 2025 publications, use later months to reflect recency
-    // Use analyzedAt date if available, otherwise default to recent
-    if (data.analyzedAt) {
-      const analyzedDate = new Date(data.analyzedAt);
-      month = String(analyzedDate.getMonth() + 1).padStart(2, '0');
-      day = String(analyzedDate.getDate()).padStart(2, '0');
-    } else {
-      month = '12'; // Default December 2025 for new publications
-      day = '01';
-    }
-  } else if (data.year === 2024) {
-    month = '06'; // Mid-year for 2024
-  }
-
-  const date = `${data.year}-${month}-${day}`;
+  const date = `${data.year}-01-15`; // Default to mid-January of publication year
 
   // Build the content
   let content = data.analysis.essay;
@@ -211,9 +162,6 @@ for (const file of files) {
     content += '\n\n*This paper is Open Access.*';
   }
 
-  // Get PDF URL from publications_full.json using publicationId
-  const pdfUrl = publicationsPdfMap[data.publicationId] || '';
-
   const post = {
     slug,
     title: data.analysis.newsHeadline || data.title,
@@ -224,8 +172,7 @@ for (const file of files) {
     tags,
     content: escapeForTemplate(content),
     doiUrl: data.doiUrl || '',
-    openAccess: data.openAccess || false,
-    pdfUrl: pdfUrl
+    openAccess: data.openAccess || false
   };
 
   posts.push(post);
@@ -233,8 +180,6 @@ for (const file of files) {
 
 // Sort posts by date descending (newest first)
 posts.sort((a, b) => new Date(b.date) - new Date(a.date));
-
-console.log(`Generated ${posts.length} news posts`);
 
 // Generate the TypeScript content
 let tsContent = `export interface BlogPost {
@@ -248,7 +193,6 @@ let tsContent = `export interface BlogPost {
   content: string;
   doiUrl?: string;
   openAccess?: boolean;
-  pdfUrl?: string;
 }
 
 export const posts: BlogPost[] = [
@@ -265,7 +209,6 @@ for (const post of posts) {
     tags: ${JSON.stringify(post.tags)},
     doiUrl: "${post.doiUrl}",
     openAccess: ${post.openAccess},
-    pdfUrl: "${post.pdfUrl}",
     content: \`${post.content}\`,
   },
 `;
@@ -274,5 +217,5 @@ for (const post of posts) {
 tsContent += `];
 `;
 
-fs.writeFileSync('src/data/posts.ts', tsContent);
-console.log(`Written ${posts.length} news posts to src/data/posts.ts`);
+fs.writeFileSync(postsFile, tsContent);
+console.log(`Generated ${posts.length} posts to ${postsFile}`);

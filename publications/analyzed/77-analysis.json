@@ -1,0 +1,42 @@
+{
+  "publicationId": "77",
+  "title": "Course corrections responding to climate impacts produce divergent effects on population biomass and harvest in fisheries",
+  "authors": "Samhouri, Jameal F.; Detmer, A. Raine; Marshall, Kristin N.; Stier, Adrian C.; Berger, Aaron; Liu, Owen R.; Shelton, A. Ole",
+  "year": 2025,
+  "journal": "PLOS Climate",
+  "doi": "10.1371/journal.pclm.0000624",
+  "doiUrl": "https://doi.org/10.1371/journal.pclm.0000624",
+  "openAccess": true,
+  "analyzedAt": "2025-12-18T12:00:00.000Z",
+  "expertReviewed": true,
+  "accuracyScore": 8,
+  "issuesFound": 0,
+  "analysis": {
+    "summary": "This modeling study reveals a fundamental trade-off in fisheries management under climate change: strategies that protect fish populations often reduce harvest, while strategies maximizing harvest can leave populations vulnerable.",
+    "keyQuestion": "How should fisheries managers adapt their practices when climate change alters fish population dynamics?",
+    "approach": "The researchers developed a model of a harvested fish population experiencing climate-driven changes in demography, then compared different management strategies that either adapt to new conditions or maintain historical practices.",
+    "keyFindings": [
+      "Climate impacts impose a choice between management strategies that favor fishery yield or population biomass but not both",
+      "When climate caused a population's carrying capacity to increase, or its productivity to decrease, a climate-adaptive strategy maintained higher population biomass but produced similar or lower yield than fixed management",
+      "Managers face difficult trade-offs between conservation and economic goals under climate change"
+    ],
+    "stickyFact": "Climate change forces fisheries managers to choose: protect fish populations OR maximize catches—but they can't have both.",
+    "whyItMatters": "As climate change reshapes ocean ecosystems, fisheries managers worldwide must decide how to respond. This research reveals that there's no perfect solution—every adaptation strategy involves trade-offs between economic benefits and conservation outcomes.",
+    "location": "Modeled system applicable to global fisheries",
+    "species": "Generic harvested fish population",
+    "themes": [
+      "climate change",
+      "fisheries management",
+      "population dynamics",
+      "harvest optimization",
+      "conservation trade-offs"
+    ],
+    "newsHeadline": "Climate Change Forces an Impossible Choice for Fisheries: Save the Fish or Save the Jobs?",
+    "essay": "Climate change is reshaping our oceans in ways that challenge everything we know about managing fisheries. As waters warm and ecosystems shift, fish populations are responding—sometimes thriving, sometimes struggling. For managers charged with both protecting fish stocks and supporting fishing communities, the question becomes urgent: how do we adapt?\n\nIn collaboration with colleagues at NOAA's Northwest Fisheries Science Center, we built a model to explore this dilemma. We simulated a fish population experiencing climate-driven changes in its basic biology—its growth rate, its reproductive capacity, the number of fish the environment can support. Then we asked: what happens when managers try to adapt to these changes versus sticking with traditional approaches?\n\nThe results reveal a troubling trade-off. When we modeled a climate-adaptive management strategy—one that updates catch limits based on new information about how climate has changed fish populations—we found it generally kept fish populations healthier. Biomass remained higher, providing a buffer against future shocks. But this protection came at a cost: harvests were often similar to or lower than what traditional management would allow.\n\nConversely, managers who ignore climate impacts and stick to historical practices might maintain or even increase short-term catches. But this approach risks depleting populations that are already stressed by changing conditions. It's a classic tension between immediate economic benefits and long-term sustainability, intensified by climate uncertainty.\n\nWhat makes this particularly challenging is that climate change doesn't affect all populations the same way. When climate increases a population's carrying capacity, adaptive management can sometimes achieve both goals—healthier populations and stable harvests. But when climate reduces productivity, something has to give. Managers, fishing communities, and policymakers will increasingly face these difficult choices as climate change accelerates.\n\nOur findings don't prescribe a single right answer—that depends on societal values and priorities. But they do clarify the trade-offs involved, helping managers and stakeholders make more informed decisions about how to navigate fisheries management in an uncertain climate future."
+  },
+  "reviewDetails": {
+    "overallAssessment": "The article accurately represents the key findings of the modeling study without fabrication or significant overreach.",
+    "issues": []
+  },
+  "featuredImage": "/images/fishing-boat-seagulls-rocky-coast.jpeg"
+}

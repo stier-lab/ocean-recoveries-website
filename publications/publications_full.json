@@ -2863,5 +2863,84 @@
     },
     "newsGenerated": false,
     "newsGeneratedAt": null
+  },
+  {
+    "id": "76",
+    "title": "Widespread Heterogeneity in Density-Dependent Mortality of Nearshore Fishes",
+    "authors": "Stier, Adrian C.; Osenberg, Craig W.",
+    "year": 2025,
+    "journal": "Ecology Letters",
+    "doi": "10.1111/ele.70262",
+    "abstract": "Debates over whether and how populations are regulated have recently shifted away from detecting and instead towards quantifying the strength of density dependence and its variation among systems. Yet, the degree of variation in density-dependent mortality and the factors driving this variation remain poorly understood. Here, we conducted a meta-analysis of 38 reef fish species across 56 studies, which yielded 147 estimates of intraspecific density-dependent mortality, primarily during early or small life stages. The magnitude of density-dependent mortality was surprisingly inconsistent both within and among species.",
+    "plainSummary": "",
+    "whyItMatters": "",
+    "themes": [
+      "Coral",
+      "Predator-Prey",
+      "Methods"
+    ],
+    "audienceLevel": "Research",
+    "policyRelevance": "",
+    "studyType": "Meta-analysis",
+    "methods": "",
+    "region": "",
+    "keywords": "Beverton-Holt; cryptic density dependence; intraclass competition; intraspecific competition; meta-analysis; predation; recruitment; reef fish",
+    "pdfUrl": "https://drive.google.com/open?id=1u1irOFvUhBBwtxh5U5lyzpS5tVJz_n16&usp=drive_fs",
+    "doiUrl": "https://doi.org/10.1111/ele.70262",
+    "citationCount": 0,
+    "openAccess": false,
+    "pdfContent": {
+      "filename": "Stier and Osenberg (Ecology Letters) 2025.pdf",
+      "numPages": 14,
+      "abstractExtracted": "Debates over whether and how populations are regulated have recently shifted away from detecting and instead towards quantifying the strength of density dependence and its variation among systems. Yet, the degree of variation in density-dependent mortality and the factors driving this variation remain poorly understood.",
+      "keyFindings": [
+        "The magnitude of density-dependent mortality was surprisingly inconsistent both within and among species.",
+        "Predators amplified the negative effects of density.",
+        "Density-dependent mortality was greater for species that typically colonize at low densities or achieve larger maximum sizes.",
+        "Even within a single species, the strength of density-dependent mortality varied dramatically—often by several orders of magnitude—and sometimes changed sign."
+      ],
+      "fullTextPreview": "",
+      "extractedAt": "2025-12-18T19:30:50.754Z"
+    },
+    "newsGenerated": false,
+    "newsGeneratedAt": null
+  },
+  {
+    "id": "77",
+    "title": "Course corrections responding to climate impacts produce divergent effects on population biomass and harvest in fisheries",
+    "authors": "Samhouri, Jameal F.; Detmer, A. Raine; Marshall, Kristin N.; Stier, Adrian C.; Berger, Aaron; Liu, Owen R.; Shelton, A. Ole",
+    "year": 2025,
+    "journal": "PLOS Climate",
+    "doi": "10.1371/journal.pclm.0000624",
+    "abstract": "Climate change will alter ecological dynamics, affecting the relative abundance of species. A primary challenge is whether and how to modify natural resource management practices to address these changes. We explored a model of a harvested fish population experiencing climate-driven changes in demography, finding that climate impacts impose a choice between management strategies that favor fishery yield or population biomass but not both.",
+    "plainSummary": "",
+    "whyItMatters": "",
+    "themes": [
+      "Climate",
+      "Kelp"
+    ],
+    "audienceLevel": "Research",
+    "policyRelevance": "High",
+    "studyType": "Modeling",
+    "methods": "",
+    "region": "",
+    "keywords": "climate change; fisheries management; population dynamics; harvest; biomass",
+    "pdfUrl": "https://drive.google.com/open?id=1JeG8bGu9DqB7YVVcym8XkgfAdL6vpIdl&usp=drive_fs",
+    "doiUrl": "https://doi.org/10.1371/journal.pclm.0000624",
+    "citationCount": 0,
+    "openAccess": true,
+    "pdfContent": {
+      "filename": "Samhouri et al. (PLoS Climate) 2025.pdf",
+      "numPages": 20,
+      "abstractExtracted": "Climate change will alter ecological dynamics, affecting the relative abundance of species. A primary challenge is whether and how to modify natural resource management practices to address these changes.",
+      "keyFindings": [
+        "Climate impacts impose a choice between management strategies that favor fishery yield or population biomass but not both.",
+        "When climate caused a population carrying capacity to increase, or its productivity to decrease, a climate adaptive strategy maintained higher population biomass but produced similar or lower yield than fixed management."
+      ],
+      "fullTextPreview": "",
+      "extractedAt": "2025-12-18T19:30:50.755Z"
+    },
+    "newsGenerated": false,
+    "newsGeneratedAt": null
   }
 ]

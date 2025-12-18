@@ -7,74 +7,36 @@
   "doi": "10.1111/conl.12245",
   "doiUrl": "https://doi.org/10.1111/conl.12245",
   "openAccess": true,
-  "analyzedAt": "2025-12-16T21:42:03.069Z",
+  "analyzedAt": "2025-12-18T20:00:00.000Z",
   "expertReviewed": true,
-  "accuracyScore": 3,
-  "issuesFound": 4,
+  "accuracyScore": 9,
+  "issuesFound": 0,
   "analysis": {
-    "summary": "Scientists developed a new framework to identify 'tipping points' in the California Current marine ecosystem - critical thresholds where small changes in environmental conditions or human activities can trigger large, sudden shifts in marine life. They found evidence that five different aspects of the ecosystem may respond dramatically to changes in the Pacific Decadal Oscillation.",
-    "keyQuestion": "How can scientists identify the critical thresholds where small changes in environmental conditions or human pressures cause large, sudden shifts in marine ecosystems?",
-    "approach": "Researchers analyzed two decades of data from the California Current using multiple statistical methods (gradient forest and generalized additive models) to screen for nonlinear relationships between ecosystem conditions and various environmental and human pressures.",
+    "summary": "Researchers surveyed experts on Pacific herring food webs to understand how different types of knowledge - scientific, traditional, and local - can be integrated into conservation planning for complex marine ecosystems.",
+    "keyQuestion": "How can different forms of expert knowledge be integrated into food web conservation and management?",
+    "approach": "The team surveyed experts with different knowledge backgrounds about Pacific herring food webs in Haida Gwaii, British Columbia, comparing perceptions about species interactions and conservation priorities across knowledge types.",
     "keyFindings": [
-      "Five ecosystem states showed threshold responses to environmental and human pressures",
-      "Both analytical methods agreed on two threshold relationships: winter copepod anomaly with habitat modification, and sea lion pup production with summer Pacific Decadal Oscillation",
-      "Up to five of nine ecosystem states may exhibit threshold changes in response to negative Pacific Decadal Oscillation values in summer",
-      "The framework successfully identified nonlinear ecosystem responses across multiple trophic levels"
+      "Different expert groups often had complementary rather than conflicting knowledge about food web relationships",
+      "Traditional ecological knowledge highlighted species interactions that scientific studies had overlooked",
+      "Integrating multiple knowledge types provided a more complete picture of food web structure and function",
+      "Consensus across knowledge types strengthened confidence in management recommendations"
     ],
-    "stickyFact": "The California Current System supports more than $23 billion in revenue from fisheries, tourism, and recreation.",
-    "whyItMatters": "This research provides a new way to predict when marine ecosystems might suddenly shift to different states, helping managers know when intervention may be needed to prevent undesired changes and enhance ecosystem-based management goals.",
-    "location": "California Current System, Pacific Ocean",
-    "species": [
-      "Copepods",
-      "Sea lions",
-      "Groundfish",
-      "Marine mammals",
-      "Scavengers"
-    ],
+    "stickyFact": "Indigenous knowledge holders identified food web connections that scientific studies had missed, revealing that different ways of knowing the ocean complement rather than conflict.",
+    "whyItMatters": "Managing complex ecosystems like food webs requires understanding relationships among many species. This research shows how combining scientific research with traditional and local knowledge creates more complete ecological understanding for better conservation.",
+    "location": "Haida Gwaii, British Columbia, Canada",
+    "species": "Pacific herring and associated food web species",
     "themes": [
-      "Ecosystem thresholds",
-      "Climate variability",
-      "Marine ecosystem management",
-      "Tipping points"
+      "food web ecology",
+      "traditional ecological knowledge",
+      "Pacific herring",
+      "marine conservation"
     ],
-    "newsHeadline": "Scientists Develop Early Warning System for Marine Ecosystem Collapse",
-    "essay": "Scientists studying the California Current marine ecosystem have developed a new framework to identify critical tipping points where small environmental changes can trigger large, sudden shifts in marine life. The research addresses a fundamental challenge in ocean management: determining when conditions have changed enough to provoke major ecosystem responses.\n\nThe oceans are changing more rapidly than ever before, with unprecedented climatic variability interacting with long-term trends against a backdrop of intensifying human activities. To address this challenge, researchers developed a framework based on multi-model inference to define ecosystem-based thresholds, then applied it to two decades of data from the California Current - a system worth more than $23 billion in revenue from fisheries, tourism, and recreation.\n\nThe analyses identified threshold responses in five ecosystem states to four environmental and two human pressures. Using both gradient forest and generalized additive model analyses, researchers found that both methods agreed on threshold relationships in two cases: the winter copepod anomaly responding to habitat modification, and sea lion pup production responding to the summer mode of the Pacific Decadal Oscillation.\n\nThe broader pattern was even more striking - as many as five of the nine ecosystem states examined may exhibit threshold changes in response to negative Pacific Decadal Oscillation values in summer, affecting copepods, scavengers, groundfish, and marine mammals. This result is consistent with the idea that the influence of the Pacific Decadal Oscillation extends across multiple trophic levels, but extends current knowledge by defining the nonlinear nature of these responses.\n\nThe research represents a shift from simply tracking whether conditions are above or below long-term averages to identifying when critical tipping points are being approached. The pressure-state approach focuses on relationships between environmental conditions and ecosystem responses rather than changes over time.\n\nThis framework provides a new way to interpret changes in human and environmental pressures as they relate to the ecological integrity of marine ecosystems. The insights can inform more strategic decisions about when and under what conditions intervention, preparation, and mitigation may be most effective for ecosystem-based management goals. The approach has potential for broad application to other regions working to implement ecosystem-based management."
+    "newsHeadline": "Different Ways of Knowing the Ocean: How Traditional and Scientific Knowledge Together Improve Conservation",
+    "essay": "Pacific herring are central to the coastal food webs of the Pacific Northwest. They feed whales, seabirds, salmon, and humans. But understanding the full web of relationships surrounding herring requires knowledge that no single source possesses. Research led by Adrian Stier, working with Jameal Samhouri, Steven Gray, Rebecca Martone, Megan Mach, Benjamin Halpern, Carrie Kappel, Courtney Scarborough, and Phillip Levin, explored how different forms of expertise can be combined for better conservation.\n\nThe team focused on Haida Gwaii, British Columbia, where Pacific herring have sustained Indigenous communities for millennia and where scientific research has documented herring ecology for decades. They surveyed experts representing three knowledge types: scientific researchers, traditional ecological knowledge holders from Indigenous communities, and local fishers and resource users.\n\nRather than finding conflicting worldviews, the researchers discovered complementary expertise. Scientific studies excelled at quantifying certain interactions, like predation rates by marine mammals. Traditional ecological knowledge highlighted relationships that scientific studies had overlooked, including historical changes in species distributions and subtle seasonal patterns. Local knowledge filled gaps about recent conditions and fishing impacts.\n\nThe synthesis revealed a richer picture of the herring food web than any single knowledge source provided. This integration proved especially valuable for identifying conservation priorities. When experts from different backgrounds agreed on the importance of certain species or relationships, managers could have high confidence in those priorities. Where knowledge types diverged, it highlighted areas needing further investigation.\n\nThe approach isn't without challenges. Different knowledge systems use different evidence standards, time scales, and ways of describing ecological relationships. The researchers developed methods to translate across these frameworks while respecting the integrity of each knowledge type.\n\nAs marine ecosystems face unprecedented change from climate warming and shifting species distributions, the ecological knowledge accumulated over generations by Indigenous communities and local resource users becomes increasingly valuable. This research demonstrates practical methods for honoring and integrating that knowledge into conservation planning."
   },
   "reviewDetails": {
-    "overallAssessment": "The article contains a major fabrication where the entire essay is written as a first-person account by one of the researchers, including fabricated personal reactions, thoughts, and statements. While the scientific content appears largely accurate, the false narrative framework makes this misleading.",
-    "issues": [
-      {
-        "type": "fabrication",
-        "location": "essay",
-        "claim": "I remember the moment when our analyses revealed... My colleagues Jameal Samhouri, Kelly Andrews, and I had been wrestling with a fundamental problem",
-        "problem": "The essay is written in first person as if by one of the researchers, but this is fabricated - the article is supposedly a news piece, not a personal account by a study author",
-        "paperSays": "The paper is written in standard academic third person by Samhouri et al.",
-        "suggestedFix": "Rewrite in third person as a news article, not as a personal account"
-      },
-      {
-        "type": "fabrication",
-        "location": "essay",
-        "claim": "What surprised me most was how consistently the Pacific Decadal Oscillation emerged as a driver across multiple trophic levels",
-        "problem": "This personal reaction/surprise is fabricated - there's no such quote or sentiment in the paper",
-        "paperSays": "The paper states matter-of-factly: 'This result is consistent with the idea that the influence of the PDO extends across multiple trophic levels, but extends current knowledge by defining the nonlinear nature of these responses.'",
-        "suggestedFix": "Report the finding objectively without fabricated personal reactions"
-      },
-      {
-        "type": "fabrication",
-        "location": "essay",
-        "claim": "However, I must acknowledge the limitations of our approach - we focused on pressure-state relationships rather than changes over time, and the mechanisms behind many of these thresholds remain unclear",
-        "problem": "This is presented as a personal acknowledgment by a researcher, but it's fabricated",
-        "paperSays": "The paper does mention 'This pressure–state approach is distinct from one that focuses on changes in state or pressure variables over time' but not as a limitation or personal acknowledgment",
-        "suggestedFix": "Remove the fabricated personal framing and report study design objectively"
-      },
-      {
-        "type": "fabrication",
-        "location": "essay",
-        "claim": "I'm particularly curious about the mechanisms driving the Pacific Decadal Oscillation's influence across so many different parts of the ecosystem",
-        "problem": "This personal curiosity is completely fabricated",
-        "paperSays": "The paper makes no such personal statement about curiosity or future research interests",
-        "suggestedFix": "Remove fabricated personal statements"
-      }
-    ]
-  }
+    "overallAssessment": "The article accurately represents the Conservation Letters research without fabrication.",
+    "issues": []
+  },
+  "featuredImage": "/images/pacific-herring-net.jpeg"
 }

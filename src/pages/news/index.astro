@@ -75,6 +75,50 @@ const formatDate = (dateStr: string) => {
                 </div>
               </div>
             </a>
+            {/* Quick Actions Bar */}
+            <div class="post-actions">
+              {post.pdfUrl && (
+                <a
+                  href={post.pdfUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="action-btn action-pdf"
+                  title="Download PDF"
+                  onclick="event.stopPropagation();"
+                >
+                  <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                  </svg>
+                  <span>PDF</span>
+                </a>
+              )}
+              {post.doiUrl && (
+                <a
+                  href={post.doiUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="action-btn action-doi"
+                  title="View Publication"
+                  onclick="event.stopPropagation();"
+                >
+                  <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                  </svg>
+                  <span>DOI</span>
+                </a>
+              )}
+              <button
+                class="action-btn action-share"
+                title="Share"
+                data-title={post.title}
+                data-url={`/news/${post.slug}`}
+              >
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z" />
+                </svg>
+                <span>Share</span>
+              </button>
+            </div>
           </article>
         ))}
       </div>
@@ -198,6 +242,33 @@ const formatDate = (dateStr: string) => {
   .chip:not(.active):hover {
     @apply opacity-100;
   }
+
+  /* Post action buttons */
+  .post-actions {
+    @apply flex items-center gap-2 px-5 py-3 border-t border-line bg-surface-card/50;
+  }
+
+  .action-btn {
+    @apply inline-flex items-center gap-1.5 px-3 py-1.5 rounded-md text-xs font-medium;
+    @apply transition-all duration-200 cursor-pointer;
+    @apply border border-transparent;
+  }
+
+  .action-pdf {
+    @apply bg-red-500/10 text-red-400 hover:bg-red-500 hover:text-white;
+  }
+
+  .action-doi {
+    @apply bg-blue-500/10 text-blue-400 hover:bg-blue-500 hover:text-white;
+  }
+
+  .action-share {
+    @apply bg-accent/10 text-accent hover:bg-accent hover:text-white ml-auto;
+  }
+
+  .action-share.copied {
+    @apply bg-green-500 text-white;
+  }
 </style>
 
 <script>
@@ -239,4 +310,49 @@ const formatDate = (dateStr: string) => {
 
   initFilters();
   document.addEventListener('astro:after-swap', initFilters);
+
+  // Share button functionality
+  const initShareButtons = () => {
+    const shareButtons = document.querySelectorAll('.action-share');
+
+    shareButtons.forEach((btn) => {
+      btn.addEventListener('click', async (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+
+        const button = e.currentTarget as HTMLElement;
+        const title = button.dataset.title || '';
+        const url = window.location.origin + (button.dataset.url || '');
+
+        // Try native share API first (mobile)
+        if (navigator.share) {
+          try {
+            await navigator.share({ title, url });
+            return;
+          } catch (err) {
+            // User cancelled or error, fall through to copy
+          }
+        }
+
+        // Fallback: copy to clipboard
+        try {
+          await navigator.clipboard.writeText(url);
+          const span = button.querySelector('span');
+          const originalText = span?.textContent;
+          if (span) span.textContent = 'Copied!';
+          button.classList.add('copied');
+
+          setTimeout(() => {
+            if (span) span.textContent = originalText || 'Share';
+            button.classList.remove('copied');
+          }, 2000);
+        } catch (err) {
+          console.error('Failed to copy:', err);
+        }
+      });
+    });
+  };
+
+  initShareButtons();
+  document.addEventListener('astro:after-swap', initShareButtons);
 </script>
