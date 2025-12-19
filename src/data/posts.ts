@@ -1439,7 +1439,7 @@ Palmer, Todd M.; Pringle, Elizabeth G.; Stier, Adrian; Holt, Robert D. (2015). M
     date: "2015-01-15",
     author: "Rudman et al.",
     excerpt: "Scientists studied how genetic differences in trees and fish work together to control entire aquatic ecosystems, finding that the productivity of cottonwood trees determines how strongly stickleback fish affect their prey.",
-    featuredImage: "/images/conifer-forest-sunlight-trees.jpg",
+    featuredImage: "/images/stickleback.jpeg",
     tags: ["Publication","2015"],
     doiUrl: "https://doi.org/10.1098/rspb.2015.1234",
     openAccess: true,
