@@ -1762,7 +1762,7 @@ Geange, Sw; Stier, Ac; Shima, Js (2013). Competitive hierarchies among three spe
     date: "2013-01-15",
     author: "Stier et al.",
     excerpt: "Scientists studying coral reef fish found that when predatory hawkfish arrive to colonize reefs matters just as much as how many show up, dramatically changing which fish species survive and thrive in reef communities.",
-    featuredImage: "/images/blue-green-chromis-coral-school.JPG",
+    featuredImage: "/images/hawkfish-on-coral.jpeg",
     tags: ["Publication","2013","Coral"],
     doiUrl: "https://doi.org/10.1890/11-1983.1",
     openAccess: false,
