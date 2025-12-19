@@ -1352,7 +1352,7 @@ Marshall, Kristin N.; Stier, Adrian C.; Samhouri, Jameal F.; Kelly, Ryan P.; War
     date: "2016-01-15",
     author: "Stier et al.",
     excerpt: "Scientists developed a new statistical method to separate true ecological differences in species composition between habitats from differences that are simply due to sampling fewer individuals in some locations.",
-    featuredImage: "/images/coral-reef-bleached-anemone-fish-school.jpeg",
+    featuredImage: "/images/fish-biodiversity.jpeg",
     tags: ["Publication","2016","Conservation"],
     doiUrl: "https://doi.org/10.1002/ecs2.1612",
     openAccess: true,
