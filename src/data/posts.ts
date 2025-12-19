@@ -1230,7 +1230,7 @@ Samhouri, Jameal F.; Stier, Adrian C.; Hennessey, Shannon M.; Novak, Mark; Halpe
     date: "2017-01-15",
     author: "Stier et al.",
     excerpt: "Researchers surveyed experts on Pacific herring food webs to understand how different types of knowledge - scientific, traditional, and local - can be integrated into conservation planning for complex marine ecosystems.",
-    featuredImage: "/images/fishing-boat-seagulls-rocky-coast.jpeg",
+    featuredImage: "/images/whale-eating-herring.jpeg",
     tags: ["Publication","2017","Conservation"],
     doiUrl: "https://doi.org/10.1111/conl.12245",
     openAccess: true,
