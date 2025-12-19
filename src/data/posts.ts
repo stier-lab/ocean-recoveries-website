@@ -1199,7 +1199,7 @@ Samhouri, Jameal F.; Andrews, Kelly S.; Fay, Gavin; Harvey, Chris J.; Hazen, Ell
     date: "2017-01-15",
     author: "Samhouri et al.",
     excerpt: "Researchers discovered that managing predators and their prey simultaneously can produce faster ecosystem recovery than addressing each species separately, challenging traditional single-species management approaches.",
-    featuredImage: "/images/manta.jpg",
+    featuredImage: "/images/orca-pod.jpeg",
     tags: ["Publication","2017","Management","Predator-Prey","Recovery"],
     doiUrl: "https://doi.org/10.1038/s41559-016-0068",
     openAccess: false,
@@ -2202,17 +2202,17 @@ White, J. Wilson; Samhouri, Jameal F.; Stier, Adrian C.; Wormald, Clare L.; Hami
     doiUrl: "https://doi.org/10.1016/j.jembe.2008.10.020",
     openAccess: false,
     pdfUrl: "https://drive.google.com/open?id=1QsNItSXvXFKm9B9DNBiDwq02QZPhCbWS&usp=drive_fs",
-    content: `When marine biologists need to collect small fish living in coral colonies, they often squirt clove oil into the water. The active ingredient, eugenol, anesthetizes the fish, which float out of the coral branches and can be safely collected. But Sarah Boyer, Jeremy White, Adrian Stier, and Craig Osenberg wondered: what happens to the coral?
+    content: `When marine biologists need to collect small fish living in coral colonies, they often squirt clove oil into the water. The active ingredient, eugenol, anesthetizes the fish, which float out of the coral branches and can be safely collected. But we wondered: what happens to the coral?
 
-The concern is legitimate. Corals are already stressed by warming oceans, acidification, and pollution. Adding another stressor from research activities could potentially harm the very systems scientists are trying to study and protect. The team designed experiments to test whether typical field concentrations of clove oil cause lasting damage to coral colonies.
+The concern is legitimate. Corals are already stressed by warming oceans, acidification, and pollution. Adding another stressor from research activities could potentially harm the very systems scientists are trying to study and protect. We designed experiments to test whether typical field concentrations of clove oil cause lasting damage to coral colonies.
 
-In both laboratory tanks and field experiments in Moorea, French Polynesia, they exposed Pocillopora corals to clove oil at various concentrations. The corals responded immediately, retracting their polyps and producing excess mucus, clear signs of stress. At higher concentrations, these responses were more severe. But within hours, the corals had recovered, extending their polyps and resuming normal behavior.
+In both laboratory tanks and field experiments in Moorea, French Polynesia, we exposed Pocillopora corals to clove oil at various concentrations. The corals responded immediately, retracting their polyps and producing excess mucus, clear signs of stress. At higher concentrations, these responses were more severe. But within hours, the corals had recovered, extending their polyps and resuming normal behavior.
 
-The critical question was whether these acute stress responses translated into long-term harm. The researchers monitored coral growth and survival over weeks and found no significant effects from the clove oil exposures. Corals that had been stressed showed the same growth rates and survival as unexposed controls.
+The critical question was whether these acute stress responses translated into long-term harm. We monitored coral growth and survival over weeks and found no significant effects from the clove oil exposures. Corals that had been stressed showed the same growth rates and survival as unexposed controls.
 
-These findings provide reassurance for the coral reef research community. Fish-coral interactions are a hot topic in reef ecology, and collecting resident fish without harming their coral hosts is essential for many studies. This research suggests that clove oil, used responsibly at typical field concentrations, does not appear to cause lasting damage.
+These findings provide reassurance for the coral reef research community. Fish-coral interactions are a hot topic in reef ecology, and collecting resident fish without harming their coral hosts is essential for many studies. Our research suggests that clove oil, used responsibly at typical field concentrations, does not appear to cause lasting damage.
 
-The authors note some caveats. Their study focused on short-term exposures and healthy corals. Corals already stressed by other factors might respond differently. And while survival and growth were unaffected, more subtle effects on coral physiology could exist. Still, for researchers weighing whether to use clove oil in their fieldwork, this study provides valuable evidence that the practice is unlikely to compromise coral health.
+We note some caveats. Our study focused on short-term exposures and healthy corals. Corals already stressed by other factors might respond differently. And while survival and growth were unaffected, more subtle effects on coral physiology could exist. Still, for researchers weighing whether to use clove oil in their fieldwork, our study provides valuable evidence that the practice is unlikely to compromise coral health.
 
 ## Citation
 
@@ -2231,15 +2231,15 @@ Boyer, S.E.; White, J.S.; Stier, A.C.; Osenberg, C.W. (2009). Effects of the fis
     doiUrl: "https://doi.org/10.1890/08-0630.1",
     openAccess: false,
     pdfUrl: "https://drive.google.com/open?id=1QbeCX2ga0H5B7Gaug1ikbt4h4vQrUwYu&usp=drive_fs",
-    content: `Understanding competition on coral reefs requires looking beyond which species arrive to consider when they arrive. Research on two wrasse species in French Polynesia reveals how timing of arrival affects competitive outcomes among young reef fish.
+    content: `Understanding competition on coral reefs requires looking beyond which species arrive to consider when they arrive. Our research on two wrasse species in French Polynesia reveals how timing of arrival affects competitive outcomes among young reef fish.
 
-The study examined whether the timing of arrival affects how young reef fish compete with each other. Most coral reef fish spend their early weeks as tiny larvae drifting in the open ocean before settling onto reefs in unpredictable pulses around new moons. The researchers suspected that differences in arrival time might have consequences for survival. To test this, they created experimental reefs and controlled when recent settlers of two wrasse species - Thalassoma hardwicke and T. quinquevittatum - arrived at the reefs.
+We examined whether the timing of arrival affects how young reef fish compete with each other. Most coral reef fish spend their early weeks as tiny larvae drifting in the open ocean before settling onto reefs in unpredictable pulses around new moons. We suspected that differences in arrival time might have consequences for survival. To test this, we created experimental reefs and controlled when recent settlers of two wrasse species - Thalassoma hardwicke and T. quinquevittatum - arrived at the reefs.
 
-The results showed that both species survived best in the absence of competitors, but when competitors were present, they did best when they arrived at the same time. Survival declined as each species entered the community progressively later than its competitor, and this decline coincided with increased aggression from the earlier-arriving fish. The competitive advantage wasn't species-specific - whichever species arrived first dominated, regardless of identity. Even within the same species, earlier-arriving T. hardwicke individuals had similar competitive advantages over their later-arriving conspecifics.
+Our results showed that both species survived best in the absence of competitors, but when competitors were present, they did best when they arrived at the same time. Survival declined as each species entered the community progressively later than its competitor, and this decline coincided with increased aggression from the earlier-arriving fish. The competitive advantage wasn't species-specific - whichever species arrived first dominated, regardless of identity. Even within the same species, earlier-arriving T. hardwicke individuals had similar competitive advantages over their later-arriving conspecifics.
 
-The strength and consistency of these priority effects across both inter- and intraspecific competition was notable. The paper notes that the mechanism behind how early arrivals gain their advantage remains unclear - whether through better territory establishment or other factors. The duration of these advantages as fish grow also remains to be determined.
+The strength and consistency of these priority effects across both inter- and intraspecific competition was notable. The mechanism behind how early arrivals gain their advantage remains unclear - whether through better territory establishment or other factors. The duration of these advantages as fish grow also remains to be determined.
 
-These findings suggest that coral reef communities aren't just shaped by which species arrive, but when they arrive. In an era of climate change, when ocean currents and spawning patterns are shifting, changes in the timing of larval delivery could reshape reef communities. The research provides empirical evidence for 'competitive lotteries' - the idea that chance events like arrival timing can maintain species diversity by preventing any one species from consistently dominating.
+These findings suggest that coral reef communities aren't just shaped by which species arrive, but when they arrive. In an era of climate change, when ocean currents and spawning patterns are shifting, changes in the timing of larval delivery could reshape reef communities. Our research provides empirical evidence for 'competitive lotteries' - the idea that chance events like arrival timing can maintain species diversity by preventing any one species from consistently dominating.
 
 Understanding how these priority effects play out in natural systems, where arrival timing is controlled by unpredictable ocean currents, represents an important area for future research. The lasting consequences of timing during those first critical days on the reef could be key to predicting how these communities will change as ocean conditions shift.
 
