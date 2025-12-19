@@ -1110,7 +1110,7 @@ Hamman, Elizabeth A.; McKinley, Scott A.; Stier, Adrian C.; Osenberg, Craig W. (
     date: "2017-01-15",
     author: "Geange et al.",
     excerpt: "Researchers tested whether the number of fish already on a reef or their arrival order matters more for determining whether new fish successfully colonize, finding that both factors influence survival but in different ways.",
-    featuredImage: "/images/rock-crab-kelp-tidepool.jpg",
+    featuredImage: "/images/ambon-damselfish.jpeg",
     tags: ["Publication","2017","Coral"],
     doiUrl: "https://doi.org/10.1007/s00338-016-1503-3",
     openAccess: false,
@@ -1678,13 +1678,13 @@ Stier, Adrian C.; Hein, Andrew M.; Parravicini, Valeriano; Kulbicki, Michel (201
     doiUrl: "https://doi.org/10.1111/j.1600-0706.2013.01073.x",
     openAccess: true,
     pdfUrl: "https://drive.google.com/open?id=1QCDP72DWr55PdWBqt4z4GfwbN8Y7eOaO&usp=drive_fs",
-    content: `A group of ecologists has identified a troubling trend in how researchers analyze computer simulation models. When examining a simulation study of rocky reef ecosystems, the authors found that researchers had run 24,000 computer simulations to test whether different predator behaviors affected their model results, producing a p-value of 10^-15. However, the original researchers admitted this result was meaningless because of their huge sample size and ignored their own statistical test.
+    content: `We identified a troubling trend in how researchers analyze computer simulation models. When examining a simulation study of rocky reef ecosystems, we found that researchers had run 24,000 computer simulations to test whether different predator behaviors affected their model results, producing a p-value of 10^-15. However, the original researchers admitted this result was meaningless because of their huge sample size and ignored their own statistical test.
 
-White and colleagues wanted to understand why so many ecologists were using statistical significance tests on computer simulation results when these tests seemed inappropriate. They examined the ecological literature and found multiple examples where researchers were applying t-tests and ANOVAs to simulation outputs, revealing a fundamental misunderstanding of statistical methodology.
+We wanted to understand why so many ecologists were using statistical significance tests on computer simulation results when these tests seemed inappropriate. We examined the ecological literature and found multiple examples where researchers were applying t-tests and ANOVAs to simulation outputs, revealing a fundamental misunderstanding of statistical methodology.
 
 The core problem is that when running computer simulations, researchers can control exactly how many replications to perform. Statistical power becomes meaningless when replication is essentially unlimited. More importantly, different model parameters will produce different results by design - that's why researchers test them. The null hypothesis of 'no difference' is known to be false from the beginning.
 
-In the rocky reef study examined, 24,000 runs produced an F-statistic of 67.5 with a p-value of 10^-15. But this statistical significance is meaningless because researchers could achieve any desired p-value simply by running more simulations.
+In the rocky reef study we examined, 24,000 runs produced an F-statistic of 67.5 with a p-value of 10^-15. But this statistical significance is meaningless because researchers could achieve any desired p-value simply by running more simulations.
 
 This matters because simulation models are increasingly central to ecological research and management decisions. When researchers focus on p-values instead of effect sizes, they might conclude that small, biologically meaningless differences are important simply because they're statistically significant with thousands of simulation runs. Conversely, they might dismiss large, ecologically important effects that don't reach arbitrary significance thresholds.
 
@@ -1736,11 +1736,11 @@ Carr, Lindsey A.; Stier, Adrian C.; Fietz, Katharina; Montero, Ignacio; Gallaghe
     doiUrl: "https://doi.org/10.3354/meps10015",
     openAccess: true,
     pdfUrl: "https://drive.google.com/open?id=1RDOXUttmzTUmFccxoEYX9KLuxCaRDpe9&usp=drive_fs",
-    content: `When multiple species compete for the same resources, ecologists wonder whether competition follows a simple hierarchy, where species A always beats B and B always beats C, or whether more complex intransitive networks exist, where A beats B, B beats C, but C beats A. Research by Shane Geange, Adrian Stier, and Jeffrey Shima tested this question among juvenile coral reef wrasses.
+    content: `When multiple species compete for the same resources, ecologists wonder whether competition follows a simple hierarchy, where species A always beats B and B always beats C, or whether more complex intransitive networks exist, where A beats B, B beats C, but C beats A. We tested this question among juvenile coral reef wrasses.
 
-The team set up pairwise competition experiments on experimental reef patches in the tropical Pacific. They placed juveniles of three Thalassoma wrasse species in different combinations and monitored survival and growth over time. By comparing outcomes across all possible species pairs, they could determine whether competition followed a linear hierarchy or a more complex network.
+We set up pairwise competition experiments on experimental reef patches in the tropical Pacific. We placed juveniles of three Thalassoma wrasse species in different combinations and monitored survival and growth over time. By comparing outcomes across all possible species pairs, we could determine whether competition followed a linear hierarchy or a more complex network.
 
-The results revealed a clear competitive hierarchy. One species consistently dominated, reducing survival and growth of both other species in pairwise trials. The middle-ranked species similarly outcompeted the lowest-ranked species. This linear ordering persisted across different experimental conditions.
+Our results revealed a clear competitive hierarchy. One species consistently dominated, reducing survival and growth of both other species in pairwise trials. The middle-ranked species similarly outcompeted the lowest-ranked species. This linear ordering persisted across different experimental conditions.
 
 This matters because hierarchical and intransitive competition have different implications for species coexistence. Intransitive competition, where species form a competitive loop, can promote diversity because no single species can dominate everywhere. But strict hierarchies concentrate competitive advantage in one species, potentially leading to exclusion of weaker competitors unless other factors intervene.
 
@@ -1767,19 +1767,19 @@ Geange, Sw; Stier, Ac; Shima, Js (2013). Competitive hierarchies among three spe
     doiUrl: "https://doi.org/10.1890/11-1983.1",
     openAccess: false,
     pdfUrl: "https://drive.google.com/open?id=1Q0xBHh5AGkeZnpXZYfKLqncp3hvR4yod&usp=drive_fs",
-    content: `Researchers studying predation on coral reefs have discovered that timing matters as much as numbers when it comes to how predators shape fish communities. Working in the shallow lagoons of Moorea, French Polynesia, scientists wanted to understand whether the timing of predator arrival affects reef fish communities as much as predator density itself.
+    content: `We discovered that timing matters as much as numbers when it comes to how predators shape fish communities. Working in the shallow lagoons of Moorea, French Polynesia, we wanted to understand whether the timing of predator arrival affects reef fish communities as much as predator density itself.
 
-For five months, the team surveyed 192 natural patch reefs twice weekly, documenting the presence and absence of hawkfish (Paracirrhites arcatus), sit-and-wait carnivores that perch on coral branches. What they found was striking: these predators were present only 47% of the time on average, staying continuously for an average of 7 days before disappearing again. Some reefs had low-density, stable hawkfish populations; others experienced dramatic changes in predator numbers over time.
+For five months, we surveyed 192 natural patch reefs twice weekly, documenting the presence and absence of hawkfish (Paracirrhites arcatus), sit-and-wait carnivores that perch on coral branches. What we found was striking: these predators were present only 47% of the time on average, staying continuously for an average of 7 days before disappearing again. Some reefs had low-density, stable hawkfish populations; others experienced dramatic changes in predator numbers over time.
 
-The researchers then conducted controlled field experiments using artificial reefs, manipulating hawkfish arrivals to test different scenarios including early arrivals, late arrivals, and varying densities. The results revealed the powerful effects of timing on reef communities.
+We then conducted controlled field experiments using artificial reefs, manipulating hawkfish arrivals to test different scenarios including early arrivals, late arrivals, and varying densities. Our results revealed the powerful effects of timing on reef communities.
 
-Hawkfish presence reduced prey fish abundance by 50% compared to reefs without predators. When researchers doubled hawkfish density, prey suffered an additional 33% reduction. But the timing effect was nearly as powerful: when hawkfish arrived late in community development, they caused a 34% additional reduction in prey abundance compared to early arrivals. Hawkfish didn't change species richness within patches, but they increased differences between patches by 22% and fundamentally altered which species dominated each reef.
+Hawkfish presence reduced prey fish abundance by 50% compared to reefs without predators. When we doubled hawkfish density, prey suffered an additional 33% reduction. But the timing effect was nearly as powerful: when hawkfish arrived late in community development, they caused a 34% additional reduction in prey abundance compared to early arrivals. Hawkfish didn't change species richness within patches, but they increased differences between patches by 22% and fundamentally altered which species dominated each reef.
 
-Surprisingly, variability in hawkfish density over time didn't matter—only the timing and total density affected prey communities. The researchers expected temporal fluctuations to create refuges for prey during predator-free periods, but the data showed no such effect.
+Surprisingly, variability in hawkfish density over time didn't matter—only the timing and total density affected prey communities. We expected temporal fluctuations to create refuges for prey during predator-free periods, but our data showed no such effect.
 
-These findings matter because most predation studies use constant predator densities, missing the dynamic reality of natural systems. The research suggests that conservation efforts focusing only on predator abundance may miss critical aspects of community dynamics. If the timing of predator colonization shapes entire communities, then understanding migration patterns, seasonal movements, and recruitment timing becomes crucial for predicting reef resilience.
+These findings matter because most predation studies use constant predator densities, missing the dynamic reality of natural systems. Our research suggests that conservation efforts focusing only on predator abundance may miss critical aspects of community dynamics. If the timing of predator colonization shapes entire communities, then understanding migration patterns, seasonal movements, and recruitment timing becomes crucial for predicting reef resilience.
 
-The study raises important questions about how prey communities recover when predators leave, whether different predator species show similar timing effects, and what drives the natural patterns of hawkfish movement. The work provides a reminder that in ecology, when something happens can matter just as much as what happens.
+Our study raises important questions about how prey communities recover when predators leave, whether different predator species show similar timing effects, and what drives the natural patterns of hawkfish movement. This work provides a reminder that in ecology, when something happens can matter just as much as what happens.
 
 ## Citation
 
@@ -1827,19 +1827,19 @@ Stier, Adrian C.; Idjadi, Joshua A.; Geange, Shane W.; White, Jada-Simone S. (20
     doiUrl: "https://doi.org/10.1111/ele.12005",
     openAccess: false,
     pdfUrl: "https://drive.google.com/open?id=1RTBjCF53CsqFf6GgmGXuP1kh39Zc368v&usp=drive_fs",
-    content: `Understanding how multiple predators affect prey survival has been a central question in ecology, with researchers developing sophisticated methods to detect 'emergent effects' - situations where predators hunting together kill more or fewer prey than predicted from their individual effects. However, new research reveals that the standard mathematical approach used by ecologists contains systematic biases that may have led to incorrect conclusions for decades.
+    content: `Understanding how multiple predators affect prey survival has been a central question in ecology, with researchers developing sophisticated methods to detect 'emergent effects' - situations where predators hunting together kill more or fewer prey than predicted from their individual effects. However, our research reveals that the standard mathematical approach used by ecologists contains systematic biases that may have led to incorrect conclusions for decades.
 
-The study examined the Multiplicative Risk Model, the consensus approach that emerged from years of scientific debate for predicting what happens when multiple predators hunt the same prey. This model accounts for the fact that prey cannot be eaten twice, but researchers discovered it makes a critical assumption that predators maintain constant feeding rates throughout experiments.
+We examined the Multiplicative Risk Model, the consensus approach that emerged from years of scientific debate for predicting what happens when multiple predators hunt the same prey. This model accounts for the fact that prey cannot be eaten twice, but we discovered it makes a critical assumption that predators maintain constant feeding rates throughout experiments.
 
-Using mathematical simulations of predation experiments, the researchers compared predictions from the standard model against more realistic models that account for how predator feeding rates actually change over time. They found that when prey are depleted during experiments - which happens in most studies - the standard model produces systematic bias.
+Using mathematical simulations of predation experiments, we compared predictions from the standard model against more realistic models that account for how predator feeding rates actually change over time. We found that when prey are depleted during experiments - which happens in most studies - the standard model produces systematic bias.
 
-An examination of 100 multiple predator studies from the literature revealed that prey were depleted by 70% on average over the course of experiments. This depletion violates a key assumption of the Multiplicative Risk Model, which assumes constant per capita mortality rates. In reality, most predators exhibit Type II functional responses, meaning their feeding rates change as prey become scarce.
+Our examination of 100 multiple predator studies from the literature revealed that prey were depleted by 70% on average over the course of experiments. This depletion violates a key assumption of the Multiplicative Risk Model, which assumes constant per capita mortality rates. In reality, most predators exhibit Type II functional responses, meaning their feeding rates change as prey become scarce.
 
 The bias manifests differently depending on experimental design. Studies using additive designs (where predator densities are combined) consistently overestimated 'risk enhancement,' while substitutive designs (where total predator density remains constant) usually overestimated 'risk reduction,' even when predators were actually having completely independent effects.
 
 These findings have significant implications for understanding ecosystem function. Predator-prey interactions comprise the foundation of food web dynamics, and if researchers have been systematically overestimating how often predators interact, then current understanding of ecosystem function may be flawed. This affects conservation efforts, ecosystem management, and basic understanding of how marine and terrestrial food webs operate.
 
-The research suggests that meta-analyses and syntheses of multiple predator effects may need to be reconsidered in light of these systematic biases. Moving forward, the field needs better methods that account for prey depletion and nonlinear functional responses, recognizing that the dynamic nature of biological processes can significantly affect study outcomes.
+Our research suggests that meta-analyses and syntheses of multiple predator effects may need to be reconsidered in light of these systematic biases. Moving forward, the field needs better methods that account for prey depletion and nonlinear functional responses, recognizing that the dynamic nature of biological processes can significantly affect study outcomes.
 
 ## Citation
 
@@ -1858,17 +1858,17 @@ McCoy, Michael W.; Stier, Adrian C.; Osenberg, Craig W. (2012). Emergent effects
     doiUrl: "https://doi.org/10.1007/s00442-012-2275-2",
     openAccess: false,
     pdfUrl: "https://drive.google.com/open?id=1RcKwNv3l-kYqMJlthVveQEl609tZxt--&usp=drive_fs",
-    content: `Researchers McKeon, Stier, McIlroy, and Bolker investigated whether multiple species of mutualist crustaceans that live on coral reefs provide independent benefits to their coral hosts, or whether their combined effects create something greater than the sum of their parts. Most mutualism research focuses on simple pairwise relationships, but coral reefs are complex communities where multiple defender species often coexist on single coral colonies.
+    content: `We investigated whether multiple species of mutualist crustaceans that live on coral reefs provide independent benefits to their coral hosts, or whether their combined effects create something greater than the sum of their parts. Most mutualism research focuses on simple pairwise relationships, but coral reefs are complex communities where multiple defender species often coexist on single coral colonies.
 
-The team collected Pocillopora coral colonies from shallow waters near Moorea and carefully manipulated which crustaceans were present before exposing them to Culcita sea stars in controlled feeding trials. The results revealed a clear pattern of synergistic defense.
+We collected Pocillopora coral colonies from shallow waters near Moorea and carefully manipulated which crustaceans were present before exposing them to Culcita sea stars in controlled feeding trials. Our results revealed a clear pattern of synergistic defense.
 
-When either species defended alone, they provided modest protection—the presence of mutualists reduced predation frequency by 15% and the volume of coral tissue consumed by 45%. But when both species were present together, they reduced coral tissue loss by a dramatic 73%. This wasn't just additive—if the two species had worked independently, researchers would have expected only a 38% reduction in tissue loss based on their individual performances. The 73% reduction was significantly greater, revealing what the authors termed an emergent 'multiple defender effect.'
+When either species defended alone, they provided modest protection—the presence of mutualists reduced predation frequency by 15% and the volume of coral tissue consumed by 45%. But when both species were present together, they reduced coral tissue loss by a dramatic 73%. This wasn't just additive—if the two species had worked independently, we would have expected only a 38% reduction in tissue loss based on their individual performances. The 73% reduction was significantly greater, revealing what we termed an emergent 'multiple defender effect.'
 
-The research showed that the frequency of attacks didn't differ significantly from what would be expected if the defenders worked independently, but somehow their combined presence dramatically reduced the amount of coral tissue actually consumed when attacks did occur.
+Our research showed that the frequency of attacks didn't differ significantly from what would be expected if the defenders worked independently, but somehow their combined presence dramatically reduced the amount of coral tissue actually consumed when attacks did occur.
 
 This discovery has profound implications for coral reef conservation. If the defensive benefits of mutualist communities emerge from synergistic interactions rather than simple addition of individual effects, then protecting coral reefs means protecting entire networks of mutualist species. Losing even one partner in these multi-species mutualisms could cause disproportionate declines in coral defense, especially as coral reefs face increasing pressure from climate change, overfishing, and other human impacts.
 
-The work opens up new questions about how complex mutualist communities function. The authors noted that in initial studies conducted in 2006, they observed up to five species of Trapezia along with Alpheus lottini occupying single Pocillopora coral colonies. Understanding these multi-species partnerships may be key to predicting which coral communities will persist in our changing oceans.
+Our work opens up new questions about how complex mutualist communities function. In initial studies conducted in 2006, we observed up to five species of Trapezia along with Alpheus lottini occupying single Pocillopora coral colonies. Understanding these multi-species partnerships may be key to predicting which coral communities will persist in our changing oceans.
 
 ## Citation
 
