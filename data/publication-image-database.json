@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2025-12-21T16:59:42.834Z",
+  "generatedAt": "2025-12-21T17:05:30.418Z",
   "summary": {
     "totalPublications": 77,
     "totalImages": 127,
@@ -165,8 +165,8 @@
         "conservation"
       ],
       "newsHeadline": "Predators May Actually Help Coral Reefs by Eating the 'Wrong' Fish",
-      "featuredImage": "/images/damselfish-pair-acropora-coral.jpeg",
-      "imageFile": "damselfish-pair-acropora-coral.jpeg"
+      "featuredImage": "/images/Hawkf_Tetralia_rubridactyla.jpg",
+      "imageFile": "Hawkf_Tetralia_rubridactyla.jpg"
     },
     {
       "id": 9,
@@ -1072,8 +1072,8 @@
         "marine conservation"
       ],
       "newsHeadline": "Predators and Habitat Shape Reef Fish Communities in Surprising Ways, Study Finds",
-      "featuredImage": "/images/moorea-mountain-tropical-island-view.jpeg",
-      "imageFile": "moorea-mountain-tropical-island-view.jpeg"
+      "featuredImage": "/images/overwater-bungalows-split-view-reef-fish.jpeg",
+      "imageFile": "overwater-bungalows-split-view-reef-fish.jpeg"
     },
     {
       "id": 54,
@@ -1612,7 +1612,7 @@
     {
       "publicationId": 8,
       "title": "Cascading benefits of mutualists' predators on foundation sp",
-      "image": "damselfish-pair-acropora-coral.jpeg"
+      "image": "Hawkf_Tetralia_rubridactyla.jpg"
     },
     {
       "publicationId": 9,
@@ -1837,7 +1837,7 @@
     {
       "publicationId": 53,
       "title": "Predation and landscape characteristics independently affect",
-      "image": "moorea-mountain-tropical-island-view.jpeg"
+      "image": "overwater-bungalows-split-view-reef-fish.jpeg"
     },
     {
       "publicationId": 54,
@@ -1962,7 +1962,6 @@
   ],
   "unusedImages": [
     "Emily.jpg",
-    "Hawkf_Tetralia_rubridactyla.jpg",
     "adrian.png",
     "ambon-damselfish.jpeg",
     "axolotl.jpeg",
@@ -1974,6 +1973,7 @@
     "conifer-forest-sunlight-trees.jpg",
     "coral-reef-bleached-anemone-fish-school.jpeg",
     "coral-reef-panorama-anthias-fish.jpeg",
+    "damselfish-pair-acropora-coral.jpeg",
     "damselfish-single-coral-closeup.jpeg",
     "dungeness-crab-beach-closeup.jpeg",
     "garibaldi-fish-orange-kelp-forest.jpeg",
@@ -1994,8 +1994,8 @@
     "marine-iguana-galapagos-beach.jpg",
     "marine-iguana-sand-galapagos.jpg",
     "molly.jpg",
+    "moorea-mountain-tropical-island-view.jpeg",
     "og-default.jpg",
-    "overwater-bungalows-split-view-reef-fish.jpeg",
     "raine.jpg",
     "red-pencil-urchin-coral-reef.JPG",
     "research-team-group-photo-beach.jpeg",
