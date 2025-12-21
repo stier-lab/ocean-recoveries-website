@@ -20,44 +20,64 @@ const formatDate = (dateStr: string) => {
 
 <Layout title="Home">
   <!-- Hero Section -->
-  <section class="relative min-h-screen flex items-center justify-center overflow-hidden">
+  <section class="relative min-h-[90vh] md:min-h-screen flex items-center justify-center overflow-hidden">
     <!-- Background Image with Parallax -->
     <div
       class="absolute inset-0 bg-cover bg-center bg-no-repeat parallax-bg"
       style="background-image: url('/images/coral-reef-panorama-anthias-fish.jpeg');"
     >
-      <!-- Gradient Overlay -->
-      <div class="absolute inset-0 bg-gradient-to-b from-bg-primary/60 via-bg-primary/40 to-bg-primary/70"></div>
+      <!-- Stronger Gradient Overlay for better text readability -->
+      <div class="absolute inset-0 bg-gradient-to-b from-bg-primary/70 via-bg-primary/50 to-bg-primary/85"></div>
     </div>
 
     <!-- Hero Content -->
-    <div class="relative z-10 container text-center text-white px-4 py-20">
-      <h1 class="hero-title text-white mb-4 opacity-0">
+    <div class="relative z-10 container text-center text-white px-4 py-16 md:py-20">
+      <h1 class="hero-title text-white mb-3 opacity-0 drop-shadow-lg">
         Ocean Recoveries Lab
       </h1>
-      <p class="hero-tagline text-2xl md:text-3xl font-semibold text-white/90 mb-6 opacity-0">
-        Recovering ocean ecosystems
+      <p class="hero-tagline text-xl md:text-3xl lg:text-4xl font-bold text-white mb-4 opacity-0 drop-shadow-md">
+        Science for reef & kelp forest recovery
       </p>
-      <p class="hero-description max-w-2xl mx-auto text-lg text-white/80 leading-relaxed mb-8 opacity-0">
-        Field experiments × quantitative models × synthesis — combining science with community partnerships to help coral reefs and kelp forests regenerate.
+      <p class="hero-description max-w-2xl mx-auto text-base md:text-lg text-white/90 leading-relaxed mb-6 opacity-0 drop-shadow-sm">
+        We combine field experiments, quantitative models, and community partnerships to understand how ocean ecosystems regenerate.
       </p>
-      <div class="hero-cta opacity-0">
+
+      <!-- Social Proof Bar -->
+      <div class="hero-stats flex flex-wrap justify-center gap-6 md:gap-10 mb-8 opacity-0">
+        <div class="text-center">
+          <span class="block text-2xl md:text-3xl font-black text-white">75+</span>
+          <span class="text-xs md:text-sm text-white/70 uppercase tracking-wide">Publications</span>
+        </div>
+        <div class="text-center">
+          <span class="block text-2xl md:text-3xl font-black text-white">15</span>
+          <span class="text-xs md:text-sm text-white/70 uppercase tracking-wide">Years</span>
+        </div>
+        <div class="text-center">
+          <span class="block text-2xl md:text-3xl font-black text-white">2</span>
+          <span class="text-xs md:text-sm text-white/70 uppercase tracking-wide">LTER Sites</span>
+        </div>
+      </div>
+
+      <div class="hero-cta flex flex-col sm:flex-row gap-3 justify-center opacity-0">
         <a href="/research" class="btn btn-primary btn-lg">
-          Explore Our Research
+          See Our Research
+        </a>
+        <a href="/people" class="btn btn-ghost btn-lg">
+          Meet the Team
         </a>
       </div>
     </div>
 
     <!-- Scroll Indicator -->
-    <div class="absolute bottom-8 left-1/2 -translate-x-1/2 z-10">
+    <div class="absolute bottom-6 md:bottom-8 left-1/2 -translate-x-1/2 z-10">
       <a
         href="#research"
-        class="flex flex-col items-center gap-2 text-white/70 hover:text-white transition-colors no-underline"
+        class="flex flex-col items-center gap-2 text-white/80 hover:text-white transition-colors no-underline group"
         aria-label="Scroll to learn more"
       >
-        <span class="text-sm font-medium">Explore</span>
+        <span class="text-xs md:text-sm font-semibold uppercase tracking-wider">Discover</span>
         <svg
-          class="w-6 h-6 animate-bounce-subtle"
+          class="w-5 h-5 md:w-6 md:h-6 animate-bounce-subtle group-hover:translate-y-1 transition-transform"
           fill="none"
           stroke="currentColor"
           viewBox="0 0 24 24"
@@ -71,33 +91,36 @@ const formatDate = (dateStr: string) => {
   <!-- Study Systems Section -->
   <section id="research" class="section bg-surface">
     <div class="container">
-      <div class="text-center mb-12 scroll-reveal">
+      <div class="text-center mb-10 scroll-reveal">
         <span class="eyebrow">Where We Work</span>
         <h2>Study Systems</h2>
         <p class="lead max-w-2xl mx-auto">
-          We conduct research in coral reef and kelp forest ecosystems, combining field experiments with quantitative models.
+          Two iconic marine ecosystems. One mission: understanding recovery.
         </p>
       </div>
 
-      <div class="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+      <div class="grid md:grid-cols-2 gap-6 lg:gap-8 max-w-4xl mx-auto">
         {studySystems.map((system, i) => (
-          <a href={`/research/${system.slug}`} class={`study-system-card scroll-reveal stagger-${i + 1} group`}>
+          <a href={`/research/${system.slug}`} class={`study-system-card scroll-reveal stagger-${i + 1} group ${system.slug === 'coral-reefs' ? 'card-coral' : 'card-kelp'}`}>
             <div class="study-system-image img-zoom">
               <img
                 src={system.heroImage}
                 alt={system.title}
                 loading="lazy"
               />
-              <div class="absolute inset-0 bg-gradient-to-t from-bg-primary/80 via-bg-primary/20 to-transparent"></div>
+              <div class="absolute inset-0 bg-gradient-to-t from-bg-primary/90 via-bg-primary/30 to-transparent"></div>
             </div>
             <div class="study-system-content">
+              <span class="inline-block px-2 py-1 text-xs font-bold uppercase tracking-wide bg-white/20 rounded mb-2">
+                {system.slug === 'coral-reefs' ? 'Moorea, French Polynesia' : 'Santa Barbara, California'}
+              </span>
               <h3 class="text-2xl text-white mb-2 group-hover:text-accent-2 transition-colors">{system.title}</h3>
               <p class="text-white/80 text-sm mb-3">
                 {system.tagline}
               </p>
-              <span class="inline-flex items-center gap-2 text-accent text-sm font-semibold opacity-0 group-hover:opacity-100 transition-opacity">
-                Explore
-                <svg class="w-4 h-4 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <span class="inline-flex items-center gap-2 text-accent text-sm font-semibold group-hover:gap-3 transition-all">
+                Learn more
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
                 </svg>
               </span>
@@ -105,117 +128,122 @@ const formatDate = (dateStr: string) => {
           </a>
         ))}
       </div>
-
-      <div class="text-center mt-10 scroll-reveal">
-        <a href="/research" class="btn btn-secondary">
-          Explore Our Research
-        </a>
-      </div>
     </div>
   </section>
 
   <!-- Research Pillars Section -->
   <section class="section bg-navy-deep overflow-hidden">
     <div class="container">
-      <div class="text-center mb-12 scroll-reveal">
+      <div class="text-center mb-10 scroll-reveal">
         <span class="eyebrow text-accent-2">How We Work</span>
         <h2 class="text-white">Three Research Pillars</h2>
         <p class="lead max-w-2xl mx-auto text-white/70">
-          Our work integrates across three interconnected approaches — from understanding ecosystems to informing decisions.
+          Our work integrates across three interconnected approaches.
         </p>
       </div>
 
-      <div class="pillars-simple">
-        {researchPillars.map((pillar, i) => (
-          <div class={`pillar-item scroll-reveal stagger-${i + 1}`}>
-            <span class="pillar-num">{i + 1}</span>
-            <h3 class="pillar-name">{pillar.title}</h3>
+      <div class="pillars-grid">
+        <!-- Pillar 1: Ecosystem Dynamics -->
+        <div class="pillar-card scroll-reveal stagger-1">
+          <div class="pillar-icon">
+            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
           </div>
-        ))}
+          <h3 class="pillar-title">{researchPillars[0].title}</h3>
+          <p class="pillar-desc">{researchPillars[0].description}</p>
+        </div>
+
+        <!-- Pillar 2: Conservation Science -->
+        <div class="pillar-card scroll-reveal stagger-2">
+          <div class="pillar-icon">
+            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
+            </svg>
+          </div>
+          <h3 class="pillar-title">{researchPillars[1].title}</h3>
+          <p class="pillar-desc">{researchPillars[1].description}</p>
+        </div>
+
+        <!-- Pillar 3: Quantitative Methods -->
+        <div class="pillar-card scroll-reveal stagger-3">
+          <div class="pillar-icon">
+            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+            </svg>
+          </div>
+          <h3 class="pillar-title">{researchPillars[2].title}</h3>
+          <p class="pillar-desc">{researchPillars[2].description}</p>
+        </div>
       </div>
 
-      <div class="text-center mt-12 scroll-reveal">
-        <a href="/research#orl-pillars" class="btn btn-secondary">
-          Learn More About Our Approach
+      <div class="text-center mt-10 scroll-reveal">
+        <a href="/research#orl-pillars" class="btn btn-ghost">
+          How We Do Science
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+          </svg>
         </a>
       </div>
     </div>
   </section>
 
-  <!-- Recent News Carousel -->
-  <section class="section bg-navy-highlight overflow-hidden">
+  <!-- Recent News Section -->
+  <section class="section bg-surface overflow-hidden">
     <div class="container">
-      <div class="text-center mb-10 scroll-reveal">
-        <span class="eyebrow text-accent-2">Latest News</span>
-        <h2 class="text-white">Recent Work</h2>
+      <div class="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4 mb-8 scroll-reveal">
+        <div>
+          <span class="eyebrow">Latest News</span>
+          <h2 class="mb-0">Recent Work</h2>
+        </div>
+        <a href="/news" class="btn btn-secondary hidden sm:inline-flex">
+          View All News
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+          </svg>
+        </a>
       </div>
 
-      <!-- Carousel Container -->
-      <div class="news-carousel relative" aria-label="Recent news carousel">
-        <!-- Slides -->
-        <div class="carousel-track">
-          {recentPosts.map((post, i) => (
-            <article
-              class={`carousel-slide ${i === 0 ? 'active' : ''}`}
-              data-index={i}
-              aria-hidden={i !== 0}
-            >
-              <a href={`/news/${post.slug}`} class="carousel-card group">
-                <div class="carousel-image">
-                  <img
-                    src={post.featuredImage}
-                    alt={post.title}
-                    loading={i === 0 ? 'eager' : 'lazy'}
-                  />
-                  <div class="absolute inset-0 bg-gradient-to-t from-bg-primary/90 via-bg-primary/40 to-transparent"></div>
+      <!-- News Grid -->
+      <div class="news-grid">
+        {recentPosts.map((post, i) => (
+          <article class={`news-card scroll-reveal stagger-${i + 1}`}>
+            <a href={`/news/${post.slug}`} class="news-card-inner group">
+              <div class="news-card-image img-zoom">
+                <img
+                  src={post.featuredImage}
+                  alt={post.title}
+                  loading={i === 0 ? 'eager' : 'lazy'}
+                />
+              </div>
+              <div class="news-card-content">
+                <div class="flex flex-wrap gap-2 mb-2">
+                  {post.tags.slice(0, 2).map(tag => (
+                    <span class="badge badge-sm">{tag}</span>
+                  ))}
                 </div>
-                <div class="carousel-content">
-                  <div class="flex flex-wrap gap-2 mb-3">
-                    {post.tags.slice(0, 2).map(tag => (
-                      <span class="badge badge-sm">{tag}</span>
-                    ))}
-                  </div>
-                  <h3 class="text-xl md:text-2xl font-bold text-white mb-3 group-hover:text-accent-2 transition-colors line-clamp-2">
-                    {post.title}
-                  </h3>
-                  <p class="text-white/70 text-sm mb-4 line-clamp-2 hidden sm:block">
-                    {post.excerpt}
-                  </p>
-                  <div class="flex items-center justify-between">
-                    <span class="text-white/50 text-sm">{formatDate(post.date)}</span>
-                    <span class="text-accent font-semibold text-sm group-hover:translate-x-1 transition-transform inline-flex items-center gap-1">
-                      Read more
-                      <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                      </svg>
-                    </span>
-                  </div>
+                <h3 class="text-lg font-bold text-ink mb-2 group-hover:text-accent transition-colors line-clamp-2">
+                  {post.title}
+                </h3>
+                <p class="text-muted text-sm mb-3 line-clamp-2">
+                  {post.excerpt}
+                </p>
+                <div class="flex items-center justify-between mt-auto">
+                  <span class="text-muted/70 text-xs">{formatDate(post.date)}</span>
+                  <span class="text-accent font-semibold text-sm inline-flex items-center gap-1 group-hover:gap-2 transition-all">
+                    Read
+                    <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                    </svg>
+                  </span>
                 </div>
-              </a>
-            </article>
-          ))}
-        </div>
-
-        <!-- Navigation Dots -->
-        <div class="carousel-dots" role="tablist" aria-label="Carousel navigation">
-          {recentPosts.map((_, i) => (
-            <button
-              class={`carousel-dot ${i === 0 ? 'active' : ''}`}
-              data-index={i}
-              role="tab"
-              aria-selected={i === 0}
-              aria-label={`Go to slide ${i + 1}`}
-            />
-          ))}
-        </div>
-
-        <!-- Progress Bar -->
-        <div class="carousel-progress">
-          <div class="carousel-progress-bar"></div>
-        </div>
+              </div>
+            </a>
+          </article>
+        ))}
       </div>
 
-      <div class="text-center mt-8 scroll-reveal">
+      <div class="text-center mt-8 sm:hidden scroll-reveal">
         <a href="/news" class="btn btn-secondary">
           View All News
         </a>
@@ -223,19 +251,24 @@ const formatDate = (dateStr: string) => {
     </div>
   </section>
 
-  <!-- Impact Metrics Section -->
-  <section class="section bg-navy-highlight">
-    <div class="container">
-      <div class="grid md:grid-cols-2 gap-12 items-center">
+  <!-- About / Impact Section -->
+  <section class="section bg-navy-deep relative overflow-hidden">
+    <!-- Subtle background pattern -->
+    <div class="absolute inset-0 opacity-5">
+      <div class="absolute inset-0" style="background-image: url('/images/coral-reef-panorama-anthias-fish.jpeg'); background-size: cover; background-position: center; filter: grayscale(100%);"></div>
+    </div>
+
+    <div class="container relative z-10">
+      <div class="grid md:grid-cols-2 gap-10 lg:gap-16 items-center">
         <div class="scroll-reveal">
-          <span class="eyebrow">Our Lab</span>
-          <h2 class="mb-6">Based at UC Santa Barbara</h2>
-          <p class="text-muted mb-4">
+          <span class="eyebrow text-accent-2">Our Lab</span>
+          <h2 class="text-white mb-5">Based at UC Santa Barbara</h2>
+          <p class="text-white/70 mb-4">
             The Ocean Recoveries Lab is part of the Department of Ecology, Evolution & Marine Biology.
             We benefit from UCSB's world-class marine research facilities, the Santa Barbara Coastal
             Long-Term Ecological Research site, and partnerships with the Moorea Coral Reef LTER.
           </p>
-          <p class="text-muted mb-6">
+          <p class="text-white/70 mb-6">
             Our team includes postdocs, graduate students, undergraduates, and collaborators working
             on decision-relevant science for reef and kelp forest conservation.
           </p>
@@ -249,20 +282,20 @@ const formatDate = (dateStr: string) => {
 
         <div class="grid grid-cols-2 gap-4">
           <div class="stat-card scroll-reveal stagger-1">
-            <span class="stat-number" data-target="75">0</span>
+            <span class="stat-number" data-target="75">75</span>
             <span class="stat-label">Publications</span>
           </div>
           <div class="stat-card scroll-reveal stagger-2">
-            <span class="stat-number" data-target="15">0</span>
+            <span class="stat-number" data-target="15">15</span>
             <span class="stat-label">Years of Research</span>
           </div>
           <div class="stat-card scroll-reveal stagger-3">
-            <span class="stat-number" data-target="2">0</span>
+            <span class="stat-number" data-target="2">2</span>
             <span class="stat-label">LTER Sites</span>
           </div>
           <div class="stat-card scroll-reveal stagger-4">
-            <span class="stat-number" data-target="30">0</span>
-            <span class="stat-label">Lab Alumni</span>
+            <span class="stat-number" data-target="12">12</span>
+            <span class="stat-label">Collaborating Institutions</span>
           </div>
         </div>
       </div>
@@ -270,15 +303,25 @@ const formatDate = (dateStr: string) => {
   </section>
 
   <!-- Join Us CTA -->
-  <section class="section bg-navy-deep">
-    <div class="container text-center">
-      <h2 class="text-white mb-4 scroll-reveal">Join Our Team</h2>
-      <p class="text-white/70 max-w-xl mx-auto mb-8 scroll-reveal">
-        We're looking for curious, motivated researchers at all career stages who want to help understand and restore ocean ecosystems.
-      </p>
-      <a href="/join-us" class="btn btn-primary scroll-reveal">
-        View Opportunities
-      </a>
+  <section class="section bg-surface relative overflow-hidden">
+    <div class="container">
+      <div class="join-cta-card scroll-reveal">
+        <div class="join-cta-content text-center">
+          <span class="eyebrow">Opportunities</span>
+          <h2 class="mb-4">Join Our Team</h2>
+          <p class="text-muted max-w-xl mx-auto mb-6">
+            We're looking for curious, motivated researchers at all career stages — graduate students, postdocs, and undergraduates — who want to help understand and restore ocean ecosystems.
+          </p>
+          <div class="flex flex-col sm:flex-row gap-3 justify-center">
+            <a href="/join-us" class="btn btn-primary">
+              View Open Positions
+            </a>
+            <a href="mailto:astier@ucsb.edu" class="btn btn-secondary">
+              Contact Us
+            </a>
+          </div>
+        </div>
+      </div>
     </div>
   </section>
 </Layout>
@@ -299,6 +342,10 @@ const formatDate = (dateStr: string) => {
 
   .hero-cta {
     animation: fadeUp 0.8s ease-out 0.8s forwards;
+  }
+
+  .hero-stats {
+    animation: fadeUp 0.8s ease-out 0.7s forwards;
   }
 
   .btn-lg {
@@ -354,82 +401,30 @@ const formatDate = (dateStr: string) => {
     @apply absolute bottom-0 left-0 right-0 p-6;
   }
 
-  /* News Carousel */
-  .news-carousel {
-    @apply max-w-4xl mx-auto;
+  /* News Grid */
+  .news-grid {
+    @apply grid md:grid-cols-3 gap-6;
   }
 
-  .carousel-track {
-    @apply relative;
-    min-height: 400px;
+  .news-card {
+    @apply rounded-xl overflow-hidden bg-surface-card border border-line;
+    @apply transition-all duration-300 hover:-translate-y-1 hover:shadow-lg;
   }
 
-  .carousel-slide {
-    @apply absolute inset-0 opacity-0 pointer-events-none;
-    transition: opacity 0.5s ease-in-out;
+  .news-card-inner {
+    @apply block no-underline h-full flex flex-col;
   }
 
-  .carousel-slide.active {
-    @apply opacity-100 pointer-events-auto relative;
+  .news-card-image {
+    @apply aspect-[16/10] overflow-hidden;
   }
 
-  .carousel-card {
-    @apply block rounded-xl overflow-hidden no-underline;
-    @apply bg-surface-card/10 backdrop-blur-sm;
-    @apply transition-all duration-300 hover:shadow-2xl;
-  }
-
-  .carousel-image {
-    @apply relative aspect-[16/9] overflow-hidden;
-  }
-
-  .carousel-image img {
+  .news-card-image img {
     @apply w-full h-full object-cover;
-    @apply transition-transform duration-500;
   }
 
-  .carousel-card:hover .carousel-image img {
-    @apply scale-105;
-  }
-
-  .carousel-content {
-    @apply p-6 md:p-8;
-  }
-
-  .carousel-dots {
-    @apply flex justify-center gap-3 mt-6;
-  }
-
-  .carousel-dot {
-    @apply w-3 h-3 rounded-full bg-white/30 border-0 cursor-pointer;
-    @apply transition-all duration-300;
-  }
-
-  .carousel-dot:hover {
-    @apply bg-white/50;
-  }
-
-  .carousel-dot.active {
-    @apply bg-accent w-8;
-  }
-
-  .carousel-progress {
-    @apply mt-4 h-1 bg-white/10 rounded-full overflow-hidden max-w-xs mx-auto;
-  }
-
-  .carousel-progress-bar {
-    @apply h-full bg-accent rounded-full;
-    width: 0%;
-    transition: width 0.1s linear;
-  }
-
-  .carousel-progress-bar.animating {
-    animation: progressFill 6s linear forwards;
-  }
-
-  @keyframes progressFill {
-    from { width: 0%; }
-    to { width: 100%; }
+  .news-card-content {
+    @apply p-5 flex flex-col flex-1;
   }
 
   .badge-sm {
@@ -443,48 +438,52 @@ const formatDate = (dateStr: string) => {
     overflow: hidden;
   }
 
-  /* Research Pillars - Homepage (simplified) */
-  .pillars-simple {
-    @apply flex flex-col md:flex-row justify-center items-stretch gap-4 md:gap-6 max-w-4xl mx-auto;
+  /* Research Pillars - Homepage */
+  .pillars-grid {
+    @apply grid md:grid-cols-3 gap-6 max-w-5xl mx-auto;
   }
 
-  .pillar-item {
-    @apply flex items-center gap-4 px-6 py-5 rounded-xl;
+  .pillar-card {
+    @apply p-6 rounded-xl text-center;
     @apply bg-white/5 border border-white/10;
     @apply transition-all duration-300;
-    @apply hover:bg-white/10 hover:border-accent/30;
+    @apply hover:bg-white/10 hover:border-accent/30 hover:-translate-y-1;
   }
 
-  .pillar-num {
-    @apply flex-shrink-0 w-10 h-10 rounded-full;
-    @apply bg-accent text-white text-lg font-bold;
+  .pillar-icon {
+    @apply w-14 h-14 mx-auto mb-4 rounded-full;
+    @apply bg-accent/20 text-accent;
     @apply flex items-center justify-center;
   }
 
-  .pillar-name {
-    @apply text-white text-base lg:text-lg font-semibold m-0;
+  .pillar-title {
+    @apply text-white text-base lg:text-lg font-bold mb-3;
+  }
+
+  .pillar-desc {
+    @apply text-white/60 text-sm leading-relaxed;
+  }
+
+  /* Join CTA Card */
+  .join-cta-card {
+    @apply bg-gradient-to-br from-accent/10 to-accent-2/10;
+    @apply border border-accent/20 rounded-2xl p-8 md:p-12;
+    @apply max-w-3xl mx-auto;
   }
 
   /* Reduced motion */
   @media (prefers-reduced-motion: reduce) {
     .hero-title,
     .hero-tagline,
-    .hero-description {
+    .hero-description,
+    .hero-stats,
+    .hero-cta {
       animation: none;
       opacity: 1;
     }
 
     .animate-bounce-subtle {
       animation: none;
-    }
-
-    .carousel-slide {
-      transition: none;
-    }
-
-    .carousel-progress-bar.animating {
-      animation: none;
-      width: 100%;
     }
   }
 </style>
@@ -555,158 +554,13 @@ const formatDate = (dateStr: string) => {
     }
   };
 
-  // News Carousel
-  const initCarousel = () => {
-    const carousel = document.querySelector('.news-carousel');
-    if (!carousel) return;
-
-    const slides = carousel.querySelectorAll('.carousel-slide');
-    const dots = carousel.querySelectorAll('.carousel-dot');
-    const progressBar = carousel.querySelector('.carousel-progress-bar') as HTMLElement;
-
-    if (slides.length === 0) return;
-
-    let currentIndex = 0;
-    let intervalId: number | null = null;
-    let isPaused = false;
-    const INTERVAL = 6000; // 6 seconds per slide
-
-    const goToSlide = (index: number) => {
-      // Update slides
-      slides.forEach((slide, i) => {
-        slide.classList.toggle('active', i === index);
-        slide.setAttribute('aria-hidden', String(i !== index));
-      });
-
-      // Update dots
-      dots.forEach((dot, i) => {
-        dot.classList.toggle('active', i === index);
-        dot.setAttribute('aria-selected', String(i === index));
-      });
-
-      // Reset progress bar
-      if (progressBar) {
-        progressBar.classList.remove('animating');
-        // Force reflow
-        void progressBar.offsetWidth;
-        progressBar.classList.add('animating');
-      }
-
-      currentIndex = index;
-    };
-
-    const nextSlide = () => {
-      const next = (currentIndex + 1) % slides.length;
-      goToSlide(next);
-    };
-
-    const startAutoPlay = () => {
-      if (intervalId) clearInterval(intervalId);
-      intervalId = window.setInterval(() => {
-        if (!isPaused) {
-          nextSlide();
-        }
-      }, INTERVAL);
-
-      // Start progress animation
-      if (progressBar) {
-        progressBar.classList.add('animating');
-      }
-    };
-
-    const pauseAutoPlay = () => {
-      isPaused = true;
-      if (progressBar) {
-        progressBar.style.animationPlayState = 'paused';
-      }
-    };
-
-    const resumeAutoPlay = () => {
-      isPaused = false;
-      if (progressBar) {
-        progressBar.style.animationPlayState = 'running';
-      }
-    };
-
-    // Dot click handlers
-    dots.forEach((dot, index) => {
-      dot.addEventListener('click', () => {
-        goToSlide(index);
-        startAutoPlay(); // Reset timer on manual navigation
-      });
-    });
-
-    // Pause on hover
-    carousel.addEventListener('mouseenter', pauseAutoPlay);
-    carousel.addEventListener('mouseleave', resumeAutoPlay);
-
-    // Pause on focus (accessibility)
-    carousel.addEventListener('focusin', pauseAutoPlay);
-    carousel.addEventListener('focusout', resumeAutoPlay);
-
-    // Touch/swipe support
-    let touchStartX = 0;
-    let touchEndX = 0;
-
-    carousel.addEventListener('touchstart', (e) => {
-      const te = e as TouchEvent;
-      touchStartX = te.changedTouches[0].screenX;
-    }, { passive: true });
-
-    carousel.addEventListener('touchend', (e) => {
-      const te = e as TouchEvent;
-      touchEndX = te.changedTouches[0].screenX;
-      const diff = touchStartX - touchEndX;
-
-      if (Math.abs(diff) > 50) {
-        if (diff > 0) {
-          // Swipe left - next
-          goToSlide((currentIndex + 1) % slides.length);
-        } else {
-          // Swipe right - previous
-          goToSlide((currentIndex - 1 + slides.length) % slides.length);
-        }
-        startAutoPlay();
-      }
-    }, { passive: true });
-
-    // Keyboard navigation
-    carousel.addEventListener('keydown', (e) => {
-      const ke = e as KeyboardEvent;
-      if (ke.key === 'ArrowLeft') {
-        goToSlide((currentIndex - 1 + slides.length) % slides.length);
-        startAutoPlay();
-      } else if (ke.key === 'ArrowRight') {
-        goToSlide((currentIndex + 1) % slides.length);
-        startAutoPlay();
-      }
-    });
-
-    // Check for reduced motion preference
-    if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-      startAutoPlay();
-    } else {
-      // Still allow manual navigation but no auto-play
-      if (progressBar) {
-        progressBar.style.display = 'none';
-      }
-    }
-
-    // Cleanup on page navigation
-    return () => {
-      if (intervalId) clearInterval(intervalId);
-    };
-  };
-
   // Initialize
   initParallax();
   initCountUp();
-  initCarousel();
 
   // Re-init after view transitions
   document.addEventListener('astro:after-swap', () => {
     initParallax();
     initCountUp();
-    initCarousel();
   });
 </script>

@@ -1,6 +1,11 @@
 ---
 import Layout from '@layouts/Layout.astro';
+import Breadcrumbs from '@components/layout/Breadcrumbs.astro';
 import { studySystems, researchPillars } from '@data/research';
+
+const breadcrumbs = [
+  { label: 'Research' },
+];
 ---
 
 <Layout
@@ -8,28 +13,29 @@ import { studySystems, researchPillars } from '@data/research';
   description="Ocean Recoveries Lab research: understanding, restoring, and scaling ocean resilience through ecosystem dynamics, conservation science, and quantitative methods."
 >
   <!-- Hero -->
-  <section class="relative py-20 md:py-28 overflow-hidden">
+  <section class="relative min-h-[60vh] md:min-h-[70vh] flex items-center overflow-hidden">
     <div
       class="absolute inset-0 bg-cover bg-center"
       style="background-image: url('/images/blacktip-reef-sharks-split-view-island.jpeg');"
     >
-      <div class="absolute inset-0 bg-navy-deep/70"></div>
+      <div class="absolute inset-0 bg-gradient-to-b from-navy-deep/60 via-navy-deep/50 to-navy-deep/80"></div>
     </div>
 
-    <div class="relative container text-center text-white">
-      <span class="eyebrow text-white/70">Our Research</span>
-      <h1 class="text-white mb-4">Understanding, Restoring & Scaling Ocean Resilience</h1>
-      <p class="text-xl text-white/80 max-w-3xl mx-auto mb-8">
+    <div class="relative container text-center text-white py-16 md:py-24">
+      <Breadcrumbs items={breadcrumbs} class="justify-center mb-6" />
+      <span class="eyebrow text-accent-2">Our Research</span>
+      <h1 class="text-white mb-4 animate-fade-up">Understanding, Restoring & Scaling Ocean Resilience</h1>
+      <p class="text-xl text-white/80 max-w-3xl mx-auto mb-10">
         We integrate ecological theory, quantitative methods, and field studies with a commitment to open science
         and decision support — moving insights from lab and field to classrooms, observatories, and coastal decision tables.
       </p>
 
       <!-- Quick navigation -->
-      <nav class="flex flex-wrap justify-center gap-3" aria-label="Jump to section">
-        <a href="#pillars" class="jump-link">Research Pillars</a>
-        <a href="#impact" class="jump-link">Impact Pathway</a>
-        <a href="#systems" class="jump-link">Study Systems</a>
-        <a href="#sites" class="jump-link">Field Sites</a>
+      <nav class="jump-nav flex flex-wrap justify-center gap-3" aria-label="Jump to section">
+        <a href="#pillars" class="jump-link" data-section="pillars">Research Pillars</a>
+        <a href="#impact" class="jump-link" data-section="impact">Impact Pathway</a>
+        <a href="#systems" class="jump-link" data-section="systems">Study Systems</a>
+        <a href="#sites" class="jump-link" data-section="sites">Field Sites</a>
       </nav>
     </div>
   </section>
@@ -68,65 +74,72 @@ import { studySystems, researchPillars } from '@data/research';
       <div class="text-center mb-12 scroll-reveal">
         <span class="eyebrow text-accent">From Questions to Action</span>
         <h2 class="text-white">Our Impact Pathway</h2>
+        <p class="text-white/60 max-w-2xl mx-auto mt-4">
+          Research flows through four connected stages, each building on the last to create real-world impact.
+        </p>
       </div>
 
-      <div class="pathway-grid scroll-reveal">
-        <div class="pathway-step">
-          <div class="pathway-icon">
-            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-            </svg>
+      <div class="pathway-timeline scroll-reveal">
+        <div class="pathway-line" aria-hidden="true"></div>
+
+        <div class="pathway-step" data-step="1">
+          <div class="pathway-marker">
+            <span class="pathway-number">1</span>
           </div>
-          <h4 class="text-white font-bold mb-2">First Principles</h4>
-          <p class="text-white/70 text-sm">Fundamental questions about ecosystem dynamics</p>
-        </div>
-
-        <div class="pathway-arrow">
-          <svg class="w-6 h-6 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
-          </svg>
-        </div>
-
-        <div class="pathway-step">
-          <div class="pathway-icon">
-            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z" />
-            </svg>
+          <div class="pathway-card">
+            <div class="pathway-icon">
+              <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+              </svg>
+            </div>
+            <h4 class="text-white font-bold mb-2">First Principles</h4>
+            <p class="text-white/70 text-sm">Fundamental questions about ecosystem dynamics</p>
           </div>
-          <h4 class="text-white font-bold mb-2">Quantitative Models</h4>
-          <p class="text-white/70 text-sm">Predictive tools and scenario forecasting</p>
         </div>
 
-        <div class="pathway-arrow">
-          <svg class="w-6 h-6 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
-          </svg>
-        </div>
-
-        <div class="pathway-step">
-          <div class="pathway-icon">
-            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4" />
-            </svg>
+        <div class="pathway-step" data-step="2">
+          <div class="pathway-marker">
+            <span class="pathway-number">2</span>
           </div>
-          <h4 class="text-white font-bold mb-2">Reproducible Data</h4>
-          <p class="text-white/70 text-sm">Open science and shared datasets</p>
-        </div>
-
-        <div class="pathway-arrow">
-          <svg class="w-6 h-6 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
-          </svg>
-        </div>
-
-        <div class="pathway-step">
-          <div class="pathway-icon">
-            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
-            </svg>
+          <div class="pathway-card">
+            <div class="pathway-icon">
+              <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z" />
+              </svg>
+            </div>
+            <h4 class="text-white font-bold mb-2">Quantitative Models</h4>
+            <p class="text-white/70 text-sm">Predictive tools and scenario forecasting</p>
           </div>
-          <h4 class="text-white font-bold mb-2">Tools & Protocols</h4>
-          <p class="text-white/70 text-sm">Practical implementation guides</p>
+        </div>
+
+        <div class="pathway-step" data-step="3">
+          <div class="pathway-marker">
+            <span class="pathway-number">3</span>
+          </div>
+          <div class="pathway-card">
+            <div class="pathway-icon">
+              <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4" />
+              </svg>
+            </div>
+            <h4 class="text-white font-bold mb-2">Reproducible Data</h4>
+            <p class="text-white/70 text-sm">Open science and shared datasets</p>
+          </div>
+        </div>
+
+        <div class="pathway-step" data-step="4">
+          <div class="pathway-marker">
+            <span class="pathway-number">4</span>
+          </div>
+          <div class="pathway-card">
+            <div class="pathway-icon">
+              <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+              </svg>
+            </div>
+            <h4 class="text-white font-bold mb-2">Tools & Protocols</h4>
+            <p class="text-white/70 text-sm">Practical implementation guides</p>
+          </div>
         </div>
       </div>
     </div>
@@ -217,7 +230,7 @@ import { studySystems, researchPillars } from '@data/research';
             If you're interested in partnering on research or applying our findings to your work,
             we'd love to hear from you.
           </p>
-          <a href="mailto:adrian.stier@ucsb.edu" class="btn btn-primary">
+          <a href="mailto:astier@ucsb.edu" class="btn btn-primary">
             Get in Touch
           </a>
         </div>
@@ -234,6 +247,7 @@ import { studySystems, researchPillars } from '@data/research';
 </Layout>
 
 <style>
+  /* Jump Navigation */
   .jump-link {
     @apply px-4 py-2 rounded-full text-sm font-medium;
     @apply bg-white/10 text-white/80 border border-white/20;
@@ -244,24 +258,34 @@ import { studySystems, researchPillars } from '@data/research';
     @apply bg-white/20 text-white border-white/40;
   }
 
+  .jump-link:focus-visible {
+    @apply outline-2 outline-offset-2 outline-accent ring-2 ring-accent/50;
+  }
+
+  .jump-link.active {
+    @apply bg-accent/20 text-accent border-accent/40;
+  }
+
+  /* Pillar Cards with equal height */
   .pillar-card {
     @apply bg-surface-card p-6 rounded-xl border border-line;
     @apply transition-all duration-300;
+    @apply flex flex-col h-full;
   }
 
   .pillar-card:hover {
-    @apply -translate-y-1 shadow-lg;
+    @apply -translate-y-1 shadow-lg border-accent/30;
   }
 
   .pillar-number {
     @apply w-10 h-10 rounded-full mb-4;
     @apply bg-accent text-white;
     @apply flex items-center justify-center;
-    @apply text-lg font-bold;
+    @apply text-lg font-bold flex-shrink-0;
   }
 
   .pillar-list {
-    @apply space-y-2 text-sm;
+    @apply space-y-2 text-sm mt-auto;
   }
 
   .pillar-list li {
@@ -273,28 +297,56 @@ import { studySystems, researchPillars } from '@data/research';
     @apply w-1.5 h-1.5 rounded-full bg-accent mt-2 flex-shrink-0;
   }
 
-  .pathway-grid {
-    @apply flex flex-col md:flex-row md:flex-wrap items-center justify-center gap-4;
+  /* Impact Pathway Timeline */
+  .pathway-timeline {
+    @apply relative flex flex-col md:flex-row md:justify-between gap-6 md:gap-4;
+    @apply max-w-4xl mx-auto;
+  }
+
+  .pathway-line {
+    @apply absolute bg-gradient-to-b md:bg-gradient-to-r from-accent/20 via-accent to-accent-2/20;
+    @apply left-5 top-0 bottom-0 w-0.5 md:w-auto md:h-0.5;
+    @apply md:left-0 md:right-0 md:top-8 md:bottom-auto;
   }
 
   .pathway-step {
-    @apply text-center p-4;
+    @apply relative flex items-start md:flex-col md:items-center gap-4 md:gap-3;
+    @apply flex-1;
+  }
+
+  .pathway-marker {
+    @apply relative z-10 flex-shrink-0;
+  }
+
+  .pathway-number {
+    @apply w-10 h-10 rounded-full;
+    @apply bg-accent text-white font-bold;
+    @apply flex items-center justify-center;
+    @apply shadow-lg shadow-accent/30;
+    @apply transition-transform duration-300;
+  }
+
+  .pathway-step:hover .pathway-number {
+    @apply scale-110;
+  }
+
+  .pathway-card {
+    @apply flex-1 md:text-center p-4 rounded-xl;
+    @apply bg-white/5 border border-white/10;
+    @apply transition-all duration-300;
+  }
+
+  .pathway-step:hover .pathway-card {
+    @apply bg-white/10 border-accent/30;
   }
 
   .pathway-icon {
-    @apply w-12 h-12 rounded-full mx-auto mb-3;
-    @apply bg-white/10 text-accent;
-    @apply flex items-center justify-center;
+    @apply w-12 h-12 rounded-xl mb-3 mx-auto hidden md:flex;
+    @apply bg-accent/20 text-accent;
+    @apply items-center justify-center;
   }
 
-  .pathway-arrow {
-    @apply block;
-  }
-
-  .pathway-arrow svg {
-    @apply rotate-90 md:rotate-0;
-  }
-
+  /* Study System Rows */
   .theme-row {
     @apply flex flex-col md:flex-row gap-6 p-4 rounded-xl;
     @apply bg-surface-card border border-line;
@@ -306,37 +358,60 @@ import { studySystems, researchPillars } from '@data/research';
   }
 
   .theme-image {
-    @apply w-full md:w-2/5 aspect-video md:aspect-[4/3] rounded-lg overflow-hidden flex-shrink-0;
+    @apply w-full md:w-2/5 aspect-[16/10] md:aspect-[4/3] rounded-lg overflow-hidden flex-shrink-0;
   }
 
   .theme-image img {
-    @apply w-full h-full object-cover;
+    @apply w-full h-full object-cover transition-transform duration-500;
+  }
+
+  .theme-row:hover .theme-image img {
+    @apply scale-105;
   }
 
   .theme-content {
     @apply flex flex-col justify-center py-4;
   }
 
+  /* Field Site Cards with proper hover states */
   .site-card {
     @apply bg-surface-card rounded-xl border border-line overflow-hidden;
     @apply transition-all duration-300;
   }
 
   .site-card:hover {
-    @apply -translate-y-1 shadow-lg;
+    @apply -translate-y-2 shadow-xl border-accent/30;
   }
 
   .site-image {
-    @apply w-full aspect-video object-cover;
+    @apply w-full aspect-video object-cover transition-transform duration-500;
+  }
+
+  .site-card:hover .site-image {
+    @apply scale-105;
   }
 
   .site-content {
     @apply p-5;
   }
 
+  .site-content h3 {
+    @apply transition-colors duration-200;
+  }
+
+  .site-card:hover .site-content h3 {
+    @apply text-accent;
+  }
+
+  /* CTA Card */
   .cta-card {
     @apply flex flex-col md:flex-row gap-8 p-8 rounded-xl;
-    @apply bg-white/5 border border-white/10;
+    @apply bg-gradient-to-br from-white/5 to-white/10 border border-white/10;
+    @apply transition-all duration-300;
+  }
+
+  .cta-card:hover {
+    @apply border-accent/30;
   }
 
   .cta-content {
@@ -348,6 +423,76 @@ import { studySystems, researchPillars } from '@data/research';
   }
 
   .cta-image img {
-    @apply w-full h-full object-cover;
+    @apply w-full h-full object-cover transition-transform duration-500;
+  }
+
+  .cta-card:hover .cta-image img {
+    @apply scale-105;
+  }
+
+  /* Image loading skeleton */
+  .site-card .site-image,
+  .theme-image img,
+  .cta-image img {
+    @apply bg-navy-card;
+  }
+
+  /* Reduced motion */
+  @media (prefers-reduced-motion: reduce) {
+    .pathway-number,
+    .pathway-card,
+    .site-image,
+    .theme-image img,
+    .cta-image img {
+      transition: none !important;
+      transform: none !important;
+    }
   }
 </style>
+
+<script>
+  // Active section indicator for jump navigation
+  const initJumpNavHighlight = () => {
+    const sections = document.querySelectorAll('section[id]');
+    const jumpLinks = document.querySelectorAll('.jump-link[data-section]');
+
+    if (sections.length === 0 || jumpLinks.length === 0) return;
+
+    const observerOptions = {
+      rootMargin: '-20% 0px -60% 0px',
+      threshold: 0
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          const sectionId = entry.target.id;
+
+          jumpLinks.forEach((link) => {
+            const linkSection = link.getAttribute('data-section');
+            if (linkSection === sectionId) {
+              link.classList.add('active');
+            } else {
+              link.classList.remove('active');
+            }
+          });
+        }
+      });
+    }, observerOptions);
+
+    sections.forEach((section) => {
+      if (section.id) {
+        observer.observe(section);
+      }
+    });
+
+    // Cleanup function
+    return () => observer.disconnect();
+  };
+
+  // Initialize
+  initJumpNavHighlight();
+
+  // Re-init after view transitions
+  document.addEventListener('astro:after-swap', initJumpNavHighlight);
+</script>

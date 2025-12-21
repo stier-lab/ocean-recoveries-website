@@ -5,8 +5,22 @@ import { posts } from '@data/posts';
 // Sort posts by date (newest first)
 const sortedPosts = [...posts].sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
 
-// Get unique tags
-const allTags = [...new Set(posts.flatMap((p) => p.tags))].sort();
+// Get unique tags with counts
+const tagCounts = posts.reduce((acc, post) => {
+  post.tags.forEach(tag => {
+    acc[tag] = (acc[tag] || 0) + 1;
+  });
+  return acc;
+}, {} as Record<string, number>);
+
+// Separate year tags from topic tags
+const yearTags = Object.keys(tagCounts).filter(tag => /^\d{4}$/.test(tag)).sort((a, b) => Number(b) - Number(a));
+const topicTags = Object.keys(tagCounts).filter(tag => !/^\d{4}$/.test(tag) && tag !== 'Publication').sort();
+
+// Stats
+const totalPosts = posts.length;
+const openAccessCount = posts.filter(p => p.openAccess).length;
+const yearRange = yearTags.length > 0 ? `${yearTags[yearTags.length - 1]}-${yearTags[0]}` : '';
 
 // Format date
 const formatDate = (dateStr: string) => {
@@ -16,80 +30,278 @@ const formatDate = (dateStr: string) => {
     day: 'numeric',
   });
 };
+
+// Calculate reading time
+const getReadingTime = (content: string) => {
+  const words = content.split(/\s+/).length;
+  return Math.max(1, Math.ceil(words / 200));
+};
+
+// Featured post (most recent)
+const featuredPost = sortedPosts[0];
+const remainingPosts = sortedPosts.slice(1);
 ---
 
 <Layout
-  title="News"
+  title="News & Research"
   description="Latest news, research updates, and stories from the Ocean Recoveries Lab at UC Santa Barbara."
 >
-  <!-- Hero -->
-  <section class="relative py-16 md:py-20 overflow-hidden bg-navy-deep">
-    <div class="container text-center text-white">
-      <h1 class="text-white mb-4">News & Updates</h1>
-      <p class="text-xl text-white/80 max-w-2xl mx-auto">
-        Research highlights, lab news, and stories from the field.
-      </p>
+  <!-- Hero with Search -->
+  <section class="hero-section">
+    <div class="hero-bg"></div>
+    <div class="container relative z-10">
+      <div class="hero-content">
+        <h1 class="hero-title">News & Research</h1>
+        <p class="hero-subtitle">
+          Research highlights, lab news, and stories from the field.
+        </p>
+
+        <!-- Search Bar -->
+        <div class="search-container">
+          <div class="search-input-wrapper">
+            <svg class="search-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+            </svg>
+            <input
+              type="text"
+              id="search-input"
+              placeholder="Search articles by title or topic..."
+              class="search-input"
+            />
+            <button id="clear-search" class="clear-search hidden">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+              </svg>
+            </button>
+          </div>
+        </div>
+
+        <!-- Stats -->
+        <div class="hero-stats">
+          <div class="stat">
+            <span class="stat-number">{totalPosts}</span>
+            <span class="stat-label">Publications</span>
+          </div>
+          <div class="stat-divider"></div>
+          <div class="stat">
+            <span class="stat-number">{openAccessCount}</span>
+            <span class="stat-label">Open Access</span>
+          </div>
+          <div class="stat-divider"></div>
+          <div class="stat">
+            <span class="stat-number">{yearRange}</span>
+            <span class="stat-label">Year Range</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Filters & Controls -->
+  <section class="filters-section">
+    <div class="container">
+      <div class="filters-bar">
+        <!-- Left: Filter controls -->
+        <div class="filters-left">
+          <!-- All Posts -->
+          <button class="filter-chip active" data-tag="all">
+            All
+            <span class="chip-count">{totalPosts}</span>
+          </button>
+
+          <!-- Year Dropdown -->
+          <div class="filter-dropdown">
+            <button class="dropdown-trigger" id="year-dropdown-btn">
+              <span>Year</span>
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+              </svg>
+            </button>
+            <div class="dropdown-menu" id="year-dropdown">
+              {yearTags.map(year => (
+                <button class="dropdown-item" data-tag={year}>
+                  {year}
+                  <span class="item-count">{tagCounts[year]}</span>
+                </button>
+              ))}
+            </div>
+          </div>
+
+          <!-- Topic Dropdown -->
+          <div class="filter-dropdown">
+            <button class="dropdown-trigger" id="topic-dropdown-btn">
+              <span>Topic</span>
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+              </svg>
+            </button>
+            <div class="dropdown-menu" id="topic-dropdown">
+              {topicTags.map(topic => (
+                <button class="dropdown-item" data-tag={topic}>
+                  {topic}
+                  <span class="item-count">{tagCounts[topic]}</span>
+                </button>
+              ))}
+            </div>
+          </div>
+
+          <!-- Open Access Toggle -->
+          <button class="filter-chip" id="oa-filter" data-filter="openAccess">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 11V7a4 4 0 118 0m-4 8v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2z" />
+            </svg>
+            Open Access
+          </button>
+        </div>
+
+        <!-- Right: Sort & View -->
+        <div class="filters-right">
+          <!-- Sort Dropdown -->
+          <div class="filter-dropdown">
+            <button class="dropdown-trigger" id="sort-dropdown-btn">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 4h13M3 8h9m-9 4h6m4 0l4-4m0 0l4 4m-4-4v12" />
+              </svg>
+              <span id="sort-label">Newest</span>
+            </button>
+            <div class="dropdown-menu dropdown-right" id="sort-dropdown">
+              <button class="dropdown-item active" data-sort="newest">Newest First</button>
+              <button class="dropdown-item" data-sort="oldest">Oldest First</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Active Filters Display -->
+      <div class="active-filters" id="active-filters">
+        <!-- Populated by JS -->
+      </div>
+    </div>
+  </section>
+
+  <!-- Featured Post -->
+  <section class="section bg-surface pt-0">
+    <div class="container">
+      <article class="featured-card" data-tags={featuredPost.tags.join(',')} data-title={featuredPost.title.toLowerCase()} data-excerpt={featuredPost.excerpt.toLowerCase()} data-open-access={featuredPost.openAccess ? 'true' : 'false'} data-date={featuredPost.date}>
+        <a href={`/news/${featuredPost.slug}`} class="featured-link">
+          <div class="featured-image">
+            <img src={featuredPost.featuredImage} alt={featuredPost.title} loading="eager" />
+            <div class="featured-overlay"></div>
+          </div>
+          <div class="featured-content">
+            <div class="featured-badge">Latest Research</div>
+            <div class="featured-meta">
+              {featuredPost.tags.slice(0, 2).map(tag => (
+                <span class="featured-tag">{tag}</span>
+              ))}
+              <span class="meta-dot">•</span>
+              <span>{getReadingTime(featuredPost.content)} min read</span>
+              {featuredPost.openAccess && (
+                <>
+                  <span class="meta-dot">•</span>
+                  <span class="oa-badge">
+                    <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 11V7a4 4 0 118 0m-4 8v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2z" />
+                    </svg>
+                    Open Access
+                  </span>
+                </>
+              )}
+            </div>
+            <h2 class="featured-title">{featuredPost.title}</h2>
+            <p class="featured-excerpt">{featuredPost.excerpt}</p>
+            <div class="featured-footer">
+              <span class="featured-author">By {featuredPost.author}</span>
+              <time datetime={featuredPost.date}>{formatDate(featuredPost.date)}</time>
+            </div>
+          </div>
+        </a>
+        <div class="featured-actions">
+          {featuredPost.pdfUrl && (
+            <a href={featuredPost.pdfUrl} target="_blank" rel="noopener noreferrer" class="action-btn action-pdf">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+              </svg>
+              Download PDF
+            </a>
+          )}
+          {featuredPost.doiUrl && (
+            <a href={featuredPost.doiUrl} target="_blank" rel="noopener noreferrer" class="action-btn action-doi">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+              </svg>
+              View Paper
+            </a>
+          )}
+        </div>
+      </article>
     </div>
   </section>
 
   <!-- Posts Grid -->
-  <section class="section bg-surface">
+  <section class="section bg-surface pt-0">
     <div class="container">
-      <!-- Tag filters -->
-      <div class="flex flex-wrap gap-2 mb-10 scroll-reveal">
-        <button class="chip active" data-tag="all">All Posts</button>
-        {allTags.map((tag) => (
-          <button class="chip" data-tag={tag}>{tag}</button>
-        ))}
+      <!-- Results count -->
+      <div class="results-header">
+        <h2 class="results-title">More Research</h2>
+        <p class="results-count" id="results-count">
+          Showing <span id="visible-count">{remainingPosts.length}</span> of <span id="total-count">{remainingPosts.length}</span> articles
+        </p>
       </div>
 
-      <!-- Posts -->
-      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6" id="posts-grid">
-        {sortedPosts.map((post, i) => (
+      <!-- Posts Grid -->
+      <div class="posts-grid" id="posts-grid">
+        {remainingPosts.map((post, i) => (
           <article
             class={`post-card scroll-reveal stagger-${(i % 6) + 1}`}
             data-tags={post.tags.join(',')}
+            data-title={post.title.toLowerCase()}
+            data-excerpt={post.excerpt.toLowerCase()}
+            data-open-access={post.openAccess ? 'true' : 'false'}
+            data-date={post.date}
           >
             <a href={`/news/${post.slug}`} class="post-link">
               <div class="post-image img-zoom">
                 <img src={post.featuredImage} alt={post.title} loading="lazy" />
+                {post.openAccess && (
+                  <div class="post-oa-badge">
+                    <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 11V7a4 4 0 118 0m-4 8v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2z" />
+                    </svg>
+                  </div>
+                )}
               </div>
               <div class="post-content">
                 <div class="post-meta">
                   <time datetime={post.date}>{formatDate(post.date)}</time>
                   <span class="meta-sep">•</span>
-                  <span>{post.author}</span>
-                  {post.openAccess && (
-                    <>
-                      <span class="meta-sep">•</span>
-                      <span class="open-access-badge">Open Access</span>
-                    </>
-                  )}
+                  <span>{getReadingTime(post.content)} min</span>
                 </div>
-                <h2 class="post-title">{post.title}</h2>
+                <h3 class="post-title">{post.title}</h3>
                 <p class="post-excerpt">{post.excerpt}</p>
-                <div class="post-tags">
-                  {post.tags.slice(0, 3).map((tag) => (
-                    <span class="tag">{tag}</span>
-                  ))}
+                <div class="post-footer">
+                  <span class="post-author">{post.author}</span>
+                  <div class="post-tags">
+                    {post.tags.slice(0, 2).map((tag) => (
+                      <span class="tag">{tag}</span>
+                    ))}
+                  </div>
                 </div>
               </div>
             </a>
-            {/* Quick Actions Bar */}
             <div class="post-actions">
               {post.pdfUrl && (
                 <a
                   href={post.pdfUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  class="action-btn action-pdf"
+                  class="action-btn-sm action-pdf"
                   title="Download PDF"
-                  onclick="event.stopPropagation();"
                 >
                   <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
                   </svg>
-                  <span>PDF</span>
+                  PDF
                 </a>
               )}
               {post.doiUrl && (
@@ -97,18 +309,17 @@ const formatDate = (dateStr: string) => {
                   href={post.doiUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  class="action-btn action-doi"
+                  class="action-btn-sm action-doi"
                   title="View Publication"
-                  onclick="event.stopPropagation();"
                 >
                   <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
                   </svg>
-                  <span>DOI</span>
+                  DOI
                 </a>
               )}
               <button
-                class="action-btn action-share"
+                class="action-btn-sm action-share"
                 title="Share"
                 data-title={post.title}
                 data-url={`/news/${post.slug}`}
@@ -116,7 +327,7 @@ const formatDate = (dateStr: string) => {
                 <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z" />
                 </svg>
-                <span>Share</span>
+                Share
               </button>
             </div>
           </article>
@@ -124,32 +335,51 @@ const formatDate = (dateStr: string) => {
       </div>
 
       <!-- Empty state -->
-      <div id="no-posts" class="hidden text-center py-16">
-        <p class="text-muted text-lg">
-          No posts found with that tag.
-        </p>
-        <button class="btn btn-secondary mt-4" id="clear-filter">
-          Show All Posts
+      <div id="no-posts" class="empty-state hidden">
+        <div class="empty-icon">
+          <svg class="w-16 h-16" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9.172 16.172a4 4 0 015.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+          </svg>
+        </div>
+        <h3 class="empty-title">No articles found</h3>
+        <p class="empty-text">Try adjusting your search or filters</p>
+        <button class="btn btn-primary mt-4" id="clear-all-filters">
+          Clear All Filters
+        </button>
+      </div>
+
+      <!-- Load More -->
+      <div class="load-more-container" id="load-more-container">
+        <button class="btn btn-secondary" id="load-more-btn">
+          Load More Articles
         </button>
       </div>
     </div>
   </section>
 
   <!-- Subscribe CTA -->
-  <section class="section bg-navy-highlight">
+  <section class="cta-section">
     <div class="container">
-      <div class="max-w-xl mx-auto text-center scroll-reveal">
-        <h2 class="mb-4">Stay Updated</h2>
-        <p class="text-muted mb-6">
+      <div class="cta-content">
+        <div class="cta-icon">
+          <svg class="w-12 h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9" />
+          </svg>
+        </div>
+        <h2 class="cta-title">Stay Updated</h2>
+        <p class="cta-text">
           Follow our lab on social media or check back here for the latest updates on our research.
         </p>
-        <div class="flex justify-center gap-4">
+        <div class="cta-buttons">
           <a
             href="https://twitter.com/staboratory"
             target="_blank"
             rel="noopener noreferrer"
-            class="btn btn-secondary"
+            class="btn btn-primary"
           >
+            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+            </svg>
             Follow on Twitter
           </a>
           <a
@@ -158,6 +388,9 @@ const formatDate = (dateStr: string) => {
             rel="noopener noreferrer"
             class="btn btn-secondary"
           >
+            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M12 24a7 7 0 110-14 7 7 0 010 14zm0-24L0 9.5l4.838 3.94A8 8 0 0112 9a8 8 0 017.162 4.44L24 9.5z"/>
+            </svg>
             Google Scholar
           </a>
         </div>
@@ -167,6 +400,302 @@ const formatDate = (dateStr: string) => {
 </Layout>
 
 <style>
+  /* Hero Section */
+  .hero-section {
+    @apply relative py-20 md:py-28 overflow-hidden;
+    background: linear-gradient(135deg, #0b2545 0%, #0f172a 50%, #1e3a5f 100%);
+  }
+
+  .hero-bg {
+    @apply absolute inset-0 opacity-30;
+    background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%2338bdf8' fill-opacity='0.1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+  }
+
+  .hero-content {
+    @apply text-center text-white max-w-3xl mx-auto;
+  }
+
+  .hero-title {
+    @apply text-white text-fluid-5xl font-black mb-4;
+  }
+
+  .hero-subtitle {
+    @apply text-xl text-white/70 mb-8 max-w-xl mx-auto;
+  }
+
+  /* Search */
+  .search-container {
+    @apply max-w-xl mx-auto mb-10;
+  }
+
+  .search-input-wrapper {
+    @apply relative flex items-center;
+  }
+
+  .search-icon {
+    @apply absolute left-4 w-5 h-5 text-white/50;
+  }
+
+  .search-input {
+    @apply w-full pl-12 pr-12 py-4 rounded-2xl;
+    @apply bg-white/10 border border-white/20 text-white placeholder-white/50;
+    @apply focus:outline-none focus:border-accent focus:bg-white/15;
+    @apply transition-all duration-200;
+  }
+
+  .clear-search {
+    @apply absolute right-4 p-1 rounded-full text-white/50 hover:text-white hover:bg-white/10;
+    @apply transition-all duration-200 cursor-pointer;
+  }
+
+  .clear-search.hidden {
+    @apply invisible opacity-0;
+  }
+
+  /* Hero Stats */
+  .hero-stats {
+    @apply flex items-center justify-center gap-8 flex-wrap;
+  }
+
+  .stat {
+    @apply flex flex-col items-center;
+  }
+
+  .stat-number {
+    @apply text-3xl md:text-4xl font-black text-white;
+  }
+
+  .stat-label {
+    @apply text-sm text-white/60 mt-1;
+  }
+
+  .stat-divider {
+    @apply w-px h-12 bg-white/20;
+  }
+
+  /* Filters Section */
+  .filters-section {
+    @apply py-6 bg-surface sticky top-0 z-40 border-b border-line;
+  }
+
+  .filters-bar {
+    @apply flex flex-wrap items-center justify-between gap-4;
+  }
+
+  .filters-left {
+    @apply flex flex-wrap items-center gap-2;
+  }
+
+  .filters-right {
+    @apply flex items-center gap-2;
+  }
+
+  /* Filter Chips */
+  .filter-chip {
+    @apply inline-flex items-center gap-2 px-4 py-2.5 rounded-xl;
+    @apply bg-surface-card border border-line text-muted font-medium text-sm;
+    @apply hover:border-accent/50 hover:text-ink;
+    @apply transition-all duration-200 cursor-pointer;
+  }
+
+  .filter-chip.active {
+    @apply bg-accent border-accent text-white;
+  }
+
+  .chip-count {
+    @apply px-1.5 py-0.5 rounded-md text-xs;
+    @apply bg-white/20;
+  }
+
+  .filter-chip:not(.active) .chip-count {
+    @apply bg-line text-muted;
+  }
+
+  /* Dropdowns */
+  .filter-dropdown {
+    @apply relative;
+  }
+
+  .dropdown-trigger {
+    @apply inline-flex items-center gap-2 px-4 py-2.5 rounded-xl;
+    @apply bg-surface-card border border-line text-muted font-medium text-sm;
+    @apply hover:border-accent/50 hover:text-ink;
+    @apply transition-all duration-200 cursor-pointer;
+  }
+
+  .dropdown-trigger.active {
+    @apply border-accent text-accent;
+  }
+
+  .dropdown-menu {
+    @apply absolute top-full left-0 mt-2 py-2 min-w-[180px];
+    @apply bg-surface-card border border-line rounded-xl shadow-lg;
+    @apply opacity-0 invisible translate-y-2;
+    @apply transition-all duration-200 z-50;
+    @apply max-h-[300px] overflow-y-auto;
+  }
+
+  .dropdown-menu.dropdown-right {
+    @apply left-auto right-0;
+  }
+
+  .dropdown-menu.open {
+    @apply opacity-100 visible translate-y-0;
+  }
+
+  .dropdown-item {
+    @apply flex items-center justify-between w-full px-4 py-2 text-sm text-muted;
+    @apply hover:bg-accent/10 hover:text-accent;
+    @apply transition-colors duration-150 cursor-pointer;
+  }
+
+  .dropdown-item.active {
+    @apply bg-accent/10 text-accent font-medium;
+  }
+
+  .item-count {
+    @apply text-xs text-muted/70;
+  }
+
+  /* Active Filters */
+  .active-filters {
+    @apply flex flex-wrap items-center gap-2 mt-4;
+  }
+
+  .active-filters:empty {
+    @apply hidden;
+  }
+
+  .active-filter-tag {
+    @apply inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg;
+    @apply bg-accent/10 text-accent text-sm font-medium;
+  }
+
+  .remove-filter {
+    @apply p-0.5 rounded hover:bg-accent/20 cursor-pointer;
+  }
+
+  .clear-filters-btn {
+    @apply text-sm text-muted hover:text-accent cursor-pointer;
+  }
+
+  /* Featured Card */
+  .featured-card {
+    @apply relative rounded-2xl overflow-hidden mb-12;
+    @apply bg-surface-card border border-line;
+    @apply transition-all duration-300;
+  }
+
+  .featured-card:hover {
+    @apply border-accent/30 shadow-lg;
+  }
+
+  .featured-card.hidden {
+    @apply !hidden;
+  }
+
+  .featured-link {
+    @apply block no-underline;
+  }
+
+  .featured-image {
+    @apply relative aspect-[21/9] overflow-hidden;
+  }
+
+  .featured-image img {
+    @apply w-full h-full object-cover transition-transform duration-500;
+  }
+
+  .featured-card:hover .featured-image img {
+    @apply scale-105;
+  }
+
+  .featured-overlay {
+    @apply absolute inset-0;
+    background: linear-gradient(to top, rgba(15, 23, 42, 0.95) 0%, rgba(15, 23, 42, 0.7) 40%, rgba(15, 23, 42, 0.4) 100%);
+  }
+
+  .featured-content {
+    @apply absolute bottom-0 left-0 right-0 p-8;
+  }
+
+  .featured-badge {
+    @apply inline-block px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider mb-4;
+    @apply bg-accent text-white;
+  }
+
+  .featured-meta {
+    @apply flex flex-wrap items-center gap-2 text-sm text-white/70 mb-3;
+  }
+
+  .featured-tag {
+    @apply px-2 py-0.5 rounded-md bg-white/10 text-white text-xs font-medium;
+  }
+
+  .meta-dot {
+    @apply text-white/40;
+  }
+
+  .oa-badge {
+    @apply inline-flex items-center gap-1 text-green-400;
+  }
+
+  .featured-title {
+    @apply text-2xl md:text-3xl font-bold text-white mb-3;
+    @apply transition-colors duration-200;
+  }
+
+  .featured-card:hover .featured-title {
+    @apply text-accent;
+  }
+
+  .featured-excerpt {
+    @apply text-white/70 line-clamp-2 mb-4 max-w-3xl;
+  }
+
+  .featured-footer {
+    @apply flex items-center gap-4 text-sm text-white/60;
+  }
+
+  .featured-author {
+    @apply font-medium text-white/80;
+  }
+
+  .featured-actions {
+    @apply flex items-center gap-3 px-8 py-4 border-t border-line bg-surface-card/80;
+  }
+
+  .action-btn {
+    @apply inline-flex items-center gap-2 px-4 py-2 rounded-lg font-medium text-sm;
+    @apply transition-all duration-200 no-underline;
+  }
+
+  .action-pdf {
+    @apply bg-red-500/10 text-red-400 hover:bg-red-500 hover:text-white;
+  }
+
+  .action-doi {
+    @apply bg-blue-500/10 text-blue-400 hover:bg-blue-500 hover:text-white;
+  }
+
+  /* Results Header */
+  .results-header {
+    @apply flex items-center justify-between mb-8;
+  }
+
+  .results-title {
+    @apply text-2xl font-bold text-ink;
+  }
+
+  .results-count {
+    @apply text-sm text-muted;
+  }
+
+  /* Posts Grid */
+  .posts-grid {
+    @apply grid md:grid-cols-2 lg:grid-cols-3 gap-6;
+  }
+
   .post-card {
     @apply bg-surface-card rounded-xl border border-line overflow-hidden;
     @apply transition-all duration-300;
@@ -185,11 +714,15 @@ const formatDate = (dateStr: string) => {
   }
 
   .post-image {
-    @apply aspect-video overflow-hidden;
+    @apply relative aspect-[4/3] overflow-hidden;
   }
 
   .post-image img {
     @apply w-full h-full object-cover;
+  }
+
+  .post-oa-badge {
+    @apply absolute top-3 right-3 p-1.5 rounded-full bg-green-500/90 text-white;
   }
 
   .post-content {
@@ -197,7 +730,7 @@ const formatDate = (dateStr: string) => {
   }
 
   .post-meta {
-    @apply flex items-center gap-2 text-sm text-muted mb-2;
+    @apply flex items-center gap-2 text-xs text-muted mb-2;
   }
 
   .meta-sep {
@@ -217,105 +750,375 @@ const formatDate = (dateStr: string) => {
     @apply text-sm text-muted line-clamp-2 mb-4;
   }
 
+  .post-footer {
+    @apply flex items-center justify-between;
+  }
+
+  .post-author {
+    @apply text-xs text-muted font-medium;
+  }
+
   .post-tags {
-    @apply flex flex-wrap gap-2;
+    @apply flex flex-wrap gap-1;
   }
 
   .post-tags .tag {
-    @apply px-2 py-1 text-xs font-semibold rounded-md;
+    @apply px-2 py-0.5 text-xs font-medium rounded-md;
     @apply bg-line/50 text-muted;
   }
 
-  .open-access-badge {
-    @apply text-green-400 font-medium;
-  }
-
-  /* Filter chip states */
-  .chip {
-    @apply cursor-pointer;
-  }
-
-  .chip:not(.active) {
-    @apply opacity-70;
-  }
-
-  .chip:not(.active):hover {
-    @apply opacity-100;
-  }
-
-  /* Post action buttons */
+  /* Post Actions */
   .post-actions {
     @apply flex items-center gap-2 px-5 py-3 border-t border-line bg-surface-card/50;
   }
 
-  .action-btn {
+  .action-btn-sm {
     @apply inline-flex items-center gap-1.5 px-3 py-1.5 rounded-md text-xs font-medium;
-    @apply transition-all duration-200 cursor-pointer;
+    @apply transition-all duration-200 cursor-pointer no-underline;
     @apply border border-transparent;
   }
 
-  .action-pdf {
+  .action-btn-sm.action-pdf {
     @apply bg-red-500/10 text-red-400 hover:bg-red-500 hover:text-white;
   }
 
-  .action-doi {
+  .action-btn-sm.action-doi {
     @apply bg-blue-500/10 text-blue-400 hover:bg-blue-500 hover:text-white;
   }
 
-  .action-share {
+  .action-btn-sm.action-share {
     @apply bg-accent/10 text-accent hover:bg-accent hover:text-white ml-auto;
   }
 
-  .action-share.copied {
+  .action-btn-sm.action-share.copied {
     @apply bg-green-500 text-white;
+  }
+
+  /* Empty State */
+  .empty-state {
+    @apply text-center py-16;
+  }
+
+  .empty-state.hidden {
+    @apply !hidden;
+  }
+
+  .empty-icon {
+    @apply text-muted/50 mb-4;
+  }
+
+  .empty-title {
+    @apply text-xl font-bold text-ink mb-2;
+  }
+
+  .empty-text {
+    @apply text-muted;
+  }
+
+  /* Load More */
+  .load-more-container {
+    @apply text-center mt-12;
+  }
+
+  .load-more-container.hidden {
+    @apply !hidden;
+  }
+
+  /* CTA Section */
+  .cta-section {
+    @apply py-20;
+    background: linear-gradient(135deg, #1e3a5f 0%, #0f172a 100%);
+  }
+
+  .cta-content {
+    @apply max-w-xl mx-auto text-center;
+  }
+
+  .cta-icon {
+    @apply inline-flex items-center justify-center w-20 h-20 rounded-full mb-6;
+    @apply bg-accent/10 text-accent;
+  }
+
+  .cta-title {
+    @apply text-3xl font-black text-white mb-4;
+  }
+
+  .cta-text {
+    @apply text-white/70 mb-8;
+  }
+
+  .cta-buttons {
+    @apply flex flex-wrap justify-center gap-4;
   }
 </style>
 
 <script>
-  const initFilters = () => {
-    const chips = document.querySelectorAll('.chip[data-tag]');
-    const posts = document.querySelectorAll('.post-card');
-    const noPosts = document.getElementById('no-posts');
-    const clearBtn = document.getElementById('clear-filter');
+  const initNewsPage = () => {
+    // Elements
+    const searchInput = document.getElementById('search-input') as HTMLInputElement;
+    const clearSearch = document.getElementById('clear-search');
+    const allPosts = document.querySelectorAll('.post-card, .featured-card');
+    const featuredCard = document.querySelector('.featured-card');
+    const postsGrid = document.getElementById('posts-grid');
+    const noPostsEl = document.getElementById('no-posts');
+    const activeFiltersEl = document.getElementById('active-filters');
+    const visibleCountEl = document.getElementById('visible-count');
+    const loadMoreContainer = document.getElementById('load-more-container');
+    const loadMoreBtn = document.getElementById('load-more-btn');
+    const clearAllBtn = document.getElementById('clear-all-filters');
+    const oaFilter = document.getElementById('oa-filter');
+    const sortLabel = document.getElementById('sort-label');
 
-    const filterPosts = (tag: string) => {
-      let visibleCount = 0;
+    // State
+    let activeTag = 'all';
+    let searchQuery = '';
+    let openAccessOnly = false;
+    let sortOrder = 'newest';
+    let visiblePostsCount = 12;
 
-      posts.forEach((post) => {
-        const postTags = (post as HTMLElement).dataset.tags?.split(',') || [];
-        const show = tag === 'all' || postTags.includes(tag);
-
-        post.classList.toggle('hidden', !show);
-        if (show) visibleCount++;
+    // Close all dropdowns
+    const closeAllDropdowns = () => {
+      document.querySelectorAll('.dropdown-menu').forEach(menu => {
+        menu.classList.remove('open');
       });
-
-      // Show/hide empty state
-      noPosts?.classList.toggle('hidden', visibleCount > 0);
-
-      // Update active chip
-      chips.forEach((chip) => {
-        chip.classList.toggle('active', (chip as HTMLElement).dataset.tag === tag);
+      document.querySelectorAll('.dropdown-trigger').forEach(btn => {
+        btn.classList.remove('active');
       });
     };
 
-    chips.forEach((chip) => {
+    // Setup dropdowns
+    const setupDropdowns = () => {
+      const dropdownTriggers = document.querySelectorAll('.dropdown-trigger');
+
+      dropdownTriggers.forEach(trigger => {
+        trigger.addEventListener('click', (e) => {
+          e.stopPropagation();
+          const menu = trigger.nextElementSibling as HTMLElement;
+          const isOpen = menu?.classList.contains('open');
+          closeAllDropdowns();
+          if (!isOpen && menu) {
+            menu.classList.add('open');
+            trigger.classList.add('active');
+          }
+        });
+      });
+
+      // Close on outside click
+      document.addEventListener('click', closeAllDropdowns);
+    };
+
+    // Filter and sort posts
+    const filterPosts = () => {
+      let visibleCount = 0;
+      let shownCount = 0;
+      const postsArray = Array.from(allPosts);
+
+      // Sort posts
+      if (sortOrder === 'oldest') {
+        postsArray.sort((a, b) => {
+          const dateA = (a as HTMLElement).dataset.date || '';
+          const dateB = (b as HTMLElement).dataset.date || '';
+          return dateA.localeCompare(dateB);
+        });
+      } else {
+        postsArray.sort((a, b) => {
+          const dateA = (a as HTMLElement).dataset.date || '';
+          const dateB = (b as HTMLElement).dataset.date || '';
+          return dateB.localeCompare(dateA);
+        });
+      }
+
+      // Re-append sorted posts (excluding featured)
+      const gridPosts = postsArray.filter(p => !p.classList.contains('featured-card'));
+      if (postsGrid) {
+        gridPosts.forEach(post => postsGrid.appendChild(post));
+      }
+
+      postsArray.forEach((post) => {
+        const el = post as HTMLElement;
+        const postTags = el.dataset.tags?.split(',') || [];
+        const postTitle = el.dataset.title || '';
+        const postExcerpt = el.dataset.excerpt || '';
+        const isOpenAccess = el.dataset.openAccess === 'true';
+
+        // Check filters
+        const matchesTag = activeTag === 'all' || postTags.includes(activeTag);
+        const matchesSearch = !searchQuery ||
+          postTitle.includes(searchQuery.toLowerCase()) ||
+          postExcerpt.includes(searchQuery.toLowerCase());
+        const matchesOA = !openAccessOnly || isOpenAccess;
+
+        const shouldShow = matchesTag && matchesSearch && matchesOA;
+
+        if (shouldShow) {
+          visibleCount++;
+          if (!post.classList.contains('featured-card') && shownCount >= visiblePostsCount) {
+            post.classList.add('hidden');
+          } else {
+            post.classList.remove('hidden');
+            shownCount++;
+          }
+        } else {
+          post.classList.add('hidden');
+        }
+      });
+
+      // Update UI
+      if (visibleCountEl) {
+        visibleCountEl.textContent = String(Math.min(shownCount, visibleCount));
+      }
+
+      noPostsEl?.classList.toggle('hidden', visibleCount > 0);
+
+      // Show/hide load more
+      const totalVisible = visibleCount - (featuredCard && !featuredCard.classList.contains('hidden') ? 1 : 0);
+      loadMoreContainer?.classList.toggle('hidden', shownCount >= totalVisible || visibleCount === 0);
+
+      updateActiveFilters();
+    };
+
+    // Update active filters display
+    const updateActiveFilters = () => {
+      if (!activeFiltersEl) return;
+
+      const filters: string[] = [];
+
+      if (activeTag !== 'all') {
+        filters.push(activeTag);
+      }
+      if (searchQuery) {
+        filters.push(`"${searchQuery}"`);
+      }
+      if (openAccessOnly) {
+        filters.push('Open Access');
+      }
+
+      if (filters.length === 0) {
+        activeFiltersEl.innerHTML = '';
+        return;
+      }
+
+      activeFiltersEl.innerHTML = filters.map(f => `
+        <span class="active-filter-tag">
+          ${f}
+          <button class="remove-filter" data-filter="${f}">
+            <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+            </svg>
+          </button>
+        </span>
+      `).join('') + `
+        <button class="clear-filters-btn">Clear all</button>
+      `;
+
+      // Add event listeners
+      activeFiltersEl.querySelectorAll('.remove-filter').forEach(btn => {
+        btn.addEventListener('click', () => {
+          const filter = (btn as HTMLElement).dataset.filter;
+          if (filter === 'Open Access') {
+            openAccessOnly = false;
+            oaFilter?.classList.remove('active');
+          } else if (filter?.startsWith('"')) {
+            searchQuery = '';
+            if (searchInput) searchInput.value = '';
+            clearSearch?.classList.add('hidden');
+          } else {
+            activeTag = 'all';
+            updateChipStates();
+          }
+          filterPosts();
+        });
+      });
+
+      activeFiltersEl.querySelector('.clear-filters-btn')?.addEventListener('click', clearAllFilters);
+    };
+
+    // Update chip states
+    const updateChipStates = () => {
+      document.querySelectorAll('.filter-chip[data-tag]').forEach(chip => {
+        chip.classList.toggle('active', (chip as HTMLElement).dataset.tag === activeTag);
+      });
+      document.querySelectorAll('.dropdown-item[data-tag]').forEach(item => {
+        item.classList.toggle('active', (item as HTMLElement).dataset.tag === activeTag);
+      });
+    };
+
+    // Clear all filters
+    const clearAllFilters = () => {
+      activeTag = 'all';
+      searchQuery = '';
+      openAccessOnly = false;
+      if (searchInput) searchInput.value = '';
+      clearSearch?.classList.add('hidden');
+      oaFilter?.classList.remove('active');
+      updateChipStates();
+      filterPosts();
+    };
+
+    // Setup filter chips
+    document.querySelectorAll('.filter-chip[data-tag]').forEach(chip => {
       chip.addEventListener('click', () => {
-        const tag = (chip as HTMLElement).dataset.tag || 'all';
-        filterPosts(tag);
+        activeTag = (chip as HTMLElement).dataset.tag || 'all';
+        updateChipStates();
+        closeAllDropdowns();
+        filterPosts();
       });
     });
 
-    clearBtn?.addEventListener('click', () => filterPosts('all'));
-  };
+    // Setup dropdown items
+    document.querySelectorAll('.dropdown-item[data-tag]').forEach(item => {
+      item.addEventListener('click', () => {
+        activeTag = (item as HTMLElement).dataset.tag || 'all';
+        updateChipStates();
+        closeAllDropdowns();
+        filterPosts();
+      });
+    });
 
-  initFilters();
-  document.addEventListener('astro:after-swap', initFilters);
+    // Setup sort dropdown
+    document.querySelectorAll('.dropdown-item[data-sort]').forEach(item => {
+      item.addEventListener('click', () => {
+        sortOrder = (item as HTMLElement).dataset.sort || 'newest';
+        document.querySelectorAll('.dropdown-item[data-sort]').forEach(i => i.classList.remove('active'));
+        item.classList.add('active');
+        if (sortLabel) sortLabel.textContent = sortOrder === 'newest' ? 'Newest' : 'Oldest';
+        closeAllDropdowns();
+        filterPosts();
+      });
+    });
 
-  // Share button functionality
-  const initShareButtons = () => {
-    const shareButtons = document.querySelectorAll('.action-share');
+    // Setup search
+    searchInput?.addEventListener('input', () => {
+      searchQuery = searchInput.value.trim();
+      clearSearch?.classList.toggle('hidden', !searchQuery);
+      filterPosts();
+    });
 
-    shareButtons.forEach((btn) => {
+    clearSearch?.addEventListener('click', () => {
+      searchQuery = '';
+      if (searchInput) searchInput.value = '';
+      clearSearch.classList.add('hidden');
+      filterPosts();
+    });
+
+    // Setup OA filter
+    oaFilter?.addEventListener('click', () => {
+      openAccessOnly = !openAccessOnly;
+      oaFilter.classList.toggle('active', openAccessOnly);
+      filterPosts();
+    });
+
+    // Load more
+    loadMoreBtn?.addEventListener('click', () => {
+      visiblePostsCount += 12;
+      filterPosts();
+    });
+
+    // Clear all button
+    clearAllBtn?.addEventListener('click', clearAllFilters);
+
+    // Setup share buttons
+    document.querySelectorAll('.action-share, .action-btn-sm.action-share').forEach(btn => {
       btn.addEventListener('click', async (e) => {
         e.preventDefault();
         e.stopPropagation();
@@ -324,17 +1127,15 @@ const formatDate = (dateStr: string) => {
         const title = button.dataset.title || '';
         const url = window.location.origin + (button.dataset.url || '');
 
-        // Try native share API first (mobile)
         if (navigator.share) {
           try {
             await navigator.share({ title, url });
             return;
-          } catch (err) {
-            // User cancelled or error, fall through to copy
+          } catch {
+            // Fall through to copy
           }
         }
 
-        // Fallback: copy to clipboard
         try {
           await navigator.clipboard.writeText(url);
           const span = button.querySelector('span');
@@ -351,8 +1152,12 @@ const formatDate = (dateStr: string) => {
         }
       });
     });
+
+    // Initialize
+    setupDropdowns();
+    filterPosts();
   };
 
-  initShareButtons();
-  document.addEventListener('astro:after-swap', initShareButtons);
+  initNewsPage();
+  document.addEventListener('astro:after-swap', initNewsPage);
 </script>

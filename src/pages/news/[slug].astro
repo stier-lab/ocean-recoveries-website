@@ -20,141 +20,255 @@ const formatDate = (dateStr: string) => {
   });
 };
 
+// Calculate reading time (average 200 words per minute)
+const wordCount = post.content.split(/\s+/).length;
+const readingTime = Math.max(1, Math.ceil(wordCount / 200));
+
+// Extract key findings from content (sentences with numbers/percentages or key phrases)
+const extractKeyFindings = (content: string): string[] => {
+  const sentences = content.split(/[.!?]+/).filter(s => s.trim().length > 20);
+  const findings: string[] = [];
+
+  for (const sentence of sentences) {
+    // Look for sentences with statistics, percentages, or key finding indicators
+    if (
+      /\d+%|\d+x|\d+-fold|increased|decreased|found that|revealed|discovered|showed|demonstrated/i.test(sentence) &&
+      !/citation|doi|paper|read the full/i.test(sentence)
+    ) {
+      const cleaned = sentence.trim().replace(/^\*+|\*+$/g, '').trim();
+      if (cleaned.length > 30 && cleaned.length < 200 && findings.length < 3) {
+        findings.push(cleaned);
+      }
+    }
+  }
+
+  return findings;
+};
+
+// Extract a pull quote (a compelling sentence for highlighting)
+const extractPullQuote = (content: string): string | null => {
+  const sentences = content.split(/[.!?]+/).filter(s => s.trim().length > 40 && s.trim().length < 180);
+  for (const sentence of sentences) {
+    if (/remarkable|surprising|troubling|critical|essential|unprecedented|striking/i.test(sentence) &&
+        !/citation|doi/i.test(sentence)) {
+      return sentence.trim() + '.';
+    }
+  }
+  return null;
+};
+
+const keyFindings = extractKeyFindings(post.content);
+const pullQuote = extractPullQuote(post.content);
+
 // Get related posts (same tags, excluding current)
 const relatedPosts = posts
   .filter((p) => p.slug !== post.slug && p.tags.some((t) => post.tags.includes(t)))
-  .slice(0, 2);
+  .slice(0, 3);
 
 const breadcrumbs = [
   { label: 'News', href: '/news' },
   { label: post.title.length > 40 ? post.title.substring(0, 40) + '...' : post.title },
 ];
+
+// Format citation for copy
+const formatCitation = () => {
+  const year = new Date(post.date).getFullYear();
+  return `${post.author} (${year}). ${post.title}. Ocean Recoveries Lab.${post.doiUrl ? ` ${post.doiUrl}` : ''}`;
+};
 ---
 
 <Layout title={post.title} description={post.excerpt}>
-  <article>
-    <!-- Hero -->
-    <header class="relative py-20 md:py-28 overflow-hidden">
-      <div
-        class="absolute inset-0 bg-cover bg-center"
-        style={`background-image: url('${post.featuredImage}');`}
-      >
-        <div class="absolute inset-0 bg-navy-deep/70"></div>
+  <!-- Reading Progress Bar -->
+  <div class="reading-progress-container">
+    <div class="reading-progress-bar" id="reading-progress"></div>
+  </div>
+
+  <article class="article-container">
+    <!-- Hero Section - Enhanced -->
+    <header class="article-hero">
+      <div class="hero-image-container">
+        <img
+          src={post.featuredImage}
+          alt={post.title}
+          class="hero-image"
+          loading="eager"
+        />
+        <div class="hero-gradient"></div>
       </div>
 
-      <div class="relative container text-white">
-        <Breadcrumbs items={breadcrumbs} class="mb-6" />
+      <div class="hero-content">
+        <div class="container">
+          <Breadcrumbs items={breadcrumbs} class="mb-6" />
 
-        <div class="flex flex-wrap gap-2 mb-4">
-          {post.tags.map((tag) => (
-            <span class="px-3 py-1 rounded-full bg-white/20 text-white text-sm font-medium">
-              {tag}
-            </span>
-          ))}
-        </div>
+          <!-- Meta badges -->
+          <div class="hero-meta">
+            <div class="flex flex-wrap gap-2 mb-4">
+              {post.tags.map((tag) => (
+                <span class="tag-badge">{tag}</span>
+              ))}
+            </div>
 
-        <h1 class="text-white mb-4 max-w-3xl">{post.title}</h1>
+            <div class="reading-meta">
+              <time datetime={post.date}>{formatDate(post.date)}</time>
+              <span class="meta-dot">•</span>
+              <span>{readingTime} min read</span>
+              {post.openAccess && (
+                <>
+                  <span class="meta-dot">•</span>
+                  <span class="open-access-indicator">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 11V7a4 4 0 118 0m-4 8v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2z" />
+                    </svg>
+                    Open Access
+                  </span>
+                </>
+              )}
+            </div>
+          </div>
 
-        <div class="flex items-center gap-4 text-white/80">
-          <time datetime={post.date}>{formatDate(post.date)}</time>
-          <span>•</span>
-          <span>By {post.author}</span>
-        </div>
+          <!-- Title -->
+          <h1 class="hero-title">{post.title}</h1>
 
-        {/* DOI and Open Access badges */}
-        {(post.doiUrl || post.openAccess) && (
-          <div class="flex items-center gap-3 mt-4">
-            {post.openAccess && (
-              <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-green-500/20 text-green-300 text-sm font-medium">
-                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 11V7a4 4 0 118 0m-4 8v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2z" />
-                </svg>
-                Open Access
-              </span>
-            )}
+          <!-- Author -->
+          <div class="hero-author">
+            <span class="author-label">By</span>
+            <span class="author-name">{post.author}</span>
+          </div>
+
+          <!-- Action buttons -->
+          <div class="hero-actions">
             {post.doiUrl && (
               <a
                 href={post.doiUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/20 text-white text-sm font-medium hover:bg-white/30 transition-colors"
+                class="action-btn-primary"
               >
-                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
                 </svg>
-                View Paper (DOI)
+                View Paper
+              </a>
+            )}
+            {post.pdfUrl && (
+              <a
+                href={post.pdfUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="action-btn-secondary"
+              >
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                </svg>
+                Download PDF
               </a>
             )}
           </div>
-        )}
+        </div>
       </div>
     </header>
 
-    <!-- Content -->
-    <div class="section bg-surface">
+    <!-- Main Content -->
+    <div class="article-body">
       <div class="container">
-        <div class="max-w-3xl mx-auto">
-          <div class="prose prose-invert prose-lg">
-            {post.content.split('\n\n').map((block) => {
+        <div class="content-wrapper">
+          <!-- Key Findings Box -->
+          {keyFindings.length > 0 && (
+            <aside class="key-findings">
+              <div class="key-findings-header">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
+                </svg>
+                <span>Key Findings</span>
+              </div>
+              <ul class="key-findings-list">
+                {keyFindings.map((finding) => (
+                  <li>{finding}</li>
+                ))}
+              </ul>
+            </aside>
+          )}
+
+          <!-- Article Content -->
+          <div class="prose-content">
+            {post.content.split('\n\n').map((block, index) => {
+              // Insert pull quote after 2nd paragraph
+              const showPullQuote = index === 2 && pullQuote;
+
               if (block.trim() === '---') {
-                return <hr class="my-8 border-t border-line" />;
+                return <hr class="content-divider" />;
               } else if (block.startsWith('## ')) {
-                return <h2 class="text-2xl font-bold mt-8 mb-4 text-ink">{block.replace('## ', '')}</h2>;
+                return <h2 class="content-heading">{block.replace('## ', '')}</h2>;
               } else if (block.startsWith('**') && block.endsWith('**')) {
-                return <p class="font-bold text-ink">{block.replace(/\*\*/g, '')}</p>;
+                return <p class="content-bold">{block.replace(/\*\*/g, '')}</p>;
               } else if (block.startsWith('- ')) {
                 const items = block.split('\n').map(item => item.replace('- ', ''));
                 return (
-                  <ul class="list-disc pl-6 space-y-2 text-muted">
+                  <ul class="content-list">
                     {items.map(item => <li>{item}</li>)}
                   </ul>
                 );
               } else if (block.startsWith('1. ')) {
                 const items = block.split('\n').map(item => item.replace(/^\d+\. /, ''));
                 return (
-                  <ol class="list-decimal pl-6 space-y-2 text-muted">
-                    {items.map(item => <li set:html={item.replace(/\*\*([^*]+)\*\*/g, '<strong class="text-ink">$1</strong>')} />)}
+                  <ol class="content-list-ordered">
+                    {items.map(item => <li set:html={item.replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>').replace(/\*([^*]+)\*/g, '<em>$1</em>')} />)}
                   </ol>
                 );
               } else {
-                // Handle bold text and links within paragraphs
+                // Handle bold text, italics, and links within paragraphs
                 const processed = block
-                  .replace(/\*\*([^*]+)\*\*/g, '<strong class="text-ink">$1</strong>')
-                  .replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2" class="text-accent hover:underline" target="_blank" rel="noopener noreferrer">$1</a>');
-                return <p class="text-muted leading-relaxed" set:html={processed} />;
+                  .replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>')
+                  .replace(/\*([^*]+)\*/g, '<em>$1</em>')
+                  .replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2" class="content-link" target="_blank" rel="noopener noreferrer">$1</a>');
+
+                return (
+                  <>
+                    {index === 0 ? (
+                      <p class="first-paragraph" set:html={processed} />
+                    ) : (
+                      <p class="content-paragraph" set:html={processed} />
+                    )}
+                    {showPullQuote && (
+                      <blockquote class="pull-quote">
+                        <p>"{pullQuote}"</p>
+                      </blockquote>
+                    )}
+                  </>
+                );
               }
             })}
           </div>
 
-          <!-- Actions: PDF Download & Share -->
-          <div class="mt-12 pt-8 border-t border-line">
-            {/* PDF Download Section */}
-            {post.pdfUrl && (
-              <div class="mb-8">
-                <h3 class="text-lg font-bold mb-4">Download Paper</h3>
-                <a
-                  href={post.pdfUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  class="inline-flex items-center gap-2 px-5 py-3 rounded-lg bg-accent text-white font-semibold hover:bg-accent/90 transition-colors"
-                >
-                  <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
-                  </svg>
-                  Download PDF
-                </a>
-              </div>
-            )}
+          <!-- Citation Section -->
+          <section class="citation-section">
+            <div class="citation-header">
+              <h3>Cite this article</h3>
+              <button class="copy-citation-btn" id="copy-citation" data-citation={formatCitation()}>
+                <svg class="w-4 h-4 copy-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2m0 0h2a2 2 0 012 2v3m2 4H10m0 0l3-3m-3 3l3 3" />
+                </svg>
+                <svg class="w-4 h-4 check-icon hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                </svg>
+                <span class="btn-text">Copy</span>
+              </button>
+            </div>
+            <div class="citation-box">
+              <p>{formatCitation()}</p>
+            </div>
+          </section>
 
-            {/* Share Section */}
-            <h3 class="text-lg font-bold mb-4">Share this article</h3>
-            <div class="flex flex-wrap gap-3">
-              {/* Twitter/X */}
+          <!-- Share Section -->
+          <section class="share-section">
+            <h3>Share this article</h3>
+            <div class="share-buttons">
+              <!-- Twitter/X -->
               <a
                 href={`https://twitter.com/intent/tweet?text=${encodeURIComponent(post.title)}&url=${encodeURIComponent(Astro.url.href)}`}
                 target="_blank"
                 rel="noopener noreferrer"
-                class="share-btn share-btn-twitter"
+                class="share-btn share-twitter"
                 title="Share on Twitter"
               >
                 <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
@@ -163,12 +277,12 @@ const breadcrumbs = [
                 <span>Twitter</span>
               </a>
 
-              {/* LinkedIn */}
+              <!-- LinkedIn -->
               <a
                 href={`https://www.linkedin.com/shareArticle?mini=true&url=${encodeURIComponent(Astro.url.href)}&title=${encodeURIComponent(post.title)}`}
                 target="_blank"
                 rel="noopener noreferrer"
-                class="share-btn share-btn-linkedin"
+                class="share-btn share-linkedin"
                 title="Share on LinkedIn"
               >
                 <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
@@ -177,24 +291,10 @@ const breadcrumbs = [
                 <span>LinkedIn</span>
               </a>
 
-              {/* Facebook */}
-              <a
-                href={`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(Astro.url.href)}`}
-                target="_blank"
-                rel="noopener noreferrer"
-                class="share-btn share-btn-facebook"
-                title="Share on Facebook"
-              >
-                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-                  <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
-                </svg>
-                <span>Facebook</span>
-              </a>
-
-              {/* Email */}
+              <!-- Email -->
               <a
                 href={`mailto:?subject=${encodeURIComponent(post.title)}&body=${encodeURIComponent(`Check out this research article: ${post.title}\n\n${Astro.url.href}`)}`}
-                class="share-btn share-btn-email"
+                class="share-btn share-email"
                 title="Share via Email"
               >
                 <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -203,15 +303,15 @@ const breadcrumbs = [
                 <span>Email</span>
               </a>
 
-              {/* Copy Link */}
+              <!-- Copy Link -->
               <button
-                class="share-btn share-btn-copy"
+                class="share-btn share-copy"
                 title="Copy link to clipboard"
                 data-url={Astro.url.href}
                 id="copy-link-btn"
               >
                 <svg class="w-5 h-5 copy-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2m0 0h2a2 2 0 012 2v3m2 4H10m0 0l3-3m-3 3l3 3" />
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1" />
                 </svg>
                 <svg class="w-5 h-5 check-icon hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
@@ -219,29 +319,37 @@ const breadcrumbs = [
                 <span class="copy-text">Copy Link</span>
               </button>
             </div>
-          </div>
+          </section>
         </div>
       </div>
     </div>
 
-    <!-- Related Posts -->
+    <!-- Related Posts - Enhanced -->
     {relatedPosts.length > 0 && (
-      <section class="section bg-navy-highlight">
+      <section class="related-section">
         <div class="container">
-          <h2 class="text-2xl font-bold mb-8 text-center">Related Posts</h2>
-          <div class="grid md:grid-cols-2 gap-6 max-w-3xl mx-auto">
+          <h2 class="related-heading">Related Research</h2>
+          <div class="related-grid">
             {relatedPosts.map((related) => (
               <a href={`/news/${related.slug}`} class="related-card group">
-                <div class="related-image img-zoom">
+                <div class="related-image">
                   <img src={related.featuredImage} alt={related.title} loading="lazy" />
                 </div>
                 <div class="related-content">
-                  <time class="text-sm text-muted">
-                    {formatDate(related.date)}
-                  </time>
-                  <h3 class="text-lg font-bold text-ink group-hover:text-accent transition-colors">
-                    {related.title}
-                  </h3>
+                  <div class="related-meta">
+                    <time datetime={related.date}>{formatDate(related.date)}</time>
+                    {related.openAccess && (
+                      <span class="related-oa">Open Access</span>
+                    )}
+                  </div>
+                  <h3 class="related-title">{related.title}</h3>
+                  <p class="related-excerpt">{related.excerpt}</p>
+                  <span class="related-link">
+                    Read article
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                    </svg>
+                  </span>
                 </div>
               </a>
             ))}
@@ -249,113 +357,509 @@ const breadcrumbs = [
         </div>
       </section>
     )}
+
+    <!-- Back to Top Button -->
+    <button class="back-to-top" id="back-to-top" aria-label="Back to top">
+      <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18" />
+      </svg>
+    </button>
   </article>
 </Layout>
 
 <style>
-  .prose h2 {
-    @apply text-ink;
+  /* Reading Progress Bar */
+  .reading-progress-container {
+    @apply fixed top-0 left-0 right-0 h-1 bg-transparent z-50;
   }
 
-  .prose p {
-    @apply mb-4;
+  .reading-progress-bar {
+    @apply h-full bg-gradient-to-r from-accent to-accent-2 w-0;
+    transition: width 0.1s ease-out;
   }
 
-  .prose ul,
-  .prose ol {
-    @apply mb-4;
+  /* Hero Section */
+  .article-hero {
+    @apply relative min-h-[60vh] md:min-h-[70vh] flex items-end;
+  }
+
+  .hero-image-container {
+    @apply absolute inset-0;
+  }
+
+  .hero-image {
+    @apply w-full h-full object-cover;
+  }
+
+  .hero-gradient {
+    @apply absolute inset-0;
+    background: linear-gradient(
+      to top,
+      rgba(15, 23, 42, 0.95) 0%,
+      rgba(15, 23, 42, 0.7) 40%,
+      rgba(15, 23, 42, 0.3) 70%,
+      rgba(15, 23, 42, 0.1) 100%
+    );
+  }
+
+  .hero-content {
+    @apply relative z-10 w-full pb-12 pt-32;
+  }
+
+  .hero-meta {
+    @apply mb-6;
+  }
+
+  .tag-badge {
+    @apply px-3 py-1.5 rounded-full text-sm font-semibold;
+    @apply bg-accent/20 text-accent border border-accent/30;
+  }
+
+  .reading-meta {
+    @apply flex flex-wrap items-center gap-3 text-white/70 text-sm mt-4;
+  }
+
+  .meta-dot {
+    @apply text-white/40;
+  }
+
+  .open-access-indicator {
+    @apply inline-flex items-center gap-1.5 text-green-400 font-medium;
+  }
+
+  .hero-title {
+    @apply text-white text-fluid-4xl md:text-fluid-5xl font-black leading-tight mb-6 max-w-4xl;
+    text-shadow: 0 2px 20px rgba(0, 0, 0, 0.3);
+  }
+
+  .hero-author {
+    @apply text-white/80 text-lg mb-8;
+  }
+
+  .author-label {
+    @apply text-white/60;
+  }
+
+  .author-name {
+    @apply font-semibold text-white ml-1;
+  }
+
+  .hero-actions {
+    @apply flex flex-wrap gap-4;
+  }
+
+  .action-btn-primary {
+    @apply inline-flex items-center gap-2 px-6 py-3 rounded-xl font-bold;
+    @apply bg-accent text-white shadow-lg;
+    @apply hover:bg-accent/90 hover:shadow-xl hover:-translate-y-0.5;
+    @apply transition-all duration-200 no-underline;
+  }
+
+  .action-btn-secondary {
+    @apply inline-flex items-center gap-2 px-6 py-3 rounded-xl font-bold;
+    @apply bg-white/10 text-white border border-white/20;
+    @apply hover:bg-white/20 hover:-translate-y-0.5;
+    @apply transition-all duration-200 no-underline;
+  }
+
+  /* Article Body */
+  .article-body {
+    @apply py-16 bg-surface;
+  }
+
+  .content-wrapper {
+    @apply max-w-3xl mx-auto;
+  }
+
+  /* Key Findings Box */
+  .key-findings {
+    @apply mb-12 p-6 rounded-2xl;
+    @apply bg-gradient-to-br from-accent/10 to-accent-2/10;
+    @apply border border-accent/20;
+  }
+
+  .key-findings-header {
+    @apply flex items-center gap-2 text-accent font-bold text-lg mb-4;
+  }
+
+  .key-findings-list {
+    @apply space-y-3 list-none p-0 m-0;
+  }
+
+  .key-findings-list li {
+    @apply flex items-start gap-3 text-ink-2 leading-relaxed;
+  }
+
+  .key-findings-list li::before {
+    content: '';
+    @apply text-accent font-bold flex-shrink-0 mt-0.5;
+  }
+
+  /* Prose Content */
+  .prose-content {
+    @apply space-y-6;
+  }
+
+  .first-paragraph {
+    @apply text-ink text-xl leading-relaxed;
+  }
+
+  .first-paragraph::first-letter {
+    @apply float-left text-7xl font-black leading-none mr-3 mt-1;
+    @apply text-accent;
+  }
+
+  .content-paragraph {
+    @apply text-ink-2 text-lg leading-relaxed;
+  }
+
+  .content-heading {
+    @apply text-2xl font-bold text-ink mt-12 mb-6;
+  }
+
+  .content-bold {
+    @apply font-bold text-ink text-lg;
+  }
+
+  .content-list {
+    @apply list-disc pl-6 space-y-2 text-ink-2 text-lg;
+  }
+
+  .content-list-ordered {
+    @apply list-decimal pl-6 space-y-2 text-ink-2 text-lg;
+  }
+
+  .content-list li,
+  .content-list-ordered li {
+    @apply leading-relaxed;
+  }
+
+  .content-divider {
+    @apply my-12 border-t border-line/50;
+  }
+
+  .content-link {
+    @apply text-accent hover:text-accent-2 underline underline-offset-2;
+    @apply transition-colors duration-200;
+  }
+
+  /* Pull Quote */
+  .pull-quote {
+    @apply my-12 py-8 px-8 relative;
+    @apply border-l-4 border-accent bg-accent/5 rounded-r-xl;
+  }
+
+  .pull-quote p {
+    @apply text-xl md:text-2xl font-medium text-ink italic leading-relaxed m-0;
+  }
+
+  .pull-quote::before {
+    content: '"';
+    @apply absolute -top-4 -left-2 text-8xl text-accent/20 font-serif leading-none;
+  }
+
+  /* Citation Section */
+  .citation-section {
+    @apply mt-16 pt-8 border-t border-line;
+  }
+
+  .citation-header {
+    @apply flex items-center justify-between mb-4;
+  }
+
+  .citation-header h3 {
+    @apply text-lg font-bold text-ink m-0;
+  }
+
+  .copy-citation-btn {
+    @apply inline-flex items-center gap-2 px-4 py-2 rounded-lg;
+    @apply bg-accent/10 text-accent font-medium text-sm;
+    @apply hover:bg-accent hover:text-white;
+    @apply transition-all duration-200 cursor-pointer;
+    @apply border-none;
+  }
+
+  .copy-citation-btn.copied {
+    @apply bg-green-500 text-white;
+  }
+
+  .copy-citation-btn.copied .copy-icon {
+    @apply hidden;
+  }
+
+  .copy-citation-btn.copied .check-icon {
+    @apply block;
+  }
+
+  .copy-citation-btn .check-icon {
+    @apply hidden;
+  }
+
+  .citation-box {
+    @apply p-4 rounded-xl bg-surface-card border border-line;
+  }
+
+  .citation-box p {
+    @apply text-muted text-sm font-mono leading-relaxed m-0;
+  }
+
+  /* Share Section */
+  .share-section {
+    @apply mt-12 pt-8 border-t border-line;
+  }
+
+  .share-section h3 {
+    @apply text-lg font-bold text-ink mb-6;
+  }
+
+  .share-buttons {
+    @apply flex flex-wrap gap-3;
+  }
+
+  .share-btn {
+    @apply inline-flex items-center gap-2 px-5 py-3 rounded-xl font-medium text-sm;
+    @apply transition-all duration-200 no-underline;
+    @apply border border-transparent;
+  }
+
+  .share-twitter {
+    @apply bg-[#1DA1F2]/10 text-[#1DA1F2] hover:bg-[#1DA1F2] hover:text-white;
+  }
+
+  .share-linkedin {
+    @apply bg-[#0A66C2]/10 text-[#0A66C2] hover:bg-[#0A66C2] hover:text-white;
+  }
+
+  .share-email {
+    @apply bg-gray-500/10 text-gray-400 hover:bg-gray-500 hover:text-white;
+  }
+
+  .share-copy {
+    @apply bg-accent/10 text-accent hover:bg-accent hover:text-white cursor-pointer;
+  }
+
+  .share-copy.copied {
+    @apply bg-green-500 text-white;
+  }
+
+  .share-copy.copied .copy-icon {
+    @apply hidden;
+  }
+
+  .share-copy.copied .check-icon {
+    @apply block;
+  }
+
+  .share-copy .check-icon {
+    @apply hidden;
+  }
+
+  /* Related Section */
+  .related-section {
+    @apply py-20 bg-navy-highlight;
+  }
+
+  .related-heading {
+    @apply text-3xl font-black text-center text-ink mb-12;
+  }
+
+  .related-grid {
+    @apply grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto;
   }
 
   .related-card {
-    @apply flex gap-4 p-4 rounded-xl no-underline;
+    @apply block rounded-2xl overflow-hidden no-underline;
     @apply bg-surface-card border border-line;
     @apply transition-all duration-300;
   }
 
   .related-card:hover {
-    @apply -translate-y-1 shadow-lg border-accent/30;
+    @apply -translate-y-2 shadow-lg border-accent/30;
   }
 
   .related-image {
-    @apply w-24 h-24 rounded-lg overflow-hidden flex-shrink-0;
+    @apply aspect-video overflow-hidden;
   }
 
   .related-image img {
     @apply w-full h-full object-cover;
+    @apply transition-transform duration-500;
+  }
+
+  .related-card:hover .related-image img {
+    @apply scale-105;
   }
 
   .related-content {
-    @apply flex flex-col gap-1;
+    @apply p-6;
   }
 
-  /* Share buttons */
-  .share-btn {
-    @apply inline-flex items-center gap-2 px-4 py-2.5 rounded-lg font-medium text-sm;
+  .related-meta {
+    @apply flex items-center gap-3 text-sm text-muted mb-3;
+  }
+
+  .related-oa {
+    @apply text-green-400 font-medium;
+  }
+
+  .related-title {
+    @apply text-xl font-bold text-ink mb-3 line-clamp-2;
+    @apply transition-colors duration-200;
+  }
+
+  .related-card:hover .related-title {
+    @apply text-accent;
+  }
+
+  .related-excerpt {
+    @apply text-muted text-sm line-clamp-3 mb-4;
+  }
+
+  .related-link {
+    @apply inline-flex items-center gap-2 text-accent font-semibold text-sm;
     @apply transition-all duration-200;
-    @apply border border-transparent;
   }
 
-  .share-btn-twitter {
-    @apply bg-[#1DA1F2]/10 text-[#1DA1F2] hover:bg-[#1DA1F2] hover:text-white;
+  .related-card:hover .related-link {
+    @apply gap-3;
   }
 
-  .share-btn-linkedin {
-    @apply bg-[#0A66C2]/10 text-[#0A66C2] hover:bg-[#0A66C2] hover:text-white;
+  /* Back to Top Button */
+  .back-to-top {
+    @apply fixed bottom-8 right-8 z-50;
+    @apply w-12 h-12 rounded-full;
+    @apply bg-accent text-white shadow-lg;
+    @apply flex items-center justify-center;
+    @apply opacity-0 pointer-events-none;
+    @apply transition-all duration-300;
+    @apply hover:bg-accent/90 hover:shadow-xl hover:-translate-y-1;
+    @apply border-none cursor-pointer;
   }
 
-  .share-btn-facebook {
-    @apply bg-[#1877F2]/10 text-[#1877F2] hover:bg-[#1877F2] hover:text-white;
+  .back-to-top.visible {
+    @apply opacity-100 pointer-events-auto;
   }
 
-  .share-btn-email {
-    @apply bg-gray-500/10 text-gray-400 hover:bg-gray-500 hover:text-white;
+  /* Animations */
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
   }
 
-  .share-btn-copy {
-    @apply bg-accent/10 text-accent hover:bg-accent hover:text-white cursor-pointer;
+  .key-findings,
+  .prose-content > *,
+  .citation-section,
+  .share-section {
+    animation: fadeInUp 0.6s ease-out backwards;
   }
 
-  .share-btn-copy.copied {
-    @apply bg-green-500 text-white;
-  }
+  .key-findings { animation-delay: 0.1s; }
+  .prose-content > *:nth-child(1) { animation-delay: 0.15s; }
+  .prose-content > *:nth-child(2) { animation-delay: 0.2s; }
+  .prose-content > *:nth-child(3) { animation-delay: 0.25s; }
 
-  .share-btn-copy .check-icon {
-    @apply hidden;
-  }
-
-  .share-btn-copy.copied .copy-icon {
-    @apply hidden;
-  }
-
-  .share-btn-copy.copied .check-icon {
-    @apply block;
+  /* Reduced motion */
+  @media (prefers-reduced-motion: reduce) {
+    .reading-progress-bar,
+    .back-to-top,
+    .related-card,
+    .share-btn,
+    .action-btn-primary,
+    .action-btn-secondary,
+    .key-findings,
+    .prose-content > * {
+      transition: none !important;
+      animation: none !important;
+    }
   }
 </style>
 
 <script>
-  const initCopyLink = () => {
-    const copyBtn = document.getElementById('copy-link-btn');
-    if (!copyBtn) return;
+  const initArticle = () => {
+    // Reading progress bar
+    const progressBar = document.getElementById('reading-progress');
+    const article = document.querySelector('.article-body');
 
-    copyBtn.addEventListener('click', async () => {
-      const url = copyBtn.dataset.url;
-      const textSpan = copyBtn.querySelector('.copy-text');
+    if (progressBar && article) {
+      const updateProgress = () => {
+        const articleTop = article.getBoundingClientRect().top + window.scrollY;
+        const articleHeight = article.scrollHeight;
+        const windowHeight = window.innerHeight;
+        const scrolled = window.scrollY - articleTop + windowHeight;
+        const progress = Math.min(Math.max(scrolled / articleHeight * 100, 0), 100);
+        progressBar.style.width = `${progress}%`;
+      };
 
-      try {
-        await navigator.clipboard.writeText(url || window.location.href);
-        copyBtn.classList.add('copied');
-        if (textSpan) textSpan.textContent = 'Copied!';
+      window.addEventListener('scroll', updateProgress, { passive: true });
+      updateProgress();
+    }
 
-        setTimeout(() => {
-          copyBtn.classList.remove('copied');
-          if (textSpan) textSpan.textContent = 'Copy Link';
-        }, 2000);
-      } catch (err) {
-        console.error('Failed to copy:', err);
-      }
-    });
+    // Back to top button
+    const backToTop = document.getElementById('back-to-top');
+    if (backToTop) {
+      const toggleBackToTop = () => {
+        backToTop.classList.toggle('visible', window.scrollY > 500);
+      };
+
+      window.addEventListener('scroll', toggleBackToTop, { passive: true });
+      toggleBackToTop();
+
+      backToTop.addEventListener('click', () => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      });
+    }
+
+    // Copy link button
+    const copyLinkBtn = document.getElementById('copy-link-btn');
+    if (copyLinkBtn) {
+      copyLinkBtn.addEventListener('click', async () => {
+        const url = copyLinkBtn.dataset.url;
+        const textSpan = copyLinkBtn.querySelector('.copy-text');
+
+        try {
+          await navigator.clipboard.writeText(url || window.location.href);
+          copyLinkBtn.classList.add('copied');
+          if (textSpan) textSpan.textContent = 'Copied!';
+
+          setTimeout(() => {
+            copyLinkBtn.classList.remove('copied');
+            if (textSpan) textSpan.textContent = 'Copy Link';
+          }, 2000);
+        } catch (err) {
+          console.error('Failed to copy:', err);
+        }
+      });
+    }
+
+    // Copy citation button
+    const copyCitationBtn = document.getElementById('copy-citation');
+    if (copyCitationBtn) {
+      copyCitationBtn.addEventListener('click', async () => {
+        const citation = copyCitationBtn.dataset.citation;
+        const textSpan = copyCitationBtn.querySelector('.btn-text');
+
+        try {
+          await navigator.clipboard.writeText(citation || '');
+          copyCitationBtn.classList.add('copied');
+          if (textSpan) textSpan.textContent = 'Copied!';
+
+          setTimeout(() => {
+            copyCitationBtn.classList.remove('copied');
+            if (textSpan) textSpan.textContent = 'Copy';
+          }, 2000);
+        } catch (err) {
+          console.error('Failed to copy:', err);
+        }
+      });
+    }
   };
 
-  initCopyLink();
-  document.addEventListener('astro:after-swap', initCopyLink);
+  initArticle();
+  document.addEventListener('astro:after-swap', initArticle);
 </script>

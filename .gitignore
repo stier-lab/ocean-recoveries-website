@@ -57,3 +57,16 @@ ehthumbs.db
 *.AVI
 *.MOV
 *.MP4
+*.tif
+*.TIF
+
+# Image databases (generated)
+data/image-recommendations.json
+data/publication-image-database.json
+data/publication-image-database.csv
+
+# Screenshots from testing
+screenshots/
+
+# Temporary files
+*.csv.bak

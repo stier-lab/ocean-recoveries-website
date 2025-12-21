@@ -1,141 +1,113 @@
 # Ocean Recoveries Lab Website
 
-Modern, performant website for the Ocean Recoveries Lab at UC Santa Barbara.
+Research website for the Ocean Recoveries Lab at UC Santa Barbara.
 
 **Live Site:** https://www.oceanrecoveries.com/
 
 ## Quick Start
 
 ```bash
-# Install dependencies
-npm install
-
-# Start development server
-npm run dev
-
-# Build for production
-npm run build
-
-# Preview production build
-npm run preview
+npm install      # Install dependencies
+npm run dev      # Start dev server at localhost:4321
+npm run build    # Build for production
+npm run preview  # Preview production build
 ```
 
 ## Tech Stack
 
-- **Framework:** [Astro](https://astro.build/) with View Transitions
+- **Framework:** [Astro](https://astro.build/) 4.x with View Transitions
 - **Styling:** [Tailwind CSS](https://tailwindcss.com/)
-- **Animations:** Framer Motion + Native CSS/Intersection Observer
+- **Interactivity:** React 18 (PublicationList component)
+- **Animations:** Framer Motion + CSS Intersection Observer
 - **Hosting:** Netlify
 
 ## Project Structure
 
 ```
 ocean-recoveries-website/
-├── docs/                    # Documentation
-│   └── PRD.md              # Product Requirements Document
-├── assets/                  # Source images (unprocessed)
-├── squarespace-code/        # Legacy HTML (reference only)
-├── src/                     # Source code (to be created)
-│   ├── components/         # Astro/React components
-│   ├── content/            # Markdown content
-│   │   ├── people/        # Team member bios
-│   │   ├── research/      # Research theme pages
-│   │   └── blog/          # Blog posts
-│   ├── data/              # JSON data files
-│   │   └── publications.json
+├── src/
+│   ├── components/         # Astro & React components
+│   ├── data/              # TypeScript data files (source of truth)
+│   │   ├── posts.ts       # News articles (~77 AI-generated)
+│   │   ├── publications.ts # 75 publications
+│   │   ├── team.ts        # Team members & alumni
+│   │   └── research.ts    # Research systems & pillars
 │   ├── layouts/           # Page layouts
-│   ├── pages/             # Route pages
-│   └── styles/            # Global styles
-├── public/                 # Static assets
-└── README.md
+│   ├── pages/             # File-based routing
+│   └── styles/            # Global CSS
+├── public/images/         # Optimized web images
+├── assets/                # Source images (not deployed)
+├── publications/          # PDF pipeline data
+├── scripts/               # Build & data scripts
+├── tests/                 # Playwright test scripts
+└── docs/                  # Documentation
 ```
-
-## Documentation
-
-- [Product Requirements Document](docs/PRD.md) - Full specifications, design system, and build plan
-
-## Features
-
-- **Light/Dark Mode** - System preference detection + manual toggle
-- **Smooth Animations** - Page transitions, scroll reveals, micro-interactions
-- **Accessible** - WCAG AA compliant, keyboard navigation, reduced motion support
-- **Fast** - Target Lighthouse 90+ scores
-- **Content-Driven** - Markdown files for easy updates
 
 ## Pages
 
 | Page | Path | Description |
 |------|------|-------------|
-| Homepage | `/` | Hero, metrics, research themes, featured papers |
+| Homepage | `/` | Hero, research themes, featured papers |
 | People | `/people` | Team grid with cards |
-| Publications | `/publications` | Filterable, searchable publication database |
-| Research | `/research` | Overview of research themes |
+| Publications | `/publications` | Searchable publication database |
+| Research | `/research` | Research overview |
 | Coral Reefs | `/research/coral-reefs` | Coral research theme |
 | Kelp Forests | `/research/kelp-forests` | Kelp research theme |
-| Organismal | `/research/organismal-mechanisms` | Organismal research theme |
-| News | `/news` | Blog/news posts |
-| Join Us | `/join-us` | Opportunities for students/postdocs |
+| News | `/news` | AI-generated publication summaries |
+| Join Us | `/join-us` | Opportunities |
 
-## Development Status
-
-**Current Phase:** Setup & Foundation
-
-See [PRD.md](docs/PRD.md) for detailed build plan and milestones.
-
-## Content Updates
+## Content Management
 
 ### Adding a Team Member
 
-Create a new markdown file in `src/content/people/`:
+Edit `src/data/team.ts`:
 
-```yaml
----
-name: "New Person"
-role: "phd"
-title: "PhD Student"
-image: "/images/people/new-person.jpg"
-email: "email@ucsb.edu"
-tags: ["Research Area 1", "Research Area 2"]
-order: 5
-status: "current"
----
-
-Bio text here.
+```typescript
+{
+  name: 'New Person',
+  role: 'phd', // pi | postdoc | phd | manager | undergrad
+  title: 'PhD Student',
+  image: '/images/person.jpg',
+  hook: 'Research focus...',
+  tags: ['Area 1', 'Area 2'],
+  email: 'email@ucsb.edu',
+  order: 7,
+}
 ```
 
 ### Adding a Publication
 
-Add to `src/data/publications.json`:
+1. Add PDF to `publications/Lab Publications/`
+2. Update CSV metadata
+3. Run extraction: `node scripts/extract-pdfs.cjs`
+4. Generate news: `ANTHROPIC_API_KEY=xxx node scripts/generate-ai-news.cjs --recent 1`
 
-```json
-{
-  "title": "Paper Title",
-  "authors": "Author A, Author B, Stier AC",
-  "year": 2024,
-  "journal": "Journal Name",
-  "doi": "10.1000/example",
-  "theme_tags": ["Coral"],
-  "featured": false,
-  "open_access": true
-}
+### Adding Images
+
+1. Add optimized image to `public/images/`
+2. Reference as `/images/filename.jpg`
+
+## News Pipeline
+
+The site uses an AI pipeline to generate accessible news articles from academic publications:
+
+1. **Extract** - `scripts/extract-pdfs.cjs` extracts text from PDFs
+2. **Analyze** - `scripts/generate-ai-news.cjs` generates articles via Claude API
+3. **Build** - `scripts/generate-news.cjs` compiles into `src/data/posts.ts`
+
+See `scripts/PIPELINE_README.md` for details.
+
+## Development
+
+```bash
+npm run dev          # Start dev server
+npx astro check      # TypeScript checking
+npm run build        # Production build
 ```
 
-### Adding a Blog Post
+## For AI Assistants
 
-Create a new markdown file in `src/content/blog/`:
-
-```yaml
----
-title: "Post Title"
-date: 2024-12-11
-author: "Adrian Stier"
-excerpt: "Brief summary"
-featuredImage: "/images/blog/image.jpg"
-tags: ["Research"]
----
-
-Post content here.
-```
+See [CLAUDE.md](./CLAUDE.md) for detailed context on working with this codebase.
 
 ## License
 

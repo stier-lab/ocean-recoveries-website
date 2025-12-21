@@ -31,7 +31,7 @@ export const currentTeam: TeamMember[] = [
     image: '/images/adrian.png',
     hook: 'Focus: recovery & resilience of ocean ecosystems; linking assembly rules to restoration.',
     tags: ['Coral resilience', 'Predator-prey', 'Restoration'],
-    email: 'adrian.stier@ucsb.edu',
+    email: 'astier@ucsb.edu',
     orcid: '0000-0002-4704-4145',
     github: 'stier-lab',
     order: 1,
