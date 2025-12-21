@@ -1,0 +1,2018 @@
+{
+  "generatedAt": "2025-12-21T16:59:42.834Z",
+  "summary": {
+    "totalPublications": 77,
+    "totalImages": 127,
+    "usedImages": 77,
+    "unusedImages": 53
+  },
+  "publications": [
+    {
+      "id": 1,
+      "title": "Fish services to corals: a review of how coral-associated fishes benefit corals",
+      "authors": "Stier, Adrian C.; Chase, Tory J.; Osenberg, Craig W.",
+      "year": 2025,
+      "journal": "Coral Reefs",
+      "doi": "10.1007/s00338-025-02647-4",
+      "species": "Coral-associated fishes including damselfishes (Dascyllus marginatus, Dascyllus aruanus, Chromis viridis), grunts (Haemulidae), gobies, snappers, and their coral hosts including Acropora cervicornis, Stylophora pistillata, and Pocillopora sp.",
+      "location": "Global coral reefs including Caribbean, Gulf of Eilat, and tropical Pacific",
+      "themes": [
+        "marine symbiosis",
+        "coral resilience",
+        "fish-coral interactions",
+        "nutrient cycling",
+        "coral restoration"
+      ],
+      "newsHeadline": "Fish Are Providing Life-Saving Services to Corals—And Scientists Are Just Beginning to Understand How",
+      "featuredImage": "/images/chromis-acropora.jpeg",
+      "imageFile": "chromis-acropora.jpeg"
+    },
+    {
+      "id": 2,
+      "title": "Coral guard crabs",
+      "authors": "Stier, Adrian C.; Osenberg, Craig W.",
+      "year": 2024,
+      "journal": "Current Biology",
+      "doi": "10.1016/j.cub.2023.10.067",
+      "species": "Trapeziidae family crabs (over 20 species), Pocillopora corals, crown-of-thorns sea stars (Acanthaster planci), pincushion stars (Culcita novaeguineae)",
+      "location": "Tropical Pacific Ocean",
+      "themes": [
+        "symbiosis",
+        "coral reef ecology",
+        "climate change impacts",
+        "predator-prey interactions"
+      ],
+      "newsHeadline": "Tiny Bodyguard Crabs Take On Giant Starfish to Save Coral Reefs",
+      "featuredImage": "/images/trapezia-coral-crab-hiding.jpg",
+      "imageFile": "trapezia-coral-crab-hiding.jpg"
+    },
+    {
+      "id": 3,
+      "title": "How fishes and invertebrates impact coral resilience",
+      "authors": "Stier, Adrian C.; Osenberg, Craig W.",
+      "year": 2024,
+      "journal": "Current Biology",
+      "doi": "10.1016/j.cub.2024.05.071",
+      "species": "Trapeziidae family crabs and their coral hosts (primarily Pocillopora genus)",
+      "location": "Tropical Pacific Ocean",
+      "themes": [
+        "symbiosis",
+        "coral reef ecology",
+        "climate change impacts",
+        "predator defense"
+      ],
+      "newsHeadline": "How Fish and Crabs Work Together to Keep Coral Reefs Healthy",
+      "featuredImage": "/images/trapezia-coral-crab-red-spotted.jpg",
+      "imageFile": "trapezia-coral-crab-red-spotted.jpg"
+    },
+    {
+      "id": 4,
+      "title": "The metabolic underpinnings of temperature-dependent predation in a key marine predator",
+      "authors": "Csik, Samantha R.; DiFiore, Bartholomew P.; Kraskura, Krista; Hardison, Emily A.; Curtis, Joseph S.; Eliason, Erika J.; Stier, Adrian C.",
+      "year": 2023,
+      "journal": "Frontiers in Marine Science",
+      "doi": "10.3389/fmars.2023.1072807",
+      "species": "California spiny lobster (Panulirus interruptus)",
+      "location": "Santa Barbara County, California",
+      "themes": [
+        "climate change",
+        "marine predators",
+        "thermal tolerance",
+        "metabolism"
+      ],
+      "newsHeadline": "Spiny Lobsters Can Handle Some Ocean Warming, But Temperature Extremes Prove Deadly",
+      "featuredImage": "/images/spiny-lobsters-group-reef-hideout.jpeg",
+      "imageFile": "spiny-lobsters-group-reef-hideout.jpeg"
+    },
+    {
+      "id": 5,
+      "title": "3D photogrammetry improves measurement of growth and biodiversity patterns in branching corals",
+      "authors": "Curtis, Joseph S.; Galvan, Journ W.; Primo, Alexander; Osenberg, Craig W.; Stier, Adrian C.",
+      "year": 2023,
+      "journal": "Coral Reefs",
+      "doi": "10.1007/s00338-023-02367-7",
+      "species": "Pocillopora coral colonies",
+      "location": "Moorea, French Polynesia",
+      "themes": [
+        "marine technology",
+        "coral reef ecology",
+        "biodiversity monitoring",
+        "conservation tools"
+      ],
+      "newsHeadline": "Underwater 3D Photography Reveals Hidden Patterns in Coral Growth and Marine Life",
+      "featuredImage": "/images/cauliflower-coral-damselfish-reef.jpeg",
+      "imageFile": "cauliflower-coral-damselfish-reef.jpeg"
+    },
+    {
+      "id": 6,
+      "title": "Variation in body size drives spatial and temporal variation in lobster–urchin interaction strength",
+      "authors": "DiFiore, Bartholomew P.; Stier, Adrian C.",
+      "year": 2023,
+      "journal": "Journal of Animal Ecology",
+      "doi": "10.1111/1365-2656.13918",
+      "species": "Lobsters and sea urchins",
+      "location": "Marine environments where lobsters and urchins interact",
+      "themes": [
+        "predator-prey interactions",
+        "body size effects",
+        "marine ecology",
+        "spatial variation",
+        "temporal variation"
+      ],
+      "newsHeadline": "Body Size Variation Drives Changes in Lobster-Urchin Interactions",
+      "featuredImage": "/images/lobster-in-underwater-trap-cage.jpeg",
+      "imageFile": "lobster-in-underwater-trap-cage.jpeg"
+    },
+    {
+      "id": 7,
+      "title": "Material legacies can degrade resilience: Structure‐retaining disturbances promote regime shifts on coral reefs",
+      "authors": "Kopecky, Kai L.; Stier, Adrian C.; Schmitt, Russell J.; Holbrook, Sally J.; Moeller, Holly V.",
+      "year": 2023,
+      "journal": "Ecology",
+      "doi": "10.1002/ecy.4006",
+      "species": "Coral reef ecosystems, corals, macroalgae",
+      "location": "Theoretical study - no specific location",
+      "themes": [
+        "coral reefs",
+        "disturbance ecology",
+        "resilience",
+        "regime shifts",
+        "material legacies"
+      ],
+      "newsHeadline": "Dead Coral Skeletons May Actually Harm Reef Recovery by Sheltering Competing Algae",
+      "featuredImage": "/images/coral-bleaching-timelapse-study.jpeg",
+      "imageFile": "coral-bleaching-timelapse-study.jpeg"
+    },
+    {
+      "id": 8,
+      "title": "Cascading benefits of mutualists' predators on foundation species: A model inspired by coral reef ecosystems",
+      "authors": "Moeller, Holly V.; Nisbet, Roger M.; Stier, Adrian C.",
+      "year": 2023,
+      "journal": "Ecosphere",
+      "doi": "10.1002/ecs2.4382",
+      "species": [
+        "Pocillopora corals",
+        "hawkfish (Paracirrhites arcatus)",
+        "yellow-tailed damselfish (Dascyllus flavicaudus)",
+        "longface emperor (Lethrinus olivaceus)"
+      ],
+      "location": "French Polynesia (Moorea)",
+      "themes": [
+        "coral reef ecology",
+        "mutualism",
+        "predation",
+        "mathematical modeling",
+        "conservation"
+      ],
+      "newsHeadline": "Predators May Actually Help Coral Reefs by Eating the 'Wrong' Fish",
+      "featuredImage": "/images/damselfish-pair-acropora-coral.jpeg",
+      "imageFile": "damselfish-pair-acropora-coral.jpeg"
+    },
+    {
+      "id": 9,
+      "title": "Remoteness does not enhance coral reef resilience",
+      "authors": "Baumann, Justin H.; Zhao, Lily Z.; Stier, Adrian C.; Bruno, John F.",
+      "year": 2022,
+      "journal": "Global Change Biology",
+      "doi": "10.1111/gcb.15904",
+      "species": "Coral reef communities",
+      "location": "Global coral reefs",
+      "themes": [
+        "coral reef resilience",
+        "climate change",
+        "conservation strategy",
+        "human impacts"
+      ],
+      "newsHeadline": "Remote Coral Reefs No Safer From Climate Change Than Those Near Cities",
+      "featuredImage": "/images/tropical-island-split-view-coral-reef-shark.jpeg",
+      "imageFile": "tropical-island-split-view-coral-reef-shark.jpeg"
+    },
+    {
+      "id": 10,
+      "title": "Fertilization by coral-dwelling fish promotes coral growth but can exacerbate bleaching response",
+      "authors": "Detmer, A. Raine; Cunning, Ross; Pfab, Ferdinand; Brown, Alexandra L.; Stier, Adrian C.; Nisbet, Roger M.; Moeller, Holly V.",
+      "year": 2022,
+      "journal": "Journal of Theoretical Biology",
+      "doi": "10.1016/j.jtbi.2022.111087",
+      "species": "Scleractinian corals and coral-dwelling fish, particularly damselfish",
+      "location": "Global (theoretical model)",
+      "themes": [
+        "Climate Change",
+        "Symbiosis",
+        "Marine Biology"
+      ],
+      "newsHeadline": "Fish Roommates May Actually Make Corals More Vulnerable to Bleaching",
+      "featuredImage": "/images/damselfish-pair-pink-coral.jpeg",
+      "imageFile": "damselfish-pair-pink-coral.jpeg"
+    },
+    {
+      "id": 11,
+      "title": "Glimmers of hope in large carnivore recoveries",
+      "authors": "Ingeman, Kurt E.; Zhao, Lily Z.; Wolf, Christopher; Williams, David R.; Ritger, Amelia L.; Ripple, William J.; Kopecky, Kai L.; Dillon, Erin M.; DiFiore, Bartholomew P.; Curtis, Joseph S.; Csik, Samantha R.; Bui, An; Stier, Adrian C.",
+      "year": 2022,
+      "journal": "Scientific Reports",
+      "doi": "10.1038/s41598-022-13671-7",
+      "species": [
+        "Large carnivores",
+        "Marine mammals",
+        "Sharks",
+        "Rays",
+        "Terrestrial mammals"
+      ],
+      "location": "Global",
+      "themes": [
+        "Species recovery",
+        "Conservation strategies",
+        "Extinction risk",
+        "Marine conservation"
+      ],
+      "newsHeadline": "Only 3% of World's Large Predators Are Actually Recovering, Global Study Reveals",
+      "featuredImage": "/images/CheetahFam-1.jpg",
+      "imageFile": "CheetahFam-1.jpg"
+    },
+    {
+      "id": 12,
+      "title": "Increasing spillover enhances southern California spiny lobster catch along marine reserve borders",
+      "authors": "Lenihan, Hunter S.; Fitzgerald, Sean P.; Reed, Daniel C.; Hofmeister, Jennifer K. K.; Stier, Adrian C.",
+      "year": 2022,
+      "journal": "Ecosphere",
+      "doi": "10.1002/ecs2.4110",
+      "species": "California spiny lobster (Panulirus interruptus)",
+      "location": "Northern Channel Islands, California",
+      "themes": [
+        "Marine Protected Areas",
+        "Fisheries Management",
+        "Spillover Effects"
+      ],
+      "newsHeadline": "Marine Reserves Pay Off: California Lobster Catches Surge 400% Near Protected Areas",
+      "featuredImage": "/images/lobster.jpeg",
+      "imageFile": "lobster.jpeg"
+    },
+    {
+      "id": 13,
+      "title": "Detrital supply suppresses deforestation to maintain healthy kelp forest ecosystems",
+      "authors": "Rennick, Mae; DiFiore, Bartholomew P.; Curtis, Joseph; Reed, Daniel C.; Stier, Adrian C.",
+      "year": 2022,
+      "journal": "Ecology",
+      "doi": "10.1002/ecy.3673",
+      "species": [
+        "Giant kelp (Macrocystis pyrifera)",
+        "Red sea urchin (Mesocentrotus franciscanus)",
+        "Purple sea urchin (Strongylocentrotus purpuratus)"
+      ],
+      "location": "Santa Barbara Channel, California",
+      "themes": [
+        "Ecosystem collapse",
+        "Tipping points",
+        "Herbivore-plant interactions",
+        "Marine conservation"
+      ],
+      "newsHeadline": "Scientists Crack the Code of When Sea Urchins Destroy Kelp Forests",
+      "featuredImage": "/images/kelp_canopy.jpg",
+      "imageFile": "kelp_canopy.jpg"
+    },
+    {
+      "id": 14,
+      "title": "How much city is too much city? Biodiversity and ecosystem functioning along an urban gradient at the interface of land and sea",
+      "authors": "Samhouri, Jameal F.; Shelton, Andrew Olaf; Williams, Gregory D.; Feist, Blake E.; Hennessey, Shannon M.; Bartz, Krista; Kelly, Ryan P.; O’Donnell, James L.; Sheer, Mindi; Stier, Adrian C.; Levin, Phillip S.",
+      "year": 2022,
+      "journal": "Frontiers in Marine Science",
+      "doi": "10.3389/fmars.2022.931319",
+      "species": "Epibenthic invertebrate families, Pacific salmon (Oncorhynchus spp.)",
+      "location": "Puget Sound, Washington",
+      "themes": [
+        "Urban ecology",
+        "Land-sea connectivity",
+        "Biodiversity",
+        "Ecosystem function",
+        "Conservation"
+      ],
+      "newsHeadline": "Urban Sprawl Has Surprising Effect on Marine Life in Pacific Northwest",
+      "featuredImage": "/images/seattle-urban-coastline.jpeg",
+      "imageFile": "seattle-urban-coastline.jpeg"
+    },
+    {
+      "id": 15,
+      "title": "Irreversibility of regime shifts in the North Sea",
+      "authors": "Sguotti, Camilla; Blöcker, Alexandra M.; Färber, Leonie; Blanz, Benjamin; Cormier, Roland; Diekmann, Rabea; Letschert, Jonas; Rambo, Henrike; Stollberg, Nicole; Stelzenmüller, Vanessa; Stier, Adrian C.; Möllmann, Christian",
+      "year": 2022,
+      "journal": "Frontiers in Marine Science",
+      "doi": "10.3389/fmars.2022.945204",
+      "species": "Marine ecosystem (plankton to fish)",
+      "location": "North Sea",
+      "themes": [
+        "regime shifts",
+        "irreversibility",
+        "hysteresis",
+        "ecosystem resilience",
+        "marine ecosystems"
+      ],
+      "newsHeadline": "North Sea Ecosystem Has Crossed a Point of No Return, Scientists Warn",
+      "featuredImage": "/images/norht-sea-fishing.jpeg",
+      "imageFile": "norht-sea-fishing.jpeg"
+    },
+    {
+      "id": 16,
+      "title": "Avoiding critical thresholds through effective monitoring",
+      "authors": "Stier, Adrian C.; Essington, Timothy E.; Samhouri, Jameal F.; Siple, Margaret C.; Halpern, Benjamin S.; White, Crow; Lynham, John M.; Salomon, Anne K.; Levin, Phillip S.",
+      "year": 2022,
+      "journal": "Proceedings of the Royal Society B: Biological Sciences",
+      "doi": "10.1098/rspb.2022.0526",
+      "species": "Theoretical harvested population (fishery-inspired model applicable to wildlife and forestry resources)",
+      "location": "Theoretical modeling study applicable globally",
+      "themes": [
+        "population dynamics",
+        "monitoring strategies",
+        "sustainable harvest",
+        "critical thresholds",
+        "Allee effects"
+      ],
+      "newsHeadline": "When to Watch Closer: New Study Shows Monitoring Becomes More Valuable as Populations Near Collapse",
+      "featuredImage": "/images/rocky-beach-cove-panorama.jpeg",
+      "imageFile": "rocky-beach-cove-panorama.jpeg"
+    },
+    {
+      "id": 17,
+      "title": "Variation in disturbance to a foundation species structures the dynamics of a benthic reef community",
+      "authors": "Detmer, A. Raine; Miller, Robert J.; Reed, Daniel C.; Bell, Tom W.; Stier, Adrian C.; Moeller, Holly V.",
+      "year": 2021,
+      "journal": "Ecology",
+      "doi": "10.1002/ecy.3304",
+      "species": [
+        "Giant kelp (Macrocystis pyrifera)",
+        "understory macroalgae",
+        "sessile invertebrates"
+      ],
+      "location": "California kelp forests",
+      "themes": [
+        "disturbance ecology",
+        "foundation species",
+        "community dynamics",
+        "mathematical modeling",
+        "kelp forests"
+      ],
+      "newsHeadline": "Mathematical Model Reveals How Ocean Storms Reshape Entire Kelp Forest Communities",
+      "featuredImage": "/images/kelp-hero.jpeg",
+      "imageFile": "kelp-hero.jpeg"
+    },
+    {
+      "id": 18,
+      "title": "On the Interface of Food Webs and Spatial Ecology: The Trophic Dimension of Species–Area Relationships",
+      "authors": "Holt, Robert D.; Gravel, Dominique; Stier, Adrian; Rosindell, James",
+      "year": 2021,
+      "journal": "",
+      "doi": "https://doi.org/10.1017/9781108569422.017",
+      "species": [
+        "No specific species studied - theoretical models"
+      ],
+      "location": "This is a theoretical study with no specific field location",
+      "themes": [
+        "Methods",
+        "Predation",
+        "Conservation"
+      ],
+      "newsHeadline": "Why Big Islands Feed More Predators: New Theory Links Food Webs to Biodiversity Hotspots",
+      "featuredImage": "/images/forested-islands-aerial-ocean-view.JPG",
+      "imageFile": "forested-islands-aerial-ocean-view.JPG"
+    },
+    {
+      "id": 19,
+      "title": "Effects of corallivory and coral colony density on coral growth and survival",
+      "authors": "Kopecky, Kai L.; Cook, Dana T.; Schmitt, Russell J.; Stier, Adrian C.",
+      "year": 2021,
+      "journal": "Coral Reefs",
+      "doi": "10.1007/s00338-021-02076-z",
+      "species": "Acropora pulchra (staghorn coral)",
+      "location": "Moorea, French Polynesia",
+      "themes": [
+        "coral reef ecology",
+        "predation",
+        "density dependence",
+        "conservation"
+      ],
+      "newsHeadline": "Safety in Numbers Doesn't Work for Baby Corals Under Attack",
+      "featuredImage": "/images/butterflyfish-eating-coral.jpeg",
+      "imageFile": "butterflyfish-eating-coral.jpeg"
+    },
+    {
+      "id": 20,
+      "title": "Evidence that spillover from Marine Protected Areas benefits the spiny lobster (Panulirus interruptus) fishery in southern California",
+      "authors": "Lenihan, Hunter S.; Gallagher, Jordan P.; Peters, Joseph R.; Stier, Adrian C.; Hofmeister, Jennifer K. K.; Reed, Daniel C.",
+      "year": 2021,
+      "journal": "Scientific Reports",
+      "doi": "10.1038/s41598-021-82371-5",
+      "species": "California spiny lobster (Panulirus interruptus)",
+      "location": "Santa Barbara Channel, Southern California",
+      "themes": [
+        "Marine Protected Areas",
+        "Fisheries Management",
+        "Spillover Effects",
+        "Conservation Policy"
+      ],
+      "newsHeadline": "California's Ocean Reserves Deliver Fishing Bonanza, Tripling Lobster Catch Despite Closing Fishing Grounds",
+      "featuredImage": "/images/california-coastline-rocky-shore.jpg",
+      "imageFile": "california-coastline-rocky-shore.jpg"
+    },
+    {
+      "id": 21,
+      "title": "Perception and Conflict in Conservation: The Rashomon Effect",
+      "authors": "Levin, Phillip S; Gray, Steven A; Möllmann, Christian; Stier, Adrian C",
+      "year": 2021,
+      "journal": "BioScience",
+      "doi": "10.1093/biosci/biaa117",
+      "species": "Not species-specific",
+      "location": "Conceptual study applicable globally",
+      "themes": [
+        "conservation conflict",
+        "perception",
+        "science communication",
+        "policy",
+        "epistemic pluralism"
+      ],
+      "newsHeadline": "Why Scientists Can't Solve Conservation Conflicts: The Rashomon Effect Explained",
+      "featuredImage": "/images/conflict-image.jpg",
+      "imageFile": "conflict-image.jpg"
+    },
+    {
+      "id": 22,
+      "title": "Ecological impacts of an invasive mesopredator do not differ from those of a native mesopredator: lionfish in Caribbean Panama",
+      "authors": "Samhouri, Jameal F.; Stier, Adrian C.",
+      "year": 2021,
+      "journal": "Coral Reefs",
+      "doi": "10.1007/s00338-021-02132-8",
+      "species": [
+        "lionfish (Pterois volitans/miles)",
+        "graysby (Cephalopholis cruentata)",
+        "hamlets (Hypoplectrus spp.)",
+        "masked goby (Coryphopterus personatus)"
+      ],
+      "location": "Caribbean Panama, Bocas del Toro",
+      "themes": [
+        "invasive species",
+        "predator-prey interactions",
+        "coral reef ecology",
+        "conservation management"
+      ],
+      "newsHeadline": "Native Fish Vastly Outnumber Invasive Lionfish in Caribbean Panama Waters",
+      "featuredImage": "/images/lionfish-soft-coral.jpeg",
+      "imageFile": "lionfish-soft-coral.jpeg"
+    },
+    {
+      "id": 23,
+      "title": "Variation in herbivore grazing behavior across Caribbean reef sites",
+      "authors": "Wilson, Margaret W.; Gaines, Steven D.; Stier, Adrian C.; Halpern, Benjamin S.",
+      "year": 2021,
+      "journal": "Marine Biology",
+      "doi": "10.1007/s00227-021-03844-9",
+      "species": "Sparisoma viride and Scarus vetula (parrotfish species)",
+      "location": "Caribbean (Bonaire, Antigua, and Barbuda)",
+      "themes": [
+        "coral reef ecology",
+        "herbivorous fish behavior",
+        "marine conservation",
+        "ecosystem management"
+      ],
+      "newsHeadline": "Same Fish, Different Appetites: Parrotfish Behavior Varies Dramatically Across Caribbean Reefs",
+      "featuredImage": "/images/parrotfish.jpeg",
+      "imageFile": "parrotfish.jpeg"
+    },
+    {
+      "id": 24,
+      "title": "Integrating oceans into climate policy: Any green new deal needs a splash of blue",
+      "authors": "Dundas, Steven J.; Levine, Arielle S.; Lewison, Rebecca L.; Doerr, Angee N.; White, Crow; Galloway, Aaron W. E.; Garza, Corey; Hazen, Elliott L.; Padilla‐Gamiño, Jacqueline; Samhouri, Jameal F.; Spalding, Ana; Stier, Adrian; White, J. Wilson",
+      "year": 2020,
+      "journal": "Conservation Letters",
+      "doi": "10.1111/conl.12716",
+      "species": "",
+      "location": "United States",
+      "themes": [
+        "climate policy",
+        "renewable energy",
+        "ocean conservation",
+        "policy integration"
+      ],
+      "newsHeadline": "Scientists Propose 'Teal Deal' to Combine Land and Sea Climate Solutions",
+      "featuredImage": "/images/offshore-wind-farm.jpeg",
+      "imageFile": "offshore-wind-farm.jpeg"
+    },
+    {
+      "id": 25,
+      "title": "Foundation species promote community stability by increasing diversity in a giant kelp forest",
+      "authors": "Lamy, Thomas; Koenigs, Craig; Holbrook, Sally J.; Miller, Robert J.; Stier, Adrian C.; Reed, Daniel C.",
+      "year": 2020,
+      "journal": "Ecology",
+      "doi": "10.1002/ecy.2987",
+      "species": "Giant kelp (Macrocystis pyrifera), 114 species of understory algae and sessile invertebrates",
+      "location": "Santa Barbara Channel, California",
+      "themes": [
+        "Foundation species",
+        "Community stability",
+        "Biodiversity",
+        "Kelp forests",
+        "Species richness"
+      ],
+      "newsHeadline": "Giant Kelp Acts as Ecosystem Stabilizer Through Biodiversity in 18-Year California Study",
+      "featuredImage": "/images/giant-kelp-sunlight-underwater.jpeg",
+      "imageFile": "giant-kelp-sunlight-underwater.jpeg"
+    },
+    {
+      "id": 26,
+      "title": "Spatial variation in exploited metapopulations obscures risk of collapse",
+      "authors": "Okamoto, Daniel K.; Hessing‐Lewis, Margot; Samhouri, Jameal F.; Shelton, Andrew O.; Stier, Adrian; Levin, Philip S.; Salomon, Anne K.",
+      "year": 2020,
+      "journal": "Ecological Applications",
+      "doi": "10.1002/eap.2051",
+      "species": "Pacific herring (Clupea pallasii)",
+      "location": "British Columbia, Canada",
+      "themes": [
+        "fisheries management",
+        "metapopulation dynamics",
+        "spatial ecology",
+        "Indigenous fisheries",
+        "conservation"
+      ],
+      "newsHeadline": "Hidden Fish Population Collapses Slip Past Regional Management, Harming Local Communities",
+      "featuredImage": "/images/pacific-herring-net.jpeg",
+      "imageFile": "pacific-herring-net.jpeg"
+    },
+    {
+      "id": 27,
+      "title": "Fishing, environment, and the erosion of a population portfolio",
+      "authors": "Stier, Adrian C.; Olaf Shelton, Andrew; Samhouri, Jameal F.; Feist, Blake E.; Levin, Phillip S.",
+      "year": 2020,
+      "journal": "Ecosphere",
+      "doi": "10.1002/ecs2.3283",
+      "species": "Pacific herring (Clupea pallasii)",
+      "location": "Haida Gwaii, British Columbia, Canada",
+      "themes": [
+        "population dynamics",
+        "fisheries management",
+        "climate effects",
+        "portfolio effects",
+        "spatial asynchrony"
+      ],
+      "newsHeadline": "Decades of Fishing and Climate Change Eroded Nature's Insurance Policy for Pacific Herring",
+      "featuredImage": "/images/fish-eggs-roe-hand-closeup.JPG",
+      "imageFile": "fish-eggs-roe-hand-closeup.JPG"
+    },
+    {
+      "id": 28,
+      "title": "Ecological impacts of human‐induced animal behaviour change",
+      "authors": "Wilson, Margaret W.; Ridlon, April D.; Gaynor, Kaitlyn M.; Gaines, Steven D.; Stier, Adrian C.; Halpern, Benjamin S.",
+      "year": 2020,
+      "journal": "Ecology Letters",
+      "doi": "10.1111/ele.13571",
+      "species": "Multiple species across terrestrial and aquatic ecosystems",
+      "location": "Global",
+      "themes": [
+        "Conservation Biology",
+        "Animal Behavior",
+        "Ecosystem Function",
+        "Human Impact"
+      ],
+      "newsHeadline": "Scientists Map Hidden Ways Humans Are Reshaping Ecosystems Through Animal Behavior",
+      "featuredImage": "/images/coyote-road.jpeg",
+      "imageFile": "coyote-road.jpeg"
+    },
+    {
+      "id": 29,
+      "title": "Grazing halos on coral reefs: predation risk, herbivore density, and habitat size influence grazing patterns that are visible from space",
+      "authors": "DiFiore, Bp; Queenborough, Sa; Madin, Emp; Paul, Vj; Decker, Mb; Stier, Ac",
+      "year": 2019,
+      "journal": "Marine Ecology Progress Series",
+      "doi": "10.3354/meps13074",
+      "species": "Herbivorous reef fish and their predators",
+      "location": "Caribbean",
+      "themes": [
+        "grazing ecology",
+        "predator-prey interactions",
+        "coral reef",
+        "remote sensing"
+      ],
+      "newsHeadline": "Grazing Halos Visible From Space Reveal Hidden Drama of Reef Fish Survival",
+      "featuredImage": "/images/halo-grazing.png",
+      "imageFile": "halo-grazing.png"
+    },
+    {
+      "id": 30,
+      "title": "Ocean recoveries for tomorrow’s Earth: Hitting a moving target",
+      "authors": "Ingeman, Kurt E.; Samhouri, Jameal F.; Stier, Adrian C.",
+      "year": 2019,
+      "journal": "Science",
+      "doi": "10.1126/science.aav1004",
+      "species": "North Atlantic right whales, marine species generally",
+      "location": "Ocean ecosystems globally",
+      "themes": [
+        "Climate Change",
+        "Conservation",
+        "Ocean Health",
+        "Policy"
+      ],
+      "newsHeadline": "Ocean Conservation Is Chasing Moving Targets as Climate Change Rewrites Recovery Rules",
+      "featuredImage": "/images/whale-ship.jpeg",
+      "imageFile": "whale-ship.jpeg"
+    },
+    {
+      "id": 31,
+      "title": "Strong Evidence for an Intraspecific Metabolic Scaling Coefficient Near 0.89 in Fish",
+      "authors": "Jerde, Christopher L.; Kraskura, Krista; Eliason, Erika J.; Csik, Samantha R.; Stier, Adrian C.; Taper, Mark L.",
+      "year": 2019,
+      "journal": "Frontiers in Physiology",
+      "doi": "10.3389/fphys.2019.01166",
+      "species": "16 fish species across 55 independent trials",
+      "location": "Multiple locations - data curated from 25 studies",
+      "themes": [
+        "fish physiology",
+        "metabolic scaling",
+        "climate change",
+        "population ecology"
+      ],
+      "newsHeadline": "Fish Metabolism Follows Different Rules Than Scientists Thought",
+      "featuredImage": "/images/flatfish-flounder-camouflage-sand.JPG",
+      "imageFile": "flatfish-flounder-camouflage-sand.JPG"
+    },
+    {
+      "id": 32,
+      "title": "ILTER – The International Long-Term Ecological Research Network as a Platform for Global Coastal and Ocean Observation",
+      "authors": "Muelbert, José H.; Nidzieko, Nicholas J.; Acosta, Alicia T. R.; Beaulieu, Stace E.; Bernardino, Angelo F.; Boikova, Elmira; Bornman, Thomas G.; Cataletto, Bruno; Deneudt, Klaas; Eliason, Erika; Kraberg, Alexandra; Nakaoka, Masahiro; Pugnetti, Alessandra; Ragueneau, Olivier; Scharfe, Mirco; Soltwedel, Thomas; Sosik, Heidi M.; Stanisci, Angela; Stefanova, Kremena; Stéphan, Pierre; Stier, Adrian; Wikner, Johan; Zingone, Adriana",
+      "year": 2019,
+      "journal": "Frontiers in Marine Science",
+      "doi": "10.3389/fmars.2019.00527",
+      "species": "Marine ecosystems and coastal environments",
+      "location": "Global network of coastal and marine sites",
+      "themes": [
+        "Marine monitoring",
+        "Long-term ecological research",
+        "Climate change",
+        "Ocean observation",
+        "Global coordination"
+      ],
+      "newsHeadline": "Century-Old Ocean Research Sites Could Hold Key to Global Marine Monitoring",
+      "featuredImage": "/images/ocean-wave-kelp-breaking.jpeg",
+      "imageFile": "ocean-wave-kelp-breaking.jpeg"
+    },
+    {
+      "id": 33,
+      "title": "Predator‐induced selection on urchin activity level depends on urchin body size",
+      "authors": "Pretorius, Justin D.; Lichtenstein, James L. L.; Eliason, Erika J.; Stier, Adrian C.; Pruitt, Jonathan N.",
+      "year": 2019,
+      "journal": "Ethology",
+      "doi": "10.1111/eth.12924",
+      "species": [
+        "Purple sea urchin (Strongylocentrotus purpuratus)",
+        "California spiny lobster (Panulirus interruptus)"
+      ],
+      "location": "California waters (Goleta sewer pipe and Goleta Pier)",
+      "themes": [
+        "predator-prey interactions",
+        "animal personality",
+        "behavioral ecology",
+        "marine ecosystems"
+      ],
+      "newsHeadline": "Restless Sea Urchins Pay the Ultimate Price: Size and Behavior Determine Who Gets Eaten",
+      "featuredImage": "/images/purple-urchin.jpeg",
+      "imageFile": "purple-urchin.jpeg"
+    },
+    {
+      "id": 34,
+      "title": "Temporal variation in dispersal modifies dispersal-diversity relationships in an experimental seagrass metacommunity",
+      "authors": "Stier, Ac; Lee, Sc; O'Connor, Mi",
+      "year": 2019,
+      "journal": "Marine Ecology Progress Series",
+      "doi": "10.3354/meps12908",
+      "species": "Seagrass community organisms",
+      "location": "Experimental study",
+      "themes": [
+        "dispersal",
+        "metacommunity ecology",
+        "biodiversity",
+        "seagrass"
+      ],
+      "newsHeadline": "Timing Is Everything: When Marine Species Disperse Matters as Much as How Many",
+      "featuredImage": "/images/seagrass.jpeg",
+      "imageFile": "seagrass.jpeg"
+    },
+    {
+      "id": 35,
+      "title": "Landscape configuration drives persistent spatial patterns of occupant distributions",
+      "authors": "Hamman, Elizabeth A.; McKinley, Scott A.; Stier, Adrian C.; Osenberg, Craig W.",
+      "year": 2018,
+      "journal": "Theoretical Ecology",
+      "doi": "10.1007/s12080-017-0352-1",
+      "species": "General model applicable to marine and terrestrial systems",
+      "location": "Theoretical modeling study",
+      "themes": [
+        "landscape ecology",
+        "spatial patterns",
+        "colonization",
+        "theoretical ecology"
+      ],
+      "newsHeadline": "Mathematical Model Reveals How Habitat Arrangement Creates Persistent Patterns in Nature",
+      "featuredImage": "/images/lorenz-attractor-abstract-art.jpeg",
+      "imageFile": "lorenz-attractor-abstract-art.jpeg"
+    },
+    {
+      "id": 36,
+      "title": "The relative influence of abundance and priority effects on colonization success in a coral-reef fish",
+      "authors": "Geange, Shane W.; Poulos, Davina E.; Stier, Adrian C.; McCormick, Mark I.",
+      "year": 2017,
+      "journal": "Coral Reefs",
+      "doi": "10.1007/s00338-016-1503-3",
+      "species": "Coral reef fish",
+      "location": "Coral reefs, likely Great Barrier Reef region",
+      "themes": [
+        "priority effects",
+        "colonization",
+        "competition",
+        "coral reef fish"
+      ],
+      "newsHeadline": "Both Timing and Numbers Matter for Young Fish Trying to Claim a Spot on the Reef",
+      "featuredImage": "/images/dascyllus-damselfish-coral.jpeg",
+      "imageFile": "dascyllus-damselfish-coral.jpeg"
+    },
+    {
+      "id": 37,
+      "title": "Costly stakeholder participation creates inertia in marine ecosystems",
+      "authors": "Lynham, J.; Halpern, B.S.; Blenckner, T.; Essington, T.; Estes, J.; Hunsicker, M.; Kappel, C.; Salomon, A.K.; Scarborough, C.; Selkoe, K.A.; Stier, A.",
+      "year": 2017,
+      "journal": "Marine Policy",
+      "doi": "10.1016/j.marpol.2016.11.011",
+      "species": "Marine ecosystems generally",
+      "location": "Theoretical framework applicable globally",
+      "themes": [
+        "marine policy",
+        "ecosystem management",
+        "stakeholder participation",
+        "regime shifts"
+      ],
+      "newsHeadline": "The Hidden Cost of Getting Everyone to the Table: Why Participatory Management Can Trap Damaged Oceans",
+      "featuredImage": "/images/fishing-harbor-marina-mountains.JPG",
+      "imageFile": "fishing-harbor-marina-mountains.JPG"
+    },
+    {
+      "id": 38,
+      "title": "Defining ecosystem thresholds for human activities and environmental pressures in the California Current",
+      "authors": "Samhouri, Jameal F.; Andrews, Kelly S.; Fay, Gavin; Harvey, Chris J.; Hazen, Elliott L.; Hennessey, Shannon M.; Holsman, Kirstin; Hunsicker, Mary E.; Large, Scott I.; Marshall, Kristin N.; Stier, Adrian C.; Tam, Jamie C.; Zador, Stephani G.",
+      "year": 2017,
+      "journal": "Ecosphere",
+      "doi": "10.1002/ecs2.1860",
+      "species": "Copepods, sea lions, scavengers, groundfish, marine mammals",
+      "location": "California Current System, U.S. West Coast",
+      "themes": [
+        "Ecosystem thresholds",
+        "Marine management",
+        "Climate impacts",
+        "Nonlinear responses"
+      ],
+      "newsHeadline": "Scientists Develop Early Warning System for Ocean Ecosystem Collapse",
+      "featuredImage": "/images/ca-sealion.jpeg",
+      "imageFile": "ca-sealion.jpeg"
+    },
+    {
+      "id": 39,
+      "title": "Rapid and direct recoveries of predators and prey through synchronized ecosystem management",
+      "authors": "Samhouri, Jameal F.; Stier, Adrian C.; Hennessey, Shannon M.; Novak, Mark; Halpern, Benjamin S.; Levin, Phillip S.",
+      "year": 2017,
+      "journal": "Nature Ecology & Evolution",
+      "doi": "10.1038/s41559-016-0068",
+      "species": "Predator-prey systems generally",
+      "location": "Theoretical modeling applicable globally",
+      "themes": [
+        "ecosystem management",
+        "predator-prey dynamics",
+        "recovery",
+        "marine policy"
+      ],
+      "newsHeadline": "Want Faster Ocean Recovery? Manage Predators and Prey Together, Not Separately",
+      "featuredImage": "/images/orca-pod.jpeg",
+      "imageFile": "orca-pod.jpeg"
+    },
+    {
+      "id": 40,
+      "title": "Integrating Expert Perceptions into Food Web Conservation and Management",
+      "authors": "Stier, Adrian C.; Samhouri, Jameal F.; Gray, Steven; Martone, Rebecca G.; Mach, Megan E.; Halpern, Benjamin S.; Kappel, Carrie V.; Scarborough, Courtney; Levin, Phillip S.",
+      "year": 2017,
+      "journal": "Conservation Letters",
+      "doi": "10.1111/conl.12245",
+      "species": "Pacific herring and associated food web species",
+      "location": "Haida Gwaii, British Columbia, Canada",
+      "themes": [
+        "food web ecology",
+        "traditional ecological knowledge",
+        "Pacific herring",
+        "marine conservation"
+      ],
+      "newsHeadline": "Different Ways of Knowing the Ocean: How Traditional and Scientific Knowledge Together Improve Conservation",
+      "featuredImage": "/images/whale-eating-herring.jpeg",
+      "imageFile": "whale-eating-herring.jpeg"
+    },
+    {
+      "id": 41,
+      "title": "Biodiversity effects of the predation gauntlet",
+      "authors": "Stier, Adrian C.; Stallings, Christopher D.; Samhouri, Jameal F.; Albins, Mark A.; Almany, Glenn R.",
+      "year": 2017,
+      "journal": "Coral Reefs",
+      "doi": "10.1007/s00338-017-1544-2",
+      "species": [
+        "Reef fish communities",
+        "Mesopredators (small groupers and snappers)",
+        "Peacock grouper (Cephalopholis argus)",
+        "Pacific lionfish (Pterois volitans and Pterois miles)"
+      ],
+      "location": "Coral reefs worldwide",
+      "themes": [
+        "Predator-prey dynamics",
+        "Biodiversity conservation",
+        "Invasive species",
+        "Coral reef ecology",
+        "Trophic interactions"
+      ],
+      "newsHeadline": "Reef Predators Thin Fish Ranks But Don't Pick Favorites—Except the Invasive Ones",
+      "featuredImage": "/images/grouper.jpeg",
+      "imageFile": "grouper.jpeg"
+    },
+    {
+      "id": 42,
+      "title": "Intraspecific variation in body size does not alter the effects of mesopredators on prey",
+      "authors": "Gallagher, Austin J.; Brandl, Simon J.; Stier, Adrian C.",
+      "year": 2016,
+      "journal": "Royal Society Open Science",
+      "doi": "10.1098/rsos.160414",
+      "species": [
+        "Arc-eye hawkfish (Paracirrhites arcatus)",
+        "Blue-green chromis (Chromis viridis)",
+        "Yellowtail damselfish (Dascyllus flavicaudus)"
+      ],
+      "location": "Moorea, French Polynesia",
+      "themes": [
+        "predator-prey interactions",
+        "body size effects",
+        "coral reef ecology",
+        "fishing impacts"
+      ],
+      "newsHeadline": "Size Doesn't Always Matter: Small Coral Reef Predators Pack Same Punch as Large Ones",
+      "featuredImage": "/images/hawkfish-perching.JPG",
+      "imageFile": "hawkfish-perching.JPG"
+    },
+    {
+      "id": 43,
+      "title": "Conservation Challenges of Predator Recovery",
+      "authors": "Marshall, Kristin N.; Stier, Adrian C.; Samhouri, Jameal F.; Kelly, Ryan P.; Ward, Eric J.",
+      "year": 2016,
+      "journal": "Conservation Letters",
+      "doi": "10.1111/conl.12186",
+      "species": "Large marine and terrestrial predators",
+      "location": "Global review with focus on North America",
+      "themes": [
+        "predator recovery",
+        "conservation conflict",
+        "ecosystem management",
+        "marine mammals"
+      ],
+      "newsHeadline": "Only 3% of World's Large Predators Are Actually Recovering - Global Study Reveals Alarming Trend",
+      "featuredImage": "/images/Leopard-1-2.jpg",
+      "imageFile": "Leopard-1-2.jpg"
+    },
+    {
+      "id": 44,
+      "title": "Using rarefaction to isolate the effects of patch size and sampling effort on beta diversity",
+      "authors": "Stier, Adrian C.; Bolker, Benjamin M.; Osenberg, Craig W.",
+      "year": 2016,
+      "journal": "Ecosphere",
+      "doi": "10.1002/ecs2.1612",
+      "species": "Not specified - theoretical study",
+      "location": "Not specified",
+      "themes": [
+        "Statistics",
+        "Biodiversity",
+        "Conservation",
+        "Methodology"
+      ],
+      "newsHeadline": "New Method Reveals How Sampling Bias Has Been Skewing Biodiversity Research",
+      "featuredImage": "/images/fish-biodiversity.jpeg",
+      "imageFile": "fish-biodiversity.jpeg"
+    },
+    {
+      "id": 45,
+      "title": "Ecosystem context and historical contingency in apex predator recoveries",
+      "authors": "Stier, Adrian C.; Samhouri, Jameal F.; Novak, Mark; Marshall, Kristin N.; Ward, Eric J.; Holt, Robert D.; Levin, Phillip S.",
+      "year": 2016,
+      "journal": "Science Advances",
+      "doi": "10.1126/sciadv.1501769",
+      "species": "Apex predators (wolves, sharks, bears, cougars, whales, eagles, sea otters, cheetahs, harbor seals)",
+      "location": "Global",
+      "themes": [
+        "Conservation",
+        "Ecosystem restoration",
+        "Predator-prey dynamics",
+        "Species recovery"
+      ],
+      "newsHeadline": "Why Bringing Back Apex Predators Is Harder Than Scientists Expected",
+      "featuredImage": "/images/blacktip-reef-sharks-split-view-island.jpeg",
+      "imageFile": "blacktip-reef-sharks-split-view-island.jpeg"
+    },
+    {
+      "id": 46,
+      "title": "Mutualism in a community context",
+      "authors": "Palmer, Todd M.; Pringle, Elizabeth G.; Stier, Adrian; Holt, Robert D.",
+      "year": 2015,
+      "journal": "",
+      "doi": "https://doi.org/10.1093/acprof:oso/9780199675654.003.0009",
+      "species": "Acacia drepanolobium trees, Crematogaster nigriceps ants, elephants, giraffes, corals, Symbiodinium algae",
+      "location": "East Africa (acacia-ant studies), coral reefs globally",
+      "themes": [
+        "mutualism",
+        "community ecology",
+        "long-term dynamics",
+        "species interactions"
+      ],
+      "newsHeadline": "Why Some of Nature's Most Important Partnerships Look Like Theft",
+      "featuredImage": "/images/bee-pollination.jpeg",
+      "imageFile": "bee-pollination.jpeg"
+    },
+    {
+      "id": 47,
+      "title": "Adaptive genetic variation mediates bottom-up and top-down control in an aquatic ecosystem",
+      "authors": "Rudman, Seth M.; Rodriguez-Cabal, Mariano A.; Stier, Adrian; Sato, Takuya; Heavyside, Julian; El-Sabaawi, Rana W.; Crutsinger, Gregory M.",
+      "year": 2015,
+      "journal": "Proceedings of the Royal Society B: Biological Sciences",
+      "doi": "10.1098/rspb.2015.1234",
+      "species": [
+        "Black cottonwood (Populus trichocarpa)",
+        "Three-spined stickleback (Gasterosteus aculeatus)",
+        "Aquatic invertebrates"
+      ],
+      "location": "British Columbia, Canada",
+      "themes": [
+        "Eco-evolutionary dynamics",
+        "Community genetics",
+        "Trophic interactions",
+        "Local adaptation"
+      ],
+      "newsHeadline": "Tree Genes Control How Fish Shape Entire Aquatic Ecosystems",
+      "featuredImage": "/images/stickleback.jpeg",
+      "imageFile": "stickleback.jpeg"
+    },
+    {
+      "id": 48,
+      "title": "Principles for managing marine ecosystems prone to tipping points",
+      "authors": "Selkoe, Kimberly A.; Blenckner, Thorsten; Caldwell, Margaret R.; Crowder, Larry B.; Erickson, Ashley L.; Essington, Timothy E.; Estes, James A.; Fujita, Rod M.; Halpern, Benjamin S.; Hunsicker, Mary E.; Kappel, Carrie V.; Kelly, Ryan P.; Kittinger, John N.; Levin, Phillip S.; Lynham, John M.; Mach, Megan E.; Martone, Rebecca G.; Mease, Lindley A.; Salomon, Anne K.; Samhouri, Jameal F.; Scarborough, Courtney; Stier, Adrian C.; White, Crow; Zedler, Joy",
+      "year": 2015,
+      "journal": "Ecosystem Health and Sustainability",
+      "doi": "10.1890/EHS14-0024.1",
+      "species": "Marine ecosystems broadly",
+      "location": "Global marine systems",
+      "themes": [
+        "Conservation",
+        "Marine Management",
+        "Ecosystem Dynamics"
+      ],
+      "newsHeadline": "Scientists Offer Blueprint for Managing Ocean Ecosystems on the Brink of Collapse",
+      "featuredImage": "/images/kelp-forest-fish-school-underwater.jpeg",
+      "imageFile": "kelp-forest-fish-school-underwater.jpeg"
+    },
+    {
+      "id": 49,
+      "title": "Experimentally induced metamorphosis in axolotls reduces regenerative rate and fidelity",
+      "authors": "Monaghan, James R.; Stier, Adrian C.; Michonneau, François; Smith, Matthew D.; Pasch, Bret; Maden, Malcolm; Seifert, Ashley W.",
+      "year": 2014,
+      "journal": "Regeneration",
+      "doi": "10.1002/reg2.8",
+      "species": "Axolotl (Ambystoma mexicanum)",
+      "location": "University of Florida",
+      "themes": [
+        "regeneration",
+        "metamorphosis",
+        "developmental biology",
+        "salamanders"
+      ],
+      "newsHeadline": "Axolotls Lose Their Superpower When They Transform Into Land Animals",
+      "featuredImage": "/images/axolotl.JPG",
+      "imageFile": "axolotl.JPG"
+    },
+    {
+      "id": 50,
+      "title": "Assessing trade-offs to inform ecosystem-based fisheries management of forage fish",
+      "authors": "Shelton, Andrew Olaf; Samhouri, Jameal F.; Stier, Adrian C.; Levin, Philip S.",
+      "year": 2014,
+      "journal": "Scientific Reports",
+      "doi": "10.1038/srep07110",
+      "species": [
+        "Pacific herring"
+      ],
+      "location": "British Columbia and Alaska coasts",
+      "themes": [
+        "fisheries management",
+        "ecosystem-based management",
+        "forage fish",
+        "predator-prey relationships"
+      ],
+      "newsHeadline": "Fishing for Herring Eggs Beats Catching Adults for Ocean Health",
+      "featuredImage": "/images/fishing-boat-seagulls-rocky-coast.jpeg",
+      "imageFile": "fishing-boat-seagulls-rocky-coast.jpeg"
+    },
+    {
+      "id": 51,
+      "title": "Predators alter community organization of coral reef cryptofauna and reduce abundance of coral mutualists",
+      "authors": "Stier, A. C.; Leray, M.",
+      "year": 2014,
+      "journal": "Coral Reefs",
+      "doi": "10.1007/s00338-013-1077-2",
+      "species": [
+        "Pocillopora eydouxi",
+        "Neocirrhites armatus",
+        "Caracanthus maculatus",
+        "Trapezia",
+        "Alpheus"
+      ],
+      "location": "Opunohu bay, Moorea, French Polynesia",
+      "themes": [
+        "predator-prey dynamics",
+        "coral reef ecology",
+        "mutualism",
+        "cryptofauna",
+        "biodiversity"
+      ],
+      "newsHeadline": "Tiny Predators Living Inside Corals Could Determine Which Reefs Survive Climate Change",
+      "featuredImage": "/images/flame-hawkfish.jpg",
+      "imageFile": "flame-hawkfish.jpg"
+    },
+    {
+      "id": 52,
+      "title": "Predator density and the functional responses of coral reef fish",
+      "authors": "Stier, A. C.; White, J. W.",
+      "year": 2014,
+      "journal": "Coral Reefs",
+      "doi": "10.1007/s00338-013-1096-z",
+      "species": "Coral reef fish predators and their prey",
+      "location": "Coral reefs, likely Moorea, French Polynesia",
+      "themes": [
+        "predator-prey dynamics",
+        "functional response",
+        "coral reef fish",
+        "predator interference"
+      ],
+      "newsHeadline": "Reef Fish Predators Are Surprisingly Fair Hunters: New Analysis Shows Predation Spreads Evenly Across Prey",
+      "featuredImage": "/images/schooling-jacks-fish-underwater.jpeg",
+      "imageFile": "schooling-jacks-fish-underwater.jpeg"
+    },
+    {
+      "id": 53,
+      "title": "Predation and landscape characteristics independently affect reef fish community organization",
+      "authors": "Stier, Adrian C.; Hanson, Katharine M.; Holbrook, Sally J.; Schmitt, Russell J.; Brooks, Andrew J.",
+      "year": 2014,
+      "journal": "Ecology",
+      "doi": "10.1890/12-1441.1",
+      "species": "Cephalopholis argus (grouper), coral reef fish communities",
+      "location": "Moorea, French Polynesia",
+      "themes": [
+        "predator-prey interactions",
+        "habitat fragmentation",
+        "coral reef ecology",
+        "marine conservation"
+      ],
+      "newsHeadline": "Predators and Habitat Shape Reef Fish Communities in Surprising Ways, Study Finds",
+      "featuredImage": "/images/moorea-mountain-tropical-island-view.jpeg",
+      "imageFile": "moorea-mountain-tropical-island-view.jpeg"
+    },
+    {
+      "id": 54,
+      "title": "Larval dispersal drives trophic structure across Pacific coral reefs",
+      "authors": "Stier, Adrian C.; Hein, Andrew M.; Parravicini, Valeriano; Kulbicki, Michel",
+      "year": 2014,
+      "journal": "Nature Communications",
+      "doi": "10.1038/ncomms6575",
+      "species": "Coral reef fish (1,350 species analyzed)",
+      "location": "Pacific Ocean coral reefs",
+      "themes": [
+        "marine ecology",
+        "predator-prey dynamics",
+        "larval dispersal",
+        "island biogeography"
+      ],
+      "newsHeadline": "Remote Coral Reefs Defy Ecology Rules With Surprisingly High Predator Populations",
+      "featuredImage": "/images/aerial-view-island-lagoon-barrier-reef.jpeg",
+      "imageFile": "aerial-view-island-lagoon-barrier-reef.jpeg"
+    },
+    {
+      "id": 55,
+      "title": "Ecologists should not use statistical significance tests to interpret simulation model results",
+      "authors": "White, J. Wilson; Rassweiler, Andrew; Samhouri, Jameal F.; Stier, Adrian C.; White, Crow",
+      "year": 2014,
+      "journal": "Oikos",
+      "doi": "10.1111/j.1600-0706.2013.01073.x",
+      "species": "Various (including lobsters Jasus edwardsii, sea urchins Centrostephanus rodgersii, seaweeds Ecklonia radiata and Phyllospora comosa)",
+      "location": "Not specified",
+      "themes": [
+        "Statistical methodology",
+        "Ecological modeling",
+        "Scientific practice"
+      ],
+      "newsHeadline": "Scientists Are Misusing Statistics When Analyzing Ecological Simulation Models",
+      "featuredImage": "/images/rocky-tidepool-coastline-sunset.jpg",
+      "imageFile": "rocky-tidepool-coastline-sunset.jpg"
+    },
+    {
+      "id": 56,
+      "title": "Illegal shark fishing in the Galápagos Marine Reserve",
+      "authors": "Carr, Lindsey A.; Stier, Adrian C.; Fietz, Katharina; Montero, Ignacio; Gallagher, Austin J.; Bruno, John F.",
+      "year": 2013,
+      "journal": "Marine Policy",
+      "doi": "10.1016/j.marpol.2012.12.005",
+      "species": [
+        "Pelagic thresher shark",
+        "Silky shark",
+        "Blue shark",
+        "Smooth hammerhead shark",
+        "Tiger shark",
+        "Galápagos shark",
+        "Short-fin mako shark"
+      ],
+      "location": "Galápagos Marine Reserve, Ecuador",
+      "themes": [
+        "Marine conservation",
+        "Illegal fishing",
+        "Species protection",
+        "Marine protected areas"
+      ],
+      "newsHeadline": "Illegal Shark Fishing Vessel Caught with 379 Dead Sharks in Galápagos Marine Reserve",
+      "featuredImage": "/images/blacktip-reef-shark-swimming.jpg",
+      "imageFile": "blacktip-reef-shark-swimming.jpg"
+    },
+    {
+      "id": 57,
+      "title": "Competitive hierarchies among three species of juvenile coral reef fishes",
+      "authors": "Geange, Sw; Stier, Ac; Shima, Js",
+      "year": 2013,
+      "journal": "Marine Ecology Progress Series",
+      "doi": "10.3354/meps10015",
+      "species": "Three juvenile wrasse species (Thalassoma)",
+      "location": "Coral reefs, likely Moorea, French Polynesia",
+      "themes": [
+        "competition",
+        "coral reef fish",
+        "community assembly",
+        "species coexistence"
+      ],
+      "newsHeadline": "Pecking Order on the Reef: Competition Among Baby Wrasses Follows Strict Hierarchy",
+      "featuredImage": "/images/fivestripewrasse.jpeg",
+      "imageFile": "fivestripewrasse.jpeg"
+    },
+    {
+      "id": 58,
+      "title": "Predator density and timing of arrival affect reef fish community assembly",
+      "authors": "Stier, Adrian C.; Geange, Shane W.; Hanson, Kate M.; Bolker, Benjamin M.",
+      "year": 2013,
+      "journal": "Ecology",
+      "doi": "10.1890/11-1983.1",
+      "species": "Hawkfish (Paracirrhites arcatus)",
+      "location": "Moorea, French Polynesia",
+      "themes": [
+        "predation",
+        "community ecology",
+        "coral reefs",
+        "timing effects"
+      ],
+      "newsHeadline": "Timing Is Everything: When Predator Fish Arrive at Coral Reefs Reshapes Entire Communities",
+      "featuredImage": "/images/hawkfish-on-coral.jpeg",
+      "imageFile": "hawkfish-on-coral.jpeg"
+    },
+    {
+      "id": 59,
+      "title": "High Mortality in a Surgeonfish Following an Exceptional Settlement Event",
+      "authors": "Stier, Adrian C.; Idjadi, Joshua A.; Geange, Shane W.; White, Jada-Simone S.",
+      "year": 2013,
+      "journal": "Pacific Science",
+      "doi": "10.2984/67.4.4",
+      "species": "Striped bristletooth surgeonfish (Ctenochaetus striatus)",
+      "location": "Moorea, French Polynesia",
+      "themes": [
+        "marine ecology",
+        "fish population dynamics",
+        "disease ecology",
+        "coral reef ecosystems"
+      ],
+      "newsHeadline": "Mystery Disease Kills Hundreds of Fish After Rare Ocean 'Baby Boom' in French Polynesia",
+      "featuredImage": "/images/surgeonfish-settlers.JPG",
+      "imageFile": "surgeonfish-settlers.JPG"
+    },
+    {
+      "id": 60,
+      "title": "Emergent effects of multiple predators on prey survival: the importance of depletion and the functional response",
+      "authors": "McCoy, Michael W.; Stier, Adrian C.; Osenberg, Craig W.",
+      "year": 2012,
+      "journal": "Ecology Letters",
+      "doi": "10.1111/ele.12005",
+      "species": [
+        "Multiple predator species",
+        "Prey species"
+      ],
+      "location": "Not specified",
+      "themes": [
+        "Predator-prey interactions",
+        "Mathematical ecology",
+        "Research methodology",
+        "Food web dynamics"
+      ],
+      "newsHeadline": "Decades of Predator Studies May Be Wrong Due to Flawed Mathematical Assumptions",
+      "featuredImage": "/images/manta-ray-silhouette-underwater.JPG",
+      "imageFile": "manta-ray-silhouette-underwater.JPG"
+    },
+    {
+      "id": 61,
+      "title": "Multiple defender effects: synergistic coral defense by mutualist crustaceans",
+      "authors": "McKeon, C. Seabird; Stier, Adrian C.; McIlroy, Shelby E.; Bolker, Benjamin M.",
+      "year": 2012,
+      "journal": "Oecologia",
+      "doi": "10.1007/s00442-012-2275-2",
+      "species": [
+        "Trapezia serenei (crab)",
+        "Alpheus lottini (snapping shrimp)",
+        "Pocillopora cf. meandrina (coral)",
+        "Culcita novaeguineae (sea star)"
+      ],
+      "location": "French Polynesia",
+      "themes": [
+        "mutualism",
+        "synergy",
+        "coral reef ecology",
+        "multiple defender effects"
+      ],
+      "newsHeadline": "Tiny Coral Bodyguards Team Up for Super-Powered Defense Against Starfish Attacks",
+      "featuredImage": "/images/Arete indicus - ML.jpg",
+      "imageFile": "Arete indicus - ML.jpg"
+    },
+    {
+      "id": 62,
+      "title": "The influence of fundamental traits on mechanisms controlling appendage regeneration",
+      "authors": "Seifert, Ashley W.; Monaghan, James R.; Smith, Matthew D.; Pasch, Bret; Stier, Adrian C.; Michonneau, François; Maden, Malcolm",
+      "year": 2012,
+      "journal": "Biological Reviews",
+      "doi": "10.1111/j.1469-185X.2011.00199.x",
+      "species": "Multiple species across animal kingdom including salamanders, fish, crustaceans, and echinoderms",
+      "location": "Global review study",
+      "themes": [
+        "regeneration",
+        "evolutionary biology",
+        "developmental biology",
+        "life history"
+      ],
+      "newsHeadline": "Axolotls Lose Their Superpower When They Transform Into Land-Dwelling Adults",
+      "featuredImage": "/images/axolotl-salamander-pink-portrait.jpg",
+      "imageFile": "axolotl-salamander-pink-portrait.jpg"
+    },
+    {
+      "id": 63,
+      "title": "Housekeeping Mutualisms: Do More Symbionts Facilitate Host Performance?",
+      "authors": "Stier, Adrian C.; Gil, Michael A.; McKeon, C. Seabird; Lemer, Sarah; Leray, Matthieu; Mills, Suzanne C.; Osenberg, Craig W.",
+      "year": 2012,
+      "journal": "PLoS ONE",
+      "doi": "10.1371/journal.pone.0032079",
+      "species": [
+        "Pocillopora cf. verrucosa",
+        "Trapezia serenei",
+        "Alpheus lottini"
+      ],
+      "location": "Moorea, French Polynesia",
+      "themes": [
+        "coral reef ecology",
+        "mutualism",
+        "sediment removal",
+        "biodiversity"
+      ],
+      "newsHeadline": "Coral Housekeepers: Multiple Species of Cleaners Keep Reefs Sediment-Free Better Than Any Single Species",
+      "featuredImage": "/images/red-spotted-coral-crab-macro.jpeg",
+      "imageFile": "red-spotted-coral-crab-macro.jpeg"
+    },
+    {
+      "id": 64,
+      "title": "The value of estuarine and coastal ecosystem services",
+      "authors": "Barbier, Edward B.; Hacker, Sally D.; Kennedy, Chris; Koch, Evamaria W.; Stier, Adrian C.; Silliman, Brian R.",
+      "year": 2011,
+      "journal": "Ecological Monographs",
+      "doi": "10.1890/10-1510.1",
+      "species": "Various coastal and estuarine species",
+      "location": "Global",
+      "themes": [
+        "conservation",
+        "economics",
+        "ecosystem services"
+      ],
+      "newsHeadline": "Scientists Reveal Massive Economic Value Hidden in Disappearing Coastlines",
+      "featuredImage": "/images/tropical-beach-palm-trees-waves.JPG",
+      "imageFile": "tropical-beach-palm-trees-waves.JPG"
+    },
+    {
+      "id": 65,
+      "title": "Coral density and predation affect growth of a reef-building coral",
+      "authors": "Shantz, A. A.; Stier, A. C.; Idjadi, J. A.",
+      "year": 2011,
+      "journal": "Coral Reefs",
+      "doi": "10.1007/s00338-010-0694-2",
+      "species": "Massive Porites (species complex of P. lobata and P. lutea)",
+      "location": "Northern shore of Moorea, French Polynesia",
+      "themes": [
+        "coral ecology",
+        "predation",
+        "density effects",
+        "reef restoration"
+      ],
+      "newsHeadline": "Coral Safety in Numbers: Reef-builders Grow Faster in Dense Neighborhoods Despite Attracting More Predators",
+      "featuredImage": "/images/pufferfish.jpeg",
+      "imageFile": "pufferfish.jpeg"
+    },
+    {
+      "id": 66,
+      "title": "Priority effects and habitat complexity affect the strength of competition",
+      "authors": "Geange, Shane Wallace; Stier, Adrian C.",
+      "year": 2010,
+      "journal": "Oecologia",
+      "doi": "10.1007/s00442-009-1554-z",
+      "species": "Five-lined wrasse (Thalassoma quinquevittatum)",
+      "location": "Moorea, French Polynesia",
+      "themes": [
+        "competition",
+        "priority effects",
+        "habitat complexity",
+        "coral reef ecology",
+        "fish behavior"
+      ],
+      "newsHeadline": "Late to the Party: Coral Reef Fish Face Near-Certain Death When They Arrive Just Days Behind Competitors",
+      "featuredImage": "/images/thalassoma-staring.jpeg",
+      "imageFile": "thalassoma-staring.jpeg"
+    },
+    {
+      "id": 67,
+      "title": "Charismatic microfauna alter cyanobacterial production through a trophic cascade",
+      "authors": "Geange, S. W.; Stier, A. C.",
+      "year": 2010,
+      "journal": "Coral Reefs",
+      "doi": "10.1007/s00338-010-0606-5",
+      "species": [
+        "Gymnodoris ceylonica (nudibranch)",
+        "Stylocheilus striatus (sea hare)",
+        "Lyngbya majuscula (cyanobacteria)"
+      ],
+      "location": "Moorea, French Polynesia",
+      "themes": [
+        "trophic cascades",
+        "coral reef ecology",
+        "harmful algal blooms",
+        "predator-prey interactions"
+      ],
+      "newsHeadline": "Tiny Predators Make Toxic Algal Blooms Worse by Eating the Creatures That Fight Them",
+      "featuredImage": "/images/seahare.JPG",
+      "imageFile": "seahare.JPG"
+    },
+    {
+      "id": 68,
+      "title": "Predators reduce abundance and species richness of coral reef fish recruits via non-selective predation",
+      "authors": "Heinlein, J. M.; Stier, A. C.; Steele, M. A.",
+      "year": 2010,
+      "journal": "Coral Reefs",
+      "doi": "10.1007/s00338-010-0592-7",
+      "species": [
+        "Pocillopora cf. verrucosa (coral)",
+        "Various coral reef fish families including Acanthuridae, Pomacentridae, Gobiidae, Labridae"
+      ],
+      "location": "Moorea, French Polynesia",
+      "themes": [
+        "predator-prey interactions",
+        "community ecology",
+        "coral reef fish recruitment",
+        "marine biodiversity"
+      ],
+      "newsHeadline": "Reef Predators Act Like Lawnmowers, Cutting Down Young Fish Indiscriminately",
+      "featuredImage": "/images/bluefintrevally.jpeg",
+      "imageFile": "bluefintrevally.jpeg"
+    },
+    {
+      "id": 69,
+      "title": "The vermetid gastropod <i>Dendropoma maximum</i> reduces coral growth and survival",
+      "authors": "Shima, Jeffrey S.; Osenberg, Craig W.; Stier, Adrian C.",
+      "year": 2010,
+      "journal": "Biology Letters",
+      "doi": "10.1098/rsbl.2010.0291",
+      "species": [
+        "Dendropoma maximum",
+        "Porites lobata",
+        "Pocillopora",
+        "Porites rus",
+        "Montipora"
+      ],
+      "location": "Moorea, French Polynesia",
+      "themes": [
+        "coral reef ecology",
+        "species interactions",
+        "overlooked species",
+        "coral decline"
+      ],
+      "newsHeadline": "Tiny Snails Are Secretly Devastating Coral Reefs Across the Pacific",
+      "featuredImage": "/images/deadcoral.jpeg",
+      "imageFile": "deadcoral.jpeg"
+    },
+    {
+      "id": 70,
+      "title": "Propagule redirection: Habitat availability reduces colonization and increases recruitment in reef fishes",
+      "authors": "Stier, Adrian C.; Osenberg, Craig W.",
+      "year": 2010,
+      "journal": "Ecology",
+      "doi": "10.1890/09-1993.1",
+      "species": "Four reef fish species: Dascyllus aruanus, Dascyllus flavicaudus, Halichoeres trimaculatus, and Paragobiodon lacunicolus",
+      "location": "Moorea, French Polynesia",
+      "themes": [
+        "Marine ecology",
+        "Habitat restoration",
+        "Larval settlement",
+        "Population dynamics"
+      ],
+      "newsHeadline": "Baby Fish Choose Lonelier Reefs Over Crowded Neighborhoods, Challenging 'Build It and They Will Come' Restoration",
+      "featuredImage": "/images/blue-green-chromis-coral-school.JPG",
+      "imageFile": "blue-green-chromis-coral-school.JPG"
+    },
+    {
+      "id": 71,
+      "title": "Guard crabs alleviate deleterious effects of vermetid snails on a branching coral",
+      "authors": "Stier, A. C.; McKeon, C. S.; Osenberg, C. W.; Shima, J. S.",
+      "year": 2010,
+      "journal": "Coral Reefs",
+      "doi": "10.1007/s00338-010-0663-9",
+      "species": [
+        "Pocillopora coral",
+        "Trapezia serenei guard crabs",
+        "Dendropoma maximum vermetid snails"
+      ],
+      "location": "Moorea, French Polynesia",
+      "themes": [
+        "symbiosis",
+        "coral protection",
+        "reef ecology"
+      ],
+      "newsHeadline": "Tiny Bodyguard Crabs Save Coral Reefs from Slimy Attackers",
+      "featuredImage": "/images/coral-guard-crab-red-spotted-macro.jpeg",
+      "imageFile": "coral-guard-crab-red-spotted-macro.jpeg"
+    },
+    {
+      "id": 72,
+      "title": "Synthesizing mechanisms of density dependence in reef fishes: behavior, habitat configuration, and observational scale",
+      "authors": "White, J. Wilson; Samhouri, Jameal F.; Stier, Adrian C.; Wormald, Clare L.; Hamilton, Scott L.; Sandin, Stuart A.",
+      "year": 2010,
+      "journal": "Ecology",
+      "doi": "10.1890/09-0298.1",
+      "species": "Reef fishes generally",
+      "location": "Conceptual synthesis applicable to reef fish globally",
+      "themes": [
+        "density dependence",
+        "population ecology",
+        "reef fish",
+        "predation",
+        "habitat structure"
+      ],
+      "newsHeadline": "Why Fish Crowding Studies Get Such Different Results: Scale and Habitat Are Key",
+      "featuredImage": "/images/damselfish-school-coral-reef.jpg",
+      "imageFile": "damselfish-school-coral-reef.jpg"
+    },
+    {
+      "id": 73,
+      "title": "Effects of the fish anesthetic, clove oil (eugenol), on coral health and growth",
+      "authors": "Boyer, S.E.; White, J.S.; Stier, A.C.; Osenberg, C.W.",
+      "year": 2009,
+      "journal": "Journal of Experimental Marine Biology and Ecology",
+      "doi": "10.1016/j.jembe.2008.10.020",
+      "species": "Pocillopora coral",
+      "location": "Moorea, French Polynesia",
+      "themes": [
+        "research methods",
+        "coral health",
+        "fish anesthesia",
+        "coral reef ecology"
+      ],
+      "newsHeadline": "Common Fish Anesthetic Doesn't Harm Coral Hosts, Study Finds",
+      "featuredImage": "/images/coral-polyps-extended-macro.jpg",
+      "imageFile": "coral-polyps-extended-macro.jpg"
+    },
+    {
+      "id": 74,
+      "title": "Order of arrival affects competition in two reef fishes",
+      "authors": "Geange, Shane W.; Stier, Adrian C.",
+      "year": 2009,
+      "journal": "Ecology",
+      "doi": "10.1890/08-0630.1",
+      "species": [
+        "Thalassoma hardwicke",
+        "Thalassoma quinquevittatum"
+      ],
+      "location": "Moorea, French Polynesia",
+      "themes": [
+        "competition",
+        "priority effects",
+        "reef fish ecology",
+        "community assembly"
+      ],
+      "newsHeadline": "First Come, First Served: Reef Fish That Arrive Early Dominate Their Late-Coming Competitors",
+      "featuredImage": "/images/wrasse-6bar.jpeg",
+      "imageFile": "wrasse-6bar.jpeg"
+    },
+    {
+      "id": 75,
+      "title": "Coral reef fishes use crown-of-thorns seastar as habitat",
+      "authors": "Stier, Adrian C.; Steele, Mark A.; Brooks, Andrew J.",
+      "year": 2009,
+      "journal": "Coral Reefs",
+      "doi": "10.1007/s00338-008-0445-9",
+      "species": [
+        "Crown-of-thorns starfish (Acanthaster planci)",
+        "Various small reef fish"
+      ],
+      "location": "Moorea, French Polynesia",
+      "themes": [
+        "Coral"
+      ],
+      "newsHeadline": "Coral's Worst Enemy Also Serves as Fish Shelter—Nature's Irony",
+      "featuredImage": "/images/crown-of-thorns.jpeg",
+      "imageFile": "crown-of-thorns.jpeg"
+    },
+    {
+      "id": 76,
+      "title": "Widespread Heterogeneity in Density-Dependent Mortality of Nearshore Fishes",
+      "authors": "Stier, Adrian C.; Osenberg, Craig W.",
+      "year": 2025,
+      "journal": "Ecology Letters",
+      "doi": "10.1111/ele.70262",
+      "species": "38 species of reef fishes",
+      "location": "Global nearshore marine ecosystems",
+      "themes": [
+        "population dynamics",
+        "density dependence",
+        "reef fish ecology",
+        "meta-analysis",
+        "predation"
+      ],
+      "newsHeadline": "Fish Populations Don't Follow Simple Rules—And That Changes Everything We Thought We Knew",
+      "featuredImage": "/images/barracuda-school-underwater-blue.jpg",
+      "imageFile": "barracuda-school-underwater-blue.jpg"
+    },
+    {
+      "id": 77,
+      "title": "Course corrections responding to climate impacts produce divergent effects on population biomass and harvest in fisheries",
+      "authors": "Samhouri, Jameal F.; Detmer, A. Raine; Marshall, Kristin N.; Stier, Adrian C.; Berger, Aaron; Liu, Owen R.; Shelton, A. Ole",
+      "year": 2025,
+      "journal": "PLOS Climate",
+      "doi": "10.1371/journal.pclm.0000624",
+      "species": "Generic harvested fish population",
+      "location": "Modeled system applicable to global fisheries",
+      "themes": [
+        "climate change",
+        "fisheries management",
+        "population dynamics",
+        "harvest optimization",
+        "conservation trade-offs"
+      ],
+      "newsHeadline": "Climate Change Forces an Impossible Choice for Fisheries: Save the Fish or Save the Jobs?",
+      "featuredImage": "/images/hurricane-earth-from-space.jpeg",
+      "imageFile": "hurricane-earth-from-space.jpeg"
+    }
+  ],
+  "imageAssignments": [
+    {
+      "publicationId": 1,
+      "title": "Fish services to corals: a review of how coral-associated fi",
+      "image": "chromis-acropora.jpeg"
+    },
+    {
+      "publicationId": 2,
+      "title": "Coral guard crabs",
+      "image": "trapezia-coral-crab-hiding.jpg"
+    },
+    {
+      "publicationId": 3,
+      "title": "How fishes and invertebrates impact coral resilience",
+      "image": "trapezia-coral-crab-red-spotted.jpg"
+    },
+    {
+      "publicationId": 4,
+      "title": "The metabolic underpinnings of temperature-dependent predati",
+      "image": "spiny-lobsters-group-reef-hideout.jpeg"
+    },
+    {
+      "publicationId": 5,
+      "title": "3D photogrammetry improves measurement of growth and biodive",
+      "image": "cauliflower-coral-damselfish-reef.jpeg"
+    },
+    {
+      "publicationId": 6,
+      "title": "Variation in body size drives spatial and temporal variation",
+      "image": "lobster-in-underwater-trap-cage.jpeg"
+    },
+    {
+      "publicationId": 7,
+      "title": "Material legacies can degrade resilience: Structure‐retainin",
+      "image": "coral-bleaching-timelapse-study.jpeg"
+    },
+    {
+      "publicationId": 8,
+      "title": "Cascading benefits of mutualists' predators on foundation sp",
+      "image": "damselfish-pair-acropora-coral.jpeg"
+    },
+    {
+      "publicationId": 9,
+      "title": "Remoteness does not enhance coral reef resilience",
+      "image": "tropical-island-split-view-coral-reef-shark.jpeg"
+    },
+    {
+      "publicationId": 10,
+      "title": "Fertilization by coral-dwelling fish promotes coral growth b",
+      "image": "damselfish-pair-pink-coral.jpeg"
+    },
+    {
+      "publicationId": 11,
+      "title": "Glimmers of hope in large carnivore recoveries",
+      "image": "CheetahFam-1.jpg"
+    },
+    {
+      "publicationId": 12,
+      "title": "Increasing spillover enhances southern California spiny lobs",
+      "image": "lobster.jpeg"
+    },
+    {
+      "publicationId": 13,
+      "title": "Detrital supply suppresses deforestation to maintain healthy",
+      "image": "kelp_canopy.jpg"
+    },
+    {
+      "publicationId": 14,
+      "title": "How much city is too much city? Biodiversity and ecosystem f",
+      "image": "seattle-urban-coastline.jpeg"
+    },
+    {
+      "publicationId": 15,
+      "title": "Irreversibility of regime shifts in the North Sea",
+      "image": "norht-sea-fishing.jpeg"
+    },
+    {
+      "publicationId": 16,
+      "title": "Avoiding critical thresholds through effective monitoring",
+      "image": "rocky-beach-cove-panorama.jpeg"
+    },
+    {
+      "publicationId": 17,
+      "title": "Variation in disturbance to a foundation species structures ",
+      "image": "kelp-hero.jpeg"
+    },
+    {
+      "publicationId": 18,
+      "title": "On the Interface of Food Webs and Spatial Ecology: The Troph",
+      "image": "forested-islands-aerial-ocean-view.JPG"
+    },
+    {
+      "publicationId": 19,
+      "title": "Effects of corallivory and coral colony density on coral gro",
+      "image": "butterflyfish-eating-coral.jpeg"
+    },
+    {
+      "publicationId": 20,
+      "title": "Evidence that spillover from Marine Protected Areas benefits",
+      "image": "california-coastline-rocky-shore.jpg"
+    },
+    {
+      "publicationId": 21,
+      "title": "Perception and Conflict in Conservation: The Rashomon Effect",
+      "image": "conflict-image.jpg"
+    },
+    {
+      "publicationId": 22,
+      "title": "Ecological impacts of an invasive mesopredator do not differ",
+      "image": "lionfish-soft-coral.jpeg"
+    },
+    {
+      "publicationId": 23,
+      "title": "Variation in herbivore grazing behavior across Caribbean ree",
+      "image": "parrotfish.jpeg"
+    },
+    {
+      "publicationId": 24,
+      "title": "Integrating oceans into climate policy: Any green new deal n",
+      "image": "offshore-wind-farm.jpeg"
+    },
+    {
+      "publicationId": 25,
+      "title": "Foundation species promote community stability by increasing",
+      "image": "giant-kelp-sunlight-underwater.jpeg"
+    },
+    {
+      "publicationId": 26,
+      "title": "Spatial variation in exploited metapopulations obscures risk",
+      "image": "pacific-herring-net.jpeg"
+    },
+    {
+      "publicationId": 27,
+      "title": "Fishing, environment, and the erosion of a population portfo",
+      "image": "fish-eggs-roe-hand-closeup.JPG"
+    },
+    {
+      "publicationId": 28,
+      "title": "Ecological impacts of human‐induced animal behaviour change",
+      "image": "coyote-road.jpeg"
+    },
+    {
+      "publicationId": 29,
+      "title": "Grazing halos on coral reefs: predation risk, herbivore dens",
+      "image": "halo-grazing.png"
+    },
+    {
+      "publicationId": 30,
+      "title": "Ocean recoveries for tomorrow’s Earth: Hitting a moving targ",
+      "image": "whale-ship.jpeg"
+    },
+    {
+      "publicationId": 31,
+      "title": "Strong Evidence for an Intraspecific Metabolic Scaling Coeff",
+      "image": "flatfish-flounder-camouflage-sand.JPG"
+    },
+    {
+      "publicationId": 32,
+      "title": "ILTER – The International Long-Term Ecological Research Netw",
+      "image": "ocean-wave-kelp-breaking.jpeg"
+    },
+    {
+      "publicationId": 33,
+      "title": "Predator‐induced selection on urchin activity level depends ",
+      "image": "purple-urchin.jpeg"
+    },
+    {
+      "publicationId": 34,
+      "title": "Temporal variation in dispersal modifies dispersal-diversity",
+      "image": "seagrass.jpeg"
+    },
+    {
+      "publicationId": 35,
+      "title": "Landscape configuration drives persistent spatial patterns o",
+      "image": "lorenz-attractor-abstract-art.jpeg"
+    },
+    {
+      "publicationId": 36,
+      "title": "The relative influence of abundance and priority effects on ",
+      "image": "dascyllus-damselfish-coral.jpeg"
+    },
+    {
+      "publicationId": 37,
+      "title": "Costly stakeholder participation creates inertia in marine e",
+      "image": "fishing-harbor-marina-mountains.JPG"
+    },
+    {
+      "publicationId": 38,
+      "title": "Defining ecosystem thresholds for human activities and envir",
+      "image": "ca-sealion.jpeg"
+    },
+    {
+      "publicationId": 39,
+      "title": "Rapid and direct recoveries of predators and prey through sy",
+      "image": "orca-pod.jpeg"
+    },
+    {
+      "publicationId": 40,
+      "title": "Integrating Expert Perceptions into Food Web Conservation an",
+      "image": "whale-eating-herring.jpeg"
+    },
+    {
+      "publicationId": 41,
+      "title": "Biodiversity effects of the predation gauntlet",
+      "image": "grouper.jpeg"
+    },
+    {
+      "publicationId": 42,
+      "title": "Intraspecific variation in body size does not alter the effe",
+      "image": "hawkfish-perching.JPG"
+    },
+    {
+      "publicationId": 43,
+      "title": "Conservation Challenges of Predator Recovery",
+      "image": "Leopard-1-2.jpg"
+    },
+    {
+      "publicationId": 44,
+      "title": "Using rarefaction to isolate the effects of patch size and s",
+      "image": "fish-biodiversity.jpeg"
+    },
+    {
+      "publicationId": 45,
+      "title": "Ecosystem context and historical contingency in apex predato",
+      "image": "blacktip-reef-sharks-split-view-island.jpeg"
+    },
+    {
+      "publicationId": 46,
+      "title": "Mutualism in a community context",
+      "image": "bee-pollination.jpeg"
+    },
+    {
+      "publicationId": 47,
+      "title": "Adaptive genetic variation mediates bottom-up and top-down c",
+      "image": "stickleback.jpeg"
+    },
+    {
+      "publicationId": 48,
+      "title": "Principles for managing marine ecosystems prone to tipping p",
+      "image": "kelp-forest-fish-school-underwater.jpeg"
+    },
+    {
+      "publicationId": 49,
+      "title": "Experimentally induced metamorphosis in axolotls reduces reg",
+      "image": "axolotl.JPG"
+    },
+    {
+      "publicationId": 50,
+      "title": "Assessing trade-offs to inform ecosystem-based fisheries man",
+      "image": "fishing-boat-seagulls-rocky-coast.jpeg"
+    },
+    {
+      "publicationId": 51,
+      "title": "Predators alter community organization of coral reef cryptof",
+      "image": "flame-hawkfish.jpg"
+    },
+    {
+      "publicationId": 52,
+      "title": "Predator density and the functional responses of coral reef ",
+      "image": "schooling-jacks-fish-underwater.jpeg"
+    },
+    {
+      "publicationId": 53,
+      "title": "Predation and landscape characteristics independently affect",
+      "image": "moorea-mountain-tropical-island-view.jpeg"
+    },
+    {
+      "publicationId": 54,
+      "title": "Larval dispersal drives trophic structure across Pacific cor",
+      "image": "aerial-view-island-lagoon-barrier-reef.jpeg"
+    },
+    {
+      "publicationId": 55,
+      "title": "Ecologists should not use statistical significance tests to ",
+      "image": "rocky-tidepool-coastline-sunset.jpg"
+    },
+    {
+      "publicationId": 56,
+      "title": "Illegal shark fishing in the Galápagos Marine Reserve",
+      "image": "blacktip-reef-shark-swimming.jpg"
+    },
+    {
+      "publicationId": 57,
+      "title": "Competitive hierarchies among three species of juvenile cora",
+      "image": "fivestripewrasse.jpeg"
+    },
+    {
+      "publicationId": 58,
+      "title": "Predator density and timing of arrival affect reef fish comm",
+      "image": "hawkfish-on-coral.jpeg"
+    },
+    {
+      "publicationId": 59,
+      "title": "High Mortality in a Surgeonfish Following an Exceptional Set",
+      "image": "surgeonfish-settlers.JPG"
+    },
+    {
+      "publicationId": 60,
+      "title": "Emergent effects of multiple predators on prey survival: the",
+      "image": "manta-ray-silhouette-underwater.JPG"
+    },
+    {
+      "publicationId": 61,
+      "title": "Multiple defender effects: synergistic coral defense by mutu",
+      "image": "Arete indicus - ML.jpg"
+    },
+    {
+      "publicationId": 62,
+      "title": "The influence of fundamental traits on mechanisms controllin",
+      "image": "axolotl-salamander-pink-portrait.jpg"
+    },
+    {
+      "publicationId": 63,
+      "title": "Housekeeping Mutualisms: Do More Symbionts Facilitate Host P",
+      "image": "red-spotted-coral-crab-macro.jpeg"
+    },
+    {
+      "publicationId": 64,
+      "title": "The value of estuarine and coastal ecosystem services",
+      "image": "tropical-beach-palm-trees-waves.JPG"
+    },
+    {
+      "publicationId": 65,
+      "title": "Coral density and predation affect growth of a reef-building",
+      "image": "pufferfish.jpeg"
+    },
+    {
+      "publicationId": 66,
+      "title": "Priority effects and habitat complexity affect the strength ",
+      "image": "thalassoma-staring.jpeg"
+    },
+    {
+      "publicationId": 67,
+      "title": "Charismatic microfauna alter cyanobacterial production throu",
+      "image": "seahare.JPG"
+    },
+    {
+      "publicationId": 68,
+      "title": "Predators reduce abundance and species richness of coral ree",
+      "image": "bluefintrevally.jpeg"
+    },
+    {
+      "publicationId": 69,
+      "title": "The vermetid gastropod <i>Dendropoma maximum</i> reduces cor",
+      "image": "deadcoral.jpeg"
+    },
+    {
+      "publicationId": 70,
+      "title": "Propagule redirection: Habitat availability reduces coloniza",
+      "image": "blue-green-chromis-coral-school.JPG"
+    },
+    {
+      "publicationId": 71,
+      "title": "Guard crabs alleviate deleterious effects of vermetid snails",
+      "image": "coral-guard-crab-red-spotted-macro.jpeg"
+    },
+    {
+      "publicationId": 72,
+      "title": "Synthesizing mechanisms of density dependence in reef fishes",
+      "image": "damselfish-school-coral-reef.jpg"
+    },
+    {
+      "publicationId": 73,
+      "title": "Effects of the fish anesthetic, clove oil (eugenol), on cora",
+      "image": "coral-polyps-extended-macro.jpg"
+    },
+    {
+      "publicationId": 74,
+      "title": "Order of arrival affects competition in two reef fishes",
+      "image": "wrasse-6bar.jpeg"
+    },
+    {
+      "publicationId": 75,
+      "title": "Coral reef fishes use crown-of-thorns seastar as habitat",
+      "image": "crown-of-thorns.jpeg"
+    },
+    {
+      "publicationId": 76,
+      "title": "Widespread Heterogeneity in Density-Dependent Mortality of N",
+      "image": "barracuda-school-underwater-blue.jpg"
+    },
+    {
+      "publicationId": 77,
+      "title": "Course corrections responding to climate impacts produce div",
+      "image": "hurricane-earth-from-space.jpeg"
+    }
+  ],
+  "unusedImages": [
+    "Emily.jpg",
+    "Hawkf_Tetralia_rubridactyla.jpg",
+    "adrian.png",
+    "ambon-damselfish.jpeg",
+    "axolotl.jpeg",
+    "bart.jpg",
+    "beach-sunset-sea-lion-silhouette.jpg",
+    "bear-mural-street-art.jpg",
+    "bleach-coral.jpeg",
+    "california-sheephead-kelp-forest.jpeg",
+    "conifer-forest-sunlight-trees.jpg",
+    "coral-reef-bleached-anemone-fish-school.jpeg",
+    "coral-reef-panorama-anthias-fish.jpeg",
+    "damselfish-single-coral-closeup.jpeg",
+    "dungeness-crab-beach-closeup.jpeg",
+    "garibaldi-fish-orange-kelp-forest.jpeg",
+    "gooseneck-barnacles-cluster-tidepool.jpg",
+    "green-coral-polyps.jpeg",
+    "green-sea-turtle-swimming-blue.JPG",
+    "hayden.jpg",
+    "jada.jpg",
+    "jaden.jpg",
+    "joe.jpg",
+    "kai.jpg",
+    "kingeman.jpg",
+    "lionfish.jpeg",
+    "man-portrait-marina-boats-background.jpg",
+    "man-portrait-selfie-outdoors.jpeg",
+    "man-scuba-diver-on-boat.jpg",
+    "manta.jpg",
+    "marine-iguana-galapagos-beach.jpg",
+    "marine-iguana-sand-galapagos.jpg",
+    "molly.jpg",
+    "og-default.jpg",
+    "overwater-bungalows-split-view-reef-fish.jpeg",
+    "raine.jpg",
+    "red-pencil-urchin-coral-reef.JPG",
+    "research-team-group-photo-beach.jpeg",
+    "researcher-on-boat-ocean-fieldwork.jpg",
+    "rock-crab-kelp-tidepool.jpg",
+    "sally-lightfoot-crab-galapagos.jpg",
+    "sam.jpg",
+    "scuba-divers-shark-deep-blue.JPG",
+    "sheephead.jpeg",
+    "squid-silhouette-blue-ocean.JPG",
+    "stingrays-group-sandy-bottom.JPG",
+    "stylophora-coral.jpeg",
+    "tropical-island-aerial-view-lagoon-reef.jpeg",
+    "tropical-palm-island-ocean.jpeg",
+    "ucsb-campus.jpeg",
+    "urchin-barron.jpg",
+    "whitemouth-moray-eel-closeup.JPG",
+    "whitemouth-moray-eel-coral.JPG"
+  ]
+}
