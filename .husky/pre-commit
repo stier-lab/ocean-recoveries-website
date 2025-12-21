@@ -1,0 +1,13 @@
+#!/bin/sh
+
+# Run TypeScript check before commit
+echo "Running type check..."
+npm run build -- --check-only 2>/dev/null || npx astro check
+
+# If check fails, prevent commit
+if [ $? -ne 0 ]; then
+  echo "Type check failed. Please fix errors before committing."
+  exit 1
+fi
+
+echo "Type check passed!"

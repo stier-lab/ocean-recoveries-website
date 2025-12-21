@@ -108,17 +108,18 @@ const formatDate = (dateStr: string) => {
                 alt={system.title}
                 loading="lazy"
               />
-              <div class="absolute inset-0 bg-gradient-to-t from-bg-primary/90 via-bg-primary/30 to-transparent"></div>
+              <!-- Stronger gradient for better text readability -->
+              <div class="absolute inset-0 bg-gradient-to-t from-bg-primary via-bg-primary/70 to-bg-primary/20"></div>
             </div>
             <div class="study-system-content">
-              <span class="inline-block px-2 py-1 text-xs font-bold uppercase tracking-wide bg-white/20 rounded mb-2">
+              <span class="inline-block px-2 py-1 text-xs font-bold uppercase tracking-wide bg-black/40 backdrop-blur-sm rounded mb-2 drop-shadow-md">
                 {system.slug === 'coral-reefs' ? 'Moorea, French Polynesia' : 'Santa Barbara, California'}
               </span>
-              <h3 class="text-2xl text-white mb-2 group-hover:text-accent-2 transition-colors">{system.title}</h3>
-              <p class="text-white/80 text-sm mb-3">
+              <h3 class="text-2xl text-white mb-2 group-hover:text-accent-2 transition-colors drop-shadow-lg">{system.title}</h3>
+              <p class="text-white/90 text-sm mb-3 drop-shadow-md">
                 {system.tagline}
               </p>
-              <span class="inline-flex items-center gap-2 text-accent text-sm font-semibold group-hover:gap-3 transition-all">
+              <span class="inline-flex items-center gap-2 text-accent text-sm font-semibold group-hover:gap-3 transition-all drop-shadow-md">
                 Learn more
                 <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />

@@ -24,7 +24,7 @@ export const studySystems: StudySystem[] = [
     slug: 'coral-reefs',
     title: 'Coral Reefs',
     tagline: 'Field experiments and models reveal how disturbance, biotic interactions, and restoration actions shape coral resilience and regeneration.',
-    heroImage: '/images/cauliflower-coral-damselfish-reef.jpeg',
+    heroImage: '/images/damselfish-pair-pink-coral.jpeg',
     description: `Coral reefs are among the most biodiverse ecosystems on Earth, yet they face unprecedented threats from climate change, ocean acidification, and local stressors. Our research combines long-term field experiments in French Polynesia with mathematical models to understand what drives coral reef resilience and recovery.
 
 We work closely with local communities and restoration practitioners to translate our findings into actionable conservation strategies. Our goal is to identify the conditions and interventions that give reefs the best chance of persisting and recovering in a changing ocean.`,

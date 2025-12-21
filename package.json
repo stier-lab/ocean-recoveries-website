@@ -10,7 +10,10 @@
     "build": "astro check && astro build",
     "preview": "astro preview",
     "astro": "astro",
-    "generate-news": "node scripts/generate-news.cjs"
+    "check": "astro check",
+    "test": "playwright test",
+    "generate-news": "node scripts/generate-news.cjs",
+    "prepare": "[ -d .git ] && git config core.hooksPath .husky || true"
   },
   "dependencies": {
     "@astrojs/check": "^0.9.4",
