@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2025-12-21T17:05:30.418Z",
+  "generatedAt": "2025-12-21T17:07:04.878Z",
   "summary": {
     "totalPublications": 77,
     "totalImages": 127,
@@ -140,8 +140,8 @@
         "material legacies"
       ],
       "newsHeadline": "Dead Coral Skeletons May Actually Harm Reef Recovery by Sheltering Competing Algae",
-      "featuredImage": "/images/coral-bleaching-timelapse-study.jpeg",
-      "imageFile": "coral-bleaching-timelapse-study.jpeg"
+      "featuredImage": "/images/bleach-coral.jpeg",
+      "imageFile": "bleach-coral.jpeg"
     },
     {
       "id": 8,
@@ -1607,7 +1607,7 @@
     {
       "publicationId": 7,
       "title": "Material legacies can degrade resilience: Structure‐retainin",
-      "image": "coral-bleaching-timelapse-study.jpeg"
+      "image": "bleach-coral.jpeg"
     },
     {
       "publicationId": 8,
@@ -1968,9 +1968,9 @@
     "bart.jpg",
     "beach-sunset-sea-lion-silhouette.jpg",
     "bear-mural-street-art.jpg",
-    "bleach-coral.jpeg",
     "california-sheephead-kelp-forest.jpeg",
     "conifer-forest-sunlight-trees.jpg",
+    "coral-bleaching-timelapse-study.jpeg",
     "coral-reef-bleached-anemone-fish-school.jpeg",
     "coral-reef-panorama-anthias-fish.jpeg",
     "damselfish-pair-acropora-coral.jpeg",

@@ -237,7 +237,7 @@ DiFiore, Bartholomew P.; Stier, Adrian C. (2023). Variation in body size drives 
     date: "2023-01-15",
     author: "Kopecky et al.",
     excerpt: "Scientists used mathematical modeling to show that dead coral skeletons left behind by certain types of disturbances can actually make coral reefs more vulnerable to regime shifts from coral-dominated to algae-dominated states by providing shelter for competing algae.",
-    featuredImage: "/images/coral-bleaching-timelapse-study.jpeg",
+    featuredImage: "/images/bleach-coral.jpeg",
     tags: ["Publication","2023","Coral"],
     doiUrl: "https://doi.org/10.1002/ecy.4006",
     openAccess: true,
