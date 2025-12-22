@@ -13,14 +13,23 @@ interface Props {
 
 const ITEMS_PER_PAGE = 20;
 
-// Debounce hook for search
-function useDebounce<T>(value: T, delay: number): T {
+// Debounce hook for search with loading state
+function useDebounce<T>(value: T, delay: number): { debouncedValue: T; isDebouncing: boolean } {
   const [debouncedValue, setDebouncedValue] = useState<T>(value);
+  const [isDebouncing, setIsDebouncing] = useState(false);
+
   useEffect(() => {
-    const handler = setTimeout(() => setDebouncedValue(value), delay);
+    if (value !== debouncedValue) {
+      setIsDebouncing(true);
+    }
+    const handler = setTimeout(() => {
+      setDebouncedValue(value);
+      setIsDebouncing(false);
+    }, delay);
     return () => clearTimeout(handler);
   }, [value, delay]);
-  return debouncedValue;
+
+  return { debouncedValue, isDebouncing };
 }
 
 export default function PublicationList({ publications, themes }: Props) {
@@ -34,8 +43,8 @@ export default function PublicationList({ publications, themes }: Props) {
   const filterBarRef = useRef<HTMLDivElement>(null);
   const searchInputRef = useRef<HTMLInputElement>(null);
 
-  // Debounce search for performance
-  const debouncedSearch = useDebounce(searchQuery, 200);
+  // Debounce search for performance with loading indicator
+  const { debouncedValue: debouncedSearch, isDebouncing: isSearching } = useDebounce(searchQuery, 200);
 
   // Track scroll for sticky bar shadow
   useEffect(() => {
@@ -184,42 +193,69 @@ export default function PublicationList({ publications, themes }: Props) {
               placeholder="Search by title, author, or journal... (press /)"
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              className="w-full pl-11 pr-10 py-3 rounded-xl border border-line bg-surface-card text-ink placeholder:text-muted focus:outline-none focus:ring-2 focus:ring-accent focus:border-accent"
+              className="w-full pl-11 pr-10 py-3 rounded-xl border border-line bg-surface-card text-ink placeholder:text-muted focus:outline-none focus:ring-2 focus:ring-accent focus:border-accent transition-colors"
+              aria-label="Search publications"
+              role="searchbox"
             />
+            {/* Loading spinner or clear button */}
             {searchQuery && (
-              <button
-                onClick={() => setSearchQuery('')}
-                className="absolute right-3 top-1/2 -translate-y-1/2 p-1 rounded-full hover:bg-line/50 text-muted hover:text-ink transition-colors"
-                aria-label="Clear search"
-              >
-                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-                </svg>
-              </button>
+              <div className="absolute right-3 top-1/2 -translate-y-1/2">
+                {isSearching ? (
+                  <div className="p-1" aria-label="Searching...">
+                    <svg className="w-4 h-4 animate-spin text-accent" fill="none" viewBox="0 0 24 24">
+                      <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
+                      <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z" />
+                    </svg>
+                  </div>
+                ) : (
+                  <button
+                    onClick={() => setSearchQuery('')}
+                    className="p-1 rounded-full hover:bg-line/50 text-muted hover:text-ink transition-colors focus:outline-none focus:ring-2 focus:ring-accent"
+                    aria-label="Clear search"
+                  >
+                    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                    </svg>
+                  </button>
+                )}
+              </div>
             )}
           </div>
 
           <div className="flex gap-2">
-            {/* Sort */}
-            <select
-              value={sortBy}
-              onChange={(e) => setSortBy(e.target.value as typeof sortBy)}
-              className="px-4 py-3 rounded-xl border border-line bg-surface-card text-ink text-sm font-semibold focus:outline-none focus:ring-2 focus:ring-accent cursor-pointer"
-              aria-label="Sort publications"
-            >
-              <option value="year-desc">Newest First</option>
-              <option value="year-asc">Oldest First</option>
-              <option value="citations">Most Cited</option>
-            </select>
+            {/* Custom Sort Dropdown */}
+            <div className="relative">
+              <select
+                value={sortBy}
+                onChange={(e) => setSortBy(e.target.value as typeof sortBy)}
+                className="appearance-none px-4 py-3 pr-10 rounded-xl border border-line bg-surface-card text-ink text-sm font-semibold focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2 focus:ring-offset-surface cursor-pointer transition-colors hover:border-accent"
+                aria-label="Sort publications by"
+              >
+                <option value="year-desc">Newest First</option>
+                <option value="year-asc">Oldest First</option>
+                <option value="citations">Most Cited</option>
+              </select>
+              {/* Custom dropdown arrow */}
+              <svg
+                className="absolute right-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted pointer-events-none"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+              </svg>
+            </div>
 
             {/* Open Access Toggle */}
             <button
               onClick={() => setOpenAccessOnly(!openAccessOnly)}
-              className={`px-4 py-3 rounded-xl border text-sm font-semibold transition-all flex items-center gap-2 ${
+              className={`px-4 py-3 rounded-xl border text-sm font-semibold transition-all flex items-center gap-2 focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2 focus:ring-offset-surface ${
                 openAccessOnly
                   ? 'bg-accent text-white border-accent shadow-md'
                   : 'bg-surface-card border-line text-ink hover:border-accent hover:text-accent'
               }`}
+              aria-pressed={openAccessOnly}
+              aria-label={openAccessOnly ? 'Show all publications' : 'Show only open access publications'}
             >
               <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 11V7a4 4 0 118 0m-4 8v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2z" />
@@ -229,40 +265,51 @@ export default function PublicationList({ publications, themes }: Props) {
           </div>
         </div>
 
-        {/* Theme chips with counts */}
-        <div className="flex flex-wrap gap-2 items-center">
-          {themes.map((theme) => (
-            <button
-              key={theme}
-              onClick={() => toggleTheme(theme)}
-              className={`px-3 py-1.5 rounded-full text-sm font-semibold transition-all flex items-center gap-1.5 ${
-                selectedThemes.includes(theme)
-                  ? 'bg-accent text-white shadow-md'
-                  : 'bg-surface-card border border-line text-muted hover:border-accent hover:text-accent'
-              }`}
-            >
-              {theme}
-              <span className={`text-xs px-1.5 py-0.5 rounded-full ${
-                selectedThemes.includes(theme)
-                  ? 'bg-white/20'
-                  : 'bg-line/50'
-              }`}>
-                {themeCounts[theme]}
-              </span>
-            </button>
-          ))}
+        {/* Theme chips with counts - horizontal scroll on mobile */}
+        <div className="relative">
+          {/* Fade indicator for scroll on mobile */}
+          <div className="absolute right-0 top-0 bottom-0 w-8 bg-gradient-to-l from-surface to-transparent pointer-events-none md:hidden z-10" />
 
-          {hasFilters && (
-            <button
-              onClick={clearFilters}
-              className="ml-2 px-3 py-1.5 rounded-full text-sm font-semibold bg-accent-warm/10 text-accent-warm hover:bg-accent-warm/20 transition-colors flex items-center gap-1.5"
-            >
-              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-              </svg>
-              Clear {activeFilterCount} filter{activeFilterCount > 1 ? 's' : ''}
-            </button>
-          )}
+          <div
+            className="flex gap-2 items-center overflow-x-auto pb-2 -mb-2 no-scrollbar md:flex-wrap md:overflow-visible"
+            role="group"
+            aria-label="Filter by research theme"
+          >
+            {themes.map((theme) => (
+              <button
+                key={theme}
+                onClick={() => toggleTheme(theme)}
+                className={`flex-shrink-0 px-3 py-1.5 rounded-full text-sm font-semibold transition-all flex items-center gap-1.5 focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2 focus:ring-offset-surface ${
+                  selectedThemes.includes(theme)
+                    ? 'bg-accent text-white shadow-md'
+                    : 'bg-surface-card border border-line text-muted hover:border-accent hover:text-accent'
+                }`}
+                aria-pressed={selectedThemes.includes(theme)}
+              >
+                {theme}
+                <span className={`text-xs px-1.5 py-0.5 rounded-full ${
+                  selectedThemes.includes(theme)
+                    ? 'bg-white/20'
+                    : 'bg-line/50'
+                }`}>
+                  {themeCounts[theme]}
+                </span>
+              </button>
+            ))}
+
+            {hasFilters && (
+              <button
+                onClick={clearFilters}
+                className="flex-shrink-0 ml-2 px-3 py-1.5 rounded-full text-sm font-semibold bg-accent-warm/10 text-accent-warm hover:bg-accent-warm/20 transition-colors flex items-center gap-1.5 focus:outline-none focus:ring-2 focus:ring-accent-warm"
+                aria-label={`Clear ${activeFilterCount} active filter${activeFilterCount > 1 ? 's' : ''}`}
+              >
+                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                </svg>
+                Clear {activeFilterCount} filter{activeFilterCount > 1 ? 's' : ''}
+              </button>
+            )}
+          </div>
         </div>
       </div>
 
@@ -308,86 +355,107 @@ export default function PublicationList({ publications, themes }: Props) {
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.95 }}
               transition={{ duration: 0.2 }}
-              className={`group bg-surface-card border rounded-xl overflow-hidden hover:shadow-xl transition-all duration-300 ${
+              className={`group bg-surface-card border rounded-xl overflow-hidden hover:shadow-xl transition-all duration-300 flex flex-col md:flex-row ${
                 pub.featured
                   ? 'border-accent-warm/30 ring-1 ring-accent-warm/10'
                   : 'border-line hover:border-accent/30'
-              } ${pub.image ? 'flex flex-col md:flex-row' : ''}`}
+              }`}
+              role="article"
+              aria-labelledby={`pub-title-${pub.id}`}
             >
-              {/* Image (if available) */}
-              {pub.image && (
-                <div className="md:w-52 md:min-w-[13rem] flex-shrink-0 relative">
-                  <div className="relative h-44 md:h-full w-full overflow-hidden">
+              {/* Image or Fallback Pattern */}
+              <div className="md:w-52 md:min-w-[13rem] flex-shrink-0 relative">
+                <div className="relative h-44 md:h-full w-full overflow-hidden bg-navy-highlight">
+                  {pub.image ? (
                     <img
                       src={pub.image}
                       alt=""
                       className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                       loading="lazy"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-navy-deep/50 to-transparent md:bg-gradient-to-r" />
-                  </div>
-                  {/* Year overlay on image */}
-                  <div className="absolute bottom-3 left-3 md:bottom-auto md:top-3 md:left-3">
-                    <span className="px-2.5 py-1 rounded-lg bg-navy-deep/80 backdrop-blur-sm text-white text-sm font-bold">
-                      {pub.year}
-                    </span>
-                  </div>
+                  ) : (
+                    /* Fallback pattern for publications without images */
+                    <div className="absolute inset-0 flex items-center justify-center">
+                      <div className="absolute inset-0 opacity-10">
+                        <svg className="w-full h-full" viewBox="0 0 100 100" preserveAspectRatio="none">
+                          <pattern id={`pattern-${pub.id}`} patternUnits="userSpaceOnUse" width="20" height="20">
+                            <circle cx="10" cy="10" r="1.5" fill="currentColor" className="text-accent" />
+                          </pattern>
+                          <rect width="100%" height="100%" fill={`url(#pattern-${pub.id})`} />
+                        </svg>
+                      </div>
+                      <svg className="w-12 h-12 text-accent/30" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+                      </svg>
+                    </div>
+                  )}
+                  <div className="absolute inset-0 bg-gradient-to-t from-navy-deep/50 to-transparent md:bg-gradient-to-r" />
                 </div>
-              )}
+                {/* Year overlay */}
+                <div className="absolute bottom-3 left-3 md:bottom-auto md:top-3 md:left-3">
+                  <span className="px-2.5 py-1 rounded-lg bg-navy-deep/80 backdrop-blur-sm text-white text-sm font-bold">
+                    {pub.year}
+                  </span>
+                </div>
+              </div>
 
               {/* Content */}
               <div className="p-5 flex-1 flex flex-col">
-                {/* Top row: Year (if no image) + Badges */}
-                <div className="flex flex-wrap items-center gap-2 mb-3">
-                  {!pub.image && (
-                    <span className="px-2.5 py-1 rounded-lg bg-accent/10 text-accent text-sm font-bold">
-                      {pub.year}
-                    </span>
-                  )}
-                  {pub.featured && (
-                    <span className="px-2.5 py-1 rounded-lg bg-accent-warm/15 text-accent-warm text-xs font-bold uppercase tracking-wide flex items-center gap-1">
-                      <svg className="w-3 h-3" fill="currentColor" viewBox="0 0 20 20">
-                        <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                      </svg>
-                      Featured
-                    </span>
-                  )}
-                  {pub.openAccess && (
-                    <span className="px-2.5 py-1 rounded-lg bg-accent/10 text-accent text-xs font-bold uppercase tracking-wide flex items-center gap-1">
-                      <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M8 11V7a4 4 0 118 0m-4 8v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2z" />
-                      </svg>
-                      Open Access
-                    </span>
-                  )}
-                  {pub.dataAvailable && (
-                    <span className="px-2.5 py-1 rounded-lg bg-accent-2/10 text-accent-2 text-xs font-bold uppercase tracking-wide flex items-center gap-1">
-                      <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4" />
-                      </svg>
-                      Data
-                    </span>
-                  )}
-                </div>
+                {/* Badges row - more compact */}
+                {(pub.featured || pub.openAccess || pub.dataAvailable) && (
+                  <div className="flex flex-wrap items-center gap-1.5 mb-3">
+                    {pub.featured && (
+                      <span className="px-2 py-0.5 rounded-md bg-accent-warm/15 text-accent-warm text-xs font-bold uppercase tracking-wide flex items-center gap-1">
+                        <svg className="w-3 h-3" fill="currentColor" viewBox="0 0 20 20">
+                          <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                        </svg>
+                        Featured
+                      </span>
+                    )}
+                    {pub.openAccess && (
+                      <span className="px-2 py-0.5 rounded-md bg-accent/10 text-accent text-xs font-bold uppercase tracking-wide flex items-center gap-1" title="Free to read">
+                        <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M8 11V7a4 4 0 118 0m-4 8v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2z" />
+                        </svg>
+                        Open Access
+                      </span>
+                    )}
+                    {pub.dataAvailable && (
+                      <span className="px-2 py-0.5 rounded-md bg-accent-2/10 text-accent-2 text-xs font-bold uppercase tracking-wide flex items-center gap-1" title="Dataset available">
+                        <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4" />
+                        </svg>
+                        Data
+                      </span>
+                    )}
+                  </div>
+                )}
 
                 {/* Title */}
-                <h3 className="text-lg font-bold text-ink mb-2 leading-snug group-hover:text-accent transition-colors">
+                <h3
+                  id={`pub-title-${pub.id}`}
+                  className="text-lg font-bold text-ink mb-2 leading-snug group-hover:text-accent transition-colors"
+                >
                   {pub.title}
                 </h3>
 
                 {/* Authors */}
                 <p
-                  className="text-sm text-muted mb-1.5 line-clamp-2"
+                  className="text-sm text-muted mb-2 line-clamp-2"
                   dangerouslySetInnerHTML={{ __html: highlightAuthor(pub.authors) }}
                 />
 
-                {/* Journal + Citations */}
-                <div className="flex items-center gap-3 text-sm text-muted-2 mb-auto">
-                  <span><em>{pub.journal}</em></span>
+                {/* Journal + Citations - improved with tooltip */}
+                <div className="flex flex-wrap items-center gap-2 text-sm text-muted-2 mb-auto">
+                  <span className="italic">{pub.journal}</span>
                   {pub.citationCount !== undefined && pub.citationCount > 0 && (
-                    <span className="flex items-center gap-1 text-xs text-muted px-2 py-0.5 rounded-full bg-line/30" title="Citation count">
+                    <span
+                      className="inline-flex items-center gap-1 text-xs text-muted px-2 py-0.5 rounded-full bg-line/30 cursor-help"
+                      title={`Cited ${pub.citationCount.toLocaleString()} time${pub.citationCount !== 1 ? 's' : ''}`}
+                      aria-label={`${pub.citationCount.toLocaleString()} citations`}
+                    >
                       <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z" />
                       </svg>
                       {pub.citationCount.toLocaleString()}
                     </span>
@@ -396,34 +464,40 @@ export default function PublicationList({ publications, themes }: Props) {
 
                 {/* Bottom section: Abstract toggle + Links */}
                 <div className="mt-4 pt-4 border-t border-line">
-                  {/* Expandable abstract */}
+                  {/* Expandable abstract - fixed icon behavior */}
                   {pub.abstract && (
                     <div className="mb-3">
                       <button
                         onClick={() => setExpandedId(expandedId === pub.id ? null : pub.id)}
-                        className="text-sm font-semibold text-accent hover:text-accent/80 transition-colors flex items-center gap-1"
+                        className="text-sm font-semibold text-accent hover:text-accent/80 transition-colors flex items-center gap-1.5 focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2 focus:ring-offset-surface-card rounded-md px-1 -ml-1"
+                        aria-expanded={expandedId === pub.id}
+                        aria-controls={`abstract-${pub.id}`}
                       >
-                        <svg
-                          className={`w-4 h-4 transition-transform duration-200 ${expandedId === pub.id ? 'rotate-180' : ''}`}
-                          fill="none"
-                          stroke="currentColor"
-                          viewBox="0 0 24 24"
-                        >
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-                        </svg>
+                        {expandedId === pub.id ? (
+                          /* Collapse icon - minus in circle */
+                          <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z" />
+                          </svg>
+                        ) : (
+                          /* Expand icon - plus in circle */
+                          <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 9v3m0 0v3m0-3h3m-3 0H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z" />
+                          </svg>
+                        )}
                         {expandedId === pub.id ? 'Hide abstract' : 'Read abstract'}
                       </button>
 
                       <AnimatePresence>
                         {expandedId === pub.id && (
                           <motion.div
+                            id={`abstract-${pub.id}`}
                             initial={{ height: 0, opacity: 0 }}
                             animate={{ height: 'auto', opacity: 1 }}
                             exit={{ height: 0, opacity: 0 }}
                             transition={{ duration: 0.2 }}
                             className="overflow-hidden"
                           >
-                            <p className="text-sm text-muted leading-relaxed mt-3 p-3 rounded-lg bg-surface/50">
+                            <p className="text-sm text-muted leading-relaxed mt-3 p-4 rounded-lg bg-surface/50 border border-line/50">
                               {pub.abstract}
                             </p>
                           </motion.div>
@@ -432,14 +506,14 @@ export default function PublicationList({ publications, themes }: Props) {
                     </div>
                   )}
 
-                  {/* Links - improved button styling */}
+                  {/* Links - improved with focus states */}
                   <div className="flex flex-wrap gap-2">
                     {pub.doi && (
                       <a
                         href={`https://doi.org/${pub.doi}`}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-accent/10 text-accent text-sm font-semibold hover:bg-accent hover:text-white transition-all"
+                        className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-accent/10 text-accent text-sm font-semibold hover:bg-accent hover:text-white transition-all focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2 focus:ring-offset-surface-card"
                       >
                         <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
@@ -452,7 +526,7 @@ export default function PublicationList({ publications, themes }: Props) {
                         href={pub.pdfUrl}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-line/50 text-ink text-sm font-semibold hover:bg-accent hover:text-white transition-all"
+                        className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-line/50 text-ink text-sm font-semibold hover:bg-accent hover:text-white transition-all focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2 focus:ring-offset-surface-card"
                       >
                         <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
@@ -465,7 +539,7 @@ export default function PublicationList({ publications, themes }: Props) {
                         href={pub.codeUrl}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-line/50 text-ink text-sm font-semibold hover:bg-accent hover:text-white transition-all"
+                        className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-line/50 text-ink text-sm font-semibold hover:bg-accent hover:text-white transition-all focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2 focus:ring-offset-surface-card"
                       >
                         <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
@@ -519,25 +593,41 @@ export default function PublicationList({ publications, themes }: Props) {
           </motion.div>
         )}
 
-        {/* Load more button - improved */}
+        {/* Load more button - improved with better pagination indicator */}
         {hasMore && filteredPubs.length > 0 && (
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            className="text-center pt-10"
+            className="text-center pt-10 pb-20"
           >
+            {/* Progress indicator */}
+            <div className="flex items-center justify-center gap-3 mb-4">
+              <div className="h-1 w-24 bg-line/50 rounded-full overflow-hidden">
+                <div
+                  className="h-full bg-accent rounded-full transition-all duration-300"
+                  style={{ width: `${(visibleCount / filteredPubs.length) * 100}%` }}
+                />
+              </div>
+              <span className="text-sm text-muted">
+                {visiblePubs.length} of {filteredPubs.length}
+              </span>
+            </div>
+
             <button
               onClick={loadMore}
-              className="group px-8 py-4 rounded-xl bg-accent text-white font-semibold hover:bg-accent/90 transition-all hover:shadow-lg inline-flex items-center gap-2"
+              className="group px-8 py-4 rounded-xl bg-accent text-white font-semibold hover:bg-accent/90 transition-all hover:shadow-lg inline-flex items-center gap-2 focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-4 focus:ring-offset-surface"
             >
               Load More Publications
-              <span className="px-2 py-0.5 rounded-full bg-white/20 text-sm">
-                {filteredPubs.length - visibleCount}
+              <span className="px-2.5 py-1 rounded-full bg-white/20 text-sm font-bold">
+                +{Math.min(ITEMS_PER_PAGE, filteredPubs.length - visibleCount)}
               </span>
             </button>
-            <p className="text-xs text-muted mt-3">
+            <p className="text-sm text-muted mt-4">
               or{' '}
-              <button onClick={showAll} className="text-accent hover:underline">
+              <button
+                onClick={showAll}
+                className="text-accent hover:underline focus:outline-none focus:ring-2 focus:ring-accent rounded"
+              >
                 show all {filteredPubs.length} at once
               </button>
             </p>
@@ -545,16 +635,16 @@ export default function PublicationList({ publications, themes }: Props) {
         )}
       </div>
 
-      {/* Back to top button - appears after scrolling */}
+      {/* Back to top button - fixed positioning to avoid overlap */}
       <AnimatePresence>
         {isScrolled && (
           <motion.button
-            initial={{ opacity: 0, scale: 0.8 }}
-            animate={{ opacity: 1, scale: 1 }}
-            exit={{ opacity: 0, scale: 0.8 }}
+            initial={{ opacity: 0, scale: 0.8, y: 20 }}
+            animate={{ opacity: 1, scale: 1, y: 0 }}
+            exit={{ opacity: 0, scale: 0.8, y: 20 }}
             onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-            className="fixed bottom-6 right-6 p-3 rounded-full bg-accent text-white shadow-lg hover:bg-accent/90 hover:shadow-xl transition-all z-50"
-            aria-label="Back to top"
+            className="fixed bottom-6 right-6 p-4 rounded-full bg-accent text-white shadow-lg hover:bg-accent/90 hover:shadow-xl transition-all z-50 focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2 focus:ring-offset-surface md:bottom-8 md:right-8"
+            aria-label="Scroll back to top"
           >
             <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 10l7-7m0 0l7 7m-7-7v18" />

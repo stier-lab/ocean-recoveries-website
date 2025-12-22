@@ -40,12 +40,22 @@ const breadcrumbs = [
       class="absolute inset-0 bg-cover bg-center parallax-bg"
       style={`background-image: url('${theme.heroImage}');`}
     >
-      <div class="absolute inset-0 bg-gradient-to-b from-bg-primary/50 via-bg-primary/40 to-bg-primary/70"></div>
+      <div class="absolute inset-0 bg-gradient-to-b from-navy-deep/50 via-navy-deep/40 to-navy-deep/90"></div>
     </div>
 
-    <div class="relative container text-white">
+    <!-- Floating Bubbles -->
+    <div class="floating-bubbles" aria-hidden="true">
+      <div class="bubble bubble-1"></div>
+      <div class="bubble bubble-2"></div>
+      <div class="bubble bubble-3"></div>
+      <div class="bubble bubble-4"></div>
+    </div>
+
+    <div class="relative z-10 container text-white">
       <Breadcrumbs items={breadcrumbs} class="mb-6" />
-      <h1 class="text-white mb-4 hero-title">{theme.title}</h1>
+      <h1 class="mb-4 hero-title">
+        <span class="gradient-text">{theme.title}</span>
+      </h1>
       <p class="text-xl text-white/80 max-w-3xl hero-tagline">{theme.tagline}</p>
     </div>
   </section>
@@ -122,6 +132,68 @@ const breadcrumbs = [
     </div>
   </section>
 
+  <!-- Photo Gallery -->
+  {theme.gallery && theme.gallery.length > 0 && (
+    <section class="section bg-navy-highlight">
+      <div class="container">
+        <div class="text-center mb-12 scroll-reveal">
+          <span class="eyebrow">From the Field</span>
+          <h2>Photo Gallery</h2>
+        </div>
+
+        <div class="gallery-grid">
+          {theme.gallery.map((image, i) => (
+            <figure class={`gallery-item scroll-reveal stagger-${(i % 4) + 1}`}>
+              <div class="gallery-img-container">
+                <img
+                  src={image.src}
+                  alt={image.alt}
+                  loading="lazy"
+                  class="gallery-img"
+                />
+              </div>
+              {image.caption && (
+                <figcaption class="gallery-caption">{image.caption}</figcaption>
+              )}
+            </figure>
+          ))}
+        </div>
+      </div>
+    </section>
+  )}
+
+  <!-- Field Site -->
+  {theme.fieldSite && (
+    <section class="section bg-surface">
+      <div class="container">
+        <div class="field-site-card scroll-reveal">
+          <div class="field-site-image">
+            <img
+              src={theme.fieldSite.image}
+              alt={theme.fieldSite.name}
+              loading="lazy"
+            />
+          </div>
+          <div class="field-site-content">
+            <span class="eyebrow">Field Site</span>
+            {theme.fieldSite.url ? (
+              <a href={theme.fieldSite.url} target="_blank" rel="noopener noreferrer" class="field-site-link">
+                <h3 class="field-site-name">{theme.fieldSite.name}</h3>
+                <svg class="field-site-external-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                </svg>
+              </a>
+            ) : (
+              <h3 class="field-site-name">{theme.fieldSite.name}</h3>
+            )}
+            <p class="field-site-location">{theme.fieldSite.location}</p>
+            <p class="field-site-description">{theme.fieldSite.description}</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  )}
+
   <!-- Related Publications -->
   {relatedPubs.length > 0 && (
     <section class="section bg-navy-highlight">
@@ -189,8 +261,49 @@ const breadcrumbs = [
 </Layout>
 
 <style>
+  /* Floating Bubbles */
+  .floating-bubbles {
+    @apply absolute inset-0 overflow-hidden pointer-events-none;
+    z-index: 1;
+  }
+
+  .bubble {
+    @apply absolute rounded-full;
+    background: radial-gradient(circle at 30% 30%, rgba(56, 189, 248, 0.3), rgba(45, 212, 191, 0.1));
+    animation: float-up linear infinite;
+    opacity: 0;
+  }
+
+  .bubble-1 { width: 20px; height: 20px; left: 15%; animation-duration: 12s; animation-delay: 0s; }
+  .bubble-2 { width: 30px; height: 30px; left: 40%; animation-duration: 15s; animation-delay: 2s; }
+  .bubble-3 { width: 25px; height: 25px; left: 65%; animation-duration: 13s; animation-delay: 4s; }
+  .bubble-4 { width: 18px; height: 18px; left: 85%; animation-duration: 11s; animation-delay: 1s; }
+
+  @keyframes float-up {
+    0% { transform: translateY(100vh) scale(0.5); opacity: 0; }
+    10% { opacity: 0.6; }
+    90% { opacity: 0.6; }
+    100% { transform: translateY(-100px) scale(1); opacity: 0; }
+  }
+
+  /* Gradient Text */
+  .gradient-text {
+    background: linear-gradient(135deg, #ffffff 0%, #38bdf8 40%, #2dd4bf 80%, #38bdf8 100%);
+    background-size: 200% 200%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: gradient-shift 8s ease-in-out infinite;
+  }
+
+  @keyframes gradient-shift {
+    0%, 100% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+  }
+
   .hero-title {
     animation: fadeUp 0.6s ease-out forwards;
+    opacity: 0;
   }
 
   .hero-tagline {
@@ -311,8 +424,13 @@ const breadcrumbs = [
   /* Reduced motion */
   @media (prefers-reduced-motion: reduce) {
     .hero-title,
-    .hero-tagline {
+    .hero-tagline,
+    .gradient-text,
+    .bubble {
       animation: none;
+    }
+    .hero-title,
+    .hero-tagline {
       opacity: 1;
     }
 
@@ -369,6 +487,84 @@ const breadcrumbs = [
     @apply inline-flex items-center gap-2 text-sm font-medium;
     @apply text-accent hover:text-accent-2 no-underline;
     @apply mt-auto pt-2 border-t border-line;
+  }
+
+  /* Photo Gallery */
+  .gallery-grid {
+    @apply grid grid-cols-1 sm:grid-cols-2 gap-6;
+  }
+
+  .gallery-item {
+    @apply rounded-xl overflow-hidden;
+    @apply bg-surface-card border border-line;
+    @apply transition-all duration-300;
+  }
+
+  .gallery-item:hover {
+    @apply -translate-y-1 shadow-xl border-accent/30;
+  }
+
+  .gallery-img-container {
+    @apply aspect-[4/3] overflow-hidden;
+  }
+
+  .gallery-img {
+    @apply w-full h-full object-cover;
+    @apply transition-transform duration-500;
+  }
+
+  .gallery-item:hover .gallery-img {
+    @apply scale-105;
+  }
+
+  .gallery-caption {
+    @apply p-4 text-sm text-muted leading-relaxed;
+  }
+
+  /* Field Site */
+  .field-site-card {
+    @apply grid md:grid-cols-2 gap-8 items-center;
+    @apply rounded-2xl overflow-hidden;
+    @apply bg-surface-card border border-line;
+  }
+
+  .field-site-image {
+    @apply aspect-[16/10] md:aspect-auto md:h-full overflow-hidden;
+  }
+
+  .field-site-image img {
+    @apply w-full h-full object-cover;
+  }
+
+  .field-site-content {
+    @apply p-8;
+  }
+
+  .field-site-link {
+    @apply flex items-center gap-2 no-underline;
+  }
+
+  .field-site-link:hover .field-site-name,
+  .field-site-link:hover .field-site-external-icon {
+    @apply text-accent;
+  }
+
+  .field-site-name {
+    @apply text-2xl font-bold text-ink mt-2 mb-1;
+    @apply transition-colors;
+  }
+
+  .field-site-external-icon {
+    @apply w-5 h-5 text-muted mt-2;
+    @apply transition-colors;
+  }
+
+  .field-site-location {
+    @apply text-accent font-medium mb-4;
+  }
+
+  .field-site-description {
+    @apply text-muted leading-relaxed;
   }
 </style>
 

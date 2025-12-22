@@ -3,11 +3,17 @@ const currentPath = Astro.url.pathname;
 
 const navLinks = [
   { href: '/', label: 'Home' },
-  { href: '/research', label: 'Research' },
+  { href: '/research', label: 'Research', hasDropdown: true },
+  { href: '/values', label: 'Values' },
   { href: '/people', label: 'People' },
   { href: '/publications', label: 'Publications' },
   { href: '/news', label: 'News' },
   { href: '/join-us', label: 'Join Us' },
+];
+
+const researchDropdownItems = [
+  { href: '/research/coral-reefs', label: 'Coral Reefs', icon: '🪸' },
+  { href: '/research/kelp-forests', label: 'Kelp Forests', icon: '🌿' },
 ];
 
 const isActive = (href: string) => {
@@ -25,30 +31,109 @@ const isActive = (href: string) => {
     <!-- Logo -->
     <a
       href="/"
-      class="flex items-center gap-2 text-ink font-black text-lg md:text-xl no-underline hover:no-underline transition-colors"
+      class="nav-logo flex items-center gap-2 text-ink font-black text-lg md:text-xl no-underline hover:no-underline transition-colors"
     >
+      <svg class="nav-wave-icon w-7 h-7" viewBox="0 0 32 32" fill="none" aria-hidden="true">
+        <path
+          class="wave-path"
+          d="M2 20c4-4 6-2 10 0s6 4 10 0 6-4 10 0"
+          stroke="currentColor"
+          stroke-width="2.5"
+          stroke-linecap="round"
+          fill="none"
+        />
+        <path
+          class="wave-path wave-path-2"
+          d="M2 14c4-4 6-2 10 0s6 4 10 0 6-4 10 0"
+          stroke="currentColor"
+          stroke-width="2.5"
+          stroke-linecap="round"
+          fill="none"
+          opacity="0.5"
+        />
+      </svg>
       <span class="nav-logo-text">Ocean Recoveries</span>
     </a>
 
     <!-- Desktop Navigation -->
     <div class="hidden md:flex items-center gap-1">
       {navLinks.map((link) => (
-        <a
-          href={link.href}
-          class:list={[
-            'nav-link relative px-3 py-2 text-sm font-semibold no-underline transition-colors duration-200',
-            isActive(link.href)
-              ? 'text-accent'
-              : 'text-ink/80 hover:text-accent',
-          ]}
-          aria-current={isActive(link.href) ? 'page' : undefined}
-        >
-          {link.label}
-          {isActive(link.href) && (
-            <span class="absolute bottom-0 left-3 right-3 h-0.5 bg-accent rounded-full" />
-          )}
-        </a>
+        link.hasDropdown ? (
+          <!-- Research link with dropdown -->
+          <div class="nav-dropdown-container relative">
+            <a
+              href={link.href}
+              class:list={[
+                'nav-link relative px-3 py-2 text-sm font-semibold no-underline transition-colors duration-200 flex items-center gap-1',
+                isActive(link.href)
+                  ? 'text-accent'
+                  : 'text-ink/80 hover:text-accent',
+              ]}
+              aria-current={isActive(link.href) ? 'page' : undefined}
+              aria-haspopup="true"
+            >
+              {link.label}
+              <svg class="nav-dropdown-arrow w-3.5 h-3.5 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+              </svg>
+              <span class="nav-underline" />
+            </a>
+            <!-- Dropdown menu -->
+            <div class="nav-dropdown">
+              <div class="nav-dropdown-content">
+                {researchDropdownItems.map((item) => (
+                  <a
+                    href={item.href}
+                    class:list={[
+                      'nav-dropdown-item',
+                      isActive(item.href) ? 'active' : '',
+                    ]}
+                  >
+                    <span class="nav-dropdown-icon">{item.icon}</span>
+                    <span>{item.label}</span>
+                  </a>
+                ))}
+                <div class="nav-dropdown-divider" />
+                <a href="/research" class="nav-dropdown-item nav-dropdown-all">
+                  <span>View All Research</span>
+                  <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                  </svg>
+                </a>
+              </div>
+            </div>
+          </div>
+        ) : (
+          <a
+            href={link.href}
+            class:list={[
+              'nav-link relative px-3 py-2 text-sm font-semibold no-underline transition-colors duration-200',
+              isActive(link.href)
+                ? 'text-accent'
+                : 'text-ink/80 hover:text-accent',
+            ]}
+            aria-current={isActive(link.href) ? 'page' : undefined}
+          >
+            {link.label}
+            <span class="nav-underline" />
+          </a>
+        )
       ))}
+
+      <!-- Search Button -->
+      <button
+        type="button"
+        class="nav-search-btn ml-2 flex items-center gap-2 px-3 py-1.5 rounded-lg text-sm font-medium transition-all"
+        aria-label="Search (Cmd+K)"
+        id="nav-search-btn"
+      >
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+        </svg>
+        <kbd class="nav-kbd hidden lg:inline-flex items-center gap-0.5 px-1.5 py-0.5 rounded text-xs font-mono">
+          <span class="text-[10px]">⌘</span>K
+        </kbd>
+      </button>
     </div>
 
     <!-- Mobile Menu Button -->
@@ -123,6 +208,101 @@ const isActive = (href: string) => {
 <div class="h-16 md:h-20"></div>
 
 <style>
+  /* Wave icon animation */
+  .nav-wave-icon {
+    @apply text-accent transition-transform duration-300;
+  }
+
+  .nav-logo:hover .nav-wave-icon {
+    @apply text-accent-2;
+  }
+
+  .wave-path {
+    stroke-dasharray: 60;
+    stroke-dashoffset: 0;
+  }
+
+  .nav-logo:hover .wave-path {
+    animation: wave-flow 1s ease-in-out infinite;
+  }
+
+  .nav-logo:hover .wave-path-2 {
+    animation: wave-flow 1s ease-in-out infinite;
+    animation-delay: 0.15s;
+  }
+
+  @keyframes wave-flow {
+    0%, 100% {
+      stroke-dashoffset: 0;
+    }
+    50% {
+      stroke-dashoffset: 20;
+    }
+  }
+
+  /* Animated underline for nav links */
+  .nav-underline {
+    @apply absolute bottom-0 left-3 right-3 h-0.5 bg-accent rounded-full;
+    @apply origin-left scale-x-0 transition-transform duration-300;
+  }
+
+  .nav-link:hover .nav-underline,
+  .nav-link[aria-current="page"] .nav-underline {
+    @apply scale-x-100;
+  }
+
+  /* Dropdown container */
+  .nav-dropdown-container {
+    @apply relative;
+  }
+
+  .nav-dropdown {
+    @apply absolute top-full left-1/2 -translate-x-1/2 pt-2;
+    @apply opacity-0 invisible pointer-events-none;
+    @apply transition-all duration-200;
+  }
+
+  .nav-dropdown-container:hover .nav-dropdown,
+  .nav-dropdown-container:focus-within .nav-dropdown {
+    @apply opacity-100 visible pointer-events-auto;
+  }
+
+  .nav-dropdown-container:hover .nav-dropdown-arrow {
+    @apply rotate-180;
+  }
+
+  .nav-dropdown-content {
+    @apply bg-surface-card border border-line rounded-xl p-2 min-w-[200px];
+    @apply shadow-xl;
+  }
+
+  .nav-dropdown-item {
+    @apply flex items-center gap-3 px-3 py-2.5 rounded-lg;
+    @apply text-sm font-medium text-ink/80 no-underline;
+    @apply transition-colors duration-150;
+  }
+
+  .nav-dropdown-item:hover,
+  .nav-dropdown-item.active {
+    @apply bg-accent/10 text-accent;
+  }
+
+  .nav-dropdown-icon {
+    @apply text-base;
+  }
+
+  .nav-dropdown-divider {
+    @apply h-px bg-line my-2;
+  }
+
+  .nav-dropdown-all {
+    @apply justify-between text-muted text-xs;
+  }
+
+  .nav-dropdown-all:hover {
+    @apply text-accent;
+  }
+
   /* Glassmorphism when scrolled */
   #nav-header.scrolled {
     @apply bg-surface/80 backdrop-blur-lg shadow-sm;
@@ -142,12 +322,24 @@ const isActive = (href: string) => {
     @apply text-white/90;
   }
 
+  #nav-header[data-transparent="true"]:not(.scrolled) .nav-wave-icon {
+    @apply text-white/80;
+  }
+
+  #nav-header[data-transparent="true"]:not(.scrolled) .nav-logo:hover .nav-wave-icon {
+    @apply text-white;
+  }
+
   #nav-header[data-transparent="true"]:not(.scrolled) .nav-link:hover {
     @apply text-white;
   }
 
   #nav-header[data-transparent="true"]:not(.scrolled) .nav-link.text-accent {
     @apply text-accent-2 font-bold;
+  }
+
+  #nav-header[data-transparent="true"]:not(.scrolled) .nav-underline {
+    @apply bg-white;
   }
 
   #nav-header[data-transparent="true"]:not(.scrolled) #mobile-menu-button {
@@ -170,6 +362,45 @@ const isActive = (href: string) => {
 
   #mobile-menu-button[aria-expanded="true"] .close-icon {
     @apply block;
+  }
+
+  /* Search button */
+  .nav-search-btn {
+    @apply text-ink/70 bg-surface-card/50 border border-line/50;
+  }
+
+  .nav-search-btn:hover {
+    @apply text-accent border-accent/50 bg-accent/5;
+  }
+
+  .nav-kbd {
+    @apply bg-surface border border-line/70 text-muted;
+  }
+
+  /* Transparent state search button */
+  #nav-header[data-transparent="true"]:not(.scrolled) .nav-search-btn {
+    @apply text-white/70 bg-white/10 border-white/20;
+  }
+
+  #nav-header[data-transparent="true"]:not(.scrolled) .nav-search-btn:hover {
+    @apply text-white bg-white/20 border-white/30;
+  }
+
+  #nav-header[data-transparent="true"]:not(.scrolled) .nav-kbd {
+    @apply bg-white/10 border-white/20 text-white/60;
+  }
+
+  /* Reduced motion */
+  @media (prefers-reduced-motion: reduce) {
+    .wave-path,
+    .nav-logo:hover .wave-path,
+    .nav-logo:hover .wave-path-2 {
+      animation: none;
+    }
+
+    .nav-underline {
+      @apply transition-none;
+    }
   }
 </style>
 
@@ -224,6 +455,19 @@ const isActive = (href: string) => {
 
     // Initial check
     handleScroll();
+
+    // Handle search button click - trigger command palette
+    const searchBtn = document.getElementById('nav-search-btn');
+    searchBtn?.addEventListener('click', () => {
+      // Simulate Cmd+K to open command palette
+      const event = new KeyboardEvent('keydown', {
+        key: 'k',
+        metaKey: true,
+        ctrlKey: false,
+        bubbles: true,
+      });
+      document.dispatchEvent(event);
+    });
   };
 
   // Run on load and after view transitions

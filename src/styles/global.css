@@ -291,26 +291,75 @@
    View Transitions
    ============================================ */
 
+/* Root page transition - smooth crossfade with subtle slide */
 ::view-transition-old(root) {
-  animation: fade-out 0.2s ease-out;
+  animation: page-fade-out 0.25s ease-out forwards;
 }
 
 ::view-transition-new(root) {
-  animation: fade-in 0.3s ease-out;
+  animation: page-fade-in 0.35s ease-out forwards;
 }
 
-@keyframes fade-out {
-  from { opacity: 1; }
-  to { opacity: 0; }
+@keyframes page-fade-out {
+  from {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
 }
 
-@keyframes fade-in {
-  from { opacity: 0; }
-  to { opacity: 1; }
+@keyframes page-fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 /* Keep nav persistent during transitions */
 ::view-transition-old(nav),
 ::view-transition-new(nav) {
   animation: none;
+}
+
+/* Hero image morph transitions */
+::view-transition-old(hero-image),
+::view-transition-new(hero-image) {
+  animation-duration: 0.4s;
+  animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Card morph transitions */
+::view-transition-old(card-image),
+::view-transition-new(card-image) {
+  animation-duration: 0.35s;
+  animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  mix-blend-mode: normal;
+}
+
+/* Title morph transitions */
+::view-transition-old(page-title),
+::view-transition-new(page-title) {
+  animation-duration: 0.3s;
+  animation-timing-function: ease-out;
+}
+
+/* Reduced motion - instant transitions */
+@media (prefers-reduced-motion: reduce) {
+  ::view-transition-old(root),
+  ::view-transition-new(root),
+  ::view-transition-old(hero-image),
+  ::view-transition-new(hero-image),
+  ::view-transition-old(card-image),
+  ::view-transition-new(card-image),
+  ::view-transition-old(page-title),
+  ::view-transition-new(page-title) {
+    animation: none !important;
+  }
 }

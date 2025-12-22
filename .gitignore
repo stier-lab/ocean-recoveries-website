@@ -70,3 +70,4 @@ screenshots/
 
 # Temporary files
 *.csv.bak
+.vercel

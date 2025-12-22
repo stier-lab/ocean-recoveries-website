@@ -1,5 +1,6 @@
 ---
 import Layout from '@layouts/Layout.astro';
+import WaveDivider from '@components/shared/WaveDivider.astro';
 import { posts } from '@data/posts';
 import { studySystems, researchPillars } from '@data/research';
 
@@ -12,7 +13,7 @@ const recentPosts = [...posts]
 const formatDate = (dateStr: string) => {
   return new Date(dateStr).toLocaleDateString('en-US', {
     year: 'numeric',
-    month: 'long',
+    month: 'short',
     day: 'numeric',
   });
 };
@@ -20,186 +21,211 @@ const formatDate = (dateStr: string) => {
 
 <Layout title="Home">
   <!-- Hero Section -->
-  <section class="relative min-h-[90vh] md:min-h-screen flex items-center justify-center overflow-hidden">
+  <section class="hero-section relative min-h-[100svh] flex items-center justify-center overflow-visible">
     <!-- Background Image with Parallax -->
     <div
-      class="absolute inset-0 bg-cover bg-center bg-no-repeat parallax-bg"
+      class="absolute inset-0 bg-cover bg-right md:bg-center bg-no-repeat parallax-bg"
       style="background-image: url('/images/coral-reef-panorama-anthias-fish.jpeg');"
     >
-      <!-- Stronger Gradient Overlay for better text readability -->
-      <div class="absolute inset-0 bg-gradient-to-b from-bg-primary/70 via-bg-primary/50 to-bg-primary/85"></div>
+      <!-- Refined gradient for depth and readability - lighter on mobile to show more of the image -->
+      <div class="absolute inset-0 bg-gradient-to-b from-navy-deep/30 via-navy-deep/20 to-navy-deep/90 md:from-navy-deep/50 md:via-navy-deep/30 md:to-navy-deep/95"></div>
+      <!-- Subtle vignette for focus -->
+      <div class="absolute inset-0" style="background: radial-gradient(ellipse at center, transparent 0%, rgba(11, 37, 69, 0.3) 100%);"></div>
+    </div>
+
+    <!-- Floating Bubbles -->
+    <div class="floating-bubbles" aria-hidden="true">
+      <div class="bubble bubble-1"></div>
+      <div class="bubble bubble-2"></div>
+      <div class="bubble bubble-3"></div>
+      <div class="bubble bubble-4"></div>
+      <div class="bubble bubble-5"></div>
+      <div class="bubble bubble-6"></div>
     </div>
 
     <!-- Hero Content -->
-    <div class="relative z-10 container text-center text-white px-4 py-16 md:py-20">
-      <h1 class="hero-title text-white mb-3 opacity-0 drop-shadow-lg">
-        Ocean Recoveries Lab
-      </h1>
-      <p class="hero-tagline text-xl md:text-3xl lg:text-4xl font-bold text-white mb-4 opacity-0 drop-shadow-md">
-        Science for reef & kelp forest recovery
-      </p>
-      <p class="hero-description max-w-2xl mx-auto text-base md:text-lg text-white/90 leading-relaxed mb-6 opacity-0 drop-shadow-sm">
-        We combine field experiments, quantitative models, and community partnerships to understand how ocean ecosystems regenerate.
-      </p>
-
-      <!-- Social Proof Bar -->
-      <div class="hero-stats flex flex-wrap justify-center gap-6 md:gap-10 mb-8 opacity-0">
-        <div class="text-center">
-          <span class="block text-2xl md:text-3xl font-black text-white">75+</span>
-          <span class="text-xs md:text-sm text-white/70 uppercase tracking-wide">Publications</span>
-        </div>
-        <div class="text-center">
-          <span class="block text-2xl md:text-3xl font-black text-white">15</span>
-          <span class="text-xs md:text-sm text-white/70 uppercase tracking-wide">Years</span>
-        </div>
-        <div class="text-center">
-          <span class="block text-2xl md:text-3xl font-black text-white">2</span>
-          <span class="text-xs md:text-sm text-white/70 uppercase tracking-wide">LTER Sites</span>
-        </div>
+    <div class="relative z-10 container text-center px-4 pt-20 pb-32 md:pt-24 md:pb-40">
+      <!-- Institutional Badge -->
+      <div class="hero-badge inline-flex items-center gap-2.5 px-4 py-2 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 mb-8 opacity-0">
+        <span class="w-2 h-2 rounded-full bg-accent-2 animate-pulse"></span>
+        <span class="text-sm font-medium text-white/90 tracking-wide">UC Santa Barbara</span>
       </div>
 
-      <div class="hero-cta flex flex-col sm:flex-row gap-3 justify-center opacity-0">
-        <a href="/research" class="btn btn-primary btn-lg">
-          See Our Research
+      <h1 class="hero-title mb-5 opacity-0">
+        <span class="gradient-text">Ocean Recoveries</span>
+        <span class="text-white block">Lab</span>
+      </h1>
+
+      <p class="hero-tagline text-xl md:text-2xl lg:text-3xl font-medium text-white/90 mb-8 opacity-0 max-w-3xl mx-auto leading-relaxed">
+        Science for coral reef & kelp forest recovery
+      </p>
+
+      <p class="hero-description max-w-2xl mx-auto text-base md:text-lg text-white/70 leading-relaxed mb-12 opacity-0">
+        Field experiments, quantitative models, and community partnerships to understand how ocean ecosystems regenerate.
+      </p>
+
+      <div class="hero-cta flex flex-col sm:flex-row gap-4 justify-center opacity-0">
+        <a href="/research" class="btn btn-primary btn-lg magnetic-btn group">
+          <span>Explore Our Research</span>
+          <svg class="w-5 h-5 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+          </svg>
         </a>
-        <a href="/people" class="btn btn-ghost btn-lg">
+        <a href="/people" class="btn btn-ghost btn-lg magnetic-btn">
           Meet the Team
         </a>
       </div>
     </div>
 
     <!-- Scroll Indicator -->
-    <div class="absolute bottom-6 md:bottom-8 left-1/2 -translate-x-1/2 z-10">
+    <div class="absolute bottom-28 md:bottom-36 left-1/2 -translate-x-1/2 z-10">
       <a
         href="#research"
-        class="flex flex-col items-center gap-2 text-white/80 hover:text-white transition-colors no-underline group"
+        class="scroll-indicator flex flex-col items-center gap-3 text-white/60 hover:text-white/90 transition-all no-underline group"
         aria-label="Scroll to learn more"
       >
-        <span class="text-xs md:text-sm font-semibold uppercase tracking-wider">Discover</span>
-        <svg
-          class="w-5 h-5 md:w-6 md:h-6 animate-bounce-subtle group-hover:translate-y-1 transition-transform"
-          fill="none"
-          stroke="currentColor"
-          viewBox="0 0 24 24"
-        >
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
-        </svg>
+        <span class="text-xs font-semibold uppercase tracking-[0.2em]">Discover</span>
+        <div class="scroll-mouse w-6 h-10 rounded-full border-2 border-current flex items-start justify-center pt-2">
+          <div class="scroll-dot w-1 h-1.5 bg-current rounded-full"></div>
+        </div>
       </a>
     </div>
+
+    <!-- Wave at bottom of hero -->
+    <WaveDivider id="hero-wave" fillColor="surface" />
   </section>
 
   <!-- Study Systems Section -->
-  <section id="research" class="section bg-surface">
-    <div class="container">
-      <div class="text-center mb-10 scroll-reveal">
+  <section id="research" class="section-lg bg-surface relative overflow-visible">
+    <!-- Animated Blob Shapes -->
+    <div class="blob-container" aria-hidden="true">
+      <div class="blob blob-1"></div>
+      <div class="blob blob-2"></div>
+    </div>
+    <div class="container relative z-10">
+      <div class="text-center mb-14 scroll-reveal">
         <span class="eyebrow">Where We Work</span>
-        <h2>Study Systems</h2>
+        <h2 class="mb-4">Study Systems</h2>
         <p class="lead max-w-2xl mx-auto">
           Two iconic marine ecosystems. One mission: understanding recovery.
         </p>
       </div>
 
-      <div class="grid md:grid-cols-2 gap-6 lg:gap-8 max-w-4xl mx-auto">
+      <div class="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
         {studySystems.map((system, i) => (
-          <a href={`/research/${system.slug}`} class={`study-system-card scroll-reveal stagger-${i + 1} group ${system.slug === 'coral-reefs' ? 'card-coral' : 'card-kelp'}`}>
-            <div class="study-system-image img-zoom">
+          <a href={`/research/${system.slug}`} class={`ecosystem-card scroll-reveal stagger-${i + 1} group`}>
+            <!-- Image container -->
+            <div class="ecosystem-card-image">
               <img
                 src={system.heroImage}
                 alt={system.title}
                 loading="lazy"
               />
-              <!-- Stronger gradient for better text readability -->
-              <div class="absolute inset-0 bg-gradient-to-t from-bg-primary via-bg-primary/70 to-bg-primary/20"></div>
+              <div class="ecosystem-card-overlay"></div>
             </div>
-            <div class="study-system-content">
-              <span class="inline-block px-2 py-1 text-xs font-bold uppercase tracking-wide bg-black/40 backdrop-blur-sm rounded mb-2 drop-shadow-md">
-                {system.slug === 'coral-reefs' ? 'Moorea, French Polynesia' : 'Santa Barbara, California'}
-              </span>
-              <h3 class="text-2xl text-white mb-2 group-hover:text-accent-2 transition-colors drop-shadow-lg">{system.title}</h3>
-              <p class="text-white/90 text-sm mb-3 drop-shadow-md">
-                {system.tagline}
-              </p>
-              <span class="inline-flex items-center gap-2 text-accent text-sm font-semibold group-hover:gap-3 transition-all drop-shadow-md">
-                Learn more
-                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+
+            <!-- Content -->
+            <div class="ecosystem-card-content">
+              <!-- Location pill -->
+              <div class="ecosystem-location">
+                <svg class="w-3.5 h-3.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                </svg>
+                <span>{system.slug === 'coral-reefs' ? 'Moorea, French Polynesia' : 'Santa Barbara, California'}</span>
+              </div>
+
+              <h3 class="ecosystem-title">{system.title}</h3>
+              <p class="ecosystem-tagline">{system.tagline}</p>
+
+              <div class="ecosystem-link">
+                <span>Explore research</span>
+                <svg class="w-4 h-4 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
                 </svg>
-              </span>
+              </div>
             </div>
           </a>
         ))}
       </div>
     </div>
+
+    <!-- Wave -->
+    <WaveDivider id="study-wave" fillColor="navy-deep" />
   </section>
 
   <!-- Research Pillars Section -->
-  <section class="section bg-navy-deep overflow-hidden">
+  <section class="section-lg bg-navy-deep relative overflow-visible">
     <div class="container">
-      <div class="text-center mb-10 scroll-reveal">
-        <span class="eyebrow text-accent-2">How We Work</span>
-        <h2 class="text-white">Three Research Pillars</h2>
-        <p class="lead max-w-2xl mx-auto text-white/70">
-          Our work integrates across three interconnected approaches.
+      <div class="text-center mb-14 scroll-reveal">
+        <span class="eyebrow text-accent-2">Our Approach</span>
+        <h2 class="text-white mb-4">Three Research Pillars</h2>
+        <p class="lead max-w-2xl mx-auto text-white/60">
+          Integrating field science, community engagement, and quantitative methods.
         </p>
       </div>
 
       <div class="pillars-grid">
-        <!-- Pillar 1: Ecosystem Dynamics -->
-        <div class="pillar-card scroll-reveal stagger-1">
-          <div class="pillar-icon">
-            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-            </svg>
+        {researchPillars.map((pillar, i) => (
+          <div class={`pillar-card scroll-reveal stagger-${i + 1}`}>
+            <div class={`pillar-icon pillar-icon-${i + 1}`}>
+              {i === 0 && (
+                <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9" />
+                </svg>
+              )}
+              {i === 1 && (
+                <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" />
+                </svg>
+              )}
+              {i === 2 && (
+                <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 17v-2m3 2v-4m3 4v-6m2 10H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                </svg>
+              )}
+            </div>
+            <h3 class="pillar-title">{pillar.title}</h3>
+            <p class="pillar-desc">{pillar.description}</p>
+            <ul class="pillar-topics">
+              {pillar.topics.slice(0, 3).map(topic => (
+                <li>
+                  <svg class="w-3 h-3 text-accent-2 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+                  </svg>
+                  <span>{topic}</span>
+                </li>
+              ))}
+            </ul>
           </div>
-          <h3 class="pillar-title">{researchPillars[0].title}</h3>
-          <p class="pillar-desc">{researchPillars[0].description}</p>
-        </div>
-
-        <!-- Pillar 2: Conservation Science -->
-        <div class="pillar-card scroll-reveal stagger-2">
-          <div class="pillar-icon">
-            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
-            </svg>
-          </div>
-          <h3 class="pillar-title">{researchPillars[1].title}</h3>
-          <p class="pillar-desc">{researchPillars[1].description}</p>
-        </div>
-
-        <!-- Pillar 3: Quantitative Methods -->
-        <div class="pillar-card scroll-reveal stagger-3">
-          <div class="pillar-icon">
-            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
-            </svg>
-          </div>
-          <h3 class="pillar-title">{researchPillars[2].title}</h3>
-          <p class="pillar-desc">{researchPillars[2].description}</p>
-        </div>
+        ))}
       </div>
 
-      <div class="text-center mt-10 scroll-reveal">
-        <a href="/research#orl-pillars" class="btn btn-ghost">
-          How We Do Science
-          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <div class="text-center mt-14 scroll-reveal">
+        <a href="/research" class="btn btn-ghost group">
+          <span>Learn how we do science</span>
+          <svg class="w-4 h-4 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
           </svg>
         </a>
       </div>
     </div>
+
+    <!-- Wave -->
+    <WaveDivider id="pillars-wave" fillColor="surface" />
   </section>
 
   <!-- Recent News Section -->
-  <section class="section bg-surface overflow-hidden">
+  <section class="section-lg bg-surface relative overflow-visible">
     <div class="container">
-      <div class="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4 mb-8 scroll-reveal">
+      <div class="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4 mb-10 scroll-reveal">
         <div>
-          <span class="eyebrow">Latest News</span>
-          <h2 class="mb-0">Recent Work</h2>
+          <span class="eyebrow">Latest Updates</span>
+          <h2 class="mb-0">Recent Research</h2>
         </div>
-        <a href="/news" class="btn btn-secondary hidden sm:inline-flex">
-          View All News
-          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <a href="/news" class="btn btn-secondary hidden sm:inline-flex group">
+          <span>View all news</span>
+          <svg class="w-4 h-4 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
           </svg>
         </a>
@@ -209,34 +235,30 @@ const formatDate = (dateStr: string) => {
       <div class="news-grid">
         {recentPosts.map((post, i) => (
           <article class={`news-card scroll-reveal stagger-${i + 1}`}>
-            <a href={`/news/${post.slug}`} class="news-card-inner group">
-              <div class="news-card-image img-zoom">
+            <a href={`/news/${post.slug}`} class="news-card-link group">
+              <div class="news-card-image">
                 <img
                   src={post.featuredImage}
                   alt={post.title}
                   loading={i === 0 ? 'eager' : 'lazy'}
                 />
+                <div class="news-card-date">
+                  {formatDate(post.date)}
+                </div>
               </div>
-              <div class="news-card-content">
-                <div class="flex flex-wrap gap-2 mb-2">
+              <div class="news-card-body">
+                <div class="news-card-tags">
                   {post.tags.slice(0, 2).map(tag => (
-                    <span class="badge badge-sm">{tag}</span>
+                    <span class="news-tag">{tag}</span>
                   ))}
                 </div>
-                <h3 class="text-lg font-bold text-ink mb-2 group-hover:text-accent transition-colors line-clamp-2">
-                  {post.title}
-                </h3>
-                <p class="text-muted text-sm mb-3 line-clamp-2">
-                  {post.excerpt}
-                </p>
-                <div class="flex items-center justify-between mt-auto">
-                  <span class="text-muted/70 text-xs">{formatDate(post.date)}</span>
-                  <span class="text-accent font-semibold text-sm inline-flex items-center gap-1 group-hover:gap-2 transition-all">
-                    Read
-                    <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                    </svg>
-                  </span>
+                <h3 class="news-card-title">{post.title}</h3>
+                <p class="news-card-excerpt">{post.excerpt}</p>
+                <div class="news-card-cta">
+                  <span>Read article</span>
+                  <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                  </svg>
                 </div>
               </div>
             </a>
@@ -244,78 +266,90 @@ const formatDate = (dateStr: string) => {
         ))}
       </div>
 
-      <div class="text-center mt-8 sm:hidden scroll-reveal">
+      <div class="text-center mt-10 sm:hidden scroll-reveal">
         <a href="/news" class="btn btn-secondary">
           View All News
         </a>
       </div>
     </div>
+
+    <!-- Wave -->
+    <WaveDivider id="news-wave" fillColor="navy-deep" />
   </section>
 
   <!-- About / Impact Section -->
-  <section class="section bg-navy-deep relative overflow-hidden">
-    <!-- Subtle background pattern -->
-    <div class="absolute inset-0 opacity-5">
+  <section class="section-lg bg-navy-deep relative overflow-visible">
+    <!-- Subtle background texture -->
+    <div class="absolute inset-0 opacity-[0.03]">
       <div class="absolute inset-0" style="background-image: url('/images/coral-reef-panorama-anthias-fish.jpeg'); background-size: cover; background-position: center; filter: grayscale(100%);"></div>
     </div>
 
     <div class="container relative z-10">
-      <div class="grid md:grid-cols-2 gap-10 lg:gap-16 items-center">
+      <div class="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
         <div class="scroll-reveal">
           <span class="eyebrow text-accent-2">Our Lab</span>
-          <h2 class="text-white mb-5">Based at UC Santa Barbara</h2>
-          <p class="text-white/70 mb-4">
+          <h2 class="text-white mb-6">Based at UC Santa Barbara</h2>
+          <p class="text-white/60 text-lg leading-relaxed mb-5">
             The Ocean Recoveries Lab is part of the Department of Ecology, Evolution & Marine Biology.
             We benefit from UCSB's world-class marine research facilities, the Santa Barbara Coastal
             Long-Term Ecological Research site, and partnerships with the Moorea Coral Reef LTER.
           </p>
-          <p class="text-white/70 mb-6">
+          <p class="text-white/60 leading-relaxed mb-8">
             Our team includes postdocs, graduate students, undergraduates, and collaborators working
             on decision-relevant science for reef and kelp forest conservation.
           </p>
           <a href="/people" class="btn btn-primary group">
-            Meet the Team
+            <span>Meet the Team</span>
             <svg class="w-4 h-4 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
             </svg>
           </a>
         </div>
 
-        <div class="grid grid-cols-2 gap-4">
+        <div class="stats-grid">
           <div class="stat-card scroll-reveal stagger-1">
-            <span class="stat-number" data-target="75">75</span>
+            <span class="stat-number" data-target="75">0</span>
+            <span class="stat-suffix">+</span>
             <span class="stat-label">Publications</span>
           </div>
           <div class="stat-card scroll-reveal stagger-2">
-            <span class="stat-number" data-target="15">15</span>
-            <span class="stat-label">Years of Research</span>
+            <span class="stat-number" data-target="15">0</span>
+            <span class="stat-suffix">yrs</span>
+            <span class="stat-label">Research Experience</span>
           </div>
           <div class="stat-card scroll-reveal stagger-3">
-            <span class="stat-number" data-target="2">2</span>
+            <span class="stat-number" data-target="2">0</span>
             <span class="stat-label">LTER Sites</span>
           </div>
           <div class="stat-card scroll-reveal stagger-4">
-            <span class="stat-number" data-target="12">12</span>
-            <span class="stat-label">Collaborating Institutions</span>
+            <span class="stat-number" data-target="12">0</span>
+            <span class="stat-suffix">+</span>
+            <span class="stat-label">Partner Institutions</span>
           </div>
         </div>
       </div>
     </div>
+
+    <!-- Wave -->
+    <WaveDivider id="about-wave" fillColor="surface" />
   </section>
 
   <!-- Join Us CTA -->
-  <section class="section bg-surface relative overflow-hidden">
+  <section class="section bg-surface">
     <div class="container">
-      <div class="join-cta-card scroll-reveal">
-        <div class="join-cta-content text-center">
-          <span class="eyebrow">Opportunities</span>
-          <h2 class="mb-4">Join Our Team</h2>
-          <p class="text-muted max-w-xl mx-auto mb-6">
-            We're looking for curious, motivated researchers at all career stages — graduate students, postdocs, and undergraduates — who want to help understand and restore ocean ecosystems.
+      <div class="join-cta scroll-reveal">
+        <div class="join-cta-content">
+          <span class="eyebrow text-accent">Opportunities</span>
+          <h2 class="mb-5">Join Our Team</h2>
+          <p class="text-muted text-lg max-w-xl mx-auto mb-8">
+            We're looking for curious, motivated researchers at all career stages who want to help understand and restore ocean ecosystems.
           </p>
-          <div class="flex flex-col sm:flex-row gap-3 justify-center">
-            <a href="/join-us" class="btn btn-primary">
-              View Open Positions
+          <div class="flex flex-col sm:flex-row gap-4 justify-center">
+            <a href="/join-us" class="btn btn-primary group">
+              <span>View Open Positions</span>
+              <svg class="w-4 h-4 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+              </svg>
             </a>
             <a href="mailto:astier@ucsb.edu" class="btn btn-secondary">
               Contact Us
@@ -328,35 +362,135 @@ const formatDate = (dateStr: string) => {
 </Layout>
 
 <style>
-  /* Hero animations */
+  /* ========================================
+     Floating Bubbles
+     ======================================== */
+  .floating-bubbles {
+    @apply absolute inset-0 overflow-hidden pointer-events-none;
+    z-index: 1;
+  }
+
+  .bubble {
+    @apply absolute rounded-full;
+    background: radial-gradient(circle at 30% 30%, rgba(56, 189, 248, 0.3), rgba(45, 212, 191, 0.1));
+    animation: float-up linear infinite;
+    opacity: 0;
+  }
+
+  .bubble-1 { width: 25px; height: 25px; left: 8%; animation-duration: 14s; animation-delay: 0s; }
+  .bubble-2 { width: 40px; height: 40px; left: 22%; animation-duration: 18s; animation-delay: 3s; }
+  .bubble-3 { width: 18px; height: 18px; left: 45%; animation-duration: 12s; animation-delay: 5s; }
+  .bubble-4 { width: 30px; height: 30px; left: 65%; animation-duration: 16s; animation-delay: 2s; }
+  .bubble-5 { width: 35px; height: 35px; left: 80%; animation-duration: 15s; animation-delay: 4s; }
+  .bubble-6 { width: 20px; height: 20px; left: 92%; animation-duration: 13s; animation-delay: 6s; }
+
+  @keyframes float-up {
+    0% {
+      transform: translateY(100vh) scale(0.5);
+      opacity: 0;
+    }
+    10% { opacity: 0.6; }
+    90% { opacity: 0.6; }
+    100% {
+      transform: translateY(-100px) scale(1);
+      opacity: 0;
+    }
+  }
+
+  /* ========================================
+     Animated Blob Shapes
+     ======================================== */
+  .blob-container {
+    @apply absolute inset-0 overflow-hidden pointer-events-none;
+    z-index: 0;
+  }
+
+  .blob {
+    @apply absolute rounded-full;
+    filter: blur(80px);
+    animation: blob-morph 20s ease-in-out infinite;
+  }
+
+  .blob-1 {
+    width: 500px;
+    height: 500px;
+    background: radial-gradient(circle, rgba(56, 189, 248, 0.12) 0%, transparent 70%);
+    top: -100px;
+    right: -100px;
+  }
+
+  .blob-2 {
+    width: 400px;
+    height: 400px;
+    background: radial-gradient(circle, rgba(45, 212, 191, 0.1) 0%, transparent 70%);
+    bottom: -50px;
+    left: -100px;
+    animation-delay: -10s;
+  }
+
+  @keyframes blob-morph {
+    0%, 100% {
+      transform: translate(0, 0) scale(1) rotate(0deg);
+      border-radius: 40% 60% 70% 30% / 40% 50% 60% 50%;
+    }
+    25% {
+      transform: translate(30px, -50px) scale(1.1) rotate(90deg);
+      border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+    }
+    50% {
+      transform: translate(-20px, 20px) scale(0.95) rotate(180deg);
+      border-radius: 30% 60% 70% 40% / 50% 60% 30% 60%;
+    }
+    75% {
+      transform: translate(20px, 40px) scale(1.05) rotate(270deg);
+      border-radius: 50% 40% 50% 60% / 40% 60% 50% 40%;
+    }
+  }
+
+  /* ========================================
+     Gradient Text
+     ======================================== */
+  .gradient-text {
+    background: linear-gradient(135deg, #ffffff 0%, #38bdf8 40%, #2dd4bf 80%, #38bdf8 100%);
+    background-size: 200% 200%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: gradient-shift 8s ease-in-out infinite;
+  }
+
+  @keyframes gradient-shift {
+    0%, 100% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+  }
+
+  /* ========================================
+     Hero Section
+     ======================================== */
+  .hero-badge {
+    animation: fadeDown 0.6s ease-out 0.1s forwards;
+  }
+
   .hero-title {
     animation: fadeUp 0.8s ease-out 0.2s forwards;
   }
 
   .hero-tagline {
-    animation: fadeUp 0.8s ease-out 0.4s forwards;
+    animation: fadeUp 0.8s ease-out 0.35s forwards;
   }
 
   .hero-description {
-    animation: fadeUp 0.8s ease-out 0.6s forwards;
+    animation: fadeUp 0.8s ease-out 0.5s forwards;
   }
 
   .hero-cta {
-    animation: fadeUp 0.8s ease-out 0.8s forwards;
-  }
-
-  .hero-stats {
-    animation: fadeUp 0.8s ease-out 0.7s forwards;
-  }
-
-  .btn-lg {
-    @apply px-8 py-4 text-lg;
+    animation: fadeUp 0.8s ease-out 0.65s forwards;
   }
 
   @keyframes fadeUp {
     from {
       opacity: 0;
-      transform: translateY(30px);
+      transform: translateY(24px);
     }
     to {
       opacity: 1;
@@ -364,126 +498,392 @@ const formatDate = (dateStr: string) => {
     }
   }
 
-  /* Parallax effect */
+  @keyframes fadeDown {
+    from {
+      opacity: 0;
+      transform: translateY(-16px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .btn-lg {
+    @apply px-7 py-3.5 text-base;
+  }
+
+  /* Scroll indicator */
+  .scroll-mouse {
+    transition: border-color 0.3s ease;
+  }
+
+  .scroll-dot {
+    animation: scrollHint 1.5s ease-in-out infinite;
+  }
+
+  @keyframes scrollHint {
+    0%, 100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    50% {
+      opacity: 0.3;
+      transform: translateY(12px);
+    }
+  }
+
+  /* Parallax */
   .parallax-bg {
     transform: translateZ(0);
     will-change: transform;
   }
 
-  /* Stat cards */
-  .stat-card {
-    @apply bg-surface-card rounded-lg p-6 text-center shadow;
-    @apply transition-all duration-300 hover:-translate-y-1 hover:shadow-lg;
+  /* ========================================
+     Section spacing
+     ======================================== */
+  .section-lg {
+    @apply py-20 md:py-28 pb-28 md:pb-36;
   }
 
-  .stat-number {
-    @apply block text-4xl md:text-5xl font-black text-accent mb-2;
+  /* ========================================
+     Ecosystem Cards (Study Systems)
+     ======================================== */
+  .ecosystem-card {
+    @apply relative rounded-2xl overflow-hidden no-underline block;
+    @apply border border-line/50;
+    @apply transition-all duration-500 ease-out;
+    aspect-ratio: 4 / 3;
+    transform-style: preserve-3d;
   }
 
-  .stat-label {
-    @apply text-sm font-semibold text-muted uppercase tracking-wide;
+  .ecosystem-card:hover {
+    @apply -translate-y-2;
+    border-color: rgba(56, 189, 248, 0.4);
+    box-shadow:
+      0 25px 50px -12px rgba(0, 0, 0, 0.4),
+      0 0 40px rgba(56, 189, 248, 0.15);
   }
 
-  /* Study System cards */
-  .study-system-card {
-    @apply relative rounded-xl overflow-hidden aspect-[4/3] no-underline block;
-    @apply transition-all duration-300 hover:-translate-y-2 hover:shadow-xl;
-  }
-
-  .study-system-image {
+  .ecosystem-card-image {
     @apply absolute inset-0;
   }
 
-  .study-system-image img {
+  .ecosystem-card-image img {
     @apply w-full h-full object-cover;
+    @apply transition-all duration-700 ease-out;
+    transform: scale(1.05);
   }
 
-  .study-system-content {
-    @apply absolute bottom-0 left-0 right-0 p-6;
+  .ecosystem-card:hover .ecosystem-card-image img {
+    transform: scale(1.12);
   }
 
-  /* News Grid */
+  .ecosystem-card-overlay {
+    @apply absolute inset-0;
+    background: linear-gradient(
+      to top,
+      rgba(11, 37, 69, 0.95) 0%,
+      rgba(11, 37, 69, 0.7) 35%,
+      rgba(11, 37, 69, 0.3) 60%,
+      transparent 100%
+    );
+  }
+
+  .ecosystem-card-content {
+    @apply absolute bottom-0 left-0 right-0 p-6 md:p-7;
+  }
+
+  .ecosystem-location {
+    @apply inline-flex items-center gap-1.5 text-accent-2 text-xs font-bold uppercase tracking-wider mb-3;
+  }
+
+  .ecosystem-title {
+    @apply text-2xl md:text-3xl font-black text-white mb-3;
+    @apply transition-colors duration-300;
+  }
+
+  .ecosystem-card:hover .ecosystem-title {
+    @apply text-accent;
+  }
+
+  .ecosystem-tagline {
+    @apply text-white/70 text-sm leading-relaxed mb-4 line-clamp-2;
+  }
+
+  .ecosystem-link {
+    @apply inline-flex items-center gap-2 text-accent text-sm font-bold;
+    @apply transition-all duration-300;
+  }
+
+  .ecosystem-card:hover .ecosystem-link {
+    @apply gap-3;
+  }
+
+  /* ========================================
+     Research Pillars
+     ======================================== */
+  .pillars-grid {
+    @apply grid md:grid-cols-3 gap-6 lg:gap-8 max-w-6xl mx-auto;
+  }
+
+  .pillar-card {
+    @apply p-7 rounded-2xl text-left;
+    @apply border border-white/10;
+    @apply transition-all duration-300 ease-out;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0.02) 100%);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+  }
+
+  .pillar-card::before {
+    content: '';
+    @apply absolute inset-0 rounded-2xl opacity-0;
+    background: linear-gradient(135deg, rgba(56, 189, 248, 0.08) 0%, rgba(45, 212, 191, 0.04) 100%);
+    transition: opacity 0.3s ease;
+    z-index: -1;
+  }
+
+  .pillar-card:hover {
+    @apply -translate-y-2;
+    border-color: rgba(56, 189, 248, 0.4);
+    box-shadow:
+      0 20px 40px -12px rgba(0, 0, 0, 0.3),
+      0 0 30px rgba(56, 189, 248, 0.1),
+      inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  }
+
+  .pillar-card:hover::before {
+    opacity: 1;
+  }
+
+  .pillar-icon {
+    @apply w-12 h-12 mb-5 rounded-xl;
+    @apply flex items-center justify-center;
+    @apply transition-all duration-500;
+    position: relative;
+  }
+
+  .pillar-card:hover .pillar-icon {
+    @apply scale-110;
+    animation: icon-bounce 0.6s ease;
+  }
+
+  .pillar-card:hover .pillar-icon svg {
+    animation: icon-wiggle 0.6s ease;
+  }
+
+  @keyframes icon-bounce {
+    0%, 100% { transform: scale(1.1) translateY(0); }
+    50% { transform: scale(1.15) translateY(-3px); }
+  }
+
+  @keyframes icon-wiggle {
+    0% { transform: rotate(0deg); }
+    25% { transform: rotate(-8deg); }
+    75% { transform: rotate(8deg); }
+    100% { transform: rotate(0deg); }
+  }
+
+  .pillar-icon-1 {
+    @apply bg-accent/20 text-accent;
+  }
+
+  .pillar-icon-2 {
+    @apply bg-accent-2/20 text-accent-2;
+  }
+
+  .pillar-icon-3 {
+    @apply bg-accent-warm/20 text-accent-warm;
+  }
+
+  .pillar-title {
+    @apply text-white text-lg font-bold mb-3;
+  }
+
+  .pillar-desc {
+    @apply text-white/50 text-sm leading-relaxed mb-5;
+  }
+
+  .pillar-topics {
+    @apply space-y-2;
+  }
+
+  .pillar-topics li {
+    @apply flex items-start gap-2 text-white/70 text-sm;
+  }
+
+  /* ========================================
+     News Cards
+     ======================================== */
   .news-grid {
-    @apply grid md:grid-cols-3 gap-6;
+    @apply grid md:grid-cols-3 gap-6 lg:gap-8;
   }
 
   .news-card {
-    @apply rounded-xl overflow-hidden bg-surface-card border border-line;
-    @apply transition-all duration-300 hover:-translate-y-1 hover:shadow-lg;
+    @apply rounded-2xl overflow-hidden bg-surface-card;
+    @apply border border-line/50;
+    @apply transition-all duration-300 ease-out;
   }
 
-  .news-card-inner {
+  .news-card:hover {
+    @apply -translate-y-2 shadow-xl;
+    border-color: rgba(56, 189, 248, 0.3);
+  }
+
+  .news-card-link {
     @apply block no-underline h-full flex flex-col;
   }
 
   .news-card-image {
-    @apply aspect-[16/10] overflow-hidden;
+    @apply relative aspect-[16/10] overflow-hidden;
   }
 
   .news-card-image img {
     @apply w-full h-full object-cover;
+    @apply transition-transform duration-500 ease-out;
   }
 
-  .news-card-content {
-    @apply p-5 flex flex-col flex-1;
+  .news-card:hover .news-card-image img {
+    @apply scale-105;
   }
 
-  .badge-sm {
-    @apply text-xs px-2 py-0.5;
+  .news-card-date {
+    @apply absolute top-3 right-3;
+    @apply px-3 py-1.5 rounded-full;
+    @apply bg-navy-deep/80 backdrop-blur-sm;
+    @apply text-white/80 text-xs font-medium;
   }
 
-  .line-clamp-2 {
+  .news-card-body {
+    @apply p-5 md:p-6 flex flex-col flex-1;
+  }
+
+  .news-card-tags {
+    @apply flex flex-wrap gap-2 mb-3;
+  }
+
+  .news-tag {
+    @apply text-xs font-bold uppercase tracking-wide;
+    @apply text-accent;
+  }
+
+  .news-card-title {
+    @apply text-lg font-bold text-ink mb-3 leading-snug;
+    @apply transition-colors duration-200;
     display: -webkit-box;
     -webkit-line-clamp: 2;
     -webkit-box-orient: vertical;
     overflow: hidden;
   }
 
-  /* Research Pillars - Homepage */
-  .pillars-grid {
-    @apply grid md:grid-cols-3 gap-6 max-w-5xl mx-auto;
+  .news-card:hover .news-card-title {
+    @apply text-accent;
   }
 
-  .pillar-card {
-    @apply p-6 rounded-xl text-center;
-    @apply bg-white/5 border border-white/10;
-    @apply transition-all duration-300;
-    @apply hover:bg-white/10 hover:border-accent/30 hover:-translate-y-1;
+  .news-card-excerpt {
+    @apply text-muted text-sm leading-relaxed mb-4 flex-1;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
   }
 
-  .pillar-icon {
-    @apply w-14 h-14 mx-auto mb-4 rounded-full;
-    @apply bg-accent/20 text-accent;
-    @apply flex items-center justify-center;
+  .news-card-cta {
+    @apply inline-flex items-center gap-2 text-accent text-sm font-bold;
+    @apply transition-all duration-300 mt-auto;
   }
 
-  .pillar-title {
-    @apply text-white text-base lg:text-lg font-bold mb-3;
+  .news-card:hover .news-card-cta {
+    @apply gap-3;
   }
 
-  .pillar-desc {
-    @apply text-white/60 text-sm leading-relaxed;
+  /* ========================================
+     Stats Section
+     ======================================== */
+  .stats-grid {
+    @apply grid grid-cols-2 gap-4 lg:gap-5;
   }
 
-  /* Join CTA Card */
-  .join-cta-card {
-    @apply bg-gradient-to-br from-accent/10 to-accent-2/10;
-    @apply border border-accent/20 rounded-2xl p-8 md:p-12;
-    @apply max-w-3xl mx-auto;
+  .stat-card {
+    @apply relative bg-white/[0.03] border border-white/10 rounded-2xl;
+    @apply p-6 lg:p-7 text-center;
+    @apply transition-all duration-300 ease-out;
   }
 
-  /* Reduced motion */
+  .stat-card:hover {
+    @apply bg-white/[0.06] -translate-y-1;
+    border-color: rgba(56, 189, 248, 0.3);
+  }
+
+  .stat-number {
+    @apply text-4xl lg:text-5xl font-black text-accent;
+    @apply inline;
+  }
+
+  .stat-suffix {
+    @apply text-xl lg:text-2xl font-bold text-accent/70 ml-0.5;
+  }
+
+  .stat-label {
+    @apply block text-xs font-semibold text-white/50 uppercase tracking-wider mt-2;
+  }
+
+  /* ========================================
+     Join CTA
+     ======================================== */
+  .join-cta {
+    @apply relative rounded-3xl overflow-hidden;
+    @apply bg-gradient-to-br from-accent/10 via-accent/5 to-accent-2/10;
+    @apply border border-accent/20;
+    @apply p-10 md:p-14 lg:p-16;
+  }
+
+  .join-cta::before {
+    content: '';
+    @apply absolute inset-0 opacity-30;
+    background: radial-gradient(circle at top right, rgba(56, 189, 248, 0.15), transparent 50%),
+                radial-gradient(circle at bottom left, rgba(45, 212, 191, 0.15), transparent 50%);
+  }
+
+  .join-cta-content {
+    @apply relative z-10 text-center max-w-2xl mx-auto;
+  }
+
+  /* ========================================
+     Reduced motion
+     ======================================== */
   @media (prefers-reduced-motion: reduce) {
+    .hero-badge,
     .hero-title,
     .hero-tagline,
     .hero-description,
-    .hero-stats,
-    .hero-cta {
+    .hero-cta,
+    .gradient-text {
       animation: none;
       opacity: 1;
     }
 
-    .animate-bounce-subtle {
+    .scroll-dot,
+    .bubble,
+    .blob {
+      animation: none;
+    }
+
+    .ecosystem-card-image img,
+    .news-card-image img {
+      transition: none;
+    }
+
+    .pillar-card,
+    .ecosystem-card,
+    .news-card,
+    .stat-card {
+      transition: none;
+    }
+
+    .pillar-icon,
+    .pillar-icon svg {
       animation: none;
     }
   }
@@ -495,13 +895,20 @@ const formatDate = (dateStr: string) => {
     const parallaxBg = document.querySelector('.parallax-bg') as HTMLElement;
     if (!parallaxBg) return;
 
+    let ticking = false;
+
     const handleScroll = () => {
-      const scrolled = window.scrollY;
-      const rate = scrolled * 0.4;
-      parallaxBg.style.transform = `translateY(${rate}px)`;
+      if (!ticking) {
+        requestAnimationFrame(() => {
+          const scrolled = window.scrollY;
+          const rate = scrolled * 0.35;
+          parallaxBg.style.transform = `translateY(${rate}px)`;
+          ticking = false;
+        });
+        ticking = true;
+      }
     };
 
-    // Check for reduced motion preference
     if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
       window.addEventListener('scroll', handleScroll, { passive: true });
     }
@@ -529,15 +936,15 @@ const formatDate = (dateStr: string) => {
   };
 
   const animateCount = (el: HTMLElement, target: number) => {
-    const duration = 1500;
+    const duration = 1800;
     const start = performance.now();
 
     const update = (currentTime: number) => {
       const elapsed = currentTime - start;
       const progress = Math.min(elapsed / duration, 1);
 
-      // Easing function (ease-out)
-      const eased = 1 - Math.pow(1 - progress, 3);
+      // Smooth easing
+      const eased = 1 - Math.pow(1 - progress, 4);
       const current = Math.round(eased * target);
 
       el.textContent = current.toString();
@@ -547,7 +954,6 @@ const formatDate = (dateStr: string) => {
       }
     };
 
-    // Check for reduced motion
     if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
       el.textContent = target.toString();
     } else {

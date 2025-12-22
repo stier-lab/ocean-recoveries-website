@@ -127,7 +127,9 @@ const formatCitation = () => {
           </div>
 
           <!-- Title -->
-          <h1 class="hero-title">{post.title}</h1>
+          <h1 class="hero-title">
+            <span class="title-text">{post.title}</span>
+          </h1>
 
           <!-- Author -->
           <div class="hero-author">
@@ -428,8 +430,29 @@ const formatCitation = () => {
   }
 
   .hero-title {
-    @apply text-white text-fluid-4xl md:text-fluid-5xl font-black leading-tight mb-6 max-w-4xl;
+    @apply text-fluid-4xl md:text-fluid-5xl font-black leading-tight mb-6 max-w-4xl;
     text-shadow: 0 2px 20px rgba(0, 0, 0, 0.3);
+    animation: fadeUp 0.8s ease-out forwards;
+    opacity: 0;
+  }
+
+  .title-text {
+    background: linear-gradient(135deg, #ffffff 0%, #38bdf8 50%, #ffffff 100%);
+    background-size: 200% 200%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: gradient-shift 8s ease-in-out infinite;
+  }
+
+  @keyframes gradient-shift {
+    0%, 100% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+  }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
   }
 
   .hero-author {
@@ -773,9 +796,14 @@ const formatCitation = () => {
     .action-btn-primary,
     .action-btn-secondary,
     .key-findings,
-    .prose-content > * {
+    .prose-content > *,
+    .hero-title,
+    .title-text {
       transition: none !important;
       animation: none !important;
+    }
+    .hero-title {
+      opacity: 1;
     }
   }
 </style>

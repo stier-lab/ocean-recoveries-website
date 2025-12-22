@@ -123,7 +123,18 @@ Configured in `tsconfig.json`:
 
 ## Design System
 
-### Colors (Navy/Ocean Theme)
+**IMPORTANT: See [DESIGN.md](./DESIGN.md) for the complete design system documentation.**
+
+The design doc covers:
+- Color palette and usage rules
+- Typography scale and hierarchy
+- Spacing tokens and layout patterns
+- Component patterns (cards, buttons, badges)
+- Motion and animation guidelines
+- Accessibility requirements
+- Implementation checklists
+
+### Quick Reference (Colors)
 
 - **Ink:** `#f1f5f9` (light text)
 - **Accent Sky:** `#38bdf8`

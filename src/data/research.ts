@@ -1,3 +1,9 @@
+export interface GalleryImage {
+  src: string;
+  alt: string;
+  caption?: string;
+}
+
 export interface StudySystem {
   slug: string;
   title: string;
@@ -10,6 +16,14 @@ export interface StudySystem {
     summary: string;
     detail: string;
   }[];
+  gallery?: GalleryImage[];
+  fieldSite?: {
+    name: string;
+    location: string;
+    description: string;
+    image: string;
+    url?: string;
+  };
 }
 
 export interface ResearchPillar {
@@ -23,66 +37,124 @@ export const studySystems: StudySystem[] = [
   {
     slug: 'coral-reefs',
     title: 'Coral Reefs',
-    tagline: 'Field experiments and models reveal how disturbance, biotic interactions, and restoration actions shape coral resilience and regeneration.',
-    heroImage: '/images/damselfish-pair-pink-coral.jpeg',
+    tagline: 'Field experiments and models reveal how biotic interactions, disturbance legacies, and species associations shape coral resilience.',
+    heroImage: '/images/cauliflower-coral-damselfish-reef.jpeg',
     description: `Coral reefs are among the most biodiverse ecosystems on Earth, yet they face unprecedented threats from climate change, ocean acidification, and local stressors. Our research combines long-term field experiments in French Polynesia with mathematical models to understand what drives coral reef resilience and recovery.
 
-We work closely with local communities and restoration practitioners to translate our findings into actionable conservation strategies. Our goal is to identify the conditions and interventions that give reefs the best chance of persisting and recovering in a changing ocean.`,
+We work at the Moorea Coral Reef Long Term Ecological Research (MCR LTER) site, studying how coral-associated fishes and invertebrates influence coral health, how disturbance legacies affect recovery trajectories, and how predator-prey interactions structure reef communities.`,
     questions: [
-      'What biotic interactions promote coral recovery after bleaching events?',
-      'How do coral-associated organisms (fish, crabs, shrimp) influence coral health?',
-      'Which restoration techniques are most effective for different reef types?',
-      'How do multiple stressors interact to affect coral resilience?',
+      'How do coral-associated fishes and invertebrates benefit coral health and resilience?',
+      'What role do guard crabs play in protecting corals from predators and competitors?',
+      'How do disturbance legacies (like dead coral skeletons) affect reef recovery?',
+      'How do predators structure coral reef fish communities?',
     ],
     findings: [
       {
-        title: 'Mutualist communities accelerate recovery',
-        summary: 'Coral-dwelling fish and invertebrates significantly boost coral growth rates.',
-        detail: 'Our experiments show that corals hosting diverse mutualist communities recover 40% faster from bleaching events compared to those without these partners.',
+        title: 'Fish provide services to corals',
+        summary: 'Coral-dwelling fishes offer multiple benefits including nutrient provision and predator defense.',
+        detail: 'Our synthesis reveals that coral-associated fishes enhance coral health through oxygenation, nutrient subsidies, sediment removal, and protection from predators and parasites (Stier et al. 2025, Coral Reefs).',
       },
       {
-        title: 'Thermal history shapes bleaching susceptibility',
-        summary: 'Prior exposure to moderate heat stress can increase coral tolerance.',
-        detail: 'Corals that experienced non-lethal thermal stress show enhanced heat tolerance in subsequent bleaching events, suggesting potential for assisted acclimatization.',
+        title: 'Guard crabs defend corals',
+        summary: 'Mutualist crustaceans provide synergistic defense against coral enemies.',
+        detail: 'Multiple species of guard crabs work together to protect branching corals from predators like crown-of-thorns starfish and competitors like vermetid snails (McKeon et al. 2012, Oecologia; Stier et al. 2010, Coral Reefs).',
       },
       {
-        title: 'Restoration placement matters',
-        summary: 'Strategic positioning of coral outplants improves survival.',
-        detail: 'Outplants placed near established coral colonies with intact mutualist communities show 60% higher survival rates than isolated transplants.',
+        title: 'Dead coral structures can trap reefs',
+        summary: 'Standing dead coral skeletons left after disturbance can promote regime shifts.',
+        detail: 'Our mathematical models show that structure-retaining disturbances can push reefs toward tipping points by providing substrate for algal competitors (Kopecky et al. 2023, Ecology).',
       },
     ],
+    gallery: [
+      {
+        src: '/images/trapezia-coral-crab-hiding.jpg',
+        alt: 'Trapezia guard crab hiding within branching coral',
+        caption: 'Guard crabs like Trapezia defend their coral hosts from predators and competitors',
+      },
+      {
+        src: '/images/damselfish-pair-acropora-coral.jpeg',
+        alt: 'Pair of damselfish among Acropora coral branches',
+        caption: 'Coral-dwelling damselfish provide nutrient subsidies to their host corals',
+      },
+      {
+        src: '/images/crown-of-thorns.jpeg',
+        alt: 'Crown-of-thorns starfish on coral reef',
+        caption: 'Crown-of-thorns starfish are major coral predators that guard crabs help defend against',
+      },
+      {
+        src: '/images/deadcoral.jpeg',
+        alt: 'Dead coral skeleton covered in algae',
+        caption: 'Standing dead coral structures can promote regime shifts to algae-dominated states',
+      },
+    ],
+    fieldSite: {
+      name: 'Moorea Coral Reef LTER',
+      location: 'Moorea, French Polynesia',
+      description: 'The MCR LTER site provides long-term data on coral reef dynamics, enabling us to study disturbance, recovery, and species interactions across reef habitats.',
+      image: '/images/moorea-mountain-tropical-island-view.jpeg',
+      url: 'https://mcr.lternet.edu/',
+    },
   },
   {
     slug: 'kelp-forests',
     title: 'Kelp Forests',
-    tagline: 'Understanding predator-prey dynamics and ecosystem engineering along the California coast.',
+    tagline: 'Understanding predator-prey dynamics, foundation species stability, and fisheries benefits along the California coast.',
     heroImage: '/images/giant-kelp-sunlight-underwater.jpeg',
     description: `Giant kelp forests along the California coast are highly productive ecosystems that support diverse marine life and valuable fisheries. These underwater forests face threats from warming oceans, marine heatwaves, and shifts in species interactions.
 
-Our kelp forest research examines how predator-prey dynamics shape ecosystem structure, focusing on the interactions between lobsters, urchins, and kelp. We use a combination of field experiments, long-term monitoring data, and population models to understand ecosystem dynamics and inform fisheries management.`,
+We work at the Santa Barbara Coastal Long Term Ecological Research (SBC LTER) site, studying how predator-prey dynamics shape ecosystem structure. Our research focuses on the interactions between spiny lobsters, sea urchins, and kelp, using field experiments, long-term monitoring data, and population models to understand ecosystem dynamics and inform fisheries management.`,
     questions: [
-      'How do lobster populations affect urchin grazing and kelp persistence?',
-      'What drives transitions between kelp forest and urchin barren states?',
-      'How can marine protected areas benefit both fisheries and ecosystems?',
-      'What is the recovery potential of kelp forests after marine heatwaves?',
+      'How does lobster body size affect their interactions with urchin prey?',
+      'What mechanisms prevent urchins from overgrazing kelp forests?',
+      'How do marine protected areas benefit adjacent fisheries through spillover?',
+      'How do foundation species like giant kelp promote community stability?',
     ],
     findings: [
       {
-        title: 'Lobsters control urchin populations',
-        summary: 'Spiny lobsters are key predators that prevent urchin outbreaks.',
-        detail: 'Our predator exclusion experiments demonstrate that lobsters reduce urchin densities by up to 70%, preventing overgrazing that leads to kelp loss.',
+        title: 'Detritus prevents urchin outbreaks',
+        summary: 'Kelp detritus provides alternative food that keeps urchins from overgrazing live kelp.',
+        detail: 'When herbivore abundance is high, detrital supply can prevent regime shifts from productive kelp forests to denuded urchin barrens (Rennick et al. 2022, Ecology).',
       },
       {
-        title: 'MPAs enhance ecosystem resilience',
-        summary: 'Protected areas show faster recovery from disturbance.',
-        detail: 'Kelp forests within marine protected areas recovered twice as fast from the 2014-2016 marine heatwave compared to fished areas.',
+        title: 'MPAs benefit lobster fisheries',
+        summary: 'Spillover from marine reserves enhances catches at reserve borders.',
+        detail: 'Evidence shows that spiny lobster populations build up within marine protected areas and spillover benefits the adjacent fishery in southern California (Lenihan et al. 2021, Scientific Reports).',
       },
       {
-        title: 'Alternative stable states exist',
-        summary: 'Kelp forests and urchin barrens can persist under the same conditions.',
-        detail: 'Our models reveal that once urchin barrens form, they can be remarkably persistent even when conditions favor kelp growth.',
+        title: 'Body size drives interaction strength',
+        summary: 'Lobster-urchin interactions depend strongly on predator and prey size.',
+        detail: 'General size-scaling relationships can predict how strongly lobsters and urchins interact, with variation in body size driving spatial and temporal patterns (DiFiore & Stier 2023, Journal of Animal Ecology).',
       },
     ],
+    gallery: [
+      {
+        src: '/images/spiny-lobsters-group-reef-hideout.jpeg',
+        alt: 'Group of spiny lobsters in a rocky reef hideout',
+        caption: 'Spiny lobsters are key predators whose body size determines their interaction strength with urchin prey',
+      },
+      {
+        src: '/images/purple-urchin.jpeg',
+        alt: 'Purple sea urchin on rocky substrate',
+        caption: 'Purple urchins can overgraze kelp forests when not controlled by predators or detrital food supply',
+      },
+      {
+        src: '/images/urchin-barron.jpg',
+        alt: 'Urchin barren with denuded rocky reef',
+        caption: 'Urchin barrens represent an alternative stable state when kelp forests collapse',
+      },
+      {
+        src: '/images/garibaldi-fish-orange-kelp-forest.jpeg',
+        alt: 'Bright orange Garibaldi fish in kelp forest',
+        caption: 'Garibaldi and other kelp forest fishes depend on the habitat provided by giant kelp',
+      },
+    ],
+    fieldSite: {
+      name: 'Santa Barbara Coastal LTER',
+      location: 'Santa Barbara Channel, California',
+      description: 'The SBC LTER site enables long-term research on kelp forest dynamics, tracking how environmental change and species interactions shape these productive ecosystems.',
+      image: '/images/kelp-hero.jpeg',
+      url: 'https://sbclter.msi.ucsb.edu/',
+    },
   },
 ];
 

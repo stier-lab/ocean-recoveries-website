@@ -2,6 +2,8 @@
 import { ViewTransitions } from 'astro:transitions';
 import Nav from '@components/layout/Nav.astro';
 import Footer from '@components/layout/Footer.astro';
+import GlobalEffects from '@components/shared/GlobalEffects.astro';
+import CommandPalette from '@components/shared/CommandPalette.astro';
 import '@styles/global.css';
 
 interface Props {
@@ -62,6 +64,7 @@ const siteTitle = title === 'Home' ? 'Ocean Recoveries Lab' : `${title} | Ocean 
     <ViewTransitions />
   </head>
   <body class="min-h-screen flex flex-col antialiased">
+    <GlobalEffects />
     <a href="#main-content" class="skip-link">Skip to main content</a>
 
     <Nav transition:persist />
@@ -71,6 +74,9 @@ const siteTitle = title === 'Home' ? 'Ocean Recoveries Lab' : `${title} | Ocean 
     </main>
 
     <Footer />
+
+    <!-- Command Palette (Cmd+K) -->
+    <CommandPalette />
 
     <!-- Scroll reveal observer -->
     <script>

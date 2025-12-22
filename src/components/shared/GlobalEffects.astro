@@ -1,0 +1,218 @@
+---
+/**
+ * GlobalEffects - Site-wide interactive enhancements
+ * Includes: Scroll progress bar, custom cursor, magnetic button effects
+ */
+---
+
+<!-- Custom Cursor -->
+<div class="custom-cursor" id="customCursor"></div>
+<div class="custom-cursor-dot" id="customCursorDot"></div>
+
+<!-- Scroll Progress Bar -->
+<div class="scroll-progress-container">
+  <div class="scroll-progress-bar" id="scrollProgress"></div>
+</div>
+
+<style>
+  /* Scroll Progress Bar */
+  .scroll-progress-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    z-index: 9999;
+    background: rgba(15, 23, 42, 0.5);
+    backdrop-filter: blur(4px);
+  }
+
+  .scroll-progress-bar {
+    height: 100%;
+    width: 0;
+    background: linear-gradient(90deg, #38bdf8 0%, #2dd4bf 50%, #38bdf8 100%);
+    background-size: 200% 100%;
+    animation: progress-shimmer 2s linear infinite;
+    transition: width 0.1s ease-out;
+    box-shadow: 0 0 10px rgba(56, 189, 248, 0.5), 0 0 20px rgba(45, 212, 191, 0.3);
+  }
+
+  @keyframes progress-shimmer {
+    0% { background-position: 200% 0; }
+    100% { background-position: -200% 0; }
+  }
+
+  /* Custom Cursor */
+  .custom-cursor {
+    position: fixed;
+    pointer-events: none;
+    z-index: 99999;
+    width: 20px;
+    height: 20px;
+    border: 2px solid rgba(56, 189, 248, 0.6);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    transition: width 0.2s, height 0.2s, border-color 0.2s, background-color 0.2s;
+    mix-blend-mode: difference;
+    display: none;
+  }
+
+  .custom-cursor.active {
+    width: 40px;
+    height: 40px;
+    border-color: rgba(45, 212, 191, 0.8);
+    background-color: rgba(45, 212, 191, 0.1);
+  }
+
+  .custom-cursor-dot {
+    position: fixed;
+    pointer-events: none;
+    z-index: 99999;
+    width: 6px;
+    height: 6px;
+    background: #38bdf8;
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    display: none;
+  }
+
+  /* Show custom cursor on non-touch devices */
+  @media (hover: hover) and (pointer: fine) {
+    .custom-cursor,
+    .custom-cursor-dot {
+      display: block;
+    }
+  }
+
+  /* Reduced motion */
+  @media (prefers-reduced-motion: reduce) {
+    .scroll-progress-bar {
+      animation: none;
+    }
+
+    .custom-cursor,
+    .custom-cursor-dot {
+      display: none !important;
+    }
+  }
+</style>
+
+<script>
+  // Scroll Progress Bar
+  const initScrollProgress = () => {
+    const progressBar = document.getElementById('scrollProgress');
+    if (!progressBar) return;
+
+    const updateProgress = () => {
+      const scrollTop = window.scrollY;
+      const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+      const progress = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+      progressBar.style.width = `${Math.min(progress, 100)}%`;
+    };
+
+    window.addEventListener('scroll', updateProgress, { passive: true });
+    updateProgress();
+  };
+
+  // Custom Cursor
+  const initCustomCursor = () => {
+    const cursor = document.getElementById('customCursor');
+    const cursorDot = document.getElementById('customCursorDot');
+
+    if (!cursor || !cursorDot) return;
+
+    // Only on non-touch devices
+    if (!window.matchMedia('(hover: hover) and (pointer: fine)').matches) return;
+
+    // Skip if reduced motion preferred
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+    let mouseX = 0;
+    let mouseY = 0;
+    let cursorX = 0;
+    let cursorY = 0;
+
+    document.addEventListener('mousemove', (e) => {
+      mouseX = e.clientX;
+      mouseY = e.clientY;
+      cursorDot.style.left = `${mouseX}px`;
+      cursorDot.style.top = `${mouseY}px`;
+    });
+
+    // Smooth cursor follow
+    const animateCursor = () => {
+      cursorX += (mouseX - cursorX) * 0.15;
+      cursorY += (mouseY - cursorY) * 0.15;
+      cursor.style.left = `${cursorX}px`;
+      cursor.style.top = `${cursorY}px`;
+      requestAnimationFrame(animateCursor);
+    };
+    animateCursor();
+
+    // Interactive elements
+    const interactiveSelectors = 'a, button, [role="button"], .card, .magnetic-btn, input, textarea, select';
+
+    const addInteractivity = () => {
+      document.querySelectorAll(interactiveSelectors).forEach((el) => {
+        el.addEventListener('mouseenter', () => cursor.classList.add('active'));
+        el.addEventListener('mouseleave', () => cursor.classList.remove('active'));
+      });
+    };
+
+    addInteractivity();
+
+    // Re-add after content changes
+    const observer = new MutationObserver(addInteractivity);
+    observer.observe(document.body, { childList: true, subtree: true });
+  };
+
+  // Magnetic Button Effect
+  const initMagneticButtons = () => {
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+    const addMagneticEffect = () => {
+      document.querySelectorAll('.magnetic-btn').forEach((btn) => {
+        if ((btn as HTMLElement).dataset.magneticInit) return;
+        (btn as HTMLElement).dataset.magneticInit = 'true';
+
+        btn.addEventListener('mousemove', (e) => {
+          const event = e as MouseEvent;
+          const rect = (btn as HTMLElement).getBoundingClientRect();
+          const x = ((event.clientX - rect.left) / rect.width) * 100;
+          const y = ((event.clientY - rect.top) / rect.height) * 100;
+          (btn as HTMLElement).style.setProperty('--mouse-x', `${x}%`);
+          (btn as HTMLElement).style.setProperty('--mouse-y', `${y}%`);
+
+          // Magnetic pull effect
+          const centerX = rect.left + rect.width / 2;
+          const centerY = rect.top + rect.height / 2;
+          const deltaX = (event.clientX - centerX) * 0.15;
+          const deltaY = (event.clientY - centerY) * 0.15;
+          (btn as HTMLElement).style.transform = `translate(${deltaX}px, ${deltaY}px) scale(1.02)`;
+        });
+
+        btn.addEventListener('mouseleave', () => {
+          (btn as HTMLElement).style.transform = '';
+        });
+      });
+    };
+
+    addMagneticEffect();
+
+    // Re-add after content changes
+    const observer = new MutationObserver(addMagneticEffect);
+    observer.observe(document.body, { childList: true, subtree: true });
+  };
+
+  // Initialize all
+  initScrollProgress();
+  initCustomCursor();
+  initMagneticButtons();
+
+  // Re-init after view transitions
+  document.addEventListener('astro:after-swap', () => {
+    initScrollProgress();
+    initCustomCursor();
+    initMagneticButtons();
+  });
+</script>

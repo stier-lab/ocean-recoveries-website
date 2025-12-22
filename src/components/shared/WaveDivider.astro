@@ -1,0 +1,159 @@
+---
+interface Props {
+  /** Fill color of the wave (the color the wave transitions TO - typically the next section's bg) */
+  fillColor?: 'surface' | 'navy-deep';
+  /** Unique ID for this wave instance (for gradient IDs) */
+  id?: string;
+}
+
+const {
+  fillColor = 'surface',
+  id = 'wave'
+} = Astro.props;
+
+// Using hex values directly for SVG fills (matching tailwind.config.mjs)
+const fillColorValue = {
+  'surface': '#0f172a',
+  'navy-deep': '#0b2545'
+}[fillColor];
+---
+
+<div class="wave-divider" data-wave-id={id}>
+  <!-- Wave Layer 1 (back - slowest, subtle glow) -->
+  <div class="wave-layer wave-layer-1">
+    <svg
+      class="wave-svg"
+      viewBox="0 0 2880 120"
+      preserveAspectRatio="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <defs>
+        <linearGradient id={`wave-gradient-1-${id}`} x1="0%" y1="0%" x2="100%" y2="0%">
+          <stop offset="0%" stop-color="rgba(56, 189, 248, 0.12)" />
+          <stop offset="25%" stop-color="rgba(45, 212, 191, 0.08)" />
+          <stop offset="50%" stop-color="rgba(56, 189, 248, 0.12)" />
+          <stop offset="75%" stop-color="rgba(45, 212, 191, 0.08)" />
+          <stop offset="100%" stop-color="rgba(56, 189, 248, 0.12)" />
+        </linearGradient>
+      </defs>
+      <path
+        fill={`url(#wave-gradient-1-${id})`}
+        d="M0,30 C240,60 480,0 720,30 C960,60 1200,0 1440,30 C1680,60 1920,0 2160,30 C2400,60 2640,0 2880,30 L2880,120 L0,120 Z"
+      />
+    </svg>
+  </div>
+
+  <!-- Wave Layer 2 (middle, offset phase) -->
+  <div class="wave-layer wave-layer-2">
+    <svg
+      class="wave-svg"
+      viewBox="0 0 2880 120"
+      preserveAspectRatio="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <defs>
+        <linearGradient id={`wave-gradient-2-${id}`} x1="0%" y1="0%" x2="100%" y2="0%">
+          <stop offset="0%" stop-color="rgba(56, 189, 248, 0.08)" />
+          <stop offset="50%" stop-color="rgba(45, 212, 191, 0.06)" />
+          <stop offset="100%" stop-color="rgba(56, 189, 248, 0.08)" />
+        </linearGradient>
+      </defs>
+      <path
+        fill={`url(#wave-gradient-2-${id})`}
+        d="M0,50 C180,20 360,80 540,50 C720,20 900,80 1080,50 C1260,20 1440,80 1620,50 C1800,20 1980,80 2160,50 C2340,20 2520,80 2700,50 C2880,20 2880,50 2880,50 L2880,120 L0,120 Z"
+      />
+    </svg>
+  </div>
+
+  <!-- Wave Layer 3 (front - main fill, creates the transition) -->
+  <div class="wave-layer wave-layer-3">
+    <svg
+      class="wave-svg"
+      viewBox="0 0 2880 120"
+      preserveAspectRatio="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        fill={fillColorValue}
+        d="M0,70 C360,90 720,50 1080,70 C1440,90 1800,50 2160,70 C2520,90 2880,70 2880,70 L2880,120 L0,120 Z"
+      />
+    </svg>
+  </div>
+</div>
+
+<style>
+  .wave-divider {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    height: 60px;
+    overflow: hidden;
+    line-height: 0;
+    /* Extend slightly below to cover any gaps */
+    transform: translateY(1px);
+    z-index: 2;
+  }
+
+  .wave-layer {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 200%;
+    height: 100%;
+  }
+
+  .wave-svg {
+    display: block;
+    width: 100%;
+    height: 100%;
+  }
+
+  /* Continuous horizontal drift animations */
+  .wave-layer-1 {
+    animation: wave-drift 20s linear infinite;
+    opacity: 0.9;
+  }
+
+  .wave-layer-2 {
+    animation: wave-drift 15s linear infinite reverse;
+    opacity: 0.7;
+  }
+
+  .wave-layer-3 {
+    animation: wave-drift 12s linear infinite;
+  }
+
+  @keyframes wave-drift {
+    from {
+      transform: translateX(0);
+    }
+    to {
+      transform: translateX(-50%);
+    }
+  }
+
+  /* Reduced motion: disable animations */
+  @media (prefers-reduced-motion: reduce) {
+    .wave-layer-1,
+    .wave-layer-2,
+    .wave-layer-3 {
+      animation: none;
+      width: 100%;
+    }
+  }
+
+  /* Responsive height */
+  @media (min-width: 768px) {
+    .wave-divider {
+      height: 80px;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .wave-divider {
+      height: 100px;
+    }
+  }
+</style>

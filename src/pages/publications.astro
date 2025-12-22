@@ -8,12 +8,8 @@ import { enrichPublicationsWithImages } from '@utils/publicationImages';
 // Enrich publications with images from news posts
 const publicationsWithImages = enrichPublicationsWithImages(publications, posts);
 
-// Calculate stats for the hero
+// Calculate stats
 const totalPublications = publications.length;
-const yearRange = {
-  min: Math.min(...publications.map(p => p.year)),
-  max: Math.max(...publications.map(p => p.year)),
-};
 const openAccessCount = publications.filter(p => p.openAccess).length;
 ---
 
@@ -21,43 +17,43 @@ const openAccessCount = publications.filter(p => p.openAccess).length;
   title="Publications"
   description="Peer-reviewed publications from the Ocean Recoveries Lab at UC Santa Barbara."
 >
-  <!-- Hero - improved with stats -->
-  <section class="relative py-20 md:py-28 overflow-hidden">
-    <div
-      class="absolute inset-0 bg-cover bg-center"
-      style="background-image: url('/images/overwater-bungalows-split-view-reef-fish.jpeg');"
-    >
-      <div class="absolute inset-0 bg-navy-deep/75"></div>
+  <!-- Compact Header -->
+  <section class="pub-header pt-6 pb-4 bg-surface border-b border-line/30 relative overflow-hidden">
+    <!-- Subtle blob background -->
+    <div class="blob-container" aria-hidden="true">
+      <div class="blob blob-1"></div>
     </div>
-    <div class="relative container text-center text-white">
-      <span class="inline-block px-4 py-1.5 mb-4 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 text-sm font-semibold">
-        {totalPublications} Peer-Reviewed Publications
-      </span>
-      <h1 class="text-white mb-4">Our Research</h1>
-      <p class="text-xl text-white/80 max-w-2xl mx-auto mb-8">
-        Advancing our understanding of coral reef and kelp forest recovery, resilience, and restoration.
-      </p>
 
-      <!-- Quick stats -->
-      <div class="flex flex-wrap justify-center gap-6 md:gap-10">
-        <div class="text-center">
-          <div class="text-3xl md:text-4xl font-bold text-white">{yearRange.max - yearRange.min + 1}+</div>
-          <div class="text-sm text-white/60">Years of Research</div>
-        </div>
-        <div class="text-center">
-          <div class="text-3xl md:text-4xl font-bold text-white">{openAccessCount}</div>
-          <div class="text-sm text-white/60">Open Access</div>
-        </div>
-        <div class="text-center">
-          <div class="text-3xl md:text-4xl font-bold text-white">{allThemes.length}</div>
-          <div class="text-sm text-white/60">Research Themes</div>
-        </div>
+    <div class="container relative z-10">
+      <!-- Breadcrumbs -->
+      <nav class="mb-4" aria-label="Breadcrumb">
+        <ol class="flex items-center gap-2 text-sm text-muted">
+          <li>
+            <a href="/" class="hover:text-accent transition-colors">Home</a>
+          </li>
+          <li aria-hidden="true">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+            </svg>
+          </li>
+          <li>
+            <span class="text-ink font-medium" aria-current="page">Publications</span>
+          </li>
+        </ol>
+      </nav>
+
+      <!-- Title row -->
+      <div class="flex items-center justify-between flex-wrap gap-4">
+        <h1 class="pub-title text-2xl md:text-3xl font-bold m-0">
+          <span class="gradient-text">Publications</span>
+        </h1>
+        <span class="text-sm text-muted">{totalPublications} peer-reviewed papers</span>
       </div>
     </div>
   </section>
 
   <!-- Publications -->
-  <section class="section bg-surface">
+  <section class="py-6 bg-surface">
     <div class="container">
       <PublicationList
         client:load
@@ -107,7 +103,7 @@ const openAccessCount = publications.filter(p => p.openAccess).length;
             href="https://github.com/stier-lab"
             target="_blank"
             rel="noopener noreferrer"
-            class="btn btn-primary"
+            class="btn btn-primary magnetic-btn"
           >
             <svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">
               <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
@@ -118,7 +114,7 @@ const openAccessCount = publications.filter(p => p.openAccess).length;
             href="https://scholar.google.com/citations?user=bxbOvMgAAAAJ"
             target="_blank"
             rel="noopener noreferrer"
-            class="btn btn-secondary"
+            class="btn btn-secondary magnetic-btn"
           >
             <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
               <path d="M5.242 13.769L0 9.5 12 0l12 9.5-5.242 4.269C17.548 11.249 14.978 9.5 12 9.5c-2.977 0-5.548 1.748-6.758 4.269zM12 10a7 7 0 1 0 0 14 7 7 0 0 0 0-14z"/>
@@ -130,3 +126,60 @@ const openAccessCount = publications.filter(p => p.openAccess).length;
     </div>
   </section>
 </Layout>
+
+<style>
+  /* Gradient Text */
+  .gradient-text {
+    background: linear-gradient(135deg, #f1f5f9 0%, #38bdf8 50%, #2dd4bf 100%);
+    background-size: 200% 200%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: gradient-shift 8s ease-in-out infinite;
+  }
+
+  @keyframes gradient-shift {
+    0%, 100% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+  }
+
+  .pub-title {
+    animation: fadeUp 0.6s ease-out forwards;
+  }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* Blob */
+  .blob-container {
+    @apply absolute inset-0 overflow-hidden pointer-events-none;
+  }
+
+  .blob {
+    @apply absolute rounded-full;
+    filter: blur(60px);
+    animation: blob-morph 20s ease-in-out infinite;
+  }
+
+  .blob-1 {
+    width: 300px;
+    height: 300px;
+    background: radial-gradient(circle, rgba(56, 189, 248, 0.1) 0%, transparent 70%);
+    top: -100px;
+    right: -50px;
+  }
+
+  @keyframes blob-morph {
+    0%, 100% { transform: translate(0, 0) scale(1); }
+    50% { transform: translate(-20px, 20px) scale(1.1); }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .gradient-text, .blob, .pub-title {
+      animation: none;
+    }
+    .pub-title { opacity: 1; }
+  }
+</style>
