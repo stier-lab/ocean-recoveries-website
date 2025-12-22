@@ -225,7 +225,7 @@ const partners = [
     </div>
 
     <div class="container relative z-10">
-      <div class="text-center mb-14 scroll-reveal">
+      <div class="section-header text-center scroll-reveal">
         <span class="eyebrow">Impact Evidence</span>
         <h2 class="mb-4">Research That Gets Used</h2>
         <p class="lead max-w-2xl mx-auto">
@@ -248,7 +248,7 @@ const partners = [
   <!-- What We Deliver -->
   <section class="section-lg bg-navy-deep relative overflow-hidden">
     <div class="container">
-      <div class="text-center mb-14 scroll-reveal">
+      <div class="section-header text-center scroll-reveal">
         <span class="eyebrow text-accent-2">Capabilities</span>
         <h2 class="text-white mb-4">What We Deliver</h2>
         <p class="text-white/60 max-w-2xl mx-auto">
@@ -304,7 +304,7 @@ const partners = [
   <!-- Funding Tiers -->
   <section class="section-lg bg-surface relative overflow-hidden">
     <div class="container">
-      <div class="text-center mb-14 scroll-reveal">
+      <div class="section-header text-center scroll-reveal">
         <span class="eyebrow">Investment Levels</span>
         <h2 class="mb-4">What Funding Enables</h2>
         <p class="lead max-w-2xl mx-auto">
@@ -348,7 +348,7 @@ const partners = [
   <!-- Partners & Validation -->
   <section class="section bg-navy-deep">
     <div class="container">
-      <div class="text-center mb-10 scroll-reveal">
+      <div class="section-header text-center scroll-reveal">
         <span class="eyebrow">Partnerships</span>
         <h2 class="mb-4">Who We Work With</h2>
       </div>
@@ -407,6 +407,25 @@ const partners = [
 </Layout>
 
 <style>
+  /* ========================================
+     Section Spacing
+     Uses design system tokens: s4 = clamp(3rem, 8vw, 4.5rem)
+     s5 = clamp(4.5rem, 10vw, 6rem)
+     ======================================== */
+  .section-lg {
+    @apply py-s5;
+    /* Extra bottom padding to account for wave dividers */
+    padding-bottom: calc(clamp(4.5rem, 10vw, 6rem) + 3rem);
+  }
+
+  .section {
+    @apply py-s4;
+  }
+
+  .section-header {
+    @apply mb-s3;
+  }
+
   /* ========================================
      Hero Section
      ======================================== */
