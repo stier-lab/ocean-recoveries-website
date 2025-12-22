@@ -33,6 +33,17 @@ const formatDate = (dateStr: string) => {
       <div class="absolute inset-0" style="background: radial-gradient(ellipse at center, transparent 0%, rgba(11, 37, 69, 0.3) 100%);"></div>
     </div>
 
+    <!-- Underwater Light Rays (Crepuscular Rays) -->
+    <div class="light-rays" aria-hidden="true">
+      <div class="light-ray ray-1"></div>
+      <div class="light-ray ray-2"></div>
+      <div class="light-ray ray-3"></div>
+      <div class="light-ray ray-4"></div>
+      <div class="light-ray ray-5"></div>
+      <div class="light-ray ray-6"></div>
+      <div class="light-ray ray-7"></div>
+    </div>
+
     <!-- Floating Bubbles -->
     <div class="floating-bubbles" aria-hidden="true">
       <div class="bubble bubble-1"></div>
@@ -362,6 +373,56 @@ const formatDate = (dateStr: string) => {
 </Layout>
 
 <style>
+  /* ========================================
+     Underwater Light Rays (Crepuscular Rays)
+     ======================================== */
+  .light-rays {
+    @apply absolute inset-0 overflow-hidden pointer-events-none;
+    z-index: 1;
+  }
+
+  .light-ray {
+    @apply absolute;
+    top: -20%;
+    width: 120px;
+    height: 140%;
+    background: linear-gradient(
+      180deg,
+      rgba(56, 189, 248, 0.15) 0%,
+      rgba(56, 189, 248, 0.08) 20%,
+      rgba(45, 212, 191, 0.04) 50%,
+      transparent 100%
+    );
+    transform-origin: top center;
+    filter: blur(30px);
+    opacity: 0;
+    animation: light-ray-shimmer 12s ease-in-out infinite;
+  }
+
+  /* Distribute rays across the hero with varied angles */
+  .ray-1 { left: 5%; transform: rotate(-15deg) skewX(-5deg); animation-delay: 0s; width: 80px; }
+  .ray-2 { left: 18%; transform: rotate(-8deg) skewX(-3deg); animation-delay: 2s; width: 100px; }
+  .ray-3 { left: 32%; transform: rotate(-3deg) skewX(-1deg); animation-delay: 4s; width: 140px; }
+  .ray-4 { left: 48%; transform: rotate(2deg) skewX(1deg); animation-delay: 1s; width: 160px; }
+  .ray-5 { left: 62%; transform: rotate(6deg) skewX(2deg); animation-delay: 3s; width: 120px; }
+  .ray-6 { left: 78%; transform: rotate(10deg) skewX(4deg); animation-delay: 5s; width: 90px; }
+  .ray-7 { left: 90%; transform: rotate(14deg) skewX(5deg); animation-delay: 2.5s; width: 70px; }
+
+  @keyframes light-ray-shimmer {
+    0%, 100% {
+      opacity: 0;
+      filter: blur(30px);
+    }
+    15%, 85% {
+      opacity: 0.5;
+      filter: blur(25px);
+    }
+    50% {
+      opacity: 0.7;
+      filter: blur(20px);
+    }
+  }
+
   /* ========================================
      Floating Bubbles
      ======================================== */
@@ -866,7 +927,8 @@ const formatDate = (dateStr: string) => {
 
     .scroll-dot,
     .bubble,
-    .blob {
+    .blob,
+    .light-ray {
       animation: none;
     }
 

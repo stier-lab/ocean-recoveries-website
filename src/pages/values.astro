@@ -114,7 +114,7 @@ const structuredData = {
       class="absolute inset-0 bg-cover bg-center"
       style="background-image: url('/images/tropical-island-aerial-view-lagoon-reef.jpeg');"
     >
-      <div class="absolute inset-0 bg-navy-deep/75"></div>
+      <div class="absolute inset-0 bg-navy-deep/60 md:bg-navy-deep/75"></div>
     </div>
 
     <!-- Floating Bubbles -->
@@ -305,6 +305,94 @@ const structuredData = {
   .value-icon {
     @apply w-10 h-10 rounded-xl flex items-center justify-center;
     @apply bg-accent/20 text-accent;
+    @apply transition-all duration-300;
+    position: relative;
+  }
+
+  /* Animated value icons - each with unique micro-animation */
+  .value-icon::before {
+    content: '';
+    @apply absolute inset-0 rounded-xl opacity-0;
+    @apply transition-opacity duration-300;
+    background: radial-gradient(circle at center, rgba(56, 189, 248, 0.3), transparent 70%);
+  }
+
+  .value-text:hover .value-icon {
+    @apply scale-110;
+    box-shadow: 0 0 20px rgba(56, 189, 248, 0.3);
+  }
+
+  .value-text:hover .value-icon::before {
+    @apply opacity-100;
+    animation: icon-pulse 1.5s ease-in-out infinite;
+  }
+
+  .value-text:hover .value-icon svg {
+    animation: icon-animate 0.8s ease-in-out;
+  }
+
+  /* Different animations for different icons */
+  #rigorous-science .value-icon svg { animation-name: icon-bubble; }
+  #open-reproducible .value-icon svg { animation-name: icon-expand; }
+  #collaborative-spirit .value-icon svg { animation-name: icon-wiggle; }
+  #mentorship .value-icon svg { animation-name: icon-rise; }
+  #actionable-impact .value-icon svg { animation-name: icon-chart; }
+  #inclusive-culture .value-icon svg { animation-name: icon-heartbeat; }
+  #long-term-thinking .value-icon svg { animation-name: icon-spin; }
+  #grounded-optimism .value-icon svg { animation-name: icon-shine; }
+
+  @keyframes icon-pulse {
+    0%, 100% { transform: scale(1); opacity: 0.3; }
+    50% { transform: scale(1.3); opacity: 0.6; }
+  }
+
+  @keyframes icon-bubble {
+    0%, 100% { transform: translateY(0) scale(1); }
+    25% { transform: translateY(-2px) scale(1.05); }
+    75% { transform: translateY(1px) scale(0.98); }
+  }
+
+  @keyframes icon-expand {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.15); }
+    100% { transform: scale(1); }
+  }
+
+  @keyframes icon-wiggle {
+    0%, 100% { transform: rotate(0deg); }
+    20% { transform: rotate(-8deg); }
+    40% { transform: rotate(8deg); }
+    60% { transform: rotate(-5deg); }
+    80% { transform: rotate(5deg); }
+  }
+
+  @keyframes icon-rise {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-4px); }
+  }
+
+  @keyframes icon-chart {
+    0% { transform: scaleY(1); }
+    50% { transform: scaleY(1.1); }
+    100% { transform: scaleY(1); }
+  }
+
+  @keyframes icon-heartbeat {
+    0%, 100% { transform: scale(1); }
+    14% { transform: scale(1.15); }
+    28% { transform: scale(1); }
+    42% { transform: scale(1.15); }
+    70% { transform: scale(1); }
+  }
+
+  @keyframes icon-spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+
+  @keyframes icon-shine {
+    0%, 100% { filter: brightness(1); }
+    50% { filter: brightness(1.3); }
   }
 
   .value-number {
@@ -391,13 +479,20 @@ const structuredData = {
     .hero-desc,
     .gradient-text,
     .bubble,
-    .value-image-wrapper img {
-      animation: none;
-      transition: none;
+    .value-image-wrapper img,
+    .value-icon,
+    .value-icon::before,
+    .value-icon svg {
+      animation: none !important;
+      transition: none !important;
     }
     .hero-title,
     .hero-desc {
       opacity: 1;
+    }
+    .value-text:hover .value-icon {
+      transform: none;
+      box-shadow: none;
     }
   }
 </style>

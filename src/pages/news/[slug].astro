@@ -75,6 +75,35 @@ const formatCitation = () => {
   const year = new Date(post.date).getFullYear();
   return `${post.author} (${year}). ${post.title}. Ocean Recoveries Lab.${post.doiUrl ? ` ${post.doiUrl}` : ''}`;
 };
+
+// Extract headings for table of contents
+interface TocItem {
+  id: string;
+  text: string;
+  level: number;
+}
+
+const extractTableOfContents = (content: string): TocItem[] => {
+  const toc: TocItem[] = [];
+  const blocks = content.split('\n\n');
+
+  blocks.forEach((block) => {
+    if (block.startsWith('## ')) {
+      const text = block.replace('## ', '').trim();
+      const id = `section-${text.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '')}`;
+      toc.push({ id, text, level: 2 });
+    }
+  });
+
+  // Add static sections that are always present
+  toc.push({ id: 'citation', text: 'Citation', level: 2 });
+  toc.push({ id: 'share', text: 'Share', level: 2 });
+
+  return toc;
+};
+
+const tableOfContents = extractTableOfContents(post.content);
+const hasToc = tableOfContents.length > 2; // More than just Citation and Share
 ---
 
 <Layout title={post.title} description={post.excerpt}>
@@ -173,7 +202,34 @@ const formatCitation = () => {
     <!-- Main Content -->
     <div class="article-body">
       <div class="container">
-        <div class="content-wrapper">
+        <div class="article-layout">
+          <!-- Sidebar TOC - Desktop Only -->
+          {hasToc && (
+            <aside class="toc-sidebar" id="toc-sidebar">
+              <nav class="toc-nav" aria-label="Table of contents">
+                <div class="toc-header">
+                  <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h7" />
+                  </svg>
+                  <span>Contents</span>
+                </div>
+                <ul class="toc-list">
+                  {tableOfContents.map((item) => (
+                    <li>
+                      <a href={`#${item.id}`} class="toc-link" data-toc-id={item.id}>
+                        {item.text}
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+                <div class="toc-progress">
+                  <div class="toc-progress-bar" id="toc-progress-bar"></div>
+                </div>
+              </nav>
+            </aside>
+          )}
+
+          <div class="content-wrapper">
           <!-- Key Findings Box -->
           {keyFindings.length > 0 && (
             <aside class="key-findings">
@@ -200,7 +256,9 @@ const formatCitation = () => {
               if (block.trim() === '---') {
                 return <hr class="content-divider" />;
               } else if (block.startsWith('## ')) {
-                return <h2 class="content-heading">{block.replace('## ', '')}</h2>;
+                const headingText = block.replace('## ', '');
+                const headingId = `section-${headingText.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '')}`;
+                return <h2 class="content-heading" id={headingId}>{headingText}</h2>;
               } else if (block.startsWith('**') && block.endsWith('**')) {
                 return <p class="content-bold">{block.replace(/\*\*/g, '')}</p>;
               } else if (block.startsWith('- ')) {
@@ -243,7 +301,7 @@ const formatCitation = () => {
           </div>
 
           <!-- Citation Section -->
-          <section class="citation-section">
+          <section class="citation-section" id="citation">
             <div class="citation-header">
               <h3>Cite this article</h3>
               <button class="copy-citation-btn" id="copy-citation" data-citation={formatCitation()}>
@@ -262,7 +320,7 @@ const formatCitation = () => {
           </section>
 
           <!-- Share Section -->
-          <section class="share-section">
+          <section class="share-section" id="share">
             <h3>Share this article</h3>
             <div class="share-buttons">
               <!-- Twitter/X -->
@@ -322,6 +380,7 @@ const formatCitation = () => {
               </button>
             </div>
           </section>
+        </div>
         </div>
       </div>
     </div>
@@ -490,8 +549,61 @@ const formatCitation = () => {
     @apply py-16 bg-surface;
   }
 
+  /* Article Layout with TOC Sidebar */
+  .article-layout {
+    @apply relative;
+  }
+
+  @media (min-width: 1280px) {
+    .article-layout {
+      @apply grid gap-12;
+      grid-template-columns: 220px 1fr;
+    }
+  }
+
+  /* TOC Sidebar */
+  .toc-sidebar {
+    @apply hidden xl:block;
+  }
+
+  .toc-nav {
+    @apply sticky top-24 p-4 rounded-xl;
+    @apply bg-surface-card/50 border border-line/50 backdrop-blur-sm;
+    max-height: calc(100vh - 120px);
+    overflow-y: auto;
+  }
+
+  .toc-header {
+    @apply flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-muted mb-4 pb-3 border-b border-line/50;
+  }
+
+  .toc-list {
+    @apply space-y-1 list-none p-0 m-0;
+  }
+
+  .toc-link {
+    @apply block py-2 px-3 text-sm text-muted rounded-lg no-underline;
+    @apply hover:text-ink hover:bg-white/5;
+    @apply transition-all duration-200;
+    @apply border-l-2 border-transparent;
+  }
+
+  .toc-link.active {
+    @apply text-accent bg-accent/10 border-l-accent font-medium;
+  }
+
+  .toc-progress {
+    @apply mt-4 pt-3 border-t border-line/50;
+  }
+
+  .toc-progress-bar {
+    @apply h-1 bg-gradient-to-r from-accent to-accent-2 rounded-full;
+    @apply transition-all duration-150 ease-out;
+    width: 0%;
+  }
+
   .content-wrapper {
-    @apply max-w-3xl mx-auto;
+    @apply max-w-3xl mx-auto xl:mx-0;
   }
 
   /* Key Findings Box */
@@ -884,6 +996,68 @@ const formatCitation = () => {
         } catch (err) {
           console.error('Failed to copy:', err);
         }
+      });
+    }
+
+    // TOC Scroll Spy
+    const tocLinks = document.querySelectorAll('.toc-link');
+    const tocProgressBar = document.getElementById('toc-progress-bar');
+
+    if (tocLinks.length > 0) {
+      // Get all section IDs from TOC links
+      const sectionIds = Array.from(tocLinks).map(link =>
+        (link as HTMLAnchorElement).getAttribute('data-toc-id')
+      ).filter(Boolean) as string[];
+
+      const sections = sectionIds
+        .map(id => document.getElementById(id))
+        .filter(Boolean) as HTMLElement[];
+
+      const updateTocHighlight = () => {
+        const scrollPosition = window.scrollY + 150; // Offset for better UX
+
+        let currentSection = '';
+        let passedSections = 0;
+
+        sections.forEach((section, index) => {
+          const sectionTop = section.getBoundingClientRect().top + window.scrollY;
+
+          if (scrollPosition >= sectionTop - 100) {
+            currentSection = section.id;
+            passedSections = index + 1;
+          }
+        });
+
+        // Update active state on TOC links
+        tocLinks.forEach(link => {
+          const linkId = (link as HTMLAnchorElement).getAttribute('data-toc-id');
+          link.classList.toggle('active', linkId === currentSection);
+        });
+
+        // Update TOC progress bar
+        if (tocProgressBar && sections.length > 0) {
+          const progress = (passedSections / sections.length) * 100;
+          tocProgressBar.style.width = `${progress}%`;
+        }
+      };
+
+      window.addEventListener('scroll', updateTocHighlight, { passive: true });
+      updateTocHighlight();
+
+      // Smooth scroll for TOC links
+      tocLinks.forEach(link => {
+        link.addEventListener('click', (e) => {
+          e.preventDefault();
+          const targetId = (link as HTMLAnchorElement).getAttribute('href')?.slice(1);
+          if (targetId) {
+            const target = document.getElementById(targetId);
+            if (target) {
+              const offset = 100;
+              const targetPosition = target.getBoundingClientRect().top + window.scrollY - offset;
+              window.scrollTo({ top: targetPosition, behavior: 'smooth' });
+            }
+          }
+        });
       });
     }
   };
