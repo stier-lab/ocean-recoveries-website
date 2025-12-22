@@ -1,6 +1,14 @@
 ---
 const currentYear = new Date().getFullYear();
 
+// Build timestamp for "Last updated" - captured at build time
+const buildDate = new Date();
+const lastUpdated = buildDate.toLocaleDateString('en-US', {
+  month: 'short',
+  day: 'numeric',
+  year: 'numeric',
+});
+
 const socialLinks = [
   {
     name: 'Instagram',
@@ -28,8 +36,8 @@ const quickLinks = [
   { href: '/research', label: 'Research' },
   { href: '/people', label: 'People' },
   { href: '/publications', label: 'Publications' },
-  { href: '/news', label: 'News' },
-  { href: '/join-us', label: 'Join Us' },
+  { href: '/join', label: 'Join the Lab' },
+  { href: '/for-funders', label: 'For Funders' },
 ];
 ---
 
@@ -115,9 +123,18 @@ const quickLinks = [
 
     <!-- Bottom bar -->
     <div class="mt-8 pt-8 border-t border-white/10 flex flex-col sm:flex-row justify-between items-center gap-4">
-      <p class="text-white/50 text-sm">
-        &copy; {currentYear} Ocean Recoveries Lab, UC Santa Barbara
-      </p>
+      <div class="flex flex-col sm:flex-row items-center gap-2 sm:gap-4">
+        <p class="text-white/50 text-sm">
+          &copy; {currentYear} Ocean Recoveries Lab, UC Santa Barbara
+        </p>
+        <span class="hidden sm:inline text-white/30">·</span>
+        <p class="text-white/40 text-xs flex items-center gap-1.5">
+          <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+          </svg>
+          <span>Updated {lastUpdated}</span>
+        </p>
+      </div>
       <div class="flex items-center gap-4">
         <a href="/privacy" class="text-white/50 hover:text-white/70 text-sm no-underline transition-colors">
           Privacy

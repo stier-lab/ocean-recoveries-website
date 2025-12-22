@@ -76,14 +76,14 @@ const formatDate = (dateStr: string) => {
       </p>
 
       <div class="hero-cta flex flex-col sm:flex-row gap-4 justify-center opacity-0">
-        <a href="/research" class="btn btn-primary btn-lg magnetic-btn group">
-          <span>Explore Our Research</span>
+        <a href="/join" class="btn btn-primary btn-lg magnetic-btn group">
+          <span>Join the Lab</span>
           <svg class="w-5 h-5 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
           </svg>
         </a>
-        <a href="/people" class="btn btn-ghost btn-lg magnetic-btn">
-          Meet the Team
+        <a href="/for-funders" class="btn btn-ghost btn-lg magnetic-btn">
+          For Funders & Partners
         </a>
       </div>
     </div>
@@ -345,25 +345,40 @@ const formatDate = (dateStr: string) => {
     <WaveDivider id="about-wave" fillColor="surface" />
   </section>
 
-  <!-- Join Us CTA -->
+  <!-- Dual CTA Section -->
   <section class="section bg-surface">
     <div class="container">
-      <div class="join-cta scroll-reveal">
-        <div class="join-cta-content">
-          <span class="eyebrow text-accent">Opportunities</span>
-          <h2 class="mb-5">Join Our Team</h2>
-          <p class="text-muted text-lg max-w-xl mx-auto mb-8">
-            We're looking for curious, motivated researchers at all career stages who want to help understand and restore ocean ecosystems.
-          </p>
-          <div class="flex flex-col sm:flex-row gap-4 justify-center">
-            <a href="/join-us" class="btn btn-primary group">
-              <span>View Open Positions</span>
+      <div class="grid md:grid-cols-2 gap-6 lg:gap-8">
+        <!-- For Prospective Students/Postdocs -->
+        <div class="join-cta scroll-reveal">
+          <div class="join-cta-content">
+            <span class="eyebrow text-accent">For Researchers</span>
+            <h2 class="text-2xl md:text-3xl mb-4">Join Our Team</h2>
+            <p class="text-muted max-w-md mx-auto mb-6">
+              We're seeking curious, motivated researchers at all career stages who want to help understand and restore ocean ecosystems.
+            </p>
+            <a href="/join" class="btn btn-primary group">
+              <span>View Opportunities</span>
               <svg class="w-4 h-4 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
               </svg>
             </a>
-            <a href="mailto:astier@ucsb.edu" class="btn btn-secondary">
-              Contact Us
+          </div>
+        </div>
+
+        <!-- For Funders/Partners -->
+        <div class="join-cta funder-cta scroll-reveal stagger-1">
+          <div class="join-cta-content">
+            <span class="eyebrow text-accent-2">For Funders</span>
+            <h2 class="text-2xl md:text-3xl mb-4">Partner With Us</h2>
+            <p class="text-muted max-w-md mx-auto mb-6">
+              Support research that directly informs reef and kelp forest management. See our track record and explore funding opportunities.
+            </p>
+            <a href="/for-funders" class="btn btn-secondary group">
+              <span>Learn More</span>
+              <svg class="w-4 h-4 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+              </svg>
             </a>
           </div>
         </div>
@@ -894,10 +909,10 @@ const formatDate = (dateStr: string) => {
      Join CTA
      ======================================== */
   .join-cta {
-    @apply relative rounded-3xl overflow-hidden;
+    @apply relative rounded-2xl overflow-hidden;
     @apply bg-gradient-to-br from-accent/10 via-accent/5 to-accent-2/10;
     @apply border border-accent/20;
-    @apply p-10 md:p-14 lg:p-16;
+    @apply p-8 md:p-10;
   }
 
   .join-cta::before {
@@ -908,7 +923,17 @@ const formatDate = (dateStr: string) => {
   }
 
   .join-cta-content {
-    @apply relative z-10 text-center max-w-2xl mx-auto;
+    @apply relative z-10 text-center;
+  }
+
+  .funder-cta {
+    @apply bg-gradient-to-br from-accent-2/10 via-accent-2/5 to-accent/10;
+    @apply border-accent-2/20;
+  }
+
+  .funder-cta::before {
+    background: radial-gradient(circle at top right, rgba(45, 212, 191, 0.15), transparent 50%),
+                radial-gradient(circle at bottom left, rgba(56, 189, 248, 0.15), transparent 50%);
   }
 
   /* ========================================

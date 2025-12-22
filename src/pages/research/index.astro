@@ -135,6 +135,18 @@ const breadcrumbs = [
       <div class="pillars-grid">
         {researchPillars.map((pillar, i) => (
           <div class={`pillar-card scroll-reveal stagger-${i + 1}`}>
+            {/* Animated equation accent for Quantitative Models pillar */}
+            {i === 2 && (
+              <div class="equation-accent" aria-hidden="true">
+                <span class="eq-term eq-1">dN</span>
+                <span class="eq-term eq-2">/</span>
+                <span class="eq-term eq-3">dt</span>
+                <span class="eq-term eq-4">=</span>
+                <span class="eq-term eq-5">rN</span>
+                <span class="eq-term eq-6">(1-</span>
+                <span class="eq-term eq-7">N/K)</span>
+              </div>
+            )}
             <div class="pillar-number counter-number" data-target={i + 1}>00</div>
             <div class={`pillar-icon pillar-icon-${i + 1}`}>
               {i === 0 && (
@@ -724,6 +736,75 @@ const breadcrumbs = [
   .pillar-icon-2 { @apply bg-accent-2/20 text-accent-2; }
   .pillar-icon-3 { @apply bg-accent-warm/20 text-accent-warm; }
 
+  /* ========================================
+     Animated Equation Accent (Quantitative Models)
+     ======================================== */
+  .equation-accent {
+    @apply absolute -top-4 -right-4 md:-top-6 md:-right-6;
+    @apply font-mono text-xs md:text-sm;
+    @apply text-accent-warm/40;
+    @apply pointer-events-none select-none;
+    font-style: italic;
+    transform: rotate(8deg);
+    z-index: 0;
+  }
+
+  .eq-term {
+    @apply inline-block;
+    opacity: 0;
+    animation: eq-fade-in 0.4s ease-out forwards;
+  }
+
+  .eq-1 { animation-delay: 0.1s; }
+  .eq-2 { animation-delay: 0.2s; }
+  .eq-3 { animation-delay: 0.3s; }
+  .eq-4 { animation-delay: 0.4s; }
+  .eq-5 { animation-delay: 0.5s; }
+  .eq-6 { animation-delay: 0.6s; }
+  .eq-7 { animation-delay: 0.7s; }
+
+  @keyframes eq-fade-in {
+    0% {
+      opacity: 0;
+      transform: translateY(8px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  /* Shimmer effect on hover */
+  .pillar-card:nth-child(3):hover .equation-accent {
+    animation: eq-shimmer 2s ease-in-out infinite;
+  }
+
+  .pillar-card:nth-child(3):hover .eq-term {
+    animation: eq-glow 0.8s ease-out forwards;
+  }
+
+  @keyframes eq-shimmer {
+    0%, 100% {
+      filter: brightness(1);
+      transform: rotate(8deg) translateX(0);
+    }
+    50% {
+      filter: brightness(1.4);
+      transform: rotate(8deg) translateX(2px);
+    }
+  }
+
+  @keyframes eq-glow {
+    0% {
+      opacity: 0.4;
+      text-shadow: none;
+    }
+    100% {
+      opacity: 0.8;
+      text-shadow: 0 0 8px rgba(251, 146, 60, 0.5);
+    }
+  }
+
   .pillar-title {
     @apply text-xl font-bold text-ink mb-3;
   }
@@ -1082,8 +1163,14 @@ const breadcrumbs = [
     .mobile-particle,
     .bubble,
     .blob,
-    .scroll-progress-bar {
+    .scroll-progress-bar,
+    .eq-term,
+    .equation-accent {
       animation: none;
+    }
+
+    .eq-term {
+      opacity: 1;
     }
 
     .system-card-image img,

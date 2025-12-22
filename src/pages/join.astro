@@ -1,0 +1,1482 @@
+---
+import Layout from '@layouts/Layout.astro';
+import WaveDivider from '@components/shared/WaveDivider.astro';
+
+// Recruitment status
+const recruitmentStatus = {
+  isLimited: true,
+  message: "Due to budget cuts at NSF and within the University of California system, I'm not accepting new students this fall unless they already have external fellowship support (e.g., NSF GRFP, Fulbright).",
+  note: "If you do have funding or are applying for it, I'm happy to chat about fit and projects."
+};
+
+---
+
+<Layout
+  title="Join Us"
+  description="Join the Ocean Recoveries Lab - opportunities for undergraduates, graduate students, and postdocs at UC Santa Barbara."
+>
+  <!-- Hero Section -->
+  <section class="hero-section relative min-h-[60vh] md:min-h-[70vh] flex items-center overflow-hidden">
+    <div
+      class="absolute inset-0 bg-cover bg-right md:bg-center parallax-bg"
+      style="background-image: url('/images/aerial-view-island-lagoon-barrier-reef.jpeg');"
+    >
+      <div class="absolute inset-0 bg-gradient-to-b from-navy-deep/40 via-navy-deep/30 to-navy-deep/90 md:from-navy-deep/60 md:via-navy-deep/50 md:to-navy-deep/95"></div>
+    </div>
+
+    <div class="relative z-10 container text-center px-4 pt-28 pb-20 md:pt-36 md:pb-28">
+      <!-- Status Badge -->
+      <div class="hero-badge inline-flex items-center gap-2.5 px-4 py-2 rounded-full bg-amber-500/20 backdrop-blur-sm border border-amber-500/30 mb-6">
+        <span class="w-2 h-2 rounded-full bg-amber-400 animate-pulse"></span>
+        <span class="text-sm font-medium text-amber-200 tracking-wide">Limited recruitment (see details)</span>
+      </div>
+
+      <h1 class="hero-title mb-6">
+        <span class="text-white block text-lg md:text-xl font-medium uppercase tracking-wider mb-3 opacity-80">Join the Lab</span>
+        <span class="gradient-text">Advance the Science of</span>
+        <span class="text-white block">Ocean Recovery</span>
+      </h1>
+
+      <p class="hero-description lead text-white/70 max-w-2xl mx-auto mb-10">
+        We integrate field experiments, quantitative models, and synthesis to find solutions that work.
+      </p>
+
+      <div class="hero-cta flex flex-col sm:flex-row gap-4 justify-center">
+        <a href="#opportunities" class="btn btn-primary btn-lg group">
+          <span>See Open Roles</span>
+          <svg class="w-5 h-5 transition-transform group-hover:translate-y-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+          </svg>
+        </a>
+        <a href="#approach" class="btn btn-ghost btn-lg">
+          Our Approach
+        </a>
+      </div>
+    </div>
+
+    <WaveDivider id="hero-wave" fillColor="navy-deep" />
+  </section>
+
+  <!-- Recruitment Status Alert -->
+  {recruitmentStatus.isLimited && (
+    <section class="bg-navy-deep py-6">
+      <div class="container">
+        <div class="status-alert scroll-reveal">
+          <div class="status-icon">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
+          </div>
+          <div class="status-content">
+            <p class="status-title">Status (Fall 2025)</p>
+            <p class="status-message">{recruitmentStatus.message}</p>
+            <p class="status-note">{recruitmentStatus.note}</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  )}
+
+  <!-- What We Do -->
+  <section class="section-lg bg-navy-deep relative overflow-hidden">
+    <div class="container">
+      <div class="grid md:grid-cols-3 gap-6 max-w-4xl mx-auto scroll-reveal">
+        <div class="work-card">
+          <div class="work-image">
+            <img src="/images/man-scuba-diver-on-boat.jpg" alt="Field work" loading="lazy" />
+          </div>
+          <h3>Field Work</h3>
+        </div>
+        <div class="work-card">
+          <div class="work-image">
+            <img src="/images/coral-reef-panorama-anthias-fish.jpeg" alt="Quantitative tools" loading="lazy" />
+          </div>
+          <h3>Quantitative Tools</h3>
+        </div>
+        <div class="work-card">
+          <div class="work-image">
+            <img src="/images/research-team-group-photo-beach.jpeg" alt="Team culture" loading="lazy" />
+          </div>
+          <h3>Team Culture</h3>
+        </div>
+      </div>
+    </div>
+
+    <WaveDivider id="work-wave" fillColor="surface" />
+  </section>
+
+  <!-- Our Approach -->
+  <section id="approach" class="section-lg bg-surface scroll-mt-20 relative overflow-hidden">
+    <div class="blob-container" aria-hidden="true">
+      <div class="blob blob-1"></div>
+      <div class="blob blob-2"></div>
+    </div>
+
+    <div class="container relative z-10">
+      <div class="text-center mb-12 scroll-reveal">
+        <span class="eyebrow">Our Approach</span>
+        <h2 class="mb-4">How We Work</h2>
+      </div>
+
+      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
+        <div class="approach-card scroll-reveal stagger-1">
+          <div class="approach-icon approach-icon-1">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+            </svg>
+          </div>
+          <h3>Field × Quant × Synthesis</h3>
+          <p>We connect experiments to models and meta-analysis to inform action.</p>
+        </div>
+
+        <div class="approach-card scroll-reveal stagger-2">
+          <div class="approach-icon approach-icon-2">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+            </svg>
+          </div>
+          <h3>Decision Relevance</h3>
+          <p>We co-design studies with agencies and NGOs for immediate, real-world use.</p>
+        </div>
+
+        <div class="approach-card scroll-reveal stagger-3">
+          <div class="approach-icon approach-icon-3">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+            </svg>
+          </div>
+          <h3>Place-Based Partnerships</h3>
+          <p>Long-term collaborations in key reef and kelp systems drive our work.</p>
+        </div>
+
+        <div class="approach-card scroll-reveal stagger-4">
+          <div class="approach-icon approach-icon-4">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
+            </svg>
+          </div>
+          <h3>Career Outcomes</h3>
+          <p>Our alumni thrive in academia, government, NGOs, and data science.</p>
+        </div>
+      </div>
+
+      <!-- Strong Fit Section -->
+      <div class="fit-section scroll-reveal">
+        <h3 class="fit-title">We're a strong fit if you…</h3>
+        <div class="fit-grid">
+          <div class="fit-item">
+            <svg class="w-5 h-5 text-accent-2" fill="currentColor" viewBox="0 0 20 20">
+              <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+            </svg>
+            <span>Thrive at the intersection of organismal and ecosystem ecology</span>
+          </div>
+          <div class="fit-item">
+            <svg class="w-5 h-5 text-accent-2" fill="currentColor" viewBox="0 0 20 20">
+              <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+            </svg>
+            <span>Enjoy connecting field experiments to quantitative models</span>
+          </div>
+          <div class="fit-item">
+            <svg class="w-5 h-5 text-accent-2" fill="currentColor" viewBox="0 0 20 20">
+              <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+            </svg>
+            <span>Are passionate about decision-relevant science for restoration</span>
+          </div>
+          <div class="fit-item">
+            <svg class="w-5 h-5 text-accent-2" fill="currentColor" viewBox="0 0 20 20">
+              <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+            </svg>
+            <span>Value collaborative, interdisciplinary teamwork</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <WaveDivider id="approach-wave" fillColor="navy-deep" />
+  </section>
+
+  <!-- Opportunities -->
+  <section id="opportunities" class="section-lg bg-navy-highlight scroll-mt-20">
+    <div class="container">
+      <div class="text-center mb-12 scroll-reveal">
+        <span class="eyebrow">Opportunities</span>
+        <h2 class="mb-4">Positions by Role</h2>
+      </div>
+
+      <div class="opportunities-grid">
+        <!-- Undergraduates -->
+        <div class="opp-card scroll-reveal stagger-1">
+          <div class="opp-header">
+            <span class="opp-badge open">Open</span>
+            <h3>Undergraduates</h3>
+          </div>
+          <div class="opp-body">
+            <div class="opp-section">
+              <h4>Typical projects</h4>
+              <p>Field surveys, 3D image annotation, data QA/QC, literature curation.</p>
+            </div>
+            <div class="opp-section">
+              <h4>Compensation</h4>
+              <p>Course credit or hourly stipend (funding-dependent).</p>
+            </div>
+            <div class="opp-section">
+              <h4>Hours/week</h4>
+              <p>6–10 during term; 15–20 in summer.</p>
+            </div>
+            <div class="opp-section">
+              <h4>Programs</h4>
+              <p>UCSB research credit, REU.</p>
+            </div>
+          </div>
+          <div class="opp-footer">
+            <a href="mailto:astier@ucsb.edu?subject=Undergraduate%20Research%20Inquiry" class="btn btn-primary btn-sm w-full">
+              Contact Adrian
+            </a>
+          </div>
+        </div>
+
+        <!-- Graduate -->
+        <div class="opp-card opp-featured scroll-reveal stagger-2">
+          <div class="opp-header">
+            <span class="opp-badge limited">Limited</span>
+            <h3>Graduate (MS/PhD)</h3>
+          </div>
+          <div class="opp-body">
+            <div class="opp-section">
+              <h4>Typical projects</h4>
+              <p>Field experiments, quantitative models, and synthesis for recovery.</p>
+            </div>
+            <div class="opp-section">
+              <h4>Support</h4>
+              <p>Fellowships, TA-ships, and grants.</p>
+            </div>
+            <div class="opp-section">
+              <h4>Expectations</h4>
+              <p>Full-time, collaborative work producing publishable chapters.</p>
+            </div>
+            <div class="opp-section">
+              <h4>Programs</h4>
+              <p><a href="https://www.eemb.ucsb.edu/academics/graduate" target="_blank" rel="noopener" class="text-accent hover:underline">EEMB</a>, IGPMS.</p>
+            </div>
+          </div>
+          <div class="opp-footer">
+            <a href="mailto:astier@ucsb.edu?subject=Graduate%20Student%20Inquiry" class="btn btn-primary btn-sm w-full">
+              Contact Adrian
+            </a>
+          </div>
+        </div>
+
+        <!-- Postdocs -->
+        <div class="opp-card scroll-reveal stagger-3">
+          <div class="opp-header">
+            <span class="opp-badge open">Open</span>
+            <h3>Postdocs</h3>
+          </div>
+          <div class="opp-body">
+            <div class="opp-section">
+              <h4>Typical projects</h4>
+              <p>Lead multi-site experiments, develop quantitative pipelines, co-produce tools.</p>
+            </div>
+            <div class="opp-section">
+              <h4>Funding</h4>
+              <p>Typically external with co-developed proposals.</p>
+            </div>
+            <div class="opp-section">
+              <h4>Term</h4>
+              <p>18–24 months, renewal funding-dependent.</p>
+            </div>
+            <div class="opp-section">
+              <h4>Support</h4>
+              <p>Strategic advising, leadership, and co-mentoring provided.</p>
+            </div>
+          </div>
+          <div class="opp-footer">
+            <a href="mailto:astier@ucsb.edu?subject=Postdoc%20Inquiry" class="btn btn-primary btn-sm w-full">
+              Contact Adrian
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Application Timeline -->
+  <section class="section bg-surface">
+    <div class="container">
+      <div class="text-center mb-10 scroll-reveal">
+        <span class="eyebrow">Timeline</span>
+        <h2 class="mb-4">Application Timeline</h2>
+        <p class="text-muted max-w-2xl mx-auto">
+          Typical PhD cycle (EEMB/UCSB) — Opens late Aug → Dec 1 application deadline → decisions late Feb–Mar → national decision Apr 15.
+        </p>
+      </div>
+
+      <div class="timeline-steps scroll-reveal">
+        <div class="timeline-step">
+          <div class="step-icon step-icon-1">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+            </svg>
+          </div>
+          <div class="step-content">
+            <span class="step-date">Late August</span>
+            <span class="step-label">Applications open</span>
+          </div>
+        </div>
+
+        <div class="step-connector"></div>
+
+        <div class="timeline-step">
+          <div class="step-icon step-icon-2">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
+          </div>
+          <div class="step-content">
+            <span class="step-date">December 1</span>
+            <span class="step-label">Application deadline</span>
+          </div>
+        </div>
+
+        <div class="step-connector"></div>
+
+        <div class="timeline-step">
+          <div class="step-icon step-icon-3">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+            </svg>
+          </div>
+          <div class="step-content">
+            <span class="step-date">Feb – Mar</span>
+            <span class="step-label">Decisions released</span>
+          </div>
+        </div>
+
+        <div class="step-connector"></div>
+
+        <div class="timeline-step">
+          <div class="step-icon step-icon-4">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+            </svg>
+          </div>
+          <div class="step-content">
+            <span class="step-date">April 15</span>
+            <span class="step-label">National decision day</span>
+          </div>
+        </div>
+      </div>
+
+      <p class="text-center text-sm text-muted mt-8 scroll-reveal">
+        Please verify all dates on the official <a href="https://www.eemb.ucsb.edu/graduate" target="_blank" rel="noopener" class="text-accent hover:underline">EEMB</a> and <a href="https://www.graddiv.ucsb.edu/" target="_blank" rel="noopener" class="text-accent hover:underline">UCSB Graduate Division</a> websites.
+      </p>
+    </div>
+  </section>
+
+  <!-- Philosophy & Expectations -->
+  <section class="section-lg bg-navy-highlight relative overflow-hidden">
+    <div class="container">
+      <div class="max-w-4xl mx-auto">
+        <div class="text-center mb-10 scroll-reveal">
+          <span class="eyebrow">Philosophy</span>
+          <h2 class="mb-4">Expectations & Values</h2>
+        </div>
+
+        <div class="philosophy-grid">
+          <div class="philosophy-card scroll-reveal stagger-1">
+            <h3>What I Expect</h3>
+            <ul>
+              <li>Curiosity that drives you to ask questions and seek answers</li>
+              <li>Willingness to combine field, quantitative, and synthetic approaches</li>
+              <li>Engagement with the broader scientific community—seminars, reading groups, collaboration</li>
+              <li>A spirit for interaction: science happens at whiteboards, in the field, and over coffee</li>
+            </ul>
+          </div>
+
+          <div class="philosophy-card scroll-reveal stagger-2">
+            <h3>What You Can Expect</h3>
+            <ul>
+              <li>Direct mentorship that evolves as you gain independence</li>
+              <li>Support for your research ideas—I help students develop projects, but expect you to lead</li>
+              <li>Help securing funding through fellowship applications and grants</li>
+              <li>A focus on your growth as a scientist, not grades</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="philosophy-note scroll-reveal stagger-3">
+          <p>
+            Graduate school is a means to an end: becoming an independent scientist. I take mentorship seriously
+            and admission is an implicit contract. My goal is to help you develop creativity, rigor, and the
+            skills to succeed in academia, government, NGOs, or wherever your career leads.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <WaveDivider id="philosophy-wave" fillColor="surface" />
+  </section>
+
+  <!-- How to Apply -->
+  <section class="section-lg bg-surface relative overflow-hidden">
+    <div class="container">
+      <div class="max-w-3xl mx-auto">
+        <div class="text-center mb-10 scroll-reveal">
+          <span class="eyebrow">Apply</span>
+          <h2 class="mb-4">How to Apply</h2>
+        </div>
+
+        <div class="apply-steps">
+          <div class="apply-step scroll-reveal stagger-1">
+            <div class="apply-step-number">1</div>
+            <div class="apply-step-content">
+              <h4>Read Our Work</h4>
+              <p>Familiarize yourself with <a href="/publications">our publications</a>. Look at both recent papers and older ones to understand the questions we ask and approaches we take.</p>
+            </div>
+          </div>
+
+          <div class="apply-step scroll-reveal stagger-2">
+            <div class="apply-step-number">2</div>
+            <div class="apply-step-content">
+              <h4>Prepare Your Materials</h4>
+              <p>Attach a 1-page CV (PDF). If you have manuscripts, theses, or reports from prior research, include those too.</p>
+            </div>
+          </div>
+
+          <div class="apply-step scroll-reveal stagger-3">
+            <div class="apply-step-number">3</div>
+            <div class="apply-step-content">
+              <h4>Write a Research Statement</h4>
+              <p>Send a 1–2 page statement describing your research interests. Be specific: what questions drive you? What type of project do you envision? This helps me understand your thinking and whether we're a good fit.</p>
+            </div>
+          </div>
+
+          <div class="apply-step scroll-reveal stagger-4">
+            <div class="apply-step-number">4</div>
+            <div class="apply-step-content">
+              <h4>Reach Out</h4>
+              <p>Email me 3–4 months before application deadlines. Early contact helps us both assess fit before you invest time in a formal application.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="text-center mt-10 scroll-reveal">
+          <a href="mailto:astier@ucsb.edu?subject=Lab%20Inquiry" class="btn btn-primary">
+            Send Email to Adrian
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <WaveDivider id="apply-wave" fillColor="navy-deep" />
+  </section>
+
+  <!-- Testimonials -->
+  <section class="section-lg bg-navy-deep relative overflow-hidden">
+    <div class="container">
+      <div class="text-center mb-12 scroll-reveal">
+        <span class="eyebrow text-accent-2">Testimonials</span>
+        <h2 class="text-white mb-4">What Our People Say</h2>
+      </div>
+
+      <div class="testimonials-grid">
+        <blockquote class="testimonial-card scroll-reveal stagger-1">
+          <p class="testimonial-quote">
+            "I got to jump between the reef and R scripts in the same week. That mix made me faster and more confident as a researcher."
+          </p>
+          <cite class="testimonial-cite">— Undergraduate researcher</cite>
+        </blockquote>
+
+        <blockquote class="testimonial-card scroll-reveal stagger-2">
+          <p class="testimonial-quote">
+            "Mentorship here is hands-on without micromanaging. I received concrete feedback on proposals and papers, not just vibes."
+          </p>
+          <cite class="testimonial-cite">— Graduate student</cite>
+        </blockquote>
+
+        <blockquote class="testimonial-card scroll-reveal stagger-3">
+          <p class="testimonial-quote">
+            "Working with partner agencies meant our results didn't sit on a shelf—people actually used them to make decisions."
+          </p>
+          <cite class="testimonial-cite">— Postdoctoral researcher</cite>
+        </blockquote>
+      </div>
+    </div>
+
+    <WaveDivider id="testimonials-wave" fillColor="surface" />
+  </section>
+
+  <!-- Why UCSB -->
+  <section class="section-lg bg-surface relative overflow-hidden">
+    <div class="blob-container" aria-hidden="true">
+      <div class="blob blob-1"></div>
+      <div class="blob blob-2"></div>
+    </div>
+
+    <div class="container relative z-10">
+      <div class="text-center mb-14 scroll-reveal">
+        <span class="eyebrow">Why UCSB</span>
+        <h2 class="mb-4">A World-Class Environment for Marine Science</h2>
+        <p class="lead max-w-3xl mx-auto">
+          UC Santa Barbara is the only major research university in the country located entirely on the ocean — and that proximity shapes everything we do.
+        </p>
+      </div>
+
+      <!-- Stats Row -->
+      <div class="stats-row scroll-reveal">
+        <div class="stat-item">
+          <span class="stat-number">Top 3</span>
+          <span class="stat-label">National ranking in Marine Science</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-number">2</span>
+          <span class="stat-label">LTER programs led by EEMB faculty</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-number">$120M+</span>
+          <span class="stat-label">Annual MSI research funding</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-number">7</span>
+          <span class="stat-label">Nobel laureates on current faculty</span>
+        </div>
+      </div>
+
+      <!-- Main Feature Cards -->
+      <div class="why-grid">
+        <!-- EEMB -->
+        <div class="why-card scroll-reveal stagger-1">
+          <div class="why-icon why-icon-1">
+            <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z" />
+            </svg>
+          </div>
+          <h3>Department of Ecology, Evolution & Marine Biology</h3>
+          <p class="why-desc">
+            EEMB is rated <strong>top 10 nationally</strong> for research impact and top 3 in Marine Science. Faculty have earned the Ecological Society of America's Eminent Ecologist Award, the MacArthur Award, and numerous fellowships.
+          </p>
+          <p class="why-desc">
+            The department founded <a href="https://www.nceas.ucsb.edu/" target="_blank" rel="noopener">NCEAS</a> (National Center for Ecological Analysis and Synthesis) and leads five NSF Long Term Ecological Research sites across the Pacific and Antarctica.
+          </p>
+          <a href="https://www.eemb.ucsb.edu/" target="_blank" rel="noopener" class="why-link">
+            <span>Visit EEMB</span>
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+            </svg>
+          </a>
+        </div>
+
+        <!-- MSI -->
+        <div class="why-card scroll-reveal stagger-2">
+          <div class="why-icon why-icon-2">
+            <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9" />
+            </svg>
+          </div>
+          <h3>Marine Science Institute</h3>
+          <p class="why-desc">
+            Established in 1969, MSI ranks internationally as a leader in ocean and environmental research. Over <strong>300 research projects</strong> are active at any time, supported by $120M+ in annual funding.
+          </p>
+          <p class="why-desc">
+            The 65,000 sq ft Marine Science Research Building overlooks the Pacific and brings together faculty from 14 disciplines. MSI also manages seven UC Natural Reserve sites for field research.
+          </p>
+          <a href="https://msi.ucsb.edu/" target="_blank" rel="noopener" class="why-link">
+            <span>Visit MSI</span>
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+            </svg>
+          </a>
+        </div>
+
+        <!-- Two LTER Programs -->
+        <div class="why-card why-card-wide scroll-reveal stagger-3">
+          <div class="why-icon why-icon-3">
+            <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l5.447 2.724A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7" />
+            </svg>
+          </div>
+          <h3>Two Long Term Ecological Research Programs</h3>
+          <p class="why-desc">
+            UCSB faculty lead two of NSF's flagship LTER sites, providing unparalleled access to long-term data, established field infrastructure, and global research networks.
+          </p>
+          <div class="lter-grid">
+            <div class="lter-item">
+              <img src="/images/kelp-hero.jpeg" alt="Santa Barbara kelp forest" loading="lazy" />
+              <div class="lter-content">
+                <h4>Santa Barbara Coastal LTER</h4>
+                <p>Established 2000. Studies kelp forest dynamics along the California coast — tracking how environmental change, predator-prey interactions, and fisheries shape these productive ecosystems.</p>
+                <a href="https://sbclter.msi.ucsb.edu/" target="_blank" rel="noopener" class="lter-link">sbclter.msi.ucsb.edu</a>
+              </div>
+            </div>
+            <div class="lter-item">
+              <img src="/images/moorea-mountain-tropical-island-view.jpeg" alt="Moorea, French Polynesia" loading="lazy" />
+              <div class="lter-content">
+                <h4>Moorea Coral Reef LTER</h4>
+                <p>Established 2004. Studies coral reef dynamics in French Polynesia — investigating resilience, disturbance recovery, and the interactions that structure tropical reef communities.</p>
+                <a href="https://mcr.lternet.edu/" target="_blank" rel="noopener" class="lter-link">mcr.lternet.edu</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Campus Life -->
+      <div class="campus-section scroll-reveal">
+        <div class="campus-content">
+          <h3>Life on the Coast</h3>
+          <p>
+            UCSB sits on a stunning coastal bluff where the campus literally ends at the beach. Surf between classes at Campus Point, bike the car-free paths, and enjoy year-round sunshine in one of California's most beautiful regions.
+          </p>
+          <div class="campus-facts">
+            <div class="campus-fact">
+              <svg class="w-5 h-5 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+              </svg>
+              <span>Only UC that guarantees 4 years of housing</span>
+            </div>
+            <div class="campus-fact">
+              <svg class="w-5 h-5 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+              </svg>
+              <span>AAU member and R1 "very high research" university</span>
+            </div>
+            <div class="campus-fact">
+              <svg class="w-5 h-5 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+              </svg>
+              <span>First Hispanic-Serving Institution in the AAU</span>
+            </div>
+            <div class="campus-fact">
+              <svg class="w-5 h-5 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+              </svg>
+              <span>Campus ends at the beach — walk to work</span>
+            </div>
+          </div>
+        </div>
+        <div class="campus-image">
+          <img src="/images/ucsb-campus.jpeg" alt="UC Santa Barbara coastal campus with ocean views" loading="lazy" />
+        </div>
+      </div>
+    </div>
+
+    <WaveDivider id="why-wave" fillColor="navy-deep" />
+  </section>
+
+  <!-- FAQ Section -->
+  <section class="section-lg bg-navy-deep relative overflow-hidden">
+    <div class="container">
+      <div class="max-w-3xl mx-auto">
+        <div class="text-center mb-12 scroll-reveal">
+          <span class="eyebrow text-accent-2">FAQ</span>
+          <h2 class="text-white mb-4">Frequently Asked Questions</h2>
+        </div>
+
+        <div class="faq-grid">
+          <div class="faq-item scroll-reveal stagger-1">
+            <h3 class="faq-question">Do you accept international students?</h3>
+            <p class="faq-answer">
+              Yes. UCSB welcomes international applicants. Visa sponsorship is available for admitted students. Note that international students may have different fellowship eligibility, so external funding (home country fellowships, etc.) strengthens applications.
+            </p>
+          </div>
+
+          <div class="faq-item scroll-reveal stagger-2">
+            <h3 class="faq-question">What fellowships should I apply for?</h3>
+            <p class="faq-answer">
+              For U.S. citizens/permanent residents: NSF GRFP (apply senior year or first 2 years of grad school), Ford Foundation, NOAA fellowships. For international students: Fulbright, home country fellowships, or UCSB's Central Fellowship. We help students identify and apply for appropriate funding.
+            </p>
+          </div>
+
+          <div class="faq-item scroll-reveal stagger-3">
+            <h3 class="faq-question">When do students typically start?</h3>
+            <p class="faq-answer">
+              Most students start in Fall quarter (late September). Summer starts are occasionally possible for students with independent funding. The application deadline is December 1 for Fall admission.
+            </p>
+          </div>
+
+          <div class="faq-item scroll-reveal stagger-4">
+            <h3 class="faq-question">Can I do a rotation or visit before applying?</h3>
+            <p class="faq-answer">
+              Short visits during the application season (fall) can be arranged if schedules permit. We also host prospective students during EEMB's recruitment weekend in late winter. For longer stays, consider the NSF REU program or contact me about summer research opportunities.
+            </p>
+          </div>
+
+          <div class="faq-item scroll-reveal stagger-5">
+            <h3 class="faq-question">What's your mentoring style?</h3>
+            <p class="faq-answer">
+              I provide hands-on guidance early on, then step back as you develop independence. I expect regular communication (weekly meetings initially), engagement with the broader lab and department, and a balance of field work and quantitative analysis. My goal is for you to leave as an independent scientist.
+            </p>
+          </div>
+
+          <div class="faq-item scroll-reveal stagger-6">
+            <h3 class="faq-question">What's your approach to diversity and inclusion?</h3>
+            <p class="faq-answer">
+              Science benefits from diverse perspectives. We actively recruit from underrepresented groups and work to create an inclusive lab environment. UCSB is a Hispanic-Serving Institution and has strong support programs for first-generation and underrepresented students.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <WaveDivider id="faq-wave" fillColor="surface" />
+  </section>
+
+  <!-- Final CTA -->
+  <section class="section bg-surface">
+    <div class="container">
+      <div class="join-cta scroll-reveal">
+        <div class="join-cta-content">
+          <span class="eyebrow text-accent">Ready to Join?</span>
+          <h2 class="mb-5">Start Your Application</h2>
+          <p class="text-muted text-lg max-w-xl mx-auto mb-8">
+            Send Adrian an email introducing yourself and your interests. We look forward to hearing from you.
+          </p>
+          <div class="flex flex-col sm:flex-row gap-4 justify-center">
+            <a href="mailto:astier@ucsb.edu?subject=Lab%20Inquiry" class="btn btn-primary group">
+              <span>Get in Touch</span>
+              <svg class="w-4 h-4 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+              </svg>
+            </a>
+            <a href="/publications" class="btn btn-secondary">
+              View Publications
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  /* ========================================
+     Hero Section
+     ======================================== */
+  .hero-section {
+    @apply relative;
+  }
+
+  .parallax-bg {
+    transform: translateZ(0);
+    will-change: transform;
+  }
+
+  .hero-badge {
+    animation: fadeDown 0.6s ease-out 0.1s forwards;
+    opacity: 0;
+  }
+
+  .hero-title {
+    animation: fadeUp 0.8s ease-out 0.2s forwards;
+    opacity: 0;
+  }
+
+  .hero-description {
+    animation: fadeUp 0.8s ease-out 0.4s forwards;
+    opacity: 0;
+  }
+
+  .hero-cta {
+    animation: fadeUp 0.8s ease-out 0.6s forwards;
+    opacity: 0;
+  }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes fadeDown {
+    from { opacity: 0; transform: translateY(-16px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .gradient-text {
+    background: linear-gradient(135deg, #ffffff 0%, #38bdf8 40%, #2dd4bf 80%, #38bdf8 100%);
+    background-size: 200% 200%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: gradient-shift 8s ease-in-out infinite;
+  }
+
+  @keyframes gradient-shift {
+    0%, 100% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+  }
+
+  .btn-lg {
+    @apply px-7 py-3.5 text-base;
+  }
+
+  .btn-sm {
+    @apply px-4 py-2.5 text-sm;
+  }
+
+  /* ========================================
+     Status Alert
+     ======================================== */
+  .status-alert {
+    @apply flex items-start gap-4 p-5 rounded-xl;
+    @apply bg-amber-500/10 border border-amber-500/30;
+  }
+
+  .status-icon {
+    @apply flex-shrink-0 text-amber-400 mt-0.5;
+  }
+
+  .status-title {
+    @apply text-amber-300 font-bold mb-1;
+  }
+
+  .status-message {
+    @apply text-amber-200/80 text-sm leading-relaxed mb-2;
+  }
+
+  .status-note {
+    @apply text-amber-200/60 text-sm italic;
+  }
+
+  /* ========================================
+     Work Cards
+     ======================================== */
+  .work-card {
+    @apply text-center;
+  }
+
+  .work-image {
+    @apply aspect-[4/3] rounded-xl overflow-hidden mb-4;
+    @apply border border-white/10;
+  }
+
+  .work-image img {
+    @apply w-full h-full object-cover;
+    @apply transition-transform duration-500;
+  }
+
+  .work-card:hover .work-image img {
+    @apply scale-105;
+  }
+
+  .work-card h3 {
+    @apply text-white font-bold;
+  }
+
+  /* ========================================
+     Blob Background
+     ======================================== */
+  .blob-container {
+    @apply absolute inset-0 overflow-hidden pointer-events-none;
+    z-index: 0;
+  }
+
+  .blob {
+    @apply absolute rounded-full;
+    filter: blur(80px);
+    animation: blob-morph 20s ease-in-out infinite;
+  }
+
+  .blob-1 {
+    width: 400px;
+    height: 400px;
+    background: radial-gradient(circle, rgba(56, 189, 248, 0.1) 0%, transparent 70%);
+    top: -100px;
+    right: -100px;
+  }
+
+  .blob-2 {
+    width: 300px;
+    height: 300px;
+    background: radial-gradient(circle, rgba(45, 212, 191, 0.08) 0%, transparent 70%);
+    bottom: -50px;
+    left: -50px;
+    animation-delay: -10s;
+  }
+
+  @keyframes blob-morph {
+    0%, 100% { transform: translate(0, 0) scale(1); }
+    50% { transform: translate(-20px, 20px) scale(1.1); }
+  }
+
+  /* ========================================
+     Approach Cards
+     ======================================== */
+  .approach-card {
+    @apply p-6 rounded-xl border border-line;
+    @apply transition-all duration-300;
+    background: linear-gradient(135deg, rgba(30, 41, 59, 0.8) 0%, rgba(30, 41, 59, 0.6) 100%);
+    backdrop-filter: blur(10px);
+  }
+
+  .approach-card:hover {
+    @apply -translate-y-2;
+    border-color: rgba(56, 189, 248, 0.4);
+    box-shadow: 0 15px 30px -10px rgba(0, 0, 0, 0.3);
+  }
+
+  .approach-icon {
+    @apply w-11 h-11 rounded-lg mb-4;
+    @apply flex items-center justify-center;
+    @apply transition-all duration-300;
+  }
+
+  .approach-card:hover .approach-icon {
+    @apply scale-110;
+  }
+
+  .approach-icon-1 { @apply bg-accent/20 text-accent; }
+  .approach-icon-2 { @apply bg-accent-2/20 text-accent-2; }
+  .approach-icon-3 { @apply bg-accent-warm/20 text-accent-warm; }
+  .approach-icon-4 { @apply bg-accent/20 text-accent; }
+
+  .approach-card h3 {
+    @apply text-lg font-bold text-ink mb-2;
+  }
+
+  .approach-card p {
+    @apply text-sm text-muted leading-relaxed;
+  }
+
+  /* ========================================
+     Strong Fit Section
+     ======================================== */
+  .fit-section {
+    @apply bg-surface-card border border-line rounded-2xl p-8 max-w-3xl mx-auto;
+  }
+
+  .fit-title {
+    @apply text-xl font-bold text-ink mb-6 text-center;
+  }
+
+  .fit-grid {
+    @apply grid sm:grid-cols-2 gap-4;
+  }
+
+  .fit-item {
+    @apply flex items-start gap-3 text-muted;
+  }
+
+  .fit-item svg {
+    @apply flex-shrink-0 mt-0.5;
+  }
+
+  /* ========================================
+     Section Spacing
+     ======================================== */
+  .section-lg {
+    @apply py-20 md:py-28 pb-28 md:pb-36;
+  }
+
+  /* ========================================
+     Opportunities Grid
+     ======================================== */
+  .opportunities-grid {
+    @apply grid md:grid-cols-3 gap-6 max-w-5xl mx-auto;
+  }
+
+  .opp-card {
+    @apply bg-surface-card rounded-2xl border border-line overflow-hidden;
+    @apply transition-all duration-300;
+    @apply flex flex-col;
+  }
+
+  .opp-card:hover {
+    @apply -translate-y-1;
+    border-color: rgba(56, 189, 248, 0.4);
+  }
+
+  .opp-featured {
+    @apply border-accent/30;
+  }
+
+  .opp-header {
+    @apply p-5 border-b border-line bg-surface-card;
+  }
+
+  .opp-badge {
+    @apply inline-block px-2 py-1 rounded-md text-xs font-bold uppercase tracking-wide mb-2;
+  }
+
+  .opp-badge.open {
+    @apply bg-green-500/20 text-green-400;
+  }
+
+  .opp-badge.limited {
+    @apply bg-amber-500/20 text-amber-400;
+  }
+
+  .opp-header h3 {
+    @apply text-lg font-bold text-ink;
+  }
+
+  .opp-body {
+    @apply p-5 flex-1;
+  }
+
+  .opp-section {
+    @apply mb-4 last:mb-0;
+  }
+
+  .opp-section h4 {
+    @apply text-xs font-bold text-muted uppercase tracking-wide mb-1;
+  }
+
+  .opp-section p {
+    @apply text-sm text-ink;
+  }
+
+  .opp-footer {
+    @apply p-5 pt-0;
+  }
+
+  /* ========================================
+     Timeline Steps
+     ======================================== */
+  .timeline-steps {
+    @apply flex flex-col md:flex-row items-stretch md:items-center justify-center gap-4 md:gap-0 max-w-4xl mx-auto;
+  }
+
+  .timeline-step {
+    @apply flex md:flex-col items-center gap-4 md:gap-3;
+    @apply bg-surface-card border border-line rounded-xl p-4 md:p-5;
+    @apply flex-1 md:text-center;
+    @apply transition-all duration-300;
+  }
+
+  .timeline-step:hover {
+    @apply border-accent/40 -translate-y-1;
+    box-shadow: 0 10px 30px -10px rgba(56, 189, 248, 0.2);
+  }
+
+  .step-icon {
+    @apply w-12 h-12 rounded-xl flex items-center justify-center flex-shrink-0;
+    @apply transition-transform duration-300;
+  }
+
+  .timeline-step:hover .step-icon {
+    @apply scale-110;
+  }
+
+  .step-icon-1 { @apply bg-accent/20 text-accent; }
+  .step-icon-2 { @apply bg-accent-2/20 text-accent-2; }
+  .step-icon-3 { @apply bg-accent/20 text-accent; }
+  .step-icon-4 { @apply bg-accent-2/20 text-accent-2; }
+
+  .step-content {
+    @apply flex flex-col;
+  }
+
+  .step-date {
+    @apply text-sm font-bold text-ink;
+  }
+
+  .step-label {
+    @apply text-xs text-muted;
+  }
+
+  .step-connector {
+    @apply hidden md:block w-8 h-0.5 bg-gradient-to-r from-accent/50 to-accent-2/50 flex-shrink-0;
+  }
+
+  /* Mobile vertical connector */
+  @media (max-width: 767px) {
+    .step-connector {
+      @apply block w-0.5 h-6 mx-auto;
+      background: linear-gradient(to bottom, rgba(56, 189, 248, 0.5), rgba(45, 212, 191, 0.5));
+    }
+  }
+
+  /* ========================================
+     Apply Card
+     ======================================== */
+  .apply-card {
+    @apply bg-surface-card border border-line rounded-2xl p-8 text-center;
+  }
+
+  .apply-title {
+    @apply text-xl font-bold text-ink mb-3;
+  }
+
+  .apply-desc {
+    @apply text-muted mb-6;
+  }
+
+  .apply-list {
+    @apply space-y-3 text-left max-w-md mx-auto;
+  }
+
+  .apply-list li {
+    @apply flex items-start gap-3 text-muted;
+  }
+
+  .apply-list li svg {
+    @apply flex-shrink-0 mt-0.5;
+  }
+
+  /* ========================================
+     Testimonials
+     ======================================== */
+  .testimonials-grid {
+    @apply grid md:grid-cols-3 gap-6 max-w-5xl mx-auto;
+  }
+
+  .testimonial-card {
+    @apply p-6 rounded-xl;
+    @apply bg-white/5 border border-white/10;
+    @apply transition-all duration-300;
+  }
+
+  .testimonial-card:hover {
+    @apply -translate-y-1;
+    border-color: rgba(56, 189, 248, 0.3);
+  }
+
+  .testimonial-quote {
+    @apply text-white/80 text-base italic leading-relaxed mb-4;
+  }
+
+  .testimonial-cite {
+    @apply text-white/50 text-sm font-medium not-italic;
+  }
+
+  /* ========================================
+     FAQ Section
+     ======================================== */
+  .faq-grid {
+    @apply space-y-4;
+  }
+
+  .faq-item {
+    @apply p-6 rounded-xl;
+    @apply bg-white/[0.03] border border-white/10;
+    @apply transition-all duration-300;
+  }
+
+  .faq-item:hover {
+    @apply border-accent/30;
+  }
+
+  .faq-question {
+    @apply text-lg font-bold text-white mb-3;
+  }
+
+  .faq-answer {
+    @apply text-white/60 text-sm leading-relaxed;
+  }
+
+  /* ========================================
+     Join CTA
+     ======================================== */
+  .join-cta {
+    @apply relative rounded-3xl overflow-hidden;
+    @apply bg-gradient-to-br from-accent/10 via-accent/5 to-accent-2/10;
+    @apply border border-accent/20;
+    @apply p-10 md:p-14 lg:p-16;
+  }
+
+  .join-cta::before {
+    content: '';
+    @apply absolute inset-0 opacity-30;
+    background: radial-gradient(circle at top right, rgba(56, 189, 248, 0.15), transparent 50%),
+                radial-gradient(circle at bottom left, rgba(45, 212, 191, 0.15), transparent 50%);
+  }
+
+  .join-cta-content {
+    @apply relative z-10 text-center max-w-2xl mx-auto;
+  }
+
+  /* ========================================
+     Philosophy Section
+     ======================================== */
+  .philosophy-grid {
+    @apply grid md:grid-cols-2 gap-6 mb-8;
+  }
+
+  .philosophy-card {
+    @apply bg-surface-card border border-line rounded-xl p-6;
+    @apply transition-all duration-300;
+  }
+
+  .philosophy-card:hover {
+    @apply -translate-y-1;
+    border-color: rgba(56, 189, 248, 0.3);
+  }
+
+  .philosophy-card h3 {
+    @apply text-lg font-bold text-ink mb-4;
+  }
+
+  .philosophy-card ul {
+    @apply space-y-3;
+  }
+
+  .philosophy-card li {
+    @apply flex items-start gap-2 text-sm text-muted leading-relaxed;
+  }
+
+  .philosophy-card li::before {
+    content: '→';
+    @apply text-accent font-bold flex-shrink-0;
+  }
+
+  .philosophy-note {
+    @apply bg-surface-card/50 border border-line/50 rounded-xl p-5;
+    @apply text-center;
+  }
+
+  .philosophy-note p {
+    @apply text-sm text-muted leading-relaxed mx-auto;
+  }
+
+  /* ========================================
+     Apply Steps
+     ======================================== */
+  .apply-steps {
+    @apply space-y-5;
+  }
+
+  .apply-step {
+    @apply flex items-start gap-4 p-5 rounded-xl;
+    @apply bg-surface-card border border-line;
+    @apply transition-all duration-300;
+  }
+
+  .apply-step:hover {
+    @apply -translate-y-1;
+    border-color: rgba(56, 189, 248, 0.3);
+  }
+
+  .apply-step-number {
+    @apply w-10 h-10 rounded-full flex-shrink-0;
+    @apply flex items-center justify-center;
+    @apply bg-accent/20 text-accent font-bold text-lg;
+  }
+
+  .apply-step-content h4 {
+    @apply font-bold text-ink mb-1;
+  }
+
+  .apply-step-content p {
+    @apply text-sm text-muted leading-relaxed;
+  }
+
+  .apply-step-content a {
+    @apply text-accent hover:underline;
+  }
+
+  /* ========================================
+     Why UCSB Section
+     ======================================== */
+  .stats-row {
+    @apply grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6 mb-14;
+    @apply max-w-4xl mx-auto;
+  }
+
+  .stat-item {
+    @apply text-center p-5 rounded-xl;
+    @apply bg-surface-card border border-line;
+    @apply transition-all duration-300;
+  }
+
+  .stat-item:hover {
+    @apply -translate-y-1;
+    border-color: rgba(56, 189, 248, 0.4);
+  }
+
+  .stat-number {
+    @apply block text-2xl md:text-3xl font-black text-accent mb-1;
+  }
+
+  .stat-label {
+    @apply text-xs md:text-sm text-muted;
+  }
+
+  .why-grid {
+    @apply grid md:grid-cols-2 gap-6 mb-12;
+  }
+
+  .why-card {
+    @apply bg-surface-card border border-line rounded-2xl p-7;
+    @apply transition-all duration-300;
+  }
+
+  .why-card:hover {
+    @apply -translate-y-1;
+    border-color: rgba(56, 189, 248, 0.4);
+    box-shadow: 0 15px 30px -10px rgba(0, 0, 0, 0.3);
+  }
+
+  .why-card-wide {
+    @apply md:col-span-2;
+  }
+
+  .why-icon {
+    @apply w-14 h-14 rounded-xl mb-5;
+    @apply flex items-center justify-center;
+    @apply transition-transform duration-300;
+  }
+
+  .why-card:hover .why-icon {
+    @apply scale-110;
+  }
+
+  .why-icon-1 { @apply bg-accent/20 text-accent; }
+  .why-icon-2 { @apply bg-accent-2/20 text-accent-2; }
+  .why-icon-3 { @apply bg-accent-warm/20 text-accent-warm; }
+
+  .why-card h3 {
+    @apply text-xl font-bold text-ink mb-4;
+  }
+
+  .why-desc {
+    @apply text-muted text-sm leading-relaxed mb-3 last:mb-0;
+  }
+
+  .why-desc strong {
+    @apply text-ink;
+  }
+
+  .why-desc a {
+    @apply text-accent hover:underline;
+  }
+
+  .why-link {
+    @apply inline-flex items-center gap-2 text-accent font-semibold text-sm mt-4;
+    @apply transition-all duration-200;
+  }
+
+  .why-link:hover {
+    @apply gap-3;
+  }
+
+  /* LTER Grid */
+  .lter-grid {
+    @apply grid md:grid-cols-2 gap-5 mt-6;
+  }
+
+  .lter-item {
+    @apply rounded-xl overflow-hidden;
+    @apply bg-surface border border-line/50;
+    @apply transition-all duration-300;
+  }
+
+  .lter-item:hover {
+    @apply -translate-y-1;
+    border-color: rgba(56, 189, 248, 0.3);
+  }
+
+  .lter-item img {
+    @apply w-full h-32 object-cover;
+    @apply transition-transform duration-500;
+  }
+
+  .lter-item:hover img {
+    @apply scale-105;
+  }
+
+  .lter-content {
+    @apply p-4;
+  }
+
+  .lter-content h4 {
+    @apply text-base font-bold text-ink mb-2;
+  }
+
+  .lter-content p {
+    @apply text-xs text-muted leading-relaxed mb-2;
+  }
+
+  .lter-link {
+    @apply text-accent text-xs font-medium hover:underline;
+  }
+
+  /* Campus Section */
+  .campus-section {
+    @apply grid md:grid-cols-2 gap-10 items-center;
+    @apply bg-surface-card border border-line rounded-2xl p-8;
+  }
+
+  .campus-content h3 {
+    @apply text-2xl font-bold text-ink mb-4;
+  }
+
+  .campus-content > p {
+    @apply text-muted leading-relaxed mb-6;
+  }
+
+  .campus-facts {
+    @apply space-y-3;
+  }
+
+  .campus-fact {
+    @apply flex items-center gap-3 text-sm text-muted;
+  }
+
+  .campus-image img {
+    @apply w-full rounded-xl;
+    @apply border border-line/30;
+  }
+
+  /* ========================================
+     Reduced Motion
+     ======================================== */
+  @media (prefers-reduced-motion: reduce) {
+    .hero-badge,
+    .hero-title,
+    .hero-description,
+    .hero-cta,
+    .gradient-text,
+    .blob,
+    .approach-card,
+    .opp-card,
+    .mentor-card,
+    .testimonial-card,
+    .approach-icon,
+    .work-image img,
+    .philosophy-card,
+    .apply-step,
+    .timeline-step,
+    .why-card,
+    .why-icon,
+    .stat-item,
+    .lter-item,
+    .lter-item img {
+      animation: none !important;
+      transition: none !important;
+      opacity: 1;
+    }
+  }
+</style>
+
+<script>
+  // Parallax effect for hero
+  const initParallax = () => {
+    const parallaxBg = document.querySelector('.parallax-bg') as HTMLElement;
+    if (!parallaxBg) return;
+
+    let ticking = false;
+
+    const handleScroll = () => {
+      if (!ticking) {
+        requestAnimationFrame(() => {
+          const scrolled = window.scrollY;
+          const rate = scrolled * 0.3;
+          parallaxBg.style.transform = `translateY(${rate}px)`;
+          ticking = false;
+        });
+        ticking = true;
+      }
+    };
+
+    if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      window.addEventListener('scroll', handleScroll, { passive: true });
+    }
+  };
+
+  // Initialize
+  initParallax();
+
+  // Re-init after view transitions
+  document.addEventListener('astro:after-swap', initParallax);
+</script>

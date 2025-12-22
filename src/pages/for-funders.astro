@@ -1,0 +1,728 @@
+---
+import Layout from '@layouts/Layout.astro';
+import WaveDivider from '@components/shared/WaveDivider.astro';
+import CaseStudyCard from '@components/shared/CaseStudyCard.astro';
+
+// Case studies data - all based on actual published research
+const caseStudies = [
+  {
+    problem: "Fishery managers asked: do marine protected areas benefit adjacent fishing grounds through spillover?",
+    action: "Long-term monitoring of lobster populations inside and outside Channel Islands MPAs (Lenihan et al. 2021, 2022).",
+    result: "Evidence that spillover enhances catch at reserve borders; published in Scientific Reports and Ecosphere.",
+    users: "Southern California lobster fishery managers",
+    icon: "kelp" as const,
+    link: "/research/kelp-forests",
+    linkText: "View kelp research",
+  },
+  {
+    problem: "What happens to coral reefs when disturbances leave dead coral structures standing?",
+    action: "Mathematical modeling of structure-retaining vs. structure-removing disturbances (Kopecky et al. 2023, Ecology).",
+    result: "Showed how dead coral skeletons can promote regime shifts to algae-dominated states.",
+    users: "Coral reef researchers and modelers",
+    icon: "coral" as const,
+    link: "/research/coral-reefs",
+    linkText: "View coral research",
+  },
+  {
+    problem: "How do guard crabs protect branching corals from predators and competitors?",
+    action: "Field experiments testing crab-coral interactions at Moorea LTER (Stier et al. 2010, McKeon et al. 2012).",
+    result: "Demonstrated synergistic defense by multiple crab species against crown-of-thorns and vermetid snails.",
+    users: "Coral reef ecologists studying mutualisms",
+    icon: "coral" as const,
+    link: "/publications",
+    linkText: "See publications",
+  },
+  {
+    problem: "How many large carnivore species are actually recovering globally?",
+    action: "Synthesized data on 362 large carnivore species worldwide (Ingeman et al. 2022, Scientific Reports).",
+    result: "Found only ~3% showing signs of recovery; identified factors distinguishing successful cases.",
+    users: "Conservation biologists and policy makers",
+    icon: "fish" as const,
+    link: "/publications",
+    linkText: "See publications",
+  },
+  {
+    problem: "What prevents urchins from overgrazing kelp forests into barrens?",
+    action: "Field research on kelp detritus as alternative food source (Rennick et al. 2022, Ecology).",
+    result: "Detrital supply identified as key factor preventing regime shifts to urchin barrens.",
+    users: "Kelp forest ecologists and managers",
+    icon: "kelp" as const,
+    link: "/research/kelp-forests",
+    linkText: "View kelp research",
+  },
+  {
+    problem: "Can 3D photogrammetry improve coral growth and biodiversity measurements?",
+    action: "Compared photogrammetric vs. manual methods for coral colonies (Curtis et al. 2023, Coral Reefs).",
+    result: "Photogrammetry outperforms manual methods for detecting growth and predicting associated biodiversity.",
+    users: "Coral monitoring programs",
+    icon: "data" as const,
+    link: "/publications",
+    linkText: "See publications",
+  },
+];
+
+// Funding tiers
+const fundingTiers = [
+  {
+    range: "$50–100K",
+    label: "Seed Research",
+    description: "Launch targeted field experiments or synthesis projects",
+    outputs: [
+      "1–2 peer-reviewed publications",
+      "Open datasets and code",
+      "Preliminary management recommendations",
+      "Graduate student training",
+    ],
+    examples: "Single-site field experiment, pilot study, graduate thesis support",
+  },
+  {
+    range: "$250K",
+    label: "Multi-Year Study",
+    description: "Sustained research program with implementation pilots",
+    outputs: [
+      "3–5 peer-reviewed publications",
+      "Decision-support tools or protocols",
+      "Stakeholder workshops and training",
+      "Postdoc + graduate student positions",
+    ],
+    examples: "Multi-site comparative study, model development with validation",
+  },
+  {
+    range: "$500K+",
+    label: "Transformative Program",
+    description: "Large-scale, cross-system research with broad impact",
+    outputs: [
+      "5–10+ publications",
+      "Open-source tools and platforms",
+      "Implementation partnerships",
+      "Multi-institution collaboration",
+      "Policy briefs and practitioner guides",
+    ],
+    examples: "Cross-ecosystem synthesis, long-term monitoring, decision-support system development",
+  },
+];
+
+// Capabilities
+const capabilities = [
+  {
+    title: "Field Experiments",
+    description: "Manipulative studies in coral reefs and kelp forests at two LTER sites",
+    icon: "field",
+  },
+  {
+    title: "Quantitative Models",
+    description: "Population dynamics, food webs, and decision-support tools",
+    icon: "model",
+  },
+  {
+    title: "Open Data & Code",
+    description: "All datasets and analysis code publicly available on GitHub",
+    icon: "data",
+  },
+  {
+    title: "Decision Thresholds",
+    description: "Action triggers and intervention guidelines for practitioners",
+    icon: "threshold",
+  },
+  {
+    title: "Implementation Pilots",
+    description: "Testing solutions with management partners before scaling",
+    icon: "pilot",
+  },
+  {
+    title: "Training & Capacity",
+    description: "Graduate students, postdocs, and practitioner workshops",
+    icon: "training",
+  },
+];
+
+// Partners
+const partners = [
+  "NSF Long Term Ecological Research Network",
+  "NOAA Channel Islands National Marine Sanctuary",
+  "California Ocean Protection Council",
+  "Nature Conservancy",
+  "UC Natural Reserve System",
+  "Moorea Coral Reef LTER",
+  "Santa Barbara Coastal LTER",
+];
+---
+
+<Layout
+  title="For Funders & Partners"
+  description="Partner with the Ocean Recoveries Lab to fund transformative marine science. See our impact, capabilities, and funding opportunities."
+>
+  <!-- Hero Section -->
+  <section class="hero-section relative min-h-[60vh] md:min-h-[70vh] flex items-center overflow-hidden">
+    <div
+      class="absolute inset-0 bg-cover bg-center parallax-bg"
+      style="background-image: url('/images/research-team-boats-turquoise-lagoon.webp');"
+    >
+      <div class="absolute inset-0 bg-gradient-to-b from-navy-deep/50 via-navy-deep/40 to-navy-deep/95"></div>
+    </div>
+
+    <div class="relative z-10 container px-4 pt-28 pb-20 md:pt-36 md:pb-28">
+      <div class="max-w-3xl">
+        <!-- Badge -->
+        <div class="hero-badge inline-flex items-center gap-2.5 px-4 py-2 rounded-full bg-accent/20 backdrop-blur-sm border border-accent/30 mb-6">
+          <span class="w-2 h-2 rounded-full bg-accent animate-pulse"></span>
+          <span class="text-sm font-medium text-accent tracking-wide">For Funders & Partners</span>
+        </div>
+
+        <h1 class="hero-title mb-6">
+          <span class="gradient-text">Invest in Science</span>
+          <span class="text-white block">That Changes Outcomes</span>
+        </h1>
+
+        <p class="hero-description text-lg md:text-xl text-white/80 mb-8 leading-relaxed max-w-2xl">
+          We turn research into actionable tools for ocean recovery. Your investment funds field experiments, decision-support models, and open-source solutions that practitioners actually use.
+        </p>
+
+        <!-- Key outcomes -->
+        <div class="hero-outcomes flex flex-wrap gap-4 mb-10">
+          <div class="outcome-chip">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
+            <span>75+ peer-reviewed papers</span>
+          </div>
+          <div class="outcome-chip">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
+            <span>Tools used by CA Fish & Wildlife</span>
+          </div>
+          <div class="outcome-chip">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
+            <span>Open data & code on GitHub</span>
+          </div>
+        </div>
+
+        <div class="hero-cta flex flex-col sm:flex-row gap-4">
+          <a href="mailto:astier@ucsb.edu?subject=Partnership%20Inquiry" class="btn btn-primary btn-lg group">
+            <span>Discuss a Partnership</span>
+            <svg class="w-5 h-5 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+            </svg>
+          </a>
+          <a href="#impact" class="btn btn-ghost btn-lg">
+            See Impact Evidence
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <WaveDivider id="hero-wave" fillColor="surface" />
+  </section>
+
+  <!-- Impact Evidence -->
+  <section id="impact" class="section-lg bg-surface scroll-mt-20 relative overflow-hidden">
+    <div class="blob-container" aria-hidden="true">
+      <div class="blob blob-1"></div>
+      <div class="blob blob-2"></div>
+    </div>
+
+    <div class="container relative z-10">
+      <div class="text-center mb-14 scroll-reveal">
+        <span class="eyebrow">Impact Evidence</span>
+        <h2 class="mb-4">Research That Gets Used</h2>
+        <p class="lead max-w-2xl mx-auto">
+          We measure success by whether our findings change decisions. Here's how our work has translated to real-world outcomes.
+        </p>
+      </div>
+
+      <div class="case-study-grid">
+        {caseStudies.map((study, i) => (
+          <div class={`scroll-reveal stagger-${(i % 3) + 1}`}>
+            <CaseStudyCard {...study} />
+          </div>
+        ))}
+      </div>
+    </div>
+
+    <WaveDivider id="impact-wave" fillColor="navy-deep" />
+  </section>
+
+  <!-- What We Deliver -->
+  <section class="section-lg bg-navy-deep relative overflow-hidden">
+    <div class="container">
+      <div class="text-center mb-14 scroll-reveal">
+        <span class="eyebrow text-accent-2">Capabilities</span>
+        <h2 class="text-white mb-4">What We Deliver</h2>
+        <p class="text-white/60 max-w-2xl mx-auto">
+          Our research infrastructure spans two long-term ecological research sites, quantitative modeling expertise, and deep practitioner relationships.
+        </p>
+      </div>
+
+      <div class="capabilities-grid">
+        {capabilities.map((cap, i) => (
+          <div class={`capability-card scroll-reveal stagger-${(i % 3) + 1}`}>
+            <div class={`capability-icon capability-icon-${(i % 3) + 1}`}>
+              {cap.icon === 'field' && (
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+              )}
+              {cap.icon === 'model' && (
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 17v-2m3 2v-4m3 4v-6m2 10H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                </svg>
+              )}
+              {cap.icon === 'data' && (
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4m0 5c0 2.21-3.582 4-8 4s-8-1.79-8-4" />
+                </svg>
+              )}
+              {cap.icon === 'threshold' && (
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M13 10V3L4 14h7v7l9-11h-7z" />
+                </svg>
+              )}
+              {cap.icon === 'pilot' && (
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z" />
+                </svg>
+              )}
+              {cap.icon === 'training' && (
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" />
+                </svg>
+              )}
+            </div>
+            <h3>{cap.title}</h3>
+            <p>{cap.description}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+
+    <WaveDivider id="capabilities-wave" fillColor="surface" />
+  </section>
+
+  <!-- Funding Tiers -->
+  <section class="section-lg bg-surface relative overflow-hidden">
+    <div class="container">
+      <div class="text-center mb-14 scroll-reveal">
+        <span class="eyebrow">Investment Levels</span>
+        <h2 class="mb-4">What Funding Enables</h2>
+        <p class="lead max-w-2xl mx-auto">
+          Different investment levels unlock different scales of impact. Here's what your support can accomplish.
+        </p>
+      </div>
+
+      <div class="tiers-grid">
+        {fundingTiers.map((tier, i) => (
+          <div class={`tier-card scroll-reveal stagger-${i + 1} ${i === 1 ? 'tier-featured' : ''}`}>
+            {i === 1 && <div class="tier-badge">Most Common</div>}
+            <div class="tier-header">
+              <span class="tier-range">{tier.range}</span>
+              <h3 class="tier-label">{tier.label}</h3>
+              <p class="tier-description">{tier.description}</p>
+            </div>
+            <div class="tier-body">
+              <h4>What you enable:</h4>
+              <ul class="tier-outputs">
+                {tier.outputs.map((output) => (
+                  <li>
+                    <svg class="w-4 h-4 text-accent-2 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                      <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+                    </svg>
+                    <span>{output}</span>
+                  </li>
+                ))}
+              </ul>
+              <p class="tier-examples">
+                <strong>Examples:</strong> {tier.examples}
+              </p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+
+    <WaveDivider id="tiers-wave" fillColor="navy-deep" />
+  </section>
+
+  <!-- Partners & Validation -->
+  <section class="section bg-navy-deep">
+    <div class="container">
+      <div class="text-center mb-10 scroll-reveal">
+        <span class="eyebrow">Partnerships</span>
+        <h2 class="mb-4">Who We Work With</h2>
+      </div>
+
+      <div class="partners-grid scroll-reveal">
+        {partners.map((partner) => (
+          <div class="partner-item">
+            <span>{partner}</span>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact CTA -->
+  <section class="section-lg bg-surface relative overflow-hidden">
+    <div class="container">
+      <div class="funder-cta scroll-reveal">
+        <div class="funder-cta-content">
+          <span class="eyebrow text-accent">Ready to Partner?</span>
+          <h2 class="mb-5">Let's Discuss How We Can Work Together</h2>
+          <p class="text-muted text-lg mb-8 max-w-lg">
+            Whether you're exploring a specific research question or looking for a long-term partnership,
+            we'd love to hear from you.
+          </p>
+
+          <div class="flex flex-col sm:flex-row gap-4">
+            <a href="mailto:astier@ucsb.edu?subject=Funding%20Partnership%20Inquiry" class="btn btn-primary group">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+              </svg>
+              <span>Email Adrian Stier</span>
+            </a>
+            <a href="/publications" class="btn btn-secondary">
+              View All Publications
+            </a>
+          </div>
+
+          <p class="text-sm text-muted mt-6">
+            Adrian C. Stier, Associate Professor<br />
+            Department of Ecology, Evolution & Marine Biology<br />
+            UC Santa Barbara
+          </p>
+        </div>
+
+        <div class="funder-cta-image">
+          <img
+            src="/images/blacktip-reef-sharks-split-view-island.jpeg"
+            alt="Blacktip reef sharks - healthy marine ecosystem"
+            loading="lazy"
+          />
+        </div>
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  /* ========================================
+     Hero Section
+     ======================================== */
+  .hero-section {
+    @apply relative;
+  }
+
+  .parallax-bg {
+    transform: translateZ(0);
+    will-change: transform;
+  }
+
+  .hero-badge {
+    animation: fadeDown 0.6s ease-out 0.1s forwards;
+    opacity: 0;
+  }
+
+  .hero-title {
+    animation: fadeUp 0.8s ease-out 0.2s forwards;
+    opacity: 0;
+  }
+
+  .gradient-text {
+    background: linear-gradient(135deg, #ffffff 0%, #38bdf8 40%, #2dd4bf 80%, #38bdf8 100%);
+    background-size: 200% 200%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: gradient-shift 8s ease-in-out infinite;
+  }
+
+  @keyframes gradient-shift {
+    0%, 100% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+  }
+
+  .hero-description {
+    animation: fadeUp 0.8s ease-out 0.3s forwards;
+    opacity: 0;
+  }
+
+  .hero-outcomes {
+    animation: fadeUp 0.8s ease-out 0.4s forwards;
+    opacity: 0;
+  }
+
+  .hero-cta {
+    animation: fadeUp 0.8s ease-out 0.5s forwards;
+    opacity: 0;
+  }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes fadeDown {
+    from { opacity: 0; transform: translateY(-16px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .outcome-chip {
+    @apply inline-flex items-center gap-2 px-3 py-1.5 rounded-full;
+    @apply bg-white/10 text-white/80 text-sm font-medium;
+    @apply border border-white/20;
+  }
+
+  /* ========================================
+     Blob Background
+     ======================================== */
+  .blob-container {
+    @apply absolute inset-0 overflow-hidden pointer-events-none;
+    z-index: 0;
+  }
+
+  .blob {
+    @apply absolute rounded-full;
+    filter: blur(80px);
+    animation: blob-morph 20s ease-in-out infinite;
+  }
+
+  .blob-1 {
+    width: 500px;
+    height: 500px;
+    background: radial-gradient(circle, rgba(56, 189, 248, 0.15) 0%, transparent 70%);
+    top: -100px;
+    right: -100px;
+  }
+
+  .blob-2 {
+    width: 400px;
+    height: 400px;
+    background: radial-gradient(circle, rgba(45, 212, 191, 0.12) 0%, transparent 70%);
+    bottom: -50px;
+    left: -100px;
+  }
+
+  @keyframes blob-morph {
+    0%, 100% { transform: translate(0, 0) scale(1); }
+    50% { transform: translate(-20px, 20px) scale(1.1); }
+  }
+
+  /* ========================================
+     Case Study Grid
+     ======================================== */
+  .case-study-grid {
+    @apply grid md:grid-cols-2 lg:grid-cols-3 gap-6;
+  }
+
+  /* ========================================
+     Capabilities Grid
+     ======================================== */
+  .capabilities-grid {
+    @apply grid sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl mx-auto;
+  }
+
+  .capability-card {
+    @apply p-6 rounded-2xl;
+    @apply bg-white/[0.03] border border-white/10;
+    @apply transition-all duration-300;
+  }
+
+  .capability-card:hover {
+    @apply -translate-y-1;
+    border-color: rgba(56, 189, 248, 0.3);
+  }
+
+  .capability-icon {
+    @apply w-12 h-12 rounded-xl mb-4;
+    @apply flex items-center justify-center;
+  }
+
+  .capability-icon-1 { @apply bg-accent/20 text-accent; }
+  .capability-icon-2 { @apply bg-accent-2/20 text-accent-2; }
+  .capability-icon-3 { @apply bg-accent-warm/20 text-accent-warm; }
+
+  .capability-card h3 {
+    @apply text-lg font-bold text-white mb-2;
+  }
+
+  .capability-card p {
+    @apply text-white/60 text-sm leading-relaxed;
+  }
+
+  /* ========================================
+     Funding Tiers
+     ======================================== */
+  .tiers-grid {
+    @apply grid md:grid-cols-3 gap-6 max-w-5xl mx-auto;
+  }
+
+  .tier-card {
+    @apply bg-surface-card border border-line rounded-2xl overflow-hidden;
+    @apply transition-all duration-300;
+  }
+
+  .tier-card:hover {
+    @apply -translate-y-1;
+    border-color: rgba(56, 189, 248, 0.4);
+    box-shadow: 0 15px 30px -10px rgba(0, 0, 0, 0.3);
+  }
+
+  .tier-featured {
+    @apply relative border-accent/50;
+    box-shadow: 0 0 30px rgba(56, 189, 248, 0.15);
+  }
+
+  .tier-badge {
+    @apply absolute top-0 right-0 px-3 py-1;
+    @apply bg-accent text-navy-deep text-xs font-bold;
+    @apply rounded-bl-xl;
+  }
+
+  .tier-header {
+    @apply p-6 text-center border-b border-line/50;
+  }
+
+  .tier-range {
+    @apply block text-3xl font-black text-accent mb-1;
+  }
+
+  .tier-label {
+    @apply text-xl font-bold text-ink mb-2;
+  }
+
+  .tier-description {
+    @apply text-sm text-muted;
+  }
+
+  .tier-body {
+    @apply p-6;
+  }
+
+  .tier-body h4 {
+    @apply text-sm font-bold text-muted uppercase tracking-wider mb-4;
+  }
+
+  .tier-outputs {
+    @apply space-y-3 mb-6;
+  }
+
+  .tier-outputs li {
+    @apply flex items-start gap-2.5 text-sm text-ink;
+  }
+
+  .tier-examples {
+    @apply text-xs text-muted pt-4 border-t border-line/50;
+  }
+
+  .tier-examples strong {
+    @apply text-muted;
+  }
+
+  /* ========================================
+     Partners Grid
+     ======================================== */
+  .partners-grid {
+    @apply flex flex-wrap justify-center gap-4 max-w-4xl mx-auto;
+  }
+
+  .partner-item {
+    @apply px-5 py-3 rounded-xl;
+    @apply bg-surface-card/50 border border-line/50;
+    @apply text-sm text-muted font-medium;
+    @apply transition-all duration-200;
+  }
+
+  .partner-item:hover {
+    @apply border-accent/30 text-ink;
+  }
+
+  /* ========================================
+     CTA Section
+     ======================================== */
+  .funder-cta {
+    @apply flex flex-col lg:flex-row gap-10 lg:gap-16 items-center;
+    @apply p-8 md:p-12 lg:p-16 rounded-3xl;
+    @apply bg-gradient-to-br from-accent/10 via-accent/5 to-accent-2/10;
+    @apply border border-accent/20;
+    @apply relative overflow-hidden;
+  }
+
+  .funder-cta::before {
+    content: '';
+    @apply absolute inset-0 opacity-30;
+    background: radial-gradient(circle at top right, rgba(56, 189, 248, 0.15), transparent 50%),
+                radial-gradient(circle at bottom left, rgba(45, 212, 191, 0.15), transparent 50%);
+  }
+
+  .funder-cta-content {
+    @apply relative z-10 flex-1;
+  }
+
+  .funder-cta-image {
+    @apply relative z-10 w-full lg:w-2/5 aspect-video rounded-2xl overflow-hidden;
+    @apply border border-white/10;
+  }
+
+  .funder-cta-image img {
+    @apply w-full h-full object-cover;
+    @apply transition-transform duration-500;
+  }
+
+  .funder-cta:hover .funder-cta-image img {
+    @apply scale-105;
+  }
+
+  /* ========================================
+     Reduced Motion
+     ======================================== */
+  @media (prefers-reduced-motion: reduce) {
+    .hero-badge,
+    .hero-title,
+    .hero-description,
+    .hero-outcomes,
+    .hero-cta,
+    .gradient-text,
+    .blob {
+      animation: none;
+      opacity: 1;
+    }
+
+    .tier-card,
+    .capability-card,
+    .partner-item,
+    .funder-cta-image img {
+      transition: none;
+    }
+  }
+</style>
+
+<script>
+  // Parallax effect for hero
+  const initParallax = () => {
+    const parallaxBg = document.querySelector('.parallax-bg') as HTMLElement;
+    if (!parallaxBg) return;
+
+    let ticking = false;
+
+    const handleScroll = () => {
+      if (!ticking) {
+        requestAnimationFrame(() => {
+          const scrolled = window.scrollY;
+          const rate = scrolled * 0.3;
+          parallaxBg.style.transform = `translateY(${rate}px)`;
+          ticking = false;
+        });
+        ticking = true;
+      }
+    };
+
+    if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      window.addEventListener('scroll', handleScroll, { passive: true });
+    }
+  };
+
+  initParallax();
+  document.addEventListener('astro:after-swap', initParallax);
+</script>
