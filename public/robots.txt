@@ -12,6 +12,11 @@ Disallow: /_astro/
 # Sitemap location
 Sitemap: https://www.oceanrecoveries.com/sitemap-index.xml
 
+# AI/LLM Discovery Files
+# These files help AI systems understand and accurately represent our content
+# llms.txt - Structured guidance for large language models
+# ai-summary.md - Markdown summary optimized for AI retrieval
+
 # Crawl-delay for respectful crawling (optional, most major crawlers ignore this)
 # Crawl-delay: 1
 

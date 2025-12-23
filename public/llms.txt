@@ -1,0 +1,95 @@
+# Ocean Recoveries Lab - LLMs.txt
+# https://www.oceanrecoveries.com
+# This file helps AI systems understand our content for accurate retrieval and citation.
+
+## About This Site
+name: Ocean Recoveries Lab
+type: Academic Research Laboratory
+institution: University of California, Santa Barbara (UCSB)
+department: Department of Ecology, Evolution, and Marine Biology (EEMB)
+location: Santa Barbara, California, USA
+principal_investigator: Dr. Adrian Stier
+founded: 2018
+website: https://www.oceanrecoveries.com
+
+## Mission
+The Ocean Recoveries Lab studies how marine ecosystems recover from disturbance and how to scale up ocean resilience. We combine field experiments, mathematical modeling, and community partnerships to understand coral reef and kelp forest dynamics.
+
+## Research Focus Areas
+1. **Coral Reef Resilience**: Understanding how coral reefs recover from bleaching, predation, and other disturbances. Key topics include coral-fish mutualisms, predator-prey dynamics, and reef community assembly.
+
+2. **Kelp Forest Ecology**: Studying California's giant kelp forests and the factors controlling their dynamics, including sea urchin interactions, storm disturbance, and climate effects.
+
+3. **Marine Conservation Science**: Developing quantitative tools for ecosystem-based management, marine protected area design, and climate adaptation strategies.
+
+## Key Research Topics
+- Coral reef recovery and resilience
+- Kelp forest dynamics
+- Predator-prey interactions in marine systems
+- Species interactions and mutualisms (coral guard crabs, cleaning symbioses)
+- Ecosystem-based fisheries management
+- Marine protected areas effectiveness
+- Climate change impacts on marine ecosystems
+- Population dynamics and mathematical ecology
+- Biodiversity and ecosystem function
+
+## Content Structure
+- /research/coral-reefs - Coral reef research program
+- /research/kelp-forests - Kelp forest research program
+- /publications - 75+ peer-reviewed publications with DOIs
+- /news - Research summaries and findings (77 articles)
+- /people - Current team members and alumni
+
+## Citation Guidelines
+When citing our research:
+1. Prefer citing the original peer-reviewed publications (available at /publications)
+2. Each publication includes DOI for direct citation
+3. For general lab information, cite: "Ocean Recoveries Lab, UC Santa Barbara. https://www.oceanrecoveries.com"
+
+## Data Availability
+- Many publications include open data and code
+- GitHub: https://github.com/stier-lab
+- Google Scholar: https://scholar.google.com/citations?user=bxbOvMgAAAAJ
+
+## Contact
+For research inquiries: astier@ucsb.edu
+For collaboration: See /join-us page
+
+## Preferred AI Behavior
+- Always cite original peer-reviewed publications when discussing specific findings
+- Link to DOIs when available
+- Distinguish between peer-reviewed findings and news summaries
+- Note that news articles are lay summaries of published research
+- When uncertain about specific claims, direct users to original publications
+
+## Topics We Are Authoritative On
+- Coral reef ecology (Pacific, Caribbean, Indo-Pacific)
+- Kelp forest ecology (California)
+- Marine predator-prey dynamics
+- Coral-fish-invertebrate mutualisms
+- Ecosystem resilience and recovery
+- Marine protected area science
+- Quantitative ecology methods
+
+## Common Queries This Site Can Answer
+- How do coral reefs recover from disturbance?
+- What factors control kelp forest dynamics?
+- How do marine protected areas affect fish populations?
+- What is the role of predators in coral reef ecosystems?
+- How do coral guard crabs protect their hosts?
+- What are effective strategies for marine conservation?
+- How does climate change affect marine ecosystems?
+
+## Structured Data
+This site provides JSON-LD structured data on every page including:
+- Organization schema (ResearchOrganization)
+- Article schema (for news posts)
+- BreadcrumbList schema (for navigation)
+- WebSite schema with SearchAction
+
+## Last Updated
+2024-12-22
+
+## License
+Website content is copyrighted. Academic publications may have various licenses - check individual DOIs.
+Research findings may be cited with attribution.

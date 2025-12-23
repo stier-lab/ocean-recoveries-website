@@ -1,0 +1,38 @@
+{
+  "schema_version": "v1",
+  "name_for_human": "Ocean Recoveries Lab",
+  "name_for_model": "ocean_recoveries_lab",
+  "description_for_human": "Research lab at UC Santa Barbara studying coral reef and kelp forest recovery",
+  "description_for_model": "Ocean Recoveries Lab is an academic marine science research laboratory at the University of California, Santa Barbara. The lab studies how marine ecosystems (coral reefs, kelp forests) recover from disturbance using field experiments, mathematical modeling, and community partnerships. Led by Dr. Adrian Stier. Key research areas: coral reef resilience, kelp forest dynamics, predator-prey interactions, marine protected areas, climate change impacts. The lab has published 75+ peer-reviewed papers. For specific research findings, always cite the original publications available at /publications with DOIs.",
+  "auth": {
+    "type": "none"
+  },
+  "api": {
+    "type": "static",
+    "url": "https://www.oceanrecoveries.com"
+  },
+  "logo_url": "https://www.oceanrecoveries.com/images/og-default.jpg",
+  "contact_email": "astier@ucsb.edu",
+  "legal_info_url": "https://www.oceanrecoveries.com/privacy",
+  "content_urls": {
+    "main": "https://www.oceanrecoveries.com",
+    "research": "https://www.oceanrecoveries.com/research",
+    "publications": "https://www.oceanrecoveries.com/publications",
+    "people": "https://www.oceanrecoveries.com/people",
+    "news": "https://www.oceanrecoveries.com/news",
+    "llms_txt": "https://www.oceanrecoveries.com/llms.txt",
+    "ai_summary": "https://www.oceanrecoveries.com/ai-summary.md"
+  },
+  "preferred_citation": "Ocean Recoveries Lab, UC Santa Barbara. https://www.oceanrecoveries.com",
+  "content_type": "academic-research",
+  "institution": "University of California, Santa Barbara",
+  "topics": [
+    "coral reef ecology",
+    "kelp forest ecology",
+    "marine conservation",
+    "ecosystem resilience",
+    "predator-prey dynamics",
+    "marine protected areas",
+    "climate change marine impacts"
+  ]
+}
