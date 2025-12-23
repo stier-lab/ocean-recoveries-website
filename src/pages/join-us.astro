@@ -161,33 +161,236 @@ const recruitmentStatus = {
         </div>
       </div>
 
-      <!-- Strong Fit Section -->
-      <div class="fit-section scroll-reveal">
-        <h3 class="fit-title">We're a strong fit if you…</h3>
-        <div class="fit-grid">
-          <div class="fit-item">
-            <svg class="w-5 h-5 text-accent-2" fill="currentColor" viewBox="0 0 20 20">
-              <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+      <!-- Interactive Find Your Fit Quiz -->
+      <div class="quiz-section scroll-reveal" id="find-your-fit">
+        <div class="quiz-header">
+          <div class="quiz-icon">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
             </svg>
-            <span>Thrive at the intersection of organismal and ecosystem ecology</span>
           </div>
-          <div class="fit-item">
-            <svg class="w-5 h-5 text-accent-2" fill="currentColor" viewBox="0 0 20 20">
-              <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
-            </svg>
-            <span>Enjoy connecting field experiments to quantitative models</span>
+          <h3 class="quiz-title">Find Your Fit</h3>
+          <p class="quiz-subtitle">Answer a few questions to discover which role might be right for you</p>
+        </div>
+
+        <!-- Quiz Container -->
+        <div class="quiz-container" id="quiz-container">
+          <!-- Question 1 -->
+          <div class="quiz-question active" data-question="1">
+            <div class="question-progress">
+              <span class="progress-text">Question 1 of 4</span>
+              <div class="progress-bar">
+                <div class="progress-fill" style="width: 25%"></div>
+              </div>
+            </div>
+            <h4 class="question-text">What's your current academic stage?</h4>
+            <div class="quiz-options">
+              <button class="quiz-option" data-value="undergrad" data-next="2">
+                <span class="option-icon">
+                  <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+                  </svg>
+                </span>
+                <span class="option-label">Undergraduate student</span>
+              </button>
+              <button class="quiz-option" data-value="grad-seeking" data-next="2">
+                <span class="option-icon">
+                  <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
+                  </svg>
+                </span>
+                <span class="option-label">Seeking graduate school (MS/PhD)</span>
+              </button>
+              <button class="quiz-option" data-value="phd-complete" data-next="2">
+                <span class="option-icon">
+                  <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z" />
+                  </svg>
+                </span>
+                <span class="option-label">Completed or finishing PhD</span>
+              </button>
+            </div>
           </div>
-          <div class="fit-item">
-            <svg class="w-5 h-5 text-accent-2" fill="currentColor" viewBox="0 0 20 20">
-              <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
-            </svg>
-            <span>Are passionate about decision-relevant science for restoration</span>
+
+          <!-- Question 2 -->
+          <div class="quiz-question" data-question="2">
+            <div class="question-progress">
+              <span class="progress-text">Question 2 of 4</span>
+              <div class="progress-bar">
+                <div class="progress-fill" style="width: 50%"></div>
+              </div>
+            </div>
+            <h4 class="question-text">What type of work excites you most?</h4>
+            <div class="quiz-options">
+              <button class="quiz-option" data-value="field" data-next="3">
+                <span class="option-icon">
+                  <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                  </svg>
+                </span>
+                <span class="option-label">Field work & data collection</span>
+              </button>
+              <button class="quiz-option" data-value="quant" data-next="3">
+                <span class="option-icon">
+                  <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z" />
+                  </svg>
+                </span>
+                <span class="option-label">Quantitative analysis & modeling</span>
+              </button>
+              <button class="quiz-option" data-value="both" data-next="3">
+                <span class="option-icon">
+                  <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
+                  </svg>
+                </span>
+                <span class="option-label">Both field and analytical work</span>
+              </button>
+            </div>
+            <button class="quiz-back" data-back="1">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+              </svg>
+              Back
+            </button>
           </div>
-          <div class="fit-item">
-            <svg class="w-5 h-5 text-accent-2" fill="currentColor" viewBox="0 0 20 20">
-              <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
-            </svg>
-            <span>Value collaborative, interdisciplinary teamwork</span>
+
+          <!-- Question 3 -->
+          <div class="quiz-question" data-question="3">
+            <div class="question-progress">
+              <span class="progress-text">Question 3 of 4</span>
+              <div class="progress-bar">
+                <div class="progress-fill" style="width: 75%"></div>
+              </div>
+            </div>
+            <h4 class="question-text">How much research experience do you have?</h4>
+            <div class="quiz-options">
+              <button class="quiz-option" data-value="none" data-next="4">
+                <span class="option-icon">
+                  <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
+                  </svg>
+                </span>
+                <span class="option-label">Just getting started</span>
+              </button>
+              <button class="quiz-option" data-value="some" data-next="4">
+                <span class="option-icon">
+                  <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
+                  </svg>
+                </span>
+                <span class="option-label">Some lab or field experience</span>
+              </button>
+              <button class="quiz-option" data-value="extensive" data-next="4">
+                <span class="option-icon">
+                  <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                  </svg>
+                </span>
+                <span class="option-label">Published papers or led projects</span>
+              </button>
+            </div>
+            <button class="quiz-back" data-back="2">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+              </svg>
+              Back
+            </button>
+          </div>
+
+          <!-- Question 4 -->
+          <div class="quiz-question" data-question="4">
+            <div class="question-progress">
+              <span class="progress-text">Question 4 of 4</span>
+              <div class="progress-bar">
+                <div class="progress-fill" style="width: 100%"></div>
+              </div>
+            </div>
+            <h4 class="question-text">What's your primary goal?</h4>
+            <div class="quiz-options">
+              <button class="quiz-option" data-value="explore" data-next="result">
+                <span class="option-icon">
+                  <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                  </svg>
+                </span>
+                <span class="option-label">Explore research as a career option</span>
+              </button>
+              <button class="quiz-option" data-value="develop" data-next="result">
+                <span class="option-icon">
+                  <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z" />
+                  </svg>
+                </span>
+                <span class="option-label">Develop my own research program</span>
+              </button>
+              <button class="quiz-option" data-value="lead" data-next="result">
+                <span class="option-icon">
+                  <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
+                  </svg>
+                </span>
+                <span class="option-label">Lead multi-site research & mentor others</span>
+              </button>
+            </div>
+            <button class="quiz-back" data-back="3">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+              </svg>
+              Back
+            </button>
+          </div>
+
+          <!-- Results -->
+          <div class="quiz-result" id="quiz-result">
+            <div class="result-icon">
+              <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+              </svg>
+            </div>
+            <h4 class="result-title">Your Best Fit:</h4>
+            <div class="result-role" id="result-role">Graduate Student (MS/PhD)</div>
+            <p class="result-description" id="result-description">Based on your answers, you'd be a great fit for our graduate program.</p>
+            <div class="result-actions">
+              <a href="#opportunities" class="btn btn-primary btn-sm">View Position Details</a>
+              <button class="btn btn-ghost btn-sm quiz-restart" id="quiz-restart">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
+                </svg>
+                Retake Quiz
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Fit Checklist (always visible below quiz) -->
+        <div class="fit-checklist">
+          <h4 class="fit-checklist-title">We're a strong fit if you…</h4>
+          <div class="fit-grid">
+            <div class="fit-item">
+              <svg class="w-5 h-5 text-accent-2" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+              </svg>
+              <span>Thrive at the intersection of organismal and ecosystem ecology</span>
+            </div>
+            <div class="fit-item">
+              <svg class="w-5 h-5 text-accent-2" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+              </svg>
+              <span>Enjoy connecting field experiments to quantitative models</span>
+            </div>
+            <div class="fit-item">
+              <svg class="w-5 h-5 text-accent-2" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+              </svg>
+              <span>Are passionate about decision-relevant science for restoration</span>
+            </div>
+            <div class="fit-item">
+              <svg class="w-5 h-5 text-accent-2" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+              </svg>
+              <span>Value collaborative, interdisciplinary teamwork</span>
+            </div>
           </div>
         </div>
       </div>
@@ -881,22 +1084,196 @@ const recruitmentStatus = {
   }
 
   /* ========================================
-     Strong Fit Section
+     Find Your Fit Quiz
      ======================================== */
-  .fit-section {
-    @apply bg-surface-card border border-line rounded-2xl p-8 max-w-3xl mx-auto;
+  .quiz-section {
+    @apply bg-surface-card border border-line rounded-2xl p-6 md:p-8 max-w-3xl mx-auto;
   }
 
-  .fit-title {
-    @apply text-xl font-bold text-ink mb-6 text-center;
+  .quiz-header {
+    @apply text-center mb-6;
+  }
+
+  .quiz-icon {
+    @apply w-14 h-14 rounded-xl mx-auto mb-4;
+    @apply bg-gradient-to-br from-accent/20 to-accent-2/20;
+    @apply text-accent flex items-center justify-center;
+    animation: quiz-icon-pulse 3s ease-in-out infinite;
+  }
+
+  @keyframes quiz-icon-pulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+  }
+
+  .quiz-title {
+    @apply text-xl font-bold text-ink mb-2;
+  }
+
+  .quiz-subtitle {
+    @apply text-sm text-muted;
+  }
+
+  .quiz-container {
+    @apply relative overflow-hidden;
+    min-height: 320px;
+  }
+
+  .quiz-question {
+    @apply absolute inset-0 p-2;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateX(30px);
+    transition: all 0.4s ease;
+  }
+
+  .quiz-question.active {
+    @apply relative;
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(0);
+  }
+
+  .quiz-question.exiting {
+    opacity: 0;
+    transform: translateX(-30px);
+  }
+
+  .question-progress {
+    @apply mb-5;
+  }
+
+  .progress-text {
+    @apply text-xs text-muted mb-2 block;
+  }
+
+  .progress-bar {
+    @apply h-1.5 bg-surface rounded-full overflow-hidden;
+  }
+
+  .progress-fill {
+    @apply h-full bg-gradient-to-r from-accent to-accent-2 rounded-full;
+    transition: width 0.5s ease;
+  }
+
+  .question-text {
+    @apply text-lg font-bold text-ink mb-5;
+  }
+
+  .quiz-options {
+    @apply space-y-3;
+  }
+
+  .quiz-option {
+    @apply w-full flex items-center gap-4 p-4 rounded-xl;
+    @apply bg-surface border border-line;
+    @apply text-left cursor-pointer;
+    @apply transition-all duration-300;
+  }
+
+  .quiz-option:hover {
+    @apply border-accent/50 -translate-y-0.5;
+    box-shadow: 0 8px 20px -8px rgba(56, 189, 248, 0.2);
+  }
+
+  .quiz-option:focus {
+    @apply outline-none ring-2 ring-accent ring-offset-2 ring-offset-surface-card;
+  }
+
+  .quiz-option.selected {
+    @apply border-accent bg-accent/10;
+  }
+
+  .option-icon {
+    @apply w-10 h-10 rounded-lg flex-shrink-0;
+    @apply bg-accent/20 text-accent;
+    @apply flex items-center justify-center;
+    @apply transition-all duration-300;
+  }
+
+  .quiz-option:hover .option-icon {
+    @apply bg-accent/30 scale-110;
+  }
+
+  .option-label {
+    @apply text-sm font-medium text-ink;
+  }
+
+  .quiz-back {
+    @apply inline-flex items-center gap-2 mt-5 text-sm text-muted;
+    @apply hover:text-accent transition-colors;
+    @apply cursor-pointer bg-transparent border-none;
+  }
+
+  /* Quiz Result */
+  .quiz-result {
+    @apply absolute inset-0 p-2;
+    @apply flex flex-col items-center justify-center text-center;
+    opacity: 0;
+    visibility: hidden;
+    transform: scale(0.95);
+    transition: all 0.5s ease;
+  }
+
+  .quiz-result.active {
+    @apply relative;
+    opacity: 1;
+    visibility: visible;
+    transform: scale(1);
+  }
+
+  .result-icon {
+    @apply w-16 h-16 rounded-full mb-4;
+    @apply bg-gradient-to-br from-accent/20 to-accent-2/20;
+    @apply text-accent flex items-center justify-center;
+    animation: result-pop 0.5s ease-out;
+  }
+
+  @keyframes result-pop {
+    0% { transform: scale(0); opacity: 0; }
+    50% { transform: scale(1.2); }
+    100% { transform: scale(1); opacity: 1; }
+  }
+
+  .result-title {
+    @apply text-sm text-muted mb-2;
+  }
+
+  .result-role {
+    @apply text-2xl font-black text-ink mb-3;
+    background: linear-gradient(135deg, #38bdf8 0%, #2dd4bf 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .result-description {
+    @apply text-sm text-muted mb-6 max-w-sm;
+  }
+
+  .result-actions {
+    @apply flex flex-col sm:flex-row gap-3 justify-center;
+  }
+
+  .quiz-restart {
+    @apply inline-flex items-center gap-2;
+  }
+
+  /* Fit Checklist */
+  .fit-checklist {
+    @apply mt-8 pt-6 border-t border-line;
+  }
+
+  .fit-checklist-title {
+    @apply text-base font-bold text-ink mb-4 text-center;
   }
 
   .fit-grid {
-    @apply grid sm:grid-cols-2 gap-4;
+    @apply grid sm:grid-cols-2 gap-3;
   }
 
   .fit-item {
-    @apply flex items-start gap-3 text-muted;
+    @apply flex items-start gap-3 text-sm text-muted;
   }
 
   .fit-item svg {
@@ -1358,10 +1735,24 @@ const recruitmentStatus = {
     .why-icon,
     .stat-item,
     .lter-item,
-    .lter-item img {
+    .lter-item img,
+    .quiz-icon,
+    .quiz-question,
+    .quiz-result,
+    .quiz-option,
+    .result-icon,
+    .progress-fill {
       animation: none !important;
       transition: none !important;
       opacity: 1;
+    }
+
+    .quiz-question {
+      transform: none !important;
+    }
+
+    .quiz-result {
+      transform: none !important;
     }
   }
 </style>
@@ -1391,9 +1782,153 @@ const recruitmentStatus = {
     }
   };
 
+  // Find Your Fit Quiz
+  const initQuiz = () => {
+    const quizContainer = document.getElementById('quiz-container');
+    const quizResult = document.getElementById('quiz-result');
+    const resultRole = document.getElementById('result-role');
+    const resultDescription = document.getElementById('result-description');
+    const restartBtn = document.getElementById('quiz-restart');
+
+    if (!quizContainer) return;
+
+    // Store answers
+    const answers: Record<string, string> = {};
+
+    // Role recommendations based on answers
+    const determineRole = () => {
+      const stage = answers['1'];
+      const goal = answers['4'];
+      const experience = answers['3'];
+
+      // Postdoc: PhD complete + lead/develop + extensive experience
+      if (stage === 'phd-complete' || (goal === 'lead' && experience === 'extensive')) {
+        return {
+          role: 'Postdoctoral Researcher',
+          description: 'With your advanced experience and leadership goals, our postdoc positions offer opportunities to lead multi-site experiments and develop your independent research program.'
+        };
+      }
+
+      // Graduate: seeking grad school OR develop own program OR some experience
+      if (stage === 'grad-seeking' || goal === 'develop' || (experience === 'some' && stage !== 'undergrad')) {
+        return {
+          role: 'Graduate Student (MS/PhD)',
+          description: 'Your interests align perfectly with our graduate program, where you can develop your research skills through field experiments, quantitative modeling, and synthesis.'
+        };
+      }
+
+      // Undergraduate: default for undergrads or those exploring
+      return {
+        role: 'Undergraduate Researcher',
+        description: 'Our undergraduate program is perfect for exploring marine research. You will gain hands-on experience with field surveys, data analysis, and contribute to real publications.'
+      };
+    };
+
+    // Show question
+    const showQuestion = (num: string | number) => {
+      const questions = quizContainer.querySelectorAll('.quiz-question');
+      const currentActive = quizContainer.querySelector('.quiz-question.active');
+
+      if (currentActive) {
+        currentActive.classList.add('exiting');
+        currentActive.classList.remove('active');
+      }
+
+      setTimeout(() => {
+        questions.forEach(q => {
+          q.classList.remove('active', 'exiting');
+        });
+
+        if (num === 'result') {
+          // Show result
+          const recommendation = determineRole();
+          if (resultRole) resultRole.textContent = recommendation.role;
+          if (resultDescription) resultDescription.textContent = recommendation.description;
+          quizResult?.classList.add('active');
+        } else {
+          const nextQ = quizContainer.querySelector(`[data-question="${num}"]`);
+          nextQ?.classList.add('active');
+        }
+      }, 200);
+    };
+
+    // Handle option clicks
+    const options = quizContainer.querySelectorAll('.quiz-option');
+    options.forEach(option => {
+      option.addEventListener('click', () => {
+        const btn = option as HTMLButtonElement;
+        const value = btn.dataset.value;
+        const next = btn.dataset.next;
+        const question = btn.closest('.quiz-question');
+        const questionNum = question?.getAttribute('data-question');
+
+        if (questionNum && value) {
+          answers[questionNum] = value;
+        }
+
+        // Mark as selected briefly
+        btn.classList.add('selected');
+        setTimeout(() => {
+          btn.classList.remove('selected');
+        }, 300);
+
+        // Go to next question
+        if (next) {
+          setTimeout(() => showQuestion(next), 150);
+        }
+      });
+    });
+
+    // Handle back buttons
+    const backBtns = quizContainer.querySelectorAll('.quiz-back');
+    backBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        const backTo = (btn as HTMLButtonElement).dataset.back;
+        if (backTo) {
+          // Reverse the animation direction for going back
+          const currentActive = quizContainer.querySelector('.quiz-question.active');
+          if (currentActive) {
+            currentActive.classList.remove('active');
+            currentActive.classList.add('exiting');
+            (currentActive as HTMLElement).style.transform = 'translateX(30px)';
+          }
+
+          setTimeout(() => {
+            quizContainer.querySelectorAll('.quiz-question').forEach(q => {
+              q.classList.remove('active', 'exiting');
+              (q as HTMLElement).style.transform = '';
+            });
+            const prevQ = quizContainer.querySelector(`[data-question="${backTo}"]`);
+            if (prevQ) {
+              (prevQ as HTMLElement).style.transform = 'translateX(-30px)';
+              prevQ.classList.add('active');
+              setTimeout(() => {
+                (prevQ as HTMLElement).style.transform = '';
+              }, 50);
+            }
+          }, 200);
+        }
+      });
+    });
+
+    // Handle restart
+    restartBtn?.addEventListener('click', () => {
+      // Clear answers
+      Object.keys(answers).forEach(key => delete answers[key]);
+
+      // Reset to question 1
+      quizResult?.classList.remove('active');
+      showQuestion(1);
+    });
+  };
+
   // Initialize
   initParallax();
+  initQuiz();
 
   // Re-init after view transitions
-  document.addEventListener('astro:after-swap', initParallax);
+  document.addEventListener('astro:after-swap', () => {
+    initParallax();
+    initQuiz();
+  });
 </script>
