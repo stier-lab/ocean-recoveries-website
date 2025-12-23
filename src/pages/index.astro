@@ -65,13 +65,24 @@ const formatDate = (dateStr: string) => {
         <span class="text-white block">Lab</span>
       </h1>
 
-      <p class="hero-tagline text-xl md:text-2xl lg:text-3xl font-medium text-white mb-8 opacity-0 max-w-3xl mx-auto leading-relaxed">
-        Coral reefs are collapsing. Some are coming back. We study why.
+      <!-- The Paradox -->
+      <p class="hero-paradox text-lg md:text-xl lg:text-2xl font-medium text-white/90 mb-6 opacity-0 max-w-3xl mx-auto leading-relaxed">
+        Recovery efforts fail. Healthy ecosystems collapse without warning. Despite decades of research, we still don't understand how natural systems resist and recover from shocks.
+      </p>
+
+      <!-- The Central Question -->
+      <p class="hero-question text-xl md:text-2xl lg:text-3xl font-bold text-white mb-6 opacity-0 max-w-3xl mx-auto leading-relaxed">
+        How can we engineer ecosystem resilience in a rapidly changing world?
+      </p>
+
+      <!-- Lab Subhead -->
+      <p class="hero-subhead text-base md:text-lg text-white/70 mb-8 opacity-0 max-w-2xl mx-auto leading-relaxed">
+        The Ocean Recoveries Lab at UC Santa Barbara—field experiments, models, and partnerships to find out.
       </p>
 
       <div class="hero-cta flex flex-col sm:flex-row gap-4 justify-center opacity-0">
-        <a href="#question" class="btn btn-primary btn-lg magnetic-btn group">
-          <span>The Question We're Asking</span>
+        <a href="#complexity" class="btn btn-primary btn-lg magnetic-btn group">
+          <span>Why This Is Hard</span>
           <svg class="w-5 h-5 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
           </svg>
@@ -86,22 +97,25 @@ const formatDate = (dateStr: string) => {
     <WaveDivider id="hero-wave" fillColor="surface" />
   </section>
 
-  <!-- The Driving Question -->
-  <section id="question" class="section bg-surface relative scroll-mt-20">
+  <!-- Embracing Complexity -->
+  <section id="complexity" class="section bg-surface relative scroll-mt-20">
     <div class="container">
       <div class="max-w-3xl mx-auto text-center scroll-reveal">
-        <span class="eyebrow">The Central Question</span>
-        <h2 class="mb-6">What makes an ecosystem bounce back?</h2>
+        <span class="eyebrow">Embracing Complexity</span>
+        <h2 class="mb-6">Why this problem is hard</h2>
         <p class="text-lg md:text-xl text-muted leading-relaxed mb-6">
-          After a cyclone flattens a reef or a marine heatwave wipes out a kelp forest, some systems recover within years. Others never do. The difference isn't random—it's driven by species interactions, environmental legacies, and management decisions we're only beginning to understand.
+          Climate is remodeling environments faster than species can adapt. Species are reorganizing into novel communities we've never seen before. The equilibria we built our predictions on are shifting beneath our feet.
+        </p>
+        <p class="text-lg text-muted leading-relaxed mb-6">
+          Simple models—"protect more area," "remove the predator"—often fail because they ignore the web of interactions that actually drives recovery. A reef doesn't bounce back because you replant coral. It bounces back when the crabs, fish, and algae all reassemble in the right configuration.
         </p>
         <p class="text-lg text-muted leading-relaxed">
-          We run field experiments and build models to identify the mechanisms that tip an ecosystem toward recovery or collapse. Then we work with managers to translate those findings into action.
+          We're building the science to understand these configurations—and the tools to engineer them.
         </p>
       </div>
     </div>
 
-    <WaveDivider id="question-wave" fillColor="navy-deep" />
+    <WaveDivider id="complexity-wave" fillColor="navy-deep" />
   </section>
 
   <!-- Two Natural Experiments -->
@@ -141,8 +155,8 @@ const formatDate = (dateStr: string) => {
               <span>Mo'orea, French Polynesia</span>
             </div>
             <h3 class="experiment-title">Coral Reefs</h3>
-            <p class="experiment-question">Can coral recover from crown-of-thorns outbreaks and cyclones—and what role do fish and crabs play?</p>
-            <p class="experiment-finding">After a 2010 cyclone destroyed 99% of coral cover, we're tracking how mutualist species like guard crabs and damselfish accelerate or hinder recovery.</p>
+            <p class="experiment-question">How do coral communities reassemble after catastrophic disturbance—and can we predict which configurations persist?</p>
+            <p class="experiment-finding">We study wound healing, gene expression, and species partnerships to understand why some coral assemblages recover while others collapse into algae.</p>
             <div class="experiment-link">
               <span>Explore this system</span>
               <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -166,8 +180,8 @@ const formatDate = (dateStr: string) => {
               <span>Santa Barbara, California</span>
             </div>
             <h3 class="experiment-title">Kelp Forests</h3>
-            <p class="experiment-question">Do marine protected areas actually help kelp forests recover—and can lobsters control urchin outbreaks?</p>
-            <p class="experiment-finding">With 10+ years of data before and after MPA implementation, we're testing whether protection delivers promised benefits to fisheries and ecosystems.</p>
+            <p class="experiment-question">Does protection actually accelerate recovery—or do predator-prey dynamics and foundation species stability matter more?</p>
+            <p class="experiment-finding">California's MPA network is a 15-year natural experiment. We're using it to test whether protection delivers what managers expect.</p>
             <div class="experiment-link">
               <span>Explore this system</span>
               <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -350,9 +364,12 @@ const formatDate = (dateStr: string) => {
       <!-- Vision Statement -->
       <div class="max-w-3xl mx-auto text-center mb-16 scroll-reveal">
         <span class="eyebrow text-accent-2">Where We're Headed</span>
-        <h2 class="text-white mb-6">A future where recovery is the rule, not the exception</h2>
+        <h2 class="text-white mb-6">From understanding to engineering</h2>
+        <p class="text-lg text-white/60 leading-relaxed mb-4">
+          We're not content to describe what's happening. We want to build the predictive tools that let managers intervene before collapse—and design restorations that succeed because they work with ecological complexity, not against it.
+        </p>
         <p class="text-lg text-white/60 leading-relaxed">
-          We're working toward a world where managers have the tools to predict which ecosystems will bounce back and which need intervention—and where restoration efforts are designed around the species partnerships that actually drive recovery. The science is getting there. We want to help it arrive in time.
+          The science isn't there yet. But the pieces are coming together. And the urgency is clear.
         </p>
       </div>
 
@@ -566,13 +583,28 @@ const formatDate = (dateStr: string) => {
     text-shadow: 0 2px 16px rgba(0, 0, 0, 0.3);
   }
 
+  .hero-paradox {
+    animation: fadeUp 0.8s ease-out 0.35s forwards;
+    text-shadow: 0 2px 16px rgba(0, 0, 0, 0.3);
+  }
+
+  .hero-question {
+    animation: fadeUp 0.8s ease-out 0.5s forwards;
+    text-shadow: 0 2px 16px rgba(0, 0, 0, 0.3);
+  }
+
+  .hero-subhead {
+    animation: fadeUp 0.8s ease-out 0.65s forwards;
+    text-shadow: 0 1px 8px rgba(0, 0, 0, 0.2);
+  }
+
   .hero-description {
     animation: fadeUp 0.8s ease-out 0.5s forwards;
     text-shadow: 0 1px 8px rgba(0, 0, 0, 0.2);
   }
 
   .hero-cta {
-    animation: fadeUp 0.8s ease-out 0.65s forwards;
+    animation: fadeUp 0.8s ease-out 0.8s forwards;
   }
 
   /* Hero PI Card */
@@ -1334,6 +1366,9 @@ const formatDate = (dateStr: string) => {
     .hero-badge,
     .hero-title,
     .hero-tagline,
+    .hero-paradox,
+    .hero-question,
+    .hero-subhead,
     .hero-description,
     .hero-cta,
     .gradient-text {

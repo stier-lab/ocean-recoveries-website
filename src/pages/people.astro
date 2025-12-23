@@ -3,9 +3,20 @@ import Layout from '@layouts/Layout.astro';
 import PersonCard from '@components/people/PersonCard.astro';
 import BreadcrumbSchema from '@components/seo/BreadcrumbSchema.astro';
 import { currentTeam, alumni } from '@data/team';
+import { publications } from '@data/publications';
+import { posts } from '@data/posts';
+import { enrichPublicationsWithImages } from '@utils/publicationImages';
 
 // Sort team by order
 const sortedTeam = [...currentTeam].sort((a, b) => a.order - b.order);
+
+// Get recent publications with news posts (last 3 years, sorted by year)
+const recentYear = new Date().getFullYear() - 3;
+const enrichedPubs = enrichPublicationsWithImages(publications, posts);
+const recentPubsWithNews = enrichedPubs
+  .filter(pub => pub.year >= recentYear && pub.newsSlug)
+  .sort((a, b) => b.year - a.year)
+  .slice(0, 6);
 
 // Role labels for display
 const roleLabels: Record<string, string> = {
@@ -97,8 +108,55 @@ const roles = ['pi', 'postdoc', 'phd', 'manager', 'undergrad'].filter(
     </div>
   </section>
 
+  <!-- Recent Research -->
+  {recentPubsWithNews.length > 0 && (
+    <section class="section bg-navy-highlight">
+      <div class="container">
+        <div class="text-center mb-10 scroll-reveal">
+          <span class="eyebrow">What We're Working On</span>
+          <h2>Recent Research</h2>
+          <p class="text-muted max-w-2xl mx-auto mt-2">
+            Explore our latest publications with accessible summaries written for a broader audience.
+          </p>
+        </div>
+
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {recentPubsWithNews.map((pub, i) => (
+            <a
+              href={`/news/${pub.newsSlug}`}
+              class={`research-card scroll-reveal stagger-${(i % 3) + 1}`}
+            >
+              {pub.image && (
+                <div class="research-card-image">
+                  <img src={pub.image} alt="" loading="lazy" />
+                </div>
+              )}
+              <div class="research-card-content">
+                <span class="research-card-year">{pub.year}</span>
+                <h3 class="research-card-title">{pub.title}</h3>
+                <p class="research-card-journal">{pub.journal}</p>
+                <span class="research-card-link">
+                  Read Summary
+                  <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                  </svg>
+                </span>
+              </div>
+            </a>
+          ))}
+        </div>
+
+        <div class="text-center mt-10 scroll-reveal">
+          <a href="/publications" class="btn btn-secondary">
+            View All Publications
+          </a>
+        </div>
+      </div>
+    </section>
+  )}
+
   <!-- Alumni -->
-  <section class="section bg-navy-highlight">
+  <section class="section bg-surface">
     <div class="container">
       <div class="text-center mb-12 scroll-reveal">
         <span class="eyebrow">Lab Alumni</span>
@@ -308,6 +366,62 @@ const roles = ['pi', 'postdoc', 'phd', 'manager', 'undergrad'].filter(
 
   .alumni-current {
     @apply text-xs text-muted-2 italic;
+  }
+
+  /* Research Cards */
+  .research-card {
+    @apply flex flex-col rounded-xl overflow-hidden;
+    @apply bg-surface-card border border-line;
+    @apply transition-all duration-300 no-underline;
+  }
+
+  .research-card:hover {
+    @apply -translate-y-1 shadow-xl;
+    border-color: rgba(56, 189, 248, 0.4);
+  }
+
+  .research-card-image {
+    @apply aspect-[16/9] overflow-hidden;
+  }
+
+  .research-card-image img {
+    @apply w-full h-full object-cover;
+    @apply transition-transform duration-500;
+  }
+
+  .research-card:hover .research-card-image img {
+    @apply scale-105;
+  }
+
+  .research-card-content {
+    @apply flex flex-col flex-1 p-5;
+  }
+
+  .research-card-year {
+    @apply text-xs font-bold text-accent mb-2;
+  }
+
+  .research-card-title {
+    @apply text-base font-bold text-ink mb-2 line-clamp-2;
+    @apply transition-colors;
+  }
+
+  .research-card:hover .research-card-title {
+    @apply text-accent;
+  }
+
+  .research-card-journal {
+    @apply text-sm text-muted italic mb-4 flex-1;
+  }
+
+  .research-card-link {
+    @apply inline-flex items-center gap-2 text-sm font-semibold text-accent-2;
+    @apply pt-3 border-t border-line mt-auto;
+    @apply transition-all;
+  }
+
+  .research-card:hover .research-card-link {
+    @apply gap-3;
   }
 </style>
 

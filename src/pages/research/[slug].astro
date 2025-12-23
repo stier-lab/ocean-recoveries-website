@@ -4,6 +4,8 @@ import Breadcrumbs from '@components/layout/Breadcrumbs.astro';
 import BreadcrumbSchema from '@components/seo/BreadcrumbSchema.astro';
 import { researchThemes } from '@data/research';
 import { publications } from '@data/publications';
+import { posts } from '@data/posts';
+import { enrichPublicationsWithImages } from '@utils/publicationImages';
 
 export function getStaticPaths() {
   return researchThemes.map((theme) => ({
@@ -14,6 +16,9 @@ export function getStaticPaths() {
 
 const { theme } = Astro.props;
 
+// Enrich publications with news post data
+const enrichedPubs = enrichPublicationsWithImages(publications, posts);
+
 // Map slug to publication theme
 const themeToPublicationMap: Record<string, string> = {
   'coral-reefs': 'Coral',
@@ -23,7 +28,7 @@ const themeToPublicationMap: Record<string, string> = {
 const publicationTheme = themeToPublicationMap[theme.slug] || theme.title;
 
 // Get related publications (matching theme, sorted by year and citations)
-const relatedPubs = publications
+const relatedPubs = enrichedPubs
   .filter(pub => pub.themes.some(t => t.toLowerCase().includes(publicationTheme.toLowerCase())))
   .sort((a, b) => b.year - a.year || (b.citationCount || 0) - (a.citationCount || 0))
   .slice(0, 6);
@@ -254,28 +259,45 @@ const breadcrumbs = [
         <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
           {relatedPubs.map((pub, i) => (
             <article class={`pub-card scroll-reveal stagger-${(i % 3) + 1}`}>
-              <div class="pub-year">{pub.year}</div>
-              <h3 class="pub-title">{pub.title}</h3>
-              <p class="pub-authors">{pub.authors.split(',').slice(0, 3).join(', ')}{pub.authors.split(',').length > 3 ? ' et al.' : ''}</p>
-              <div class="pub-meta">
-                <span class="pub-journal">{pub.journal}</span>
-                {pub.citationCount && pub.citationCount > 0 && (
-                  <span class="pub-citations">{pub.citationCount} citations</span>
-                )}
-              </div>
-              {pub.doi && (
-                <a
-                  href={`https://doi.org/${pub.doi}`}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  class="pub-link"
-                >
-                  View Paper
-                  <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
-                  </svg>
-                </a>
+              {pub.image && (
+                <div class="pub-image">
+                  <img src={pub.image} alt="" loading="lazy" />
+                </div>
               )}
+              <div class="pub-content">
+                <div class="pub-year">{pub.year}</div>
+                <h3 class="pub-title">{pub.title}</h3>
+                <p class="pub-authors">{pub.authors.split(',').slice(0, 3).join(', ')}{pub.authors.split(',').length > 3 ? ' et al.' : ''}</p>
+                <div class="pub-meta">
+                  <span class="pub-journal">{pub.journal}</span>
+                  {pub.citationCount && pub.citationCount > 0 && (
+                    <span class="pub-citations">{pub.citationCount} citations</span>
+                  )}
+                </div>
+                <div class="pub-links">
+                  {pub.newsSlug && (
+                    <a href={`/news/${pub.newsSlug}`} class="pub-link pub-link-news">
+                      <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9a2 2 0 00-2-2h-2m-4-3H9M7 16h6M7 8h6v4H7V8z" />
+                      </svg>
+                      Read Summary
+                    </a>
+                  )}
+                  {pub.doi && (
+                    <a
+                      href={`https://doi.org/${pub.doi}`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      class="pub-link"
+                    >
+                      View Paper
+                      <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                      </svg>
+                    </a>
+                  )}
+                </div>
+              </div>
             </article>
           ))}
         </div>
@@ -498,13 +520,30 @@ const breadcrumbs = [
 
   /* Publication card styles */
   .pub-card {
-    @apply flex flex-col p-5 rounded-xl;
+    @apply flex flex-col rounded-xl overflow-hidden;
     @apply bg-surface-card border border-line;
     @apply transition-all duration-300;
   }
 
   .pub-card:hover {
     @apply -translate-y-1 shadow-lg border-accent/30;
+  }
+
+  .pub-image {
+    @apply aspect-[16/9] overflow-hidden;
+  }
+
+  .pub-image img {
+    @apply w-full h-full object-cover;
+    @apply transition-transform duration-500;
+  }
+
+  .pub-card:hover .pub-image img {
+    @apply scale-105;
+  }
+
+  .pub-content {
+    @apply flex flex-col flex-1 p-5;
   }
 
   .pub-year {
@@ -531,10 +570,19 @@ const breadcrumbs = [
     @apply flex items-center gap-1;
   }
 
+  .pub-links {
+    @apply flex flex-wrap items-center gap-3;
+    @apply mt-auto pt-3 border-t border-line;
+  }
+
   .pub-link {
-    @apply inline-flex items-center gap-2 text-sm font-medium;
+    @apply inline-flex items-center gap-1.5 text-sm font-medium;
     @apply text-accent hover:text-accent-2 no-underline;
-    @apply mt-auto pt-2 border-t border-line;
+    @apply transition-colors;
+  }
+
+  .pub-link-news {
+    @apply text-accent-2 hover:text-accent;
   }
 
   /* Photo Gallery */
