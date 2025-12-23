@@ -72,39 +72,25 @@ const formatDate = (dateStr: string) => {
         <span class="text-white block">Lab</span>
       </h1>
 
-      <p class="hero-tagline text-xl md:text-2xl lg:text-3xl font-medium text-white/90 mb-8 opacity-0 max-w-3xl mx-auto leading-relaxed">
-        Science for coral reef & kelp forest recovery
+      <p class="hero-tagline text-xl md:text-2xl lg:text-3xl font-medium text-white mb-8 opacity-0 max-w-3xl mx-auto leading-relaxed">
+        Why do some reefs recover while others don't?
       </p>
 
-      <p class="hero-description max-w-2xl mx-auto text-base md:text-lg text-white/70 leading-relaxed mb-12 opacity-0">
-        Field experiments, quantitative models, and community partnerships to understand how ocean ecosystems regenerate.
+      <p class="hero-description max-w-2xl mx-auto text-base md:text-lg text-white/80 leading-relaxed mb-12 opacity-0">
+        We run field experiments in Moorea and Santa Barbara to find out. 75+ papers on coral-crab mutualisms, kelp-urchin dynamics, and MPA effectiveness.
       </p>
 
       <div class="hero-cta flex flex-col sm:flex-row gap-4 justify-center opacity-0">
-        <a href="/join" class="btn btn-primary btn-lg magnetic-btn group">
-          <span>Join the Lab</span>
+        <a href="#research" class="btn btn-primary btn-lg magnetic-btn group">
+          <span>Explore Our Research</span>
           <svg class="w-5 h-5 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
           </svg>
         </a>
-        <a href="/for-funders" class="btn btn-ghost btn-lg magnetic-btn">
-          For Funders & Partners
+        <a href="/join" class="btn btn-ghost btn-lg magnetic-btn">
+          Join the Lab
         </a>
       </div>
-    </div>
-
-    <!-- Scroll Indicator -->
-    <div class="absolute bottom-28 md:bottom-36 left-1/2 -translate-x-1/2 z-10">
-      <a
-        href="#research"
-        class="scroll-indicator flex flex-col items-center gap-3 text-white/60 hover:text-white/90 transition-all no-underline group"
-        aria-label="Scroll to learn more"
-      >
-        <span class="text-xs font-semibold uppercase tracking-[0.2em]">Discover</span>
-        <div class="scroll-mouse w-6 h-10 rounded-full border-2 border-current flex items-start justify-center pt-2">
-          <div class="scroll-dot w-1 h-1.5 bg-current rounded-full"></div>
-        </div>
-      </a>
     </div>
 
     <!-- Wave at bottom of hero -->
@@ -567,14 +553,17 @@ const formatDate = (dateStr: string) => {
 
   .hero-title {
     animation: fadeUp 0.8s ease-out 0.2s forwards;
+    text-shadow: 0 4px 24px rgba(0, 0, 0, 0.4), 0 2px 8px rgba(0, 0, 0, 0.3);
   }
 
   .hero-tagline {
     animation: fadeUp 0.8s ease-out 0.35s forwards;
+    text-shadow: 0 2px 16px rgba(0, 0, 0, 0.3);
   }
 
   .hero-description {
     animation: fadeUp 0.8s ease-out 0.5s forwards;
+    text-shadow: 0 1px 8px rgba(0, 0, 0, 0.2);
   }
 
   .hero-cta {
