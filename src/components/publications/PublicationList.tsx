@@ -4,6 +4,8 @@ import type { Publication } from '@data/publications';
 
 interface PublicationWithImage extends Publication {
   image?: string;
+  newsSlug?: string;
+  newsTitle?: string;
 }
 
 interface Props {
@@ -508,6 +510,18 @@ export default function PublicationList({ publications, themes }: Props) {
 
                   {/* Links - improved with focus states */}
                   <div className="flex flex-wrap gap-2">
+                    {pub.newsSlug && (
+                      <a
+                        href={`/news/${pub.newsSlug}`}
+                        className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-accent-2/10 text-accent-2 text-sm font-semibold hover:bg-accent-2 hover:text-white transition-all focus:outline-none focus:ring-2 focus:ring-accent-2 focus:ring-offset-2 focus:ring-offset-surface-card"
+                        title="Read our summary of this research"
+                      >
+                        <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9a2 2 0 00-2-2h-2m-4-3H9M7 16h6M7 8h6v4H7V8z" />
+                        </svg>
+                        News Article
+                      </a>
+                    )}
                     {pub.doi && (
                       <a
                         href={`https://doi.org/${pub.doi}`}

@@ -1,11 +1,13 @@
 /**
- * Maps publications to news post images via DOI matching
+ * Maps publications to news post images and slugs via DOI matching
  */
 import type { Publication } from '@data/publications';
 import type { BlogPost } from '@data/posts';
 
 export interface PublicationWithImage extends Publication {
   image?: string;
+  newsSlug?: string;
+  newsTitle?: string;
 }
 
 /**
@@ -25,8 +27,37 @@ function extractDoi(doiUrlOrDoi: string | undefined): string | undefined {
   return doiMatch ? doiMatch[1].toLowerCase() : undefined;
 }
 
+interface PostMapping {
+  image?: string;
+  slug: string;
+  title: string;
+}
+
+/**
+ * Creates a mapping from publication DOI to news post data (image, slug, title)
+ */
+export function createPublicationPostMap(posts: BlogPost[]): Map<string, PostMapping> {
+  const postMap = new Map<string, PostMapping>();
+
+  for (const post of posts) {
+    if (post.doiUrl) {
+      const doi = extractDoi(post.doiUrl);
+      if (doi) {
+        postMap.set(doi, {
+          image: post.featuredImage,
+          slug: post.slug,
+          title: post.title,
+        });
+      }
+    }
+  }
+
+  return postMap;
+}
+
 /**
  * Creates a mapping from publication DOI to news post featured image
+ * @deprecated Use createPublicationPostMap instead
  */
 export function createPublicationImageMap(posts: BlogPost[]): Map<string, string> {
   const imageMap = new Map<string, string>();
@@ -44,21 +75,23 @@ export function createPublicationImageMap(posts: BlogPost[]): Map<string, string
 }
 
 /**
- * Enriches publications with images from matching news posts
+ * Enriches publications with images and news links from matching news posts
  */
 export function enrichPublicationsWithImages(
   publications: Publication[],
   posts: BlogPost[]
 ): PublicationWithImage[] {
-  const imageMap = createPublicationImageMap(posts);
+  const postMap = createPublicationPostMap(posts);
 
   return publications.map(pub => {
     const pubDoi = extractDoi(pub.doi);
-    const image = pubDoi ? imageMap.get(pubDoi) : undefined;
+    const postData = pubDoi ? postMap.get(pubDoi) : undefined;
 
     return {
       ...pub,
-      image,
+      image: postData?.image,
+      newsSlug: postData?.slug,
+      newsTitle: postData?.title,
     };
   });
 }

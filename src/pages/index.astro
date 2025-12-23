@@ -3,7 +3,6 @@ import Layout from '@layouts/Layout.astro';
 import WaveDivider from '@components/shared/WaveDivider.astro';
 import StudySitesMap from '@components/research/StudySitesMap';
 import { posts } from '@data/posts';
-import { studySystems, researchPillars } from '@data/research';
 
 // Get 3 most recent news posts for carousel
 const recentPosts = [...posts]
@@ -67,12 +66,12 @@ const formatDate = (dateStr: string) => {
       </h1>
 
       <p class="hero-tagline text-xl md:text-2xl lg:text-3xl font-medium text-white mb-8 opacity-0 max-w-3xl mx-auto leading-relaxed">
-        How ocean ecosystems heal—and how we can help.
+        Coral reefs are collapsing. Some are coming back. We study why.
       </p>
 
       <div class="hero-cta flex flex-col sm:flex-row gap-4 justify-center opacity-0">
-        <a href="#research" class="btn btn-primary btn-lg magnetic-btn group">
-          <span>Explore Our Research</span>
+        <a href="#question" class="btn btn-primary btn-lg magnetic-btn group">
+          <span>The Question We're Asking</span>
           <svg class="w-5 h-5 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
           </svg>
@@ -87,8 +86,26 @@ const formatDate = (dateStr: string) => {
     <WaveDivider id="hero-wave" fillColor="surface" />
   </section>
 
-  <!-- Study Systems Section with Interactive Map -->
-  <section id="research" class="section-lg bg-surface relative overflow-visible">
+  <!-- The Driving Question -->
+  <section id="question" class="section bg-surface relative scroll-mt-20">
+    <div class="container">
+      <div class="max-w-3xl mx-auto text-center scroll-reveal">
+        <span class="eyebrow">The Central Question</span>
+        <h2 class="mb-6">What makes an ecosystem bounce back?</h2>
+        <p class="text-lg md:text-xl text-muted leading-relaxed mb-6">
+          After a cyclone flattens a reef or a marine heatwave wipes out a kelp forest, some systems recover within years. Others never do. The difference isn't random—it's driven by species interactions, environmental legacies, and management decisions we're only beginning to understand.
+        </p>
+        <p class="text-lg text-muted leading-relaxed">
+          We run field experiments and build models to identify the mechanisms that tip an ecosystem toward recovery or collapse. Then we work with managers to translate those findings into action.
+        </p>
+      </div>
+    </div>
+
+    <WaveDivider id="question-wave" fillColor="navy-deep" />
+  </section>
+
+  <!-- Two Natural Experiments -->
+  <section class="section-lg bg-navy-deep relative overflow-visible">
     <!-- Animated Blob Shapes -->
     <div class="blob-container" aria-hidden="true">
       <div class="blob blob-1"></div>
@@ -96,10 +113,10 @@ const formatDate = (dateStr: string) => {
     </div>
     <div class="container relative z-10">
       <div class="text-center mb-10 scroll-reveal">
-        <span class="eyebrow">Where We Work</span>
-        <h2 class="mb-4">Our Field Sites</h2>
-        <p class="lead max-w-2xl mx-auto">
-          Two LTER sites across the Pacific. Click a location to explore our research.
+        <span class="eyebrow text-accent-2">Two Natural Experiments</span>
+        <h2 class="text-white mb-4">One Tropical, One Temperate</h2>
+        <p class="lead max-w-2xl mx-auto text-white/60">
+          Mo'orea and Santa Barbara give us contrasting windows into recovery. Different oceans, different stressors, different species—same fundamental question.
         </p>
       </div>
 
@@ -108,111 +125,104 @@ const formatDate = (dateStr: string) => {
         <StudySitesMap client:load />
       </div>
 
-      <!-- Study System Cards (compact, below map) -->
-      <div class="grid md:grid-cols-2 gap-6 max-w-5xl mx-auto mt-10">
-        {studySystems.map((system, i) => (
-          <a href={`/research/${system.slug}`} class={`ecosystem-card-compact scroll-reveal stagger-${i + 1} group`}>
-            <div class="ecosystem-card-compact-image">
-              <img
-                src={system.heroImage}
-                alt={system.title}
-                loading="lazy"
-              />
-            </div>
-            <div class="ecosystem-card-compact-content">
-              <div class="ecosystem-location-compact">
-                <svg class="w-3 h-3 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
-                </svg>
-                <span>{system.slug === 'coral-reefs' ? "Mo'orea" : 'Santa Barbara'}</span>
-              </div>
-              <h3 class="ecosystem-title-compact">{system.title}</h3>
-              <p class="ecosystem-tagline-compact">{system.tagline}</p>
-              <div class="ecosystem-link-compact">
-                <span>Learn more</span>
-                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                </svg>
-              </div>
-            </div>
-          </a>
-        ))}
-      </div>
-    </div>
-
-    <!-- Wave -->
-    <WaveDivider id="study-wave" fillColor="navy-deep" />
-  </section>
-
-  <!-- Research Pillars Section -->
-  <section class="section-lg bg-navy-deep relative overflow-visible">
-    <div class="container">
-      <div class="text-center mb-14 scroll-reveal">
-        <span class="eyebrow text-accent-2">Our Approach</span>
-        <h2 class="text-white mb-4">Research Focus</h2>
-        <p class="lead max-w-2xl mx-auto text-white/60">
-          Field experiments in Moorea and Santa Barbara. Models that predict real outcomes.
-        </p>
-      </div>
-
-      <div class="pillars-grid">
-        {researchPillars.map((pillar, i) => (
-          <div class={`pillar-card scroll-reveal stagger-${i + 1}`}>
-            <div class={`pillar-icon pillar-icon-${i + 1}`}>
-              {i === 0 && (
-                <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9" />
-                </svg>
-              )}
-              {i === 1 && (
-                <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" />
-                </svg>
-              )}
-              {i === 2 && (
-                <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 17v-2m3 2v-4m3 4v-6m2 10H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
-                </svg>
-              )}
-            </div>
-            <h3 class="pillar-title">{pillar.title}</h3>
-            <p class="pillar-desc">{pillar.description}</p>
-            <ul class="pillar-topics">
-              {pillar.topics.slice(0, 3).map(topic => (
-                <li>
-                  <svg class="w-3 h-3 text-accent-2 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
-                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
-                  </svg>
-                  <span>{topic}</span>
-                </li>
-              ))}
-            </ul>
+      <!-- Study System Cards (reframed as experiments) -->
+      <div class="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto mt-12">
+        <!-- Mo'orea Card -->
+        <a href="/research/coral-reefs" class="experiment-card scroll-reveal stagger-1 group">
+          <div class="experiment-card-image">
+            <img src="/images/cauliflower-coral-damselfish-reef.jpeg" alt="Coral reef in Mo'orea" loading="lazy" />
+            <div class="experiment-card-overlay"></div>
           </div>
-        ))}
-      </div>
+          <div class="experiment-card-content">
+            <div class="experiment-location">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+              </svg>
+              <span>Mo'orea, French Polynesia</span>
+            </div>
+            <h3 class="experiment-title">Coral Reefs</h3>
+            <p class="experiment-question">Can coral recover from crown-of-thorns outbreaks and cyclones—and what role do fish and crabs play?</p>
+            <p class="experiment-finding">After a 2010 cyclone destroyed 99% of coral cover, we're tracking how mutualist species like guard crabs and damselfish accelerate or hinder recovery.</p>
+            <div class="experiment-link">
+              <span>Explore this system</span>
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+              </svg>
+            </div>
+          </div>
+        </a>
 
-      <div class="text-center mt-14 scroll-reveal">
-        <a href="/research" class="btn btn-ghost group">
-          <span>Learn how we do science</span>
-          <svg class="w-4 h-4 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
-          </svg>
+        <!-- Santa Barbara Card -->
+        <a href="/research/kelp-forests" class="experiment-card scroll-reveal stagger-2 group">
+          <div class="experiment-card-image">
+            <img src="/images/giant-kelp-sunlight-underwater.jpeg" alt="Kelp forest in Santa Barbara" loading="lazy" />
+            <div class="experiment-card-overlay"></div>
+          </div>
+          <div class="experiment-card-content">
+            <div class="experiment-location">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+              </svg>
+              <span>Santa Barbara, California</span>
+            </div>
+            <h3 class="experiment-title">Kelp Forests</h3>
+            <p class="experiment-question">Do marine protected areas actually help kelp forests recover—and can lobsters control urchin outbreaks?</p>
+            <p class="experiment-finding">With 10+ years of data before and after MPA implementation, we're testing whether protection delivers promised benefits to fisheries and ecosystems.</p>
+            <div class="experiment-link">
+              <span>Explore this system</span>
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+              </svg>
+            </div>
+          </div>
         </a>
       </div>
     </div>
 
     <!-- Wave -->
-    <WaveDivider id="pillars-wave" fillColor="surface" />
+    <WaveDivider id="study-wave" fillColor="surface" />
+  </section>
+
+  <!-- A Research Story -->
+  <section class="section-lg bg-surface relative overflow-visible">
+    <div class="container">
+      <div class="research-story scroll-reveal">
+        <div class="research-story-image">
+          <img src="/images/trapezia-coral-crab-hiding.jpg" alt="Guard crab defending coral" loading="lazy" />
+        </div>
+        <div class="research-story-content">
+          <span class="eyebrow">A Finding That Changed Our Thinking</span>
+          <h2 class="mb-5">Tiny crabs determine whether corals live or die</h2>
+          <p class="text-lg text-muted leading-relaxed mb-5">
+            We expected predators to be the main threat to recovering corals. Instead, we found that inch-long guard crabs living inside coral branches are often the deciding factor. These crabs attack crown-of-thorns starfish—voracious predators 100 times their size—and constantly clear sediment from coral surfaces.
+          </p>
+          <p class="text-muted leading-relaxed mb-5">
+            When we removed crabs from corals in our experiments, the corals died within months. When crabs were present, corals survived. This wasn't a small effect—it was binary. The relationship is so tight that crabs can't survive outside their coral hosts either.
+          </p>
+          <p class="text-muted leading-relaxed mb-6">
+            This matters for restoration. Replanting coral fragments without ensuring crab colonization may be setting those corals up to fail. We're now testing whether facilitating these partnerships can accelerate reef recovery after disturbance.
+          </p>
+          <a href="/news/tiny-bodyguard-crabs-take-on-giant-starfish-to-save-coral-re" class="btn btn-secondary group">
+            <span>Read the full story</span>
+            <svg class="w-4 h-4 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+            </svg>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Wave -->
+    <WaveDivider id="story-wave" fillColor="navy-deep" />
   </section>
 
   <!-- Recent News Section -->
-  <section class="section-lg bg-surface relative overflow-visible">
+  <section class="section-lg bg-navy-deep relative overflow-visible">
     <div class="container">
       <div class="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4 mb-10 scroll-reveal">
         <div>
-          <span class="eyebrow">Latest Updates</span>
-          <h2 class="mb-0">Recent Research</h2>
+          <span class="eyebrow text-accent-2">Latest Updates</span>
+          <h2 class="text-white mb-0">Recent Research</h2>
         </div>
         <a href="/news" class="btn btn-secondary hidden sm:inline-flex group">
           <span>View all news</span>
@@ -265,40 +275,35 @@ const formatDate = (dateStr: string) => {
     </div>
 
     <!-- Wave -->
-    <WaveDivider id="news-wave" fillColor="navy-deep" />
+    <WaveDivider id="news-wave" fillColor="surface" />
   </section>
 
   <!-- About / Impact Section -->
-  <section class="section-lg bg-navy-deep relative overflow-visible">
-    <!-- Subtle background texture -->
-    <div class="absolute inset-0 opacity-[0.03]">
-      <div class="absolute inset-0" style="background-image: url('/images/coral-reef-panorama-anthias-fish.jpeg'); background-size: cover; background-position: center; filter: grayscale(100%);"></div>
-    </div>
-
+  <section class="section-lg bg-surface relative overflow-visible">
     <div class="container relative z-10">
       <div class="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
         <div class="scroll-reveal">
-          <span class="eyebrow text-accent-2">Our Lab</span>
-          <h2 class="text-white mb-6">Based at UC Santa Barbara</h2>
-          <p class="text-white/60 text-lg leading-relaxed mb-5">
+          <span class="eyebrow">Our Lab</span>
+          <h2 class="mb-6">Based at UC Santa Barbara</h2>
+          <p class="text-muted text-lg leading-relaxed mb-5">
             The Ocean Recoveries Lab is part of the Department of Ecology, Evolution & Marine Biology.
             We have running seawater systems, small boat access, and on-site dive facilities at UCSB's
             Marine Science Institute—plus field stations in Moorea and the Channel Islands.
           </p>
-          <p class="text-white/60 leading-relaxed mb-6">
+          <p class="text-muted leading-relaxed mb-6">
             Our team includes postdocs, grad students, and undergrads linking field experiments
             to management—like our MPA spillover work that informed Channel Islands fishery reviews.
           </p>
 
           <!-- Lab Director -->
-          <a href="/people" class="pi-card group">
-            <img src="/images/adrian.png" alt="Adrian Stier" class="pi-photo" />
-            <div class="pi-info">
-              <span class="pi-name">Adrian Stier</span>
-              <span class="pi-title">Associate Professor, EEMB</span>
-              <span class="pi-bio">Runs long-term experiments at MCR and SBC LTER sites. 75+ papers on reef and kelp dynamics.</span>
+          <a href="/people" class="pi-card-light group">
+            <img src="/images/adrian.png" alt="Adrian Stier" class="pi-photo-light" />
+            <div class="pi-info-light">
+              <span class="pi-name-light">Adrian Stier</span>
+              <span class="pi-title-light">Associate Professor, EEMB</span>
+              <span class="pi-bio-light">Runs long-term experiments at MCR and SBC LTER sites. 75+ papers on reef and kelp dynamics.</span>
             </div>
-            <svg class="pi-arrow" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <svg class="pi-arrow-light" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
             </svg>
           </a>
@@ -311,44 +316,54 @@ const formatDate = (dateStr: string) => {
           </a>
         </div>
 
-        <div class="stats-grid">
-          <div class="stat-card scroll-reveal stagger-1">
-            <span class="stat-number" data-target="75">0</span>
-            <span class="stat-suffix">+</span>
-            <span class="stat-label">Publications</span>
+        <div class="stats-grid-light">
+          <div class="stat-card-light scroll-reveal stagger-1">
+            <span class="stat-number-light" data-target="75">0</span>
+            <span class="stat-suffix-light">+</span>
+            <span class="stat-label-light">Publications</span>
           </div>
-          <div class="stat-card scroll-reveal stagger-2">
-            <span class="stat-number" data-target="15">0</span>
-            <span class="stat-suffix">yrs</span>
-            <span class="stat-label">Research Experience</span>
+          <div class="stat-card-light scroll-reveal stagger-2">
+            <span class="stat-number-light" data-target="15">0</span>
+            <span class="stat-suffix-light">yrs</span>
+            <span class="stat-label-light">Research Experience</span>
           </div>
-          <div class="stat-card scroll-reveal stagger-3">
-            <span class="stat-number" data-target="2">0</span>
-            <span class="stat-label">LTER Sites</span>
+          <div class="stat-card-light scroll-reveal stagger-3">
+            <span class="stat-number-light" data-target="2">0</span>
+            <span class="stat-label-light">LTER Sites</span>
           </div>
-          <div class="stat-card scroll-reveal stagger-4">
-            <span class="stat-number" data-target="12">0</span>
-            <span class="stat-suffix">+</span>
-            <span class="stat-label">Partner Institutions</span>
+          <div class="stat-card-light scroll-reveal stagger-4">
+            <span class="stat-number-light" data-target="12">0</span>
+            <span class="stat-suffix-light">+</span>
+            <span class="stat-label-light">Partner Institutions</span>
           </div>
         </div>
       </div>
     </div>
 
     <!-- Wave -->
-    <WaveDivider id="about-wave" fillColor="surface" />
+    <WaveDivider id="about-wave" fillColor="navy-deep" />
   </section>
 
-  <!-- Dual CTA Section -->
-  <section class="section bg-surface">
+  <!-- Vision Statement + CTAs -->
+  <section class="section-lg bg-navy-deep">
     <div class="container">
+      <!-- Vision Statement -->
+      <div class="max-w-3xl mx-auto text-center mb-16 scroll-reveal">
+        <span class="eyebrow text-accent-2">Where We're Headed</span>
+        <h2 class="text-white mb-6">A future where recovery is the rule, not the exception</h2>
+        <p class="text-lg text-white/60 leading-relaxed">
+          We're working toward a world where managers have the tools to predict which ecosystems will bounce back and which need intervention—and where restoration efforts are designed around the species partnerships that actually drive recovery. The science is getting there. We want to help it arrive in time.
+        </p>
+      </div>
+
+      <!-- CTA Cards -->
       <div class="grid md:grid-cols-2 gap-6 lg:gap-8">
         <!-- For Prospective Students/Postdocs -->
         <div class="join-cta scroll-reveal">
           <div class="join-cta-content">
             <span class="eyebrow text-accent">For Researchers</span>
             <h2 class="text-2xl md:text-3xl mb-4">Join Our Team</h2>
-            <p class="text-muted max-w-md mx-auto mb-6">
+            <p class="text-white/60 max-w-md mx-auto mb-6">
               Looking for researchers who dive, build models, and publish open-access. Current needs: coral photogrammetry and kelp population modeling.
             </p>
             <a href="/join" class="btn btn-primary group">
@@ -365,7 +380,7 @@ const formatDate = (dateStr: string) => {
           <div class="join-cta-content">
             <span class="eyebrow text-accent-2">For Funders</span>
             <h2 class="text-2xl md:text-3xl mb-4">Partner With Us</h2>
-            <p class="text-muted max-w-md mx-auto mb-6">
+            <p class="text-white/60 max-w-md mx-auto mb-6">
               Support research that directly informs reef and kelp forest management. See our track record and explore funding opportunities.
             </p>
             <a href="/for-funders" class="btn btn-secondary group">
@@ -1107,6 +1122,212 @@ const formatDate = (dateStr: string) => {
   }
 
   /* ========================================
+     Experiment Cards (Two Natural Experiments)
+     ======================================== */
+  .experiment-card {
+    @apply relative rounded-2xl overflow-hidden no-underline block;
+    @apply border border-white/10;
+    @apply transition-all duration-500 ease-out;
+    min-height: 320px;
+  }
+
+  .experiment-card:hover {
+    @apply -translate-y-2;
+    border-color: rgba(56, 189, 248, 0.4);
+    box-shadow:
+      0 25px 50px -12px rgba(0, 0, 0, 0.4),
+      0 0 40px rgba(56, 189, 248, 0.15);
+  }
+
+  .experiment-card-image {
+    @apply absolute inset-0;
+  }
+
+  .experiment-card-image img {
+    @apply w-full h-full object-cover;
+    @apply transition-all duration-700 ease-out;
+    transform: scale(1.05);
+  }
+
+  .experiment-card:hover .experiment-card-image img {
+    transform: scale(1.12);
+  }
+
+  .experiment-card-overlay {
+    @apply absolute inset-0;
+    background: linear-gradient(
+      to top,
+      rgba(11, 37, 69, 0.98) 0%,
+      rgba(11, 37, 69, 0.85) 40%,
+      rgba(11, 37, 69, 0.5) 70%,
+      rgba(11, 37, 69, 0.3) 100%
+    );
+  }
+
+  .experiment-card-content {
+    @apply absolute bottom-0 left-0 right-0 p-6 md:p-7;
+  }
+
+  .experiment-location {
+    @apply inline-flex items-center gap-1.5 text-accent-2 text-xs font-bold uppercase tracking-wider mb-2;
+  }
+
+  .experiment-title {
+    @apply text-2xl md:text-3xl font-black text-white mb-3;
+    @apply transition-colors duration-300;
+  }
+
+  .experiment-card:hover .experiment-title {
+    @apply text-accent;
+  }
+
+  .experiment-question {
+    @apply text-white font-medium text-sm leading-relaxed mb-2;
+  }
+
+  .experiment-finding {
+    @apply text-white/60 text-sm leading-relaxed mb-4;
+  }
+
+  .experiment-link {
+    @apply inline-flex items-center gap-2 text-accent text-sm font-bold;
+    @apply transition-all duration-300;
+  }
+
+  .experiment-card:hover .experiment-link {
+    @apply gap-3;
+  }
+
+  /* ========================================
+     Research Story Section
+     ======================================== */
+  .research-story {
+    @apply grid lg:grid-cols-2 gap-10 lg:gap-16 items-center max-w-6xl mx-auto;
+  }
+
+  .research-story-image {
+    @apply rounded-2xl overflow-hidden;
+    @apply border border-line/50;
+  }
+
+  .research-story-image img {
+    @apply w-full h-auto;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+  }
+
+  .research-story-content h2 {
+    @apply text-ink;
+  }
+
+  /* ========================================
+     Light Mode Stat Cards (for bg-surface)
+     ======================================== */
+  .stats-grid-light {
+    @apply grid grid-cols-2 gap-4 lg:gap-5;
+  }
+
+  .stat-card-light {
+    @apply relative bg-surface-card border border-line/50 rounded-2xl;
+    @apply p-6 lg:p-7 text-center;
+    @apply transition-all duration-300 ease-out;
+  }
+
+  .stat-card-light:hover {
+    @apply -translate-y-1;
+    border-color: rgba(56, 189, 248, 0.3);
+    box-shadow: 0 12px 24px -8px rgba(0, 0, 0, 0.15);
+  }
+
+  .stat-number-light {
+    @apply text-4xl lg:text-5xl font-black text-accent;
+    @apply inline;
+  }
+
+  .stat-suffix-light {
+    @apply text-xl lg:text-2xl font-bold text-accent/70 ml-0.5;
+  }
+
+  .stat-label-light {
+    @apply block text-xs font-semibold text-muted uppercase tracking-wider mt-2;
+  }
+
+  /* ========================================
+     Light Mode PI Card (for bg-surface)
+     ======================================== */
+  .pi-card-light {
+    display: flex;
+    align-items: center;
+    gap: 0.875rem;
+    padding: 0.75rem 1rem;
+    background: rgba(30, 41, 59, 0.05);
+    border: 1px solid rgba(30, 41, 59, 0.1);
+    border-radius: 0.75rem;
+    text-decoration: none;
+    transition: all 0.2s ease;
+    margin-bottom: 0;
+  }
+
+  .pi-card-light:hover {
+    background: rgba(30, 41, 59, 0.08);
+    border-color: rgba(56, 189, 248, 0.3);
+  }
+
+  .pi-photo-light {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid rgba(56, 189, 248, 0.3);
+    flex-shrink: 0;
+  }
+
+  .pi-info-light {
+    display: flex;
+    flex-direction: column;
+    gap: 0.125rem;
+    flex: 1;
+    min-width: 0;
+  }
+
+  .pi-name-light {
+    font-size: 0.875rem;
+    font-weight: 700;
+    color: #1e293b;
+  }
+
+  .pi-title-light {
+    font-size: 0.6875rem;
+    font-weight: 600;
+    color: #38bdf8;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+  }
+
+  .pi-bio-light {
+    font-size: 0.75rem;
+    color: rgba(100, 116, 139, 0.8);
+    line-height: 1.4;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  .pi-arrow-light {
+    width: 1rem;
+    height: 1rem;
+    color: rgba(56, 189, 248, 0.4);
+    flex-shrink: 0;
+    transition: all 0.2s ease;
+  }
+
+  .pi-card-light:hover .pi-arrow-light {
+    color: #38bdf8;
+    transform: translateX(3px);
+  }
+
+  /* ========================================
      Reduced motion
      ======================================== */
   @media (prefers-reduced-motion: reduce) {
@@ -1187,7 +1408,7 @@ const formatDate = (dateStr: string) => {
       { threshold: 0.5 }
     );
 
-    document.querySelectorAll('.stat-number[data-target]').forEach((el) => {
+    document.querySelectorAll('.stat-number[data-target], .stat-number-light[data-target]').forEach((el) => {
       observer.observe(el);
     });
   };
