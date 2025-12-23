@@ -20,9 +20,9 @@ const formatDate = (dateStr: string) => {
 ---
 
 <Layout
-  title="Home"
-  description="Ocean Recoveries Lab at UC Santa Barbara - Leading research on coral reef resilience, kelp forest ecology, and marine conservation. We study how ocean ecosystems recover from disturbance through field experiments, modeling, and community partnerships."
-  keywords={['Ocean Recoveries Lab', 'coral reef research', 'kelp forest ecology', 'marine conservation', 'UC Santa Barbara', 'Adrian Stier', 'ecosystem resilience', 'marine biology research']}
+  title="Ocean Recoveries Lab | Engineering Resilience from Organisms to Ecosystems"
+  description="Research lab at UC Santa Barbara studying coral reef and kelp forest resilience. We trace the mechanisms of resistance, recovery, and reorganization to make restoration predictable."
+  keywords={['Ocean Recoveries Lab', 'coral reef research', 'kelp forest ecology', 'marine conservation', 'UC Santa Barbara', 'Adrian Stier', 'ecosystem resilience', 'marine biology research', 'resistance', 'recovery', 'reorganization']}
 >
   <!-- Hero Section -->
   <section class="hero-section relative min-h-[100svh] flex items-center justify-center overflow-visible">
@@ -60,35 +60,45 @@ const formatDate = (dateStr: string) => {
 
     <!-- Hero Content -->
     <div class="relative z-10 container text-center px-4 pt-20 pb-32 md:pt-24 md:pb-40">
+      <!-- Location Tag -->
+      <p class="hero-badge text-xs md:text-sm font-semibold uppercase tracking-wider text-accent-2 mb-4 opacity-0">
+        UC Santa Barbara
+      </p>
+
       <h1 class="hero-title mb-5 opacity-0">
         <span class="gradient-text">Ocean Recoveries</span>
         <span class="text-white block">Lab</span>
       </h1>
 
-      <!-- The Paradox -->
-      <p class="hero-paradox text-lg md:text-xl lg:text-2xl font-medium text-white/90 mb-6 opacity-0 max-w-3xl mx-auto leading-relaxed">
-        Recovery efforts fail. Healthy ecosystems collapse without warning. Despite decades of research, we still don't understand how natural systems resist and recover from shocks.
+      <!-- Main Tagline -->
+      <p class="hero-tagline text-xl md:text-2xl lg:text-3xl font-bold text-white mb-6 opacity-0 max-w-3xl mx-auto leading-relaxed">
+        Engineering resilience from organisms to ecosystems
       </p>
 
-      <!-- The Central Question -->
-      <p class="hero-question text-xl md:text-2xl lg:text-3xl font-bold text-white mb-6 opacity-0 max-w-3xl mx-auto leading-relaxed">
-        How can we engineer ecosystem resilience in a rapidly changing world?
-      </p>
-
-      <!-- Lab Subhead -->
+      <!-- Subhead -->
       <p class="hero-subhead text-base md:text-lg text-white/70 mb-8 opacity-0 max-w-2xl mx-auto leading-relaxed">
-        The Ocean Recoveries Lab at UC Santa Barbara—field experiments, models, and partnerships to find out.
+        We study why coastal ecosystems collapse—and how to help them recover. From coral wound healing to kelp forest tipping points, we trace the mechanisms that control resistance, recovery, and reorganization across biological scales.
       </p>
 
       <div class="hero-cta flex flex-col sm:flex-row gap-4 justify-center opacity-0">
-        <a href="#complexity" class="btn btn-primary btn-lg magnetic-btn group">
-          <span>Why This Is Hard</span>
+        <a href="/join" class="btn btn-primary btn-lg magnetic-btn group">
+          <span>Join the Lab</span>
           <svg class="w-5 h-5 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
           </svg>
         </a>
-        <a href="/join" class="btn btn-ghost btn-lg magnetic-btn">
-          Join the Lab
+        <a href="/for-funders" class="btn btn-ghost btn-lg magnetic-btn">
+          For Funders & Partners
+        </a>
+      </div>
+
+      <!-- Scroll Prompt -->
+      <div class="mt-12 opacity-0 hero-cta">
+        <a href="#study-systems" class="inline-flex flex-col items-center gap-2 text-white/50 hover:text-white/80 transition-colors">
+          <span class="text-sm font-medium">Discover</span>
+          <svg class="w-5 h-5 animate-bounce" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+          </svg>
         </a>
       </div>
     </div>
@@ -97,28 +107,78 @@ const formatDate = (dateStr: string) => {
     <WaveDivider id="hero-wave" fillColor="surface" />
   </section>
 
-  <!-- Embracing Complexity -->
-  <section id="complexity" class="section bg-surface relative scroll-mt-20">
+  <!-- Two Systems, Two Failure Modes -->
+  <section id="study-systems" class="section-lg bg-surface relative scroll-mt-20">
     <div class="container">
-      <div class="max-w-3xl mx-auto text-center scroll-reveal">
-        <span class="eyebrow">Embracing Complexity</span>
-        <h2 class="mb-6">Why this problem is hard</h2>
-        <p class="text-lg md:text-xl text-muted leading-relaxed mb-6">
-          Climate is remodeling environments faster than species can adapt. Species are reorganizing into novel communities we've never seen before. The equilibria we built our predictions on are shifting beneath our feet.
+      <div class="text-center mb-12 scroll-reveal">
+        <span class="eyebrow">Two Systems, Two Failure Modes</span>
+        <h2 class="mb-6">Why we work in kelp forests and coral reefs</h2>
+        <p class="text-lg md:text-xl text-muted leading-relaxed max-w-3xl mx-auto">
+          We work in kelp forests and coral reefs because they fail in fundamentally different ways. Comparing how they break reveals which mechanisms generalize—and which interventions transfer.
         </p>
-        <p class="text-lg text-muted leading-relaxed mb-6">
-          Simple models—"protect more area," "remove the predator"—often fail because they ignore the web of interactions that actually drives recovery. A reef doesn't bounce back because you replant coral—it bounces back when guard crabs colonize, fish return, and algae stays in check. A kelp forest doesn't recover because you cull urchins—it recovers when detrital food supply, predator pressure, and wave disturbance align.
-        </p>
-        <p class="text-lg text-muted leading-relaxed">
-          We're building the science to understand these configurations—and the tools to engineer them.
-        </p>
+      </div>
+
+      <!-- Interactive Map -->
+      <div class="max-w-5xl mx-auto scroll-reveal mb-12">
+        <StudySitesMap client:load />
+      </div>
+
+      <!-- Study System Cards -->
+      <div class="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+        <!-- Coral Reefs Card -->
+        <a href="/research/coral-reefs" class="study-card scroll-reveal stagger-1 group">
+          <div class="study-card-image">
+            <img src="/images/cauliflower-coral-damselfish-reef.jpeg" alt="Coral reef in Mo'orea" loading="lazy" />
+            <div class="study-card-overlay"></div>
+          </div>
+          <div class="study-card-content">
+            <div class="study-location">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+              </svg>
+              <span>Mo'orea, French Polynesia</span>
+            </div>
+            <h3 class="study-title">Coral Reefs</h3>
+            <p class="study-description">Coral reefs reveal slow, chronic failure. When corals are damaged, their fate depends on wound healing and regeneration at the colony level. We study how these individual capacities aggregate into population recovery—and why reefs stall, rebound, or reorganize.</p>
+            <div class="study-link">
+              <span>Explore research</span>
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+              </svg>
+            </div>
+          </div>
+        </a>
+
+        <!-- Kelp Forests Card -->
+        <a href="/research/kelp-forests" class="study-card scroll-reveal stagger-2 group">
+          <div class="study-card-image">
+            <img src="/images/giant-kelp-sunlight-underwater.jpeg" alt="Kelp forest in Santa Barbara" loading="lazy" />
+            <div class="study-card-overlay"></div>
+          </div>
+          <div class="study-card-content">
+            <div class="study-location">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+              </svg>
+              <span>Santa Barbara, California</span>
+            </div>
+            <h3 class="study-title">Kelp Forests</h3>
+            <p class="study-description">Kelp forests expose fast, nonlinear transitions. Consumer–predator feedbacks can flip forests to barrens in months, and hysteresis can lock them there. We study what governs the tipping point—and what breaks the lock.</p>
+            <div class="study-link">
+              <span>Explore research</span>
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+              </svg>
+            </div>
+          </div>
+        </a>
       </div>
     </div>
 
-    <WaveDivider id="complexity-wave" fillColor="navy-deep" />
+    <WaveDivider id="study-wave" fillColor="navy-deep" />
   </section>
 
-  <!-- Two Natural Experiments -->
+  <!-- Resilience Across Scales -->
   <section class="section-lg bg-navy-deep relative overflow-visible">
     <!-- Animated Blob Shapes -->
     <div class="blob-container" aria-hidden="true">
@@ -126,144 +186,168 @@ const formatDate = (dateStr: string) => {
       <div class="blob blob-2"></div>
     </div>
     <div class="container relative z-10">
-      <div class="text-center mb-10 scroll-reveal">
-        <span class="eyebrow text-accent-2">Two Natural Experiments</span>
-        <h2 class="text-white mb-4">One Tropical, One Temperate</h2>
-        <p class="lead max-w-2xl mx-auto text-white/60">
-          Mo'orea shows us recovery after acute catastrophe—cyclones, bleaching, crown-of-thorns outbreaks. Santa Barbara shows us recovery under chronic pressure—warming, fishing, shifting baselines. Together they bracket the range of challenges coastal ecosystems face worldwide.
-        </p>
-      </div>
-
-      <!-- Interactive Map -->
-      <div class="max-w-5xl mx-auto scroll-reveal">
-        <StudySitesMap client:load />
-      </div>
-
-      <!-- Study System Cards (reframed as experiments) -->
-      <div class="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto mt-12">
-        <!-- Mo'orea Card -->
-        <a href="/research/coral-reefs" class="experiment-card scroll-reveal stagger-1 group">
-          <div class="experiment-card-image">
-            <img src="/images/cauliflower-coral-damselfish-reef.jpeg" alt="Coral reef in Mo'orea" loading="lazy" />
-            <div class="experiment-card-overlay"></div>
-          </div>
-          <div class="experiment-card-content">
-            <div class="experiment-location">
-              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
-              </svg>
-              <span>Mo'orea, French Polynesia</span>
-            </div>
-            <h3 class="experiment-title">Coral Reefs</h3>
-            <p class="experiment-question">How do coral communities reassemble after catastrophic disturbance—and can we predict which configurations persist?</p>
-            <p class="experiment-finding">We study wound healing, gene expression, and species partnerships to understand why some coral assemblages recover while others collapse into algae.</p>
-            <div class="experiment-link">
-              <span>Explore this system</span>
-              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
-              </svg>
-            </div>
-          </div>
-        </a>
-
-        <!-- Santa Barbara Card -->
-        <a href="/research/kelp-forests" class="experiment-card scroll-reveal stagger-2 group">
-          <div class="experiment-card-image">
-            <img src="/images/giant-kelp-sunlight-underwater.jpeg" alt="Kelp forest in Santa Barbara" loading="lazy" />
-            <div class="experiment-card-overlay"></div>
-          </div>
-          <div class="experiment-card-content">
-            <div class="experiment-location">
-              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
-              </svg>
-              <span>Santa Barbara, California</span>
-            </div>
-            <h3 class="experiment-title">Kelp Forests</h3>
-            <p class="experiment-question">Does protection actually accelerate recovery—or do predator-prey dynamics and foundation species stability matter more?</p>
-            <p class="experiment-finding">California's MPA network is a 15-year natural experiment. We're using it to test whether protection delivers what managers expect—and our lobster spillover findings are already informing Channel Islands fishery reviews.</p>
-            <div class="experiment-link">
-              <span>Explore this system</span>
-              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
-              </svg>
-            </div>
-          </div>
-        </a>
-      </div>
-    </div>
-
-    <!-- Wave -->
-    <WaveDivider id="study-wave" fillColor="surface" />
-  </section>
-
-  <!-- Research Stories - Two Windows into Resilience -->
-  <section class="section-lg bg-surface relative overflow-visible">
-    <div class="container">
       <!-- Section intro -->
       <div class="text-center mb-12 scroll-reveal">
-        <span class="eyebrow">Two Windows into Resilience</span>
-        <h2 class="mb-4">Findings that changed our thinking</h2>
-        <p class="lead max-w-2xl mx-auto text-muted">
-          In both systems, we've discovered that the obvious explanations were wrong. The mechanisms that actually drive recovery are subtler—and more actionable.
+        <span class="eyebrow text-accent-2">Resilience Across Scales</span>
+        <h2 class="text-white mb-6">How we think about recovery</h2>
+        <p class="lead max-w-3xl mx-auto text-white/60">
+          Resilience isn't something ecosystems "have." It emerges from processes at multiple levels—and these levels connect. Individual capacity shapes population recovery. Population dynamics alter species interactions. Ecosystem context constrains what individuals can tolerate.
         </p>
       </div>
 
-      <!-- Coral Story -->
-      <div class="research-story scroll-reveal mb-20">
-        <div class="research-story-image">
-          <img src="/images/trapezia-coral-crab-hiding.jpg" alt="Guard crab defending coral" loading="lazy" />
-        </div>
-        <div class="research-story-content">
-          <span class="eyebrow text-accent">Mo'orea</span>
-          <h3 class="text-2xl md:text-3xl font-bold mb-5 text-ink">Tiny crabs determine whether corals live or die</h3>
-          <p class="text-lg text-muted leading-relaxed mb-5">
-            We expected predators to be the main threat to recovering corals. Instead, we found that inch-long guard crabs living inside coral branches are often the deciding factor. These crabs attack crown-of-thorns starfish—voracious predators 100 times their size—and constantly clear sediment from coral surfaces.
-          </p>
-          <p class="text-muted leading-relaxed mb-5">
-            When we removed crabs from corals in our experiments, the corals died within months. When crabs were present, corals survived. This wasn't a small effect—it was binary.
-          </p>
-          <p class="text-muted leading-relaxed mb-6">
-            <strong>Why it matters:</strong> Replanting coral fragments without ensuring crab colonization may be setting those corals up to fail. We're now testing whether facilitating these partnerships can accelerate reef recovery after disturbance.
-          </p>
-          <a href="/news/tiny-bodyguard-crabs-take-on-giant-starfish-to-save-coral-re" class="btn btn-secondary group">
-            <span>Read the full story</span>
-            <svg class="w-4 h-4 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+      <!-- Three Pillars -->
+      <div class="pillars-grid">
+        <!-- Resistance -->
+        <div class="pillar-card relative scroll-reveal stagger-1">
+          <div class="pillar-icon pillar-icon-1">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
             </svg>
-          </a>
+          </div>
+          <h3 class="pillar-title">Resistance</h3>
+          <p class="pillar-desc">What prevents collapse when disturbance hits.</p>
+          <ul class="pillar-topics">
+            <li>
+              <span class="text-accent font-semibold">Individual:</span>
+              <span>stress tolerance, damage thresholds, physiological buffering</span>
+            </li>
+            <li>
+              <span class="text-accent font-semibold">Population:</span>
+              <span>demographic buffering, spatial refugia</span>
+            </li>
+            <li>
+              <span class="text-accent font-semibold">Ecosystem:</span>
+              <span>stabilizing feedbacks, trophic structure, interaction strengths</span>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Recovery -->
+        <div class="pillar-card relative scroll-reveal stagger-2">
+          <div class="pillar-icon pillar-icon-2">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
+            </svg>
+          </div>
+          <h3 class="pillar-title">Recovery</h3>
+          <p class="pillar-desc">What controls the speed and reliability of return.</p>
+          <ul class="pillar-topics">
+            <li>
+              <span class="text-accent-2 font-semibold">Individual:</span>
+              <span>wound healing, regeneration, regrowth capacity</span>
+            </li>
+            <li>
+              <span class="text-accent-2 font-semibold">Population:</span>
+              <span>recruitment, connectivity, density-dependent compensation</span>
+            </li>
+            <li>
+              <span class="text-accent-2 font-semibold">Ecosystem:</span>
+              <span>facilitation cascades, succession, disturbance legacies</span>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Reorganization -->
+        <div class="pillar-card relative scroll-reveal stagger-3">
+          <div class="pillar-icon pillar-icon-3">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4" />
+            </svg>
+          </div>
+          <h3 class="pillar-title">Reorganization</h3>
+          <p class="pillar-desc">What determines the next state when return isn't possible.</p>
+          <ul class="pillar-topics">
+            <li>
+              <span class="text-accent-warm font-semibold">Individual:</span>
+              <span>how tolerances filter survivors</span>
+            </li>
+            <li>
+              <span class="text-accent-warm font-semibold">Population:</span>
+              <span>how populations reassemble under new conditions</span>
+            </li>
+            <li>
+              <span class="text-accent-warm font-semibold">Ecosystem:</span>
+              <span>how interactions rewire into novel communities</span>
+            </li>
+          </ul>
         </div>
       </div>
 
-      <!-- Kelp Story -->
-      <div class="research-story research-story-reverse scroll-reveal">
-        <div class="research-story-image">
-          <img src="/images/purple-urchin.jpeg" alt="Purple sea urchin that can overgraze kelp forests" loading="lazy" />
-        </div>
-        <div class="research-story-content">
-          <span class="eyebrow text-accent-2">Santa Barbara</span>
-          <h3 class="text-2xl md:text-3xl font-bold mb-5 text-ink">Kelp scraps prevent urchin takeovers</h3>
-          <p class="text-lg text-muted leading-relaxed mb-5">
-            Everyone assumed the key to preventing urchin barrens was killing urchins or boosting their predators. We found something simpler: when kelp forests produce enough detrital "scraps," urchins stay put and graze on the fallen debris instead of climbing the kelp and eating it alive.
-          </p>
-          <p class="text-muted leading-relaxed mb-5">
-            Remove the detritus, and passive urchins become active grazers. The shift isn't gradual—it's a behavioral switch. Once urchins start frontal grazing, they can strip a kelp forest bare in weeks.
-          </p>
-          <p class="text-muted leading-relaxed mb-6">
-            <strong>Why it matters:</strong> Kelp restoration isn't just about removing urchins—it's about restoring the detrital food web that keeps them passive. Our models now predict which forests are at risk based on detritus supply and urchin density.
-          </p>
-          <a href="/news/scientists-crack-the-code-of-when-sea-urchins-destroy-kelp-f" class="btn btn-secondary group">
-            <span>Read the full story</span>
-            <svg class="w-4 h-4 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
-            </svg>
-          </a>
-        </div>
+      <!-- Section CTA -->
+      <div class="text-center mt-12 scroll-reveal">
+        <a href="/research" class="btn btn-secondary group">
+          <span>Learn how we do science</span>
+          <svg class="w-4 h-4 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+          </svg>
+        </a>
       </div>
     </div>
 
     <!-- Wave -->
-    <WaveDivider id="story-wave" fillColor="navy-deep" />
+    <WaveDivider id="pillars-wave" fillColor="surface" />
+  </section>
+
+  <!-- What We Study - Focal Organisms -->
+  <section class="section-lg bg-surface relative overflow-visible">
+    <div class="container">
+      <div class="text-center mb-12 scroll-reveal">
+        <span class="eyebrow">What We Study</span>
+        <h2 class="mb-6">Focal organisms and scales</h2>
+        <p class="lead max-w-3xl mx-auto text-muted">
+          Our research spans multiple organisms and scales—from the cellular mechanisms of coral healing to the ecosystem consequences of predator loss.
+        </p>
+      </div>
+
+      <!-- Four-column grid -->
+      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto">
+        <!-- Corals -->
+        <div class="organism-card scroll-reveal stagger-1">
+          <div class="organism-icon">
+            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4.26 10.147a60.436 60.436 0 00-.491 6.347A48.627 48.627 0 0112 20.904a48.627 48.627 0 018.232-4.41 60.46 60.46 0 00-.491-6.347m-15.482 0a50.57 50.57 0 00-2.658-.813A59.905 59.905 0 0112 3.493a59.902 59.902 0 0110.399 5.84c-.896.248-1.783.52-2.658.814m-15.482 0A50.697 50.697 0 0112 13.489a50.702 50.702 0 017.74-3.342" />
+            </svg>
+          </div>
+          <h3 class="organism-title">Corals</h3>
+          <p class="organism-desc">How individual colonies heal damage, regenerate tissue, and allocate energy under thermal stress. These capacities set the ceiling for population and reef recovery.</p>
+        </div>
+
+        <!-- Lobsters & Urchins -->
+        <div class="organism-card scroll-reveal stagger-2">
+          <div class="organism-icon">
+            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 3v2.25m6.364.386l-1.591 1.591M21 12h-2.25m-.386 6.364l-1.591-1.591M12 18.75V21m-4.773-4.227l-1.591 1.591M5.25 12H3m4.227-4.773L5.636 5.636M15.75 12a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0z" />
+            </svg>
+          </div>
+          <h3 class="organism-title">Lobsters & Urchins</h3>
+          <p class="organism-desc">How consumers structure kelp forest dynamics through predation, grazing, and behavior. Individual foraging decisions scale up to ecosystem state shifts.</p>
+        </div>
+
+        <!-- Kelp -->
+        <div class="organism-card scroll-reveal stagger-3">
+          <div class="organism-icon">
+            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 21a9.004 9.004 0 008.716-6.747M12 21a9.004 9.004 0 01-8.716-6.747M12 21c2.485 0 4.5-4.03 4.5-9S14.485 3 12 3m0 18c-2.485 0-4.5-4.03-4.5-9S9.515 3 12 3m0 0a8.997 8.997 0 017.843 4.582M12 3a8.997 8.997 0 00-7.843 4.582m15.686 0A11.953 11.953 0 0112 10.5c-2.998 0-5.74-1.1-7.843-2.918m15.686 0A8.959 8.959 0 0121 12c0 .778-.099 1.533-.284 2.253m0 0A17.919 17.919 0 0112 16.5c-3.162 0-6.133-.815-8.716-2.247m0 0A9.015 9.015 0 013 12c0-1.605.42-3.113 1.157-4.418" />
+            </svg>
+          </div>
+          <h3 class="organism-title">Kelp</h3>
+          <p class="organism-desc">How individual resistance to grazing and storm damage interacts with population recruitment to determine forest persistence.</p>
+        </div>
+
+        <!-- Reef Fish -->
+        <div class="organism-card scroll-reveal stagger-4">
+          <div class="organism-icon">
+            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M2.25 15a4.5 4.5 0 004.5 4.5H18a3.75 3.75 0 001.332-7.257 3 3 0 00-3.758-3.848 5.25 5.25 0 00-10.233 2.33A4.502 4.502 0 002.25 15z" />
+            </svg>
+          </div>
+          <h3 class="organism-title">Reef Fish</h3>
+          <p class="organism-desc">How fish–coral mutualisms enhance coral survival, and how fishing alters the interaction networks that stabilize reefs.</p>
+        </div>
+      </div>
+    </div>
+
+    <WaveDivider id="organisms-wave" fillColor="navy-deep" />
   </section>
 
   <!-- Recent News Section -->
@@ -337,12 +421,10 @@ const formatDate = (dateStr: string) => {
           <h2 class="mb-6">Based at UC Santa Barbara</h2>
           <p class="text-muted text-lg leading-relaxed mb-5">
             The Ocean Recoveries Lab is part of the Department of Ecology, Evolution & Marine Biology.
-            We have running seawater systems, small boat access, and on-site dive facilities at UCSB's
-            Marine Science Institute—plus field stations in Moorea and the Channel Islands.
+            We benefit from UCSB's world-class marine facilities, the Santa Barbara Coastal Long-Term Ecological Research site, and partnerships with the Moorea Coral Reef LTER.
           </p>
           <p class="text-muted leading-relaxed mb-6">
-            Our team includes postdocs, grad students, and undergrads linking field experiments
-            to management—like our MPA spillover work that informed Channel Islands fishery reviews.
+            Our team includes postdocs, graduate students, undergraduates, and collaborators translating resilience science into management and restoration strategies.
           </p>
 
           <!-- Lab Director -->
@@ -394,24 +476,9 @@ const formatDate = (dateStr: string) => {
     <WaveDivider id="about-wave" fillColor="navy-deep" />
   </section>
 
-  <!-- Vision Statement + CTAs -->
+  <!-- CTA Section -->
   <section class="section-lg bg-navy-deep">
     <div class="container">
-      <!-- Vision Statement -->
-      <div class="max-w-3xl mx-auto text-center mb-16 scroll-reveal">
-        <span class="eyebrow text-accent-2">Where We're Headed</span>
-        <h2 class="text-white mb-6">From understanding to engineering</h2>
-        <p class="text-lg text-white/60 leading-relaxed mb-4">
-          We're not content to describe what's happening. We want to build the predictive tools that let managers intervene before collapse—and design restorations that succeed because they work with ecological complexity, not against it.
-        </p>
-        <p class="text-lg text-white/60 leading-relaxed mb-4">
-          For coral reefs: recovery trajectory models that predict which assemblages will persist and which need intervention. For kelp forests: updated spillover estimates and urchin-grazing thresholds that inform California MPA policy.
-        </p>
-        <p class="text-lg text-white/60 leading-relaxed">
-          The science isn't there yet. But the pieces are coming together. And the urgency is clear.
-        </p>
-      </div>
-
       <!-- CTA Cards -->
       <div class="grid md:grid-cols-2 gap-6 lg:gap-8">
         <!-- For Prospective Students/Postdocs -->
@@ -420,7 +487,7 @@ const formatDate = (dateStr: string) => {
             <span class="eyebrow text-accent">For Researchers</span>
             <h2 class="text-2xl md:text-3xl mb-4">Join Our Team</h2>
             <p class="text-white/60 max-w-md mx-auto mb-6">
-              Looking for researchers who dive, build models, and publish open-access. Current needs: coral photogrammetry and kelp population modeling.
+              We're seeking researchers at all career stages who want to understand and restore ocean ecosystems—from molecular mechanisms to ecosystem dynamics.
             </p>
             <a href="/join" class="btn btn-primary group">
               <span>View Opportunities</span>
@@ -437,7 +504,7 @@ const formatDate = (dateStr: string) => {
             <span class="eyebrow text-accent-2">For Funders</span>
             <h2 class="text-2xl md:text-3xl mb-4">Partner With Us</h2>
             <p class="text-white/60 max-w-md mx-auto mb-6">
-              Support research that directly informs reef and kelp forest management. See our track record and explore funding opportunities.
+              Support research that identifies why ecosystems fail and what makes restoration succeed.
             </p>
             <a href="/for-funders" class="btn btn-secondary group">
               <span>Learn More</span>
@@ -1267,6 +1334,113 @@ const formatDate = (dateStr: string) => {
 
   .experiment-card:hover .experiment-link {
     @apply gap-3;
+  }
+
+  /* ========================================
+     Study System Cards (Two Failure Modes)
+     ======================================== */
+  .study-card {
+    @apply relative rounded-2xl overflow-hidden no-underline block;
+    @apply border border-line/50 bg-surface-card;
+    @apply transition-all duration-500 ease-out;
+    min-height: 380px;
+  }
+
+  .study-card:hover {
+    @apply -translate-y-2;
+    border-color: rgba(56, 189, 248, 0.4);
+    box-shadow:
+      0 25px 50px -12px rgba(0, 0, 0, 0.2),
+      0 0 40px rgba(56, 189, 248, 0.1);
+  }
+
+  .study-card-image {
+    @apply absolute inset-0;
+  }
+
+  .study-card-image img {
+    @apply w-full h-full object-cover;
+    @apply transition-all duration-700 ease-out;
+    transform: scale(1.05);
+  }
+
+  .study-card:hover .study-card-image img {
+    transform: scale(1.12);
+  }
+
+  .study-card-overlay {
+    @apply absolute inset-0;
+    background: linear-gradient(
+      to top,
+      rgba(15, 23, 42, 0.98) 0%,
+      rgba(15, 23, 42, 0.9) 35%,
+      rgba(15, 23, 42, 0.6) 60%,
+      rgba(15, 23, 42, 0.3) 100%
+    );
+  }
+
+  .study-card-content {
+    @apply absolute bottom-0 left-0 right-0 p-6 md:p-7;
+  }
+
+  .study-location {
+    @apply inline-flex items-center gap-1.5 text-accent-2 text-xs font-bold uppercase tracking-wider mb-2;
+  }
+
+  .study-title {
+    @apply text-2xl md:text-3xl font-black text-white mb-3;
+    @apply transition-colors duration-300;
+  }
+
+  .study-card:hover .study-title {
+    @apply text-accent;
+  }
+
+  .study-description {
+    @apply text-white/70 text-sm leading-relaxed mb-4;
+  }
+
+  .study-link {
+    @apply inline-flex items-center gap-2 text-accent text-sm font-bold;
+    @apply transition-all duration-300;
+  }
+
+  .study-card:hover .study-link {
+    @apply gap-3;
+  }
+
+  /* ========================================
+     Organism Cards (What We Study)
+     ======================================== */
+  .organism-card {
+    @apply p-6 rounded-2xl text-center;
+    @apply bg-surface-card border border-line/50;
+    @apply transition-all duration-300 ease-out;
+  }
+
+  .organism-card:hover {
+    @apply -translate-y-2;
+    border-color: rgba(56, 189, 248, 0.3);
+    box-shadow: 0 12px 24px -8px rgba(0, 0, 0, 0.15);
+  }
+
+  .organism-icon {
+    @apply w-16 h-16 mx-auto mb-4 rounded-2xl;
+    @apply flex items-center justify-center;
+    @apply bg-accent/10 text-accent;
+    @apply transition-all duration-300;
+  }
+
+  .organism-card:hover .organism-icon {
+    @apply bg-accent/20 scale-110;
+  }
+
+  .organism-title {
+    @apply text-lg font-bold text-ink mb-3;
+  }
+
+  .organism-desc {
+    @apply text-muted text-sm leading-relaxed;
   }
 
   /* ========================================
