@@ -70,6 +70,18 @@ const formatDate = (dateStr: string) => {
         How ocean ecosystems heal—and how we can help.
       </p>
 
+      <!-- Lab Director Card -->
+      <a href="/people" class="hero-pi-card opacity-0 group">
+        <img src="/images/adrian.png" alt="Adrian Stier" class="hero-pi-photo" />
+        <div class="hero-pi-info">
+          <span class="hero-pi-name">Adrian Stier</span>
+          <span class="hero-pi-title">Lab Director · Associate Professor, UCSB</span>
+        </div>
+        <svg class="hero-pi-arrow" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+        </svg>
+      </a>
+
       <div class="hero-cta flex flex-col sm:flex-row gap-4 justify-center opacity-0">
         <a href="#research" class="btn btn-primary btn-lg magnetic-btn group">
           <span>Explore Our Research</span>
@@ -558,6 +570,46 @@ const formatDate = (dateStr: string) => {
 
   .hero-cta {
     animation: fadeUp 0.8s ease-out 0.65s forwards;
+  }
+
+  /* Hero PI Card */
+  .hero-pi-card {
+    @apply inline-flex items-center gap-3 px-4 py-3 rounded-full no-underline;
+    @apply bg-white/10 backdrop-blur-sm border border-white/20;
+    @apply transition-all duration-300 mb-8;
+    animation: fadeUp 0.8s ease-out 0.5s forwards;
+  }
+
+  .hero-pi-card:hover {
+    @apply bg-white/20;
+    border-color: rgba(56, 189, 248, 0.4);
+    transform: translateY(-2px);
+  }
+
+  .hero-pi-photo {
+    @apply w-10 h-10 rounded-full object-cover;
+    @apply border-2 border-white/30;
+  }
+
+  .hero-pi-info {
+    @apply flex flex-col text-left;
+  }
+
+  .hero-pi-name {
+    @apply text-white font-bold text-sm;
+  }
+
+  .hero-pi-title {
+    @apply text-white/70 text-xs;
+  }
+
+  .hero-pi-arrow {
+    @apply w-4 h-4 text-white/50 ml-1;
+    @apply transition-all duration-200;
+  }
+
+  .hero-pi-card:hover .hero-pi-arrow {
+    @apply text-white translate-x-0.5;
   }
 
   @keyframes fadeUp {
