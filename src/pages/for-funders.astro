@@ -3,119 +3,113 @@ import Layout from '@layouts/Layout.astro';
 import WaveDivider from '@components/shared/WaveDivider.astro';
 import CaseStudyCard from '@components/shared/CaseStudyCard.astro';
 
-// Track record stats - UPDATE THESE WITH ACTUAL VALUES
+// Track record - be honest, these should be verified
 const trackRecord = {
-  totalFunding: "$4.2M",
-  fundingPeriod: "since 2016",
-  activeGrants: 5,
-  grantSuccessRate: "35%",
   peerReviewedPapers: 75,
   graduateStudents: 8,
   postdocs: 4,
-  managementRecommendations: 8,
 };
 
-// Key funders - verified partnerships
+// Current and past funders
 const keyFunders = [
-  { name: "National Science Foundation", abbrev: "NSF", note: "OCE, DEB, LTER awards" },
+  { name: "National Science Foundation", abbrev: "NSF", note: "OCE, DEB, LTER" },
   { name: "NOAA", abbrev: "NOAA", note: "Sanctuary science" },
-  { name: "California Ocean Protection Council", abbrev: "OPC", note: "Kelp management" },
-  { name: "UC Natural Reserve System", abbrev: "UCNRS", note: "Field site access" },
-  { name: "Moore Foundation", abbrev: "Moore", note: "Marine conservation" },
+  { name: "CA Ocean Protection Council", abbrev: "OPC", note: "Kelp management" },
+  { name: "UC Natural Reserve System", abbrev: "UCNRS", note: "Field access" },
 ];
 
-// What your money buys - realistic UC costs (includes ~55% indirect on federal)
+// What funding supports - honest costs
 const realCosts = [
   {
-    item: "Field Season (Moorea)",
+    item: "Moorea Field Season",
     cost: "$35K",
-    description: "4-week expedition: dive operations, boat time, equipment, housing, 3-person team",
-    deliverables: "1 publication, open datasets",
+    description: "4-week field expedition with dive operations and boat time",
+    deliverables: "Typically produces 1 publication and public datasets",
   },
   {
-    item: "Field Season (Santa Barbara)",
+    item: "Santa Barbara Field Season",
     cost: "$18K",
-    description: "3-month kelp forest research: boat charters, dive support, equipment",
-    deliverables: "Long-term monitoring data contribution",
+    description: "3-month kelp forest research: boats, diving, equipment",
+    deliverables: "Contributes to LTER long-term monitoring",
   },
   {
     item: "Postdoc (1 year)",
-    cost: "$75K",
-    description: "Salary + benefits for PhD-level researcher (direct costs only)",
-    deliverables: "2–3 publications, student mentorship",
+    cost: "$85K",
+    description: "Salary and benefits for a PhD-level researcher",
+    deliverables: "Leads independent research projects",
   },
   {
     item: "PhD Student (1 year)",
-    cost: "$45K",
-    description: "Stipend + tuition + fees (direct costs)",
-    deliverables: "Thesis chapter, 1 publication",
+    cost: "$55K",
+    description: "Stipend, tuition, and research costs",
+    deliverables: "Thesis research, typically 1 first-author paper",
   },
   {
-    item: "Undergraduate Researcher",
-    cost: "$6K",
-    description: "Summer research experience (10 weeks, stipend + housing)",
-    deliverables: "Thesis project, conference presentation",
-  },
-  {
-    item: "3D Photogrammetry Survey",
+    item: "Undergraduate (summer)",
     cost: "$8K",
-    description: "Full reef plot mapping: equipment rental, processing, analysis",
-    deliverables: "Structural complexity data, growth measurements",
+    description: "10-week research experience with housing",
+    deliverables: "Training in field and lab methods",
+  },
+  {
+    item: "3D Reef Survey",
+    cost: "$12K",
+    description: "Photogrammetric mapping of reef plots",
+    deliverables: "High-resolution structural data",
   },
 ];
 
-// Case studies data - all based on actual published research
+// Research examples - honest about what was done and found
 const caseStudies = [
   {
-    problem: "Fishery managers asked: do marine protected areas benefit adjacent fishing grounds through spillover?",
-    action: "Long-term monitoring of lobster populations inside and outside Channel Islands MPAs (Lenihan et al. 2021, 2022).",
-    result: "Evidence that spillover enhances catch at reserve borders; published in Scientific Reports and Ecosphere.",
-    users: "Southern California lobster fishery managers",
+    problem: "Do marine reserves benefit adjacent fishing areas through spillover?",
+    action: "Long-term monitoring of lobster populations inside and outside Channel Islands MPAs (Lenihan et al. 2021).",
+    result: "Found evidence that spillover enhances catch at reserve borders. Published in Scientific Reports.",
+    users: "Relevant to Southern California fishery management",
     icon: "kelp" as const,
     link: "/research/kelp-forests",
     linkText: "View kelp research",
   },
   {
-    problem: "What happens to coral reefs when disturbances leave dead coral structures standing?",
-    action: "Mathematical modeling of structure-retaining vs. structure-removing disturbances (Kopecky et al. 2023, Ecology).",
-    result: "Showed how dead coral skeletons can promote regime shifts to algae-dominated states.",
-    users: "Coral reef researchers and modelers",
+    problem: "How do dead coral structures affect reef recovery after disturbance?",
+    action: "Mathematical modeling of disturbance types and their legacies (Kopecky et al. 2023).",
+    result: "Models suggest standing dead coral can promote algal regime shifts. Published in Ecology.",
+    users: "Informs thinking about post-disturbance reef dynamics",
     icon: "coral" as const,
     link: "/research/coral-reefs",
     linkText: "View coral research",
   },
   {
-    problem: "How do guard crabs protect branching corals from predators and competitors?",
-    action: "Field experiments testing crab-coral interactions at Moorea LTER (Stier et al. 2010, McKeon et al. 2012).",
-    result: "Demonstrated synergistic defense by multiple crab species against crown-of-thorns and vermetid snails.",
-    users: "Coral reef ecologists studying mutualisms",
+    problem: "How do mutualist crabs protect branching corals?",
+    action: "Field experiments manipulating crab presence on coral colonies (Stier et al. 2010, McKeon et al. 2012).",
+    result: "Demonstrated that guard crabs defend corals against crown-of-thorns and other threats.",
+    users: "Basic science on coral-crustacean mutualisms",
     icon: "coral" as const,
     link: "/publications",
     linkText: "See publications",
   },
   {
-    problem: "How many large carnivore species are actually recovering globally?",
-    action: "Synthesized data on 362 large carnivore species worldwide (Ingeman et al. 2022, Scientific Reports).",
-    result: "Found only ~3% showing signs of recovery; identified factors distinguishing successful cases.",
-    users: "Conservation biologists and policy makers",
+    problem: "How common is large carnivore recovery globally?",
+    action: "Synthesized data on 362 large carnivore populations worldwide (Ingeman et al. 2022).",
+    result: "Found ~3% showing recovery signs. Identified factors associated with successful cases.",
+    users: "Contributes to conservation prioritization discussions",
     icon: "fish" as const,
     link: "/publications",
     linkText: "See publications",
   },
   {
-    problem: "What prevents urchins from overgrazing kelp forests into barrens?",
-    action: "Field research on kelp detritus as alternative food source (Rennick et al. 2022, Ecology).",
-    result: "Detrital supply identified as key factor preventing regime shifts to urchin barrens.",
-    users: "Kelp forest ecologists and managers",
+    problem: "What prevents urchins from overgrazing kelp forests?",
+    action: "Studied urchin behavior in relation to kelp detritus availability (Rennick et al. 2022).",
+    result: "Detrital food supply appears to reduce urchin grazing pressure. Published in Ecology.",
+    users: "Relevant to kelp forest management",
     icon: "kelp" as const,
     link: "/research/kelp-forests",
     linkText: "View kelp research",
   },
   {
-    problem: "Can 3D photogrammetry improve coral growth and biodiversity measurements?",
-    action: "Compared photogrammetric vs. manual methods for coral colonies (Curtis et al. 2023, Coral Reefs).",
-    result: "Photogrammetry outperforms manual methods for detecting growth and predicting associated biodiversity.",
-    users: "Coral monitoring programs",
+    problem: "Can photogrammetry improve coral monitoring?",
+    action: "Compared 3D photogrammetric methods to traditional survey techniques (Curtis et al. 2023).",
+    result: "Photogrammetry captured more structural detail than manual methods. Published in Coral Reefs.",
+    users: "Methodological advance for reef monitoring",
     icon: "data" as const,
     link: "/publications",
     linkText: "See publications",
@@ -236,26 +230,22 @@ const partners = [
         </h1>
 
         <p class="hero-description text-lg md:text-xl text-white/80 mb-8 leading-relaxed max-w-2xl">
-          We turn research into actionable tools for ocean recovery. Your investment funds field experiments, decision-support models, and open-source solutions that practitioners actually use.
+          We study how coral reefs and kelp forests recover from disturbance. Your support funds field experiments, student training, and open-access publications.
         </p>
 
-        <!-- Key outcomes - bold stats -->
-        <div class="hero-stats grid grid-cols-2 sm:grid-cols-4 gap-4 mb-10">
-          <div class="hero-stat">
-            <span class="hero-stat-value">{trackRecord.totalFunding}</span>
-            <span class="hero-stat-label">Total Funding</span>
-          </div>
+        <!-- Simple stats - just the facts -->
+        <div class="hero-stats grid grid-cols-3 gap-4 mb-10 max-w-md">
           <div class="hero-stat">
             <span class="hero-stat-value">{trackRecord.peerReviewedPapers}+</span>
-            <span class="hero-stat-label">Publications</span>
+            <span class="hero-stat-label">Papers</span>
           </div>
           <div class="hero-stat">
             <span class="hero-stat-value">{trackRecord.graduateStudents}</span>
-            <span class="hero-stat-label">PhDs Trained</span>
+            <span class="hero-stat-label">PhDs</span>
           </div>
           <div class="hero-stat">
-            <span class="hero-stat-value">{trackRecord.grantSuccessRate}</span>
-            <span class="hero-stat-label">Grant Success Rate</span>
+            <span class="hero-stat-value">2</span>
+            <span class="hero-stat-label">LTER Sites</span>
           </div>
         </div>
 
@@ -276,15 +266,12 @@ const partners = [
     <WaveDivider id="hero-wave" fillColor="navy-deep" />
   </section>
 
-  <!-- Track Record Section -->
+  <!-- Funders Section -->
   <section class="section bg-navy-deep">
     <div class="container">
       <div class="section-header text-center scroll-reveal">
-        <span class="eyebrow text-accent-2">Track Record</span>
-        <h2 class="text-white mb-4">Funded By Leading Institutions</h2>
-        <p class="text-white/60 max-w-2xl mx-auto">
-          {trackRecord.activeGrants} active grants. {trackRecord.grantSuccessRate} proposal success rate (NSF average: 25%).
-        </p>
+        <span class="eyebrow text-accent-2">Current & Past Support</span>
+        <h2 class="text-white mb-4">Our Funders</h2>
       </div>
 
       <div class="funders-grid scroll-reveal">
@@ -297,27 +284,23 @@ const partners = [
         ))}
       </div>
 
-      <!-- Outcomes that matter -->
+      <!-- Simple outcomes -->
       <div class="outcomes-grid scroll-reveal">
         <div class="outcome-card">
           <span class="outcome-number">{trackRecord.peerReviewedPapers}+</span>
           <span class="outcome-label">Peer-Reviewed Papers</span>
-          <span class="outcome-detail">Published in Science, Ecology, Nature Communications</span>
         </div>
         <div class="outcome-card">
           <span class="outcome-number">{trackRecord.graduateStudents}</span>
-          <span class="outcome-label">PhD Students Graduated</span>
-          <span class="outcome-detail">Now faculty at UW, UC Davis, and more</span>
+          <span class="outcome-label">PhD Students Trained</span>
         </div>
         <div class="outcome-card">
           <span class="outcome-number">{trackRecord.postdocs}</span>
           <span class="outcome-label">Postdocs Mentored</span>
-          <span class="outcome-detail">Leading labs and conservation programs</span>
         </div>
         <div class="outcome-card">
-          <span class="outcome-number">{trackRecord.managementRecommendations}</span>
-          <span class="outcome-label">Management Recommendations</span>
-          <span class="outcome-detail">Adopted by CA DFW, NOAA, Moorea agencies</span>
+          <span class="outcome-number">2</span>
+          <span class="outcome-label">LTER Field Sites</span>
         </div>
       </div>
     </div>
@@ -699,7 +682,7 @@ const partners = [
      Funders Grid
      ======================================== */
   .funders-grid {
-    @apply grid grid-cols-2 md:grid-cols-5 gap-4 max-w-4xl mx-auto mb-12;
+    @apply grid grid-cols-2 md:grid-cols-4 gap-4 max-w-3xl mx-auto mb-12;
   }
 
   .funder-card {
