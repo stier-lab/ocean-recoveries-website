@@ -161,33 +161,30 @@ We work at the Santa Barbara Coastal Long Term Ecological Research (SBC LTER) si
 // Research Pillars - How we approach research (methodological framework)
 export const researchPillars: ResearchPillar[] = [
   {
-    title: 'Marine Ecosystem Dynamics & Resilience',
-    description: 'How do kelp and corals establish habitat? What species interactions drive ecological change? What mechanisms push reefs across tipping points — and how can we help them recover?',
+    title: 'Ecosystem Dynamics',
+    description: 'Standing dead coral skeletons trap reefs in degraded states. Kelp detritus prevents urchin barrens. We study how structure and food webs drive recovery—or collapse.',
     topics: [
-      'Foundation species create habitat stability',
-      'Predator-prey relationships & trophic cascades',
-      'Disturbance events and tipping points',
-      'Storm & bleaching legacies',
+      'Dead coral promotes algal regime shifts',
+      'Detrital subsidies control herbivore outbreaks',
+      'Guard crabs defend corals from crown-of-thorns',
     ],
   },
   {
-    title: 'Conservation Science & Human Dimensions',
-    description: 'We co-design solutions with agencies and communities, testing effectiveness, establishing action thresholds, and reducing conflict in decision-making processes.',
+    title: 'Applied Conservation',
+    description: 'Lobster spillover from CA MPAs boosts adjacent fishery catches. We test whether protected areas deliver promised benefits—and help managers set action triggers.',
     topics: [
-      'Marine Protected Areas & fisheries benefits',
-      'Predator-prey recovery synchronization',
-      'Stakeholder engagement & policy alignment',
-      'Restoration & climate adaptation methods',
+      'MPA spillover quantified in Santa Barbara',
+      'Size-based lobster-urchin interaction models',
+      'Fisheries co-management in French Polynesia',
     ],
   },
   {
-    title: 'Ecological Theory & Quantitative Methods',
-    description: 'We develop simple yet powerful models and tools paired with new measurement approaches, enabling managers to forecast scenarios and scale solutions.',
+    title: 'Quantitative Ecology',
+    description: 'Body-size scaling predicts predator-prey interaction strength across species. We build models that forecast ecosystem change from measurable traits.',
     topics: [
-      'Food web & species-area models',
-      'Bayesian & structural equation modeling',
-      '3D photogrammetry & field experiments',
-      'Long-term observatory data systems',
+      'Size-scaling laws for interaction strength',
+      'Bayesian models for long-term monitoring',
+      '3D reef photogrammetry at Moorea LTER',
     ],
   },
 ];

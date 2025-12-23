@@ -110,7 +110,7 @@ const formatDate = (dateStr: string) => {
     <WaveDivider id="hero-wave" fillColor="surface" />
   </section>
 
-  <!-- Study Systems Section -->
+  <!-- Study Systems Section with Interactive Map -->
   <section id="research" class="section-lg bg-surface relative overflow-visible">
     <!-- Animated Blob Shapes -->
     <div class="blob-container" aria-hidden="true">
@@ -118,44 +118,43 @@ const formatDate = (dateStr: string) => {
       <div class="blob blob-2"></div>
     </div>
     <div class="container relative z-10">
-      <div class="text-center mb-14 scroll-reveal">
+      <div class="text-center mb-10 scroll-reveal">
         <span class="eyebrow">Where We Work</span>
-        <h2 class="mb-4">Study Systems</h2>
+        <h2 class="mb-4">Our Field Sites</h2>
         <p class="lead max-w-2xl mx-auto">
-          Two iconic marine ecosystems. One mission: understanding recovery.
+          Two LTER sites across the Pacific. Click a location to explore our research.
         </p>
       </div>
 
-      <div class="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+      <!-- Interactive Map -->
+      <div class="max-w-5xl mx-auto scroll-reveal">
+        <StudySitesMap client:load />
+      </div>
+
+      <!-- Study System Cards (compact, below map) -->
+      <div class="grid md:grid-cols-2 gap-6 max-w-5xl mx-auto mt-10">
         {studySystems.map((system, i) => (
-          <a href={`/research/${system.slug}`} class={`ecosystem-card scroll-reveal stagger-${i + 1} group`}>
-            <!-- Image container -->
-            <div class="ecosystem-card-image">
+          <a href={`/research/${system.slug}`} class={`ecosystem-card-compact scroll-reveal stagger-${i + 1} group`}>
+            <div class="ecosystem-card-compact-image">
               <img
                 src={system.heroImage}
                 alt={system.title}
                 loading="lazy"
               />
-              <div class="ecosystem-card-overlay"></div>
             </div>
-
-            <!-- Content -->
-            <div class="ecosystem-card-content">
-              <!-- Location pill -->
-              <div class="ecosystem-location">
-                <svg class="w-3.5 h-3.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <div class="ecosystem-card-compact-content">
+              <div class="ecosystem-location-compact">
+                <svg class="w-3 h-3 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
                 </svg>
-                <span>{system.slug === 'coral-reefs' ? 'Moorea, French Polynesia' : 'Santa Barbara, California'}</span>
+                <span>{system.slug === 'coral-reefs' ? "Mo'orea" : 'Santa Barbara'}</span>
               </div>
-
-              <h3 class="ecosystem-title">{system.title}</h3>
-              <p class="ecosystem-tagline">{system.tagline}</p>
-
-              <div class="ecosystem-link">
-                <span>Explore research</span>
-                <svg class="w-4 h-4 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <h3 class="ecosystem-title-compact">{system.title}</h3>
+              <p class="ecosystem-tagline-compact">{system.tagline}</p>
+              <div class="ecosystem-link-compact">
+                <span>Learn more</span>
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
                 </svg>
               </div>
@@ -712,6 +711,64 @@ const formatDate = (dateStr: string) => {
 
   .ecosystem-card:hover .ecosystem-link {
     @apply gap-3;
+  }
+
+  /* ========================================
+     Compact Ecosystem Cards (below map)
+     ======================================== */
+  .ecosystem-card-compact {
+    @apply flex rounded-xl overflow-hidden no-underline;
+    @apply bg-surface-card border border-line/50;
+    @apply transition-all duration-300 ease-out;
+  }
+
+  .ecosystem-card-compact:hover {
+    @apply -translate-y-1;
+    border-color: rgba(56, 189, 248, 0.4);
+    box-shadow: 0 12px 24px -8px rgba(0, 0, 0, 0.3);
+  }
+
+  .ecosystem-card-compact-image {
+    @apply w-24 md:w-32 flex-shrink-0;
+  }
+
+  .ecosystem-card-compact-image img {
+    @apply w-full h-full object-cover;
+    @apply transition-transform duration-500;
+  }
+
+  .ecosystem-card-compact:hover .ecosystem-card-compact-image img {
+    @apply scale-110;
+  }
+
+  .ecosystem-card-compact-content {
+    @apply flex-1 p-4 md:p-5 flex flex-col justify-center;
+  }
+
+  .ecosystem-location-compact {
+    @apply inline-flex items-center gap-1 text-accent-2 text-xs font-bold uppercase tracking-wider mb-1.5;
+  }
+
+  .ecosystem-title-compact {
+    @apply text-base md:text-lg font-bold text-ink mb-1;
+    @apply transition-colors duration-200;
+  }
+
+  .ecosystem-card-compact:hover .ecosystem-title-compact {
+    @apply text-accent;
+  }
+
+  .ecosystem-tagline-compact {
+    @apply text-muted text-xs md:text-sm leading-relaxed mb-2 line-clamp-2;
+  }
+
+  .ecosystem-link-compact {
+    @apply inline-flex items-center gap-1.5 text-accent text-xs font-bold;
+    @apply transition-all duration-200;
+  }
+
+  .ecosystem-card-compact:hover .ecosystem-link-compact {
+    @apply gap-2;
   }
 
   /* ========================================
