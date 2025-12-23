@@ -76,9 +76,11 @@ export default function StudySitesMap() {
       // Add zoom control to top-right
       L.control.zoom({ position: 'topright' }).addTo(map);
 
-      // Custom dark ocean tiles - using Stadia Maps dark theme
-      L.tileLayer('https://tiles.stadiamaps.com/tiles/alidade_smooth_dark/{z}/{x}/{y}{r}.png', {
-        maxZoom: 20,
+      // Custom dark ocean tiles - using CartoDB dark theme (no API key required)
+      L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
+        maxZoom: 19,
+        subdomains: 'abcd',
+        attribution: '&copy; <a href="https://carto.com/">CARTO</a>',
       }).addTo(map);
 
       leafletMapRef.current = map;
