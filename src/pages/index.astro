@@ -174,9 +174,9 @@ const formatDate = (dateStr: string) => {
     <div class="container">
       <div class="text-center mb-14 scroll-reveal">
         <span class="eyebrow text-accent-2">Our Approach</span>
-        <h2 class="text-white mb-4">Three Research Pillars</h2>
+        <h2 class="text-white mb-4">Research Focus</h2>
         <p class="lead max-w-2xl mx-auto text-white/60">
-          Integrating field science, community engagement, and quantitative methods.
+          Field experiments in Moorea and Santa Barbara. Models that predict real outcomes.
         </p>
       </div>
 
@@ -309,11 +309,25 @@ const formatDate = (dateStr: string) => {
             We benefit from UCSB's world-class marine research facilities, the Santa Barbara Coastal
             Long-Term Ecological Research site, and partnerships with the Moorea Coral Reef LTER.
           </p>
-          <p class="text-white/60 leading-relaxed mb-8">
+          <p class="text-white/60 leading-relaxed mb-6">
             Our team includes postdocs, graduate students, undergraduates, and collaborators working
             on decision-relevant science for reef and kelp forest conservation.
           </p>
-          <a href="/people" class="btn btn-primary group">
+
+          <!-- Lab Director -->
+          <a href="/people" class="pi-card group">
+            <img src="/images/adrian.png" alt="Adrian Stier" class="pi-photo" />
+            <div class="pi-info">
+              <span class="pi-name">Adrian Stier</span>
+              <span class="pi-title">Associate Professor, EEMB</span>
+              <span class="pi-bio">Leading research on coral reef and kelp forest recovery through field experiments and quantitative modeling.</span>
+            </div>
+            <svg class="pi-arrow" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+            </svg>
+          </a>
+
+          <a href="/people" class="btn btn-primary group mt-6">
             <span>Meet the Team</span>
             <svg class="w-4 h-4 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
@@ -876,6 +890,81 @@ const formatDate = (dateStr: string) => {
 
   .news-card:hover .news-card-cta {
     @apply gap-3;
+  }
+
+  /* ========================================
+     PI Card - Compact Lab Director
+     ======================================== */
+  .pi-card {
+    display: flex;
+    align-items: center;
+    gap: 0.875rem;
+    padding: 0.75rem 1rem;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 0.75rem;
+    text-decoration: none;
+    transition: all 0.2s ease;
+    margin-bottom: 0;
+  }
+
+  .pi-card:hover {
+    background: rgba(255, 255, 255, 0.06);
+    border-color: rgba(56, 189, 248, 0.3);
+  }
+
+  .pi-photo {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid rgba(56, 189, 248, 0.3);
+    flex-shrink: 0;
+  }
+
+  .pi-info {
+    display: flex;
+    flex-direction: column;
+    gap: 0.125rem;
+    flex: 1;
+    min-width: 0;
+  }
+
+  .pi-name {
+    font-size: 0.875rem;
+    font-weight: 700;
+    color: #f1f5f9;
+  }
+
+  .pi-title {
+    font-size: 0.6875rem;
+    font-weight: 600;
+    color: #38bdf8;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+  }
+
+  .pi-bio {
+    font-size: 0.75rem;
+    color: rgba(241, 245, 249, 0.5);
+    line-height: 1.4;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  .pi-arrow {
+    width: 1rem;
+    height: 1rem;
+    color: rgba(56, 189, 248, 0.4);
+    flex-shrink: 0;
+    transition: all 0.2s ease;
+  }
+
+  .pi-card:hover .pi-arrow {
+    color: #38bdf8;
+    transform: translateX(3px);
   }
 
   /* ========================================
