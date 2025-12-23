@@ -50,6 +50,7 @@ export const currentTeam: TeamMember[] = [
     name: 'Adnan Alalawi',
     role: 'phd',
     title: 'PhD Student',
+    // TODO: Replace placeholder image for Adnan Alalawi with actual headshot
     image: '/images/man-scuba-diver-on-boat.jpg',
     hook: 'Designs artificial reefs and uses soundscapes to accelerate recovery on degraded reefs.',
     tags: ['Restoration', 'Bioacoustics', 'Artificial reefs'],
@@ -94,6 +95,7 @@ export const alumni: AlumniMember[] = [
     role: 'Undergraduate Researcher',
     focus: 'Studied Trapezia-coral mutualism combining field surveys and lab work',
     linkedin: 'https://linkedin.com/in/jadaaalexander/',
+    // TODO: Add Jada's current position when available
   },
   {
     name: 'Alexis Sitt Park',
@@ -109,6 +111,8 @@ export const alumni: AlumniMember[] = [
     years: '2024-2025',
     role: 'Postdoc',
     focus: 'Kelp eco-physiology & global change biology; integrated sensors, diver surveys, and lab experiments',
+    // TODO: Add Emily's current position when available
+    currentPosition: 'Position pending',
   },
   {
     name: 'Samantha Csik',
