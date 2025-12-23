@@ -1,0 +1,32 @@
+---
+/**
+ * WebSite Schema (JSON-LD)
+ * Provides search engines with information about the website structure
+ * Schema.org: https://schema.org/WebSite
+ */
+
+const websiteSchema = {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "@id": "https://www.oceanrecoveries.com/#website",
+  "name": "Ocean Recoveries Lab",
+  "alternateName": "Ocean Recoveries Laboratory at UC Santa Barbara",
+  "url": "https://www.oceanrecoveries.com",
+  "description": "Research lab at UC Santa Barbara focused on understanding, restoring, and scaling ocean resilience through field experiments, modeling, and community partnerships.",
+  "inLanguage": "en-US",
+  "publisher": {
+    "@type": "ResearchOrganization",
+    "@id": "https://www.oceanrecoveries.com/#organization"
+  },
+  "potentialAction": {
+    "@type": "SearchAction",
+    "target": {
+      "@type": "EntryPoint",
+      "urlTemplate": "https://www.oceanrecoveries.com/publications?search={search_term_string}"
+    },
+    "query-input": "required name=search_term_string"
+  }
+};
+---
+
+<script type="application/ld+json" set:html={JSON.stringify(websiteSchema)} />

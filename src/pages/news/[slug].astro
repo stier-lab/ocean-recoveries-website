@@ -1,6 +1,8 @@
 ---
 import Layout from '@layouts/Layout.astro';
 import Breadcrumbs from '@components/layout/Breadcrumbs.astro';
+import ArticleSchema from '@components/seo/ArticleSchema.astro';
+import BreadcrumbSchema from '@components/seo/BreadcrumbSchema.astro';
 import { posts } from '@data/posts';
 
 export function getStaticPaths() {
@@ -106,7 +108,29 @@ const tableOfContents = extractTableOfContents(post.content);
 const hasToc = tableOfContents.length > 2; // More than just Citation and Share
 ---
 
-<Layout title={post.title} description={post.excerpt}>
+<Layout
+  title={post.title}
+  description={post.excerpt}
+  image={post.featuredImage}
+  keywords={post.tags}
+>
+  <!-- SEO Structured Data -->
+  <ArticleSchema
+    title={post.title}
+    description={post.excerpt}
+    datePublished={post.date}
+    image={post.featuredImage}
+    authorName={post.author}
+    slug={post.slug}
+    keywords={post.tags}
+  />
+  <BreadcrumbSchema
+    items={[
+      { name: 'News', url: '/news' },
+      { name: post.title, url: `/news/${post.slug}` }
+    ]}
+  />
+
   <!-- Reading Progress Bar -->
   <div class="reading-progress-container">
     <div class="reading-progress-bar" id="reading-progress"></div>

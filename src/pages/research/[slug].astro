@@ -1,6 +1,7 @@
 ---
 import Layout from '@layouts/Layout.astro';
 import Breadcrumbs from '@components/layout/Breadcrumbs.astro';
+import BreadcrumbSchema from '@components/seo/BreadcrumbSchema.astro';
 import { researchThemes } from '@data/research';
 import { publications } from '@data/publications';
 
@@ -33,7 +34,20 @@ const breadcrumbs = [
 ];
 ---
 
-<Layout title={theme.title} description={theme.tagline}>
+<Layout
+  title={theme.title}
+  description={theme.tagline}
+  image={theme.heroImage}
+  keywords={[theme.title, 'marine ecology', 'ocean research', 'UCSB', 'marine conservation']}
+>
+  <!-- SEO Structured Data -->
+  <BreadcrumbSchema
+    items={[
+      { name: 'Research', url: '/research' },
+      { name: theme.title, url: `/research/${theme.slug}` }
+    ]}
+  />
+
   <!-- Hero -->
   <section class="relative py-24 md:py-32 overflow-hidden">
     <div
@@ -59,6 +73,40 @@ const breadcrumbs = [
       <p class="text-xl text-white/80 max-w-3xl hero-tagline">{theme.tagline}</p>
     </div>
   </section>
+
+  <!-- Species Silhouette Border Pattern -->
+  <div class="species-border" aria-hidden="true">
+    {theme.slug === 'coral-reefs' && (
+      <svg class="species-silhouette coral-silhouette" viewBox="0 0 1200 120" preserveAspectRatio="none">
+        <path class="silhouette-path" d="M0,120 L0,80 Q30,60 60,80 Q90,95 120,75 Q140,60 160,70 Q180,85 200,65 Q220,50 240,70 Q260,90 280,70 Q310,45 340,75 Q360,90 380,60 Q400,40 420,55 Q450,75 480,60 Q500,45 520,65 Q550,85 580,55 Q600,35 620,60 Q650,85 680,55 Q700,40 720,70 Q750,95 780,60 Q800,40 820,65 Q850,90 880,55 Q900,35 920,60 Q950,85 980,50 Q1000,30 1020,55 Q1050,80 1080,50 Q1100,35 1120,60 Q1150,85 1180,55 L1200,50 L1200,120 Z" />
+        <circle class="silhouette-bubble bubble-1" cx="100" cy="40" r="4" />
+        <circle class="silhouette-bubble bubble-2" cx="350" cy="25" r="3" />
+        <circle class="silhouette-bubble bubble-3" cx="600" cy="35" r="5" />
+        <circle class="silhouette-bubble bubble-4" cx="850" cy="20" r="3" />
+        <circle class="silhouette-bubble bubble-5" cx="1100" cy="30" r="4" />
+      </svg>
+    )}
+    {theme.slug === 'kelp-forests' && (
+      <svg class="species-silhouette kelp-silhouette" viewBox="0 0 1200 120" preserveAspectRatio="none">
+        <path class="silhouette-path kelp-frond frond-1" d="M50,120 Q55,100 50,80 Q45,60 55,40 Q60,25 50,10 Q45,0 55,-10" />
+        <path class="silhouette-path kelp-frond frond-2" d="M150,120 Q145,95 155,70 Q165,50 150,30 Q140,15 155,0" />
+        <path class="silhouette-path kelp-frond frond-3" d="M300,120 Q310,90 295,60 Q285,35 305,15 Q315,0 300,-10" />
+        <path class="silhouette-path kelp-frond frond-4" d="M450,120 Q440,100 455,75 Q465,55 445,35 Q435,20 455,5" />
+        <path class="silhouette-path kelp-frond frond-5" d="M600,120 Q610,85 595,55 Q585,30 605,10 Q615,-5 600,-15" />
+        <path class="silhouette-path kelp-frond frond-6" d="M750,120 Q740,95 755,65 Q770,40 750,20 Q735,5 755,-5" />
+        <path class="silhouette-path kelp-frond frond-7" d="M900,120 Q915,90 895,60 Q880,35 905,15 Q920,0 900,-10" />
+        <path class="silhouette-path kelp-frond frond-8" d="M1050,120 Q1040,100 1055,70 Q1070,45 1045,25 Q1030,10 1055,0" />
+        <ellipse class="silhouette-bubble kelp-bladder bladder-1" cx="55" cy="15" rx="8" ry="6" />
+        <ellipse class="silhouette-bubble kelp-bladder bladder-2" cx="150" cy="5" rx="7" ry="5" />
+        <ellipse class="silhouette-bubble kelp-bladder bladder-3" cx="300" cy="10" rx="9" ry="6" />
+        <ellipse class="silhouette-bubble kelp-bladder bladder-4" cx="455" cy="8" rx="7" ry="5" />
+        <ellipse class="silhouette-bubble kelp-bladder bladder-5" cx="600" cy="5" rx="8" ry="6" />
+        <ellipse class="silhouette-bubble kelp-bladder bladder-6" cx="755" cy="12" rx="7" ry="5" />
+        <ellipse class="silhouette-bubble kelp-bladder bladder-7" cx="905" cy="8" rx="8" ry="6" />
+        <ellipse class="silhouette-bubble kelp-bladder bladder-8" cx="1055" cy="5" rx="7" ry="5" />
+      </svg>
+    )}
+  </div>
 
   <!-- Overview -->
   <section class="section bg-surface">
@@ -565,6 +613,115 @@ const breadcrumbs = [
 
   .field-site-description {
     @apply text-muted leading-relaxed;
+  }
+
+  /* ========================================
+     Species Silhouette Border Pattern
+     ======================================== */
+  .species-border {
+    @apply relative w-full overflow-hidden;
+    height: 80px;
+    margin-top: -40px;
+    z-index: 20;
+  }
+
+  .species-silhouette {
+    @apply absolute bottom-0 left-0 w-full;
+    height: 100%;
+  }
+
+  /* Coral Reef Silhouette */
+  .coral-silhouette .silhouette-path {
+    fill: rgba(56, 189, 248, 0.15);
+    transition: fill 0.5s ease;
+  }
+
+  .coral-silhouette:hover .silhouette-path {
+    fill: rgba(56, 189, 248, 0.25);
+  }
+
+  .coral-silhouette .silhouette-bubble {
+    fill: rgba(56, 189, 248, 0.4);
+    animation: coral-bubble-float 4s ease-in-out infinite;
+  }
+
+  .coral-silhouette .bubble-1 { animation-delay: 0s; }
+  .coral-silhouette .bubble-2 { animation-delay: 0.8s; }
+  .coral-silhouette .bubble-3 { animation-delay: 1.6s; }
+  .coral-silhouette .bubble-4 { animation-delay: 2.4s; }
+  .coral-silhouette .bubble-5 { animation-delay: 3.2s; }
+
+  @keyframes coral-bubble-float {
+    0%, 100% {
+      transform: translateY(0) scale(1);
+      opacity: 0.4;
+    }
+    50% {
+      transform: translateY(-8px) scale(1.2);
+      opacity: 0.8;
+    }
+  }
+
+  /* Kelp Forest Silhouette */
+  .kelp-silhouette .silhouette-path {
+    fill: none;
+    stroke: rgba(45, 212, 191, 0.25);
+    stroke-width: 8;
+    stroke-linecap: round;
+    animation: kelp-sway 6s ease-in-out infinite;
+    transform-origin: bottom center;
+  }
+
+  .kelp-silhouette .frond-1 { animation-delay: 0s; }
+  .kelp-silhouette .frond-2 { animation-delay: 0.5s; }
+  .kelp-silhouette .frond-3 { animation-delay: 1s; }
+  .kelp-silhouette .frond-4 { animation-delay: 1.5s; }
+  .kelp-silhouette .frond-5 { animation-delay: 2s; }
+  .kelp-silhouette .frond-6 { animation-delay: 2.5s; }
+  .kelp-silhouette .frond-7 { animation-delay: 3s; }
+  .kelp-silhouette .frond-8 { animation-delay: 3.5s; }
+
+  @keyframes kelp-sway {
+    0%, 100% {
+      transform: rotate(-3deg);
+    }
+    50% {
+      transform: rotate(3deg);
+    }
+  }
+
+  .kelp-silhouette .kelp-bladder {
+    fill: rgba(45, 212, 191, 0.35);
+    animation: bladder-bob 3s ease-in-out infinite;
+  }
+
+  .kelp-silhouette .bladder-1 { animation-delay: 0s; }
+  .kelp-silhouette .bladder-2 { animation-delay: 0.4s; }
+  .kelp-silhouette .bladder-3 { animation-delay: 0.8s; }
+  .kelp-silhouette .bladder-4 { animation-delay: 1.2s; }
+  .kelp-silhouette .bladder-5 { animation-delay: 1.6s; }
+  .kelp-silhouette .bladder-6 { animation-delay: 2s; }
+  .kelp-silhouette .bladder-7 { animation-delay: 2.4s; }
+  .kelp-silhouette .bladder-8 { animation-delay: 2.8s; }
+
+  @keyframes bladder-bob {
+    0%, 100% {
+      transform: translateY(0) scale(1);
+      opacity: 0.35;
+    }
+    50% {
+      transform: translateY(-3px) scale(1.1);
+      opacity: 0.6;
+    }
+  }
+
+  /* Reduced motion for species border */
+  @media (prefers-reduced-motion: reduce) {
+    .coral-silhouette .silhouette-bubble,
+    .kelp-silhouette .silhouette-path,
+    .kelp-silhouette .kelp-bladder {
+      animation: none;
+    }
   }
 </style>
 

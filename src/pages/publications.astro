@@ -1,6 +1,7 @@
 ---
 import Layout from '@layouts/Layout.astro';
 import PublicationList from '@components/publications/PublicationList';
+import BreadcrumbSchema from '@components/seo/BreadcrumbSchema.astro';
 import { publications, allThemes } from '@data/publications';
 import { posts } from '@data/posts';
 import { enrichPublicationsWithImages } from '@utils/publicationImages';
@@ -18,8 +19,16 @@ const openAccessCount = publications.filter(p => p.openAccess).length;
 
 <Layout
   title="Publications"
-  description="Peer-reviewed publications from the Ocean Recoveries Lab at UC Santa Barbara."
+  description="Peer-reviewed publications from the Ocean Recoveries Lab at UC Santa Barbara. Browse our research on coral reef resilience, kelp forest ecology, and marine conservation."
+  keywords={['scientific publications', 'marine research papers', 'coral reef publications', 'kelp forest research', 'peer-reviewed papers']}
 >
+  <!-- SEO Structured Data -->
+  <BreadcrumbSchema
+    items={[
+      { name: 'Publications', url: '/publications' }
+    ]}
+  />
+
   <!-- Compact Header -->
   <section class="pub-header pt-6 pb-4 bg-surface border-b border-line/30 relative overflow-hidden">
     <!-- Subtle blob background -->

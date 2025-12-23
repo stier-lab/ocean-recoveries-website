@@ -1,0 +1,98 @@
+---
+/**
+ * Organization Schema (JSON-LD)
+ * Provides structured data about Ocean Recoveries Lab for search engines and AI systems
+ * Schema.org: https://schema.org/ResearchOrganization
+ */
+
+interface Props {
+  includeMembers?: boolean;
+}
+
+const { includeMembers = false } = Astro.props;
+
+// Import team data if needed
+let teamMembers: any[] = [];
+if (includeMembers) {
+  const { currentTeam } = await import('@data/team');
+  teamMembers = currentTeam;
+}
+
+const organizationSchema = {
+  "@context": "https://schema.org",
+  "@type": "ResearchOrganization",
+  "@id": "https://www.oceanrecoveries.com/#organization",
+  "name": "Ocean Recoveries Lab",
+  "alternateName": ["Ocean Recoveries Laboratory", "UCSB Ocean Recoveries Lab"],
+  "url": "https://www.oceanrecoveries.com",
+  "logo": {
+    "@type": "ImageObject",
+    "url": "https://www.oceanrecoveries.com/images/og-default.jpg",
+    "width": 1200,
+    "height": 630
+  },
+  "image": "https://www.oceanrecoveries.com/images/og-default.jpg",
+  "description": "The Ocean Recoveries Lab at UC Santa Barbara conducts research on marine ecosystem resilience, coral reef recovery, and kelp forest ecology through field experiments, modeling, and community partnerships.",
+  "foundingDate": "2018",
+  "areaServed": {
+    "@type": "Place",
+    "name": "Global tropical and temperate marine ecosystems"
+  },
+  "knowsAbout": [
+    "Coral reef ecology",
+    "Kelp forest ecosystems",
+    "Marine conservation",
+    "Ocean resilience",
+    "Ecosystem recovery",
+    "Climate change impacts on marine systems",
+    "Marine protected areas",
+    "Fisheries management",
+    "Community-based conservation"
+  ],
+  "parentOrganization": {
+    "@type": "EducationalOrganization",
+    "@id": "https://www.ucsb.edu/#organization",
+    "name": "University of California, Santa Barbara",
+    "alternateName": "UCSB",
+    "url": "https://www.ucsb.edu"
+  },
+  "department": {
+    "@type": "Organization",
+    "name": "Department of Ecology, Evolution, and Marine Biology",
+    "alternateName": "EEMB",
+    "url": "https://www.eemb.ucsb.edu"
+  },
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "Department of Ecology, Evolution, and Marine Biology",
+    "addressLocality": "Santa Barbara",
+    "addressRegion": "CA",
+    "postalCode": "93106",
+    "addressCountry": "US"
+  },
+  "sameAs": [
+    "https://scholar.google.com/citations?user=SCHOLAR_ID", // Update with actual Google Scholar ID
+  ],
+  "contactPoint": {
+    "@type": "ContactPoint",
+    "contactType": "Academic Inquiries",
+    "email": "astier@ucsb.edu",
+    "availableLanguage": "English"
+  },
+  ...(includeMembers && teamMembers.length > 0 ? {
+    "member": teamMembers.map(member => ({
+      "@type": "Person",
+      "name": member.name,
+      "jobTitle": member.title,
+      "email": member.email ? `mailto:${member.email}` : undefined,
+      "image": member.image ? `https://www.oceanrecoveries.com${member.image}` : undefined,
+      "affiliation": {
+        "@type": "ResearchOrganization",
+        "@id": "https://www.oceanrecoveries.com/#organization"
+      }
+    }))
+  } : {})
+};
+---
+
+<script type="application/ld+json" set:html={JSON.stringify(organizationSchema)} />

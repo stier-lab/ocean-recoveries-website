@@ -4,6 +4,8 @@ import Nav from '@components/layout/Nav.astro';
 import Footer from '@components/layout/Footer.astro';
 import GlobalEffects from '@components/shared/GlobalEffects.astro';
 import CommandPalette from '@components/shared/CommandPalette.astro';
+import OrganizationSchema from '@components/seo/OrganizationSchema.astro';
+import WebsiteSchema from '@components/seo/WebsiteSchema.astro';
 import '@styles/global.css';
 
 interface Props {
@@ -11,6 +13,8 @@ interface Props {
   description?: string;
   image?: string;
   canonicalUrl?: string;
+  keywords?: string[];
+  noGlobalSchema?: boolean; // For pages that provide their own schema
 }
 
 const {
@@ -18,7 +22,26 @@ const {
   description = 'Ocean Recoveries Lab at UC Santa Barbara - Understanding, restoring, and scaling ocean resilience through field experiments, modeling, and community partnerships.',
   image = '/images/og-default.jpg',
   canonicalUrl = Astro.url.href,
+  keywords = [],
+  noGlobalSchema = false,
 } = Astro.props;
+
+// Default keywords for all pages
+const defaultKeywords = [
+  'ocean recovery',
+  'marine conservation',
+  'coral reef research',
+  'kelp forest ecology',
+  'UC Santa Barbara',
+  'marine science',
+  'ecosystem resilience',
+  'ocean research',
+  'marine biology',
+  'coastal ecology'
+];
+
+// Merge page-specific keywords with defaults
+const allKeywords = [...new Set([...keywords, ...defaultKeywords])];
 
 const siteTitle = title === 'Home' ? 'Ocean Recoveries Lab' : `${title} | Ocean Recoveries Lab`;
 ---
@@ -36,6 +59,18 @@ const siteTitle = title === 'Home' ? 'Ocean Recoveries Lab' : `${title} | Ocean 
     <meta name="title" content={siteTitle} />
     <meta name="description" content={description} />
     <meta name="author" content="Ocean Recoveries Lab, UC Santa Barbara" />
+    <meta name="keywords" content={allKeywords.join(', ')} />
+
+    <!-- Additional SEO Meta Tags -->
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+    <meta name="googlebot" content="index, follow" />
+    <meta name="google" content="notranslate" />
+    <meta name="geo.region" content="US-CA" />
+    <meta name="geo.placename" content="Santa Barbara" />
+
+    <!-- Language and Content Type -->
+    <meta http-equiv="Content-Language" content="en" />
+    <meta name="language" content="English" />
 
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website" />
@@ -62,6 +97,14 @@ const siteTitle = title === 'Home' ? 'Ocean Recoveries Lab' : `${title} | Ocean 
 
     <!-- View Transitions -->
     <ViewTransitions />
+
+    <!-- Structured Data (JSON-LD) -->
+    {!noGlobalSchema && (
+      <>
+        <OrganizationSchema />
+        <WebsiteSchema />
+      </>
+    )}
   </head>
   <body class="min-h-screen flex flex-col antialiased">
     <GlobalEffects />

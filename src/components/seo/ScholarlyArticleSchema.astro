@@ -1,0 +1,107 @@
+---
+/**
+ * ScholarlyArticle Schema (JSON-LD)
+ * For academic publications
+ * Schema.org: https://schema.org/ScholarlyArticle
+ */
+
+interface Author {
+  name: string;
+  affiliations?: string[];
+}
+
+interface Props {
+  title: string;
+  authors: (string | Author)[];
+  datePublished: string;
+  journal?: string;
+  volume?: string;
+  issue?: string;
+  pages?: string;
+  doi?: string;
+  abstract?: string;
+  keywords?: string[];
+  url?: string;
+  openAccess?: boolean;
+}
+
+const {
+  title,
+  authors,
+  datePublished,
+  journal,
+  volume,
+  issue,
+  pages,
+  doi,
+  abstract,
+  keywords = [],
+  url,
+  openAccess = false
+} = Astro.props;
+
+// Format authors
+const formattedAuthors = authors.map(author => {
+  if (typeof author === 'string') {
+    return {
+      "@type": "Person",
+      "name": author
+    };
+  }
+  return {
+    "@type": "Person",
+    "name": author.name,
+    ...(author.affiliations ? {
+      "affiliation": author.affiliations.map(aff => ({
+        "@type": "Organization",
+        "name": aff
+      }))
+    } : {})
+  };
+});
+
+const articleUrl = doi
+  ? `https://doi.org/${doi}`
+  : url || "https://www.oceanrecoveries.com/publications";
+
+const scholarlyArticleSchema = {
+  "@context": "https://schema.org",
+  "@type": "ScholarlyArticle",
+  "headline": title,
+  "name": title,
+  "author": formattedAuthors,
+  "datePublished": datePublished,
+  ...(journal ? {
+    "isPartOf": {
+      "@type": "Periodical",
+      "name": journal,
+      ...(volume ? { "volumeNumber": volume } : {}),
+      ...(issue ? { "issueNumber": issue } : {})
+    }
+  } : {}),
+  ...(pages ? { "pagination": pages } : {}),
+  ...(doi ? {
+    "identifier": {
+      "@type": "PropertyValue",
+      "propertyID": "DOI",
+      "value": doi
+    },
+    "sameAs": `https://doi.org/${doi}`
+  } : {}),
+  ...(abstract ? { "abstract": abstract } : {}),
+  ...(keywords.length > 0 ? { "keywords": keywords.join(", ") } : {}),
+  "url": articleUrl,
+  ...(openAccess ? { "isAccessibleForFree": true } : {}),
+  "publisher": {
+    "@type": "Organization",
+    "name": journal || "Academic Publisher"
+  },
+  "sourceOrganization": {
+    "@type": "ResearchOrganization",
+    "@id": "https://www.oceanrecoveries.com/#organization",
+    "name": "Ocean Recoveries Lab"
+  }
+};
+---
+
+<script type="application/ld+json" set:html={JSON.stringify(scholarlyArticleSchema)} />

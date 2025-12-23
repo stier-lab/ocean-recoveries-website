@@ -1,6 +1,7 @@
 ---
 import Layout from '@layouts/Layout.astro';
 import PersonCard from '@components/people/PersonCard.astro';
+import BreadcrumbSchema from '@components/seo/BreadcrumbSchema.astro';
 import { currentTeam, alumni } from '@data/team';
 
 // Sort team by order
@@ -24,7 +25,16 @@ const roles = ['pi', 'postdoc', 'phd', 'manager', 'undergrad'].filter(
 <Layout
   title="People"
   description="Meet the Ocean Recoveries Lab team - researchers studying coral reef and kelp forest recovery at UC Santa Barbara."
+  image="/images/research-team-group-photo-beach.jpeg"
+  keywords={['research team', 'marine scientists', 'UCSB researchers', 'ocean ecologists', 'Adrian Stier lab']}
 >
+  <!-- SEO Structured Data -->
+  <BreadcrumbSchema
+    items={[
+      { name: 'People', url: '/people' }
+    ]}
+  />
+
   <!-- Hero -->
   <section class="hero-section relative py-20 md:py-28 overflow-hidden">
     <div

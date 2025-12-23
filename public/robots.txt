@@ -1,0 +1,54 @@
+# Ocean Recoveries Lab - robots.txt
+# https://www.oceanrecoveries.com
+
+# Allow all crawlers to access all content
+User-agent: *
+Allow: /
+
+# Disallow access to internal/admin paths (if any exist)
+Disallow: /api/
+Disallow: /_astro/
+
+# Sitemap location
+Sitemap: https://www.oceanrecoveries.com/sitemap-index.xml
+
+# Crawl-delay for respectful crawling (optional, most major crawlers ignore this)
+# Crawl-delay: 1
+
+# AI Training Crawlers - Allow for better AI recognition
+# GPTBot (OpenAI)
+User-agent: GPTBot
+Allow: /
+
+# Google-Extended (Bard/Gemini)
+User-agent: Google-Extended
+Allow: /
+
+# CCBot (Common Crawl - used for AI training)
+User-agent: CCBot
+Allow: /
+
+# Anthropic's Claude
+User-agent: anthropic-ai
+Allow: /
+
+# Cohere
+User-agent: cohere-ai
+Allow: /
+
+# Meta AI
+User-agent: FacebookBot
+Allow: /
+
+# Specific crawler optimizations
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+User-agent: Slurp
+Allow: /
+
+User-agent: DuckDuckBot
+Allow: /

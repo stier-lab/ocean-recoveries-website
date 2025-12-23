@@ -1,0 +1,60 @@
+---
+/**
+ * Person Schema (JSON-LD)
+ * For team member pages and profiles
+ * Schema.org: https://schema.org/Person
+ */
+
+interface Props {
+  name: string;
+  title: string;
+  image?: string;
+  email?: string;
+  description?: string;
+  url?: string;
+  researchAreas?: string[];
+  sameAs?: string[]; // Social profiles, Google Scholar, etc.
+}
+
+const {
+  name,
+  title,
+  image,
+  email,
+  description,
+  url,
+  researchAreas = [],
+  sameAs = []
+} = Astro.props;
+
+const imageUrl = image
+  ? `https://www.oceanrecoveries.com${image.startsWith('/') ? image : '/' + image}`
+  : undefined;
+
+const personSchema = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": name,
+  "jobTitle": title,
+  ...(imageUrl ? { "image": imageUrl } : {}),
+  ...(email ? { "email": `mailto:${email}` } : {}),
+  ...(description ? { "description": description } : {}),
+  ...(url ? { "url": url } : {}),
+  "affiliation": {
+    "@type": "ResearchOrganization",
+    "@id": "https://www.oceanrecoveries.com/#organization",
+    "name": "Ocean Recoveries Lab"
+  },
+  "worksFor": {
+    "@type": "EducationalOrganization",
+    "@id": "https://www.ucsb.edu/#organization",
+    "name": "University of California, Santa Barbara"
+  },
+  ...(researchAreas.length > 0 ? {
+    "knowsAbout": researchAreas
+  } : {}),
+  ...(sameAs.length > 0 ? { "sameAs": sameAs } : {})
+};
+---
+
+<script type="application/ld+json" set:html={JSON.stringify(personSchema)} />
