@@ -107,7 +107,7 @@ const formatDate = (dateStr: string) => {
           Climate is remodeling environments faster than species can adapt. Species are reorganizing into novel communities we've never seen before. The equilibria we built our predictions on are shifting beneath our feet.
         </p>
         <p class="text-lg text-muted leading-relaxed mb-6">
-          Simple models—"protect more area," "remove the predator"—often fail because they ignore the web of interactions that actually drives recovery. A reef doesn't bounce back because you replant coral. It bounces back when the crabs, fish, and algae all reassemble in the right configuration.
+          Simple models—"protect more area," "remove the predator"—often fail because they ignore the web of interactions that actually drives recovery. A reef doesn't bounce back because you replant coral—it bounces back when guard crabs colonize, fish return, and algae stays in check. A kelp forest doesn't recover because you cull urchins—it recovers when detrital food supply, predator pressure, and wave disturbance align.
         </p>
         <p class="text-lg text-muted leading-relaxed">
           We're building the science to understand these configurations—and the tools to engineer them.
@@ -130,7 +130,7 @@ const formatDate = (dateStr: string) => {
         <span class="eyebrow text-accent-2">Two Natural Experiments</span>
         <h2 class="text-white mb-4">One Tropical, One Temperate</h2>
         <p class="lead max-w-2xl mx-auto text-white/60">
-          Mo'orea and Santa Barbara give us contrasting windows into recovery. Different oceans, different stressors, different species—same fundamental question.
+          Mo'orea shows us recovery after acute catastrophe—cyclones, bleaching, crown-of-thorns outbreaks. Santa Barbara shows us recovery under chronic pressure—warming, fishing, shifting baselines. Together they bracket the range of challenges coastal ecosystems face worldwide.
         </p>
       </div>
 
@@ -181,7 +181,7 @@ const formatDate = (dateStr: string) => {
             </div>
             <h3 class="experiment-title">Kelp Forests</h3>
             <p class="experiment-question">Does protection actually accelerate recovery—or do predator-prey dynamics and foundation species stability matter more?</p>
-            <p class="experiment-finding">California's MPA network is a 15-year natural experiment. We're using it to test whether protection delivers what managers expect.</p>
+            <p class="experiment-finding">California's MPA network is a 15-year natural experiment. We're using it to test whether protection delivers what managers expect—and our lobster spillover findings are already informing Channel Islands fishery reviews.</p>
             <div class="experiment-link">
               <span>Explore this system</span>
               <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -197,26 +197,62 @@ const formatDate = (dateStr: string) => {
     <WaveDivider id="study-wave" fillColor="surface" />
   </section>
 
-  <!-- A Research Story -->
+  <!-- Research Stories - Two Windows into Resilience -->
   <section class="section-lg bg-surface relative overflow-visible">
     <div class="container">
-      <div class="research-story scroll-reveal">
+      <!-- Section intro -->
+      <div class="text-center mb-12 scroll-reveal">
+        <span class="eyebrow">Two Windows into Resilience</span>
+        <h2 class="mb-4">Findings that changed our thinking</h2>
+        <p class="lead max-w-2xl mx-auto text-muted">
+          In both systems, we've discovered that the obvious explanations were wrong. The mechanisms that actually drive recovery are subtler—and more actionable.
+        </p>
+      </div>
+
+      <!-- Coral Story -->
+      <div class="research-story scroll-reveal mb-20">
         <div class="research-story-image">
           <img src="/images/trapezia-coral-crab-hiding.jpg" alt="Guard crab defending coral" loading="lazy" />
         </div>
         <div class="research-story-content">
-          <span class="eyebrow">A Finding That Changed Our Thinking</span>
-          <h2 class="mb-5">Tiny crabs determine whether corals live or die</h2>
+          <span class="eyebrow text-accent">Mo'orea</span>
+          <h3 class="text-2xl md:text-3xl font-bold mb-5 text-ink">Tiny crabs determine whether corals live or die</h3>
           <p class="text-lg text-muted leading-relaxed mb-5">
             We expected predators to be the main threat to recovering corals. Instead, we found that inch-long guard crabs living inside coral branches are often the deciding factor. These crabs attack crown-of-thorns starfish—voracious predators 100 times their size—and constantly clear sediment from coral surfaces.
           </p>
           <p class="text-muted leading-relaxed mb-5">
-            When we removed crabs from corals in our experiments, the corals died within months. When crabs were present, corals survived. This wasn't a small effect—it was binary. The relationship is so tight that crabs can't survive outside their coral hosts either.
+            When we removed crabs from corals in our experiments, the corals died within months. When crabs were present, corals survived. This wasn't a small effect—it was binary.
           </p>
           <p class="text-muted leading-relaxed mb-6">
-            This matters for restoration. Replanting coral fragments without ensuring crab colonization may be setting those corals up to fail. We're now testing whether facilitating these partnerships can accelerate reef recovery after disturbance.
+            <strong>Why it matters:</strong> Replanting coral fragments without ensuring crab colonization may be setting those corals up to fail. We're now testing whether facilitating these partnerships can accelerate reef recovery after disturbance.
           </p>
           <a href="/news/tiny-bodyguard-crabs-take-on-giant-starfish-to-save-coral-re" class="btn btn-secondary group">
+            <span>Read the full story</span>
+            <svg class="w-4 h-4 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+            </svg>
+          </a>
+        </div>
+      </div>
+
+      <!-- Kelp Story -->
+      <div class="research-story research-story-reverse scroll-reveal">
+        <div class="research-story-image">
+          <img src="/images/purple-urchin.jpeg" alt="Purple sea urchin that can overgraze kelp forests" loading="lazy" />
+        </div>
+        <div class="research-story-content">
+          <span class="eyebrow text-accent-2">Santa Barbara</span>
+          <h3 class="text-2xl md:text-3xl font-bold mb-5 text-ink">Kelp scraps prevent urchin takeovers</h3>
+          <p class="text-lg text-muted leading-relaxed mb-5">
+            Everyone assumed the key to preventing urchin barrens was killing urchins or boosting their predators. We found something simpler: when kelp forests produce enough detrital "scraps," urchins stay put and graze on the fallen debris instead of climbing the kelp and eating it alive.
+          </p>
+          <p class="text-muted leading-relaxed mb-5">
+            Remove the detritus, and passive urchins become active grazers. The shift isn't gradual—it's a behavioral switch. Once urchins start frontal grazing, they can strip a kelp forest bare in weeks.
+          </p>
+          <p class="text-muted leading-relaxed mb-6">
+            <strong>Why it matters:</strong> Kelp restoration isn't just about removing urchins—it's about restoring the detrital food web that keeps them passive. Our models now predict which forests are at risk based on detritus supply and urchin density.
+          </p>
+          <a href="/news/scientists-crack-the-code-of-when-sea-urchins-destroy-kelp-f" class="btn btn-secondary group">
             <span>Read the full story</span>
             <svg class="w-4 h-4 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
@@ -332,21 +368,21 @@ const formatDate = (dateStr: string) => {
 
         <div class="stats-grid-light">
           <div class="stat-card-light scroll-reveal stagger-1">
-            <span class="stat-number-light" data-target="75">0</span>
+            <span class="stat-number-light" data-target="75">75</span>
             <span class="stat-suffix-light">+</span>
             <span class="stat-label-light">Publications</span>
           </div>
           <div class="stat-card-light scroll-reveal stagger-2">
-            <span class="stat-number-light" data-target="15">0</span>
+            <span class="stat-number-light" data-target="15">15</span>
             <span class="stat-suffix-light">yrs</span>
             <span class="stat-label-light">Research Experience</span>
           </div>
           <div class="stat-card-light scroll-reveal stagger-3">
-            <span class="stat-number-light" data-target="2">0</span>
+            <span class="stat-number-light" data-target="2">2</span>
             <span class="stat-label-light">LTER Sites</span>
           </div>
           <div class="stat-card-light scroll-reveal stagger-4">
-            <span class="stat-number-light" data-target="12">0</span>
+            <span class="stat-number-light" data-target="12">12</span>
             <span class="stat-suffix-light">+</span>
             <span class="stat-label-light">Partner Institutions</span>
           </div>
@@ -367,6 +403,9 @@ const formatDate = (dateStr: string) => {
         <h2 class="text-white mb-6">From understanding to engineering</h2>
         <p class="text-lg text-white/60 leading-relaxed mb-4">
           We're not content to describe what's happening. We want to build the predictive tools that let managers intervene before collapse—and design restorations that succeed because they work with ecological complexity, not against it.
+        </p>
+        <p class="text-lg text-white/60 leading-relaxed mb-4">
+          For coral reefs: recovery trajectory models that predict which assemblages will persist and which need intervention. For kelp forests: updated spillover estimates and urchin-grazing thresholds that inform California MPA policy.
         </p>
         <p class="text-lg text-white/60 leading-relaxed">
           The science isn't there yet. But the pieces are coming together. And the urgency is clear.
@@ -1248,8 +1287,23 @@ const formatDate = (dateStr: string) => {
     object-fit: cover;
   }
 
-  .research-story-content h2 {
+  .research-story-content h2,
+  .research-story-content h3 {
     @apply text-ink;
+  }
+
+  /* Reversed layout for alternating stories */
+  .research-story-reverse {
+    @apply grid lg:grid-cols-2 gap-10 lg:gap-16 items-center max-w-6xl mx-auto;
+  }
+
+  @media (min-width: 1024px) {
+    .research-story-reverse .research-story-image {
+      order: 2;
+    }
+    .research-story-reverse .research-story-content {
+      order: 1;
+    }
   }
 
   /* ========================================
@@ -1435,6 +1489,8 @@ const formatDate = (dateStr: string) => {
           if (entry.isIntersecting) {
             const el = entry.target as HTMLElement;
             const target = parseInt(el.dataset.target || '0', 10);
+            // Reset to 0 before animating
+            el.textContent = '0';
             animateCount(el, target);
             observer.unobserve(el);
           }
