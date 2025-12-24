@@ -13,7 +13,7 @@ interface Props {
   github?: string;
 }
 
-const { name, role, title, image, actionImage, hook, tags, email, website, orcid, github } = Astro.props;
+const { name, role, title, image, hook, tags, email, website, orcid, github } = Astro.props;
 
 const roleLabels: Record<string, string> = {
   pi: 'PI',
@@ -35,15 +35,9 @@ const roleLabel = roleLabels[role] || role;
 const roleGradient = roleColors[role] || 'from-sky-400 to-blue-500';
 ---
 
-<article class="person-card group" data-tilt>
-  <!-- Animated border gradient -->
-  <div class="card-border"></div>
-
+<article class="person-card">
   <div class="card-inner">
     <div class="photo-wrap">
-      <!-- Shimmer effect on load -->
-      <div class="photo-shimmer"></div>
-
       <img
         src={image}
         alt={`${name} portrait`}
@@ -52,16 +46,6 @@ const roleGradient = roleColors[role] || 'from-sky-400 to-blue-500';
         width="400"
         height="480"
       />
-      {actionImage && (
-        <img
-          src={actionImage}
-          alt={`${name} in the field`}
-          class="action-photo"
-          loading="lazy"
-          width="400"
-          height="480"
-        />
-      )}
 
       <!-- Gradient overlay -->
       <div class="photo-overlay"></div>
@@ -80,34 +64,30 @@ const roleGradient = roleColors[role] || 'from-sky-400 to-blue-500';
     </div>
 
     <div class="body">
-      <h2 class="name">
-        <span class="name-text">{name}</span>
-        <span class="name-underline"></span>
-      </h2>
+      <h2 class="name">{name}</h2>
       <p class="title-text">{title}</p>
       <p class="hook">{hook}</p>
 
       <div class="tags">
-        {tags.map((tag, i) => (
-          <span class="tag" style={`--tag-delay: ${i * 50}ms`}>{tag}</span>
+        {tags.map((tag) => (
+          <span class="tag">{tag}</span>
         ))}
       </div>
 
       <div class="cta-row">
         {email && (
           <a href={`mailto:${email}`} class="btn-contact" aria-label={`Email ${name}`}>
-            <svg class="w-4 h-4 btn-icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
               <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
               <polyline points="22,6 12,13 2,6" />
             </svg>
             <span>Contact</span>
-            <span class="btn-shine"></span>
           </a>
         )}
 
         <div class="social-icons">
           {website && (
-            <a href={website} target="_blank" rel="noopener noreferrer" class="btn-icon" aria-label={`${name}'s website`} style="--icon-delay: 0ms">
+            <a href={website} target="_blank" rel="noopener noreferrer" class="btn-icon" aria-label={`${name}'s website`}>
               <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                 <circle cx="12" cy="12" r="10" />
                 <line x1="2" y1="12" x2="22" y2="12" />
@@ -117,7 +97,7 @@ const roleGradient = roleColors[role] || 'from-sky-400 to-blue-500';
           )}
 
           {orcid && (
-            <a href={`https://orcid.org/${orcid}`} target="_blank" rel="noopener noreferrer" class="btn-icon" aria-label={`${name}'s ORCID`} style="--icon-delay: 50ms">
+            <a href={`https://orcid.org/${orcid}`} target="_blank" rel="noopener noreferrer" class="btn-icon" aria-label={`${name}'s ORCID`}>
               <svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor">
                 <path d="M12 0C5.372 0 0 5.372 0 12s5.372 12 12 12 12-5.372 12-12S18.628 0 12 0zM7.369 4.378c.525 0 .947.431.947.947s-.422.947-.947.947a.95.95 0 01-.947-.947c0-.525.422-.947.947-.947zm-.722 3.038h1.444v10.041H6.647V7.416zm3.562 0h3.9c3.712 0 5.344 2.653 5.344 5.025 0 2.578-2.016 5.025-5.325 5.025h-3.919V7.416zm1.444 1.303v7.444h2.297c3.272 0 4.022-2.484 4.022-3.722 0-2.016-1.284-3.722-4.097-3.722h-2.222z" />
               </svg>
@@ -125,7 +105,7 @@ const roleGradient = roleColors[role] || 'from-sky-400 to-blue-500';
           )}
 
           {github && (
-            <a href={`https://github.com/${github}`} target="_blank" rel="noopener noreferrer" class="btn-icon" aria-label={`${name}'s GitHub`} style="--icon-delay: 100ms">
+            <a href={`https://github.com/${github}`} target="_blank" rel="noopener noreferrer" class="btn-icon" aria-label={`${name}'s GitHub`}>
               <svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor">
                 <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
               </svg>
@@ -138,117 +118,44 @@ const roleGradient = roleColors[role] || 'from-sky-400 to-blue-500';
 </article>
 
 <style>
-  /* ========================================
-     Card Container with 3D Transform
-     ======================================== */
+  /* Card Container */
   .person-card {
-    @apply relative rounded-xl overflow-visible;
-    perspective: 1000px;
-    transform-style: preserve-3d;
+    @apply relative rounded-xl overflow-hidden;
   }
 
-  /* Animated gradient border */
-  .card-border {
-    @apply absolute -inset-[1px] rounded-xl opacity-0;
-    @apply transition-opacity duration-500;
-    background: linear-gradient(
-      135deg,
-      #38bdf8 0%,
-      #2dd4bf 25%,
-      #38bdf8 50%,
-      #2dd4bf 75%,
-      #38bdf8 100%
-    );
-    background-size: 400% 400%;
-    z-index: -1;
-  }
-
-  .person-card:hover .card-border {
-    @apply opacity-100;
-    animation: gradient-flow 3s ease infinite;
-  }
-
-  @keyframes gradient-flow {
-    0%, 100% { background-position: 0% 50%; }
-    50% { background-position: 100% 50%; }
-  }
-
-  /* Inner card with actual content */
   .card-inner {
     @apply bg-surface-card rounded-xl overflow-hidden;
     @apply flex flex-col h-full;
-    @apply transition-all duration-500;
-    transform-style: preserve-3d;
-    box-shadow:
-      0 4px 6px -1px rgba(0, 0, 0, 0.1),
-      0 2px 4px -2px rgba(0, 0, 0, 0.1);
+    @apply border border-line/50;
+    @apply transition-all duration-300;
   }
 
   .person-card:hover .card-inner {
-    box-shadow:
-      0 25px 50px -12px rgba(0, 0, 0, 0.4),
-      0 0 30px rgba(56, 189, 248, 0.15),
-      inset 0 1px 0 rgba(255, 255, 255, 0.1);
+    @apply border-line;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
   }
 
-  /* ========================================
-     Photo Section
-     ======================================== */
+  /* Photo Section */
   .photo-wrap {
     @apply relative aspect-[5/6] bg-line/30 overflow-hidden;
-  }
-
-  /* Loading shimmer */
-  .photo-shimmer {
-    @apply absolute inset-0 z-[5];
-    background: linear-gradient(
-      90deg,
-      transparent 0%,
-      rgba(255, 255, 255, 0.05) 50%,
-      transparent 100%
-    );
-    background-size: 200% 100%;
-    animation: shimmer 1.5s infinite;
-  }
-
-  .photo-wrap:has(.photo[src]) .photo-shimmer {
-    @apply opacity-0;
-  }
-
-  @keyframes shimmer {
-    0% { background-position: -200% 0; }
-    100% { background-position: 200% 0; }
   }
 
   .photo-overlay {
     @apply absolute inset-0 z-10 pointer-events-none;
     background: linear-gradient(
       180deg,
-      rgba(0, 0, 0, 0.6) 0%,
-      transparent 30%,
-      transparent 70%,
+      transparent 60%,
       rgba(15, 23, 42, 0.8) 100%
     );
   }
 
   .photo {
     @apply absolute inset-0 w-full h-full object-cover;
-    @apply transition-all duration-700 ease-out;
-    filter: saturate(1.05);
-  }
-
-  .action-photo {
-    @apply absolute inset-0 w-full h-full object-cover opacity-0;
-    @apply transition-all duration-700 ease-out;
+    @apply transition-transform duration-500;
   }
 
   .person-card:hover .photo {
-    @apply scale-110;
-    filter: saturate(1.1) brightness(1.05);
-  }
-
-  .person-card:hover .action-photo {
-    @apply opacity-100 scale-105;
+    @apply scale-105;
   }
 
   /* Role tag */
@@ -258,50 +165,19 @@ const roleGradient = roleColors[role] || 'from-sky-400 to-blue-500';
     @apply text-white text-xs font-bold uppercase tracking-wider;
     @apply flex items-center gap-1.5;
     @apply shadow-lg;
-    @apply transition-all duration-300;
-    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
   }
 
   .role-icon {
     @apply text-[10px] opacity-90;
   }
 
-  .person-card:hover .role-tag {
-    @apply scale-105;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
-  }
-
-  /* ========================================
-     Body Content
-     ======================================== */
+  /* Body Content */
   .body {
     @apply flex flex-col flex-1 p-5;
-    @apply relative;
   }
 
-  /* Name with animated underline */
   .name {
-    @apply relative inline-block mb-1;
-  }
-
-  .name-text {
-    @apply text-lg font-extrabold text-ink;
-    @apply transition-colors duration-300;
-  }
-
-  .name-underline {
-    @apply absolute bottom-0 left-0 h-0.5 w-0;
-    @apply bg-gradient-to-r from-accent to-accent-2;
-    @apply transition-all duration-500 ease-out;
-    @apply rounded-full;
-  }
-
-  .person-card:hover .name-underline {
-    @apply w-full;
-  }
-
-  .person-card:hover .name-text {
-    @apply text-accent;
+    @apply text-lg font-bold text-ink mb-1;
   }
 
   .title-text {
@@ -312,204 +188,45 @@ const roleGradient = roleColors[role] || 'from-sky-400 to-blue-500';
     @apply text-sm text-muted leading-relaxed mb-4 flex-1;
   }
 
-  /* ========================================
-     Tags with Stagger Animation
-     ======================================== */
+  /* Tags */
   .tags {
     @apply flex flex-wrap gap-2 mb-4;
   }
 
   .tag {
-    @apply px-2.5 py-1 text-xs font-semibold rounded-md;
-    @apply bg-line/40 text-ink/90;
+    @apply px-2.5 py-1 text-xs font-medium rounded-md;
+    @apply bg-line/40 text-ink/80;
     @apply border border-line/50;
-    @apply transition-all duration-300;
-    @apply cursor-default;
   }
 
-  .person-card:hover .tag {
-    @apply bg-accent/10 border-accent/30 text-accent;
-    animation: tag-pop 0.4s ease-out forwards;
-    animation-delay: var(--tag-delay, 0ms);
-  }
-
-  @keyframes tag-pop {
-    0% { transform: scale(1); }
-    50% { transform: scale(1.05); }
-    100% { transform: scale(1); }
-  }
-
-  /* ========================================
-     CTA Row
-     ======================================== */
+  /* CTA Row */
   .cta-row {
     @apply flex items-center gap-3 mt-auto;
   }
 
-  /* Contact button with shine effect */
   .btn-contact {
-    @apply relative inline-flex items-center gap-2 px-4 py-2.5;
-    @apply text-sm font-bold text-accent;
-    @apply border-2 border-accent/50 rounded-lg;
+    @apply inline-flex items-center gap-2 px-4 py-2;
+    @apply text-sm font-semibold text-accent;
+    @apply border border-accent/50 rounded-lg;
     @apply bg-accent/5;
-    @apply transition-all duration-300 no-underline overflow-hidden;
-  }
-
-  .btn-contact .btn-icon-svg {
-    @apply transition-transform duration-300;
-  }
-
-  .btn-shine {
-    @apply absolute inset-0 opacity-0;
-    background: linear-gradient(
-      105deg,
-      transparent 40%,
-      rgba(255, 255, 255, 0.2) 50%,
-      transparent 60%
-    );
-    @apply transition-opacity duration-300;
+    @apply transition-all duration-200 no-underline;
   }
 
   .btn-contact:hover {
     @apply bg-accent text-white border-accent;
-    @apply scale-105;
-    box-shadow: 0 4px 15px rgba(56, 189, 248, 0.4);
   }
 
-  .btn-contact:hover .btn-icon-svg {
-    animation: envelope-bounce 0.5s ease;
-  }
-
-  .btn-contact:hover .btn-shine {
-    @apply opacity-100;
-    animation: shine-sweep 0.6s ease-out;
-  }
-
-  @keyframes envelope-bounce {
-    0%, 100% { transform: translateY(0); }
-    25% { transform: translateY(-2px) rotate(-5deg); }
-    75% { transform: translateY(-2px) rotate(5deg); }
-  }
-
-  @keyframes shine-sweep {
-    0% { transform: translateX(-100%); }
-    100% { transform: translateX(100%); }
-  }
-
-  /* Social icons with pop-in */
   .social-icons {
     @apply flex items-center gap-2;
   }
 
   .btn-icon {
-    @apply p-2.5 rounded-lg text-muted;
-    @apply border border-line/50 bg-surface-card/50;
-    @apply transition-all duration-300 no-underline;
-    @apply opacity-70;
-  }
-
-  .person-card:hover .btn-icon {
-    @apply opacity-100;
-    animation: icon-pop-in 0.4s ease-out forwards;
-    animation-delay: var(--icon-delay, 0ms);
-  }
-
-  @keyframes icon-pop-in {
-    0% { transform: scale(0.8) translateY(5px); opacity: 0.5; }
-    50% { transform: scale(1.1) translateY(-2px); }
-    100% { transform: scale(1) translateY(0); opacity: 1; }
+    @apply p-2 rounded-lg text-muted;
+    @apply border border-line/50;
+    @apply transition-all duration-200 no-underline;
   }
 
   .btn-icon:hover {
-    @apply text-accent border-accent bg-accent/10;
-    @apply scale-110;
-    box-shadow: 0 0 15px rgba(56, 189, 248, 0.3);
-  }
-
-  /* ========================================
-     Reduced Motion
-     ======================================== */
-  @media (prefers-reduced-motion: reduce) {
-    .card-border,
-    .photo,
-    .action-photo,
-    .role-tag,
-    .name-underline,
-    .tag,
-    .btn-contact,
-    .btn-icon,
-    .photo-shimmer {
-      animation: none !important;
-      transition-duration: 0.01ms !important;
-    }
-
-    .person-card:hover .card-inner {
-      transform: none !important;
-    }
+    @apply text-accent border-accent/50 bg-accent/10;
   }
 </style>
-
-<script>
-  // 3D Tilt Effect
-  const initTiltCards = () => {
-    const cards = document.querySelectorAll('[data-tilt]');
-
-    cards.forEach((card) => {
-      const cardInner = card.querySelector('.card-inner') as HTMLElement;
-      if (!cardInner) return;
-
-      let bounds: DOMRect;
-      let isHovering = false;
-
-      const rotateCard = (e: MouseEvent) => {
-        if (!isHovering) return;
-
-        const mouseX = e.clientX;
-        const mouseY = e.clientY;
-        const leftX = mouseX - bounds.x;
-        const topY = mouseY - bounds.y;
-        const center = {
-          x: leftX - bounds.width / 2,
-          y: topY - bounds.height / 2,
-        };
-
-        // Limit rotation to max 8 degrees
-        const maxRotation = 8;
-        const rotateX = (-center.y / (bounds.height / 2)) * maxRotation;
-        const rotateY = (center.x / (bounds.width / 2)) * maxRotation;
-
-        cardInner.style.transform = `
-          perspective(1000px)
-          rotateX(${rotateX}deg)
-          rotateY(${rotateY}deg)
-          translateZ(10px)
-        `;
-      };
-
-      const handleMouseEnter = () => {
-        bounds = card.getBoundingClientRect();
-        isHovering = true;
-        cardInner.style.transition = 'transform 0.1s ease-out';
-      };
-
-      const handleMouseLeave = () => {
-        isHovering = false;
-        cardInner.style.transition = 'transform 0.5s ease-out';
-        cardInner.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) translateZ(0)';
-      };
-
-      // Check for reduced motion preference
-      const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-
-      if (!prefersReducedMotion) {
-        card.addEventListener('mouseenter', handleMouseEnter);
-        card.addEventListener('mouseleave', handleMouseLeave);
-        card.addEventListener('mousemove', rotateCard as EventListener);
-      }
-    });
-  };
-
-  // Initialize on load and after view transitions
-  initTiltCards();
-  document.addEventListener('astro:after-swap', initTiltCards);
-</script>

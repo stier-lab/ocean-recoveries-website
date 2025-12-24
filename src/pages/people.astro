@@ -4,26 +4,17 @@ import PersonCard from '@components/people/PersonCard.astro';
 import BreadcrumbSchema from '@components/seo/BreadcrumbSchema.astro';
 import { currentTeam, alumni } from '@data/team';
 
-// Group team by role
-const roleOrder = ['pi', 'postdoc', 'phd', 'manager', 'undergrad'] as const;
-const roleLabels: Record<string, string> = {
-  pi: 'Principal Investigator',
-  postdoc: 'Postdoctoral Researchers',
-  phd: 'PhD Students',
-  manager: 'Lab Staff',
-  undergrad: 'Undergraduate Researchers',
-};
-
-// Sort and group team members
+// Sort team by order
 const sortedTeam = [...currentTeam].sort((a, b) => a.order - b.order);
-const teamByRole = roleOrder.reduce((acc, role) => {
-  const members = sortedTeam.filter(m => m.role === role);
-  if (members.length > 0) acc[role] = members;
-  return acc;
-}, {} as Record<string, typeof currentTeam>);
 
-// PI for featured display
-const pi = sortedTeam.find(m => m.role === 'pi');
+// Alumni role colors (for visual distinction)
+const alumniRoleColors: Record<string, string> = {
+  'Postdoc': 'teal',
+  'PhD': 'sky',
+  'MS Student': 'sky',
+  'Lab Manager': 'amber',
+  'Undergraduate Researcher': 'warm',
+};
 ---
 
 <Layout
@@ -32,298 +23,177 @@ const pi = sortedTeam.find(m => m.role === 'pi');
   image="/images/research-team-group-photo-beach.jpeg"
   keywords={['research team', 'marine scientists', 'UCSB researchers', 'ocean ecologists', 'Adrian Stier lab']}
 >
-  <BreadcrumbSchema items={[{ name: 'People', url: '/people' }]} />
+  <!-- SEO Structured Data -->
+  <BreadcrumbSchema
+    items={[
+      { name: 'People', url: '/people' }
+    ]}
+  />
 
-  <!-- Hero -->
-  <header class="hero">
+  <!-- Quick Nav -->
+  <nav class="section-nav bg-surface pt-24 md:pt-28 pb-4" aria-label="Page sections">
     <div class="container">
-      <div class="hero-content">
-        <h1 class="hero-title">People</h1>
-        <p class="hero-lead">
-          Researchers transforming how we understand and restore ocean ecosystems—from coral reefs to kelp forests.
-        </p>
-
-        <div class="hero-actions">
-          <a href="/join" class="btn-primary">
-            View Opportunities
-            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
-            </svg>
-          </a>
-          {pi?.email && (
-            <a href={`mailto:${pi.email}`} class="btn-secondary">
-              Contact PI
-            </a>
-          )}
-        </div>
-
-        <nav class="anchor-nav" aria-label="Page sections">
-          <a href="#team" class="anchor-chip">Current Team</a>
-          <a href="#alumni" class="anchor-chip">Alumni</a>
-          <a href="#join" class="anchor-chip anchor-chip-accent">Join the Lab</a>
-        </nav>
+      <div class="flex flex-wrap items-center justify-center gap-3 text-sm">
+        <a href="#team" class="nav-pill">Current Team</a>
+        <span class="text-line">/</span>
+        <a href="#alumni" class="nav-pill">Alumni</a>
+        <span class="text-line">/</span>
+        <a href="#join" class="nav-pill nav-pill-cta">Join the Lab</a>
       </div>
     </div>
-  </header>
+  </nav>
 
-  <!-- Current Team -->
-  <section id="team" class="team-section" aria-labelledby="team-heading">
+  <!-- Current Members -->
+  <section id="team" class="section bg-surface pt-4 pb-16" aria-labelledby="team-heading">
     <div class="container">
-      <h2 id="team-heading" class="sr-only">Current Team Members</h2>
+      <div class="text-center mb-8 scroll-reveal">
+        <h1 id="team-heading" class="text-3xl md:text-4xl font-bold">
+          <span class="gradient-text">Meet the Lab</span>
+        </h1>
+      </div>
 
-      {Object.entries(teamByRole).map(([role, members]) => (
-        <div class={`role-group ${role === 'pi' ? 'role-group-featured' : ''}`}>
-          <header class="role-header">
-            <h3 class="role-title">{roleLabels[role]}</h3>
-            <span class="role-count">{members.length}</span>
-          </header>
-
-          <div class={`role-grid ${role === 'pi' ? 'role-grid-featured' : ''}`}>
-            {members.map((member) => (
-              <div class={`card-wrap ${role === 'pi' ? 'card-featured' : ''}`}>
-                <PersonCard {...member} />
-              </div>
-            ))}
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6" role="list">
+        {sortedTeam.map((member, i) => (
+          <div class={`scroll-reveal stagger-${(i % 3) + 1}`}>
+            <PersonCard {...member} />
           </div>
-        </div>
-      ))}
+        ))}
+      </div>
     </div>
   </section>
 
   <!-- Alumni -->
-  <section id="alumni" class="alumni-section" aria-labelledby="alumni-heading">
+  <section id="alumni" class="section bg-surface-elevated pt-16 pb-20" aria-labelledby="alumni-heading">
     <div class="container">
-      <header class="alumni-header">
-        <h2 id="alumni-heading" class="alumni-title">Where Are They Now</h2>
-        <a href="#" class="back-to-top" aria-label="Back to top">
-          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18"/>
-          </svg>
-          Top
-        </a>
-      </header>
+      <div class="flex items-center gap-4 mb-10 scroll-reveal">
+        <div class="h-px flex-1 bg-gradient-to-r from-transparent via-line to-transparent" aria-hidden="true"></div>
+        <h2 id="alumni-heading" class="text-2xl font-semibold text-muted whitespace-nowrap">Where Are They Now</h2>
+        <div class="h-px flex-1 bg-gradient-to-r from-transparent via-line to-transparent" aria-hidden="true"></div>
+      </div>
 
-      <ul class="alumni-list" role="list">
-        {alumni.map((alum) => (
-          <li class="alumni-item">
-            <div class="alumni-avatar">
+      <div class="alumni-grid">
+        {alumni.map((alum, i) => {
+          const roleColor = alumniRoleColors[alum.role] || 'sky';
+          return (
+            <div class={`alumni-card scroll-reveal stagger-${(i % 6) + 1}`}>
               {alum.image ? (
-                <img src={alum.image} alt="" class="alumni-img" width="40" height="40" loading="lazy" />
+                <img src={alum.image} alt={`${alum.name} portrait`} class="alumni-photo" loading="lazy" width="44" height="44" />
               ) : (
-                <span class="alumni-initial">{alum.name.charAt(0)}</span>
+                <div class="alumni-avatar">
+                  <span class="alumni-initial">{alum.name.charAt(0)}</span>
+                </div>
+              )}
+              <div class="alumni-info">
+                <span class="alumni-name">{alum.name}</span>
+                <span class="alumni-meta">
+                  <span class={`role-dot role-${roleColor}`}></span>
+                  {alum.role} · {alum.years}
+                </span>
+                {alum.currentPosition && (
+                  <span class="alumni-current">{alum.currentPosition}</span>
+                )}
+              </div>
+              {alum.linkedin && (
+                <a
+                  href={alum.linkedin}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="linkedin-link"
+                  aria-label={`${alum.name}'s LinkedIn`}
+                >
+                  <svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                  </svg>
+                </a>
               )}
             </div>
-            <div class="alumni-info">
-              <span class="alumni-name">{alum.name}</span>
-              <span class="alumni-meta">{alum.role} · {alum.years}</span>
-              {alum.currentPosition && (
-                <span class="alumni-position">{alum.currentPosition}</span>
-              )}
-            </div>
-            {alum.linkedin && (
-              <a
-                href={alum.linkedin}
-                target="_blank"
-                rel="noopener noreferrer"
-                class="alumni-link"
-                aria-label={`${alum.name} on LinkedIn`}
-              >
-                <svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor">
-                  <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
-                </svg>
-              </a>
-            )}
-          </li>
-        ))}
-      </ul>
+          );
+        })}
+      </div>
     </div>
   </section>
 
   <!-- Join CTA -->
-  <section id="join" class="join-section" aria-labelledby="join-heading">
-    <div class="container">
-      <div class="join-card">
-        <div class="join-content">
-          <h2 id="join-heading" class="join-title">Interested in joining?</h2>
-          <p class="join-text">We're looking for curious minds passionate about ocean recovery.</p>
-        </div>
-        <a href="/join" class="join-btn">
-          View Opportunities
-          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
-          </svg>
-        </a>
-      </div>
+  <section id="join" class="cta-section relative py-20 overflow-hidden" aria-labelledby="join-heading">
+    <div class="absolute inset-0 bg-gradient-to-br from-navy-deep via-surface to-navy-deep"></div>
+    <div class="cta-glow" aria-hidden="true"></div>
+    <div class="container relative z-10 text-center">
+      <h2 id="join-heading" class="text-3xl md:text-4xl font-bold text-white mb-3 scroll-reveal">Join the Lab</h2>
+      <p class="text-white/60 max-w-md mx-auto mb-8 scroll-reveal">
+        We're always looking for curious minds passionate about ocean recovery.
+      </p>
+      <a href="/join" class="cta-btn scroll-reveal">
+        <span>View Opportunities</span>
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+        </svg>
+      </a>
     </div>
   </section>
 </Layout>
 
 <style>
-  /* ========================================
-     Hero
-     ======================================== */
-  .hero {
-    @apply pt-28 md:pt-36 pb-16 md:pb-20;
-    @apply bg-surface;
+  /* Section Nav */
+  .section-nav {
+    @apply sticky top-16 z-30 backdrop-blur-sm;
+    background: rgba(15, 23, 42, 0.9);
   }
 
-  .hero-content {
-    @apply max-w-2xl;
-  }
-
-  .hero-title {
-    @apply text-5xl md:text-6xl lg:text-7xl font-black tracking-tight text-ink;
-    @apply mb-4;
-  }
-
-  .hero-lead {
-    @apply text-lg md:text-xl text-muted leading-relaxed;
-    @apply mb-8;
-  }
-
-  .hero-actions {
-    @apply flex flex-wrap gap-3 mb-10;
-  }
-
-  .btn-primary {
-    @apply inline-flex items-center gap-2 px-5 py-3;
-    @apply bg-ink text-surface font-semibold text-sm;
-    @apply rounded-full no-underline;
-    @apply transition-all duration-200;
-    @apply hover:bg-accent hover:scale-105;
+  .nav-pill {
+    @apply px-3 py-1.5 rounded-full text-muted;
+    @apply transition-all duration-200 no-underline;
+    @apply hover:text-ink hover:bg-line/30;
     @apply focus:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-surface;
   }
 
-  .btn-secondary {
-    @apply inline-flex items-center gap-2 px-5 py-3;
-    @apply border border-line text-ink font-semibold text-sm;
-    @apply rounded-full no-underline;
+  .nav-pill-cta {
+    @apply text-accent font-medium;
+    @apply hover:bg-accent/10;
+  }
+
+  /* Gradient Text */
+  .gradient-text {
+    background: linear-gradient(135deg, #f1f5f9 0%, #38bdf8 50%, #2dd4bf 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  /* Alumni Grid */
+  .alumni-grid {
+    @apply grid sm:grid-cols-2 lg:grid-cols-3 gap-4;
+  }
+
+  .alumni-card {
+    @apply flex items-center gap-3 p-4 rounded-lg;
+    @apply border border-transparent;
     @apply transition-all duration-200;
-    @apply hover:border-ink hover:bg-ink/5;
-    @apply focus:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-surface;
+    background: rgba(30, 41, 59, 0.4);
   }
 
-  .anchor-nav {
-    @apply flex flex-wrap gap-2;
+  .alumni-card:hover {
+    @apply border-line;
+    background: rgba(30, 41, 59, 0.7);
   }
 
-  .anchor-chip {
-    @apply px-4 py-2 text-sm font-medium text-muted;
-    @apply border border-line rounded-full no-underline;
-    @apply transition-all duration-200;
-    @apply hover:text-ink hover:border-ink;
-    @apply focus:outline-none focus-visible:ring-2 focus-visible:ring-accent;
-  }
-
-  .anchor-chip-accent {
-    @apply text-accent border-accent/30;
-    @apply hover:bg-accent/10 hover:border-accent;
-  }
-
-  /* ========================================
-     Team Section
-     ======================================== */
-  .team-section {
-    @apply py-16 md:py-24 bg-surface;
-  }
-
-  .role-group {
-    @apply mb-16 last:mb-0;
-  }
-
-  .role-group-featured {
-    @apply mb-20;
-  }
-
-  .role-header {
-    @apply flex items-baseline gap-3 mb-6;
-    @apply border-b border-line pb-3;
-  }
-
-  .role-title {
-    @apply text-sm font-bold uppercase tracking-wider text-muted;
-  }
-
-  .role-count {
-    @apply text-xs font-medium text-muted-2 px-2 py-0.5 bg-line/30 rounded-full;
-  }
-
-  .role-grid {
-    @apply grid gap-6;
-    @apply sm:grid-cols-2 lg:grid-cols-3;
-  }
-
-  .role-grid-featured {
-    @apply sm:grid-cols-1 lg:grid-cols-1 max-w-lg;
-  }
-
-  .card-wrap {
-    @apply transform transition-transform duration-300;
-  }
-
-  .card-featured {
-    @apply relative;
-  }
-
-  .card-featured::before {
-    content: '';
-    @apply absolute -inset-3 rounded-2xl;
-    @apply bg-gradient-to-br from-accent/10 via-transparent to-accent-2/10;
-    @apply -z-10 opacity-0 transition-opacity duration-300;
-  }
-
-  .card-featured:hover::before {
+  .alumni-card:hover .linkedin-link {
     @apply opacity-100;
   }
 
-  /* ========================================
-     Alumni Section
-     ======================================== */
-  .alumni-section {
-    @apply py-16 md:py-24;
-    @apply bg-surface-card;
-  }
-
-  .alumni-header {
-    @apply flex items-center justify-between mb-8;
-    @apply border-b border-line pb-4;
-  }
-
-  .alumni-title {
-    @apply text-sm font-bold uppercase tracking-wider text-muted;
-  }
-
-  .back-to-top {
-    @apply flex items-center gap-1.5 text-xs font-medium text-muted;
-    @apply no-underline transition-colors duration-200;
-    @apply hover:text-accent;
-    @apply focus:outline-none focus-visible:text-accent;
-  }
-
-  .alumni-list {
-    @apply grid gap-3;
-    @apply sm:grid-cols-2 lg:grid-cols-3;
-    @apply list-none p-0 m-0;
-  }
-
-  .alumni-item {
-    @apply flex items-center gap-3 p-3;
-    @apply rounded-lg;
-    @apply transition-colors duration-200;
-    @apply hover:bg-surface-card;
+  .alumni-photo {
+    @apply w-11 h-11 rounded-full flex-shrink-0 object-cover;
+    @apply ring-2 ring-line;
   }
 
   .alumni-avatar {
-    @apply w-10 h-10 rounded-full flex-shrink-0 overflow-hidden;
-    @apply bg-line/30 flex items-center justify-center;
-  }
-
-  .alumni-img {
-    @apply w-full h-full object-cover;
+    @apply w-11 h-11 rounded-full flex-shrink-0;
+    @apply bg-accent/10;
+    @apply flex items-center justify-center;
+    @apply ring-2 ring-accent/20;
   }
 
   .alumni-initial {
-    @apply text-sm font-bold text-muted;
+    @apply text-base font-bold text-accent;
   }
 
   .alumni-info {
@@ -335,52 +205,39 @@ const pi = sortedTeam.find(m => m.role === 'pi');
   }
 
   .alumni-meta {
-    @apply text-xs text-muted-2;
+    @apply text-xs text-muted-2 flex items-center gap-1.5;
   }
 
-  .alumni-position {
+  .role-dot {
+    @apply w-1.5 h-1.5 rounded-full flex-shrink-0;
+  }
+
+  .role-dot.role-teal { @apply bg-accent-2; }
+  .role-dot.role-sky { @apply bg-accent; }
+  .role-dot.role-amber { @apply bg-amber-400; }
+  .role-dot.role-warm { @apply bg-accent-warm; }
+
+  .alumni-current {
     @apply text-xs text-muted truncate;
   }
 
-  .alumni-link {
-    @apply p-2 rounded-lg text-muted flex-shrink-0;
-    @apply transition-all duration-200 no-underline;
-    @apply hover:text-[#0077B5] hover:bg-[#0077B5]/10;
-    @apply focus:outline-none focus-visible:ring-2 focus-visible:ring-accent;
-    @apply opacity-60 hover:opacity-100;
+  .linkedin-link {
+    @apply p-2 rounded-md text-muted hover:text-[#0077B5] hover:bg-[#0077B5]/10;
+    @apply transition-all flex-shrink-0 opacity-50;
   }
 
-  /* ========================================
-     Join Section
-     ======================================== */
-  .join-section {
-    @apply py-16 md:py-20 bg-surface;
+  /* CTA Section */
+  .cta-glow {
+    @apply absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2;
+    @apply w-96 h-96 rounded-full;
+    background: radial-gradient(circle, rgba(56, 189, 248, 0.15) 0%, transparent 70%);
+    filter: blur(60px);
   }
 
-  .join-card {
-    @apply flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6;
-    @apply p-6 md:p-8 rounded-2xl;
-    @apply border border-line;
-    @apply bg-surface-card;
-  }
-
-  .join-content {
-    @apply flex flex-col gap-1;
-  }
-
-  .join-title {
-    @apply text-xl md:text-2xl font-bold text-ink;
-  }
-
-  .join-text {
-    @apply text-sm text-muted;
-  }
-
-  .join-btn {
+  .cta-btn {
     @apply inline-flex items-center gap-2 px-6 py-3;
-    @apply bg-accent text-white font-semibold text-sm;
-    @apply rounded-full no-underline flex-shrink-0;
-    @apply transition-all duration-200;
+    @apply bg-accent text-white font-semibold rounded-full;
+    @apply transition-all duration-300;
     @apply hover:bg-accent/90 hover:gap-3;
     @apply focus:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-surface;
   }
