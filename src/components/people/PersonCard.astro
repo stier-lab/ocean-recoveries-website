@@ -104,7 +104,11 @@ const roleLabel = roleLabels[role] || role;
   }
 
   .person-card:hover {
-    @apply -translate-y-1 shadow-lg;
+    @apply -translate-y-1;
+    border-color: rgba(56, 189, 248, 0.4);
+    box-shadow:
+      0 15px 30px -10px rgba(0, 0, 0, 0.3),
+      0 0 20px rgba(56, 189, 248, 0.1);
   }
 
   .photo-wrap {
