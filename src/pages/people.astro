@@ -30,28 +30,25 @@ const alumniRoleColors: Record<string, string> = {
     ]}
   />
 
-  <!-- Quick Nav -->
-  <nav class="section-nav bg-surface pt-24 md:pt-28 pb-4" aria-label="Page sections">
+  <!-- Page Hero -->
+  <section class="bg-surface pt-24 pb-8">
     <div class="container">
-      <div class="flex flex-wrap items-center justify-center gap-3 text-sm">
-        <a href="#team" class="nav-pill">Current Team</a>
-        <span class="text-line">/</span>
-        <a href="#alumni" class="nav-pill">Alumni</a>
-        <span class="text-line">/</span>
-        <a href="#join" class="nav-pill nav-pill-cta">Join the Lab</a>
+      <div class="max-w-2xl scroll-reveal">
+        <span class="eyebrow text-accent mb-4 block">Our Team</span>
+        <h1 class="text-fluid-4xl font-black text-ink mb-4 tracking-tight">
+          Meet the Lab
+        </h1>
+        <p class="text-fluid-lg text-muted leading-relaxed">
+          A collaborative group of researchers, students, and staff working to understand how ocean ecosystems recover from disturbance and how we can help.
+        </p>
       </div>
     </div>
-  </nav>
+  </section>
 
   <!-- Current Members -->
-  <section id="team" class="section bg-surface pt-4 pb-16" aria-labelledby="team-heading">
+  <section id="team" class="section bg-surface pt-8 pb-12" aria-labelledby="team-heading">
     <div class="container">
-      <div class="text-center mb-8 scroll-reveal">
-        <h1 id="team-heading" class="text-3xl md:text-4xl font-bold">
-          <span class="gradient-text">Meet the Lab</span>
-        </h1>
-      </div>
-
+      <h2 id="team-heading" class="sr-only">Current Team Members</h2>
       <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6" role="list">
         {sortedTeam.map((member, i) => (
           <div class={`scroll-reveal stagger-${(i % 3) + 1}`}>
@@ -133,24 +130,6 @@ const alumniRoleColors: Record<string, string> = {
 </Layout>
 
 <style>
-  /* Section Nav */
-  .section-nav {
-    @apply sticky top-16 z-30 backdrop-blur-sm;
-    background: rgba(15, 23, 42, 0.9);
-  }
-
-  .nav-pill {
-    @apply px-3 py-1.5 rounded-full text-muted;
-    @apply transition-all duration-200 no-underline;
-    @apply hover:text-ink hover:bg-line/30;
-    @apply focus:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-surface;
-  }
-
-  .nav-pill-cta {
-    @apply text-accent font-medium;
-    @apply hover:bg-accent/10;
-  }
-
   /* Gradient Text */
   .gradient-text {
     background: linear-gradient(135deg, #f1f5f9 0%, #38bdf8 50%, #2dd4bf 100%);
