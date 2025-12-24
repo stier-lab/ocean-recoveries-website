@@ -49,6 +49,8 @@ const roleGradient = roleColors[role] || 'from-sky-400 to-blue-500';
         alt={`${name} portrait`}
         class="photo"
         loading="lazy"
+        width="400"
+        height="480"
       />
       {actionImage && (
         <img
@@ -56,6 +58,8 @@ const roleGradient = roleColors[role] || 'from-sky-400 to-blue-500';
           alt={`${name} in the field`}
           class="action-photo"
           loading="lazy"
+          width="400"
+          height="480"
         />
       )}
 
@@ -76,10 +80,10 @@ const roleGradient = roleColors[role] || 'from-sky-400 to-blue-500';
     </div>
 
     <div class="body">
-      <h3 class="name">
+      <h2 class="name">
         <span class="name-text">{name}</span>
         <span class="name-underline"></span>
-      </h3>
+      </h2>
       <p class="title-text">{title}</p>
       <p class="hook">{hook}</p>
 

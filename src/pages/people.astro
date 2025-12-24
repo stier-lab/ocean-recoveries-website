@@ -30,16 +30,29 @@ const alumniRoleColors: Record<string, string> = {
     ]}
   />
 
+  <!-- Quick Nav -->
+  <nav class="section-nav bg-surface pt-24 md:pt-28 pb-4" aria-label="Page sections">
+    <div class="container">
+      <div class="flex flex-wrap items-center justify-center gap-3 text-sm">
+        <a href="#team" class="nav-pill">Current Team</a>
+        <span class="text-line">/</span>
+        <a href="#alumni" class="nav-pill">Alumni</a>
+        <span class="text-line">/</span>
+        <a href="#join" class="nav-pill nav-pill-cta">Join the Lab</a>
+      </div>
+    </div>
+  </nav>
+
   <!-- Current Members -->
-  <section class="section bg-surface pt-24 md:pt-28 pb-16">
+  <section id="team" class="section bg-surface pt-8 pb-16" aria-labelledby="team-heading">
     <div class="container">
       <div class="text-center mb-12 scroll-reveal">
-        <h1 class="text-4xl md:text-5xl font-bold">
+        <h1 id="team-heading" class="text-4xl md:text-5xl font-bold">
           <span class="gradient-text">Meet the Lab</span>
         </h1>
       </div>
 
-      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6" role="list">
         {sortedTeam.map((member, i) => (
           <div class={`scroll-reveal stagger-${(i % 3) + 1}`}>
             <PersonCard {...member} />
@@ -50,12 +63,12 @@ const alumniRoleColors: Record<string, string> = {
   </section>
 
   <!-- Alumni -->
-  <section class="section bg-surface-elevated pt-16 pb-20">
+  <section id="alumni" class="section bg-surface-elevated pt-16 pb-20" aria-labelledby="alumni-heading">
     <div class="container">
       <div class="flex items-center gap-4 mb-10 scroll-reveal">
-        <div class="h-px flex-1 bg-gradient-to-r from-transparent via-line to-transparent"></div>
-        <h2 class="text-2xl font-semibold text-muted whitespace-nowrap">Where Are They Now</h2>
-        <div class="h-px flex-1 bg-gradient-to-r from-transparent via-line to-transparent"></div>
+        <div class="h-px flex-1 bg-gradient-to-r from-transparent via-line to-transparent" aria-hidden="true"></div>
+        <h2 id="alumni-heading" class="text-2xl font-semibold text-muted whitespace-nowrap">Where Are They Now</h2>
+        <div class="h-px flex-1 bg-gradient-to-r from-transparent via-line to-transparent" aria-hidden="true"></div>
       </div>
 
       <div class="alumni-grid">
@@ -64,7 +77,7 @@ const alumniRoleColors: Record<string, string> = {
           return (
             <div class={`alumni-card scroll-reveal stagger-${(i % 6) + 1}`}>
               {alum.image ? (
-                <img src={alum.image} alt={alum.name} class="alumni-photo" loading="lazy" />
+                <img src={alum.image} alt={`${alum.name} portrait`} class="alumni-photo" loading="lazy" width="44" height="44" />
               ) : (
                 <div class="alumni-avatar">
                   <span class="alumni-initial">{alum.name.charAt(0)}</span>
@@ -101,11 +114,11 @@ const alumniRoleColors: Record<string, string> = {
   </section>
 
   <!-- Join CTA -->
-  <section class="cta-section relative py-20 overflow-hidden">
+  <section id="join" class="cta-section relative py-20 overflow-hidden" aria-labelledby="join-heading">
     <div class="absolute inset-0 bg-gradient-to-br from-navy-deep via-surface to-navy-deep"></div>
-    <div class="cta-glow"></div>
+    <div class="cta-glow" aria-hidden="true"></div>
     <div class="container relative z-10 text-center">
-      <h2 class="text-3xl md:text-4xl font-bold text-white mb-3 scroll-reveal">Join the Lab</h2>
+      <h2 id="join-heading" class="text-3xl md:text-4xl font-bold text-white mb-3 scroll-reveal">Join the Lab</h2>
       <p class="text-white/60 max-w-md mx-auto mb-8 scroll-reveal">
         We're always looking for curious minds passionate about ocean recovery.
       </p>
@@ -120,6 +133,24 @@ const alumniRoleColors: Record<string, string> = {
 </Layout>
 
 <style>
+  /* Section Nav */
+  .section-nav {
+    @apply sticky top-16 z-30 backdrop-blur-sm;
+    background: rgba(15, 23, 42, 0.9);
+  }
+
+  .nav-pill {
+    @apply px-3 py-1.5 rounded-full text-muted;
+    @apply transition-all duration-200 no-underline;
+    @apply hover:text-ink hover:bg-line/30;
+    @apply focus:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-surface;
+  }
+
+  .nav-pill-cta {
+    @apply text-accent font-medium;
+    @apply hover:bg-accent/10;
+  }
+
   /* Gradient Text */
   .gradient-text {
     background: linear-gradient(135deg, #f1f5f9 0%, #38bdf8 50%, #2dd4bf 100%);
