@@ -25,82 +25,72 @@ const formatDate = (dateStr: string) => {
   keywords={['Ocean Recoveries Lab', 'coral reef research', 'kelp forest ecology', 'marine conservation', 'UC Santa Barbara', 'Adrian Stier', 'ecosystem resilience', 'marine biology research', 'resistance', 'recovery', 'reorganization']}
 >
   <!-- Hero Section -->
-  <section class="hero-section relative min-h-[100svh] flex items-center justify-center overflow-visible">
+  <section class="hero-section relative min-h-[100svh] flex items-center overflow-visible">
     <!-- Background Image with Parallax -->
     <div
-      class="absolute inset-0 bg-cover bg-right md:bg-center bg-no-repeat parallax-bg"
+      class="absolute inset-0 bg-cover bg-center bg-no-repeat parallax-bg"
       style="background-image: url('/images/coral-reef-panorama-anthias-fish.jpeg');"
     >
-      <!-- Refined gradient for depth and readability - lighter on mobile to show more of the image -->
-      <div class="absolute inset-0 bg-gradient-to-b from-navy-deep/30 via-navy-deep/20 to-navy-deep/90 md:from-navy-deep/50 md:via-navy-deep/30 md:to-navy-deep/95"></div>
-      <!-- Subtle vignette for focus -->
-      <div class="absolute inset-0" style="background: radial-gradient(ellipse at center, transparent 0%, rgba(11, 37, 69, 0.3) 100%);"></div>
+      <!-- Strong left-to-right gradient for text legibility -->
+      <div class="hero-overlay"></div>
     </div>
 
-    <!-- Underwater Light Rays (Crepuscular Rays) -->
-    <div class="light-rays" aria-hidden="true">
-      <div class="light-ray ray-1"></div>
-      <div class="light-ray ray-2"></div>
-      <div class="light-ray ray-3"></div>
-      <div class="light-ray ray-4"></div>
-      <div class="light-ray ray-5"></div>
-      <div class="light-ray ray-6"></div>
-      <div class="light-ray ray-7"></div>
-    </div>
+    <!-- Hero Content - Left aligned -->
+    <div class="relative z-10 container px-4 pt-28 pb-32 md:pt-32 md:pb-40">
+      <div class="hero-content max-w-2xl">
+        <!-- Preheader -->
+        <p class="hero-preheader">
+          UC Santa Barbara
+        </p>
 
-    <!-- Floating Bubbles -->
-    <div class="floating-bubbles" aria-hidden="true">
-      <div class="bubble bubble-1"></div>
-      <div class="bubble bubble-2"></div>
-      <div class="bubble bubble-3"></div>
-      <div class="bubble bubble-4"></div>
-      <div class="bubble bubble-5"></div>
-      <div class="bubble bubble-6"></div>
-    </div>
+        <!-- Single, confident H1 -->
+        <h1 class="hero-title">
+          Ocean Recoveries Lab
+        </h1>
 
-    <!-- Hero Content -->
-    <div class="relative z-10 container text-center px-4 pt-20 pb-32 md:pt-24 md:pb-40">
-      <!-- Location Tag -->
-      <p class="hero-badge text-xs md:text-sm font-semibold uppercase tracking-wider text-accent-2 mb-4 opacity-0">
-        UC Santa Barbara
-      </p>
+        <!-- Sharp subhead -->
+        <p class="hero-subhead">
+          Understanding collapse. Designing recovery.
+        </p>
 
-      <h1 class="hero-title mb-5 opacity-0">
-        <span class="gradient-text">Ocean Recoveries</span>
-        <span class="text-white block">Lab</span>
-      </h1>
+        <!-- One proof-oriented line -->
+        <p class="hero-description">
+          We study coral reefs and kelp forests to identify the mechanisms that control resistance and recovery.
+        </p>
 
-      <!-- Main Tagline -->
-      <p class="hero-tagline text-xl md:text-2xl lg:text-3xl font-bold text-white mb-6 opacity-0 max-w-3xl mx-auto leading-relaxed">
-        Engineering resilience from organisms to ecosystems
-      </p>
+        <!-- Credibility strip -->
+        <div class="hero-credibility">
+          <span>Coral regeneration</span>
+          <span class="hero-credibility-dot"></span>
+          <span>Kelp tipping points</span>
+          <span class="hero-credibility-dot"></span>
+          <span>Restoration strategy</span>
+        </div>
 
-      <!-- Subhead -->
-      <p class="hero-subhead text-base md:text-lg text-white/70 mb-8 opacity-0 max-w-2xl mx-auto leading-relaxed">
-        We study why coastal ecosystems collapse—and how to help them recover. From coral wound healing to kelp forest tipping points, we trace the mechanisms that control resistance, recovery, and reorganization across biological scales.
-      </p>
-
-      <div class="hero-cta flex flex-col sm:flex-row gap-4 justify-center opacity-0">
-        <a href="/join" class="btn btn-primary btn-lg magnetic-btn group">
-          <span>Join the Lab</span>
-          <svg class="w-5 h-5 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
-          </svg>
-        </a>
-        <a href="/for-funders" class="btn btn-ghost btn-lg magnetic-btn">
-          For Funders & Partners
-        </a>
+        <!-- CTAs - One primary, one text secondary -->
+        <div class="hero-cta-row">
+          <a href="/join" class="hero-btn-primary">
+            Join the Lab
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+            </svg>
+          </a>
+          <a href="/for-funders" class="hero-btn-secondary">
+            For Funders
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+            </svg>
+          </a>
+        </div>
       </div>
 
-      <!-- Scroll Prompt -->
-      <div class="mt-12 opacity-0 hero-cta">
-        <a href="#study-systems" class="inline-flex flex-col items-center gap-2 text-white/50 hover:text-white/80 transition-colors">
-          <span class="text-sm font-medium">Discover</span>
-          <svg class="w-5 h-5 animate-bounce" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
-          </svg>
-        </a>
-      </div>
+      <!-- Scroll Prompt - More visible -->
+      <a href="#study-systems" class="hero-scroll-cue">
+        <span>Scroll</span>
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7" />
+        </svg>
+      </a>
     </div>
 
     <!-- Wave at bottom of hero -->
@@ -519,92 +509,167 @@ const formatDate = (dateStr: string) => {
 
 <style>
   /* ========================================
-     Underwater Light Rays (Crepuscular Rays)
+     Hero Section - Clean, Nike-inspired
      ======================================== */
-  .light-rays {
-    @apply absolute inset-0 overflow-hidden pointer-events-none;
-    z-index: 1;
-  }
 
-  .light-ray {
-    @apply absolute;
-    top: -20%;
-    width: 120px;
-    height: 140%;
+  /* Strong overlay for text legibility */
+  .hero-overlay {
+    @apply absolute inset-0;
     background: linear-gradient(
-      180deg,
-      rgba(56, 189, 248, 0.15) 0%,
-      rgba(56, 189, 248, 0.08) 20%,
-      rgba(45, 212, 191, 0.04) 50%,
-      transparent 100%
+      to right,
+      rgba(11, 37, 69, 0.95) 0%,
+      rgba(11, 37, 69, 0.85) 35%,
+      rgba(11, 37, 69, 0.6) 55%,
+      rgba(11, 37, 69, 0.3) 75%,
+      rgba(11, 37, 69, 0.2) 100%
     );
-    transform-origin: top center;
-    filter: blur(30px);
-    opacity: 0;
-    animation: light-ray-shimmer 12s ease-in-out infinite;
   }
 
-  /* Distribute rays across the hero with varied angles */
-  .ray-1 { left: 5%; transform: rotate(-15deg) skewX(-5deg); animation-delay: 0s; width: 80px; }
-  .ray-2 { left: 18%; transform: rotate(-8deg) skewX(-3deg); animation-delay: 2s; width: 100px; }
-  .ray-3 { left: 32%; transform: rotate(-3deg) skewX(-1deg); animation-delay: 4s; width: 140px; }
-  .ray-4 { left: 48%; transform: rotate(2deg) skewX(1deg); animation-delay: 1s; width: 160px; }
-  .ray-5 { left: 62%; transform: rotate(6deg) skewX(2deg); animation-delay: 3s; width: 120px; }
-  .ray-6 { left: 78%; transform: rotate(10deg) skewX(4deg); animation-delay: 5s; width: 90px; }
-  .ray-7 { left: 90%; transform: rotate(14deg) skewX(5deg); animation-delay: 2.5s; width: 70px; }
-
-  @keyframes light-ray-shimmer {
-    0%, 100% {
-      opacity: 0;
-      filter: blur(30px);
+  @media (max-width: 768px) {
+    .hero-overlay {
+      background: linear-gradient(
+        to bottom,
+        rgba(11, 37, 69, 0.7) 0%,
+        rgba(11, 37, 69, 0.85) 50%,
+        rgba(11, 37, 69, 0.95) 100%
+      );
     }
-    15%, 85% {
-      opacity: 0.5;
-      filter: blur(25px);
+  }
+
+  /* Hero content animations */
+  .hero-content {
+    opacity: 0;
+    animation: heroFadeIn 0.8s ease-out 0.1s forwards;
+  }
+
+  @keyframes heroFadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  /* Preheader */
+  .hero-preheader {
+    @apply text-xs font-bold uppercase tracking-widest text-accent-2 mb-4;
+  }
+
+  /* Clean H1 - no gradients, no glow */
+  .hero-title {
+    @apply text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black text-white mb-6;
+    @apply tracking-tight leading-none;
+  }
+
+  /* Sharp subhead */
+  .hero-subhead {
+    @apply text-xl md:text-2xl font-semibold text-white/90 mb-4;
+    @apply tracking-tight;
+  }
+
+  /* Description with good contrast */
+  .hero-description {
+    @apply text-base md:text-lg text-white/70 mb-6 leading-relaxed;
+    @apply max-w-lg;
+  }
+
+  /* Credibility strip */
+  .hero-credibility {
+    @apply flex flex-wrap items-center gap-2 text-xs md:text-sm font-medium text-white/50 mb-8;
+  }
+
+  .hero-credibility-dot {
+    @apply w-1 h-1 rounded-full bg-accent/60;
+  }
+
+  /* CTA row */
+  .hero-cta-row {
+    @apply flex flex-wrap items-center gap-4;
+  }
+
+  /* Primary button - flat, crisp, minimal */
+  .hero-btn-primary {
+    @apply inline-flex items-center gap-2 px-5 py-2.5;
+    @apply bg-white text-navy-deep font-semibold text-sm;
+    @apply rounded-md no-underline;
+    @apply transition-all duration-200;
+  }
+
+  .hero-btn-primary:hover {
+    @apply bg-white/90;
+    transform: translateY(-1px);
+  }
+
+  .hero-btn-primary:focus-visible {
+    @apply outline-none ring-2 ring-white ring-offset-2 ring-offset-navy-deep;
+  }
+
+  /* Secondary button - text/ghost style */
+  .hero-btn-secondary {
+    @apply inline-flex items-center gap-2 px-4 py-2.5;
+    @apply text-white/80 font-semibold text-sm;
+    @apply border border-white/30 rounded-md no-underline;
+    @apply transition-all duration-200;
+  }
+
+  .hero-btn-secondary:hover {
+    @apply text-white border-white/50 bg-white/10;
+  }
+
+  .hero-btn-secondary:focus-visible {
+    @apply outline-none ring-2 ring-white/50 ring-offset-2 ring-offset-navy-deep;
+  }
+
+  /* Scroll cue - visible and clear */
+  .hero-scroll-cue {
+    @apply absolute bottom-8 left-1/2 -translate-x-1/2;
+    @apply inline-flex items-center gap-2 px-4 py-2;
+    @apply text-white/70 text-sm font-medium no-underline;
+    @apply border border-white/20 rounded-full;
+    @apply transition-all duration-300;
+    @apply opacity-0;
+    animation: scrollCueIn 0.6s ease-out 1s forwards;
+  }
+
+  .hero-scroll-cue:hover {
+    @apply text-white border-white/40 bg-white/10;
+  }
+
+  .hero-scroll-cue svg {
+    animation: scrollBounce 2s ease-in-out infinite;
+  }
+
+  @keyframes scrollCueIn {
+    from {
+      opacity: 0;
+      transform: translateX(-50%) translateY(10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(-50%) translateY(0);
+    }
+  }
+
+  @keyframes scrollBounce {
+    0%, 100% {
+      transform: translateY(0);
     }
     50% {
-      opacity: 0.7;
-      filter: blur(20px);
+      transform: translateY(4px);
     }
+  }
+
+  /* Parallax */
+  .parallax-bg {
+    transform: translateZ(0);
+    will-change: transform;
   }
 
   /* ========================================
-     Floating Bubbles
-     ======================================== */
-  .floating-bubbles {
-    @apply absolute inset-0 overflow-hidden pointer-events-none;
-    z-index: 1;
-  }
-
-  .bubble {
-    @apply absolute rounded-full;
-    background: radial-gradient(circle at 30% 30%, rgba(56, 189, 248, 0.3), rgba(45, 212, 191, 0.1));
-    animation: float-up linear infinite;
-    opacity: 0;
-  }
-
-  .bubble-1 { width: 25px; height: 25px; left: 8%; animation-duration: 14s; animation-delay: 0s; }
-  .bubble-2 { width: 40px; height: 40px; left: 22%; animation-duration: 18s; animation-delay: 3s; }
-  .bubble-3 { width: 18px; height: 18px; left: 45%; animation-duration: 12s; animation-delay: 5s; }
-  .bubble-4 { width: 30px; height: 30px; left: 65%; animation-duration: 16s; animation-delay: 2s; }
-  .bubble-5 { width: 35px; height: 35px; left: 80%; animation-duration: 15s; animation-delay: 4s; }
-  .bubble-6 { width: 20px; height: 20px; left: 92%; animation-duration: 13s; animation-delay: 6s; }
-
-  @keyframes float-up {
-    0% {
-      transform: translateY(100vh) scale(0.5);
-      opacity: 0;
-    }
-    10% { opacity: 0.6; }
-    90% { opacity: 0.6; }
-    100% {
-      transform: translateY(-100px) scale(1);
-      opacity: 0;
-    }
-  }
-
-  /* ========================================
-     Animated Blob Shapes
+     Animated Blob Shapes (for other sections)
      ======================================== */
   .blob-container {
     @apply absolute inset-0 overflow-hidden pointer-events-none;
@@ -651,156 +716,6 @@ const formatDate = (dateStr: string) => {
       transform: translate(20px, 40px) scale(1.05) rotate(270deg);
       border-radius: 50% 40% 50% 60% / 40% 60% 50% 40%;
     }
-  }
-
-  /* ========================================
-     Gradient Text
-     ======================================== */
-  .gradient-text {
-    background: linear-gradient(135deg, #ffffff 0%, #38bdf8 40%, #2dd4bf 80%, #38bdf8 100%);
-    background-size: 200% 200%;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    animation: gradient-shift 8s ease-in-out infinite;
-  }
-
-  @keyframes gradient-shift {
-    0%, 100% { background-position: 0% 50%; }
-    50% { background-position: 100% 50%; }
-  }
-
-  /* ========================================
-     Hero Section
-     ======================================== */
-  .hero-badge {
-    animation: fadeDown 0.6s ease-out 0.1s forwards;
-  }
-
-  .hero-title {
-    animation: fadeUp 0.8s ease-out 0.2s forwards;
-    text-shadow: 0 4px 24px rgba(0, 0, 0, 0.4), 0 2px 8px rgba(0, 0, 0, 0.3);
-  }
-
-  .hero-tagline {
-    animation: fadeUp 0.8s ease-out 0.35s forwards;
-    text-shadow: 0 2px 16px rgba(0, 0, 0, 0.3);
-  }
-
-  .hero-paradox {
-    animation: fadeUp 0.8s ease-out 0.35s forwards;
-    text-shadow: 0 2px 16px rgba(0, 0, 0, 0.3);
-  }
-
-  .hero-question {
-    animation: fadeUp 0.8s ease-out 0.5s forwards;
-    text-shadow: 0 2px 16px rgba(0, 0, 0, 0.3);
-  }
-
-  .hero-subhead {
-    animation: fadeUp 0.8s ease-out 0.65s forwards;
-    text-shadow: 0 1px 8px rgba(0, 0, 0, 0.2);
-  }
-
-  .hero-description {
-    animation: fadeUp 0.8s ease-out 0.5s forwards;
-    text-shadow: 0 1px 8px rgba(0, 0, 0, 0.2);
-  }
-
-  .hero-cta {
-    animation: fadeUp 0.8s ease-out 0.8s forwards;
-  }
-
-  /* Hero PI Card */
-  .hero-pi-card {
-    @apply inline-flex items-center gap-3 px-4 py-3 rounded-full no-underline;
-    @apply bg-white/10 backdrop-blur-sm border border-white/20;
-    @apply transition-all duration-300 mb-8;
-    animation: fadeUp 0.8s ease-out 0.5s forwards;
-  }
-
-  .hero-pi-card:hover {
-    @apply bg-white/20;
-    border-color: rgba(56, 189, 248, 0.4);
-    transform: translateY(-2px);
-  }
-
-  .hero-pi-photo {
-    @apply w-10 h-10 rounded-full object-cover;
-    @apply border-2 border-white/30;
-  }
-
-  .hero-pi-info {
-    @apply flex flex-col text-left;
-  }
-
-  .hero-pi-name {
-    @apply text-white font-bold text-sm;
-  }
-
-  .hero-pi-title {
-    @apply text-white/70 text-xs;
-  }
-
-  .hero-pi-arrow {
-    @apply w-4 h-4 text-white/50 ml-1;
-    @apply transition-all duration-200;
-  }
-
-  .hero-pi-card:hover .hero-pi-arrow {
-    @apply text-white translate-x-0.5;
-  }
-
-  @keyframes fadeUp {
-    from {
-      opacity: 0;
-      transform: translateY(24px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
-
-  @keyframes fadeDown {
-    from {
-      opacity: 0;
-      transform: translateY(-16px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
-
-  .btn-lg {
-    @apply px-7 py-3.5 text-base;
-  }
-
-  /* Scroll indicator */
-  .scroll-mouse {
-    transition: border-color 0.3s ease;
-  }
-
-  .scroll-dot {
-    animation: scrollHint 1.5s ease-in-out infinite;
-  }
-
-  @keyframes scrollHint {
-    0%, 100% {
-      opacity: 1;
-      transform: translateY(0);
-    }
-    50% {
-      opacity: 0.3;
-      transform: translateY(12px);
-    }
-  }
-
-  /* Parallax */
-  .parallax-bg {
-    transform: translateZ(0);
-    will-change: transform;
   }
 
   /* ========================================
@@ -1589,35 +1504,31 @@ const formatDate = (dateStr: string) => {
      Reduced motion
      ======================================== */
   @media (prefers-reduced-motion: reduce) {
-    .hero-badge,
-    .hero-title,
-    .hero-tagline,
-    .hero-paradox,
-    .hero-question,
-    .hero-subhead,
-    .hero-description,
-    .hero-cta,
-    .gradient-text {
+    .hero-content,
+    .hero-scroll-cue {
       animation: none;
       opacity: 1;
     }
 
-    .scroll-dot,
-    .bubble,
-    .blob,
-    .light-ray {
+    .hero-scroll-cue svg {
+      animation: none;
+    }
+
+    .blob {
       animation: none;
     }
 
     .ecosystem-card-image img,
-    .news-card-image img {
+    .news-card-image img,
+    .study-card-image img {
       transition: none;
     }
 
     .pillar-card,
     .ecosystem-card,
     .news-card,
-    .stat-card {
+    .stat-card,
+    .study-card {
       transition: none;
     }
 

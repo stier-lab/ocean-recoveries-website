@@ -15,6 +15,13 @@ interface Props {
 
 const { name, role, title, image, hook, tags, email, website, orcid, github } = Astro.props;
 
+// Limit visible tags to 3
+const visibleTags = tags.slice(0, 3);
+const hiddenTagCount = tags.length - 3;
+
+// Check if using placeholder image (for avatar fallback)
+const isPlaceholder = image.includes('man-scuba-diver-on-boat') || image.includes('placeholder');
+
 const roleLabels: Record<string, string> = {
   pi: 'PI',
   postdoc: 'Postdoc',
@@ -38,14 +45,21 @@ const roleGradient = roleColors[role] || 'from-sky-400 to-blue-500';
 <article class="person-card">
   <div class="card-inner">
     <div class="photo-wrap">
-      <img
-        src={image}
-        alt={`${name} portrait`}
-        class="photo"
-        loading="lazy"
-        width="400"
-        height="480"
-      />
+      {isPlaceholder ? (
+        <!-- Fallback avatar for placeholder images -->
+        <div class="photo-placeholder">
+          <span class="placeholder-initial">{name.charAt(0)}</span>
+        </div>
+      ) : (
+        <img
+          src={image}
+          alt={`${name} portrait`}
+          class="photo"
+          loading="lazy"
+          width="400"
+          height="480"
+        />
+      )}
 
       <!-- Gradient overlay -->
       <div class="photo-overlay"></div>
@@ -69,19 +83,30 @@ const roleGradient = roleColors[role] || 'from-sky-400 to-blue-500';
       <p class="hook">{hook}</p>
 
       <div class="tags">
-        {tags.map((tag) => (
+        {visibleTags.map((tag) => (
           <span class="tag">{tag}</span>
         ))}
+        {hiddenTagCount > 0 && (
+          <span class="tag tag-more">+{hiddenTagCount}</span>
+        )}
       </div>
 
       <div class="cta-row">
-        {email && (
+        {email ? (
           <a href={`mailto:${email}`} class="btn-contact" aria-label={`Email ${name}`}>
             <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
               <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
               <polyline points="22,6 12,13 2,6" />
             </svg>
             <span>Contact</span>
+          </a>
+        ) : (
+          <a href="mailto:astier@ucsb.edu" class="btn-contact btn-contact-secondary" aria-label={`Contact lab about ${name}`}>
+            <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
+              <polyline points="22,6 12,13 2,6" />
+            </svg>
+            <span>Contact Lab</span>
           </a>
         )}
 
@@ -130,14 +155,28 @@ const roleGradient = roleColors[role] || 'from-sky-400 to-blue-500';
     @apply transition-all duration-300;
   }
 
-  .person-card:hover .card-inner {
+  .person-card:hover .card-inner,
+  .person-card:focus-within .card-inner {
     @apply border-line;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
   }
 
+  /* Focus state for keyboard navigation */
+  .person-card:focus-within .card-inner {
+    @apply ring-2 ring-accent ring-offset-2 ring-offset-surface;
+  }
+
   /* Photo Section */
   .photo-wrap {
-    @apply relative aspect-[5/6] bg-line/30 overflow-hidden;
+    @apply relative bg-line/30 overflow-hidden;
+    aspect-ratio: 5 / 6;
+  }
+
+  /* Mobile: smaller aspect ratio */
+  @media (max-width: 639px) {
+    .photo-wrap {
+      aspect-ratio: 4 / 3;
+    }
   }
 
   .photo-overlay {
@@ -158,6 +197,23 @@ const roleGradient = roleColors[role] || 'from-sky-400 to-blue-500';
     @apply scale-105;
   }
 
+  /* Placeholder avatar for missing photos */
+  .photo-placeholder {
+    @apply absolute inset-0 w-full h-full;
+    @apply flex items-center justify-center;
+    background: linear-gradient(135deg, #1e3a5f 0%, #0f172a 100%);
+  }
+
+  .placeholder-initial {
+    @apply text-7xl font-black text-accent/30;
+  }
+
+  @media (max-width: 639px) {
+    .placeholder-initial {
+      @apply text-5xl;
+    }
+  }
+
   /* Role tag */
   .role-tag {
     @apply absolute top-3 left-3 z-20;
@@ -174,6 +230,7 @@ const roleGradient = roleColors[role] || 'from-sky-400 to-blue-500';
   /* Body Content */
   .body {
     @apply flex flex-col flex-1 p-5;
+    min-height: 200px;
   }
 
   .name {
@@ -185,7 +242,13 @@ const roleGradient = roleColors[role] || 'from-sky-400 to-blue-500';
   }
 
   .hook {
-    @apply text-sm text-muted leading-relaxed mb-4 flex-1;
+    @apply text-sm text-muted leading-relaxed mb-4;
+    /* Consistent height with line-clamp */
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    min-height: 3.9rem; /* 3 lines * 1.3rem line-height */
   }
 
   /* Tags */
@@ -197,6 +260,10 @@ const roleGradient = roleColors[role] || 'from-sky-400 to-blue-500';
     @apply px-2.5 py-1 text-xs font-medium rounded-md;
     @apply bg-line/40 text-ink/80;
     @apply border border-line/50;
+  }
+
+  .tag-more {
+    @apply bg-accent/10 text-accent border-accent/30;
   }
 
   /* CTA Row */
@@ -216,6 +283,18 @@ const roleGradient = roleColors[role] || 'from-sky-400 to-blue-500';
     @apply bg-accent text-white border-accent;
   }
 
+  .btn-contact:focus-visible {
+    @apply outline-none ring-2 ring-accent ring-offset-2 ring-offset-surface-card;
+  }
+
+  .btn-contact-secondary {
+    @apply text-muted border-line/50 bg-transparent;
+  }
+
+  .btn-contact-secondary:hover {
+    @apply bg-line/30 text-ink border-line;
+  }
+
   .social-icons {
     @apply flex items-center gap-2;
   }
@@ -228,5 +307,9 @@ const roleGradient = roleColors[role] || 'from-sky-400 to-blue-500';
 
   .btn-icon:hover {
     @apply text-accent border-accent/50 bg-accent/10;
+  }
+
+  .btn-icon:focus-visible {
+    @apply outline-none ring-2 ring-accent ring-offset-2 ring-offset-surface-card;
   }
 </style>

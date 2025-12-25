@@ -7,8 +7,7 @@ const navLinks = [
   { href: '/people', label: 'People' },
   { href: '/publications', label: 'Publications' },
   { href: '/news', label: 'News' },
-  { href: '/join', label: 'Join the Lab' },
-  { href: '/for-funders', label: 'For Funders', isHighlight: true },
+  { href: '/join', label: 'Join' },
 ];
 
 const researchDropdownItems = [
@@ -111,19 +110,6 @@ const isActive = (href: string) => {
               </div>
             </div>
           </div>
-        ) : link.isHighlight ? (
-          <a
-            href={link.href}
-            class:list={[
-              'nav-link-highlight relative px-4 py-2 text-sm font-semibold no-underline rounded-full transition-all duration-200',
-              isActive(link.href)
-                ? 'bg-accent text-navy-deep'
-                : 'bg-accent/10 text-accent border border-accent/30 hover:bg-accent hover:text-navy-deep',
-            ]}
-            aria-current={isActive(link.href) ? 'page' : undefined}
-          >
-            {link.label}
-          </a>
         ) : (
           <a
             href={link.href}
