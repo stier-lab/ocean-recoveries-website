@@ -1,13 +1,13 @@
-import { useEffect, useRef, useState } from 'react';
+import { useState } from 'react';
 
 interface StudySite {
   id: string;
   name: string;
   location: string;
   ecosystem: string;
-  coordinates: [number, number]; // [latitude, longitude]
   image: string;
-  questions: string[];
+  failureMode: string;
+  signals: string[];
   researchLink: string;
   color: string;
   description: string;
@@ -19,628 +19,451 @@ const studySites: StudySite[] = [
     name: "Mo'orea",
     location: 'French Polynesia',
     ecosystem: 'Coral Reefs',
-    coordinates: [-17.5388, -149.8366], // lat, lng
     image: '/images/cauliflower-coral-damselfish-reef.jpeg',
-    questions: [
-      'How do coral-associated fishes and crabs benefit coral health?',
-      'What role do disturbance legacies play in reef recovery?',
-      'How do predator-prey interactions structure reef communities?',
-    ],
+    failureMode: 'Slow, chronic decline',
+    signals: ['Bleaching & heat stress', 'Crown-of-thorns predation', 'Algal overgrowth'],
     researchLink: '/research/coral-reefs',
-    color: '#f97316', // orange
-    description: 'Long-term coral reef research at the MCR LTER site, studying mutualist communities, disturbance recovery, and reef resilience.',
+    color: '#f97316',
+    description: 'Coral fate hinges on wound healing at the colony level. We study how individual capacities aggregate into population recovery.',
   },
   {
     id: 'santa-barbara',
-    name: 'Santa Barbara Channel',
-    location: 'California, USA',
+    name: 'Santa Barbara',
+    location: 'California',
     ecosystem: 'Kelp Forests',
-    coordinates: [34.2439, -119.8489], // lat, lng
     image: '/images/giant-kelp-sunlight-underwater.jpeg',
-    questions: [
-      'How does lobster body size affect predator-prey interactions?',
-      'What prevents urchins from overgrazing kelp forests?',
-      'How do marine protected areas benefit adjacent fisheries?',
-    ],
+    failureMode: 'Fast, nonlinear collapse',
+    signals: ['Urchin barrens', 'Predator loss', 'Detrital starvation'],
     researchLink: '/research/kelp-forests',
-    color: '#38bdf8', // sky blue
-    description: 'Kelp forest ecology at the SBC LTER site, studying predator-prey dynamics, fisheries spillover, and ecosystem stability.',
+    color: '#38bdf8',
+    description: 'Consumer feedbacks can flip forests to barrens in months. We study what governs the tipping point—and what breaks the lock.',
   },
 ];
 
 export default function StudySitesMap() {
-  const mapRef = useRef<HTMLDivElement>(null);
-  const [selectedSite, setSelectedSite] = useState<StudySite | null>(null);
-  const [, setMapLoaded] = useState(false);
-  const leafletMapRef = useRef<any>(null);
-  const markersRef = useRef<any[]>([]);
+  const [selectedSite, setSelectedSite] = useState<StudySite>(studySites[0]);
 
-  useEffect(() => {
-    if (!mapRef.current || leafletMapRef.current) return;
-
-    // Dynamically import Leaflet
-    const initMap = async () => {
-      const L = (await import('leaflet')).default;
-
-      // Create map
-      const map = L.map(mapRef.current!, {
-        center: [10, -135], // Center between both sites
-        zoom: 2,
-        minZoom: 2,
-        maxZoom: 8,
-        zoomControl: false,
-        attributionControl: false,
-        scrollWheelZoom: false,
-      });
-
-      // Add zoom control to top-right
-      L.control.zoom({ position: 'topright' }).addTo(map);
-
-      // Custom dark ocean tiles - using CartoDB dark theme (no API key required)
-      L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
-        maxZoom: 19,
-        subdomains: 'abcd',
-        attribution: '&copy; <a href="https://carto.com/">CARTO</a>',
-      }).addTo(map);
-
-      leafletMapRef.current = map;
-
-      // Create custom markers for each site
-      studySites.forEach((site) => {
-        // Custom HTML marker
-        const markerHtml = `
-          <div class="study-site-marker" style="--site-color: ${site.color}">
-            <div class="marker-pulse"></div>
-            <div class="marker-dot"></div>
-            <div class="marker-label">${site.name}</div>
-          </div>
-        `;
-
-        const icon = L.divIcon({
-          html: markerHtml,
-          className: 'study-site-marker-wrapper',
-          iconSize: [120, 40],
-          iconAnchor: [20, 20],
-        });
-
-        const marker = L.marker(site.coordinates, { icon }).addTo(map);
-
-        marker.on('click', () => {
-          setSelectedSite(site);
-          map.flyTo(site.coordinates, 5, { duration: 1.5 });
-        });
-
-        markersRef.current.push(marker);
-      });
-
-      setMapLoaded(true);
-
-      // Fit bounds to show both sites
-      const bounds = L.latLngBounds(studySites.map(s => s.coordinates));
-      map.fitBounds(bounds, { padding: [80, 80] });
-    };
-
-    initMap();
-
-    return () => {
-      if (leafletMapRef.current) {
-        leafletMapRef.current.remove();
-        leafletMapRef.current = null;
-      }
-    };
-  }, []);
-
-  const handleSiteClick = (site: StudySite) => {
+  const handleSiteSelect = (site: StudySite) => {
     setSelectedSite(site);
-    if (leafletMapRef.current) {
-      leafletMapRef.current.flyTo(site.coordinates, 5, { duration: 1.5 });
-    }
-  };
-
-  const handleClose = () => {
-    setSelectedSite(null);
-    if (leafletMapRef.current) {
-      const L = (window as any).L;
-      if (L) {
-        const bounds = L.latLngBounds(studySites.map(s => s.coordinates));
-        leafletMapRef.current.flyToBounds(bounds, { padding: [80, 80], duration: 1 });
-      }
-    }
   };
 
   return (
     <>
-      {/* Leaflet CSS */}
-      <link
-        rel="stylesheet"
-        href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
-        integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
-        crossOrigin=""
-      />
+      <style>{`
+        .sites-container {
+          background: rgba(15, 23, 42, 0.6);
+          border: 1px solid rgba(56, 189, 248, 0.15);
+          border-radius: 1rem;
+          overflow: hidden;
+        }
 
-      <div className="study-sites-map-container">
-        <style>{`
-          .study-sites-map-container {
-            position: relative;
-            width: 100%;
-            border-radius: 1.5rem;
-            overflow: hidden;
-            background: #0f172a;
-            border: 1px solid rgba(56, 189, 248, 0.2);
-          }
+        /* Site selector tabs */
+        .site-tabs {
+          display: flex;
+          border-bottom: 1px solid rgba(56, 189, 248, 0.1);
+        }
 
-          .map-wrapper {
-            position: relative;
-            height: 450px;
-          }
+        .site-tab {
+          flex: 1;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          gap: 0.75rem;
+          padding: 1rem 1.5rem;
+          background: transparent;
+          border: none;
+          cursor: pointer;
+          transition: all 0.3s ease;
+          position: relative;
+        }
 
-          @media (min-width: 768px) {
-            .map-wrapper {
-              height: 500px;
-            }
-          }
+        .site-tab::after {
+          content: '';
+          position: absolute;
+          bottom: 0;
+          left: 0;
+          right: 0;
+          height: 2px;
+          background: transparent;
+          transition: background 0.3s ease;
+        }
 
-          .map-element {
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(135deg, #0c1929 0%, #1a365d 50%, #0c1929 100%);
-          }
+        .site-tab:hover {
+          background: rgba(56, 189, 248, 0.05);
+        }
 
-          /* Custom Leaflet marker styles */
-          .study-site-marker-wrapper {
-            background: transparent !important;
-            border: none !important;
-          }
+        .site-tab.active {
+          background: rgba(56, 189, 248, 0.08);
+        }
 
-          .study-site-marker {
-            position: relative;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-          }
+        .site-tab.active::after {
+          background: var(--tab-color);
+        }
 
-          .marker-pulse {
-            position: absolute;
-            width: 40px;
-            height: 40px;
-            left: 0;
-            top: 50%;
-            transform: translateY(-50%);
-            border-radius: 50%;
-            background: var(--site-color);
-            opacity: 0.3;
-            animation: marker-pulse-anim 2s ease-out infinite;
-          }
+        .site-tab.active .tab-dot {
+          box-shadow: 0 0 12px var(--tab-color);
+        }
 
-          .marker-dot {
-            position: relative;
-            width: 16px;
-            height: 16px;
-            border-radius: 50%;
-            background: var(--site-color);
-            border: 3px solid white;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.3);
-            z-index: 1;
-            cursor: pointer;
-            transition: transform 0.2s ease;
-          }
+        .tab-dot {
+          width: 10px;
+          height: 10px;
+          border-radius: 50%;
+          background: var(--tab-color);
+          transition: box-shadow 0.3s ease;
+        }
 
-          .study-site-marker:hover .marker-dot {
-            transform: scale(1.2);
-          }
+        .tab-label {
+          display: flex;
+          flex-direction: column;
+          align-items: flex-start;
+          gap: 2px;
+        }
 
-          .marker-label {
-            background: rgba(15, 23, 42, 0.95);
-            color: white;
-            padding: 6px 12px;
-            border-radius: 20px;
-            font-size: 12px;
-            font-weight: 600;
-            white-space: nowrap;
-            border: 1px solid var(--site-color);
-            box-shadow: 0 2px 8px rgba(0,0,0,0.3);
-          }
+        .tab-ecosystem {
+          font-size: 0.9375rem;
+          font-weight: 700;
+          color: #f1f5f9;
+        }
 
-          @keyframes marker-pulse-anim {
-            0% {
-              transform: translateY(-50%) scale(0.5);
-              opacity: 0.5;
-            }
-            100% {
-              transform: translateY(-50%) scale(1.5);
-              opacity: 0;
-            }
-          }
+        .tab-location {
+          font-size: 0.75rem;
+          color: rgba(241, 245, 249, 0.5);
+        }
 
-          /* Site buttons below map */
-          .site-buttons {
-            display: grid;
+        /* Content area */
+        .site-content {
+          display: grid;
+          grid-template-columns: 1fr;
+          gap: 0;
+        }
+
+        @media (min-width: 768px) {
+          .site-content {
             grid-template-columns: 1fr 1fr;
-            gap: 1rem;
-            padding: 1.5rem;
-            background: rgba(15, 23, 42, 0.8);
-            border-top: 1px solid rgba(56, 189, 248, 0.1);
           }
+        }
 
-          .site-button {
-            display: flex;
-            align-items: center;
-            gap: 0.75rem;
-            padding: 0.875rem 1rem;
-            background: rgba(30, 41, 59, 0.6);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 0.75rem;
-            cursor: pointer;
-            transition: all 0.2s ease;
-            text-align: left;
+        /* Image panel */
+        .site-image {
+          position: relative;
+          aspect-ratio: 16 / 10;
+          overflow: hidden;
+        }
+
+        @media (min-width: 768px) {
+          .site-image {
+            aspect-ratio: auto;
+            min-height: 320px;
           }
+        }
 
-          .site-button:hover {
-            background: rgba(56, 189, 248, 0.1);
-            border-color: rgba(56, 189, 248, 0.3);
-            transform: translateY(-2px);
+        .site-image img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          transition: transform 0.6s ease;
+        }
+
+        .sites-container:hover .site-image img {
+          transform: scale(1.03);
+        }
+
+        .image-overlay {
+          position: absolute;
+          inset: 0;
+          background: linear-gradient(
+            135deg,
+            rgba(15, 23, 42, 0.3) 0%,
+            rgba(15, 23, 42, 0.1) 50%,
+            rgba(15, 23, 42, 0.5) 100%
+          );
+        }
+
+        .location-badge {
+          position: absolute;
+          top: 1rem;
+          left: 1rem;
+          display: flex;
+          align-items: center;
+          gap: 0.5rem;
+          padding: 0.5rem 0.875rem;
+          background: rgba(15, 23, 42, 0.9);
+          backdrop-filter: blur(8px);
+          border: 1px solid rgba(255, 255, 255, 0.1);
+          border-radius: 2rem;
+          color: #f1f5f9;
+          font-size: 0.8125rem;
+          font-weight: 600;
+        }
+
+        .location-badge svg {
+          width: 14px;
+          height: 14px;
+          color: var(--site-color);
+        }
+
+        /* Info panel */
+        .site-info {
+          padding: 1.5rem;
+          display: flex;
+          flex-direction: column;
+          gap: 1.25rem;
+        }
+
+        @media (min-width: 768px) {
+          .site-info {
+            padding: 2rem;
           }
+        }
 
-          .site-button.active {
-            background: rgba(56, 189, 248, 0.15);
-            border-color: rgba(56, 189, 248, 0.5);
+        .info-header {
+          display: flex;
+          flex-direction: column;
+          gap: 0.5rem;
+        }
+
+        .ecosystem-label {
+          display: inline-flex;
+          align-items: center;
+          gap: 0.375rem;
+          font-size: 0.6875rem;
+          font-weight: 700;
+          text-transform: uppercase;
+          letter-spacing: 0.08em;
+          color: var(--site-color);
+        }
+
+        .ecosystem-label-dot {
+          width: 6px;
+          height: 6px;
+          border-radius: 50%;
+          background: var(--site-color);
+        }
+
+        .site-title {
+          font-size: 1.5rem;
+          font-weight: 800;
+          color: #f1f5f9;
+          margin: 0;
+          letter-spacing: -0.02em;
+        }
+
+        @media (min-width: 768px) {
+          .site-title {
+            font-size: 1.75rem;
           }
+        }
 
-          .site-button-dot {
-            width: 12px;
-            height: 12px;
-            border-radius: 50%;
-            flex-shrink: 0;
-            border: 2px solid rgba(255, 255, 255, 0.5);
-          }
+        .site-desc {
+          font-size: 0.9375rem;
+          line-height: 1.6;
+          color: rgba(241, 245, 249, 0.7);
+          margin: 0;
+        }
 
-          .site-button-info h4 {
-            color: white;
-            font-size: 0.9375rem;
-            font-weight: 700;
-            margin: 0 0 2px 0;
-          }
+        /* Failure mode box */
+        .failure-box {
+          background: rgba(0, 0, 0, 0.2);
+          border: 1px solid rgba(255, 255, 255, 0.08);
+          border-radius: 0.75rem;
+          padding: 1rem;
+        }
 
-          .site-button-info span {
-            color: rgba(255, 255, 255, 0.5);
-            font-size: 0.8125rem;
-          }
+        .failure-header {
+          display: flex;
+          align-items: center;
+          gap: 0.5rem;
+          margin-bottom: 0.75rem;
+        }
 
-          /* Site detail panel */
-          .site-detail-panel {
-            position: absolute;
-            top: 1rem;
-            left: 1rem;
-            right: 1rem;
-            max-width: 400px;
-            background: rgba(15, 23, 42, 0.98);
-            border-radius: 1rem;
-            border: 1px solid rgba(56, 189, 248, 0.3);
-            overflow: hidden;
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
-            z-index: 1000;
-            animation: slideIn 0.3s ease-out;
-          }
+        .failure-icon {
+          width: 20px;
+          height: 20px;
+          color: var(--site-color);
+        }
 
-          @media (min-width: 768px) {
-            .site-detail-panel {
-              top: 1.5rem;
-              left: 1.5rem;
-              right: auto;
-            }
-          }
+        .failure-label {
+          font-size: 0.6875rem;
+          font-weight: 700;
+          text-transform: uppercase;
+          letter-spacing: 0.08em;
+          color: rgba(241, 245, 249, 0.5);
+        }
 
-          @keyframes slideIn {
-            from {
-              opacity: 0;
-              transform: translateY(-10px);
-            }
-            to {
-              opacity: 1;
-              transform: translateY(0);
-            }
-          }
+        .failure-mode {
+          font-size: 1rem;
+          font-weight: 700;
+          color: #f1f5f9;
+          margin: 0 0 0.75rem;
+        }
 
-          .panel-image {
-            position: relative;
-            width: 100%;
-            height: 140px;
-            overflow: hidden;
-          }
+        .failure-signals {
+          display: flex;
+          flex-wrap: wrap;
+          gap: 0.5rem;
+        }
 
-          .panel-image img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-          }
+        .signal-tag {
+          display: inline-flex;
+          align-items: center;
+          gap: 0.375rem;
+          padding: 0.375rem 0.625rem;
+          background: rgba(255, 255, 255, 0.05);
+          border: 1px solid rgba(255, 255, 255, 0.08);
+          border-radius: 0.375rem;
+          font-size: 0.75rem;
+          color: rgba(241, 245, 249, 0.8);
+        }
 
-          .panel-image-overlay {
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(to top, rgba(15, 23, 42, 1) 0%, transparent 100%);
-          }
+        .signal-tag svg {
+          width: 12px;
+          height: 12px;
+          color: var(--site-color);
+        }
 
-          .panel-close {
-            position: absolute;
-            top: 0.75rem;
-            right: 0.75rem;
-            width: 32px;
-            height: 32px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: rgba(15, 23, 42, 0.8);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            border-radius: 50%;
-            color: white;
-            cursor: pointer;
-            transition: all 0.2s;
-            z-index: 1;
-          }
+        /* CTA link */
+        .site-cta {
+          display: inline-flex;
+          align-items: center;
+          gap: 0.5rem;
+          padding: 0.75rem 1.25rem;
+          background: var(--site-color);
+          border-radius: 0.5rem;
+          color: white;
+          font-size: 0.875rem;
+          font-weight: 700;
+          text-decoration: none;
+          transition: all 0.2s ease;
+          align-self: flex-start;
+        }
 
-          .panel-close:hover {
-            background: rgba(56, 189, 248, 0.3);
-            border-color: rgba(56, 189, 248, 0.5);
-          }
+        .site-cta:hover {
+          transform: translateY(-2px);
+          box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+        }
 
-          .ecosystem-badge {
-            position: absolute;
-            bottom: -12px;
-            left: 1rem;
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-            padding: 6px 12px;
-            background: rgba(15, 23, 42, 0.95);
-            border: 1px solid var(--badge-color, #38bdf8);
-            border-radius: 20px;
-            font-size: 0.75rem;
-            font-weight: 700;
-            color: var(--badge-color, #38bdf8);
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-          }
+        .site-cta svg {
+          width: 16px;
+          height: 16px;
+          transition: transform 0.2s ease;
+        }
 
-          .ecosystem-badge-dot {
-            width: 8px;
-            height: 8px;
-            border-radius: 50%;
-            background: var(--badge-color, #38bdf8);
-          }
+        .site-cta:hover svg {
+          transform: translateX(3px);
+        }
 
-          .panel-content {
-            padding: 1.5rem;
-            padding-top: 1.25rem;
-          }
+        /* Instruction text */
+        .map-instruction {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          gap: 0.5rem;
+          padding: 0.75rem;
+          background: rgba(0, 0, 0, 0.2);
+          border-top: 1px solid rgba(56, 189, 248, 0.1);
+          font-size: 0.75rem;
+          color: rgba(241, 245, 249, 0.4);
+        }
 
-          .panel-header {
-            margin-bottom: 1rem;
-          }
+        .map-instruction svg {
+          width: 14px;
+          height: 14px;
+        }
+      `}</style>
 
-          .panel-title {
-            color: white;
-            font-size: 1.375rem;
-            font-weight: 800;
-            margin: 0 0 4px 0;
-          }
-
-          .panel-location {
-            color: rgba(255, 255, 255, 0.5);
-            font-size: 0.875rem;
-          }
-
-          .panel-description {
-            color: rgba(255, 255, 255, 0.7);
-            font-size: 0.875rem;
-            line-height: 1.6;
-            margin-bottom: 1rem;
-          }
-
-          .panel-section-title {
-            color: #38bdf8;
-            font-size: 0.75rem;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
-            margin-bottom: 0.625rem;
-          }
-
-          .panel-questions {
-            list-style: none;
-            padding: 0;
-            margin: 0 0 1.25rem 0;
-          }
-
-          .panel-questions li {
-            display: flex;
-            align-items: flex-start;
-            gap: 0.5rem;
-            color: rgba(255, 255, 255, 0.8);
-            font-size: 0.8125rem;
-            line-height: 1.5;
-            padding: 0.375rem 0;
-          }
-
-          .panel-questions li svg {
-            width: 14px;
-            height: 14px;
-            color: #2dd4bf;
-            flex-shrink: 0;
-            margin-top: 2px;
-          }
-
-          .panel-link {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            color: #38bdf8;
-            font-size: 0.875rem;
-            font-weight: 600;
-            text-decoration: none;
-            transition: gap 0.2s ease;
-          }
-
-          .panel-link:hover {
-            gap: 0.75rem;
-          }
-
-          .panel-link svg {
-            width: 16px;
-            height: 16px;
-            transition: transform 0.2s ease;
-          }
-
-          .panel-link:hover svg {
-            transform: translateX(2px);
-          }
-
-          /* Legend */
-          .map-legend {
-            position: absolute;
-            bottom: 1rem;
-            right: 1rem;
-            display: flex;
-            gap: 1rem;
-            background: rgba(15, 23, 42, 0.9);
-            padding: 0.625rem 1rem;
-            border-radius: 0.5rem;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            z-index: 500;
-          }
-
-          .legend-item {
-            display: flex;
-            align-items: center;
-            gap: 0.375rem;
-            font-size: 0.75rem;
-            color: rgba(255, 255, 255, 0.7);
-          }
-
-          .legend-dot {
-            width: 10px;
-            height: 10px;
-            border-radius: 50%;
-            border: 2px solid rgba(255, 255, 255, 0.5);
-          }
-
-          /* Hide Leaflet attribution */
-          .leaflet-control-attribution {
-            display: none !important;
-          }
-
-          /* Custom zoom controls */
-          .leaflet-control-zoom {
-            border: none !important;
-            box-shadow: none !important;
-          }
-
-          .leaflet-control-zoom a {
-            background: rgba(15, 23, 42, 0.9) !important;
-            color: white !important;
-            border: 1px solid rgba(56, 189, 248, 0.3) !important;
-            width: 32px !important;
-            height: 32px !important;
-            line-height: 30px !important;
-            font-size: 16px !important;
-          }
-
-          .leaflet-control-zoom a:hover {
-            background: rgba(56, 189, 248, 0.2) !important;
-          }
-
-          .leaflet-control-zoom-in {
-            border-radius: 6px 6px 0 0 !important;
-          }
-
-          .leaflet-control-zoom-out {
-            border-radius: 0 0 6px 6px !important;
-          }
-        `}</style>
-
-        <div className="map-wrapper">
-          <div ref={mapRef} className="map-element" />
-
-          {/* Legend */}
-          <div className="map-legend">
-            <div className="legend-item">
-              <span className="legend-dot" style={{ background: '#f97316' }} />
-              <span>Coral Reefs</span>
-            </div>
-            <div className="legend-item">
-              <span className="legend-dot" style={{ background: '#38bdf8' }} />
-              <span>Kelp Forests</span>
-            </div>
-          </div>
-
-          {/* Site Detail Panel */}
-          {selectedSite && (
-            <div className="site-detail-panel">
-              <div className="panel-image">
-                <img src={selectedSite.image} alt={selectedSite.name} />
-                <div className="panel-image-overlay" />
-                <button className="panel-close" onClick={handleClose}>
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                    <path d="M18 6L6 18M6 6l12 12" />
-                  </svg>
-                </button>
-                <div
-                  className="ecosystem-badge"
-                  style={{ '--badge-color': selectedSite.color } as React.CSSProperties}
-                >
-                  <span className="ecosystem-badge-dot" />
-                  {selectedSite.ecosystem}
-                </div>
-              </div>
-
-              <div className="panel-content">
-                <div className="panel-header">
-                  <h3 className="panel-title">{selectedSite.name}</h3>
-                  <span className="panel-location">{selectedSite.location}</span>
-                </div>
-
-                <p className="panel-description">{selectedSite.description}</p>
-
-                <h4 className="panel-section-title">Key Research Questions</h4>
-                <ul className="panel-questions">
-                  {selectedSite.questions.map((question, i) => (
-                    <li key={i}>
-                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                        <path d="M9 5l7 7-7 7" />
-                      </svg>
-                      {question}
-                    </li>
-                  ))}
-                </ul>
-
-                <a href={selectedSite.researchLink} className="panel-link">
-                  Explore {selectedSite.ecosystem.toLowerCase()} research
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                    <path d="M5 12h14M12 5l7 7-7 7" />
-                  </svg>
-                </a>
-              </div>
-            </div>
-          )}
-        </div>
-
-        {/* Site selection buttons */}
-        <div className="site-buttons">
+      <div className="sites-container">
+        {/* Tab selector */}
+        <div className="site-tabs" role="tablist">
           {studySites.map((site) => (
             <button
               key={site.id}
-              className={`site-button ${selectedSite?.id === site.id ? 'active' : ''}`}
-              onClick={() => handleSiteClick(site)}
+              role="tab"
+              aria-selected={selectedSite.id === site.id}
+              className={`site-tab ${selectedSite.id === site.id ? 'active' : ''}`}
+              style={{ '--tab-color': site.color } as React.CSSProperties}
+              onClick={() => handleSiteSelect(site)}
             >
-              <span
-                className="site-button-dot"
-                style={{ background: site.color }}
-              />
-              <div className="site-button-info">
-                <h4>{site.name}</h4>
-                <span>{site.ecosystem}</span>
-              </div>
+              <span className="tab-dot" />
+              <span className="tab-label">
+                <span className="tab-ecosystem">{site.ecosystem}</span>
+                <span className="tab-location">{site.name}, {site.location}</span>
+              </span>
             </button>
           ))}
+        </div>
+
+        {/* Content panel */}
+        <div className="site-content">
+          {/* Image */}
+          <div className="site-image">
+            <img
+              src={selectedSite.image}
+              alt={`${selectedSite.ecosystem} in ${selectedSite.name}`}
+            />
+            <div className="image-overlay" />
+            <div
+              className="location-badge"
+              style={{ '--site-color': selectedSite.color } as React.CSSProperties}
+            >
+              <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+              </svg>
+              {selectedSite.name}, {selectedSite.location}
+            </div>
+          </div>
+
+          {/* Info panel */}
+          <div
+            className="site-info"
+            style={{ '--site-color': selectedSite.color } as React.CSSProperties}
+          >
+            <div className="info-header">
+              <span className="ecosystem-label">
+                <span className="ecosystem-label-dot" />
+                {selectedSite.ecosystem}
+              </span>
+              <h3 className="site-title">{selectedSite.name} Research</h3>
+            </div>
+
+            <p className="site-desc">{selectedSite.description}</p>
+
+            {/* Failure mode box */}
+            <div className="failure-box">
+              <div className="failure-header">
+                <svg className="failure-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+                </svg>
+                <span className="failure-label">Failure Mode</span>
+              </div>
+              <p className="failure-mode">{selectedSite.failureMode}</p>
+              <div className="failure-signals">
+                {selectedSite.signals.map((signal, i) => (
+                  <span key={i} className="signal-tag">
+                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
+                    </svg>
+                    {signal}
+                  </span>
+                ))}
+              </div>
+            </div>
+
+            <a href={selectedSite.researchLink} className="site-cta">
+              Explore {selectedSite.ecosystem.toLowerCase()} research
+              <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+              </svg>
+            </a>
+          </div>
+        </div>
+
+        {/* Instruction */}
+        <div className="map-instruction">
+          <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4" />
+          </svg>
+          Select a system above to compare failure modes
         </div>
       </div>
     </>
