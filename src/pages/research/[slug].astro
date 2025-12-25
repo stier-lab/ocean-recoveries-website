@@ -115,7 +115,7 @@ const isCoral = theme.slug === 'coral-reefs';
         <div class="hero-stats">
           <div class="hero-stat">
             <span class="hero-stat-value">{theme.questions.length}</span>
-            <span class="hero-stat-label">Key Questions</span>
+            <span class="hero-stat-label">Questions</span>
           </div>
           <div class="hero-stat-divider"></div>
           <div class="hero-stat">
@@ -156,12 +156,14 @@ const isCoral = theme.slug === 'coral-reefs';
         <div class="overview-eyebrow">
           <span class={`eyebrow-icon ${isCoral ? 'coral-icon' : 'kelp-icon'}`}>
             {isCoral ? (
+              <!-- Coral/branching structure icon -->
               <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 21c0-3-2-5-2-8s2-5 2-8m0 16c0-3 2-5 2-8s-2-5-2-8m-4 12c0-2-1.5-3.5-1.5-6S8 7 8 5m8 12c0-2 1.5-3.5 1.5-6S16 7 16 5" />
               </svg>
             ) : (
+              <!-- Kelp/seaweed icon -->
               <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" />
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3c0 4-3 6-3 10s3 6 3 8m0-18c0 4 3 6 3 10s-3 6-3 8m-5-14c0 3-2 4-2 7s2 4 2 6m10-13c0 3 2 4 2 7s-2 4-2 6" />
               </svg>
             )}
           </span>
@@ -178,7 +180,7 @@ const isCoral = theme.slug === 'coral-reefs';
   </section>
 
   <!-- ============================================
-       KEY QUESTIONS SECTION
+       QUESTIONS WE ASK SECTION
        ============================================ -->
   <section class="section-questions">
     <div class="questions-bg" aria-hidden="true">
@@ -188,10 +190,10 @@ const isCoral = theme.slug === 'coral-reefs';
 
     <div class="container relative z-10">
       <div class="section-header scroll-reveal">
-        <span class="section-eyebrow">Research Focus</span>
-        <h2 class="section-title">Key <span class="title-gradient">Questions</span></h2>
+        <span class="section-eyebrow">Our Curiosity</span>
+        <h2 class="section-title">Questions <span class="title-gradient">We Ask</span></h2>
         <p class="section-desc">
-          The driving inquiries that guide our research in {theme.title.toLowerCase()}.
+          A window into the types of questions driving our research in {theme.title.toLowerCase()}.
         </p>
       </div>
 
@@ -221,7 +223,7 @@ const isCoral = theme.slug === 'coral-reefs';
         <h2 class="section-title">Key <span class="title-gradient">Findings</span></h2>
         <p class="section-desc">
           Breakthrough insights from our research.
-          <span class="text-sm block mt-2 text-muted/60 md:hidden">Tap cards to reveal details</span>
+          <span class="text-sm block mt-2 text-muted/60">Click or press Enter to reveal details</span>
         </p>
       </div>
 
@@ -230,27 +232,36 @@ const isCoral = theme.slug === 'coral-reefs';
           <button
             type="button"
             class={`finding-card scroll-reveal stagger-${i + 1}`}
-            aria-label={`${finding.title}. Tap to reveal details.`}
+            aria-expanded="false"
+            aria-label={`${finding.title}: ${finding.summary}. Click to reveal more details.`}
           >
-            <div class="finding-front">
+            <div class="finding-front" aria-hidden="false">
               <div class={`finding-icon ${isCoral ? 'coral-finding-icon' : 'kelp-finding-icon'}`}>
-                <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
-                </svg>
+                {isCoral ? (
+                  <!-- Magnifying glass with waves (discovery in ocean) -->
+                  <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M7 10c1 1 2.5 1 3.5 0s2.5-1 3.5 0" />
+                  </svg>
+                ) : (
+                  <!-- Beaker/flask for scientific discovery -->
+                  <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z" />
+                  </svg>
+                )}
               </div>
               <h3 class="finding-title">{finding.title}</h3>
               <p class="finding-summary">{finding.summary}</p>
-              <span class="finding-hint hidden md:flex">
-                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <span class="finding-hint">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6" />
                 </svg>
-                Hover for details
+                Click for details
               </span>
-              <span class="finding-hint md:hidden">Tap for details</span>
             </div>
-            <div class={`finding-back ${isCoral ? 'coral-finding-back' : 'kelp-finding-back'}`}>
+            <div class={`finding-back ${isCoral ? 'coral-finding-back' : 'kelp-finding-back'}`} aria-hidden="true">
               <p class="finding-detail">{finding.detail}</p>
-              <span class="finding-hint md:hidden mt-4">Tap to go back</span>
+              <span class="finding-hint mt-4">Click to go back</span>
             </div>
           </button>
         ))}
@@ -286,8 +297,10 @@ const isCoral = theme.slug === 'coral-reefs';
               {image.caption && (
                 <figcaption class="gallery-caption">
                   <span class={`gallery-caption-icon ${isCoral ? 'coral-icon' : 'kelp-icon'}`}>
+                    <!-- Camera/photo icon -->
                     <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z" />
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 13a3 3 0 11-6 0 3 3 0 016 0z" />
                     </svg>
                   </span>
                   {image.caption}
@@ -883,24 +896,37 @@ const isCoral = theme.slug === 'coral-reefs';
     @apply border border-teal-500/30;
   }
 
-  @media (min-width: 768px) {
-    .finding-card:hover .finding-front,
-    .finding-card:focus .finding-front {
-      transform: rotateY(-180deg);
-    }
-
-    .finding-card:hover .finding-back,
-    .finding-card:focus .finding-back {
-      transform: rotateY(0deg);
-    }
+  /* Flip on click (managed via JS), focus, or hover on desktop */
+  .finding-card.flipped .finding-front,
+  .finding-card[aria-expanded="true"] .finding-front {
+    transform: rotateY(-180deg);
   }
 
-  @media (max-width: 767px) {
-    .finding-card.flipped .finding-front {
+  .finding-card.flipped .finding-back,
+  .finding-card[aria-expanded="true"] .finding-back {
+    transform: rotateY(0deg);
+  }
+
+  /* Update aria-hidden when flipped */
+  .finding-card[aria-expanded="true"] .finding-front {
+    visibility: hidden;
+  }
+
+  .finding-card[aria-expanded="true"] .finding-back {
+    visibility: visible;
+  }
+
+  .finding-card[aria-expanded="false"] .finding-back {
+    visibility: hidden;
+  }
+
+  /* Also support hover on desktop for quick preview */
+  @media (min-width: 768px) and (hover: hover) {
+    .finding-card:hover .finding-front {
       transform: rotateY(-180deg);
     }
 
-    .finding-card.flipped .finding-back {
+    .finding-card:hover .finding-back {
       transform: rotateY(0deg);
     }
   }
@@ -922,7 +948,7 @@ const isCoral = theme.slug === 'coral-reefs';
   }
 
   .finding-hint {
-    @apply flex items-center gap-2 text-xs text-accent font-medium mt-3;
+    @apply flex items-center justify-center gap-2 text-xs text-accent font-medium mt-3;
   }
 
   .finding-detail {
@@ -1403,15 +1429,31 @@ const isCoral = theme.slug === 'coral-reefs';
 </style>
 
 <script>
-  // Tap-to-flip for finding cards on mobile
+  // Accessible flip cards - works with click, Enter, and Space
   const initFlipCards = () => {
-    const isMobile = window.innerWidth < 768;
-    const cards = document.querySelectorAll('.finding-card');
+    const cards = document.querySelectorAll<HTMLButtonElement>('.finding-card');
 
     cards.forEach((card) => {
+      // Handle click
       card.addEventListener('click', () => {
-        if (isMobile) {
-          card.classList.toggle('flipped');
+        const isExpanded = card.getAttribute('aria-expanded') === 'true';
+        card.setAttribute('aria-expanded', String(!isExpanded));
+        card.classList.toggle('flipped');
+
+        // Update aria-hidden on front and back
+        const front = card.querySelector('.finding-front');
+        const back = card.querySelector('.finding-back');
+        if (front && back) {
+          front.setAttribute('aria-hidden', String(!isExpanded));
+          back.setAttribute('aria-hidden', String(isExpanded));
+        }
+      });
+
+      // Handle keyboard navigation (Enter and Space)
+      card.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          card.click();
         }
       });
     });

@@ -55,57 +55,180 @@ const getDisplayTags = (tags: string[]) => {
   return tags.filter(t => !/^\d{4}$/.test(t) && t !== 'Publication');
 };
 
-// Bento grid posts - first 5 posts get special treatment
-const heroPost = sortedPosts[0];
+// Featured posts
+const featuredPost = sortedPosts[0];
 const secondaryPosts = sortedPosts.slice(1, 3);
-const tertiaryPosts = sortedPosts.slice(3, 5);
-const remainingPosts = sortedPosts.slice(5);
+const allPosts = sortedPosts.slice(3);
+
+// Stats
+const totalArticles = posts.length;
+const oaCount = posts.filter(p => p.openAccess).length;
+const yearSpan = yearTags.length > 0 ? `${yearTags[yearTags.length - 1]}–${yearTags[0]}` : '';
 ---
 
 <Layout
   title="News & Research"
   description="Latest news, research updates, and stories from the Ocean Recoveries Lab at UC Santa Barbara."
 >
-  <!-- Skip to content link for accessibility -->
-  <a href="#main-content" class="skip-to-content">Skip to main content</a>
+  <a href="#main-content" class="skip-link">Skip to main content</a>
 
-  <!-- Compact Header + Filters -->
-  <section class="filters-section" aria-label="Filter articles">
-    <div class="container">
-      <!-- Header Row: Title + Search -->
-      <div class="filters-header">
-        <h1 class="page-title">News & Research</h1>
-        <div class="header-controls">
-          <div class="search-wrapper">
-            <svg class="search-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-            </svg>
-            <input
-              type="search"
-              id="search-input"
-              placeholder="Search..."
-              class="search-input"
-              aria-label="Search articles"
-              autocomplete="off"
-            />
-            <button id="clear-search" class="clear-btn hidden" aria-label="Clear search">
-              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
-              </svg>
-            </button>
-          </div>
-          <select id="sort-select" class="sort-select" aria-label="Sort articles">
-            <option value="newest">Newest</option>
-            <option value="oldest">Oldest</option>
-          </select>
-        </div>
+  <!-- Hero Section -->
+  <section class="hero" aria-label="News page introduction">
+    <div class="hero-bg">
+      <div class="hero-gradient"></div>
+      <div class="hero-pattern"></div>
+      <div class="hero-orb hero-orb-1"></div>
+      <div class="hero-orb hero-orb-2"></div>
+    </div>
+
+    <div class="container hero-content">
+      <div class="hero-badge">
+        <span class="badge-dot"></span>
+        <span>Research Updates</span>
       </div>
 
-      <!-- Filter Pills Row -->
-      <div class="filters-row">
+      <h1 class="hero-title">
+        News & <span class="title-gradient">Research</span>
+      </h1>
+
+      <p class="hero-subtitle">
+        Stories from the frontier of marine ecosystem research. Explore our latest findings on coral reef resilience, kelp forest dynamics, and ocean conservation.
+      </p>
+
+      <div class="hero-stats">
+        <div class="stat">
+          <span class="stat-value">{totalArticles}</span>
+          <span class="stat-label">Articles</span>
+        </div>
+        <div class="stat-divider"></div>
+        <div class="stat">
+          <span class="stat-value">{oaCount}</span>
+          <span class="stat-label">Open Access</span>
+        </div>
+        <div class="stat-divider"></div>
+        <div class="stat">
+          <span class="stat-value">{yearSpan}</span>
+          <span class="stat-label">Research Years</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="hero-wave">
+      <svg viewBox="0 0 1440 120" fill="none" preserveAspectRatio="none">
+        <path d="M0 120L60 110C120 100 240 80 360 70C480 60 600 60 720 65C840 70 960 80 1080 85C1200 90 1320 90 1380 90L1440 90V120H1380C1320 120 1200 120 1080 120C960 120 840 120 720 120C600 120 480 120 360 120C240 120 120 120 60 120H0Z" fill="#0f172a"/>
+      </svg>
+    </div>
+  </section>
+
+  <!-- Featured Section -->
+  <section class="featured-section" aria-label="Featured articles">
+    <div class="container">
+      <div class="featured-grid">
+        <!-- Main Featured -->
+        <article class="featured-main" data-reveal>
+          <a href={`/news/${featuredPost.slug}`} class="featured-link">
+            <div class="featured-image">
+              <img src={featuredPost.featuredImage} alt="" loading="eager" />
+              <div class="featured-overlay"></div>
+            </div>
+            <div class="featured-content">
+              <div class="featured-badges">
+                <span class="badge-latest">Latest</span>
+                {featuredPost.openAccess && <span class="badge-oa">Open Access</span>}
+              </div>
+              <div class="featured-tags">
+                {getDisplayTags(featuredPost.tags).slice(0, 2).map(tag => (
+                  <span class="featured-tag" style={`--tag-color: ${topicConfig[tag]?.color || '#38bdf8'}`}>{tag}</span>
+                ))}
+              </div>
+              <h2 class="featured-title">{featuredPost.title}</h2>
+              <p class="featured-excerpt">{featuredPost.excerpt}</p>
+              <div class="featured-meta">
+                <span class="meta-author">{featuredPost.author}</span>
+                <span class="meta-sep">·</span>
+                <time datetime={featuredPost.date}>{formatDate(featuredPost.date)}</time>
+                <span class="meta-sep">·</span>
+                <span>{getReadingTime(featuredPost.content)} min read</span>
+              </div>
+            </div>
+          </a>
+          {(featuredPost.pdfUrl || featuredPost.doiUrl) && (
+            <div class="featured-actions">
+              {featuredPost.pdfUrl && (
+                <a href={featuredPost.pdfUrl} target="_blank" rel="noopener noreferrer" class="action-btn action-pdf">
+                  <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                  </svg>
+                  PDF
+                </a>
+              )}
+              {featuredPost.doiUrl && (
+                <a href={featuredPost.doiUrl} target="_blank" rel="noopener noreferrer" class="action-btn action-doi">
+                  <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                  </svg>
+                  Paper
+                </a>
+              )}
+            </div>
+          )}
+        </article>
+
+        <!-- Secondary Featured -->
+        <div class="featured-secondary">
+          {secondaryPosts.map((post, i) => (
+            <article class="secondary-card" data-reveal style={`--delay: ${0.1 + i * 0.1}s`}>
+              <a href={`/news/${post.slug}`} class="secondary-link">
+                <div class="secondary-image">
+                  <img src={post.featuredImage} alt="" loading="lazy" />
+                  {post.openAccess && <span class="oa-badge">OA</span>}
+                </div>
+                <div class="secondary-content">
+                  <span class="secondary-tag" style={`--tag-color: ${getTopicColor(post.tags)}`}>
+                    {getDisplayTags(post.tags)[0] || 'Research'}
+                  </span>
+                  <h3 class="secondary-title">{post.title}</h3>
+                  <div class="secondary-meta">
+                    <time datetime={post.date}>{formatDate(post.date)}</time>
+                    <span>·</span>
+                    <span>{getReadingTime(post.content)} min</span>
+                  </div>
+                </div>
+              </a>
+            </article>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Filters Bar -->
+  <section class="filters-bar" aria-label="Filter articles">
+    <div class="container">
+      <div class="filters-inner">
+        <!-- Search -->
+        <div class="search-box">
+          <svg class="search-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+          </svg>
+          <input
+            type="search"
+            id="search-input"
+            placeholder="Search articles..."
+            class="search-input"
+            aria-label="Search articles"
+          />
+          <button id="clear-search" class="clear-btn hidden" aria-label="Clear search">
+            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+            </svg>
+          </button>
+        </div>
+
+        <!-- Topic Pills -->
         <div class="filter-pills" role="group" aria-label="Topic filters">
           <button class="pill active" data-tag="all" aria-pressed="true">All</button>
-          {topicTags.slice(0, 5).map(topic => (
+          {topicTags.slice(0, 6).map(topic => (
             <button
               class="pill"
               data-tag={topic}
@@ -115,212 +238,106 @@ const remainingPosts = sortedPosts.slice(5);
               {topic}
             </button>
           ))}
+        </div>
+
+        <!-- Controls -->
+        <div class="filter-controls">
           <!-- Year Dropdown -->
           <div class="dropdown">
-            <button class="pill dropdown-btn" id="year-btn" aria-haspopup="listbox" aria-expanded="false">
-              <span class="dropdown-label">Year</span>
-              <svg class="dropdown-chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+            <button class="dropdown-trigger" id="year-btn" aria-haspopup="listbox" aria-expanded="false">
+              <span class="dropdown-text">Year</span>
+              <svg class="dropdown-arrow" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
               </svg>
             </button>
-            <div class="dropdown-panel" id="year-panel" role="listbox">
+            <div class="dropdown-menu" id="year-panel" role="listbox">
               {yearTags.map(year => (
-                <button class="dropdown-option" data-tag={year} role="option" aria-selected="false">
+                <button class="dropdown-item" data-tag={year} role="option" aria-selected="false">
                   {year}
                 </button>
               ))}
             </div>
           </div>
-          <!-- Open Access Toggle -->
-          <button class="pill pill-oa" id="oa-filter" aria-pressed="false" title="Open Access only">
-            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+
+          <!-- OA Toggle -->
+          <button class="oa-toggle" id="oa-filter" aria-pressed="false" title="Open Access only">
+            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 11V7a4 4 0 118 0m-4 8v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2z" />
             </svg>
-            <span class="oa-label">Open Access</span>
+            <span>Open Access</span>
           </button>
+
+          <!-- Sort -->
+          <select id="sort-select" class="sort-select" aria-label="Sort articles">
+            <option value="newest">Newest</option>
+            <option value="oldest">Oldest</option>
+          </select>
         </div>
-        <div class="filter-meta">
-          <div class="active-filters" id="active-filters" role="status" aria-live="polite"></div>
-          <span class="results-count" id="results-text">{sortedPosts.length} articles</span>
-        </div>
+      </div>
+
+      <!-- Active Filters & Results -->
+      <div class="filters-meta">
+        <div class="active-filters" id="active-filters" role="status" aria-live="polite"></div>
+        <span class="results-count" id="results-text">{sortedPosts.length} articles</span>
       </div>
     </div>
   </section>
 
   <!-- Main Content -->
-  <main id="main-content" class="bento-section">
+  <main id="main-content" class="articles-section">
     <div class="container">
-      <!-- Bento Grid -->
-      <div class="bento-grid" id="bento-grid">
-        <!-- Hero Card (Large) -->
-        <article
-          class="bento-card bento-hero"
-          data-tags={heroPost.tags.join(',')}
-          data-title={heroPost.title.toLowerCase()}
-          data-excerpt={heroPost.excerpt.toLowerCase()}
-          data-open-access={heroPost.openAccess ? 'true' : 'false'}
-          data-date={heroPost.date}
-        >
-          <a href={`/news/${heroPost.slug}`} class="card-link">
-            <div class="card-image">
-              <img
-                src={heroPost.featuredImage}
-                alt=""
-                loading="eager"
-                decoding="async"
-              />
-              <div class="card-overlay"></div>
-            </div>
-            <div class="card-content">
-              <div class="card-badges">
-                <span class="badge badge-new">Latest</span>
-                {heroPost.openAccess && <span class="badge badge-oa">Open Access</span>}
-              </div>
-              <div class="card-tags">
-                {getDisplayTags(heroPost.tags).slice(0, 2).map(tag => (
-                  <span class="tag" style={`--tag-color: ${topicConfig[tag]?.color || '#38bdf8'}`}>{tag}</span>
-                ))}
-              </div>
-              <h2 class="card-title">{heroPost.title}</h2>
-              <p class="card-excerpt">{heroPost.excerpt}</p>
-              <div class="card-meta">
-                <span class="meta-author">{heroPost.author}</span>
-                <span class="meta-dot" aria-hidden="true"></span>
-                <time datetime={heroPost.date}>{formatDate(heroPost.date)}</time>
-                <span class="meta-dot" aria-hidden="true"></span>
-                <span>{getReadingTime(heroPost.content)} min read</span>
-              </div>
-            </div>
-          </a>
-          <div class="card-actions">
-            {heroPost.pdfUrl && (
-              <a href={heroPost.pdfUrl} target="_blank" rel="noopener noreferrer" class="action-link action-pdf">
-                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
-                </svg>
-                PDF
-              </a>
-            )}
-            {heroPost.doiUrl && (
-              <a href={heroPost.doiUrl} target="_blank" rel="noopener noreferrer" class="action-link action-doi">
-                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
-                </svg>
-                View Paper
-              </a>
-            )}
-          </div>
-        </article>
-
-        <!-- Secondary Cards (Medium) -->
-        {secondaryPosts.map((post, i) => (
+      <!-- Articles Grid -->
+      <div class="articles-grid" id="articles-grid">
+        {allPosts.map((post, i) => (
           <article
-            class={`bento-card bento-medium bento-medium-${i + 1}`}
+            class="article-card"
             data-tags={post.tags.join(',')}
             data-title={post.title.toLowerCase()}
             data-excerpt={post.excerpt.toLowerCase()}
             data-open-access={post.openAccess ? 'true' : 'false'}
             data-date={post.date}
+            data-reveal
+            style={`--delay: ${(i % 9) * 0.05}s`}
           >
             <a href={`/news/${post.slug}`} class="card-link">
               <div class="card-image">
-                <img src={post.featuredImage} alt="" loading="lazy" decoding="async" />
-                <div class="card-overlay"></div>
-              </div>
-              <div class="card-content">
-                {post.openAccess && <span class="badge badge-oa badge-float">OA</span>}
-                <div class="card-tags">
-                  {getDisplayTags(post.tags).slice(0, 1).map(tag => (
-                    <span class="tag" style={`--tag-color: ${topicConfig[tag]?.color || '#38bdf8'}`}>{tag}</span>
-                  ))}
-                </div>
-                <h3 class="card-title">{post.title}</h3>
-                <div class="card-meta">
-                  <time datetime={post.date}>{formatDate(post.date)}</time>
-                  <span class="meta-dot" aria-hidden="true"></span>
-                  <span>{getReadingTime(post.content)} min</span>
-                </div>
-              </div>
-            </a>
-          </article>
-        ))}
-
-        <!-- Tertiary Cards (Compact) -->
-        {tertiaryPosts.map((post) => (
-          <article
-            class="bento-card bento-compact"
-            data-tags={post.tags.join(',')}
-            data-title={post.title.toLowerCase()}
-            data-excerpt={post.excerpt.toLowerCase()}
-            data-open-access={post.openAccess ? 'true' : 'false'}
-            data-date={post.date}
-          >
-            <a href={`/news/${post.slug}`} class="card-link card-link-horizontal">
-              <div class="card-thumb">
-                <img src={post.featuredImage} alt="" loading="lazy" decoding="async" />
-                {post.openAccess && <span class="thumb-badge" title="Open Access">OA</span>}
-              </div>
-              <div class="card-info">
-                <span class="info-tag" style={`--tag-color: ${getTopicColor(post.tags)}`}>
-                  {getDisplayTags(post.tags)[0] || 'Research'}
-                </span>
-                <h4 class="info-title">{post.title}</h4>
-                <span class="info-date">{formatDate(post.date)}</span>
-              </div>
-            </a>
-          </article>
-        ))}
-      </div>
-
-      <!-- Standard Grid for Remaining Posts -->
-      <div class="posts-grid" id="posts-grid">
-        {remainingPosts.map((post, i) => (
-          <article
-            class="post-card"
-            data-tags={post.tags.join(',')}
-            data-title={post.title.toLowerCase()}
-            data-excerpt={post.excerpt.toLowerCase()}
-            data-open-access={post.openAccess ? 'true' : 'false'}
-            data-date={post.date}
-            style={`--delay: ${(i % 6) * 0.05}s`}
-          >
-            <a href={`/news/${post.slug}`} class="post-link">
-              <div class="post-image">
-                <img src={post.featuredImage} alt="" loading="lazy" decoding="async" />
+                <img src={post.featuredImage} alt="" loading="lazy" />
                 {post.openAccess && (
-                  <span class="post-oa" title="Open Access">
-                    <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                  <span class="card-oa" title="Open Access">
+                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 11V7a4 4 0 118 0m-4 8v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2z" />
                     </svg>
                   </span>
                 )}
               </div>
-              <div class="post-body">
-                <div class="post-top">
-                  <span class="post-tag" style={`--tag-color: ${getTopicColor(post.tags)}`}>
+              <div class="card-body">
+                <div class="card-top">
+                  <span class="card-tag" style={`--tag-color: ${getTopicColor(post.tags)}`}>
                     {getDisplayTags(post.tags)[0] || 'Research'}
                   </span>
-                  <span class="post-date">{formatDate(post.date)}</span>
+                  <time datetime={post.date} class="card-date">{formatDate(post.date)}</time>
                 </div>
-                <h3 class="post-title">{post.title}</h3>
-                <p class="post-excerpt">{post.excerpt}</p>
+                <h3 class="card-title">{post.title}</h3>
+                <p class="card-excerpt">{post.excerpt}</p>
               </div>
             </a>
-            <div class="post-footer">
-              <span class="post-author">{post.author}</span>
-              <div class="post-actions">
+            <div class="card-footer">
+              <span class="card-author">{post.author}</span>
+              <div class="card-actions">
                 {post.pdfUrl && (
-                  <a href={post.pdfUrl} target="_blank" rel="noopener noreferrer" class="post-action" title="Download PDF">
-                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                  <a href={post.pdfUrl} target="_blank" rel="noopener noreferrer" class="card-action card-action-pdf">
+                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
                     </svg>
+                    <span>PDF</span>
                   </a>
                 )}
                 {post.doiUrl && (
-                  <a href={post.doiUrl} target="_blank" rel="noopener noreferrer" class="post-action" title="View paper">
-                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                  <a href={post.doiUrl} target="_blank" rel="noopener noreferrer" class="card-action card-action-doi">
+                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
                     </svg>
+                    <span>Paper</span>
                   </a>
                 )}
               </div>
@@ -331,32 +348,32 @@ const remainingPosts = sortedPosts.slice(5);
 
       <!-- Empty State -->
       <div id="empty-state" class="empty-state hidden" role="status">
-        <div class="empty-icon" aria-hidden="true">
-          <svg class="w-16 h-16" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <div class="empty-icon">
+          <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
           </svg>
         </div>
         <h3 class="empty-title">No articles found</h3>
-        <p class="empty-text">Try adjusting your search or filters to find what you're looking for</p>
+        <p class="empty-text">Try adjusting your search or filters</p>
         <button class="empty-btn" id="clear-all">
-          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+          <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
           </svg>
-          Reset all filters
+          Reset filters
         </button>
       </div>
 
       <!-- Load More -->
       <div class="load-more" id="load-more">
         <button class="load-btn" id="load-btn">
-          <span class="load-text">Show more articles</span>
-          <span class="load-spinner hidden" aria-hidden="true">
-            <svg class="w-5 h-5 animate-spin" fill="none" viewBox="0 0 24 24">
+          <span class="load-text">Load more articles</span>
+          <span class="load-spinner hidden">
+            <svg class="animate-spin" fill="none" viewBox="0 0 24 24">
               <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
               <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
             </svg>
           </span>
-          <svg class="load-chevron w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+          <svg class="load-arrow" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
           </svg>
         </button>
@@ -365,31 +382,32 @@ const remainingPosts = sortedPosts.slice(5);
     </div>
   </main>
 
-  <!-- CTA -->
-  <section class="cta-section" aria-labelledby="cta-title">
+  <!-- CTA Section -->
+  <section class="cta-section" aria-labelledby="cta-heading">
     <div class="container">
-      <div class="cta-card">
-        <div class="cta-icon" aria-hidden="true">
-          <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9" />
-          </svg>
-        </div>
+      <div class="cta-card" data-reveal>
         <div class="cta-content">
-          <h2 id="cta-title" class="cta-title">Stay updated on our research</h2>
-          <p class="cta-text">Follow along as we publish new findings on coral reef and kelp forest ecosystems</p>
+          <h2 id="cta-heading" class="cta-title">Stay connected with our research</h2>
+          <p class="cta-text">Follow our work on coral reef resilience and kelp forest ecosystems</p>
         </div>
-        <div class="cta-links">
-          <a href="https://twitter.com/staboratory" target="_blank" rel="noopener noreferrer" class="cta-link">
-            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+        <div class="cta-actions">
+          <a href="https://twitter.com/staboratory" target="_blank" rel="noopener noreferrer" class="cta-btn cta-twitter">
+            <svg fill="currentColor" viewBox="0 0 24 24">
               <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
             </svg>
-            <span>Twitter</span>
+            Twitter
           </a>
-          <a href="https://scholar.google.com/citations?user=bxbOvMgAAAAJ" target="_blank" rel="noopener noreferrer" class="cta-link">
-            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+          <a href="https://scholar.google.com/citations?user=bxbOvMgAAAAJ" target="_blank" rel="noopener noreferrer" class="cta-btn cta-scholar">
+            <svg fill="currentColor" viewBox="0 0 24 24">
               <path d="M12 24a7 7 0 110-14 7 7 0 010 14zm0-24L0 9.5l4.838 3.94A8 8 0 0112 9a8 8 0 017.162 4.44L24 9.5z"/>
             </svg>
-            <span>Google Scholar</span>
+            Google Scholar
+          </a>
+          <a href="/publications" class="cta-btn cta-pubs">
+            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+            </svg>
+            Publications
           </a>
         </div>
       </div>
@@ -399,7 +417,7 @@ const remainingPosts = sortedPosts.slice(5);
 
 <style>
   /* Skip Link */
-  .skip-to-content {
+  .skip-link {
     @apply absolute left-4 top-4 z-[100] px-4 py-2 rounded-lg font-medium;
     @apply bg-accent text-white no-underline;
     @apply transform -translate-y-20 opacity-0;
@@ -407,318 +425,224 @@ const remainingPosts = sortedPosts.slice(5);
     @apply transition-all duration-200;
   }
 
-  /* Filters Section - Now the main header */
-  .filters-section {
-    @apply pt-6 pb-4 bg-surface sticky top-0 z-40;
-    @apply border-b border-line/30;
+  /* Hero Section */
+  .hero {
+    @apply relative pt-24 pb-32 overflow-hidden;
+    background: linear-gradient(135deg, #0a1628 0%, #0f172a 50%, #1a2744 100%);
   }
 
-  /* Header Row */
-  .filters-header {
-    @apply flex items-center justify-between gap-4 mb-4;
+  .hero-bg {
+    @apply absolute inset-0 overflow-hidden;
   }
 
-  .page-title {
-    @apply text-2xl md:text-3xl font-bold m-0;
-    background: linear-gradient(135deg, #f1f5f9 0%, #38bdf8 50%, #2dd4bf 100%);
-    background-size: 200% 200%;
+  .hero-gradient {
+    @apply absolute inset-0;
+    background: radial-gradient(ellipse 80% 50% at 50% 0%, rgba(56, 189, 248, 0.12) 0%, transparent 60%);
+  }
+
+  .hero-pattern {
+    @apply absolute inset-0 opacity-[0.03];
+    background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+  }
+
+  .hero-orb {
+    @apply absolute rounded-full blur-3xl;
+  }
+
+  .hero-orb-1 {
+    @apply w-96 h-96 -top-48 -right-24;
+    background: radial-gradient(circle, rgba(56, 189, 248, 0.15) 0%, transparent 70%);
+    animation: float 20s ease-in-out infinite;
+  }
+
+  .hero-orb-2 {
+    @apply w-80 h-80 bottom-0 -left-20;
+    background: radial-gradient(circle, rgba(45, 212, 191, 0.1) 0%, transparent 70%);
+    animation: float 25s ease-in-out infinite reverse;
+  }
+
+  @keyframes float {
+    0%, 100% { transform: translate(0, 0); }
+    50% { transform: translate(20px, -20px); }
+  }
+
+  .hero-content {
+    @apply relative z-10 text-center max-w-3xl mx-auto;
+  }
+
+  .hero-badge {
+    @apply inline-flex items-center gap-2 px-4 py-2 mb-6;
+    @apply bg-white/5 border border-white/10 rounded-full;
+    @apply text-sm font-medium text-white/70;
+  }
+
+  .badge-dot {
+    @apply w-2 h-2 rounded-full bg-accent;
+    animation: pulse 2s ease-in-out infinite;
+  }
+
+  @keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.5; }
+  }
+
+  .hero-title {
+    @apply text-4xl md:text-5xl lg:text-6xl font-black text-white mb-6;
+    @apply tracking-tight leading-tight;
+  }
+
+  .title-gradient {
+    background: linear-gradient(135deg, #38bdf8 0%, #2dd4bf 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
-    animation: gradient-shift 8s ease-in-out infinite;
   }
 
-  @keyframes gradient-shift {
-    0%, 100% { background-position: 0% 50%; }
-    50% { background-position: 100% 50%; }
+  .hero-subtitle {
+    @apply text-lg md:text-xl text-white/60 mb-10 max-w-2xl mx-auto;
+    @apply leading-relaxed;
   }
 
-  .header-controls {
-    @apply flex items-center gap-2;
+  .hero-stats {
+    @apply inline-flex items-center gap-6 md:gap-8 px-8 py-4;
+    @apply bg-white/5 border border-white/10 rounded-2xl;
+    @apply backdrop-blur-sm;
   }
 
-  .search-wrapper {
-    @apply relative;
+  .stat {
+    @apply text-center;
   }
 
-  .search-icon {
-    @apply absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted pointer-events-none;
+  .stat-value {
+    @apply block text-2xl md:text-3xl font-bold text-white mb-1;
   }
 
-  .search-input {
-    @apply w-40 md:w-48 pl-9 pr-8 py-2 rounded-lg text-sm;
-    @apply bg-surface-card border border-line text-ink placeholder-muted;
-    @apply focus:outline-none focus:border-accent focus:ring-1 focus:ring-accent/30 focus:w-64;
-    @apply transition-all;
+  .stat-label {
+    @apply text-xs md:text-sm text-white/50 uppercase tracking-wider;
   }
 
-  .clear-btn {
-    @apply absolute right-2 top-1/2 -translate-y-1/2 p-1 rounded;
-    @apply text-muted hover:text-ink;
-    @apply transition-colors cursor-pointer;
+  .stat-divider {
+    @apply w-px h-10 bg-white/10;
   }
 
-  .clear-btn.hidden { @apply invisible opacity-0; }
-
-  .sort-select {
-    @apply px-3 py-2 rounded-lg text-sm;
-    @apply bg-surface-card border border-line text-ink;
-    @apply focus:outline-none focus:border-accent focus:ring-1 focus:ring-accent/30;
-    @apply cursor-pointer;
+  .hero-wave {
+    @apply absolute bottom-0 left-0 right-0;
   }
 
-  /* Filter Pills Row */
-  .filters-row {
-    @apply flex items-center justify-between gap-4 flex-wrap;
+  .hero-wave svg {
+    @apply w-full h-20 md:h-28;
   }
 
-  .filter-pills {
-    @apply flex items-center gap-2 flex-wrap;
+  /* Featured Section */
+  .featured-section {
+    @apply py-12 bg-surface;
   }
 
-  .pill {
-    @apply px-3 py-1.5 rounded-lg text-sm font-medium;
-    @apply bg-transparent border border-line text-muted;
-    @apply hover:border-accent/50 hover:text-ink;
-    @apply transition-colors cursor-pointer;
-    @apply focus:outline-none focus:ring-2 focus:ring-accent/30;
+  .featured-grid {
+    @apply grid lg:grid-cols-5 gap-6;
   }
 
-  .pill.active {
-    @apply bg-accent border-accent text-white;
-  }
-
-  .pill:not(.active):hover {
-    border-color: var(--pill-color, #38bdf8);
-    color: var(--pill-color, #38bdf8);
-  }
-
-  .pill-oa {
-    @apply flex items-center gap-1.5;
-  }
-
-  .pill-oa .oa-label {
-    @apply hidden sm:inline;
-  }
-
-  .pill-oa.active {
-    @apply bg-green-500 border-green-500;
-  }
-
-  .dropdown {
-    @apply relative;
-  }
-
-  .dropdown-btn {
-    @apply flex items-center gap-1;
-  }
-
-  .dropdown-chevron {
-    @apply w-3.5 h-3.5 transition-transform duration-200;
-  }
-
-  .dropdown-btn[aria-expanded="true"] .dropdown-chevron {
-    @apply rotate-180;
-  }
-
-  .dropdown-panel {
-    @apply absolute top-full left-0 mt-1 py-1 min-w-[100px];
-    @apply bg-surface-card border border-line rounded-lg shadow-xl;
-    @apply opacity-0 invisible -translate-y-1;
-    @apply transition-all duration-150 z-50;
-  }
-
-  .dropdown-panel.open {
-    @apply opacity-100 visible translate-y-0;
-  }
-
-  .dropdown-option {
-    @apply block w-full px-3 py-2 text-sm text-muted text-left;
-    @apply hover:bg-accent/10 hover:text-accent;
-    @apply transition-colors cursor-pointer;
-    @apply focus:outline-none focus:bg-accent/10 focus:text-accent;
-  }
-
-  .dropdown-option[aria-selected="true"],
-  .dropdown-option.active {
-    @apply bg-accent/10 text-accent;
-  }
-
-  /* Filter Meta */
-  .filter-meta {
-    @apply flex items-center gap-3;
-  }
-
-  .active-filters {
-    @apply flex flex-wrap items-center gap-2;
-  }
-
-  .active-filters:empty { @apply hidden; }
-
-  .filter-tag {
-    @apply inline-flex items-center gap-1 px-2 py-1 rounded text-xs font-medium;
-    @apply bg-accent/10 text-accent;
-  }
-
-  .filter-tag button {
-    @apply p-0.5 rounded hover:bg-accent/20 cursor-pointer transition-colors;
-  }
-
-  .clear-all-btn {
-    @apply text-xs text-muted hover:text-accent cursor-pointer transition-colors ml-1;
-  }
-
-  .results-count {
-    @apply text-sm text-muted whitespace-nowrap;
-  }
-
-  /* Bento Section */
-  .bento-section {
-    @apply py-6 bg-surface;
-  }
-
-  /* Bento Grid */
-  .bento-grid {
-    @apply grid gap-4 md:gap-5 mb-8;
-    grid-template-columns: repeat(4, 1fr);
-    grid-template-rows: auto auto;
-  }
-
-  @media (max-width: 1024px) {
-    .bento-grid {
-      grid-template-columns: repeat(2, 1fr);
-    }
-  }
-
-  @media (max-width: 640px) {
-    .bento-grid {
-      grid-template-columns: 1fr;
-    }
-  }
-
-  /* Bento Cards */
-  .bento-card {
-    @apply relative rounded-2xl overflow-hidden;
+  .featured-main {
+    @apply lg:col-span-3 relative rounded-2xl overflow-hidden;
     @apply bg-surface-card border border-line/50;
     @apply transition-all duration-300;
   }
 
-  .bento-card:hover {
+  .featured-main:hover {
     @apply border-accent/30;
     transform: translateY(-4px);
-    box-shadow: 0 16px 48px -12px rgba(0,0,0,0.4);
+    box-shadow: 0 20px 60px -15px rgba(0,0,0,0.5);
   }
 
-  .bento-card:focus-within {
-    @apply ring-2 ring-accent/50 ring-offset-2 ring-offset-surface;
-  }
-
-  .bento-card.hidden { @apply !hidden; }
-
-  /* Hero Card */
-  .bento-hero {
-    grid-column: span 2;
-    grid-row: span 2;
-  }
-
-  @media (max-width: 640px) {
-    .bento-hero {
-      grid-column: span 1;
-      grid-row: span 1;
-    }
-  }
-
-  .bento-hero .card-image {
-    @apply absolute inset-0;
-  }
-
-  .bento-hero .card-image img {
-    @apply w-full h-full object-cover transition-transform duration-700;
-  }
-
-  .bento-hero:hover .card-image img {
-    @apply scale-105;
-  }
-
-  .bento-hero .card-overlay {
-    @apply absolute inset-0;
-    background: linear-gradient(to top, rgba(15, 23, 42, 0.95) 0%, rgba(15, 23, 42, 0.6) 50%, rgba(15, 23, 42, 0.2) 100%);
-  }
-
-  .bento-hero .card-link {
-    @apply relative flex flex-col justify-end min-h-[420px] md:min-h-[520px] p-6 md:p-8 no-underline;
+  .featured-link {
+    @apply block no-underline relative min-h-[480px];
     @apply focus:outline-none;
   }
 
-  .bento-hero .card-content {
-    @apply relative z-10;
+  .featured-image {
+    @apply absolute inset-0;
   }
 
-  .bento-hero .card-badges {
-    @apply flex items-center gap-2 mb-3;
+  .featured-image img {
+    @apply w-full h-full object-cover transition-transform duration-700;
   }
 
-  .badge {
-    @apply px-2.5 py-1 rounded-full text-xs font-semibold uppercase tracking-wide;
+  .featured-main:hover .featured-image img {
+    @apply scale-105;
   }
 
-  .badge-new {
+  .featured-overlay {
+    @apply absolute inset-0;
+    background: linear-gradient(to top, rgba(15, 23, 42, 0.95) 0%, rgba(15, 23, 42, 0.5) 50%, rgba(15, 23, 42, 0.2) 100%);
+  }
+
+  .featured-content {
+    @apply absolute bottom-0 left-0 right-0 p-8;
+  }
+
+  .featured-badges {
+    @apply flex items-center gap-2 mb-4;
+  }
+
+  .badge-latest {
+    @apply px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wide;
     @apply bg-accent text-white;
   }
 
   .badge-oa {
+    @apply px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wide;
     @apply bg-green-500/20 text-green-400 border border-green-500/30;
   }
 
-  .badge-float {
-    @apply absolute top-4 right-4;
+  .featured-tags {
+    @apply flex flex-wrap gap-2 mb-4;
   }
 
-  .card-tags {
-    @apply flex flex-wrap gap-2 mb-3;
-  }
-
-  .tag {
-    @apply px-2.5 py-1 rounded-lg text-xs font-medium;
+  .featured-tag {
+    @apply px-3 py-1 rounded-lg text-xs font-medium;
     background: color-mix(in srgb, var(--tag-color) 15%, transparent);
     color: var(--tag-color);
-    border: 1px solid color-mix(in srgb, var(--tag-color) 30%, transparent);
+    border: 1px solid color-mix(in srgb, var(--tag-color) 25%, transparent);
   }
 
-  .bento-hero .card-title {
+  .featured-title {
     @apply text-2xl md:text-3xl font-bold text-white mb-3 leading-tight;
     @apply transition-colors;
   }
 
-  .bento-hero:hover .card-title {
+  .featured-main:hover .featured-title {
     @apply text-accent;
   }
 
-  .bento-hero .card-excerpt {
-    @apply text-white/70 text-sm md:text-base line-clamp-2 mb-4;
+  .featured-excerpt {
+    @apply text-white/60 line-clamp-2 mb-4;
   }
 
-  .card-meta {
-    @apply flex flex-wrap items-center gap-2 text-sm text-white/50;
+  .featured-meta {
+    @apply flex flex-wrap items-center gap-2 text-sm text-white/40;
   }
 
   .meta-author {
-    @apply font-medium text-white/70;
+    @apply font-medium text-white/60;
   }
 
-  .meta-dot {
-    @apply w-1 h-1 rounded-full bg-white/30;
+  .meta-sep {
+    @apply text-white/20;
   }
 
-  .card-actions {
-    @apply flex items-center gap-2 px-6 md:px-8 py-4 border-t border-white/10;
-    @apply bg-gradient-to-r from-surface-card/80 to-surface-card/60 backdrop-blur-sm;
+  .featured-actions {
+    @apply flex items-center gap-3 px-8 py-4;
+    @apply border-t border-white/10 bg-black/20 backdrop-blur-sm;
   }
 
-  .action-link {
+  .action-btn {
     @apply inline-flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-medium;
     @apply transition-all no-underline;
     @apply focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-surface-card;
+  }
+
+  .action-btn svg {
+    @apply w-4 h-4;
   }
 
   .action-pdf {
@@ -731,219 +655,361 @@ const remainingPosts = sortedPosts.slice(5);
     @apply focus:ring-blue-500/50;
   }
 
-  /* Medium Cards */
-  .bento-medium {
-    grid-column: span 1;
-    grid-row: span 1;
+  /* Secondary Featured Cards */
+  .featured-secondary {
+    @apply lg:col-span-2 flex flex-col gap-4;
   }
 
-  .bento-medium .card-link {
-    @apply flex flex-col h-full no-underline focus:outline-none;
+  .secondary-card {
+    @apply flex-1 rounded-xl overflow-hidden;
+    @apply bg-surface-card border border-line/50;
+    @apply transition-all duration-300;
   }
 
-  .bento-medium .card-image {
-    @apply relative aspect-[4/3] overflow-hidden;
+  .secondary-card:hover {
+    @apply border-accent/30;
+    transform: translateY(-2px);
+    box-shadow: 0 12px 40px -10px rgba(0,0,0,0.4);
   }
 
-  .bento-medium .card-image img {
+  .secondary-link {
+    @apply flex gap-4 p-4 h-full no-underline;
+    @apply focus:outline-none;
+  }
+
+  .secondary-image {
+    @apply relative w-28 h-28 md:w-32 md:h-32 flex-shrink-0 rounded-lg overflow-hidden;
+  }
+
+  .secondary-image img {
     @apply w-full h-full object-cover transition-transform duration-500;
   }
 
-  .bento-medium:hover .card-image img {
-    @apply scale-105;
-  }
-
-  .bento-medium .card-overlay {
-    @apply absolute inset-0;
-    background: linear-gradient(to top, rgba(15, 23, 42, 0.9) 0%, rgba(15, 23, 42, 0.3) 60%, transparent 100%);
-  }
-
-  .bento-medium .card-content {
-    @apply absolute bottom-0 left-0 right-0 p-5;
-  }
-
-  .bento-medium .card-title {
-    @apply text-lg font-bold text-white mb-2 line-clamp-2;
-    @apply transition-colors;
-  }
-
-  .bento-medium:hover .card-title {
-    @apply text-accent;
-  }
-
-  .bento-medium .card-meta {
-    @apply text-xs;
-  }
-
-  /* Compact Cards */
-  .bento-compact {
-    grid-column: span 1;
-  }
-
-  @media (min-width: 1025px) {
-    .bento-compact:nth-child(4) { grid-column: 3; }
-    .bento-compact:nth-child(5) { grid-column: 4; }
-  }
-
-  .card-link-horizontal {
-    @apply flex gap-4 p-4 h-full no-underline focus:outline-none;
-  }
-
-  .card-thumb {
-    @apply relative w-24 h-24 flex-shrink-0 rounded-xl overflow-hidden;
-  }
-
-  .card-thumb img {
-    @apply w-full h-full object-cover transition-transform duration-300;
-  }
-
-  .bento-compact:hover .card-thumb img {
+  .secondary-card:hover .secondary-image img {
     @apply scale-110;
   }
 
-  .thumb-badge {
-    @apply absolute top-1.5 right-1.5 px-1.5 py-0.5 rounded text-[10px] font-bold;
+  .oa-badge {
+    @apply absolute top-2 right-2 px-2 py-0.5 rounded text-[10px] font-bold;
     @apply bg-green-500 text-white;
   }
 
-  .card-info {
+  .secondary-content {
     @apply flex flex-col justify-center min-w-0;
   }
 
-  .info-tag {
-    @apply text-xs font-semibold mb-1.5;
+  .secondary-tag {
+    @apply text-xs font-semibold mb-2;
     color: var(--tag-color);
   }
 
-  .info-title {
-    @apply text-sm font-semibold text-ink line-clamp-2 mb-1.5 leading-snug;
+  .secondary-title {
+    @apply text-base md:text-lg font-bold text-ink line-clamp-2 mb-2;
     @apply transition-colors;
   }
 
-  .bento-compact:hover .info-title {
+  .secondary-card:hover .secondary-title {
     @apply text-accent;
   }
 
-  .info-date {
-    @apply text-xs text-muted;
+  .secondary-meta {
+    @apply flex items-center gap-2 text-xs text-muted;
   }
 
-  /* Posts Grid */
-  .posts-grid {
-    @apply grid md:grid-cols-2 lg:grid-cols-3 gap-5;
+  /* Filters Bar */
+  .filters-bar {
+    @apply py-4 bg-surface sticky top-0 z-40;
+    @apply border-b border-line/30;
+    @apply backdrop-blur-xl;
   }
 
-  .post-card {
+  .filters-inner {
+    @apply flex flex-wrap items-center gap-4;
+  }
+
+  .search-box {
+    @apply relative flex-shrink-0;
+  }
+
+  .search-icon {
+    @apply absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted pointer-events-none;
+  }
+
+  .search-input {
+    @apply w-48 lg:w-56 pl-10 pr-8 py-2.5 rounded-xl text-sm;
+    @apply bg-surface-card border border-line text-ink placeholder-muted;
+    @apply focus:outline-none focus:border-accent focus:ring-2 focus:ring-accent/20;
+    @apply transition-all;
+  }
+
+  .clear-btn {
+    @apply absolute right-2 top-1/2 -translate-y-1/2 p-1.5 rounded-lg;
+    @apply text-muted hover:text-ink hover:bg-white/5;
+    @apply transition-colors cursor-pointer;
+  }
+
+  .clear-btn.hidden { @apply invisible opacity-0; }
+
+  .clear-btn svg {
+    @apply w-4 h-4;
+  }
+
+  .filter-pills {
+    @apply flex items-center gap-2 flex-wrap flex-1;
+  }
+
+  .pill {
+    @apply px-4 py-2 rounded-xl text-sm font-medium;
+    @apply bg-transparent border border-line text-muted;
+    @apply hover:border-accent/50 hover:text-ink;
+    @apply transition-all cursor-pointer;
+    @apply focus:outline-none focus:ring-2 focus:ring-accent/30;
+  }
+
+  .pill.active {
+    @apply bg-accent border-accent text-white;
+  }
+
+  .pill:not(.active):hover {
+    border-color: var(--pill-color, #38bdf8);
+    color: var(--pill-color, #38bdf8);
+  }
+
+  .filter-controls {
+    @apply flex items-center gap-2;
+  }
+
+  .dropdown {
+    @apply relative;
+  }
+
+  .dropdown-trigger {
+    @apply flex items-center gap-2 px-4 py-2.5 rounded-xl text-sm font-medium;
+    @apply bg-surface-card border border-line text-muted;
+    @apply hover:border-accent/50 hover:text-ink;
+    @apply transition-all cursor-pointer;
+    @apply focus:outline-none focus:ring-2 focus:ring-accent/30;
+  }
+
+  .dropdown-arrow {
+    @apply w-4 h-4 transition-transform duration-200;
+  }
+
+  .dropdown-trigger[aria-expanded="true"] .dropdown-arrow {
+    @apply rotate-180;
+  }
+
+  .dropdown-menu {
+    @apply absolute top-full right-0 mt-2 py-2 min-w-[120px];
+    @apply bg-surface-card border border-line rounded-xl shadow-2xl;
+    @apply opacity-0 invisible -translate-y-2;
+    @apply transition-all duration-200 z-50;
+  }
+
+  .dropdown-menu.open {
+    @apply opacity-100 visible translate-y-0;
+  }
+
+  .dropdown-item {
+    @apply block w-full px-4 py-2 text-sm text-muted text-left;
+    @apply hover:bg-accent/10 hover:text-accent;
+    @apply transition-colors cursor-pointer;
+    @apply focus:outline-none focus:bg-accent/10 focus:text-accent;
+  }
+
+  .dropdown-item.active {
+    @apply bg-accent/10 text-accent;
+  }
+
+  .oa-toggle {
+    @apply flex items-center gap-2 px-4 py-2.5 rounded-xl text-sm font-medium;
+    @apply bg-transparent border border-line text-muted;
+    @apply hover:border-green-500/50 hover:text-green-400;
+    @apply transition-all cursor-pointer;
+    @apply focus:outline-none focus:ring-2 focus:ring-green-500/30;
+  }
+
+  .oa-toggle svg {
+    @apply w-4 h-4;
+  }
+
+  .oa-toggle.active {
+    @apply bg-green-500 border-green-500 text-white;
+  }
+
+  .oa-toggle span {
+    @apply hidden md:inline;
+  }
+
+  .sort-select {
+    @apply px-4 py-2.5 rounded-xl text-sm font-medium;
+    @apply bg-surface-card border border-line text-muted;
+    @apply focus:outline-none focus:border-accent focus:ring-2 focus:ring-accent/20;
+    @apply cursor-pointer;
+  }
+
+  .filters-meta {
+    @apply flex items-center justify-between mt-3;
+  }
+
+  .active-filters {
+    @apply flex flex-wrap items-center gap-2;
+  }
+
+  .active-filters:empty { @apply hidden; }
+
+  .filter-tag {
+    @apply inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-medium;
+    @apply bg-accent/10 text-accent;
+  }
+
+  .filter-tag button {
+    @apply p-0.5 rounded hover:bg-accent/20 cursor-pointer transition-colors;
+  }
+
+  .filter-tag svg {
+    @apply w-3 h-3;
+  }
+
+  .clear-all-btn {
+    @apply text-xs text-muted hover:text-accent cursor-pointer transition-colors ml-2;
+  }
+
+  .results-count {
+    @apply text-sm text-muted;
+  }
+
+  /* Articles Section */
+  .articles-section {
+    @apply py-12 bg-surface;
+  }
+
+  .articles-grid {
+    @apply grid sm:grid-cols-2 lg:grid-cols-3 gap-6;
+  }
+
+  .article-card {
     @apply bg-surface-card rounded-2xl border border-line/50 overflow-hidden;
     @apply transition-all duration-300;
-    animation: fadeUp 0.4s ease-out backwards;
-    animation-delay: var(--delay, 0s);
   }
 
-  @keyframes fadeUp {
-    from {
-      opacity: 0;
-      transform: translateY(20px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
-
-  .post-card:hover {
+  .article-card:hover {
     @apply border-accent/30;
     transform: translateY(-4px);
-    box-shadow: 0 16px 48px -12px rgba(0,0,0,0.4);
+    box-shadow: 0 20px 50px -15px rgba(0,0,0,0.4);
   }
 
-  .post-card:focus-within {
+  .article-card:focus-within {
     @apply ring-2 ring-accent/50 ring-offset-2 ring-offset-surface;
   }
 
-  .post-card.hidden { @apply !hidden; }
+  .article-card.hidden { @apply !hidden; }
 
-  .post-link {
+  .card-link {
     @apply block no-underline focus:outline-none;
   }
 
-  .post-image {
+  .card-image {
     @apply relative aspect-[16/10] overflow-hidden;
   }
 
-  .post-image img {
+  .card-image img {
     @apply w-full h-full object-cover transition-transform duration-500;
   }
 
-  .post-card:hover .post-image img {
+  .article-card:hover .card-image img {
     @apply scale-105;
   }
 
-  .post-oa {
+  .card-oa {
     @apply absolute top-3 right-3 p-2 rounded-full;
     @apply bg-green-500/90 text-white shadow-lg;
   }
 
-  .post-body {
+  .card-oa svg {
+    @apply w-3.5 h-3.5;
+  }
+
+  .card-body {
     @apply p-5;
   }
 
-  .post-top {
+  .card-top {
     @apply flex items-center justify-between mb-3;
   }
 
-  .post-tag {
-    @apply text-xs font-semibold;
+  .card-tag {
+    @apply text-xs font-semibold uppercase tracking-wide;
     color: var(--tag-color);
   }
 
-  .post-date {
+  .card-date {
     @apply text-xs text-muted;
   }
 
-  .post-title {
+  .card-title {
     @apply text-lg font-bold text-ink mb-2 line-clamp-2;
     @apply transition-colors;
   }
 
-  .post-card:hover .post-title {
+  .article-card:hover .card-title {
     @apply text-accent;
   }
 
-  .post-excerpt {
+  .card-excerpt {
     @apply text-sm text-muted line-clamp-2;
   }
 
-  .post-footer {
-    @apply flex items-center justify-between px-5 py-3 border-t border-line/50;
+  .card-footer {
+    @apply flex items-center justify-between px-5 py-3;
+    @apply border-t border-line/50;
   }
 
-  .post-author {
+  .card-author {
     @apply text-xs text-muted font-medium;
   }
 
-  .post-actions {
+  .card-actions {
     @apply flex items-center gap-1;
   }
 
-  .post-action {
-    @apply p-2 rounded-lg text-muted;
-    @apply hover:bg-accent/10 hover:text-accent;
-    @apply transition-colors;
-    @apply focus:outline-none focus:ring-2 focus:ring-accent/30;
+  .card-action {
+    @apply inline-flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg;
+    @apply text-xs font-medium;
+    @apply transition-colors no-underline;
+    @apply focus:outline-none focus:ring-2;
+  }
+
+  .card-action svg {
+    @apply w-3.5 h-3.5;
+  }
+
+  .card-action-pdf {
+    @apply bg-red-500/10 text-red-400;
+    @apply hover:bg-red-500 hover:text-white;
+    @apply focus:ring-red-500/30;
+  }
+
+  .card-action-doi {
+    @apply bg-blue-500/10 text-blue-400;
+    @apply hover:bg-blue-500 hover:text-white;
+    @apply focus:ring-blue-500/30;
   }
 
   /* Empty State */
   .empty-state {
-    @apply text-center py-20 px-4;
+    @apply text-center py-20;
   }
 
   .empty-state.hidden { @apply !hidden; }
 
   .empty-icon {
-    @apply text-muted/30 mb-6;
-    @apply mx-auto w-20 h-20 flex items-center justify-center;
-    @apply bg-surface-card rounded-full border border-line;
+    @apply mx-auto w-20 h-20 mb-6 flex items-center justify-center;
+    @apply bg-surface-card rounded-full border border-line text-muted/30;
+  }
+
+  .empty-icon svg {
+    @apply w-10 h-10;
   }
 
   .empty-title {
@@ -951,33 +1017,41 @@ const remainingPosts = sortedPosts.slice(5);
   }
 
   .empty-text {
-    @apply text-muted mb-8 max-w-md mx-auto;
+    @apply text-muted mb-8;
   }
 
   .empty-btn {
     @apply inline-flex items-center gap-2 px-6 py-3 rounded-xl font-medium;
     @apply bg-accent text-white hover:bg-accent/90;
     @apply transition-all cursor-pointer;
-    @apply focus:outline-none focus:ring-2 focus:ring-accent/50 focus:ring-offset-2 focus:ring-offset-surface;
+    @apply focus:outline-none focus:ring-2 focus:ring-accent/50;
+  }
+
+  .empty-btn svg {
+    @apply w-4 h-4;
   }
 
   /* Load More */
   .load-more {
-    @apply flex flex-col items-center gap-3 py-12;
+    @apply flex flex-col items-center gap-3 pt-12;
   }
 
   .load-more.hidden { @apply !hidden; }
 
   .load-btn {
-    @apply inline-flex items-center gap-2 px-8 py-3.5 rounded-xl font-semibold;
+    @apply inline-flex items-center gap-2 px-8 py-4 rounded-xl font-semibold;
     @apply bg-surface-card border-2 border-line text-ink;
     @apply hover:border-accent hover:text-accent hover:bg-accent/5;
     @apply transition-all cursor-pointer;
-    @apply focus:outline-none focus:ring-2 focus:ring-accent/50 focus:ring-offset-2 focus:ring-offset-surface;
+    @apply focus:outline-none focus:ring-2 focus:ring-accent/50;
+  }
+
+  .load-btn svg {
+    @apply w-5 h-5;
   }
 
   .load-btn.loading .load-text,
-  .load-btn.loading .load-chevron {
+  .load-btn.loading .load-arrow {
     @apply hidden;
   }
 
@@ -995,46 +1069,71 @@ const remainingPosts = sortedPosts.slice(5);
 
   /* CTA Section */
   .cta-section {
-    @apply py-16 bg-surface;
+    @apply py-20 bg-surface;
   }
 
   .cta-card {
-    @apply flex flex-col md:flex-row items-center gap-6 md:gap-8;
-    @apply p-8 md:p-10 rounded-2xl;
+    @apply flex flex-col md:flex-row items-center justify-between gap-8;
+    @apply p-8 md:p-12 rounded-3xl;
     background: linear-gradient(135deg, #1e3a5f 0%, #0f172a 100%);
-    border: 1px solid rgba(255,255,255,0.1);
-  }
-
-  .cta-icon {
-    @apply flex-shrink-0 w-16 h-16 rounded-full flex items-center justify-center;
-    @apply bg-accent/20 text-accent;
+    border: 1px solid rgba(255,255,255,0.08);
   }
 
   .cta-content {
-    @apply text-center md:text-left flex-1;
+    @apply text-center md:text-left;
   }
 
   .cta-title {
-    @apply text-2xl font-bold text-white mb-2;
+    @apply text-2xl md:text-3xl font-bold text-white mb-2;
   }
 
   .cta-text {
-    @apply text-white/60;
+    @apply text-white/50;
   }
 
-  .cta-links {
-    @apply flex items-center gap-3 flex-shrink-0;
+  .cta-actions {
+    @apply flex flex-wrap items-center gap-3;
   }
 
-  .cta-link {
+  .cta-btn {
     @apply inline-flex items-center gap-2 px-5 py-3 rounded-xl font-medium;
-    @apply bg-white/10 text-white border border-white/20;
-    @apply hover:bg-white/20 hover:border-white/30;
     @apply transition-all no-underline;
-    @apply focus:outline-none focus:ring-2 focus:ring-white/30 focus:ring-offset-2 focus:ring-offset-[#0f172a];
+    @apply focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-[#0f172a];
   }
 
-  /* Utility animation classes */
+  .cta-btn svg {
+    @apply w-5 h-5;
+  }
+
+  .cta-twitter {
+    @apply bg-white/10 text-white border border-white/20;
+    @apply hover:bg-white/20 focus:ring-white/30;
+  }
+
+  .cta-scholar {
+    @apply bg-white/10 text-white border border-white/20;
+    @apply hover:bg-white/20 focus:ring-white/30;
+  }
+
+  .cta-pubs {
+    @apply bg-accent text-white;
+    @apply hover:bg-accent/90 focus:ring-accent/50;
+  }
+
+  /* Reveal Animation */
+  [data-reveal] {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+    transition-delay: var(--delay, 0s);
+  }
+
+  [data-reveal].revealed {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* Utility */
   .animate-spin {
     animation: spin 1s linear infinite;
   }
@@ -1044,25 +1143,20 @@ const remainingPosts = sortedPosts.slice(5);
     to { transform: rotate(360deg); }
   }
 
-  .animate-fadeIn {
-    animation: fadeIn 0.2s ease-out;
-  }
-
   /* Reduced Motion */
   @media (prefers-reduced-motion: reduce) {
-    .post-card,
-    .bento-card,
-    .filter-tag,
-    .skip-to-content,
-    .page-title {
+    .hero-orb,
+    .badge-dot,
+    [data-reveal] {
       animation: none !important;
       transition: none !important;
+      opacity: 1 !important;
+      transform: none !important;
     }
 
-    .bento-hero .card-image img,
-    .bento-medium .card-image img,
-    .post-image img,
-    .card-thumb img {
+    .featured-image img,
+    .secondary-image img,
+    .card-image img {
       transition: none !important;
     }
   }
@@ -1073,8 +1167,7 @@ const remainingPosts = sortedPosts.slice(5);
     // Elements
     const searchInput = document.getElementById('search-input') as HTMLInputElement;
     const clearSearch = document.getElementById('clear-search');
-    const bentoGrid = document.getElementById('bento-grid');
-    const postsGrid = document.getElementById('posts-grid');
+    const articlesGrid = document.getElementById('articles-grid');
     const emptyState = document.getElementById('empty-state');
     const activeFiltersEl = document.getElementById('active-filters');
     const resultsText = document.getElementById('results-text');
@@ -1087,7 +1180,8 @@ const remainingPosts = sortedPosts.slice(5);
     const yearPanel = document.getElementById('year-panel');
     const sortSelect = document.getElementById('sort-select') as HTMLSelectElement;
 
-    const allCards = document.querySelectorAll('.bento-card, .post-card');
+    const allCards = document.querySelectorAll('.article-card');
+    const totalCount = allCards.length;
 
     // State
     let activeTag = 'all';
@@ -1097,13 +1191,30 @@ const remainingPosts = sortedPosts.slice(5);
     let visibleCount = 12;
     let sortOrder = 'newest';
 
-    // Close dropdowns when clicking outside
+    // Reveal animations
+    const observeReveals = () => {
+      const reveals = document.querySelectorAll('[data-reveal]:not(.revealed)');
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('revealed');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.1, rootMargin: '50px' });
+
+      reveals.forEach(el => observer.observe(el));
+    };
+
+    observeReveals();
+
+    // Close dropdowns
     const closeDropdowns = () => {
       yearPanel?.classList.remove('open');
       yearBtn?.setAttribute('aria-expanded', 'false');
     };
 
-    // Setup dropdown toggle
+    // Year dropdown toggle
     yearBtn?.addEventListener('click', (e) => {
       e.stopPropagation();
       const isOpen = yearPanel?.classList.contains('open');
@@ -1111,14 +1222,8 @@ const remainingPosts = sortedPosts.slice(5);
       yearBtn.setAttribute('aria-expanded', String(!isOpen));
     });
 
-    // Keyboard navigation for dropdown
     yearBtn?.addEventListener('keydown', (e) => {
-      if (e.key === 'Enter' || e.key === ' ') {
-        e.preventDefault();
-        yearBtn.click();
-      } else if (e.key === 'Escape') {
-        closeDropdowns();
-      }
+      if (e.key === 'Escape') closeDropdowns();
     });
 
     document.addEventListener('click', closeDropdowns);
@@ -1135,7 +1240,6 @@ const remainingPosts = sortedPosts.slice(5);
     // Filter posts
     const filterPosts = () => {
       let matchingCards: Element[] = [];
-      let total = 0;
 
       allCards.forEach((card) => {
         const el = card as HTMLElement;
@@ -1151,48 +1255,34 @@ const remainingPosts = sortedPosts.slice(5);
           excerpt.includes(searchQuery.toLowerCase());
         const matchesOA = !openAccessOnly || isOA;
 
-        const shouldShow = matchesTag && matchesYear && matchesSearch && matchesOA;
-
-        if (shouldShow) {
+        if (matchesTag && matchesYear && matchesSearch && matchesOA) {
           matchingCards.push(card);
-          total++;
         }
       });
 
-      // Sort matching cards
+      // Sort
       matchingCards = sortPosts(matchingCards);
 
-      // Hide all cards first
+      // Hide all first
       allCards.forEach(card => card.classList.add('hidden'));
 
-      // Show bento cards that match
-      let bentoShown = 0;
-      matchingCards.forEach(card => {
-        if (card.classList.contains('bento-card')) {
+      // Show paginated results
+      let shown = 0;
+      matchingCards.forEach((card, i) => {
+        if (i < visibleCount) {
           card.classList.remove('hidden');
-          bentoShown++;
+          shown++;
         }
       });
 
-      // Show grid cards with pagination
-      let gridShown = 0;
-      matchingCards.forEach(card => {
-        if (card.classList.contains('post-card')) {
-          if (gridShown < visibleCount) {
-            card.classList.remove('hidden');
-            gridShown++;
-          }
-        }
-      });
-
-      const shown = bentoShown + gridShown;
+      const total = matchingCards.length;
       const remaining = total - shown;
 
       // Update UI
       if (resultsText) {
         if (total === 0) {
           resultsText.textContent = 'No results';
-        } else if (total === allCards.length && shown === total) {
+        } else if (total === totalCount && shown === total) {
           resultsText.textContent = `${total} articles`;
         } else {
           resultsText.textContent = `${shown} of ${total} articles`;
@@ -1200,18 +1290,18 @@ const remainingPosts = sortedPosts.slice(5);
       }
 
       if (loadCount) {
-        loadCount.textContent = remaining > 0 ? `${remaining} more articles available` : '';
+        loadCount.textContent = remaining > 0 ? `${remaining} more` : '';
       }
 
       emptyState?.classList.toggle('hidden', total > 0);
-      bentoGrid?.classList.toggle('hidden', total === 0);
-      postsGrid?.classList.toggle('hidden', total === 0 || bentoShown === total);
+      articlesGrid?.classList.toggle('hidden', total === 0);
       loadMore?.classList.toggle('hidden', remaining <= 0 || total === 0);
 
       updateActiveFilters();
+      observeReveals();
     };
 
-    // Update active filters display
+    // Update active filters
     const updateActiveFilters = () => {
       if (!activeFiltersEl) return;
 
@@ -1239,14 +1329,13 @@ const remainingPosts = sortedPosts.slice(5);
         <span class="filter-tag">
           ${f.label}
           <button data-type="${f.type}" data-value="${f.value}" aria-label="Remove ${f.label} filter">
-            <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
             </svg>
           </button>
         </span>
       `).join('') + `<button class="clear-all-btn">Clear all</button>`;
 
-      // Event listeners for removing individual filters
       activeFiltersEl.querySelectorAll('[data-type]').forEach(btn => {
         btn.addEventListener('click', () => {
           const type = (btn as HTMLElement).dataset.type;
@@ -1262,7 +1351,7 @@ const remainingPosts = sortedPosts.slice(5);
           } else if (type === 'year') {
             activeYear = '';
             updateYearButton();
-            document.querySelectorAll('.dropdown-option[data-tag]').forEach(opt => {
+            document.querySelectorAll('.dropdown-item[data-tag]').forEach(opt => {
               opt.classList.remove('active');
               opt.setAttribute('aria-selected', 'false');
             });
@@ -1278,15 +1367,15 @@ const remainingPosts = sortedPosts.slice(5);
       activeFiltersEl.querySelector('.clear-all-btn')?.addEventListener('click', clearAll);
     };
 
-    // Update year button text
+    // Update year button
     const updateYearButton = () => {
-      const label = yearBtn?.querySelector('.dropdown-label');
+      const label = yearBtn?.querySelector('.dropdown-text');
       if (label) {
         label.textContent = activeYear || 'Year';
       }
     };
 
-    // Update pill states
+    // Update pills
     const updatePillStates = () => {
       document.querySelectorAll('.pill[data-tag]').forEach(pill => {
         const isActive = (pill as HTMLElement).dataset.tag === activeTag;
@@ -1295,7 +1384,7 @@ const remainingPosts = sortedPosts.slice(5);
       });
     };
 
-    // Clear all filters
+    // Clear all
     const clearAll = () => {
       activeTag = 'all';
       activeYear = '';
@@ -1311,7 +1400,7 @@ const remainingPosts = sortedPosts.slice(5);
       updatePillStates();
       updateYearButton();
 
-      document.querySelectorAll('.dropdown-option[data-tag]').forEach(opt => {
+      document.querySelectorAll('.dropdown-item[data-tag]').forEach(opt => {
         opt.classList.remove('active');
         opt.setAttribute('aria-selected', 'false');
       });
@@ -1319,33 +1408,25 @@ const remainingPosts = sortedPosts.slice(5);
       filterPosts();
     };
 
-    // Event: Topic Pills
+    // Topic pills
     document.querySelectorAll('.pill[data-tag]').forEach(pill => {
       pill.addEventListener('click', () => {
         activeTag = (pill as HTMLElement).dataset.tag || 'all';
-        visibleCount = 12; // Reset pagination
+        visibleCount = 12;
         updatePillStates();
         closeDropdowns();
         filterPosts();
       });
     });
 
-    // Event: Year dropdown options
-    document.querySelectorAll('.dropdown-option[data-tag]').forEach(opt => {
+    // Year options
+    document.querySelectorAll('.dropdown-item[data-tag]').forEach(opt => {
       opt.addEventListener('click', () => {
         const year = (opt as HTMLElement).dataset.tag || '';
+        activeYear = activeYear === year ? '' : year;
+        visibleCount = 12;
 
-        // Toggle year selection
-        if (activeYear === year) {
-          activeYear = '';
-        } else {
-          activeYear = year;
-        }
-
-        visibleCount = 12; // Reset pagination
-
-        // Update option states
-        document.querySelectorAll('.dropdown-option[data-tag]').forEach(o => {
+        document.querySelectorAll('.dropdown-item[data-tag]').forEach(o => {
           const isSelected = (o as HTMLElement).dataset.tag === activeYear;
           o.classList.toggle('active', isSelected);
           o.setAttribute('aria-selected', String(isSelected));
@@ -1357,13 +1438,13 @@ const remainingPosts = sortedPosts.slice(5);
       });
     });
 
-    // Event: Search
+    // Search
     let searchDebounce: ReturnType<typeof setTimeout>;
     searchInput?.addEventListener('input', () => {
       clearTimeout(searchDebounce);
       searchDebounce = setTimeout(() => {
         searchQuery = searchInput.value.trim();
-        visibleCount = 12; // Reset pagination
+        visibleCount = 12;
         clearSearch?.classList.toggle('hidden', !searchQuery);
         filterPosts();
       }, 200);
@@ -1377,26 +1458,24 @@ const remainingPosts = sortedPosts.slice(5);
       filterPosts();
     });
 
-    // Event: OA filter
+    // OA filter
     oaFilter?.addEventListener('click', () => {
       openAccessOnly = !openAccessOnly;
-      visibleCount = 12; // Reset pagination
+      visibleCount = 12;
       oaFilter.classList.toggle('active', openAccessOnly);
       oaFilter.setAttribute('aria-pressed', String(openAccessOnly));
       filterPosts();
     });
 
-    // Event: Sort
+    // Sort
     sortSelect?.addEventListener('change', () => {
       sortOrder = sortSelect.value;
       filterPosts();
     });
 
-    // Event: Load more
+    // Load more
     loadBtn?.addEventListener('click', () => {
       loadBtn.classList.add('loading');
-
-      // Simulate loading delay for better UX feedback
       setTimeout(() => {
         visibleCount += 12;
         filterPosts();
@@ -1404,14 +1483,13 @@ const remainingPosts = sortedPosts.slice(5);
       }, 300);
     });
 
-    // Event: Clear all (empty state button)
+    // Clear all button
     clearAllBtn?.addEventListener('click', clearAll);
 
-    // Initialize
+    // Init
     filterPosts();
   };
 
-  // Initialize on page load and after Astro view transitions
   initNewsPage();
   document.addEventListener('astro:after-swap', initNewsPage);
 </script>
