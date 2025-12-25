@@ -4,7 +4,7 @@ import WaveDivider from '@components/shared/WaveDivider.astro';
 import StudySitesMap from '@components/research/StudySitesMap';
 import { posts } from '@data/posts';
 
-// Get 3 most recent news posts for carousel
+// Get 3 most recent news posts
 const recentPosts = [...posts]
   .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
   .slice(0, 3);
@@ -22,144 +22,164 @@ const formatDate = (dateStr: string) => {
 <Layout
   title="Ocean Recoveries Lab | Engineering Resilience from Organisms to Ecosystems"
   description="Research lab at UC Santa Barbara studying coral reef and kelp forest resilience. We trace the mechanisms of resistance, recovery, and reorganization to make restoration predictable."
-  keywords={['Ocean Recoveries Lab', 'coral reef research', 'kelp forest ecology', 'marine conservation', 'UC Santa Barbara', 'Adrian Stier', 'ecosystem resilience', 'marine biology research', 'resistance', 'recovery', 'reorganization']}
+  keywords={['Ocean Recoveries Lab', 'coral reef research', 'kelp forest ecology', 'marine conservation', 'UC Santa Barbara', 'Adrian Stier', 'ecosystem resilience']}
 >
-  <!-- Hero Section -->
-  <section class="hero-section relative min-h-[100svh] flex items-center overflow-visible">
-    <!-- Background Image with Parallax -->
-    <div
-      class="absolute inset-0 bg-cover bg-center bg-no-repeat parallax-bg"
-      style="background-image: url('/images/coral-reef-panorama-anthias-fish.jpeg');"
-    >
-      <!-- Strong left-to-right gradient for text legibility -->
+  <!-- Hero Section - Cinematic Full Viewport -->
+  <section class="hero">
+    <div class="hero-media">
+      <div class="hero-image" style="background-image: url('/images/coral-reef-panorama-anthias-fish.jpeg');"></div>
       <div class="hero-overlay"></div>
+      <div class="hero-vignette"></div>
     </div>
 
-    <!-- Hero Content - Left aligned -->
-    <div class="relative z-10 container px-4 pt-28 pb-32 md:pt-32 md:pb-40">
-      <div class="hero-content max-w-2xl">
-        <!-- Preheader -->
-        <p class="hero-preheader">
-          UC Santa Barbara
-        </p>
+    <!-- Floating particles for depth -->
+    <div class="hero-particles" aria-hidden="true">
+      <div class="particle particle-1"></div>
+      <div class="particle particle-2"></div>
+      <div class="particle particle-3"></div>
+      <div class="particle particle-4"></div>
+      <div class="particle particle-5"></div>
+    </div>
 
-        <!-- Single, confident H1 -->
-        <h1 class="hero-title">
-          Ocean Recoveries Lab
-        </h1>
+    <div class="hero-content">
+      <div class="container">
+        <div class="hero-text">
+          <!-- Institution badge -->
+          <div class="hero-badge scroll-reveal">
+            <span class="badge-dot"></span>
+            <span>UC Santa Barbara</span>
+          </div>
 
-        <!-- Sharp subhead -->
-        <p class="hero-subhead">
-          Understanding collapse. Designing recovery.
-        </p>
+          <!-- Main title - Split lines for cinematic effect -->
+          <h1 class="hero-title scroll-reveal stagger-1">
+            <span class="title-line">Ocean</span>
+            <span class="title-line title-accent">Recoveries</span>
+            <span class="title-line">Lab</span>
+          </h1>
 
-        <!-- One proof-oriented line -->
-        <p class="hero-description">
-          We study coral reefs and kelp forests to identify the mechanisms that control resistance and recovery.
-        </p>
+          <!-- Tagline -->
+          <p class="hero-tagline scroll-reveal stagger-2">
+            Understanding collapse.<br class="hidden sm:inline" />
+            <span class="tagline-accent">Designing recovery.</span>
+          </p>
 
-        <!-- Credibility strip -->
-        <div class="hero-credibility">
-          <span>Coral regeneration</span>
-          <span class="hero-credibility-dot"></span>
-          <span>Kelp tipping points</span>
-          <span class="hero-credibility-dot"></span>
-          <span>Restoration strategy</span>
-        </div>
+          <!-- Brief description -->
+          <p class="hero-desc scroll-reveal stagger-3">
+            We study coral reefs and kelp forests to identify the mechanisms that control resistance, recovery, and reorganization.
+          </p>
 
-        <!-- CTAs - One primary, one text secondary -->
-        <div class="hero-cta-row">
-          <a href="/join" class="hero-btn-primary">
-            Join the Lab
-            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
-            </svg>
-          </a>
-          <a href="/for-funders" class="hero-btn-secondary">
-            For Funders
-            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
-            </svg>
-          </a>
+          <!-- CTAs -->
+          <div class="hero-actions scroll-reveal stagger-4">
+            <a href="/research" class="btn-hero-primary">
+              <span>Explore Research</span>
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+              </svg>
+            </a>
+            <a href="/join" class="btn-hero-secondary">
+              <span>Join the Lab</span>
+            </a>
+          </div>
+
+          <!-- Quick stats -->
+          <div class="hero-stats scroll-reveal stagger-5">
+            <div class="hero-stat">
+              <span class="stat-value">75+</span>
+              <span class="stat-label">Publications</span>
+            </div>
+            <div class="stat-divider"></div>
+            <div class="hero-stat">
+              <span class="stat-value">2</span>
+              <span class="stat-label">LTER Sites</span>
+            </div>
+            <div class="stat-divider"></div>
+            <div class="hero-stat">
+              <span class="stat-value">15</span>
+              <span class="stat-label">Years Research</span>
+            </div>
+          </div>
         </div>
       </div>
-
-      <!-- Scroll Prompt - More visible -->
-      <a href="#study-systems" class="hero-scroll-cue">
-        <span>Scroll</span>
-        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7" />
-        </svg>
-      </a>
     </div>
 
-    <!-- Wave at bottom of hero -->
+    <!-- Scroll indicator -->
+    <a href="#study-systems" class="scroll-indicator">
+      <span class="scroll-text">Dive In</span>
+      <div class="scroll-line">
+        <div class="scroll-dot"></div>
+      </div>
+    </a>
+
     <WaveDivider id="hero-wave" fillColor="surface" />
   </section>
 
-  <!-- Two Systems, Two Failure Modes -->
-  <section id="study-systems" class="section-lg bg-surface relative scroll-mt-20">
+  <!-- Study Systems Section -->
+  <section id="study-systems" class="study-systems">
     <div class="container">
-      <div class="text-center mb-12 scroll-reveal">
-        <h2 class="mb-6">Two Systems, Two Failure Modes</h2>
-        <p class="text-lg md:text-xl text-muted leading-relaxed max-w-3xl mx-auto">
-          We work in kelp forests and coral reefs because they fail in fundamentally different ways. Comparing how they break reveals which mechanisms generalize—and which interventions transfer.
+      <!-- Section header -->
+      <div class="section-header scroll-reveal">
+        <span class="section-eyebrow">Our Research Focus</span>
+        <h2 class="section-title">Two Systems,<br /><span class="title-gradient">Two Failure Modes</span></h2>
+        <p class="section-desc">
+          Kelp forests and coral reefs fail in fundamentally different ways. Comparing how they break reveals which mechanisms generalize—and which interventions transfer.
         </p>
       </div>
 
       <!-- Interactive Map -->
-      <div class="max-w-5xl mx-auto scroll-reveal mb-12">
+      <div class="map-container scroll-reveal">
         <StudySitesMap client:load />
       </div>
 
       <!-- Study System Cards -->
-      <div class="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
-        <!-- Coral Reefs Card -->
-        <a href="/research/coral-reefs" class="study-card scroll-reveal stagger-1 group">
-          <div class="study-card-image">
-            <img src="/images/cauliflower-coral-damselfish-reef.jpeg" alt="Coral reef in Mo'orea" loading="lazy" />
-            <div class="study-card-overlay"></div>
+      <div class="systems-grid">
+        <!-- Coral Reefs -->
+        <a href="/research/coral-reefs" class="system-card system-card-coral scroll-reveal stagger-1">
+          <div class="card-media">
+            <img src="/images/cauliflower-coral-damselfish-reef.jpeg" alt="Coral reef ecosystem in Mo'orea" loading="lazy" />
+            <div class="card-gradient"></div>
           </div>
-          <div class="study-card-content">
-            <div class="study-location">
+          <div class="card-content">
+            <div class="card-location">
               <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
               </svg>
               <span>Mo'orea, French Polynesia</span>
             </div>
-            <h3 class="study-title">Coral Reefs</h3>
-            <p class="study-description">Coral reefs reveal slow, chronic failure. When corals are damaged, their fate depends on wound healing and regeneration at the colony level. We study how these individual capacities aggregate into population recovery—and why reefs stall, rebound, or reorganize.</p>
-            <div class="study-link">
+            <h3 class="card-title">Coral Reefs</h3>
+            <p class="card-desc">Slow, chronic failure. Coral fate depends on wound healing and regeneration at the colony level. We study how individual capacities aggregate into population recovery.</p>
+            <div class="card-cta">
               <span>Explore research</span>
               <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
               </svg>
             </div>
           </div>
+          <div class="card-accent card-accent-coral"></div>
         </a>
 
-        <!-- Kelp Forests Card -->
-        <a href="/research/kelp-forests" class="study-card scroll-reveal stagger-2 group">
-          <div class="study-card-image">
-            <img src="/images/giant-kelp-sunlight-underwater.jpeg" alt="Kelp forest in Santa Barbara" loading="lazy" />
-            <div class="study-card-overlay"></div>
+        <!-- Kelp Forests -->
+        <a href="/research/kelp-forests" class="system-card system-card-kelp scroll-reveal stagger-2">
+          <div class="card-media">
+            <img src="/images/giant-kelp-sunlight-underwater.jpeg" alt="Kelp forest ecosystem in Santa Barbara" loading="lazy" />
+            <div class="card-gradient"></div>
           </div>
-          <div class="study-card-content">
-            <div class="study-location">
+          <div class="card-content">
+            <div class="card-location">
               <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
               </svg>
               <span>Santa Barbara, California</span>
             </div>
-            <h3 class="study-title">Kelp Forests</h3>
-            <p class="study-description">Kelp forests expose fast, nonlinear transitions. Consumer–predator feedbacks can flip forests to barrens in months, and hysteresis can lock them there. We study what governs the tipping point—and what breaks the lock.</p>
-            <div class="study-link">
+            <h3 class="card-title">Kelp Forests</h3>
+            <p class="card-desc">Fast, nonlinear transitions. Consumer–predator feedbacks can flip forests to barrens in months. We study what governs the tipping point—and what breaks the lock.</p>
+            <div class="card-cta">
               <span>Explore research</span>
               <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
               </svg>
             </div>
           </div>
+          <div class="card-accent card-accent-kelp"></div>
         </a>
       </div>
     </div>
@@ -167,170 +187,151 @@ const formatDate = (dateStr: string) => {
     <WaveDivider id="study-wave" fillColor="navy-deep" />
   </section>
 
-  <!-- Resilience Across Scales -->
-  <section class="section-lg bg-navy-deep relative overflow-visible">
-    <!-- Animated Blob Shapes -->
-    <div class="blob-container" aria-hidden="true">
-      <div class="blob blob-1"></div>
-      <div class="blob blob-2"></div>
+  <!-- Resilience Framework Section -->
+  <section class="resilience-section">
+    <div class="resilience-bg">
+      <div class="resilience-orb resilience-orb-1"></div>
+      <div class="resilience-orb resilience-orb-2"></div>
+      <div class="resilience-mesh"></div>
     </div>
+
     <div class="container relative z-10">
-      <!-- Section intro -->
-      <div class="text-center mb-12 scroll-reveal">
-        <h2 class="text-white mb-6">Resilience Across Scales</h2>
-        <p class="lead max-w-3xl mx-auto text-white/60">
-          Resilience isn't something ecosystems "have." It emerges from processes at multiple levels—and these levels connect. Individual capacity shapes population recovery. Population dynamics alter species interactions. Ecosystem context constrains what individuals can tolerate.
+      <div class="section-header scroll-reveal">
+        <span class="section-eyebrow section-eyebrow-light">Our Framework</span>
+        <h2 class="section-title section-title-light">Resilience<br /><span class="title-gradient">Across Scales</span></h2>
+        <p class="section-desc text-white/60">
+          Resilience isn't something ecosystems "have." It emerges from processes at multiple levels—individual, population, and ecosystem—and these levels connect.
         </p>
       </div>
 
       <!-- Three Pillars -->
       <div class="pillars-grid">
         <!-- Resistance -->
-        <div class="pillar-card relative scroll-reveal stagger-1">
-          <div class="pillar-icon pillar-icon-1">
-            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
-            </svg>
+        <div class="pillar-card scroll-reveal stagger-1">
+          <div class="pillar-header">
+            <div class="pillar-icon pillar-icon-resistance">
+              <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+              </svg>
+            </div>
+            <h3 class="pillar-title">Resistance</h3>
           </div>
-          <h3 class="pillar-title">Resistance</h3>
-          <p class="pillar-desc">What prevents collapse when disturbance hits.</p>
-          <ul class="pillar-topics">
-            <li>
-              <span class="text-accent font-semibold">Individual:</span>
-              <span>stress tolerance, damage thresholds, physiological buffering</span>
-            </li>
-            <li>
-              <span class="text-accent font-semibold">Population:</span>
-              <span>demographic buffering, spatial refugia</span>
-            </li>
-            <li>
-              <span class="text-accent font-semibold">Ecosystem:</span>
-              <span>stabilizing feedbacks, trophic structure, interaction strengths</span>
-            </li>
+          <p class="pillar-tagline">What prevents collapse when disturbance hits</p>
+          <ul class="pillar-list">
+            <li><span class="pillar-level pillar-level-1">Individual:</span> stress tolerance, damage thresholds</li>
+            <li><span class="pillar-level pillar-level-1">Population:</span> demographic buffering, spatial refugia</li>
+            <li><span class="pillar-level pillar-level-1">Ecosystem:</span> stabilizing feedbacks, trophic structure</li>
           </ul>
         </div>
 
         <!-- Recovery -->
-        <div class="pillar-card relative scroll-reveal stagger-2">
-          <div class="pillar-icon pillar-icon-2">
-            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
-            </svg>
+        <div class="pillar-card pillar-card-featured scroll-reveal stagger-2">
+          <div class="pillar-header">
+            <div class="pillar-icon pillar-icon-recovery">
+              <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
+              </svg>
+            </div>
+            <h3 class="pillar-title">Recovery</h3>
           </div>
-          <h3 class="pillar-title">Recovery</h3>
-          <p class="pillar-desc">What controls the speed and reliability of return.</p>
-          <ul class="pillar-topics">
-            <li>
-              <span class="text-accent-2 font-semibold">Individual:</span>
-              <span>wound healing, regeneration, regrowth capacity</span>
-            </li>
-            <li>
-              <span class="text-accent-2 font-semibold">Population:</span>
-              <span>recruitment, connectivity, density-dependent compensation</span>
-            </li>
-            <li>
-              <span class="text-accent-2 font-semibold">Ecosystem:</span>
-              <span>facilitation cascades, succession, disturbance legacies</span>
-            </li>
+          <p class="pillar-tagline">What controls the speed and reliability of return</p>
+          <ul class="pillar-list">
+            <li><span class="pillar-level pillar-level-2">Individual:</span> wound healing, regeneration capacity</li>
+            <li><span class="pillar-level pillar-level-2">Population:</span> recruitment, connectivity</li>
+            <li><span class="pillar-level pillar-level-2">Ecosystem:</span> facilitation cascades, succession</li>
           </ul>
         </div>
 
         <!-- Reorganization -->
-        <div class="pillar-card relative scroll-reveal stagger-3">
-          <div class="pillar-icon pillar-icon-3">
-            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4" />
-            </svg>
+        <div class="pillar-card scroll-reveal stagger-3">
+          <div class="pillar-header">
+            <div class="pillar-icon pillar-icon-reorg">
+              <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4" />
+              </svg>
+            </div>
+            <h3 class="pillar-title">Reorganization</h3>
           </div>
-          <h3 class="pillar-title">Reorganization</h3>
-          <p class="pillar-desc">What determines the next state when return isn't possible.</p>
-          <ul class="pillar-topics">
-            <li>
-              <span class="text-accent-warm font-semibold">Individual:</span>
-              <span>how tolerances filter survivors</span>
-            </li>
-            <li>
-              <span class="text-accent-warm font-semibold">Population:</span>
-              <span>how populations reassemble under new conditions</span>
-            </li>
-            <li>
-              <span class="text-accent-warm font-semibold">Ecosystem:</span>
-              <span>how interactions rewire into novel communities</span>
-            </li>
+          <p class="pillar-tagline">What determines the next state when return isn't possible</p>
+          <ul class="pillar-list">
+            <li><span class="pillar-level pillar-level-3">Individual:</span> how tolerances filter survivors</li>
+            <li><span class="pillar-level pillar-level-3">Population:</span> how populations reassemble</li>
+            <li><span class="pillar-level pillar-level-3">Ecosystem:</span> how interactions rewire</li>
           </ul>
         </div>
       </div>
 
-      <!-- Section CTA -->
-      <div class="text-center mt-12 scroll-reveal">
-        <a href="/research" class="btn btn-secondary group">
+      <div class="section-cta scroll-reveal">
+        <a href="/research" class="btn-outline-light">
           <span>Learn how we do science</span>
-          <svg class="w-4 h-4 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
           </svg>
         </a>
       </div>
     </div>
 
-    <!-- Wave -->
     <WaveDivider id="pillars-wave" fillColor="surface" />
   </section>
 
-  <!-- What We Study - Focal Organisms -->
-  <section class="section-lg bg-surface relative overflow-visible">
+  <!-- Focal Organisms Section -->
+  <section class="organisms-section">
     <div class="container">
-      <div class="text-center mb-12 scroll-reveal">
-        <span class="eyebrow">What We Study</span>
-        <h2 class="mb-6">Focal organisms and scales</h2>
-        <p class="lead max-w-3xl mx-auto text-muted">
-          Our research spans multiple organisms and scales—from the cellular mechanisms of coral healing to the ecosystem consequences of predator loss.
+      <div class="section-header scroll-reveal">
+        <span class="section-eyebrow">What We Study</span>
+        <h2 class="section-title">Focal Organisms<br /><span class="title-gradient">& Scales</span></h2>
+        <p class="section-desc">
+          From cellular mechanisms of coral healing to ecosystem consequences of predator loss.
         </p>
       </div>
 
-      <!-- Four-column grid -->
-      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto">
+      <div class="organisms-grid">
         <!-- Corals -->
         <div class="organism-card scroll-reveal stagger-1">
-          <div class="organism-icon">
-            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4.26 10.147a60.436 60.436 0 00-.491 6.347A48.627 48.627 0 0112 20.904a48.627 48.627 0 018.232-4.41 60.46 60.46 0 00-.491-6.347m-15.482 0a50.57 50.57 0 00-2.658-.813A59.905 59.905 0 0112 3.493a59.902 59.902 0 0110.399 5.84c-.896.248-1.783.52-2.658.814m-15.482 0A50.697 50.697 0 0112 13.489a50.702 50.702 0 017.74-3.342" />
-            </svg>
+          <div class="organism-visual">
+            <img src="/images/chromis-acropora.jpeg" alt="Coral colony" loading="lazy" />
+            <div class="organism-overlay"></div>
           </div>
-          <h3 class="organism-title">Corals</h3>
-          <p class="organism-desc">How individual colonies heal damage, regenerate tissue, and allocate energy under thermal stress. These capacities set the ceiling for population and reef recovery.</p>
+          <div class="organism-content">
+            <h3 class="organism-name">Corals</h3>
+            <p class="organism-desc">How colonies heal damage, regenerate tissue, and allocate energy under thermal stress.</p>
+          </div>
         </div>
 
         <!-- Lobsters & Urchins -->
         <div class="organism-card scroll-reveal stagger-2">
-          <div class="organism-icon">
-            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 3v2.25m6.364.386l-1.591 1.591M21 12h-2.25m-.386 6.364l-1.591-1.591M12 18.75V21m-4.773-4.227l-1.591 1.591M5.25 12H3m4.227-4.773L5.636 5.636M15.75 12a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0z" />
-            </svg>
+          <div class="organism-visual">
+            <img src="/images/lobster.jpeg" alt="Spiny lobster" loading="lazy" />
+            <div class="organism-overlay"></div>
           </div>
-          <h3 class="organism-title">Lobsters & Urchins</h3>
-          <p class="organism-desc">How consumers structure kelp forest dynamics through predation, grazing, and behavior. Individual foraging decisions scale up to ecosystem state shifts.</p>
+          <div class="organism-content">
+            <h3 class="organism-name">Lobsters & Urchins</h3>
+            <p class="organism-desc">How consumers structure kelp dynamics through predation, grazing, and behavior.</p>
+          </div>
         </div>
 
         <!-- Kelp -->
         <div class="organism-card scroll-reveal stagger-3">
-          <div class="organism-icon">
-            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 21a9.004 9.004 0 008.716-6.747M12 21a9.004 9.004 0 01-8.716-6.747M12 21c2.485 0 4.5-4.03 4.5-9S14.485 3 12 3m0 18c-2.485 0-4.5-4.03-4.5-9S9.515 3 12 3m0 0a8.997 8.997 0 017.843 4.582M12 3a8.997 8.997 0 00-7.843 4.582m15.686 0A11.953 11.953 0 0112 10.5c-2.998 0-5.74-1.1-7.843-2.918m15.686 0A8.959 8.959 0 0121 12c0 .778-.099 1.533-.284 2.253m0 0A17.919 17.919 0 0112 16.5c-3.162 0-6.133-.815-8.716-2.247m0 0A9.015 9.015 0 013 12c0-1.605.42-3.113 1.157-4.418" />
-            </svg>
+          <div class="organism-visual">
+            <img src="/images/kelp-hero.jpeg" alt="Giant kelp" loading="lazy" />
+            <div class="organism-overlay"></div>
           </div>
-          <h3 class="organism-title">Kelp</h3>
-          <p class="organism-desc">How individual resistance to grazing and storm damage interacts with population recruitment to determine forest persistence.</p>
+          <div class="organism-content">
+            <h3 class="organism-name">Kelp</h3>
+            <p class="organism-desc">How resistance to grazing and storms interacts with recruitment for forest persistence.</p>
+          </div>
         </div>
 
         <!-- Reef Fish -->
         <div class="organism-card scroll-reveal stagger-4">
-          <div class="organism-icon">
-            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M2.25 15a4.5 4.5 0 004.5 4.5H18a3.75 3.75 0 001.332-7.257 3 3 0 00-3.758-3.848 5.25 5.25 0 00-10.233 2.33A4.502 4.502 0 002.25 15z" />
-            </svg>
+          <div class="organism-visual">
+            <img src="/images/damselfish-pair-acropora-coral.jpeg" alt="Reef fish" loading="lazy" />
+            <div class="organism-overlay"></div>
           </div>
-          <h3 class="organism-title">Reef Fish</h3>
-          <p class="organism-desc">How fish–coral mutualisms enhance coral survival, and how fishing alters the interaction networks that stabilize reefs.</p>
+          <div class="organism-content">
+            <h3 class="organism-name">Reef Fish</h3>
+            <p class="organism-desc">How fish–coral mutualisms enhance survival and how fishing alters stabilizing networks.</p>
+          </div>
         </div>
       </div>
     </div>
@@ -339,45 +340,42 @@ const formatDate = (dateStr: string) => {
   </section>
 
   <!-- Recent News Section -->
-  <section class="section-lg bg-navy-deep relative overflow-visible">
-    <div class="container">
-      <div class="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4 mb-10 scroll-reveal">
-        <div>
-          <span class="eyebrow text-accent-2">Latest Updates</span>
-          <h2 class="text-white mb-0">Recent Research</h2>
+  <section class="news-section">
+    <div class="news-bg">
+      <div class="news-gradient"></div>
+    </div>
+
+    <div class="container relative z-10">
+      <div class="news-header scroll-reveal">
+        <div class="news-header-text">
+          <span class="section-eyebrow section-eyebrow-light">Latest Updates</span>
+          <h2 class="section-title section-title-light">Recent Research</h2>
         </div>
-        <a href="/news" class="btn btn-secondary hidden sm:inline-flex group">
+        <a href="/news" class="btn-outline-light hidden sm:inline-flex">
           <span>View all news</span>
-          <svg class="w-4 h-4 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
           </svg>
         </a>
       </div>
 
-      <!-- News Grid -->
       <div class="news-grid">
         {recentPosts.map((post, i) => (
           <article class={`news-card scroll-reveal stagger-${i + 1}`}>
-            <a href={`/news/${post.slug}`} class="news-card-link group">
-              <div class="news-card-image">
-                <img
-                  src={post.featuredImage}
-                  alt={post.title}
-                  loading={i === 0 ? 'eager' : 'lazy'}
-                />
-                <div class="news-card-date">
-                  {formatDate(post.date)}
-                </div>
+            <a href={`/news/${post.slug}`} class="news-link">
+              <div class="news-image">
+                <img src={post.featuredImage} alt={post.title} loading={i === 0 ? 'eager' : 'lazy'} />
+                <div class="news-date-badge">{formatDate(post.date)}</div>
               </div>
-              <div class="news-card-body">
-                <div class="news-card-tags">
+              <div class="news-body">
+                <div class="news-tags">
                   {post.tags.slice(0, 2).map(tag => (
                     <span class="news-tag">{tag}</span>
                   ))}
                 </div>
-                <h3 class="news-card-title">{post.title}</h3>
-                <p class="news-card-excerpt">{post.excerpt}</p>
-                <div class="news-card-cta">
+                <h3 class="news-title">{post.title}</h3>
+                <p class="news-excerpt">{post.excerpt}</p>
+                <div class="news-read-more">
                   <span>Read article</span>
                   <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
@@ -389,114 +387,110 @@ const formatDate = (dateStr: string) => {
         ))}
       </div>
 
-      <div class="text-center mt-10 sm:hidden scroll-reveal">
-        <a href="/news" class="btn btn-secondary">
-          View All News
-        </a>
+      <div class="news-mobile-cta scroll-reveal sm:hidden">
+        <a href="/news" class="btn-outline-light">View All News</a>
       </div>
     </div>
 
-    <!-- Wave -->
     <WaveDivider id="news-wave" fillColor="surface" />
   </section>
 
-  <!-- About / Impact Section -->
-  <section class="section-lg bg-surface relative overflow-visible">
-    <div class="container relative z-10">
-      <div class="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
-        <div class="scroll-reveal">
-          <span class="eyebrow">Our Lab</span>
-          <h2 class="mb-6">Based at UC Santa Barbara</h2>
-          <p class="text-muted text-lg leading-relaxed mb-5">
-            The Ocean Recoveries Lab is part of the Department of Ecology, Evolution & Marine Biology.
-            We benefit from UCSB's world-class marine facilities, the Santa Barbara Coastal Long-Term Ecological Research site, and partnerships with the Moorea Coral Reef LTER.
-          </p>
-          <p class="text-muted leading-relaxed mb-6">
-            Our team includes postdocs, graduate students, undergraduates, and collaborators translating resilience science into management and restoration strategies.
+  <!-- About Section -->
+  <section class="about-section">
+    <div class="container">
+      <div class="about-grid">
+        <div class="about-content scroll-reveal">
+          <span class="section-eyebrow">Our Lab</span>
+          <h2 class="section-title">Based at<br /><span class="title-gradient">UC Santa Barbara</span></h2>
+          <p class="about-text">
+            The Ocean Recoveries Lab is part of the Department of Ecology, Evolution & Marine Biology. We benefit from world-class marine facilities, the Santa Barbara Coastal LTER, and partnerships with the Moorea Coral Reef LTER.
           </p>
 
-          <!-- Lab Director -->
-          <a href="/people" class="pi-card-light group">
-            <img src="/images/adrian.png" alt="Adrian Stier" class="pi-photo-light" />
-            <div class="pi-info-light">
-              <span class="pi-name-light">Adrian Stier</span>
-              <span class="pi-title-light">Associate Professor, EEMB</span>
-              <span class="pi-bio-light">Runs long-term experiments at MCR and SBC LTER sites. 75+ papers on reef and kelp dynamics.</span>
+          <!-- PI Card -->
+          <a href="/people" class="pi-card">
+            <img src="/images/adrian.png" alt="Adrian Stier" class="pi-photo" />
+            <div class="pi-info">
+              <span class="pi-name">Adrian Stier</span>
+              <span class="pi-title">Associate Professor, EEMB</span>
+              <span class="pi-detail">Long-term experiments at MCR and SBC LTER. 75+ papers on reef and kelp dynamics.</span>
             </div>
-            <svg class="pi-arrow-light" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <svg class="pi-arrow" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
             </svg>
           </a>
 
-          <a href="/people" class="btn btn-primary group mt-6">
+          <a href="/people" class="btn-primary">
             <span>Meet the Team</span>
-            <svg class="w-4 h-4 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
             </svg>
           </a>
         </div>
 
-        <div class="stats-grid-light">
-          <div class="stat-card-light scroll-reveal stagger-1">
-            <span class="stat-number-light" data-target="75">75</span>
-            <span class="stat-suffix-light">+</span>
-            <span class="stat-label-light">Publications</span>
+        <div class="about-stats">
+          <div class="stat-card scroll-reveal stagger-1">
+            <span class="stat-number" data-target="75">75</span>
+            <span class="stat-plus">+</span>
+            <span class="stat-label">Publications</span>
           </div>
-          <div class="stat-card-light scroll-reveal stagger-2">
-            <span class="stat-number-light" data-target="15">15</span>
-            <span class="stat-suffix-light">yrs</span>
-            <span class="stat-label-light">Research Experience</span>
+          <div class="stat-card scroll-reveal stagger-2">
+            <span class="stat-number" data-target="15">15</span>
+            <span class="stat-plus">yrs</span>
+            <span class="stat-label">Research Experience</span>
           </div>
-          <div class="stat-card-light scroll-reveal stagger-3">
-            <span class="stat-number-light" data-target="2">2</span>
-            <span class="stat-label-light">LTER Sites</span>
+          <div class="stat-card scroll-reveal stagger-3">
+            <span class="stat-number" data-target="2">2</span>
+            <span class="stat-label">LTER Sites</span>
           </div>
-          <div class="stat-card-light scroll-reveal stagger-4">
-            <span class="stat-number-light" data-target="12">12</span>
-            <span class="stat-suffix-light">+</span>
-            <span class="stat-label-light">Partner Institutions</span>
+          <div class="stat-card scroll-reveal stagger-4">
+            <span class="stat-number" data-target="12">12</span>
+            <span class="stat-plus">+</span>
+            <span class="stat-label">Partner Institutions</span>
           </div>
         </div>
       </div>
     </div>
 
-    <!-- Wave -->
     <WaveDivider id="about-wave" fillColor="navy-deep" />
   </section>
 
-  <!-- CTA Section -->
-  <section class="section-lg bg-navy-deep">
-    <div class="container">
-      <!-- CTA Cards -->
-      <div class="grid md:grid-cols-2 gap-6 lg:gap-8">
-        <!-- For Prospective Students/Postdocs -->
-        <div class="join-cta scroll-reveal">
-          <div class="join-cta-content">
-            <span class="eyebrow text-accent">For Researchers</span>
-            <h2 class="text-2xl md:text-3xl mb-4">Join Our Team</h2>
-            <p class="text-white/60 max-w-md mx-auto mb-6">
-              We're seeking researchers at all career stages who want to understand and restore ocean ecosystems—from molecular mechanisms to ecosystem dynamics.
+  <!-- Final CTA Section -->
+  <section class="cta-section">
+    <div class="cta-bg">
+      <div class="cta-orb cta-orb-1"></div>
+      <div class="cta-orb cta-orb-2"></div>
+    </div>
+
+    <div class="container relative z-10">
+      <div class="cta-grid">
+        <!-- Join CTA -->
+        <div class="cta-card cta-card-join scroll-reveal">
+          <div class="cta-card-content">
+            <span class="cta-eyebrow">For Researchers</span>
+            <h2 class="cta-title">Join Our Team</h2>
+            <p class="cta-desc">
+              We're seeking researchers at all career stages who want to understand and restore ocean ecosystems.
             </p>
-            <a href="/join" class="btn btn-primary group">
+            <a href="/join" class="btn-cta-primary">
               <span>View Opportunities</span>
-              <svg class="w-4 h-4 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
               </svg>
             </a>
           </div>
         </div>
 
-        <!-- For Funders/Partners -->
-        <div class="join-cta funder-cta scroll-reveal stagger-1">
-          <div class="join-cta-content">
-            <span class="eyebrow text-accent-2">For Funders</span>
-            <h2 class="text-2xl md:text-3xl mb-4">Partner With Us</h2>
-            <p class="text-white/60 max-w-md mx-auto mb-6">
+        <!-- Funders CTA -->
+        <div class="cta-card cta-card-funder scroll-reveal stagger-1">
+          <div class="cta-card-content">
+            <span class="cta-eyebrow cta-eyebrow-alt">For Funders</span>
+            <h2 class="cta-title">Partner With Us</h2>
+            <p class="cta-desc">
               Support research that identifies why ecosystems fail and what makes restoration succeed.
             </p>
-            <a href="/for-funders" class="btn btn-secondary group">
+            <a href="/for-funders" class="btn-cta-secondary">
               <span>Learn More</span>
-              <svg class="w-4 h-4 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
               </svg>
             </a>
@@ -508,451 +502,536 @@ const formatDate = (dateStr: string) => {
 </Layout>
 
 <style>
-  /* ========================================
-     Hero Section - Clean, Nike-inspired
-     ======================================== */
+  /* ============================================
+     Hero Section - Cinematic Full Viewport
+     ============================================ */
+  .hero {
+    @apply relative min-h-[100svh] flex items-center overflow-hidden;
+  }
 
-  /* Strong overlay for text legibility */
+  .hero-media {
+    @apply absolute inset-0;
+  }
+
+  .hero-image {
+    @apply absolute inset-0 bg-cover bg-center bg-no-repeat;
+    transform: scale(1.05);
+    animation: heroZoom 20s ease-out forwards;
+  }
+
+  @keyframes heroZoom {
+    from { transform: scale(1.05); }
+    to { transform: scale(1); }
+  }
+
   .hero-overlay {
     @apply absolute inset-0;
     background: linear-gradient(
-      to right,
-      rgba(11, 37, 69, 0.95) 0%,
-      rgba(11, 37, 69, 0.85) 35%,
-      rgba(11, 37, 69, 0.6) 55%,
-      rgba(11, 37, 69, 0.3) 75%,
-      rgba(11, 37, 69, 0.2) 100%
+      135deg,
+      rgba(11, 25, 41, 0.92) 0%,
+      rgba(11, 25, 41, 0.8) 40%,
+      rgba(11, 37, 69, 0.6) 70%,
+      rgba(11, 37, 69, 0.4) 100%
     );
   }
 
-  @media (max-width: 768px) {
-    .hero-overlay {
-      background: linear-gradient(
-        to bottom,
-        rgba(11, 37, 69, 0.7) 0%,
-        rgba(11, 37, 69, 0.85) 50%,
-        rgba(11, 37, 69, 0.95) 100%
-      );
-    }
+  .hero-vignette {
+    @apply absolute inset-0;
+    background: radial-gradient(ellipse at center, transparent 40%, rgba(11, 25, 41, 0.5) 100%);
   }
 
-  /* Hero content animations */
-  .hero-content {
-    opacity: 0;
-    animation: heroFadeIn 0.8s ease-out 0.1s forwards;
-  }
-
-  @keyframes heroFadeIn {
-    from {
-      opacity: 0;
-      transform: translateY(20px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
-
-  /* Preheader */
-  .hero-preheader {
-    @apply text-xs font-bold uppercase tracking-widest text-accent-2 mb-4;
-  }
-
-  /* Clean H1 - no gradients, no glow */
-  .hero-title {
-    @apply text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black text-white mb-6;
-    @apply tracking-tight leading-none;
-  }
-
-  /* Sharp subhead */
-  .hero-subhead {
-    @apply text-xl md:text-2xl font-semibold text-white/90 mb-4;
-    @apply tracking-tight;
-  }
-
-  /* Description with good contrast */
-  .hero-description {
-    @apply text-base md:text-lg text-white/70 mb-6 leading-relaxed;
-    @apply max-w-lg;
-  }
-
-  /* Credibility strip */
-  .hero-credibility {
-    @apply flex flex-wrap items-center gap-2 text-xs md:text-sm font-medium text-white/50 mb-8;
-  }
-
-  .hero-credibility-dot {
-    @apply w-1 h-1 rounded-full bg-accent/60;
-  }
-
-  /* CTA row */
-  .hero-cta-row {
-    @apply flex flex-wrap items-center gap-4;
-  }
-
-  /* Primary button - flat, crisp, minimal */
-  .hero-btn-primary {
-    @apply inline-flex items-center gap-2 px-5 py-2.5;
-    @apply bg-white text-navy-deep font-semibold text-sm;
-    @apply rounded-md no-underline;
-    @apply transition-all duration-200;
-  }
-
-  .hero-btn-primary:hover {
-    @apply bg-white/90;
-    transform: translateY(-1px);
-  }
-
-  .hero-btn-primary:focus-visible {
-    @apply outline-none ring-2 ring-white ring-offset-2 ring-offset-navy-deep;
-  }
-
-  /* Secondary button - text/ghost style */
-  .hero-btn-secondary {
-    @apply inline-flex items-center gap-2 px-4 py-2.5;
-    @apply text-white/80 font-semibold text-sm;
-    @apply border border-white/30 rounded-md no-underline;
-    @apply transition-all duration-200;
-  }
-
-  .hero-btn-secondary:hover {
-    @apply text-white border-white/50 bg-white/10;
-  }
-
-  .hero-btn-secondary:focus-visible {
-    @apply outline-none ring-2 ring-white/50 ring-offset-2 ring-offset-navy-deep;
-  }
-
-  /* Scroll cue - visible and clear */
-  .hero-scroll-cue {
-    @apply absolute bottom-8 left-1/2 -translate-x-1/2;
-    @apply inline-flex items-center gap-2 px-4 py-2;
-    @apply text-white/70 text-sm font-medium no-underline;
-    @apply border border-white/20 rounded-full;
-    @apply transition-all duration-300;
-    @apply opacity-0;
-    animation: scrollCueIn 0.6s ease-out 1s forwards;
-  }
-
-  .hero-scroll-cue:hover {
-    @apply text-white border-white/40 bg-white/10;
-  }
-
-  .hero-scroll-cue svg {
-    animation: scrollBounce 2s ease-in-out infinite;
-  }
-
-  @keyframes scrollCueIn {
-    from {
-      opacity: 0;
-      transform: translateX(-50%) translateY(10px);
-    }
-    to {
-      opacity: 1;
-      transform: translateX(-50%) translateY(0);
-    }
-  }
-
-  @keyframes scrollBounce {
-    0%, 100% {
-      transform: translateY(0);
-    }
-    50% {
-      transform: translateY(4px);
-    }
-  }
-
-  /* Parallax */
-  .parallax-bg {
-    transform: translateZ(0);
-    will-change: transform;
-  }
-
-  /* ========================================
-     Animated Blob Shapes (for other sections)
-     ======================================== */
-  .blob-container {
+  /* Floating particles */
+  .hero-particles {
     @apply absolute inset-0 overflow-hidden pointer-events-none;
-    z-index: 0;
   }
 
-  .blob {
+  .particle {
     @apply absolute rounded-full;
-    filter: blur(80px);
-    animation: blob-morph 20s ease-in-out infinite;
+    background: rgba(56, 189, 248, 0.3);
+    animation: float 15s ease-in-out infinite;
   }
 
-  .blob-1 {
-    width: 500px;
-    height: 500px;
-    background: radial-gradient(circle, rgba(56, 189, 248, 0.12) 0%, transparent 70%);
-    top: -100px;
-    right: -100px;
+  .particle-1 { width: 4px; height: 4px; top: 20%; left: 15%; animation-delay: 0s; }
+  .particle-2 { width: 6px; height: 6px; top: 60%; left: 80%; animation-delay: -3s; }
+  .particle-3 { width: 3px; height: 3px; top: 40%; left: 60%; animation-delay: -6s; }
+  .particle-4 { width: 5px; height: 5px; top: 70%; left: 25%; animation-delay: -9s; }
+  .particle-5 { width: 4px; height: 4px; top: 30%; left: 90%; animation-delay: -12s; }
+
+  @keyframes float {
+    0%, 100% { transform: translateY(0) translateX(0); opacity: 0.3; }
+    25% { transform: translateY(-30px) translateX(10px); opacity: 0.6; }
+    50% { transform: translateY(-10px) translateX(-10px); opacity: 0.4; }
+    75% { transform: translateY(-40px) translateX(5px); opacity: 0.5; }
   }
 
-  .blob-2 {
-    width: 400px;
-    height: 400px;
-    background: radial-gradient(circle, rgba(45, 212, 191, 0.1) 0%, transparent 70%);
-    bottom: -50px;
-    left: -100px;
-    animation-delay: -10s;
+  .hero-content {
+    @apply relative z-10 w-full;
+    padding-top: 8rem;
+    padding-bottom: 10rem;
   }
 
-  @keyframes blob-morph {
-    0%, 100% {
-      transform: translate(0, 0) scale(1) rotate(0deg);
-      border-radius: 40% 60% 70% 30% / 40% 50% 60% 50%;
-    }
-    25% {
-      transform: translate(30px, -50px) scale(1.1) rotate(90deg);
-      border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
-    }
-    50% {
-      transform: translate(-20px, 20px) scale(0.95) rotate(180deg);
-      border-radius: 30% 60% 70% 40% / 50% 60% 30% 60%;
-    }
-    75% {
-      transform: translate(20px, 40px) scale(1.05) rotate(270deg);
-      border-radius: 50% 40% 50% 60% / 40% 60% 50% 40%;
-    }
+  .hero-text {
+    @apply max-w-2xl;
   }
 
-  /* ========================================
-     Section spacing
-     ======================================== */
-  .section-lg {
-    @apply py-20 md:py-28 pb-28 md:pb-36;
+  /* Badge */
+  .hero-badge {
+    @apply inline-flex items-center gap-2 mb-6;
+    @apply text-xs font-bold uppercase tracking-[0.2em] text-white/70;
   }
 
-  /* ========================================
-     Ecosystem Cards (Study Systems)
-     ======================================== */
-  .ecosystem-card {
-    @apply relative rounded-2xl overflow-hidden no-underline block;
+  .badge-dot {
+    @apply w-2 h-2 rounded-full bg-accent;
+    animation: pulse 2s ease-in-out infinite;
+  }
+
+  @keyframes pulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.5; transform: scale(1.2); }
+  }
+
+  /* Title */
+  .hero-title {
+    @apply text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-black leading-[0.9] tracking-tight mb-6;
+  }
+
+  .title-line {
+    @apply block text-white;
+  }
+
+  .title-accent {
+    @apply bg-gradient-to-r from-accent via-accent-2 to-accent bg-clip-text text-transparent;
+    background-size: 200% auto;
+    animation: shimmer 8s ease-in-out infinite;
+  }
+
+  @keyframes shimmer {
+    0%, 100% { background-position: 0% center; }
+    50% { background-position: 100% center; }
+  }
+
+  /* Tagline */
+  .hero-tagline {
+    @apply text-xl md:text-2xl font-semibold text-white/80 mb-4 leading-snug;
+  }
+
+  .tagline-accent {
+    @apply text-accent;
+  }
+
+  /* Description */
+  .hero-desc {
+    @apply text-base md:text-lg text-white/60 mb-8 leading-relaxed max-w-lg;
+  }
+
+  /* Actions */
+  .hero-actions {
+    @apply flex flex-wrap items-center gap-4 mb-10;
+  }
+
+  .btn-hero-primary {
+    @apply inline-flex items-center gap-2 px-6 py-3;
+    @apply bg-accent text-white font-bold text-sm;
+    @apply rounded-full no-underline;
+    @apply transition-all duration-300;
+    @apply shadow-lg shadow-accent/25;
+  }
+
+  .btn-hero-primary:hover {
+    @apply bg-accent/90 gap-3;
+    transform: translateY(-2px);
+    box-shadow: 0 20px 40px -12px rgba(56, 189, 248, 0.4);
+  }
+
+  .btn-hero-secondary {
+    @apply inline-flex items-center gap-2 px-6 py-3;
+    @apply text-white font-bold text-sm;
+    @apply border-2 border-white/30 rounded-full no-underline;
+    @apply transition-all duration-300;
+  }
+
+  .btn-hero-secondary:hover {
+    @apply border-white/60 bg-white/10;
+  }
+
+  /* Stats */
+  .hero-stats {
+    @apply flex items-center gap-6 flex-wrap;
+  }
+
+  .hero-stat {
+    @apply flex flex-col;
+  }
+
+  .stat-value {
+    @apply text-2xl font-black text-white tabular-nums;
+  }
+
+  .stat-label {
+    @apply text-xs font-medium uppercase tracking-wide text-white/40;
+  }
+
+  .stat-divider {
+    @apply w-px h-10 bg-white/20;
+  }
+
+  /* Scroll indicator */
+  .scroll-indicator {
+    @apply absolute bottom-10 left-1/2 -translate-x-1/2;
+    @apply flex flex-col items-center gap-3 no-underline;
+    @apply text-white/60 transition-colors duration-300;
+    animation: fadeIn 1s ease-out 1.5s forwards;
+    opacity: 0;
+  }
+
+  .scroll-indicator:hover {
+    @apply text-white;
+  }
+
+  @keyframes fadeIn {
+    to { opacity: 1; }
+  }
+
+  .scroll-text {
+    @apply text-xs font-bold uppercase tracking-[0.2em];
+  }
+
+  .scroll-line {
+    @apply relative w-px h-12 bg-white/20 overflow-hidden;
+  }
+
+  .scroll-dot {
+    @apply absolute top-0 left-0 w-full h-3 bg-accent;
+    animation: scrollDown 2s ease-in-out infinite;
+  }
+
+  @keyframes scrollDown {
+    0% { top: -12px; }
+    50% { top: 48px; }
+    100% { top: -12px; }
+  }
+
+  /* ============================================
+     Section Styling
+     ============================================ */
+  .study-systems,
+  .organisms-section,
+  .about-section {
+    @apply relative py-20 md:py-28 pb-28 md:pb-36 bg-surface;
+  }
+
+  .resilience-section,
+  .news-section,
+  .cta-section {
+    @apply relative py-20 md:py-28 overflow-hidden;
+    background: linear-gradient(180deg, #0b1929 0%, #0f172a 50%, #0b1929 100%);
+  }
+
+  .resilience-section {
+    @apply pb-28 md:pb-36;
+  }
+
+  .section-header {
+    @apply text-center mb-12;
+  }
+
+  .section-eyebrow {
+    @apply inline-block text-xs font-bold uppercase tracking-[0.2em] text-accent mb-4;
+  }
+
+  .section-eyebrow-light {
+    @apply text-accent-2;
+  }
+
+  .section-title {
+    @apply text-3xl md:text-4xl lg:text-5xl font-black text-ink tracking-tight mb-4 leading-tight;
+  }
+
+  .section-title-light {
+    color: white;
+  }
+
+  .title-gradient {
+    @apply bg-gradient-to-r from-accent to-accent-2 bg-clip-text text-transparent;
+  }
+
+  .section-desc {
+    @apply text-lg text-muted leading-relaxed max-w-2xl mx-auto;
+  }
+
+  .section-cta {
+    @apply text-center mt-12;
+  }
+
+  /* ============================================
+     Map Container
+     ============================================ */
+  .map-container {
+    @apply max-w-5xl mx-auto mb-12;
+  }
+
+  /* ============================================
+     Study System Cards
+     ============================================ */
+  .systems-grid {
+    @apply grid md:grid-cols-2 gap-6 lg:gap-8 max-w-5xl mx-auto;
+  }
+
+  .system-card {
+    @apply relative block rounded-2xl overflow-hidden no-underline;
     @apply border border-line/50;
-    @apply transition-all duration-500 ease-out;
-    aspect-ratio: 4 / 3;
-    transform-style: preserve-3d;
+    min-height: 420px;
+    transition: all 500ms cubic-bezier(0.4, 0, 0.2, 1);
   }
 
-  .ecosystem-card:hover {
-    @apply -translate-y-2;
+  .system-card:hover {
+    transform: translateY(-8px);
     border-color: rgba(56, 189, 248, 0.4);
-    box-shadow:
-      0 25px 50px -12px rgba(0, 0, 0, 0.4),
-      0 0 40px rgba(56, 189, 248, 0.15);
+    box-shadow: 0 30px 60px -12px rgba(0, 0, 0, 0.3), 0 0 40px rgba(56, 189, 248, 0.1);
   }
 
-  .ecosystem-card-image {
+  .card-media {
     @apply absolute inset-0;
   }
 
-  .ecosystem-card-image img {
+  .card-media img {
     @apply w-full h-full object-cover;
-    @apply transition-all duration-700 ease-out;
     transform: scale(1.05);
+    transition: transform 700ms cubic-bezier(0.4, 0, 0.2, 1);
   }
 
-  .ecosystem-card:hover .ecosystem-card-image img {
+  .system-card:hover .card-media img {
     transform: scale(1.12);
   }
 
-  .ecosystem-card-overlay {
+  .card-gradient {
     @apply absolute inset-0;
     background: linear-gradient(
       to top,
-      rgba(11, 37, 69, 0.95) 0%,
-      rgba(11, 37, 69, 0.7) 35%,
-      rgba(11, 37, 69, 0.3) 60%,
+      rgba(15, 23, 42, 0.98) 0%,
+      rgba(15, 23, 42, 0.85) 40%,
+      rgba(15, 23, 42, 0.4) 70%,
       transparent 100%
     );
   }
 
-  .ecosystem-card-content {
-    @apply absolute bottom-0 left-0 right-0 p-6 md:p-7;
+  .card-content {
+    @apply absolute bottom-0 left-0 right-0 p-6 md:p-8;
   }
 
-  .ecosystem-location {
+  .card-location {
     @apply inline-flex items-center gap-1.5 text-accent-2 text-xs font-bold uppercase tracking-wider mb-3;
   }
 
-  .ecosystem-title {
+  .card-title {
     @apply text-2xl md:text-3xl font-black text-white mb-3;
-    @apply transition-colors duration-300;
+    transition: color 300ms ease;
   }
 
-  .ecosystem-card:hover .ecosystem-title {
+  .system-card:hover .card-title {
     @apply text-accent;
   }
 
-  .ecosystem-tagline {
-    @apply text-white/70 text-sm leading-relaxed mb-4 line-clamp-2;
+  .card-desc {
+    @apply text-white/70 text-sm leading-relaxed mb-4;
   }
 
-  .ecosystem-link {
+  .card-cta {
     @apply inline-flex items-center gap-2 text-accent text-sm font-bold;
-    @apply transition-all duration-300;
+    transition: gap 300ms ease;
   }
 
-  .ecosystem-card:hover .ecosystem-link {
+  .system-card:hover .card-cta {
     @apply gap-3;
   }
 
-  /* ========================================
-     Compact Ecosystem Cards (below map)
-     ======================================== */
-  .ecosystem-card-compact {
-    @apply flex rounded-xl overflow-hidden no-underline;
-    @apply bg-surface-card border border-line/50;
-    @apply transition-all duration-300 ease-out;
+  .card-accent {
+    @apply absolute top-0 left-0 right-0 h-1;
   }
 
-  .ecosystem-card-compact:hover {
-    @apply -translate-y-1;
-    border-color: rgba(56, 189, 248, 0.4);
-    box-shadow: 0 12px 24px -8px rgba(0, 0, 0, 0.3);
+  .card-accent-coral {
+    background: linear-gradient(90deg, #f97316, #fb923c, #fdba74);
   }
 
-  .ecosystem-card-compact-image {
-    @apply w-24 md:w-32 flex-shrink-0;
+  .card-accent-kelp {
+    background: linear-gradient(90deg, #22c55e, #4ade80, #86efac);
   }
 
-  .ecosystem-card-compact-image img {
-    @apply w-full h-full object-cover;
-    @apply transition-transform duration-500;
+  /* ============================================
+     Resilience Section Background
+     ============================================ */
+  .resilience-bg {
+    @apply absolute inset-0 overflow-hidden;
   }
 
-  .ecosystem-card-compact:hover .ecosystem-card-compact-image img {
-    @apply scale-110;
+  .resilience-orb {
+    @apply absolute rounded-full;
+    filter: blur(100px);
   }
 
-  .ecosystem-card-compact-content {
-    @apply flex-1 p-4 md:p-5 flex flex-col justify-center;
+  .resilience-orb-1 {
+    @apply w-[600px] h-[600px] -top-48 -right-48;
+    background: radial-gradient(circle, rgba(56, 189, 248, 0.12), transparent 70%);
+    animation: orbFloat 20s ease-in-out infinite;
   }
 
-  .ecosystem-location-compact {
-    @apply inline-flex items-center gap-1 text-accent-2 text-xs font-bold uppercase tracking-wider mb-1.5;
+  .resilience-orb-2 {
+    @apply w-[500px] h-[500px] -bottom-32 -left-32;
+    background: radial-gradient(circle, rgba(45, 212, 191, 0.1), transparent 70%);
+    animation: orbFloat 25s ease-in-out infinite reverse;
   }
 
-  .ecosystem-title-compact {
-    @apply text-base md:text-lg font-bold text-ink mb-1;
-    @apply transition-colors duration-200;
+  @keyframes orbFloat {
+    0%, 100% { transform: translate(0, 0) scale(1); }
+    33% { transform: translate(30px, -20px) scale(1.05); }
+    66% { transform: translate(-20px, 30px) scale(0.95); }
   }
 
-  .ecosystem-card-compact:hover .ecosystem-title-compact {
-    @apply text-accent;
+  .resilience-mesh {
+    @apply absolute inset-0 opacity-[0.03];
+    background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%2338bdf8' fill-opacity='1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
   }
 
-  .ecosystem-tagline-compact {
-    @apply text-muted text-xs md:text-sm leading-relaxed mb-2 line-clamp-2;
-  }
-
-  .ecosystem-link-compact {
-    @apply inline-flex items-center gap-1.5 text-accent text-xs font-bold;
-    @apply transition-all duration-200;
-  }
-
-  .ecosystem-card-compact:hover .ecosystem-link-compact {
-    @apply gap-2;
-  }
-
-  /* ========================================
-     Research Pillars
-     ======================================== */
+  /* ============================================
+     Pillars Grid
+     ============================================ */
   .pillars-grid {
     @apply grid md:grid-cols-3 gap-6 lg:gap-8 max-w-6xl mx-auto;
   }
 
   .pillar-card {
-    @apply p-7 rounded-2xl text-left;
+    @apply relative p-6 lg:p-8 rounded-2xl;
     @apply border border-white/10;
-    @apply transition-all duration-300 ease-out;
     background: linear-gradient(135deg, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0.02) 100%);
     backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-  }
-
-  .pillar-card::before {
-    content: '';
-    @apply absolute inset-0 rounded-2xl opacity-0;
-    background: linear-gradient(135deg, rgba(56, 189, 248, 0.08) 0%, rgba(45, 212, 191, 0.04) 100%);
-    transition: opacity 0.3s ease;
-    z-index: -1;
+    transition: all 400ms cubic-bezier(0.4, 0, 0.2, 1);
   }
 
   .pillar-card:hover {
-    @apply -translate-y-2;
-    border-color: rgba(56, 189, 248, 0.4);
-    box-shadow:
-      0 20px 40px -12px rgba(0, 0, 0, 0.3),
-      0 0 30px rgba(56, 189, 248, 0.1),
-      inset 0 1px 0 rgba(255, 255, 255, 0.1);
+    transform: translateY(-6px);
+    border-color: rgba(56, 189, 248, 0.3);
+    box-shadow: 0 20px 40px -12px rgba(0, 0, 0, 0.3), 0 0 30px rgba(56, 189, 248, 0.1);
   }
 
-  .pillar-card:hover::before {
-    opacity: 1;
+  .pillar-card-featured {
+    @apply border-accent/30;
+    background: linear-gradient(135deg, rgba(56, 189, 248, 0.08) 0%, rgba(45, 212, 191, 0.04) 100%);
+  }
+
+  .pillar-header {
+    @apply flex items-center gap-4 mb-4;
   }
 
   .pillar-icon {
-    @apply w-12 h-12 mb-5 rounded-xl;
-    @apply flex items-center justify-center;
-    @apply transition-all duration-500;
-    position: relative;
+    @apply w-12 h-12 rounded-xl flex items-center justify-center flex-shrink-0;
+    transition: transform 300ms ease;
   }
 
   .pillar-card:hover .pillar-icon {
-    @apply scale-110;
-    animation: icon-bounce 0.6s ease;
+    transform: scale(1.1);
   }
 
-  .pillar-card:hover .pillar-icon svg {
-    animation: icon-wiggle 0.6s ease;
-  }
-
-  @keyframes icon-bounce {
-    0%, 100% { transform: scale(1.1) translateY(0); }
-    50% { transform: scale(1.15) translateY(-3px); }
-  }
-
-  @keyframes icon-wiggle {
-    0% { transform: rotate(0deg); }
-    25% { transform: rotate(-8deg); }
-    75% { transform: rotate(8deg); }
-    100% { transform: rotate(0deg); }
-  }
-
-  .pillar-icon-1 {
+  .pillar-icon-resistance {
     @apply bg-accent/20 text-accent;
   }
 
-  .pillar-icon-2 {
+  .pillar-icon-recovery {
     @apply bg-accent-2/20 text-accent-2;
   }
 
-  .pillar-icon-3 {
-    @apply bg-accent-warm/20 text-accent-warm;
+  .pillar-icon-reorg {
+    @apply bg-amber-500/20 text-amber-400;
   }
 
   .pillar-title {
-    @apply text-white text-lg font-bold mb-3;
+    @apply text-xl font-bold text-white;
   }
 
-  .pillar-desc {
-    @apply text-white/50 text-sm leading-relaxed mb-5;
+  .pillar-tagline {
+    @apply text-white/50 text-sm mb-5;
   }
 
-  .pillar-topics {
-    @apply space-y-2;
+  .pillar-list {
+    @apply space-y-3;
   }
 
-  .pillar-topics li {
-    @apply flex items-start gap-2 text-white/70 text-sm;
+  .pillar-list li {
+    @apply text-white/70 text-sm leading-relaxed;
   }
 
-  /* ========================================
-     News Cards
-     ======================================== */
+  .pillar-level {
+    @apply font-semibold;
+  }
+
+  .pillar-level-1 { @apply text-accent; }
+  .pillar-level-2 { @apply text-accent-2; }
+  .pillar-level-3 { @apply text-amber-400; }
+
+  /* ============================================
+     Organisms Grid
+     ============================================ */
+  .organisms-grid {
+    @apply grid sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto;
+  }
+
+  .organism-card {
+    @apply relative rounded-2xl overflow-hidden;
+    @apply border border-line/50 bg-surface-card;
+    transition: all 400ms cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .organism-card:hover {
+    transform: translateY(-6px);
+    border-color: rgba(56, 189, 248, 0.3);
+    box-shadow: 0 20px 40px -12px rgba(0, 0, 0, 0.2);
+  }
+
+  .organism-visual {
+    @apply relative aspect-[4/3] overflow-hidden;
+  }
+
+  .organism-visual img {
+    @apply w-full h-full object-cover;
+    transition: transform 600ms cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .organism-card:hover .organism-visual img {
+    transform: scale(1.08);
+  }
+
+  .organism-overlay {
+    @apply absolute inset-0;
+    background: linear-gradient(to top, rgba(15, 23, 42, 0.6) 0%, transparent 50%);
+  }
+
+  .organism-content {
+    @apply p-5;
+  }
+
+  .organism-name {
+    @apply text-lg font-bold text-ink mb-2;
+  }
+
+  .organism-desc {
+    @apply text-muted text-sm leading-relaxed;
+  }
+
+  /* ============================================
+     News Section
+     ============================================ */
+  .news-bg {
+    @apply absolute inset-0;
+  }
+
+  .news-gradient {
+    @apply absolute inset-0;
+    background: linear-gradient(180deg, #0b1929 0%, rgba(15, 23, 42, 0.95) 50%, #0b1929 100%);
+  }
+
+  .news-header {
+    @apply flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4 mb-10;
+  }
+
   .news-grid {
     @apply grid md:grid-cols-3 gap-6 lg:gap-8;
   }
@@ -960,65 +1039,63 @@ const formatDate = (dateStr: string) => {
   .news-card {
     @apply rounded-2xl overflow-hidden bg-surface-card;
     @apply border border-line/50;
-    @apply transition-all duration-300 ease-out;
+    transition: all 400ms cubic-bezier(0.4, 0, 0.2, 1);
   }
 
   .news-card:hover {
-    @apply -translate-y-2 shadow-xl;
+    transform: translateY(-6px);
     border-color: rgba(56, 189, 248, 0.3);
+    box-shadow: 0 20px 40px -12px rgba(0, 0, 0, 0.3);
   }
 
-  .news-card-link {
+  .news-link {
     @apply block no-underline h-full flex flex-col;
   }
 
-  .news-card-image {
+  .news-image {
     @apply relative aspect-[16/10] overflow-hidden;
   }
 
-  .news-card-image img {
+  .news-image img {
     @apply w-full h-full object-cover;
-    @apply transition-transform duration-500 ease-out;
+    transition: transform 600ms cubic-bezier(0.4, 0, 0.2, 1);
   }
 
-  .news-card:hover .news-card-image img {
-    @apply scale-105;
+  .news-card:hover .news-image img {
+    transform: scale(1.05);
   }
 
-  .news-card-date {
-    @apply absolute top-3 right-3;
-    @apply px-3 py-1.5 rounded-full;
-    @apply bg-navy-deep/80 backdrop-blur-sm;
-    @apply text-white/80 text-xs font-medium;
+  .news-date-badge {
+    @apply absolute top-3 right-3 px-3 py-1.5 rounded-full;
+    @apply bg-navy-deep/80 backdrop-blur-sm text-white/80 text-xs font-medium;
   }
 
-  .news-card-body {
+  .news-body {
     @apply p-5 md:p-6 flex flex-col flex-1;
   }
 
-  .news-card-tags {
+  .news-tags {
     @apply flex flex-wrap gap-2 mb-3;
   }
 
   .news-tag {
-    @apply text-xs font-bold uppercase tracking-wide;
-    @apply text-accent;
+    @apply text-xs font-bold uppercase tracking-wide text-accent;
   }
 
-  .news-card-title {
+  .news-title {
     @apply text-lg font-bold text-ink mb-3 leading-snug;
-    @apply transition-colors duration-200;
     display: -webkit-box;
     -webkit-line-clamp: 2;
     -webkit-box-orient: vertical;
     overflow: hidden;
+    transition: color 200ms ease;
   }
 
-  .news-card:hover .news-card-title {
+  .news-card:hover .news-title {
     @apply text-accent;
   }
 
-  .news-card-excerpt {
+  .news-excerpt {
     @apply text-muted text-sm leading-relaxed mb-4 flex-1;
     display: -webkit-box;
     -webkit-line-clamp: 2;
@@ -1026,71 +1103,64 @@ const formatDate = (dateStr: string) => {
     overflow: hidden;
   }
 
-  .news-card-cta {
-    @apply inline-flex items-center gap-2 text-accent text-sm font-bold;
-    @apply transition-all duration-300 mt-auto;
+  .news-read-more {
+    @apply inline-flex items-center gap-2 text-accent text-sm font-bold mt-auto;
+    transition: gap 300ms ease;
   }
 
-  .news-card:hover .news-card-cta {
+  .news-card:hover .news-read-more {
     @apply gap-3;
   }
 
-  /* ========================================
-     PI Card - Compact Lab Director
-     ======================================== */
+  .news-mobile-cta {
+    @apply text-center mt-10;
+  }
+
+  /* ============================================
+     About Section
+     ============================================ */
+  .about-grid {
+    @apply grid lg:grid-cols-2 gap-12 lg:gap-20 items-center;
+  }
+
+  .about-content .section-title {
+    @apply text-left;
+  }
+
+  .about-text {
+    @apply text-muted text-lg leading-relaxed mb-6;
+  }
+
   .pi-card {
-    display: flex;
-    align-items: center;
-    gap: 0.875rem;
-    padding: 0.75rem 1rem;
-    background: rgba(255, 255, 255, 0.03);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    border-radius: 0.75rem;
-    text-decoration: none;
-    transition: all 0.2s ease;
-    margin-bottom: 0;
+    @apply flex items-center gap-4 p-4 rounded-xl mb-6;
+    @apply bg-surface-card border border-line/50 no-underline;
+    transition: all 300ms ease;
   }
 
   .pi-card:hover {
-    background: rgba(255, 255, 255, 0.06);
-    border-color: rgba(56, 189, 248, 0.3);
+    @apply border-accent/30;
+    box-shadow: 0 10px 30px -8px rgba(0, 0, 0, 0.15);
   }
 
   .pi-photo {
-    width: 48px;
-    height: 48px;
-    border-radius: 50%;
-    object-fit: cover;
-    border: 2px solid rgba(56, 189, 248, 0.3);
-    flex-shrink: 0;
+    @apply w-14 h-14 rounded-full object-cover flex-shrink-0;
+    @apply ring-2 ring-accent/30;
   }
 
   .pi-info {
-    display: flex;
-    flex-direction: column;
-    gap: 0.125rem;
-    flex: 1;
-    min-width: 0;
+    @apply flex flex-col flex-1 min-w-0;
   }
 
   .pi-name {
-    font-size: 0.875rem;
-    font-weight: 700;
-    color: #f1f5f9;
+    @apply text-sm font-bold text-ink;
   }
 
   .pi-title {
-    font-size: 0.6875rem;
-    font-weight: 600;
-    color: #38bdf8;
-    text-transform: uppercase;
-    letter-spacing: 0.03em;
+    @apply text-xs font-bold uppercase tracking-wide text-accent;
   }
 
-  .pi-bio {
-    font-size: 0.75rem;
-    color: rgba(241, 245, 249, 0.5);
-    line-height: 1.4;
+  .pi-detail {
+    @apply text-xs text-muted mt-1;
     display: -webkit-box;
     -webkit-line-clamp: 2;
     -webkit-box-orient: vertical;
@@ -1098,443 +1168,246 @@ const formatDate = (dateStr: string) => {
   }
 
   .pi-arrow {
-    width: 1rem;
-    height: 1rem;
-    color: rgba(56, 189, 248, 0.4);
-    flex-shrink: 0;
-    transition: all 0.2s ease;
+    @apply w-4 h-4 text-accent/40 flex-shrink-0;
+    transition: all 200ms ease;
   }
 
   .pi-card:hover .pi-arrow {
-    color: #38bdf8;
-    transform: translateX(3px);
+    @apply text-accent;
+    transform: translateX(4px);
   }
 
-  /* ========================================
-     Stats Section
-     ======================================== */
-  .stats-grid {
+  .about-stats {
     @apply grid grid-cols-2 gap-4 lg:gap-5;
   }
 
   .stat-card {
-    @apply relative bg-white/[0.03] border border-white/10 rounded-2xl;
-    @apply p-6 lg:p-7 text-center;
-    @apply transition-all duration-300 ease-out;
+    @apply p-6 lg:p-7 rounded-2xl text-center;
+    @apply bg-surface-card border border-line/50;
+    transition: all 300ms ease;
   }
 
   .stat-card:hover {
-    @apply bg-white/[0.06] -translate-y-1;
+    transform: translateY(-4px);
     border-color: rgba(56, 189, 248, 0.3);
+    box-shadow: 0 15px 30px -8px rgba(0, 0, 0, 0.15);
   }
 
   .stat-number {
-    @apply text-4xl lg:text-5xl font-black text-accent;
-    @apply inline;
+    @apply text-4xl lg:text-5xl font-black text-accent inline;
   }
 
-  .stat-suffix {
+  .stat-plus {
     @apply text-xl lg:text-2xl font-bold text-accent/70 ml-0.5;
   }
 
   .stat-label {
-    @apply block text-xs font-semibold text-white/50 uppercase tracking-wider mt-2;
-  }
-
-  /* ========================================
-     Join CTA
-     ======================================== */
-  .join-cta {
-    @apply relative rounded-2xl overflow-hidden;
-    @apply bg-gradient-to-br from-accent/10 via-accent/5 to-accent-2/10;
-    @apply border border-accent/20;
-    @apply p-8 md:p-10;
-  }
-
-  .join-cta::before {
-    content: '';
-    @apply absolute inset-0 opacity-30;
-    background: radial-gradient(circle at top right, rgba(56, 189, 248, 0.15), transparent 50%),
-                radial-gradient(circle at bottom left, rgba(45, 212, 191, 0.15), transparent 50%);
-  }
-
-  .join-cta-content {
-    @apply relative z-10 text-center;
-  }
-
-  .funder-cta {
-    @apply bg-gradient-to-br from-accent-2/10 via-accent-2/5 to-accent/10;
-    @apply border-accent-2/20;
-  }
-
-  .funder-cta::before {
-    background: radial-gradient(circle at top right, rgba(45, 212, 191, 0.15), transparent 50%),
-                radial-gradient(circle at bottom left, rgba(56, 189, 248, 0.15), transparent 50%);
-  }
-
-  /* ========================================
-     Experiment Cards (Two Natural Experiments)
-     ======================================== */
-  .experiment-card {
-    @apply relative rounded-2xl overflow-hidden no-underline block;
-    @apply border border-white/10;
-    @apply transition-all duration-500 ease-out;
-    min-height: 320px;
-  }
-
-  .experiment-card:hover {
-    @apply -translate-y-2;
-    border-color: rgba(56, 189, 248, 0.4);
-    box-shadow:
-      0 25px 50px -12px rgba(0, 0, 0, 0.4),
-      0 0 40px rgba(56, 189, 248, 0.15);
-  }
-
-  .experiment-card-image {
-    @apply absolute inset-0;
-  }
-
-  .experiment-card-image img {
-    @apply w-full h-full object-cover;
-    @apply transition-all duration-700 ease-out;
-    transform: scale(1.05);
-  }
-
-  .experiment-card:hover .experiment-card-image img {
-    transform: scale(1.12);
-  }
-
-  .experiment-card-overlay {
-    @apply absolute inset-0;
-    background: linear-gradient(
-      to top,
-      rgba(11, 37, 69, 0.98) 0%,
-      rgba(11, 37, 69, 0.85) 40%,
-      rgba(11, 37, 69, 0.5) 70%,
-      rgba(11, 37, 69, 0.3) 100%
-    );
-  }
-
-  .experiment-card-content {
-    @apply absolute bottom-0 left-0 right-0 p-6 md:p-7;
-  }
-
-  .experiment-location {
-    @apply inline-flex items-center gap-1.5 text-accent-2 text-xs font-bold uppercase tracking-wider mb-2;
-  }
-
-  .experiment-title {
-    @apply text-2xl md:text-3xl font-black text-white mb-3;
-    @apply transition-colors duration-300;
-  }
-
-  .experiment-card:hover .experiment-title {
-    @apply text-accent;
-  }
-
-  .experiment-question {
-    @apply text-white font-medium text-sm leading-relaxed mb-2;
-  }
-
-  .experiment-finding {
-    @apply text-white/60 text-sm leading-relaxed mb-4;
-  }
-
-  .experiment-link {
-    @apply inline-flex items-center gap-2 text-accent text-sm font-bold;
-    @apply transition-all duration-300;
-  }
-
-  .experiment-card:hover .experiment-link {
-    @apply gap-3;
-  }
-
-  /* ========================================
-     Study System Cards (Two Failure Modes)
-     ======================================== */
-  .study-card {
-    @apply relative rounded-2xl overflow-hidden no-underline block;
-    @apply border border-line/50 bg-surface-card;
-    @apply transition-all duration-500 ease-out;
-    min-height: 380px;
-  }
-
-  .study-card:hover {
-    @apply -translate-y-2;
-    border-color: rgba(56, 189, 248, 0.4);
-    box-shadow:
-      0 25px 50px -12px rgba(0, 0, 0, 0.2),
-      0 0 40px rgba(56, 189, 248, 0.1);
-  }
-
-  .study-card-image {
-    @apply absolute inset-0;
-  }
-
-  .study-card-image img {
-    @apply w-full h-full object-cover;
-    @apply transition-all duration-700 ease-out;
-    transform: scale(1.05);
-  }
-
-  .study-card:hover .study-card-image img {
-    transform: scale(1.12);
-  }
-
-  .study-card-overlay {
-    @apply absolute inset-0;
-    background: linear-gradient(
-      to top,
-      rgba(15, 23, 42, 0.98) 0%,
-      rgba(15, 23, 42, 0.9) 35%,
-      rgba(15, 23, 42, 0.6) 60%,
-      rgba(15, 23, 42, 0.3) 100%
-    );
-  }
-
-  .study-card-content {
-    @apply absolute bottom-0 left-0 right-0 p-6 md:p-7;
-  }
-
-  .study-location {
-    @apply inline-flex items-center gap-1.5 text-accent-2 text-xs font-bold uppercase tracking-wider mb-2;
-  }
-
-  .study-title {
-    @apply text-2xl md:text-3xl font-black text-white mb-3;
-    @apply transition-colors duration-300;
-  }
-
-  .study-card:hover .study-title {
-    @apply text-accent;
-  }
-
-  .study-description {
-    @apply text-white/70 text-sm leading-relaxed mb-4;
-  }
-
-  .study-link {
-    @apply inline-flex items-center gap-2 text-accent text-sm font-bold;
-    @apply transition-all duration-300;
-  }
-
-  .study-card:hover .study-link {
-    @apply gap-3;
-  }
-
-  /* ========================================
-     Organism Cards (What We Study)
-     ======================================== */
-  .organism-card {
-    @apply p-6 rounded-2xl text-center;
-    @apply bg-surface-card border border-line/50;
-    @apply transition-all duration-300 ease-out;
-  }
-
-  .organism-card:hover {
-    @apply -translate-y-2;
-    border-color: rgba(56, 189, 248, 0.3);
-    box-shadow: 0 12px 24px -8px rgba(0, 0, 0, 0.15);
-  }
-
-  .organism-icon {
-    @apply w-16 h-16 mx-auto mb-4 rounded-2xl;
-    @apply flex items-center justify-center;
-    @apply bg-accent/10 text-accent;
-    @apply transition-all duration-300;
-  }
-
-  .organism-card:hover .organism-icon {
-    @apply bg-accent/20 scale-110;
-  }
-
-  .organism-title {
-    @apply text-lg font-bold text-ink mb-3;
-  }
-
-  .organism-desc {
-    @apply text-muted text-sm leading-relaxed;
-  }
-
-  /* ========================================
-     Research Story Section
-     ======================================== */
-  .research-story {
-    @apply grid lg:grid-cols-2 gap-10 lg:gap-16 items-center max-w-6xl mx-auto;
-  }
-
-  .research-story-image {
-    @apply rounded-2xl overflow-hidden;
-    @apply border border-line/50;
-  }
-
-  .research-story-image img {
-    @apply w-full h-auto;
-    aspect-ratio: 4 / 3;
-    object-fit: cover;
-  }
-
-  .research-story-content h2,
-  .research-story-content h3 {
-    @apply text-ink;
-  }
-
-  /* Reversed layout for alternating stories */
-  .research-story-reverse {
-    @apply grid lg:grid-cols-2 gap-10 lg:gap-16 items-center max-w-6xl mx-auto;
-  }
-
-  @media (min-width: 1024px) {
-    .research-story-reverse .research-story-image {
-      order: 2;
-    }
-    .research-story-reverse .research-story-content {
-      order: 1;
-    }
-  }
-
-  /* ========================================
-     Light Mode Stat Cards (for bg-surface)
-     ======================================== */
-  .stats-grid-light {
-    @apply grid grid-cols-2 gap-4 lg:gap-5;
-  }
-
-  .stat-card-light {
-    @apply relative bg-surface-card border border-line/50 rounded-2xl;
-    @apply p-6 lg:p-7 text-center;
-    @apply transition-all duration-300 ease-out;
-  }
-
-  .stat-card-light:hover {
-    @apply -translate-y-1;
-    border-color: rgba(56, 189, 248, 0.3);
-    box-shadow: 0 12px 24px -8px rgba(0, 0, 0, 0.15);
-  }
-
-  .stat-number-light {
-    @apply text-4xl lg:text-5xl font-black text-accent;
-    @apply inline;
-  }
-
-  .stat-suffix-light {
-    @apply text-xl lg:text-2xl font-bold text-accent/70 ml-0.5;
-  }
-
-  .stat-label-light {
     @apply block text-xs font-semibold text-muted uppercase tracking-wider mt-2;
   }
 
-  /* ========================================
-     Light Mode PI Card (for bg-surface)
-     ======================================== */
-  .pi-card-light {
-    display: flex;
-    align-items: center;
-    gap: 0.875rem;
-    padding: 0.75rem 1rem;
-    background: rgba(30, 41, 59, 0.05);
-    border: 1px solid rgba(30, 41, 59, 0.1);
-    border-radius: 0.75rem;
-    text-decoration: none;
-    transition: all 0.2s ease;
-    margin-bottom: 0;
+  /* ============================================
+     CTA Section
+     ============================================ */
+  .cta-bg {
+    @apply absolute inset-0 overflow-hidden;
   }
 
-  .pi-card-light:hover {
-    background: rgba(30, 41, 59, 0.08);
-    border-color: rgba(56, 189, 248, 0.3);
+  .cta-orb {
+    @apply absolute rounded-full;
+    filter: blur(100px);
   }
 
-  .pi-photo-light {
-    width: 48px;
-    height: 48px;
-    border-radius: 50%;
-    object-fit: cover;
-    border: 2px solid rgba(56, 189, 248, 0.3);
-    flex-shrink: 0;
+  .cta-orb-1 {
+    @apply w-[400px] h-[400px] top-0 left-1/4;
+    background: radial-gradient(circle, rgba(56, 189, 248, 0.15), transparent 70%);
   }
 
-  .pi-info-light {
-    display: flex;
-    flex-direction: column;
-    gap: 0.125rem;
-    flex: 1;
-    min-width: 0;
+  .cta-orb-2 {
+    @apply w-[350px] h-[350px] bottom-0 right-1/4;
+    background: radial-gradient(circle, rgba(45, 212, 191, 0.12), transparent 70%);
   }
 
-  .pi-name-light {
-    font-size: 0.875rem;
-    font-weight: 700;
-    color: #1e293b;
+  .cta-grid {
+    @apply grid md:grid-cols-2 gap-6 lg:gap-8;
   }
 
-  .pi-title-light {
-    font-size: 0.6875rem;
-    font-weight: 600;
-    color: #38bdf8;
-    text-transform: uppercase;
-    letter-spacing: 0.03em;
+  .cta-card {
+    @apply relative p-8 md:p-10 rounded-2xl overflow-hidden;
   }
 
-  .pi-bio-light {
-    font-size: 0.75rem;
-    color: rgba(100, 116, 139, 0.8);
-    line-height: 1.4;
-    display: -webkit-box;
-    -webkit-line-clamp: 2;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
+  .cta-card-join {
+    @apply border border-accent/30;
+    background: linear-gradient(135deg, rgba(56, 189, 248, 0.1) 0%, rgba(56, 189, 248, 0.02) 100%);
   }
 
-  .pi-arrow-light {
-    width: 1rem;
-    height: 1rem;
-    color: rgba(56, 189, 248, 0.4);
-    flex-shrink: 0;
-    transition: all 0.2s ease;
+  .cta-card-join::before {
+    content: '';
+    @apply absolute inset-0 opacity-30;
+    background: radial-gradient(circle at top right, rgba(56, 189, 248, 0.2), transparent 50%);
   }
 
-  .pi-card-light:hover .pi-arrow-light {
-    color: #38bdf8;
-    transform: translateX(3px);
+  .cta-card-funder {
+    @apply border border-accent-2/30;
+    background: linear-gradient(135deg, rgba(45, 212, 191, 0.1) 0%, rgba(45, 212, 191, 0.02) 100%);
   }
 
-  /* ========================================
-     Reduced motion
-     ======================================== */
+  .cta-card-funder::before {
+    content: '';
+    @apply absolute inset-0 opacity-30;
+    background: radial-gradient(circle at top right, rgba(45, 212, 191, 0.2), transparent 50%);
+  }
+
+  .cta-card-content {
+    @apply relative z-10 text-center;
+  }
+
+  .cta-eyebrow {
+    @apply inline-block text-xs font-bold uppercase tracking-[0.2em] text-accent mb-4;
+  }
+
+  .cta-eyebrow-alt {
+    @apply text-accent-2;
+  }
+
+  .cta-title {
+    @apply text-2xl md:text-3xl font-black text-white mb-4;
+  }
+
+  .cta-desc {
+    @apply text-white/60 mb-6 max-w-md mx-auto;
+  }
+
+  .btn-cta-primary {
+    @apply inline-flex items-center gap-2 px-6 py-3;
+    @apply bg-accent text-white font-bold text-sm;
+    @apply rounded-full no-underline;
+    @apply transition-all duration-300;
+  }
+
+  .btn-cta-primary:hover {
+    @apply bg-accent/90 gap-3;
+    transform: translateY(-2px);
+  }
+
+  .btn-cta-secondary {
+    @apply inline-flex items-center gap-2 px-6 py-3;
+    @apply text-white font-bold text-sm;
+    @apply border-2 border-accent-2/50 rounded-full no-underline;
+    @apply transition-all duration-300;
+  }
+
+  .btn-cta-secondary:hover {
+    @apply border-accent-2 bg-accent-2/10 gap-3;
+  }
+
+  /* ============================================
+     Buttons
+     ============================================ */
+  .btn-primary {
+    @apply inline-flex items-center gap-2 px-5 py-2.5;
+    @apply bg-accent text-white font-bold text-sm;
+    @apply rounded-lg no-underline;
+    @apply transition-all duration-200;
+  }
+
+  .btn-primary:hover {
+    @apply bg-accent/90;
+    transform: translateY(-1px);
+  }
+
+  .btn-outline-light {
+    @apply inline-flex items-center gap-2 px-5 py-2.5;
+    @apply text-white font-bold text-sm;
+    @apply border border-white/30 rounded-lg no-underline;
+    @apply transition-all duration-200;
+  }
+
+  .btn-outline-light:hover {
+    @apply border-white/60 bg-white/10 gap-3;
+  }
+
+  /* ============================================
+     Responsive Adjustments
+     ============================================ */
+  @media (max-width: 768px) {
+    .hero-content {
+      padding-top: 7rem;
+      padding-bottom: 8rem;
+    }
+
+    .hero-title {
+      @apply text-4xl;
+    }
+
+    .hero-stats {
+      @apply gap-4;
+    }
+
+    .stat-value {
+      @apply text-xl;
+    }
+
+    .scroll-indicator {
+      @apply bottom-6;
+    }
+
+    .pillars-grid {
+      @apply gap-4;
+    }
+
+    .system-card {
+      min-height: 360px;
+    }
+  }
+
+  /* ============================================
+     Reduced Motion
+     ============================================ */
   @media (prefers-reduced-motion: reduce) {
-    .hero-content,
-    .hero-scroll-cue {
+    .hero-image {
+      animation: none;
+      transform: scale(1);
+    }
+
+    .particle {
+      animation: none;
+    }
+
+    .badge-dot {
+      animation: none;
+    }
+
+    .title-accent {
+      animation: none;
+    }
+
+    .scroll-indicator {
       animation: none;
       opacity: 1;
     }
 
-    .hero-scroll-cue svg {
+    .scroll-dot {
       animation: none;
     }
 
-    .blob {
+    .resilience-orb-1,
+    .resilience-orb-2 {
       animation: none;
     }
 
-    .ecosystem-card-image img,
-    .news-card-image img,
-    .study-card-image img {
-      transition: none;
-    }
-
+    .system-card,
     .pillar-card,
-    .ecosystem-card,
+    .organism-card,
     .news-card,
     .stat-card,
-    .study-card {
+    .pi-card {
       transition: none;
     }
 
-    .pillar-icon,
-    .pillar-icon svg {
-      animation: none;
+    .card-media img,
+    .organism-visual img,
+    .news-image img {
+      transition: none;
     }
   }
 </style>
@@ -1542,8 +1415,8 @@ const formatDate = (dateStr: string) => {
 <script>
   // Parallax effect for hero
   const initParallax = () => {
-    const parallaxBg = document.querySelector('.parallax-bg') as HTMLElement;
-    if (!parallaxBg) return;
+    const heroImage = document.querySelector('.hero-image') as HTMLElement;
+    if (!heroImage) return;
 
     let ticking = false;
 
@@ -1551,8 +1424,8 @@ const formatDate = (dateStr: string) => {
       if (!ticking) {
         requestAnimationFrame(() => {
           const scrolled = window.scrollY;
-          const rate = scrolled * 0.35;
-          parallaxBg.style.transform = `translateY(${rate}px)`;
+          const rate = scrolled * 0.3;
+          heroImage.style.transform = `scale(1) translateY(${rate}px)`;
           ticking = false;
         });
         ticking = true;
@@ -1572,7 +1445,6 @@ const formatDate = (dateStr: string) => {
           if (entry.isIntersecting) {
             const el = entry.target as HTMLElement;
             const target = parseInt(el.dataset.target || '0', 10);
-            // Reset to 0 before animating
             el.textContent = '0';
             animateCount(el, target);
             observer.unobserve(el);
@@ -1582,7 +1454,7 @@ const formatDate = (dateStr: string) => {
       { threshold: 0.5 }
     );
 
-    document.querySelectorAll('.stat-number[data-target], .stat-number-light[data-target]').forEach((el) => {
+    document.querySelectorAll('.stat-number[data-target]').forEach((el) => {
       observer.observe(el);
     });
   };
@@ -1594,8 +1466,6 @@ const formatDate = (dateStr: string) => {
     const update = (currentTime: number) => {
       const elapsed = currentTime - start;
       const progress = Math.min(elapsed / duration, 1);
-
-      // Smooth easing
       const eased = 1 - Math.pow(1 - progress, 4);
       const current = Math.round(eased * target);
 
