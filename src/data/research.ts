@@ -41,12 +41,14 @@ export const studySystems: StudySystem[] = [
     heroImage: '/images/cauliflower-coral-damselfish-reef.jpeg',
     description: `Coral reefs are among the most biodiverse ecosystems on Earth, yet they face unprecedented threats from climate change, ocean acidification, and local stressors. Our research combines long-term field experiments in French Polynesia with mathematical models to understand what drives coral reef resilience and recovery.
 
-We work at the Moorea Coral Reef Long Term Ecological Research (MCR LTER) site, studying how coral-associated fishes and invertebrates influence coral health, how disturbance legacies affect recovery trajectories, and how predator-prey interactions structure reef communities.`,
+We work at the Moorea Coral Reef Long Term Ecological Research (MCR LTER) site, studying how coral-associated fishes and invertebrates influence coral health, how disturbance legacies affect recovery trajectories, and how predator-prey interactions structure reef communities. Our work spans from the molecular mechanisms of coral-fish mutualisms to the ecosystem-scale dynamics of reef recovery after bleaching events.`,
     questions: [
       'How do coral-associated fishes and invertebrates benefit coral health and resilience?',
       'What role do guard crabs play in protecting corals from predators and competitors?',
       'How do disturbance legacies (like dead coral skeletons) affect reef recovery?',
       'How do predators structure coral reef fish communities?',
+      'Can fish-derived nutrients help corals resist or recover from bleaching?',
+      'Why do remote reefs show similar vulnerability to climate change as reefs near human populations?',
     ],
     findings: [
       {
@@ -63,6 +65,21 @@ We work at the Moorea Coral Reef Long Term Ecological Research (MCR LTER) site, 
         title: 'Dead coral structures can trap reefs',
         summary: 'Standing dead coral skeletons left after disturbance can promote regime shifts.',
         detail: 'Our mathematical models show that structure-retaining disturbances can push reefs toward tipping points by providing substrate for algal competitors (Kopecky et al. 2023, Ecology).',
+      },
+      {
+        title: 'Fish nutrients can backfire during bleaching',
+        summary: 'The same fish waste that boosts coral growth may increase bleaching vulnerability.',
+        detail: 'Dynamic energy budget modeling shows fish-derived nitrogen can enhance coral growth under normal conditions, but may exacerbate bleaching response under thermal stress (Detmer et al. 2022, Journal of Theoretical Biology).',
+      },
+      {
+        title: 'Remoteness offers no climate refuge',
+        summary: 'Isolated reefs are not more resilient to climate change than those near human populations.',
+        detail: 'Analysis across global reef sites found no relationship between human influence and coral resistance to disturbance, challenging the assumption that remote reefs are natural refugia (Baumann et al. 2022, Global Change Biology).',
+      },
+      {
+        title: '3D imaging reveals hidden coral dynamics',
+        summary: 'Photogrammetry provides more accurate measurements of coral growth and biodiversity.',
+        detail: 'Traditional measurements miss or reverse growth patterns that 3D photogrammetry captures, improving our ability to predict which corals support the most diverse communities (Curtis et al. 2023, Coral Reefs).',
       },
     ],
     gallery: [
@@ -86,11 +103,41 @@ We work at the Moorea Coral Reef Long Term Ecological Research (MCR LTER) site, 
         alt: 'Dead coral skeleton covered in algae',
         caption: 'Standing dead coral structures can promote regime shifts to algae-dominated states',
       },
+      {
+        src: '/images/coral-guard-crab-red-spotted-macro.jpeg',
+        alt: 'Red-spotted coral guard crab in macro detail',
+        caption: 'Guard crabs have evolved specialized claws for defending their coral homes',
+      },
+      {
+        src: '/images/butterflyfish-eating-coral.jpeg',
+        alt: 'Butterflyfish feeding on coral polyps',
+        caption: 'Corallivorous fish like butterflyfish are natural predators that guard crabs defend against',
+      },
+      {
+        src: '/images/bleach-coral.jpeg',
+        alt: 'Bleached coral showing white skeleton',
+        caption: 'Climate-driven bleaching events are increasingly threatening coral reefs worldwide',
+      },
+      {
+        src: '/images/hawkfish-on-coral.jpeg',
+        alt: 'Hawkfish perched on branching coral',
+        caption: 'Hawkfish are territorial residents of branching corals that compete with beneficial damselfish',
+      },
+      {
+        src: '/images/blue-green-chromis-coral-school.JPG',
+        alt: 'School of blue-green chromis above coral',
+        caption: 'Schooling planktivorous fish transport nutrients from the water column to coral colonies',
+      },
+      {
+        src: '/images/lionfish-soft-coral.jpeg',
+        alt: 'Invasive lionfish near soft coral',
+        caption: 'Invasive lionfish impact native reef fish populations across the Caribbean',
+      },
     ],
     fieldSite: {
       name: 'Moorea Coral Reef LTER',
       location: 'Moorea, French Polynesia',
-      description: 'The MCR LTER site provides long-term data on coral reef dynamics, enabling us to study disturbance, recovery, and species interactions across reef habitats.',
+      description: 'The MCR LTER site provides long-term data on coral reef dynamics, enabling us to study disturbance, recovery, and species interactions across reef habitats. Our research here has tracked reef recovery after major disturbances including cyclones, crown-of-thorns outbreaks, and bleaching events.',
       image: '/images/moorea-mountain-tropical-island-view.jpeg',
       url: 'https://mcr.lternet.edu/',
     },
@@ -102,12 +149,14 @@ We work at the Moorea Coral Reef Long Term Ecological Research (MCR LTER) site, 
     heroImage: '/images/giant-kelp-sunlight-underwater.jpeg',
     description: `Giant kelp forests along the California coast are highly productive ecosystems that support diverse marine life and valuable fisheries. These underwater forests face threats from warming oceans, marine heatwaves, and shifts in species interactions.
 
-We work at the Santa Barbara Coastal Long Term Ecological Research (SBC LTER) site, studying how predator-prey dynamics shape ecosystem structure. Our research focuses on the interactions between spiny lobsters, sea urchins, and kelp, using field experiments, long-term monitoring data, and population models to understand ecosystem dynamics and inform fisheries management.`,
+We work at the Santa Barbara Coastal Long Term Ecological Research (SBC LTER) site, studying how predator-prey dynamics shape ecosystem structure. Our research focuses on the interactions between spiny lobsters, sea urchins, and kelp, using field experiments, long-term monitoring data, and population models to understand ecosystem dynamics and inform fisheries management. We combine laboratory experiments on predator physiology with 18+ years of field monitoring to understand how kelp forests resist and recover from disturbance.`,
     questions: [
       'How does lobster body size affect their interactions with urchin prey?',
       'What mechanisms prevent urchins from overgrazing kelp forests?',
       'How do marine protected areas benefit adjacent fisheries through spillover?',
       'How do foundation species like giant kelp promote community stability?',
+      'How does temperature affect lobster metabolism and predation rates?',
+      'Can we predict when kelp forests will tip into urchin barrens?',
     ],
     findings: [
       {
@@ -124,6 +173,21 @@ We work at the Santa Barbara Coastal Long Term Ecological Research (SBC LTER) si
         title: 'Body size drives interaction strength',
         summary: 'Lobster-urchin interactions depend strongly on predator and prey size.',
         detail: 'General size-scaling relationships can predict how strongly lobsters and urchins interact, with variation in body size driving spatial and temporal patterns (DiFiore & Stier 2023, Journal of Animal Ecology).',
+      },
+      {
+        title: 'Temperature sets metabolic limits',
+        summary: 'Lobsters can increase consumption with warming—but only up to a point.',
+        detail: 'At moderate temperatures, lobsters compensate for higher metabolic costs by eating more. But at 26°C, 33% mortality suggests thermal limits that may shift predation patterns as oceans warm (Csik et al. 2023, Frontiers in Marine Science).',
+      },
+      {
+        title: 'Kelp stabilizes entire communities',
+        summary: 'Giant kelp promotes community stability by enhancing biodiversity.',
+        detail: 'An 18-year study showed that kelp forest biomass increases species richness, which in turn stabilizes the entire benthic community over time (Lamy et al. 2020, Ecology).',
+      },
+      {
+        title: 'Wave disturbance structures communities',
+        summary: 'Storm-driven kelp loss cascades through the food web.',
+        detail: 'Variation in how storms affect kelp biomass explains changes in fish, invertebrate, and algal communities, with foundation species loss having predictable community-wide effects (Detmer et al. 2021, Ecology).',
       },
     ],
     gallery: [
@@ -147,11 +211,41 @@ We work at the Santa Barbara Coastal Long Term Ecological Research (SBC LTER) si
         alt: 'Bright orange Garibaldi fish in kelp forest',
         caption: 'Garibaldi and other kelp forest fishes depend on the habitat provided by giant kelp',
       },
+      {
+        src: '/images/california-sheephead-kelp-forest.jpeg',
+        alt: 'California sheephead swimming through kelp forest',
+        caption: 'Sheephead are important predators of urchins that help maintain kelp forest health',
+      },
+      {
+        src: '/images/kelp-forest-fish-school-underwater.jpeg',
+        alt: 'School of fish swimming through kelp forest',
+        caption: 'Kelp forests support diverse fish communities that rely on the habitat structure provided by giant kelp',
+      },
+      {
+        src: '/images/lobster-in-underwater-trap-cage.jpeg',
+        alt: 'Spiny lobster in underwater trap',
+        caption: 'Commercial lobster fishing is supported by spillover from marine protected areas',
+      },
+      {
+        src: '/images/ocean-wave-kelp-breaking.jpeg',
+        alt: 'Ocean wave breaking over kelp canopy',
+        caption: 'Winter storms can remove large amounts of kelp biomass, triggering community-wide changes',
+      },
+      {
+        src: '/images/kelp_canopy.jpg',
+        alt: 'Giant kelp canopy from below',
+        caption: 'The kelp canopy provides habitat for hundreds of species from the seafloor to the surface',
+      },
+      {
+        src: '/images/rock-crab-kelp-tidepool.jpg',
+        alt: 'Rock crab in kelp tidepool',
+        caption: 'Crabs and other invertebrates thrive in the productive kelp forest ecosystem',
+      },
     ],
     fieldSite: {
       name: 'Santa Barbara Coastal LTER',
       location: 'Santa Barbara Channel, California',
-      description: 'The SBC LTER site enables long-term research on kelp forest dynamics, tracking how environmental change and species interactions shape these productive ecosystems.',
+      description: 'The SBC LTER site enables long-term research on kelp forest dynamics, tracking how environmental change and species interactions shape these productive ecosystems. With 18+ years of continuous monitoring, we can detect patterns that shorter studies miss.',
       image: '/images/kelp-hero.jpeg',
       url: 'https://sbclter.msi.ucsb.edu/',
     },

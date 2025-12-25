@@ -19,18 +19,34 @@ const { theme } = Astro.props;
 // Enrich publications with news post data
 const enrichedPubs = enrichPublicationsWithImages(publications, posts);
 
-// Map slug to publication theme
+// Map slug to publication theme and related keywords
 const themeToPublicationMap: Record<string, string> = {
   'coral-reefs': 'Coral',
   'kelp-forests': 'Kelp',
 };
 
+// Keywords for filtering news posts
+const themeToNewsKeywords: Record<string, string[]> = {
+  'coral-reefs': ['coral', 'reef', 'bleaching', 'crab', 'damselfish', 'moorea', 'trapezia', 'guard crab', 'crown-of-thorns', 'corallivory'],
+  'kelp-forests': ['kelp', 'lobster', 'urchin', 'barren', 'california', 'mpa', 'spillover', 'detritus', 'sheephead'],
+};
+
 const publicationTheme = themeToPublicationMap[theme.slug] || theme.title;
+const newsKeywords = themeToNewsKeywords[theme.slug] || [theme.title.toLowerCase()];
 
 // Get related publications (matching theme, sorted by year and citations)
 const relatedPubs = enrichedPubs
   .filter(pub => pub.themes.some(t => t.toLowerCase().includes(publicationTheme.toLowerCase())))
   .sort((a, b) => b.year - a.year || (b.citationCount || 0) - (a.citationCount || 0))
+  .slice(0, 6);
+
+// Get related news posts (matching keywords in title, excerpt, or tags)
+const relatedNews = posts
+  .filter(post => {
+    const searchText = `${post.title} ${post.excerpt} ${post.tags.join(' ')}`.toLowerCase();
+    return newsKeywords.some(keyword => searchText.includes(keyword.toLowerCase()));
+  })
+  .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
   .slice(0, 6);
 
 const breadcrumbs = [
@@ -416,6 +432,56 @@ const isCoral = theme.slug === 'coral-reefs';
         <div class="text-center mt-12 scroll-reveal">
           <a href="/publications" class="btn-view-all">
             <span>View All Publications</span>
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+            </svg>
+          </a>
+        </div>
+      </div>
+    </section>
+  )}
+
+  <!-- ============================================
+       RELATED NEWS SECTION
+       ============================================ -->
+  {relatedNews.length > 0 && (
+    <section class="section-news">
+      <div class="container">
+        <div class="section-header scroll-reveal">
+          <span class="section-eyebrow">Latest Stories</span>
+          <h2 class="section-title">Related <span class="title-gradient">News</span></h2>
+          <p class="section-desc">
+            Read accessible summaries of our latest research in {theme.title.toLowerCase()}.
+          </p>
+        </div>
+
+        <div class="news-grid">
+          {relatedNews.map((post, i) => (
+            <a href={`/news/${post.slug}`} class={`news-card scroll-reveal stagger-${(i % 3) + 1}`}>
+              <div class="news-image">
+                <img src={post.featuredImage} alt="" loading="lazy" />
+                <div class="news-image-overlay"></div>
+                <div class={`news-date-badge ${isCoral ? 'coral-badge' : 'kelp-badge'}`}>
+                  {new Date(post.date).toLocaleDateString('en-US', { month: 'short', year: 'numeric' })}
+                </div>
+              </div>
+              <div class="news-content">
+                <h3 class="news-title">{post.title}</h3>
+                <p class="news-excerpt">{post.excerpt.slice(0, 120)}...</p>
+                <span class={`news-read-more ${isCoral ? 'coral-link' : 'kelp-link'}`}>
+                  Read More
+                  <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                  </svg>
+                </span>
+              </div>
+            </a>
+          ))}
+        </div>
+
+        <div class="text-center mt-12 scroll-reveal">
+          <a href="/news" class="btn-view-all">
+            <span>View All News</span>
             <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
             </svg>
@@ -1152,6 +1218,85 @@ const isCoral = theme.slug === 'coral-reefs';
     @apply bg-accent text-white border-accent;
     transform: translateY(-2px);
     box-shadow: 0 10px 30px rgba(56, 189, 248, 0.3);
+  }
+
+  /* ============================================
+     NEWS SECTION
+     ============================================ */
+  .section-news {
+    @apply py-24 md:py-32 bg-surface;
+  }
+
+  .news-grid {
+    @apply grid md:grid-cols-2 lg:grid-cols-3 gap-6;
+  }
+
+  .news-card {
+    @apply flex flex-col rounded-2xl overflow-hidden;
+    @apply bg-surface-card/50 backdrop-blur-sm border border-line/50;
+    @apply no-underline;
+    transition: all 400ms ease;
+  }
+
+  .news-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.4);
+    @apply border-accent/30;
+  }
+
+  .news-image {
+    @apply relative aspect-[16/9] overflow-hidden;
+  }
+
+  .news-image img {
+    @apply w-full h-full object-cover;
+    transition: transform 600ms ease;
+  }
+
+  .news-card:hover .news-image img {
+    transform: scale(1.1);
+  }
+
+  .news-image-overlay {
+    @apply absolute inset-0;
+    background: linear-gradient(180deg, transparent 50%, rgba(15, 23, 42, 0.6) 100%);
+  }
+
+  .news-date-badge {
+    @apply absolute top-3 left-3;
+    @apply px-3 py-1 rounded-full;
+    @apply text-xs font-bold text-white;
+  }
+
+  .news-content {
+    @apply flex flex-col flex-1 p-5;
+  }
+
+  .news-title {
+    @apply text-base font-bold text-ink mb-2 line-clamp-2;
+  }
+
+  .news-excerpt {
+    @apply text-sm text-muted mb-4 line-clamp-2 flex-1;
+  }
+
+  .news-read-more {
+    @apply inline-flex items-center gap-1.5 text-sm font-medium;
+    transition: all 200ms ease;
+  }
+
+  .news-read-more.coral-link { @apply text-orange-400; }
+  .news-read-more.kelp-link { @apply text-teal-400; }
+
+  .news-card:hover .news-read-more.coral-link { @apply text-orange-300; }
+  .news-card:hover .news-read-more.kelp-link { @apply text-teal-300; }
+
+  .news-card:hover .news-read-more svg {
+    transform: translateX(4px);
+  }
+
+  .news-read-more svg {
+    transition: transform 200ms ease;
   }
 
   /* ============================================
