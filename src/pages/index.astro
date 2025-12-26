@@ -32,24 +32,13 @@ const formatDate = (dateStr: string) => {
       <div class="hero-grain"></div>
     </div>
 
-    <!-- Floating credential badges -->
-    <div class="hero-credentials">
-      <div class="credential-badge">
-        <span class="credential-number">75+</span>
-        <span class="credential-label">Publications</span>
-      </div>
-      <div class="credential-badge">
-        <span class="credential-number">2</span>
-        <span class="credential-label">LTER Sites</span>
-      </div>
-    </div>
 
     <div class="hero-content">
       <div class="container">
         <!-- Editorial masthead -->
         <div class="hero-masthead scroll-reveal">
           <div class="masthead-line"></div>
-          <span class="masthead-text">UC Santa Barbara · Marine Science Institute</span>
+          <span class="masthead-text">UC Santa Barbara</span>
           <div class="masthead-line"></div>
         </div>
 
@@ -693,44 +682,6 @@ const formatDate = (dateStr: string) => {
   .hero-grain {
     @apply absolute inset-0 pointer-events-none opacity-[0.04];
     background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
-  }
-
-  /* Credential badges */
-  .hero-credentials {
-    @apply absolute top-24 right-8 lg:right-16 hidden lg:flex flex-col gap-3 z-20;
-  }
-
-  .credential-badge {
-    @apply flex flex-col items-center px-5 py-4;
-    @apply bg-white/[0.08] backdrop-blur-md rounded-2xl;
-    @apply border border-white/10;
-    animation: fadeSlideIn 0.8s ease-out forwards;
-    animation-delay: 1s;
-    opacity: 0;
-  }
-
-  .credential-badge:nth-child(2) {
-    animation-delay: 1.2s;
-  }
-
-  @keyframes fadeSlideIn {
-    from {
-      opacity: 0;
-      transform: translateX(20px);
-    }
-    to {
-      opacity: 1;
-      transform: translateX(0);
-    }
-  }
-
-  .credential-number {
-    @apply text-3xl font-black text-white;
-    font-variant-numeric: tabular-nums;
-  }
-
-  .credential-label {
-    @apply text-[10px] font-bold uppercase tracking-[0.15em] text-white/50;
   }
 
   .hero-content {
@@ -1843,11 +1794,6 @@ const formatDate = (dateStr: string) => {
     .hero-image {
       animation: none;
       transform: scale(1);
-    }
-
-    .credential-badge {
-      animation: none;
-      opacity: 1;
     }
 
     .scroll-cue {
