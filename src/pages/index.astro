@@ -63,9 +63,9 @@ const formatDate = (dateStr: string) => {
             <span class="tagline-accent">Designing recovery.</span>
           </p>
 
-          <!-- Brief description -->
+          <!-- Brief description + impact statement -->
           <p class="hero-desc scroll-reveal stagger-3">
-            We study coral reefs and kelp forests to identify the mechanisms that control resistance, recovery, and reorganization.
+            We identify why ecosystems fail and what makes restoration succeed—building decision tools managers can use.
           </p>
 
           <!-- CTAs -->
@@ -76,13 +76,32 @@ const formatDate = (dateStr: string) => {
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
               </svg>
             </a>
-            <a href="/join" class="btn-hero-secondary">
+            <a href="/join-us" class="btn-hero-secondary">
               <span>Join the Lab</span>
             </a>
           </div>
 
+          <!-- Audience micro-CTAs -->
+          <div class="hero-audience scroll-reveal stagger-4">
+            <a href="/for-funders" class="audience-link">For Funders</a>
+            <span class="audience-divider">|</span>
+            <a href="/join-us" class="audience-link">For Students</a>
+            <span class="audience-divider">|</span>
+            <a href="mailto:adrian.stier@lifesci.ucsb.edu?subject=Partnership%20Inquiry" class="audience-link">For Partners</a>
+          </div>
+
+          <!-- Credibility markers -->
+          <div class="hero-trust scroll-reveal stagger-5">
+            <span class="trust-label">Funded by</span>
+            <span class="trust-item">NSF</span>
+            <span class="trust-divider">•</span>
+            <span class="trust-item">NOAA</span>
+            <span class="trust-divider">•</span>
+            <span class="trust-item">Long Term Ecological Research Network</span>
+          </div>
+
           <!-- Quick stats -->
-          <div class="hero-stats scroll-reveal stagger-5">
+          <div class="hero-stats scroll-reveal stagger-6">
             <div class="hero-stat">
               <span class="stat-value">75+</span>
               <span class="stat-label">Publications</span>
@@ -136,18 +155,26 @@ const formatDate = (dateStr: string) => {
         <a href="/research/coral-reefs" class="system-card system-card-coral scroll-reveal stagger-1">
           <div class="card-media">
             <img src="/images/cauliflower-coral-damselfish-reef.jpeg" alt="Coral reef ecosystem in Mo'orea" loading="lazy" />
-            <div class="card-gradient"></div>
+            <div class="card-gradient card-gradient-coral"></div>
           </div>
           <div class="card-content">
-            <div class="card-location">
+            <div class="card-location card-location-coral">
               <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
               </svg>
               <span>Mo'orea, French Polynesia</span>
             </div>
             <h3 class="card-title">Coral Reefs</h3>
-            <p class="card-desc">Slow, chronic failure. Coral fate depends on wound healing and regeneration at the colony level. We study how individual capacities aggregate into population recovery.</p>
-            <div class="card-cta">
+            <div class="failure-mode failure-mode-coral">
+              <span class="failure-label">Failure mode:</span>
+              <span class="failure-chip">Slow & chronic</span>
+            </div>
+            <ul class="card-bullets">
+              <li>Wound healing at colony level</li>
+              <li>Regeneration capacity</li>
+              <li>Individual → population recovery</li>
+            </ul>
+            <div class="card-cta card-cta-coral">
               <span>Explore research</span>
               <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
@@ -161,18 +188,26 @@ const formatDate = (dateStr: string) => {
         <a href="/research/kelp-forests" class="system-card system-card-kelp scroll-reveal stagger-2">
           <div class="card-media">
             <img src="/images/giant-kelp-sunlight-underwater.jpeg" alt="Kelp forest ecosystem in Santa Barbara" loading="lazy" />
-            <div class="card-gradient"></div>
+            <div class="card-gradient card-gradient-kelp"></div>
           </div>
           <div class="card-content">
-            <div class="card-location">
+            <div class="card-location card-location-kelp">
               <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
               </svg>
               <span>Santa Barbara, California</span>
             </div>
             <h3 class="card-title">Kelp Forests</h3>
-            <p class="card-desc">Fast, nonlinear transitions. Consumer–predator feedbacks can flip forests to barrens in months. We study what governs the tipping point—and what breaks the lock.</p>
-            <div class="card-cta">
+            <div class="failure-mode failure-mode-kelp">
+              <span class="failure-label">Failure mode:</span>
+              <span class="failure-chip">Fast & nonlinear</span>
+            </div>
+            <ul class="card-bullets">
+              <li>Consumer–predator feedbacks</li>
+              <li>Tipping point dynamics</li>
+              <li>Breaking alternative stable states</li>
+            </ul>
+            <div class="card-cta card-cta-kelp">
               <span>Explore research</span>
               <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
@@ -272,6 +307,51 @@ const formatDate = (dateStr: string) => {
     </div>
 
     <WaveDivider id="pillars-wave" fillColor="surface" />
+  </section>
+
+  <!-- Mid-page Conversion Band -->
+  <section class="conversion-band">
+    <div class="container">
+      <div class="conversion-grid">
+        <div class="conversion-content">
+          <h2 class="conversion-title">Work With Us</h2>
+          <ul class="conversion-bullets">
+            <li>
+              <svg class="bullet-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+              </svg>
+              <span><strong>Funding opportunities</strong> for conservation science</span>
+            </li>
+            <li>
+              <svg class="bullet-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+              </svg>
+              <span><strong>Mentorship</strong> at all career stages</span>
+            </li>
+            <li>
+              <svg class="bullet-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+              </svg>
+              <span><strong>Field sites</strong> in Mo'orea & Santa Barbara</span>
+            </li>
+          </ul>
+        </div>
+        <div class="conversion-actions">
+          <a href="/for-funders" class="btn-conversion-secondary">
+            <span>Partner With ORL</span>
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+            </svg>
+          </a>
+          <a href="/join-us" class="btn-conversion-primary">
+            <span>Join the Lab</span>
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+            </svg>
+          </a>
+        </div>
+      </div>
+    </div>
   </section>
 
   <!-- Focal Organisms Section -->
@@ -526,12 +606,13 @@ const formatDate = (dateStr: string) => {
 
   .hero-overlay {
     @apply absolute inset-0;
+    /* Strengthened overlay for WCAG AA text contrast */
     background: linear-gradient(
       135deg,
-      rgba(11, 25, 41, 0.92) 0%,
-      rgba(11, 25, 41, 0.8) 40%,
-      rgba(11, 37, 69, 0.6) 70%,
-      rgba(11, 37, 69, 0.4) 100%
+      rgba(11, 25, 41, 0.95) 0%,
+      rgba(11, 25, 41, 0.88) 40%,
+      rgba(11, 37, 69, 0.75) 70%,
+      rgba(11, 37, 69, 0.6) 100%
     );
   }
 
@@ -626,7 +707,41 @@ const formatDate = (dateStr: string) => {
 
   /* Actions */
   .hero-actions {
-    @apply flex flex-wrap items-center gap-4 mb-10;
+    @apply flex flex-wrap items-center gap-4 mb-4;
+  }
+
+  /* Audience micro-CTAs */
+  .hero-audience {
+    @apply flex items-center gap-3 mb-8;
+  }
+
+  .audience-link {
+    @apply text-sm text-white/50 no-underline transition-colors duration-200;
+  }
+
+  .audience-link:hover {
+    @apply text-accent;
+  }
+
+  .audience-divider {
+    @apply text-white/20;
+  }
+
+  /* Credibility trust markers */
+  .hero-trust {
+    @apply flex flex-wrap items-center gap-2 mb-8;
+  }
+
+  .trust-label {
+    @apply text-xs font-bold uppercase tracking-wide text-white/50 mr-1;
+  }
+
+  .trust-item {
+    @apply text-sm font-semibold text-white/70;
+  }
+
+  .trust-divider {
+    @apply text-white/30;
   }
 
   .btn-hero-primary {
@@ -815,30 +930,111 @@ const formatDate = (dateStr: string) => {
     );
   }
 
+  /* Coral: warm tint overlay */
+  .card-gradient-coral {
+    background: linear-gradient(
+      to top,
+      rgba(30, 20, 15, 0.98) 0%,
+      rgba(30, 20, 15, 0.85) 40%,
+      rgba(30, 20, 15, 0.3) 70%,
+      transparent 100%
+    );
+  }
+
+  /* Kelp: cooler tint overlay */
+  .card-gradient-kelp {
+    background: linear-gradient(
+      to top,
+      rgba(15, 30, 25, 0.98) 0%,
+      rgba(15, 30, 25, 0.85) 40%,
+      rgba(15, 30, 25, 0.3) 70%,
+      transparent 100%
+    );
+  }
+
   .card-content {
     @apply absolute bottom-0 left-0 right-0 p-6 md:p-8;
   }
 
   .card-location {
-    @apply inline-flex items-center gap-1.5 text-accent-2 text-xs font-bold uppercase tracking-wider mb-3;
+    @apply inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider mb-3;
+  }
+
+  .card-location-coral {
+    color: #fb923c;
+  }
+
+  .card-location-kelp {
+    color: #4ade80;
   }
 
   .card-title {
-    @apply text-2xl md:text-3xl font-black text-white mb-3;
+    @apply text-2xl md:text-3xl font-black text-white mb-2;
     transition: color 300ms ease;
   }
 
-  .system-card:hover .card-title {
-    @apply text-accent;
+  .system-card-coral:hover .card-title {
+    color: #fb923c;
   }
 
-  .card-desc {
-    @apply text-white/70 text-sm leading-relaxed mb-4;
+  .system-card-kelp:hover .card-title {
+    color: #4ade80;
+  }
+
+  /* Failure mode chips */
+  .failure-mode {
+    @apply flex items-center gap-2 mb-3;
+  }
+
+  .failure-label {
+    @apply text-xs text-white/50 font-medium uppercase tracking-wide;
+  }
+
+  .failure-chip {
+    @apply text-xs font-bold px-2 py-0.5 rounded-full;
+  }
+
+  .failure-mode-coral .failure-chip {
+    @apply bg-orange-500/20 text-orange-300;
+  }
+
+  .failure-mode-kelp .failure-chip {
+    @apply bg-green-500/20 text-green-300;
+  }
+
+  /* Card bullets */
+  .card-bullets {
+    @apply space-y-1.5 mb-4;
+  }
+
+  .card-bullets li {
+    @apply text-white/70 text-sm leading-snug pl-4 relative;
+  }
+
+  .card-bullets li::before {
+    content: '→';
+    @apply absolute left-0 text-white/40;
+  }
+
+  .system-card-coral .card-bullets li::before {
+    color: #fb923c;
+  }
+
+  .system-card-kelp .card-bullets li::before {
+    color: #4ade80;
   }
 
   .card-cta {
-    @apply inline-flex items-center gap-2 text-accent text-sm font-bold;
+    @apply inline-flex items-center gap-2 text-sm font-bold;
     transition: gap 300ms ease;
+  }
+
+  .card-cta-coral {
+    color: #fb923c;
+  }
+
+  .card-cta-kelp {
+    color: #4ade80;
   }
 
   .system-card:hover .card-cta {
@@ -855,6 +1051,17 @@ const formatDate = (dateStr: string) => {
 
   .card-accent-kelp {
     background: linear-gradient(90deg, #22c55e, #4ade80, #86efac);
+  }
+
+  /* Distinct hover effects */
+  .system-card-coral:hover {
+    border-color: rgba(251, 146, 60, 0.4);
+    box-shadow: 0 30px 60px -12px rgba(0, 0, 0, 0.3), 0 0 40px rgba(251, 146, 60, 0.15);
+  }
+
+  .system-card-kelp:hover {
+    border-color: rgba(74, 222, 128, 0.4);
+    box-shadow: 0 30px 60px -12px rgba(0, 0, 0, 0.3), 0 0 40px rgba(74, 222, 128, 0.15);
   }
 
   /* ============================================
@@ -890,6 +1097,72 @@ const formatDate = (dateStr: string) => {
   .resilience-mesh {
     @apply absolute inset-0 opacity-[0.03];
     background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%2338bdf8' fill-opacity='1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+  }
+
+  /* ============================================
+     Conversion Band
+     ============================================ */
+  .conversion-band {
+    @apply py-12 md:py-16;
+    background: linear-gradient(135deg, rgba(56, 189, 248, 0.08) 0%, rgba(45, 212, 191, 0.08) 100%);
+    border-top: 1px solid rgba(56, 189, 248, 0.2);
+    border-bottom: 1px solid rgba(45, 212, 191, 0.2);
+  }
+
+  .conversion-grid {
+    @apply flex flex-col md:flex-row items-center justify-between gap-8;
+  }
+
+  .conversion-content {
+    @apply flex-1;
+  }
+
+  .conversion-title {
+    @apply text-2xl md:text-3xl font-black text-ink mb-4;
+  }
+
+  .conversion-bullets {
+    @apply space-y-3;
+  }
+
+  .conversion-bullets li {
+    @apply flex items-start gap-3 text-muted;
+  }
+
+  .bullet-icon {
+    @apply w-5 h-5 text-accent flex-shrink-0 mt-0.5;
+  }
+
+  .conversion-bullets strong {
+    @apply text-ink font-semibold;
+  }
+
+  .conversion-actions {
+    @apply flex flex-col sm:flex-row gap-4;
+  }
+
+  .btn-conversion-primary {
+    @apply inline-flex items-center gap-2 px-6 py-3;
+    @apply bg-accent text-white font-bold text-sm;
+    @apply rounded-full no-underline;
+    @apply transition-all duration-300;
+    @apply shadow-lg shadow-accent/25;
+  }
+
+  .btn-conversion-primary:hover {
+    @apply bg-accent/90 gap-3;
+    transform: translateY(-2px);
+  }
+
+  .btn-conversion-secondary {
+    @apply inline-flex items-center gap-2 px-6 py-3;
+    @apply bg-accent-2/10 text-accent-2 font-bold text-sm;
+    @apply border border-accent-2/30 rounded-full no-underline;
+    @apply transition-all duration-300;
+  }
+
+  .btn-conversion-secondary:hover {
+    @apply bg-accent-2/20 border-accent-2/50 gap-3;
   }
 
   /* ============================================
