@@ -24,7 +24,7 @@ const formatDate = (dateStr: string) => {
   description="Research lab at UC Santa Barbara studying coral reef and kelp forest resilience. We trace the mechanisms of resistance, recovery, and reorganization to make restoration predictable."
   keywords={['Ocean Recoveries Lab', 'coral reef research', 'kelp forest ecology', 'marine conservation', 'UC Santa Barbara', 'Adrian Stier', 'ecosystem resilience']}
 >
-  <!-- Hero Section - Editorial Magazine Style -->
+  <!-- Hero Section - Scientific Editorial Style -->
   <section class="hero">
     <div class="hero-media">
       <div class="hero-image" style="background-image: url('/images/coral-reef-panorama-anthias-fish.jpeg');"></div>
@@ -32,147 +32,121 @@ const formatDate = (dateStr: string) => {
       <div class="hero-grain"></div>
     </div>
 
-    <!-- Decorative elements - simplified -->
-    <div class="hero-decorative" aria-hidden="true">
-      <div class="hero-corner hero-corner-tl"></div>
+    <!-- Floating credential badges -->
+    <div class="hero-credentials">
+      <div class="credential-badge">
+        <span class="credential-number">75+</span>
+        <span class="credential-label">Publications</span>
+      </div>
+      <div class="credential-badge">
+        <span class="credential-number">2</span>
+        <span class="credential-label">LTER Sites</span>
+      </div>
     </div>
 
     <div class="hero-content">
       <div class="container">
-        <!-- Two-column layout -->
-        <div class="hero-grid">
-          <!-- Left: Main content -->
-          <div class="hero-main">
-            <!-- Institution marker -->
-            <div class="hero-institution scroll-reveal">
-              <div class="institution-line"></div>
-              <span>UC Santa Barbara · Marine Science</span>
-            </div>
+        <!-- Editorial masthead -->
+        <div class="hero-masthead scroll-reveal">
+          <div class="masthead-line"></div>
+          <span class="masthead-text">UC Santa Barbara · Marine Science Institute</span>
+          <div class="masthead-line"></div>
+        </div>
 
-            <!-- Main title -->
-            <h1 class="hero-title scroll-reveal stagger-1">
-              <span class="title-word">Ocean</span>
-              <span class="title-word title-accent">Recoveries</span>
-              <span class="title-word">Lab</span>
-            </h1>
+        <!-- Main title - dramatic editorial treatment -->
+        <div class="hero-title-block">
+          <h1 class="hero-title scroll-reveal stagger-1">
+            <span class="title-line title-line-1">Ocean</span>
+            <span class="title-line title-line-2">
+              <span class="title-serif">Recoveries</span>
+            </span>
+            <span class="title-line title-line-3">Lab</span>
+          </h1>
+        </div>
 
-            <!-- Tagline - Editorial style -->
-            <div class="hero-tagline-block scroll-reveal stagger-2">
-              <p class="hero-tagline">
-                Understanding collapse.<br />
-                <em>Designing recovery.</em>
-              </p>
-            </div>
+        <!-- Tagline with editorial flourish -->
+        <div class="hero-tagline-wrapper scroll-reveal stagger-2">
+          <div class="tagline-accent"></div>
+          <p class="hero-tagline">
+            Understanding <em>collapse</em>.<br />
+            Designing <em>recovery</em>.
+          </p>
+        </div>
 
-            <!-- Value proposition -->
-            <p class="hero-desc scroll-reveal stagger-3">
-              We identify why ecosystems fail and what makes restoration succeed—building decision tools managers can use.
-            </p>
+        <!-- Value proposition -->
+        <p class="hero-desc scroll-reveal stagger-3">
+          We identify why ecosystems fail and what makes restoration succeed—building decision tools managers can use.
+        </p>
 
-            <!-- CTAs -->
-            <div class="hero-actions scroll-reveal stagger-4">
-              <a href="/research" class="btn-hero-primary">
-                <span>Explore Our Research</span>
-                <svg class="btn-arrow" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                </svg>
-              </a>
-              <a href="/join-us" class="btn-hero-secondary">
-                Join the Lab
-              </a>
-            </div>
-          </div>
+        <!-- Actions row -->
+        <div class="hero-actions scroll-reveal stagger-4">
+          <a href="/research" class="btn-editorial-primary">
+            <span class="btn-text">Explore Our Research</span>
+            <span class="btn-icon">
+              <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+              </svg>
+            </span>
+          </a>
+          <a href="/join-us" class="btn-editorial-secondary">Join the Lab</a>
+        </div>
 
-          <!-- Right: Sidebar info - translucent panel for contrast -->
-          <div class="hero-sidebar scroll-reveal stagger-5">
-            <div class="sidebar-panel">
-            <!-- Audience paths -->
-            <div class="sidebar-section">
-              <span class="sidebar-label">Quick Access</span>
-              <nav class="audience-nav">
-                <a href="/for-funders" class="audience-item">
-                  <span class="audience-icon">
-                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" class="w-4 h-4">
-                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                    </svg>
-                  </span>
-                  <span>For Funders</span>
-                </a>
-                <a href="/join-us" class="audience-item">
-                  <span class="audience-icon">
-                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" class="w-4 h-4">
-                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
-                    </svg>
-                  </span>
-                  <span>For Students</span>
-                </a>
-                <a href="mailto:adrian.stier@lifesci.ucsb.edu?subject=Partnership%20Inquiry" class="audience-item">
-                  <span class="audience-icon">
-                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" class="w-4 h-4">
-                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
-                    </svg>
-                  </span>
-                  <span>For Partners</span>
-                </a>
-              </nav>
-            </div>
-
-            <!-- Credibility -->
-            <div class="sidebar-section">
-              <span class="sidebar-label">Funded By</span>
-              <div class="funders-list">
-                <span class="funder">NSF</span>
-                <span class="funder">NOAA</span>
-                <span class="funder">LTER Network</span>
-              </div>
-            </div>
-
-            <!-- Key stat -->
-            <div class="sidebar-stat">
-              <span class="stat-big">75+</span>
-              <span class="stat-context">peer-reviewed publications on reef & kelp dynamics</span>
-            </div>
-
-            <!-- Featured impact -->
-            <div class="sidebar-impact">
-              <span class="sidebar-label">Featured Impact</span>
-              <a href="/publications" class="impact-tile">
-                <div class="impact-icon">
-                  <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" class="w-5 h-5">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
-                  </svg>
-                </div>
-                <div class="impact-text">
-                  <span class="impact-title">LTER Decision Tools</span>
-                  <span class="impact-desc">Predictive models for reef managers</span>
-                </div>
-              </a>
-            </div>
-            </div><!-- close sidebar-panel -->
-          </div>
+        <!-- Quick access cards -->
+        <div class="hero-quick-access scroll-reveal stagger-5">
+          <a href="/for-funders" class="quick-card">
+            <span class="quick-icon">
+              <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+              </svg>
+            </span>
+            <span class="quick-label">For Funders</span>
+          </a>
+          <a href="/join-us" class="quick-card">
+            <span class="quick-icon">
+              <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+              </svg>
+            </span>
+            <span class="quick-label">For Students</span>
+          </a>
+          <a href="mailto:adrian.stier@lifesci.ucsb.edu?subject=Partnership%20Inquiry" class="quick-card">
+            <span class="quick-icon">
+              <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
+              </svg>
+            </span>
+            <span class="quick-label">For Partners</span>
+          </a>
         </div>
       </div>
     </div>
 
-    <!-- Scroll indicator -->
-    <a href="#study-systems" class="scroll-indicator">
-      <span class="scroll-text">Scroll</span>
-      <div class="scroll-line">
-        <div class="scroll-dot"></div>
-      </div>
-    </a>
+    <!-- Scroll cue -->
+    <div class="scroll-cue">
+      <div class="scroll-cue-line"></div>
+      <span class="scroll-cue-text">Scroll to explore</span>
+    </div>
 
     <WaveDivider id="hero-wave" fillColor="surface" />
   </section>
 
-  <!-- Study Systems Section -->
+  <!-- Study Systems Section - Editorial Cards -->
   <section id="study-systems" class="study-systems">
     <div class="container">
-      <!-- Section header -->
-      <div class="section-header scroll-reveal">
-        <span class="section-eyebrow">Our Research Focus</span>
-        <h2 class="section-title">Two Systems,<br /><span class="title-gradient">Two Failure Modes</span></h2>
-        <p class="section-desc">
+      <!-- Section header with editorial treatment -->
+      <div class="section-header-editorial scroll-reveal">
+        <div class="header-rule"></div>
+        <div class="header-content">
+          <span class="section-number">01</span>
+          <div class="header-text">
+            <span class="section-eyebrow">Research Focus</span>
+            <h2 class="section-title-editorial">
+              Two Systems,<br />
+              <span class="title-serif-accent">Two Failure Modes</span>
+            </h2>
+          </div>
+        </div>
+        <p class="section-desc-editorial">
           Kelp forests and coral reefs fail in fundamentally different ways. Comparing how they break reveals which mechanisms generalize—and which interventions transfer.
         </p>
       </div>
@@ -182,72 +156,66 @@ const formatDate = (dateStr: string) => {
         <StudySitesMap client:load />
       </div>
 
-      <!-- Study System Cards -->
-      <div class="systems-grid">
-        <!-- Coral Reefs -->
-        <a href="/research/coral-reefs" class="system-card system-card-coral scroll-reveal stagger-1">
-          <div class="card-media">
+      <!-- Study System Cards - Magazine Layout -->
+      <div class="systems-magazine">
+        <!-- Coral Reefs - Feature Card -->
+        <a href="/research/coral-reefs" class="system-feature system-feature-coral scroll-reveal stagger-1">
+          <div class="feature-image">
             <img src="/images/cauliflower-coral-damselfish-reef.jpeg" alt="Coral reef ecosystem in Mo'orea" loading="lazy" />
-            <div class="card-gradient card-gradient-coral"></div>
+            <div class="feature-overlay"></div>
           </div>
-          <div class="card-content">
-            <div class="card-location card-location-coral">
-              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
-              </svg>
-              <span>Mo'orea, French Polynesia</span>
+          <div class="feature-content">
+            <div class="feature-meta">
+              <span class="feature-location">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                </svg>
+                Mo'orea, French Polynesia
+              </span>
+              <span class="feature-badge feature-badge-coral">Slow & chronic</span>
             </div>
-            <h3 class="card-title">Coral Reefs</h3>
-            <div class="failure-mode failure-mode-coral">
-              <span class="failure-label">Failure mode:</span>
-              <span class="failure-chip">Slow & chronic</span>
-            </div>
-            <ul class="card-bullets">
-              <li>Wound healing at colony level</li>
-              <li>Regeneration capacity</li>
-              <li>Individual → population recovery</li>
-            </ul>
-            <div class="card-cta card-cta-coral">
+            <h3 class="feature-title">Coral Reefs</h3>
+            <p class="feature-excerpt">
+              From wound healing at the colony level to regeneration capacity and individual-to-population recovery dynamics.
+            </p>
+            <div class="feature-cta">
               <span>Explore research</span>
-              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
               </svg>
             </div>
           </div>
-          <div class="card-accent card-accent-coral"></div>
+          <div class="feature-accent"></div>
         </a>
 
-        <!-- Kelp Forests -->
-        <a href="/research/kelp-forests" class="system-card system-card-kelp scroll-reveal stagger-2">
-          <div class="card-media">
+        <!-- Kelp Forests - Feature Card -->
+        <a href="/research/kelp-forests" class="system-feature system-feature-kelp scroll-reveal stagger-2">
+          <div class="feature-image">
             <img src="/images/giant-kelp-sunlight-underwater.jpeg" alt="Kelp forest ecosystem in Santa Barbara" loading="lazy" />
-            <div class="card-gradient card-gradient-kelp"></div>
+            <div class="feature-overlay"></div>
           </div>
-          <div class="card-content">
-            <div class="card-location card-location-kelp">
-              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
-              </svg>
-              <span>Santa Barbara, California</span>
+          <div class="feature-content">
+            <div class="feature-meta">
+              <span class="feature-location">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                </svg>
+                Santa Barbara, California
+              </span>
+              <span class="feature-badge feature-badge-kelp">Fast & nonlinear</span>
             </div>
-            <h3 class="card-title">Kelp Forests</h3>
-            <div class="failure-mode failure-mode-kelp">
-              <span class="failure-label">Failure mode:</span>
-              <span class="failure-chip">Fast & nonlinear</span>
-            </div>
-            <ul class="card-bullets">
-              <li>Consumer–predator feedbacks</li>
-              <li>Tipping point dynamics</li>
-              <li>Breaking alternative stable states</li>
-            </ul>
-            <div class="card-cta card-cta-kelp">
+            <h3 class="feature-title">Kelp Forests</h3>
+            <p class="feature-excerpt">
+              Consumer–predator feedbacks, tipping point dynamics, and breaking alternative stable states in temperate marine systems.
+            </p>
+            <div class="feature-cta">
               <span>Explore research</span>
-              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
               </svg>
             </div>
           </div>
-          <div class="card-accent card-accent-kelp"></div>
+          <div class="feature-accent"></div>
         </a>
       </div>
     </div>
@@ -255,134 +223,137 @@ const formatDate = (dateStr: string) => {
     <WaveDivider id="study-wave" fillColor="navy-deep" />
   </section>
 
-  <!-- Impact Quote Banner -->
-  <section class="impact-banner">
+  <!-- Impact Quote Banner - Editorial Pull Quote -->
+  <section class="quote-banner">
+    <div class="quote-bg">
+      <div class="quote-pattern"></div>
+    </div>
     <div class="container">
-      <div class="impact-quote-block scroll-reveal">
-        <div class="quote-mark" aria-hidden="true">"</div>
-        <blockquote class="impact-quote">
+      <div class="quote-block scroll-reveal">
+        <div class="quote-marks">"</div>
+        <blockquote class="quote-text">
           Understanding why ecosystems collapse—and what makes them recover—is the first step toward restoration that actually works.
         </blockquote>
-        <cite class="quote-attribution">
-          <span class="quote-author">Dr. Adrian Stier</span>
-          <span class="quote-role">Principal Investigator</span>
+        <cite class="quote-citation">
+          <img src="/images/adrian.png" alt="Adrian Stier" class="quote-avatar" />
+          <div class="quote-author">
+            <span class="author-name">Dr. Adrian Stier</span>
+            <span class="author-title">Principal Investigator</span>
+          </div>
         </cite>
       </div>
     </div>
   </section>
 
-  <!-- Resilience Framework Section -->
-  <section class="resilience-section">
-    <div class="resilience-bg">
-      <div class="resilience-orb resilience-orb-1"></div>
-      <div class="resilience-orb resilience-orb-2"></div>
-      <div class="resilience-mesh"></div>
+  <!-- Resilience Framework Section - Scientific Diagram Style -->
+  <section class="framework-section">
+    <div class="framework-bg">
+      <div class="framework-grid-pattern"></div>
+      <div class="framework-orb framework-orb-1"></div>
+      <div class="framework-orb framework-orb-2"></div>
     </div>
 
     <div class="container relative z-10">
-      <div class="section-header scroll-reveal">
-        <span class="section-eyebrow section-eyebrow-light">Our Framework</span>
-        <h2 class="section-title section-title-light">Resilience<br /><span class="title-gradient">Across Scales</span></h2>
-        <p class="section-desc text-white/60">
-          Resilience isn't something ecosystems "have." It emerges from processes at multiple levels—individual, population, and ecosystem—and these levels connect.
+      <div class="section-header-editorial scroll-reveal">
+        <div class="header-rule header-rule-light"></div>
+        <div class="header-content">
+          <span class="section-number section-number-light">02</span>
+          <div class="header-text">
+            <span class="section-eyebrow section-eyebrow-light">Our Framework</span>
+            <h2 class="section-title-editorial section-title-light">
+              Resilience<br />
+              <span class="title-serif-accent">Across Scales</span>
+            </h2>
+          </div>
+        </div>
+        <p class="section-desc-editorial section-desc-light">
+          Resilience isn't something ecosystems "have." It emerges from processes at multiple levels—and these levels connect.
         </p>
       </div>
 
-      <!-- Three Pillars -->
-      <div class="pillars-grid">
+      <!-- Three Pillars - Scientific Cards -->
+      <div class="pillars-scientific">
         <!-- Resistance -->
-        <div class="pillar-card scroll-reveal stagger-1">
-          <div class="pillar-header">
-            <div class="pillar-icon pillar-icon-resistance">
-              <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
-              </svg>
-            </div>
-            <h3 class="pillar-title">Resistance</h3>
+        <div class="pillar-scientific scroll-reveal stagger-1">
+          <div class="pillar-number">R1</div>
+          <div class="pillar-icon-wrap pillar-icon-resistance">
+            <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+            </svg>
           </div>
-          <p class="pillar-tagline">What prevents collapse when disturbance hits</p>
-          <div class="pillar-scales">
-            <div class="scale-item scale-item-1">
-              <span class="scale-dot"></span>
-              <span class="scale-label">Individual</span>
-              <span class="scale-value">stress tolerance</span>
+          <h3 class="pillar-name">Resistance</h3>
+          <p class="pillar-definition">What prevents collapse when disturbance hits</p>
+          <div class="pillar-scales-list">
+            <div class="scale-row">
+              <span class="scale-level">Individual</span>
+              <span class="scale-mechanism">stress tolerance</span>
             </div>
-            <div class="scale-item scale-item-1">
-              <span class="scale-dot"></span>
-              <span class="scale-label">Population</span>
-              <span class="scale-value">spatial refugia</span>
+            <div class="scale-row">
+              <span class="scale-level">Population</span>
+              <span class="scale-mechanism">spatial refugia</span>
             </div>
-            <div class="scale-item scale-item-1">
-              <span class="scale-dot"></span>
-              <span class="scale-label">Ecosystem</span>
-              <span class="scale-value">trophic structure</span>
+            <div class="scale-row">
+              <span class="scale-level">Ecosystem</span>
+              <span class="scale-mechanism">trophic structure</span>
             </div>
           </div>
         </div>
 
         <!-- Recovery -->
-        <div class="pillar-card pillar-card-featured scroll-reveal stagger-2">
-          <div class="pillar-header">
-            <div class="pillar-icon pillar-icon-recovery">
-              <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
-              </svg>
-            </div>
-            <h3 class="pillar-title">Recovery</h3>
+        <div class="pillar-scientific pillar-featured scroll-reveal stagger-2">
+          <div class="pillar-number">R2</div>
+          <div class="pillar-icon-wrap pillar-icon-recovery">
+            <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
+            </svg>
           </div>
-          <p class="pillar-tagline">What controls the speed and reliability of return</p>
-          <div class="pillar-scales">
-            <div class="scale-item scale-item-2">
-              <span class="scale-dot"></span>
-              <span class="scale-label">Individual</span>
-              <span class="scale-value">wound healing</span>
+          <h3 class="pillar-name">Recovery</h3>
+          <p class="pillar-definition">What controls the speed and reliability of return</p>
+          <div class="pillar-scales-list">
+            <div class="scale-row">
+              <span class="scale-level">Individual</span>
+              <span class="scale-mechanism">wound healing</span>
             </div>
-            <div class="scale-item scale-item-2">
-              <span class="scale-dot"></span>
-              <span class="scale-label">Population</span>
-              <span class="scale-value">recruitment</span>
+            <div class="scale-row">
+              <span class="scale-level">Population</span>
+              <span class="scale-mechanism">recruitment</span>
             </div>
-            <div class="scale-item scale-item-2">
-              <span class="scale-dot"></span>
-              <span class="scale-label">Ecosystem</span>
-              <span class="scale-value">succession</span>
+            <div class="scale-row">
+              <span class="scale-level">Ecosystem</span>
+              <span class="scale-mechanism">succession</span>
             </div>
           </div>
         </div>
 
         <!-- Reorganization -->
-        <div class="pillar-card scroll-reveal stagger-3">
-          <div class="pillar-header">
-            <div class="pillar-icon pillar-icon-reorg">
-              <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4" />
-              </svg>
-            </div>
-            <h3 class="pillar-title">Reorganization</h3>
+        <div class="pillar-scientific scroll-reveal stagger-3">
+          <div class="pillar-number">R3</div>
+          <div class="pillar-icon-wrap pillar-icon-reorg">
+            <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4" />
+            </svg>
           </div>
-          <p class="pillar-tagline">What determines the next state when return isn't possible</p>
-          <div class="pillar-scales">
-            <div class="scale-item scale-item-3">
-              <span class="scale-dot"></span>
-              <span class="scale-label">Individual</span>
-              <span class="scale-value">survivor filtering</span>
+          <h3 class="pillar-name">Reorganization</h3>
+          <p class="pillar-definition">What determines the next state when return isn't possible</p>
+          <div class="pillar-scales-list">
+            <div class="scale-row">
+              <span class="scale-level">Individual</span>
+              <span class="scale-mechanism">survivor filtering</span>
             </div>
-            <div class="scale-item scale-item-3">
-              <span class="scale-dot"></span>
-              <span class="scale-label">Population</span>
-              <span class="scale-value">reassembly</span>
+            <div class="scale-row">
+              <span class="scale-level">Population</span>
+              <span class="scale-mechanism">reassembly</span>
             </div>
-            <div class="scale-item scale-item-3">
-              <span class="scale-dot"></span>
-              <span class="scale-label">Ecosystem</span>
-              <span class="scale-value">rewiring</span>
+            <div class="scale-row">
+              <span class="scale-level">Ecosystem</span>
+              <span class="scale-mechanism">rewiring</span>
             </div>
           </div>
         </div>
       </div>
 
-      <div class="section-cta scroll-reveal">
-        <a href="/research" class="btn-outline-light">
+      <div class="framework-cta scroll-reveal">
+        <a href="/research" class="btn-outline-editorial">
           <span>Learn how we do science</span>
           <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
@@ -394,68 +365,42 @@ const formatDate = (dateStr: string) => {
     <WaveDivider id="pillars-wave" fillColor="surface" />
   </section>
 
-  <!-- Mid-page Conversion Band - High Impact -->
-  <section class="conversion-band">
-    <div class="conversion-bg" aria-hidden="true">
-      <div class="conversion-pattern"></div>
-    </div>
-    <div class="container relative z-10">
-      <div class="conversion-grid">
-        <!-- Left: Big statement -->
-        <div class="conversion-statement scroll-reveal">
-          <span class="conversion-eyebrow">Collaborate</span>
-          <h2 class="conversion-headline">
-            Work With<br />
-            <span class="headline-accent">Our Lab</span>
+  <!-- Collaboration Band -->
+  <section class="collab-section">
+    <div class="container">
+      <div class="collab-card scroll-reveal">
+        <div class="collab-content">
+          <span class="collab-eyebrow">Collaborate</span>
+          <h2 class="collab-title">
+            Work With <span class="title-serif-inline">Our Lab</span>
           </h2>
-        </div>
-
-        <!-- Center: Benefits -->
-        <div class="conversion-benefits scroll-reveal stagger-1">
-          <div class="benefit-item">
-            <div class="benefit-icon">
+          <div class="collab-benefits">
+            <div class="benefit">
               <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" class="w-5 h-5">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
               </svg>
+              <span><strong>Funding</strong> for conservation science</span>
             </div>
-            <div class="benefit-text">
-              <strong>Funding</strong>
-              <span>for conservation science</span>
-            </div>
-          </div>
-          <div class="benefit-item">
-            <div class="benefit-icon">
+            <div class="benefit">
               <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" class="w-5 h-5">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
               </svg>
+              <span><strong>Mentorship</strong> at all career stages</span>
             </div>
-            <div class="benefit-text">
-              <strong>Mentorship</strong>
-              <span>at all career stages</span>
-            </div>
-          </div>
-          <div class="benefit-item">
-            <div class="benefit-icon">
+            <div class="benefit">
               <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" class="w-5 h-5">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
               </svg>
-            </div>
-            <div class="benefit-text">
-              <strong>Field Sites</strong>
-              <span>Mo'orea & Santa Barbara</span>
+              <span><strong>Field Sites</strong> in Mo'orea & Santa Barbara</span>
             </div>
           </div>
         </div>
-
-        <!-- Right: CTAs -->
-        <div class="conversion-ctas scroll-reveal stagger-2">
-          <a href="/join-us" class="cta-primary-large">
-            <span class="cta-label">Join the Lab</span>
-            <span class="cta-sublabel">Open positions →</span>
+        <div class="collab-actions">
+          <a href="/join-us" class="btn-collab-primary">
+            <span>Join the Lab</span>
+            <span class="btn-sub">Open positions</span>
           </a>
-          <a href="/for-funders" class="cta-secondary-large">
-            <span>Partner With Us</span>
-          </a>
+          <a href="/for-funders" class="btn-collab-secondary">Partner With Us</a>
         </div>
       </div>
     </div>
@@ -464,71 +409,76 @@ const formatDate = (dateStr: string) => {
   <!-- Focal Organisms Section -->
   <section class="organisms-section">
     <div class="container">
-      <div class="section-header scroll-reveal">
-        <span class="section-eyebrow">What We Study</span>
-        <h2 class="section-title">Focal Organisms<br /><span class="title-gradient">& Scales</span></h2>
-        <p class="section-desc">
+      <div class="section-header-editorial scroll-reveal">
+        <div class="header-rule"></div>
+        <div class="header-content">
+          <span class="section-number">03</span>
+          <div class="header-text">
+            <span class="section-eyebrow">What We Study</span>
+            <h2 class="section-title-editorial">
+              Focal Organisms<br />
+              <span class="title-serif-accent">& Scales</span>
+            </h2>
+          </div>
+        </div>
+        <p class="section-desc-editorial">
           From cellular mechanisms of coral healing to ecosystem consequences of predator loss.
         </p>
       </div>
 
-      <div class="organisms-grid">
+      <div class="organisms-mosaic">
         <!-- Corals -->
-        <div class="organism-card scroll-reveal stagger-1">
-          <div class="organism-visual">
+        <div class="organism-tile organism-tile-large scroll-reveal stagger-1">
+          <div class="tile-image">
             <img src="/images/chromis-acropora.jpeg" alt="Coral colony" loading="lazy" />
-            <div class="organism-overlay"></div>
           </div>
-          <div class="organism-content">
-            <h3 class="organism-name">Corals</h3>
-            <div class="organism-questions">
-              <span class="question-chip">Wound healing</span>
-              <span class="question-chip">Thermal stress</span>
+          <div class="tile-content">
+            <h3 class="tile-name">Corals</h3>
+            <div class="tile-tags">
+              <span>Wound healing</span>
+              <span>Thermal stress</span>
             </div>
           </div>
         </div>
 
         <!-- Lobsters & Urchins -->
-        <div class="organism-card scroll-reveal stagger-2">
-          <div class="organism-visual">
+        <div class="organism-tile scroll-reveal stagger-2">
+          <div class="tile-image">
             <img src="/images/lobster.jpeg" alt="Spiny lobster" loading="lazy" />
-            <div class="organism-overlay"></div>
           </div>
-          <div class="organism-content">
-            <h3 class="organism-name">Lobsters & Urchins</h3>
-            <div class="organism-questions">
-              <span class="question-chip">Predation</span>
-              <span class="question-chip">Grazing dynamics</span>
+          <div class="tile-content">
+            <h3 class="tile-name">Lobsters & Urchins</h3>
+            <div class="tile-tags">
+              <span>Predation</span>
+              <span>Grazing</span>
             </div>
           </div>
         </div>
 
         <!-- Kelp -->
-        <div class="organism-card scroll-reveal stagger-3">
-          <div class="organism-visual">
+        <div class="organism-tile scroll-reveal stagger-3">
+          <div class="tile-image">
             <img src="/images/kelp-hero.jpeg" alt="Giant kelp" loading="lazy" />
-            <div class="organism-overlay"></div>
           </div>
-          <div class="organism-content">
-            <h3 class="organism-name">Kelp</h3>
-            <div class="organism-questions">
-              <span class="question-chip">Storm resistance</span>
-              <span class="question-chip">Recruitment</span>
+          <div class="tile-content">
+            <h3 class="tile-name">Kelp</h3>
+            <div class="tile-tags">
+              <span>Storm resistance</span>
+              <span>Recruitment</span>
             </div>
           </div>
         </div>
 
         <!-- Reef Fish -->
-        <div class="organism-card scroll-reveal stagger-4">
-          <div class="organism-visual">
+        <div class="organism-tile scroll-reveal stagger-4">
+          <div class="tile-image">
             <img src="/images/damselfish-pair-acropora-coral.jpeg" alt="Reef fish" loading="lazy" />
-            <div class="organism-overlay"></div>
           </div>
-          <div class="organism-content">
-            <h3 class="organism-name">Reef Fish</h3>
-            <div class="organism-questions">
-              <span class="question-chip">Mutualisms</span>
-              <span class="question-chip">Network stability</span>
+          <div class="tile-content">
+            <h3 class="tile-name">Reef Fish</h3>
+            <div class="tile-tags">
+              <span>Mutualisms</span>
+              <span>Networks</span>
             </div>
           </div>
         </div>
@@ -541,16 +491,16 @@ const formatDate = (dateStr: string) => {
   <!-- Recent News Section -->
   <section class="news-section">
     <div class="news-bg">
-      <div class="news-gradient"></div>
+      <div class="news-gradient-overlay"></div>
     </div>
 
     <div class="container relative z-10">
       <div class="news-header scroll-reveal">
         <div class="news-header-text">
-          <span class="section-eyebrow section-eyebrow-light">Latest Updates</span>
-          <h2 class="section-title section-title-light">Recent Research</h2>
+          <span class="section-eyebrow section-eyebrow-light">Latest</span>
+          <h2 class="section-title-editorial section-title-light">Recent Research</h2>
         </div>
-        <a href="/news" class="btn-outline-light hidden sm:inline-flex">
+        <a href="/news" class="btn-outline-editorial hidden sm:inline-flex">
           <span>View all news</span>
           <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
@@ -558,36 +508,35 @@ const formatDate = (dateStr: string) => {
         </a>
       </div>
 
-      <div class="news-grid">
+      <div class="news-editorial-grid">
         {recentPosts.map((post, i) => (
-          <article class={`news-card scroll-reveal stagger-${i + 1}`}>
-            <a href={`/news/${post.slug}`} class="news-link">
-              <div class="news-image">
+          <article class={`news-editorial-card ${i === 0 ? 'news-featured' : ''} scroll-reveal stagger-${i + 1}`}>
+            <a href={`/news/${post.slug}`} class="news-editorial-link">
+              <div class="news-editorial-image">
                 <img src={post.featuredImage} alt={post.title} loading={i === 0 ? 'eager' : 'lazy'} />
-                <div class="news-date-badge">{formatDate(post.date)}</div>
+                <div class="news-image-overlay"></div>
               </div>
-              <div class="news-body">
-                <div class="news-tags">
-                  {post.tags.slice(0, 2).map(tag => (
-                    <span class="news-tag">{tag}</span>
-                  ))}
+              <div class="news-editorial-body">
+                <div class="news-meta">
+                  <time class="news-date">{formatDate(post.date)}</time>
+                  <span class="news-category">{post.tags[0]}</span>
                 </div>
-                <h3 class="news-title">{post.title}</h3>
-                <p class="news-excerpt">{post.excerpt}</p>
-                <div class="news-read-more">
-                  <span>Read article</span>
+                <h3 class="news-editorial-title">{post.title}</h3>
+                {i === 0 && <p class="news-editorial-excerpt">{post.excerpt}</p>}
+                <span class="news-read-more">
+                  Read article
                   <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
                   </svg>
-                </div>
+                </span>
               </div>
             </a>
           </article>
         ))}
       </div>
 
-      <div class="news-mobile-cta scroll-reveal sm:hidden">
-        <a href="/news" class="btn-outline-light">View All News</a>
+      <div class="news-mobile-link scroll-reveal sm:hidden">
+        <a href="/news" class="btn-outline-editorial">View All News</a>
       </div>
     </div>
 
@@ -597,54 +546,60 @@ const formatDate = (dateStr: string) => {
   <!-- About Section -->
   <section class="about-section">
     <div class="container">
-      <div class="about-grid">
+      <div class="about-editorial">
         <div class="about-content scroll-reveal">
           <span class="section-eyebrow">Our Lab</span>
-          <h2 class="section-title">Based at<br /><span class="title-gradient">UC Santa Barbara</span></h2>
+          <h2 class="section-title-editorial">
+            Based at<br />
+            <span class="title-serif-accent">UC Santa Barbara</span>
+          </h2>
           <p class="about-text">
             The Ocean Recoveries Lab is part of the Department of Ecology, Evolution & Marine Biology. We benefit from world-class marine facilities, the Santa Barbara Coastal LTER, and partnerships with the Moorea Coral Reef LTER.
           </p>
 
           <!-- PI Card -->
-          <a href="/people" class="pi-card">
-            <img src="/images/adrian.png" alt="Adrian Stier" class="pi-photo" />
-            <div class="pi-info">
+          <a href="/people" class="pi-editorial-card">
+            <img src="/images/adrian.png" alt="Adrian Stier" class="pi-avatar" />
+            <div class="pi-details">
               <span class="pi-name">Adrian Stier</span>
-              <span class="pi-title">Associate Professor, EEMB</span>
-              <span class="pi-detail">Long-term experiments at MCR and SBC LTER. 75+ papers on reef and kelp dynamics.</span>
+              <span class="pi-role">Associate Professor, EEMB</span>
+              <span class="pi-bio">Long-term experiments at MCR and SBC LTER. 75+ papers on reef and kelp dynamics.</span>
             </div>
             <svg class="pi-arrow" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
             </svg>
           </a>
 
-          <a href="/people" class="btn-primary">
-            <span>Meet the Team</span>
-            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
-            </svg>
+          <a href="/people" class="btn-editorial-primary btn-editorial-dark">
+            <span class="btn-text">Meet the Team</span>
+            <span class="btn-icon">
+              <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+              </svg>
+            </span>
           </a>
         </div>
 
-        <div class="about-stats">
-          <div class="stat-card scroll-reveal stagger-1">
-            <span class="stat-number" data-target="75">75</span>
-            <span class="stat-plus">+</span>
+        <div class="about-stats-grid">
+          <div class="stat-editorial scroll-reveal stagger-1">
+            <span class="stat-value" data-target="75">75</span>
+            <span class="stat-suffix">+</span>
             <span class="stat-label">Publications</span>
           </div>
-          <div class="stat-card scroll-reveal stagger-2">
-            <span class="stat-number" data-target="15">15</span>
-            <span class="stat-plus">yrs</span>
-            <span class="stat-label">Research Experience</span>
+          <div class="stat-editorial scroll-reveal stagger-2">
+            <span class="stat-value" data-target="15">15</span>
+            <span class="stat-suffix">yrs</span>
+            <span class="stat-label">Research</span>
           </div>
-          <div class="stat-card scroll-reveal stagger-3">
-            <span class="stat-number" data-target="2">2</span>
+          <div class="stat-editorial scroll-reveal stagger-3">
+            <span class="stat-value" data-target="2">2</span>
+            <span class="stat-suffix"></span>
             <span class="stat-label">LTER Sites</span>
           </div>
-          <div class="stat-card scroll-reveal stagger-4">
-            <span class="stat-number" data-target="12">12</span>
-            <span class="stat-plus">+</span>
-            <span class="stat-label">Partner Institutions</span>
+          <div class="stat-editorial scroll-reveal stagger-4">
+            <span class="stat-value" data-target="12">12</span>
+            <span class="stat-suffix">+</span>
+            <span class="stat-label">Partners</span>
           </div>
         </div>
       </div>
@@ -654,46 +609,42 @@ const formatDate = (dateStr: string) => {
   </section>
 
   <!-- Final CTA Section -->
-  <section class="cta-section">
-    <div class="cta-bg">
+  <section class="final-cta">
+    <div class="final-cta-bg">
       <div class="cta-orb cta-orb-1"></div>
       <div class="cta-orb cta-orb-2"></div>
     </div>
 
     <div class="container relative z-10">
-      <div class="cta-grid">
+      <div class="cta-editorial-grid">
         <!-- Join CTA -->
-        <div class="cta-card cta-card-join scroll-reveal">
-          <div class="cta-card-content">
-            <span class="cta-eyebrow">For Researchers</span>
-            <h2 class="cta-title">Join Our Team</h2>
-            <p class="cta-desc">
-              We're seeking researchers at all career stages who want to understand and restore ocean ecosystems.
-            </p>
-            <a href="/join" class="btn-cta-primary">
-              <span>View Opportunities</span>
-              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
-              </svg>
-            </a>
-          </div>
+        <div class="cta-editorial-card cta-card-join scroll-reveal">
+          <span class="cta-editorial-eyebrow">For Researchers</span>
+          <h2 class="cta-editorial-title">Join Our Team</h2>
+          <p class="cta-editorial-desc">
+            We're seeking researchers at all career stages who want to understand and restore ocean ecosystems.
+          </p>
+          <a href="/join-us" class="btn-cta-editorial btn-cta-primary">
+            <span>View Opportunities</span>
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+            </svg>
+          </a>
         </div>
 
         <!-- Funders CTA -->
-        <div class="cta-card cta-card-funder scroll-reveal stagger-1">
-          <div class="cta-card-content">
-            <span class="cta-eyebrow cta-eyebrow-alt">For Funders</span>
-            <h2 class="cta-title">Partner With Us</h2>
-            <p class="cta-desc">
-              Support research that identifies why ecosystems fail and what makes restoration succeed.
-            </p>
-            <a href="/for-funders" class="btn-cta-secondary">
-              <span>Learn More</span>
-              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
-              </svg>
-            </a>
-          </div>
+        <div class="cta-editorial-card cta-card-funders scroll-reveal stagger-1">
+          <span class="cta-editorial-eyebrow cta-eyebrow-alt">For Funders</span>
+          <h2 class="cta-editorial-title">Partner With Us</h2>
+          <p class="cta-editorial-desc">
+            Support research that identifies why ecosystems fail and what makes restoration succeed.
+          </p>
+          <a href="/for-funders" class="btn-cta-editorial btn-cta-secondary">
+            <span>Learn More</span>
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+            </svg>
+          </a>
         </div>
       </div>
     </div>
@@ -702,7 +653,12 @@ const formatDate = (dateStr: string) => {
 
 <style>
   /* ============================================
-     Hero Section - Editorial Magazine Style
+     Google Fonts - Playfair Display for Editorial Feel
+     ============================================ */
+  @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600&display=swap');
+
+  /* ============================================
+     Hero Section - Scientific Editorial
      ============================================ */
   .hero {
     @apply relative min-h-[100svh] flex items-center overflow-hidden;
@@ -726,114 +682,123 @@ const formatDate = (dateStr: string) => {
   .hero-overlay {
     @apply absolute inset-0;
     background: linear-gradient(
-      110deg,
-      rgba(8, 20, 32, 0.97) 0%,
-      rgba(8, 20, 32, 0.92) 35%,
-      rgba(11, 37, 69, 0.75) 65%,
-      rgba(11, 37, 69, 0.5) 100%
+      135deg,
+      rgba(8, 15, 25, 0.97) 0%,
+      rgba(8, 20, 35, 0.92) 40%,
+      rgba(11, 37, 69, 0.7) 70%,
+      rgba(11, 37, 69, 0.4) 100%
     );
   }
 
-  /* Film grain texture */
   .hero-grain {
-    @apply absolute inset-0 pointer-events-none opacity-[0.03];
+    @apply absolute inset-0 pointer-events-none opacity-[0.04];
     background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
   }
 
-  /* Decorative elements */
-  .hero-decorative {
-    @apply absolute inset-0 pointer-events-none;
+  /* Credential badges */
+  .hero-credentials {
+    @apply absolute top-24 right-8 lg:right-16 hidden lg:flex flex-col gap-3 z-20;
   }
 
-  .hero-line {
-    @apply absolute bg-white/10;
+  .credential-badge {
+    @apply flex flex-col items-center px-5 py-4;
+    @apply bg-white/[0.08] backdrop-blur-md rounded-2xl;
+    @apply border border-white/10;
+    animation: fadeSlideIn 0.8s ease-out forwards;
+    animation-delay: 1s;
+    opacity: 0;
   }
 
-  .hero-line-1 {
-    @apply w-px h-32 left-8 top-1/4;
-    animation: lineGrow 1.5s ease-out 0.5s forwards;
-    transform-origin: top;
-    transform: scaleY(0);
+  .credential-badge:nth-child(2) {
+    animation-delay: 1.2s;
   }
 
-  .hero-line-2 {
-    @apply w-32 h-px right-8 bottom-1/3;
-    animation: lineGrowX 1.5s ease-out 0.8s forwards;
-    transform-origin: right;
-    transform: scaleX(0);
+  @keyframes fadeSlideIn {
+    from {
+      opacity: 0;
+      transform: translateX(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
   }
 
-  @keyframes lineGrow {
-    to { transform: scaleY(1); }
+  .credential-number {
+    @apply text-3xl font-black text-white;
+    font-variant-numeric: tabular-nums;
   }
 
-  @keyframes lineGrowX {
-    to { transform: scaleX(1); }
-  }
-
-  .hero-corner {
-    @apply absolute w-16 h-16 border-white/20;
-  }
-
-  .hero-corner-tl {
-    @apply top-8 left-8 border-t border-l;
-  }
-
-  .hero-corner-br {
-    @apply bottom-8 right-8 border-b border-r;
+  .credential-label {
+    @apply text-[10px] font-bold uppercase tracking-[0.15em] text-white/50;
   }
 
   .hero-content {
     @apply relative z-10 w-full;
-    padding-top: 10rem;
-    padding-bottom: 8rem;
+    padding-top: 9rem;
+    padding-bottom: 6rem;
   }
 
-  /* Two-column grid */
-  .hero-grid {
-    @apply grid lg:grid-cols-[1fr,320px] gap-12 lg:gap-16 items-start;
+  /* Masthead */
+  .hero-masthead {
+    @apply flex items-center gap-4 mb-10;
   }
 
-  .hero-main {
-    @apply max-w-2xl;
+  .masthead-line {
+    @apply flex-1 h-px bg-gradient-to-r from-transparent via-white/20 to-transparent;
   }
 
-  /* Institution marker */
-  .hero-institution {
-    @apply flex items-center gap-4 mb-8;
+  .masthead-text {
+    @apply text-[10px] font-bold uppercase tracking-[0.2em] text-white/50;
+    @apply px-4;
   }
 
-  .institution-line {
-    @apply w-8 h-px bg-accent;
+  /* Title block - Editorial treatment */
+  .hero-title-block {
+    @apply mb-8;
   }
 
-  .hero-institution span {
-    @apply text-xs font-medium uppercase tracking-[0.15em] text-white/60;
-  }
-
-  /* Title */
   .hero-title {
-    @apply text-5xl sm:text-6xl md:text-7xl font-black leading-[0.95] tracking-[-0.02em] mb-8;
+    @apply leading-[0.9] tracking-[-0.03em];
   }
 
-  .title-word {
-    @apply block text-white;
+  .title-line {
+    @apply block;
   }
 
-  .title-accent {
-    @apply text-accent;
-    position: relative;
+  .title-line-1 {
+    @apply text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-black text-white;
+    margin-left: -0.04em;
   }
 
-  .title-accent::after {
-    content: '';
-    @apply absolute -bottom-1 left-0 h-1 bg-accent/30;
-    width: 60%;
+  .title-line-2 {
+    @apply text-5xl sm:text-6xl md:text-7xl lg:text-8xl;
+    margin-left: 0.5em;
   }
 
-  /* Editorial tagline block */
-  .hero-tagline-block {
-    @apply mb-6 border-l-2 border-accent/50 pl-6;
+  .title-serif {
+    font-family: 'Playfair Display', Georgia, serif;
+    @apply font-semibold italic;
+    background: linear-gradient(135deg, #38bdf8 0%, #2dd4bf 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .title-line-3 {
+    @apply text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-black text-white;
+    margin-left: 2em;
+  }
+
+  /* Tagline */
+  .hero-tagline-wrapper {
+    @apply flex items-start gap-6 mb-6 max-w-xl;
+  }
+
+  .tagline-accent {
+    @apply w-1 flex-shrink-0 mt-2;
+    @apply bg-gradient-to-b from-accent to-accent-2;
+    height: 60px;
   }
 
   .hero-tagline {
@@ -842,654 +807,461 @@ const formatDate = (dateStr: string) => {
   }
 
   .hero-tagline em {
-    @apply text-accent not-italic font-semibold;
+    font-family: 'Playfair Display', Georgia, serif;
+    @apply text-accent not-italic font-medium;
   }
 
-  /* Description */
   .hero-desc {
-    @apply text-base md:text-lg text-white/55 mb-8 leading-relaxed max-w-lg;
+    @apply text-base md:text-lg text-white/50 mb-10 leading-relaxed max-w-lg;
   }
 
   /* Actions */
   .hero-actions {
-    @apply flex flex-wrap items-center gap-4;
+    @apply flex flex-wrap items-center gap-4 mb-12;
   }
 
-  .btn-hero-primary {
-    @apply inline-flex items-center gap-3 px-7 py-3.5;
+  .btn-editorial-primary {
+    @apply relative inline-flex items-center gap-3 px-7 py-4;
     @apply bg-white text-navy-deep font-bold text-sm;
-    @apply rounded-none no-underline;
+    @apply no-underline overflow-hidden;
     @apply transition-all duration-300;
-    clip-path: polygon(0 0, 100% 0, 100% calc(100% - 8px), calc(100% - 8px) 100%, 0 100%);
   }
 
-  .btn-hero-primary:hover {
-    @apply bg-accent text-white;
-    transform: translateY(-2px);
+  .btn-editorial-primary::before {
+    content: '';
+    @apply absolute inset-0 bg-accent;
+    transform: translateX(-101%);
+    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   }
 
-  .btn-arrow {
+  .btn-editorial-primary:hover::before {
+    transform: translateX(0);
+  }
+
+  .btn-editorial-primary .btn-text,
+  .btn-editorial-primary .btn-icon {
+    @apply relative z-10 transition-colors duration-300;
+  }
+
+  .btn-editorial-primary:hover .btn-text,
+  .btn-editorial-primary:hover .btn-icon {
+    @apply text-white;
+  }
+
+  .btn-editorial-primary .btn-icon {
     @apply w-4 h-4;
-    transition: transform 300ms ease;
   }
 
-  .btn-hero-primary:hover .btn-arrow {
-    transform: translateX(4px);
+  .btn-editorial-primary.btn-editorial-dark {
+    @apply bg-accent text-white;
   }
 
-  .btn-hero-secondary {
-    @apply inline-flex items-center px-7 py-3.5;
+  .btn-editorial-primary.btn-editorial-dark::before {
+    @apply bg-white;
+  }
+
+  .btn-editorial-primary.btn-editorial-dark:hover .btn-text,
+  .btn-editorial-primary.btn-editorial-dark:hover .btn-icon {
+    @apply text-navy-deep;
+  }
+
+  .btn-editorial-secondary {
+    @apply inline-flex items-center px-7 py-4;
     @apply text-white font-bold text-sm;
-    @apply border-2 border-white/60 rounded-none no-underline;
-    @apply bg-white/5 backdrop-blur-sm;
+    @apply border-2 border-white/40 no-underline;
     @apply transition-all duration-300;
   }
 
-  .btn-hero-secondary:hover {
-    @apply border-white bg-white/15;
+  .btn-editorial-secondary:hover {
+    @apply border-white bg-white/10;
+  }
+
+  /* Quick access cards */
+  .hero-quick-access {
+    @apply flex flex-wrap gap-3;
+  }
+
+  .quick-card {
+    @apply flex items-center gap-3 px-5 py-3;
+    @apply bg-white/[0.06] backdrop-blur-sm rounded-full;
+    @apply border border-white/10 no-underline;
+    @apply text-sm text-white/80;
+    @apply transition-all duration-300;
+  }
+
+  .quick-card:hover {
+    @apply bg-accent/20 border-accent/40 text-white;
     transform: translateY(-2px);
   }
 
-  /* Sidebar */
-  .hero-sidebar {
-    @apply hidden lg:block;
-    @apply pt-8;
+  .quick-icon {
+    @apply w-5 h-5 text-accent;
   }
 
-  .sidebar-panel {
-    @apply p-6 rounded-xl;
-    @apply bg-navy-deep/60 backdrop-blur-md;
-    @apply border border-white/10;
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+  .quick-label {
+    @apply font-semibold;
   }
 
-  .sidebar-section {
-    @apply mb-6;
-  }
-
-  .sidebar-label {
-    @apply block text-[10px] font-bold uppercase tracking-[0.2em] text-white/40 mb-3;
-  }
-
-  .audience-nav {
-    @apply space-y-2;
-  }
-
-  .audience-item {
-    @apply flex items-center gap-3 px-3 py-2.5 rounded-lg no-underline;
-    @apply text-sm font-medium text-white/80;
-    @apply bg-white/5 border border-white/10;
-    @apply transition-all duration-200;
-  }
-
-  .audience-item:hover {
-    @apply text-white bg-accent/20 border-accent/30;
-  }
-
-  .audience-item:hover .audience-icon {
-    @apply text-accent;
-  }
-
-  .audience-icon {
-    @apply w-5 h-5 flex items-center justify-center flex-shrink-0;
-    @apply text-white/50 transition-all duration-200;
-  }
-
-  /* Funders */
-  .funders-list {
-    @apply flex items-center gap-4;
-  }
-
-  .funder {
-    @apply text-xs font-bold uppercase tracking-wider text-white/70;
-    @apply relative;
-  }
-
-  .funder:not(:last-child)::after {
-    content: '·';
-    @apply absolute -right-2.5 top-0 text-white/30;
-  }
-
-  /* Sidebar stat */
-  .sidebar-stat {
-    @apply pt-6 border-t border-white/10;
-  }
-
-  .stat-big {
-    @apply block text-5xl font-black text-accent mb-2;
-    font-variant-numeric: tabular-nums;
-  }
-
-  .stat-context {
-    @apply block text-sm text-white/50 leading-snug;
-  }
-
-  /* Featured impact tile */
-  .sidebar-impact {
-    @apply mt-6 pt-6 border-t border-white/10;
-  }
-
-  .impact-tile {
-    @apply flex items-start gap-3 p-3 mt-2;
-    @apply bg-accent/5 border border-accent/20 rounded-lg;
-    @apply no-underline transition-all duration-200;
-  }
-
-  .impact-tile:hover {
-    @apply bg-accent/10 border-accent/40;
-    transform: translateX(4px);
-  }
-
-  .impact-icon {
-    @apply w-9 h-9 flex items-center justify-center flex-shrink-0;
-    @apply bg-accent/20 text-accent rounded-lg;
-  }
-
-  .impact-text {
-    @apply flex flex-col;
-  }
-
-  .impact-title {
-    @apply text-sm font-semibold text-white;
-  }
-
-  .impact-desc {
-    @apply text-xs text-white/50;
-  }
-
-  /* Scroll indicator */
-  .scroll-indicator {
-    @apply absolute bottom-8 left-8 lg:left-12;
-    @apply flex items-center gap-3 no-underline;
-    @apply text-white/50 transition-colors duration-300;
+  /* Scroll cue */
+  .scroll-cue {
+    @apply absolute bottom-8 left-1/2 -translate-x-1/2;
+    @apply flex flex-col items-center gap-3;
     animation: fadeIn 1s ease-out 1.5s forwards;
     opacity: 0;
-  }
-
-  .scroll-indicator:hover {
-    @apply text-white;
   }
 
   @keyframes fadeIn {
     to { opacity: 1; }
   }
 
-  .scroll-text {
-    @apply text-[10px] font-bold uppercase tracking-[0.3em];
+  .scroll-cue-line {
+    @apply w-px h-12 bg-gradient-to-b from-transparent via-white/30 to-accent;
+    animation: scrollPulse 2s ease-in-out infinite;
   }
 
-  .scroll-line {
-    @apply relative w-12 h-px bg-white/30 overflow-hidden;
+  @keyframes scrollPulse {
+    0%, 100% { opacity: 0.5; transform: scaleY(1); }
+    50% { opacity: 1; transform: scaleY(1.1); }
   }
 
-  .scroll-dot {
-    @apply absolute top-0 left-0 h-full w-4 bg-accent;
-    animation: scrollRight 2s ease-in-out infinite;
-  }
-
-  @keyframes scrollRight {
-    0% { left: -16px; }
-    50% { left: 48px; }
-    100% { left: -16px; }
+  .scroll-cue-text {
+    @apply text-[10px] font-bold uppercase tracking-[0.2em] text-white/40;
   }
 
   /* ============================================
-     Section Styling
+     Section Headers - Editorial Style
      ============================================ */
-  .study-systems,
-  .organisms-section,
-  .about-section {
-    @apply relative py-20 md:py-28 pb-28 md:pb-36 bg-surface;
+  .section-header-editorial {
+    @apply mb-12;
   }
 
-  .resilience-section,
-  .news-section,
-  .cta-section {
-    @apply relative py-20 md:py-28 overflow-hidden;
-    background: linear-gradient(180deg, #0b1929 0%, #0f172a 50%, #0b1929 100%);
+  .header-rule {
+    @apply w-full h-px bg-gradient-to-r from-line via-line/50 to-transparent mb-8;
   }
 
-  .resilience-section {
-    @apply pb-28 md:pb-36;
+  .header-rule-light {
+    @apply bg-gradient-to-r from-white/20 via-white/10 to-transparent;
   }
 
-  .section-header {
-    @apply text-center mb-12;
+  .header-content {
+    @apply flex items-start gap-6 mb-6;
+  }
+
+  .section-number {
+    @apply text-5xl font-black text-accent/20;
+    font-variant-numeric: tabular-nums;
+    line-height: 0.8;
+  }
+
+  .section-number-light {
+    @apply text-accent/30;
+  }
+
+  .header-text {
+    @apply flex flex-col gap-2;
   }
 
   .section-eyebrow {
-    @apply inline-block text-xs font-bold uppercase tracking-[0.2em] text-accent mb-4;
+    @apply text-[10px] font-bold uppercase tracking-[0.2em] text-accent;
   }
 
   .section-eyebrow-light {
     @apply text-accent-2;
   }
 
-  .section-title {
-    @apply text-3xl md:text-4xl lg:text-5xl font-black text-ink tracking-tight mb-4 leading-tight;
+  .section-title-editorial {
+    @apply text-3xl md:text-4xl lg:text-5xl font-black text-ink tracking-tight leading-[1.1];
   }
 
   .section-title-light {
-    color: white;
+    @apply text-white;
   }
 
-  .title-gradient {
-    @apply bg-gradient-to-r from-accent to-accent-2 bg-clip-text text-transparent;
+  .title-serif-accent {
+    font-family: 'Playfair Display', Georgia, serif;
+    @apply font-semibold italic;
+    background: linear-gradient(135deg, #38bdf8 0%, #2dd4bf 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
   }
 
-  .section-desc {
-    @apply text-lg text-muted leading-relaxed max-w-2xl mx-auto;
+  .title-serif-inline {
+    font-family: 'Playfair Display', Georgia, serif;
+    @apply font-semibold italic text-accent;
   }
 
-  .section-cta {
-    @apply text-center mt-12;
+  .section-desc-editorial {
+    @apply text-lg text-muted leading-relaxed max-w-2xl;
+  }
+
+  .section-desc-light {
+    @apply text-white/50;
   }
 
   /* ============================================
-     Impact Quote Banner
+     Study Systems - Magazine Layout
      ============================================ */
-  .impact-banner {
-    @apply py-16 md:py-20;
+  .study-systems {
+    @apply relative py-20 md:py-28 pb-28 md:pb-36 bg-surface;
+  }
+
+  .map-container {
+    @apply max-w-5xl mx-auto mb-16;
+  }
+
+  .systems-magazine {
+    @apply grid md:grid-cols-2 gap-8 max-w-5xl mx-auto;
+  }
+
+  .system-feature {
+    @apply relative block rounded-2xl overflow-hidden no-underline;
+    @apply border border-line/50;
+    min-height: 480px;
+    transition: all 500ms cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .system-feature:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 30px 60px -12px rgba(0, 0, 0, 0.4);
+  }
+
+  .feature-image {
+    @apply absolute inset-0;
+  }
+
+  .feature-image img {
+    @apply w-full h-full object-cover;
+    transform: scale(1.05);
+    transition: transform 800ms cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .system-feature:hover .feature-image img {
+    transform: scale(1.12);
+  }
+
+  .feature-overlay {
+    @apply absolute inset-0;
+    background: linear-gradient(
+      to top,
+      rgba(10, 15, 25, 0.98) 0%,
+      rgba(10, 15, 25, 0.85) 35%,
+      rgba(10, 15, 25, 0.4) 60%,
+      transparent 100%
+    );
+  }
+
+  .feature-content {
+    @apply absolute bottom-0 left-0 right-0 p-8;
+  }
+
+  .feature-meta {
+    @apply flex flex-wrap items-center gap-3 mb-4;
+  }
+
+  .feature-location {
+    @apply inline-flex items-center gap-1.5;
+    @apply text-xs font-bold uppercase tracking-wide text-white/60;
+  }
+
+  .feature-badge {
+    @apply text-[10px] font-bold uppercase tracking-wider px-3 py-1 rounded-full;
+  }
+
+  .feature-badge-coral {
+    @apply bg-orange-500/20 text-orange-300 border border-orange-500/30;
+  }
+
+  .feature-badge-kelp {
+    @apply bg-green-500/20 text-green-300 border border-green-500/30;
+  }
+
+  .feature-title {
+    @apply text-3xl md:text-4xl font-black text-white mb-3;
+    transition: color 300ms ease;
+  }
+
+  .system-feature-coral:hover .feature-title {
+    color: #fb923c;
+  }
+
+  .system-feature-kelp:hover .feature-title {
+    color: #4ade80;
+  }
+
+  .feature-excerpt {
+    @apply text-white/60 text-sm leading-relaxed mb-4;
+  }
+
+  .feature-cta {
+    @apply inline-flex items-center gap-2 font-bold text-sm;
+    transition: gap 300ms ease;
+  }
+
+  .system-feature-coral .feature-cta {
+    color: #fb923c;
+  }
+
+  .system-feature-kelp .feature-cta {
+    color: #4ade80;
+  }
+
+  .system-feature:hover .feature-cta {
+    @apply gap-3;
+  }
+
+  .feature-accent {
+    @apply absolute top-0 left-0 right-0 h-1;
+  }
+
+  .system-feature-coral .feature-accent {
+    background: linear-gradient(90deg, #f97316, #fb923c);
+  }
+
+  .system-feature-kelp .feature-accent {
+    background: linear-gradient(90deg, #22c55e, #4ade80);
+  }
+
+  .system-feature-coral:hover {
+    border-color: rgba(251, 146, 60, 0.4);
+  }
+
+  .system-feature-kelp:hover {
+    border-color: rgba(74, 222, 128, 0.4);
+  }
+
+  /* ============================================
+     Quote Banner - Editorial Pull Quote
+     ============================================ */
+  .quote-banner {
+    @apply relative py-20 md:py-28 overflow-hidden;
     background: linear-gradient(180deg, #0b1929 0%, #0f172a 100%);
   }
 
-  .impact-quote-block {
-    @apply relative max-w-3xl mx-auto text-center px-4;
+  .quote-bg {
+    @apply absolute inset-0;
   }
 
-  .quote-mark {
-    @apply absolute -top-4 left-1/2 -translate-x-1/2;
-    @apply text-8xl font-black text-accent/20 leading-none;
-    font-family: Georgia, serif;
+  .quote-pattern {
+    @apply absolute inset-0 opacity-[0.02];
+    background-image:
+      repeating-linear-gradient(90deg, #38bdf8 0px, #38bdf8 1px, transparent 1px, transparent 60px),
+      repeating-linear-gradient(0deg, #38bdf8 0px, #38bdf8 1px, transparent 1px, transparent 60px);
   }
 
-  .impact-quote {
-    @apply relative z-10 text-xl md:text-2xl lg:text-3xl font-medium text-white leading-relaxed;
-    @apply mb-6;
+  .quote-block {
+    @apply relative max-w-4xl mx-auto text-center;
   }
 
-  .quote-attribution {
-    @apply flex flex-col items-center gap-1 not-italic;
+  .quote-marks {
+    @apply absolute -top-8 left-1/2 -translate-x-1/2;
+    font-family: 'Playfair Display', Georgia, serif;
+    @apply text-[180px] font-bold text-accent/10 leading-none;
+    pointer-events: none;
+  }
+
+  .quote-text {
+    @apply relative z-10 text-2xl md:text-3xl lg:text-4xl text-white leading-relaxed;
+    font-family: 'Playfair Display', Georgia, serif;
+    @apply font-normal italic mb-10;
+  }
+
+  .quote-citation {
+    @apply flex items-center justify-center gap-4 not-italic;
+  }
+
+  .quote-avatar {
+    @apply w-14 h-14 rounded-full object-cover;
+    @apply ring-2 ring-accent/30;
   }
 
   .quote-author {
-    @apply text-sm font-bold text-accent;
+    @apply flex flex-col text-left;
   }
 
-  .quote-role {
+  .author-name {
+    @apply text-sm font-bold text-white;
+  }
+
+  .author-title {
     @apply text-xs text-white/50 uppercase tracking-wider;
   }
 
   /* ============================================
-     Map Container
+     Resilience Framework - Scientific Style
      ============================================ */
-  .map-container {
-    @apply max-w-5xl mx-auto mb-12;
+  .framework-section {
+    @apply relative py-20 md:py-28 pb-28 md:pb-36 overflow-hidden;
+    background: linear-gradient(180deg, #0b1929 0%, #0f172a 50%, #0b1929 100%);
   }
 
-  /* ============================================
-     Study System Cards
-     ============================================ */
-  .systems-grid {
-    @apply grid md:grid-cols-2 gap-6 lg:gap-8 max-w-5xl mx-auto;
-  }
-
-  .system-card {
-    @apply relative block rounded-2xl overflow-hidden no-underline;
-    @apply border border-line/50;
-    min-height: 420px;
-    transition: all 500ms cubic-bezier(0.4, 0, 0.2, 1);
-  }
-
-  .system-card:hover {
-    transform: translateY(-8px);
-    border-color: rgba(56, 189, 248, 0.4);
-    box-shadow: 0 30px 60px -12px rgba(0, 0, 0, 0.3), 0 0 40px rgba(56, 189, 248, 0.1);
-  }
-
-  .card-media {
-    @apply absolute inset-0;
-  }
-
-  .card-media img {
-    @apply w-full h-full object-cover;
-    transform: scale(1.05);
-    transition: transform 700ms cubic-bezier(0.4, 0, 0.2, 1);
-  }
-
-  .system-card:hover .card-media img {
-    transform: scale(1.12);
-  }
-
-  .card-gradient {
-    @apply absolute inset-0;
-    background: linear-gradient(
-      to top,
-      rgba(15, 23, 42, 0.98) 0%,
-      rgba(15, 23, 42, 0.85) 40%,
-      rgba(15, 23, 42, 0.4) 70%,
-      transparent 100%
-    );
-  }
-
-  /* Coral: warm tint overlay */
-  .card-gradient-coral {
-    background: linear-gradient(
-      to top,
-      rgba(30, 20, 15, 0.98) 0%,
-      rgba(30, 20, 15, 0.85) 40%,
-      rgba(30, 20, 15, 0.3) 70%,
-      transparent 100%
-    );
-  }
-
-  /* Kelp: cooler tint overlay */
-  .card-gradient-kelp {
-    background: linear-gradient(
-      to top,
-      rgba(15, 30, 25, 0.98) 0%,
-      rgba(15, 30, 25, 0.85) 40%,
-      rgba(15, 30, 25, 0.3) 70%,
-      transparent 100%
-    );
-  }
-
-  .card-content {
-    @apply absolute bottom-0 left-0 right-0 p-6 md:p-8;
-  }
-
-  .card-location {
-    @apply inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider mb-3;
-  }
-
-  .card-location-coral {
-    color: #fb923c;
-  }
-
-  .card-location-kelp {
-    color: #4ade80;
-  }
-
-  .card-title {
-    @apply text-2xl md:text-3xl font-black text-white mb-2;
-    transition: color 300ms ease;
-  }
-
-  .system-card-coral:hover .card-title {
-    color: #fb923c;
-  }
-
-  .system-card-kelp:hover .card-title {
-    color: #4ade80;
-  }
-
-  /* Failure mode chips */
-  .failure-mode {
-    @apply flex items-center gap-2 mb-3;
-  }
-
-  .failure-label {
-    @apply text-xs text-white/50 font-medium uppercase tracking-wide;
-  }
-
-  .failure-chip {
-    @apply text-xs font-bold px-2 py-0.5 rounded-full;
-  }
-
-  .failure-mode-coral .failure-chip {
-    @apply bg-orange-500/20 text-orange-300;
-  }
-
-  .failure-mode-kelp .failure-chip {
-    @apply bg-green-500/20 text-green-300;
-  }
-
-  /* Card bullets */
-  .card-bullets {
-    @apply space-y-1.5 mb-4;
-  }
-
-  .card-bullets li {
-    @apply text-white/70 text-sm leading-snug pl-4 relative;
-  }
-
-  .card-bullets li::before {
-    content: '→';
-    @apply absolute left-0 text-white/40;
-  }
-
-  .system-card-coral .card-bullets li::before {
-    color: #fb923c;
-  }
-
-  .system-card-kelp .card-bullets li::before {
-    color: #4ade80;
-  }
-
-  .card-cta {
-    @apply inline-flex items-center gap-2 text-sm font-bold;
-    transition: gap 300ms ease;
-  }
-
-  .card-cta-coral {
-    color: #fb923c;
-  }
-
-  .card-cta-kelp {
-    color: #4ade80;
-  }
-
-  .system-card:hover .card-cta {
-    @apply gap-3;
-  }
-
-  .card-accent {
-    @apply absolute top-0 left-0 right-0 h-1;
-  }
-
-  .card-accent-coral {
-    background: linear-gradient(90deg, #f97316, #fb923c, #fdba74);
-  }
-
-  .card-accent-kelp {
-    background: linear-gradient(90deg, #22c55e, #4ade80, #86efac);
-  }
-
-  /* Distinct hover effects */
-  .system-card-coral:hover {
-    border-color: rgba(251, 146, 60, 0.4);
-    box-shadow: 0 30px 60px -12px rgba(0, 0, 0, 0.3), 0 0 40px rgba(251, 146, 60, 0.15);
-  }
-
-  .system-card-kelp:hover {
-    border-color: rgba(74, 222, 128, 0.4);
-    box-shadow: 0 30px 60px -12px rgba(0, 0, 0, 0.3), 0 0 40px rgba(74, 222, 128, 0.15);
-  }
-
-  /* ============================================
-     Resilience Section Background
-     ============================================ */
-  .resilience-bg {
+  .framework-bg {
     @apply absolute inset-0 overflow-hidden;
   }
 
-  .resilience-orb {
+  .framework-grid-pattern {
+    @apply absolute inset-0 opacity-[0.02];
+    background-image:
+      linear-gradient(to right, #38bdf8 1px, transparent 1px),
+      linear-gradient(to bottom, #38bdf8 1px, transparent 1px);
+    background-size: 80px 80px;
+  }
+
+  .framework-orb {
     @apply absolute rounded-full;
-    filter: blur(100px);
+    filter: blur(120px);
   }
 
-  .resilience-orb-1 {
-    @apply w-[600px] h-[600px] -top-48 -right-48;
-    background: radial-gradient(circle, rgba(56, 189, 248, 0.12), transparent 70%);
-    animation: orbFloat 20s ease-in-out infinite;
+  .framework-orb-1 {
+    @apply w-[500px] h-[500px] -top-32 -right-32;
+    background: radial-gradient(circle, rgba(56, 189, 248, 0.15), transparent 70%);
+    animation: orbFloat 25s ease-in-out infinite;
   }
 
-  .resilience-orb-2 {
-    @apply w-[500px] h-[500px] -bottom-32 -left-32;
-    background: radial-gradient(circle, rgba(45, 212, 191, 0.1), transparent 70%);
-    animation: orbFloat 25s ease-in-out infinite reverse;
+  .framework-orb-2 {
+    @apply w-[400px] h-[400px] -bottom-24 -left-24;
+    background: radial-gradient(circle, rgba(45, 212, 191, 0.12), transparent 70%);
+    animation: orbFloat 30s ease-in-out infinite reverse;
   }
 
   @keyframes orbFloat {
     0%, 100% { transform: translate(0, 0) scale(1); }
-    33% { transform: translate(30px, -20px) scale(1.05); }
-    66% { transform: translate(-20px, 30px) scale(0.95); }
+    33% { transform: translate(20px, -15px) scale(1.03); }
+    66% { transform: translate(-15px, 20px) scale(0.97); }
   }
 
-  .resilience-mesh {
-    @apply absolute inset-0 opacity-[0.03];
-    background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%2338bdf8' fill-opacity='1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+  .pillars-scientific {
+    @apply grid md:grid-cols-3 gap-6 lg:gap-8 max-w-5xl mx-auto;
   }
 
-  /* ============================================
-     Conversion Band - Editorial Style
-     ============================================ */
-  .conversion-band {
-    @apply relative py-16 md:py-20 overflow-hidden;
-    background: linear-gradient(135deg, #0b2545 0%, #0f172a 50%, #0b1929 100%);
-  }
-
-  .conversion-bg {
-    @apply absolute inset-0;
-  }
-
-  .conversion-pattern {
-    @apply absolute inset-0 opacity-[0.04];
-    background-image:
-      linear-gradient(90deg, #38bdf8 1px, transparent 1px),
-      linear-gradient(#38bdf8 1px, transparent 1px);
-    background-size: 60px 60px;
-  }
-
-  .conversion-grid {
-    @apply grid lg:grid-cols-[1fr,1.2fr,auto] gap-8 lg:gap-12 items-center;
-  }
-
-  /* Left: Statement */
-  .conversion-statement {
-    @apply text-center lg:text-left;
-  }
-
-  .conversion-eyebrow {
-    @apply inline-block text-[10px] font-bold uppercase tracking-[0.25em] text-accent-2 mb-3;
-    @apply px-3 py-1 border border-accent-2/30 rounded-sm;
-  }
-
-  .conversion-headline {
-    @apply text-3xl md:text-4xl lg:text-5xl font-black text-white leading-[0.95] tracking-tight;
-  }
-
-  .headline-accent {
-    @apply text-accent;
-    position: relative;
-    display: inline-block;
-  }
-
-  .headline-accent::after {
-    content: '';
-    @apply absolute -bottom-1 left-0 w-full h-0.5 bg-accent/40;
-  }
-
-  /* Center: Benefits */
-  .conversion-benefits {
-    @apply hidden md:flex flex-col gap-4;
-    @apply pl-8 border-l border-white/10;
-  }
-
-  .benefit-item {
-    @apply flex items-center gap-4;
-  }
-
-  .benefit-icon {
-    @apply w-10 h-10 flex items-center justify-center flex-shrink-0;
-    @apply bg-white/5 border border-white/10 rounded-lg text-accent;
-  }
-
-  .benefit-text {
-    @apply flex flex-col;
-  }
-
-  .benefit-text strong {
-    @apply text-white font-semibold text-sm;
-  }
-
-  .benefit-text span {
-    @apply text-white/50 text-xs;
-  }
-
-  /* Right: CTAs */
-  .conversion-ctas {
-    @apply flex flex-col gap-3;
-  }
-
-  .cta-primary-large {
-    @apply relative flex flex-col items-center px-8 py-4;
-    @apply bg-accent text-white font-bold text-center;
-    @apply no-underline transition-all duration-300;
-    clip-path: polygon(0 0, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0 100%);
-  }
-
-  .cta-primary-large:hover {
-    @apply bg-accent/90;
-    transform: translateY(-2px);
-    box-shadow: 0 10px 30px -5px rgba(56, 189, 248, 0.4);
-  }
-
-  .cta-label {
-    @apply text-base font-bold;
-  }
-
-  .cta-sublabel {
-    @apply text-xs text-white/70 font-normal;
-  }
-
-  .cta-secondary-large {
-    @apply flex items-center justify-center gap-2 px-8 py-3;
-    @apply text-white/80 font-semibold text-sm;
-    @apply border border-white/20 no-underline;
-    @apply transition-all duration-300;
-  }
-
-  .cta-secondary-large:hover {
-    @apply border-white/40 text-white bg-white/5;
-  }
-
-  /* ============================================
-     Pillars Grid
-     ============================================ */
-  .pillars-grid {
-    @apply grid md:grid-cols-3 gap-6 lg:gap-8 max-w-6xl mx-auto;
-  }
-
-  .pillar-card {
-    @apply relative p-6 lg:p-8 rounded-2xl;
-    @apply border border-white/10;
-    background: linear-gradient(135deg, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0.02) 100%);
-    backdrop-filter: blur(10px);
+  .pillar-scientific {
+    @apply relative p-8 rounded-2xl;
+    @apply bg-white/[0.03] border border-white/10;
+    @apply backdrop-blur-sm;
     transition: all 400ms cubic-bezier(0.4, 0, 0.2, 1);
   }
 
-  .pillar-card:hover {
+  .pillar-scientific:hover {
+    @apply bg-white/[0.05];
     transform: translateY(-6px);
-    border-color: rgba(56, 189, 248, 0.3);
-    box-shadow: 0 20px 40px -12px rgba(0, 0, 0, 0.3), 0 0 30px rgba(56, 189, 248, 0.1);
+    box-shadow: 0 20px 40px -12px rgba(0, 0, 0, 0.4);
   }
 
-  .pillar-card-featured {
-    @apply border-accent/30;
-    background: linear-gradient(135deg, rgba(56, 189, 248, 0.08) 0%, rgba(45, 212, 191, 0.04) 100%);
+  .pillar-featured {
+    @apply bg-accent/[0.08] border-accent/30;
   }
 
-  .pillar-header {
-    @apply flex items-center gap-4 mb-4;
+  .pillar-number {
+    @apply absolute top-4 right-4;
+    @apply text-xs font-black text-white/20 tracking-wider;
   }
 
-  .pillar-icon {
-    @apply w-12 h-12 rounded-xl flex items-center justify-center flex-shrink-0;
+  .pillar-icon-wrap {
+    @apply w-14 h-14 rounded-xl flex items-center justify-center mb-5;
     transition: transform 300ms ease;
   }
 
-  .pillar-card:hover .pillar-icon {
+  .pillar-scientific:hover .pillar-icon-wrap {
     transform: scale(1.1);
   }
 
@@ -1505,165 +1277,288 @@ const formatDate = (dateStr: string) => {
     @apply bg-amber-500/20 text-amber-400;
   }
 
-  .pillar-title {
-    @apply text-xl font-bold text-white;
+  .pillar-name {
+    @apply text-xl font-bold text-white mb-2;
   }
 
-  .pillar-tagline {
-    @apply text-white/50 text-sm mb-5;
+  .pillar-definition {
+    @apply text-sm text-white/50 mb-6;
   }
 
-  /* Scannable scale items */
-  .pillar-scales {
-    @apply space-y-2.5;
+  .pillar-scales-list {
+    @apply space-y-3;
   }
 
-  .scale-item {
-    @apply flex items-center gap-3;
+  .scale-row {
+    @apply flex items-center justify-between gap-4;
+    @apply py-2 border-b border-white/5;
   }
 
-  .scale-dot {
-    @apply w-2 h-2 rounded-full flex-shrink-0;
+  .scale-row:last-child {
+    @apply border-b-0;
   }
 
-  .scale-item-1 .scale-dot { @apply bg-accent; }
-  .scale-item-2 .scale-dot { @apply bg-accent-2; }
-  .scale-item-3 .scale-dot { @apply bg-amber-400; }
-
-  .scale-label {
-    @apply text-xs font-bold uppercase tracking-wider text-white/40 w-20 flex-shrink-0;
+  .scale-level {
+    @apply text-[10px] font-bold uppercase tracking-wider text-white/30;
   }
 
-  .scale-value {
+  .scale-mechanism {
     @apply text-sm text-white/70;
   }
 
-  .scale-item-1 .scale-label { @apply text-accent/60; }
-  .scale-item-2 .scale-label { @apply text-accent-2/60; }
-  .scale-item-3 .scale-label { @apply text-amber-400/60; }
-
-  /* ============================================
-     Organisms Grid
-     ============================================ */
-  .organisms-grid {
-    @apply grid sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto;
+  .framework-cta {
+    @apply text-center mt-12;
   }
 
-  .organism-card {
+  .btn-outline-editorial {
+    @apply inline-flex items-center gap-2 px-6 py-3;
+    @apply text-white font-bold text-sm;
+    @apply border border-white/30 rounded-full no-underline;
+    @apply transition-all duration-300;
+  }
+
+  .btn-outline-editorial:hover {
+    @apply border-accent bg-accent/10 gap-3;
+  }
+
+  /* ============================================
+     Collaboration Section
+     ============================================ */
+  .collab-section {
+    @apply py-16 bg-surface;
+  }
+
+  .collab-card {
+    @apply relative p-8 md:p-12 rounded-3xl overflow-hidden;
+    @apply bg-gradient-to-br from-navy-deep to-surface;
+    @apply border border-line/50;
+    @apply flex flex-col lg:flex-row lg:items-center lg:justify-between gap-8;
+  }
+
+  .collab-card::before {
+    content: '';
+    @apply absolute inset-0 opacity-50;
+    background: radial-gradient(circle at top right, rgba(56, 189, 248, 0.1), transparent 50%);
+  }
+
+  .collab-content {
+    @apply relative z-10;
+  }
+
+  .collab-eyebrow {
+    @apply text-[10px] font-bold uppercase tracking-[0.2em] text-accent-2 mb-3 block;
+  }
+
+  .collab-title {
+    @apply text-2xl md:text-3xl font-black text-white mb-6;
+  }
+
+  .collab-benefits {
+    @apply space-y-3;
+  }
+
+  .benefit {
+    @apply flex items-center gap-3 text-sm text-white/70;
+  }
+
+  .benefit svg {
+    @apply text-accent flex-shrink-0;
+  }
+
+  .benefit strong {
+    @apply text-white font-semibold;
+  }
+
+  .collab-actions {
+    @apply relative z-10 flex flex-col gap-3 lg:items-end;
+  }
+
+  .btn-collab-primary {
+    @apply flex flex-col items-center px-8 py-4 rounded-xl;
+    @apply bg-accent text-white font-bold no-underline;
+    @apply transition-all duration-300;
+  }
+
+  .btn-collab-primary:hover {
+    @apply bg-accent/90;
+    transform: translateY(-2px);
+    box-shadow: 0 10px 30px -5px rgba(56, 189, 248, 0.4);
+  }
+
+  .btn-collab-primary .btn-sub {
+    @apply text-xs font-normal text-white/70 mt-1;
+  }
+
+  .btn-collab-secondary {
+    @apply inline-flex items-center justify-center px-8 py-3;
+    @apply text-white/80 font-semibold text-sm no-underline;
+    @apply border border-white/20 rounded-xl;
+    @apply transition-all duration-300;
+  }
+
+  .btn-collab-secondary:hover {
+    @apply border-white/40 text-white bg-white/5;
+  }
+
+  /* ============================================
+     Organisms Section - Mosaic Grid
+     ============================================ */
+  .organisms-section {
+    @apply relative py-20 md:py-28 pb-28 md:pb-36 bg-surface;
+  }
+
+  .organisms-mosaic {
+    @apply grid grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-6 max-w-5xl mx-auto;
+  }
+
+  .organism-tile {
     @apply relative rounded-2xl overflow-hidden;
-    @apply border border-line/50 bg-surface-card;
+    @apply border border-line/50;
+    aspect-ratio: 1;
     transition: all 400ms cubic-bezier(0.4, 0, 0.2, 1);
   }
 
-  .organism-card:hover {
-    transform: translateY(-6px);
+  .organism-tile-large {
+    @apply col-span-2 row-span-2;
+  }
+
+  .organism-tile:hover {
+    transform: translateY(-4px);
     border-color: rgba(56, 189, 248, 0.3);
-    box-shadow: 0 20px 40px -12px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 20px 40px -12px rgba(0, 0, 0, 0.3);
   }
 
-  .organism-visual {
-    @apply relative aspect-[4/3] overflow-hidden;
+  .tile-image {
+    @apply absolute inset-0;
   }
 
-  .organism-visual img {
+  .tile-image img {
     @apply w-full h-full object-cover;
     transition: transform 600ms cubic-bezier(0.4, 0, 0.2, 1);
   }
 
-  .organism-card:hover .organism-visual img {
+  .organism-tile:hover .tile-image img {
     transform: scale(1.08);
   }
 
-  .organism-overlay {
-    @apply absolute inset-0;
-    background: linear-gradient(to top, rgba(15, 23, 42, 0.6) 0%, transparent 50%);
+  .tile-content {
+    @apply absolute inset-0 flex flex-col justify-end p-5;
+    background: linear-gradient(to top, rgba(10, 15, 25, 0.9) 0%, rgba(10, 15, 25, 0.4) 50%, transparent 100%);
   }
 
-  .organism-content {
-    @apply p-5;
+  .tile-name {
+    @apply text-lg font-bold text-white mb-2;
   }
 
-  .organism-name {
-    @apply text-lg font-bold text-ink mb-2;
+  .organism-tile-large .tile-name {
+    @apply text-2xl;
   }
 
-  .organism-questions {
+  .tile-tags {
     @apply flex flex-wrap gap-1.5;
   }
 
-  .question-chip {
-    @apply text-xs font-medium px-2 py-1;
-    @apply bg-accent/10 text-accent border border-accent/20 rounded;
+  .tile-tags span {
+    @apply text-[10px] font-bold uppercase tracking-wide;
+    @apply px-2 py-1 rounded bg-accent/20 text-accent;
+    @apply border border-accent/20;
   }
 
   /* ============================================
-     News Section
+     News Section - Editorial Grid
      ============================================ */
+  .news-section {
+    @apply relative py-20 md:py-28 pb-28 md:pb-36 overflow-hidden;
+    background: linear-gradient(180deg, #0b1929 0%, #0f172a 50%, #0b1929 100%);
+  }
+
   .news-bg {
     @apply absolute inset-0;
   }
 
-  .news-gradient {
+  .news-gradient-overlay {
     @apply absolute inset-0;
-    background: linear-gradient(180deg, #0b1929 0%, rgba(15, 23, 42, 0.95) 50%, #0b1929 100%);
+    background: radial-gradient(ellipse at center, transparent 0%, rgba(11, 25, 41, 0.5) 100%);
   }
 
   .news-header {
     @apply flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4 mb-10;
   }
 
-  .news-grid {
+  .news-editorial-grid {
     @apply grid md:grid-cols-3 gap-6 lg:gap-8;
   }
 
-  .news-card {
-    @apply rounded-2xl overflow-hidden bg-surface-card;
-    @apply border border-line/50;
+  .news-editorial-card {
+    @apply rounded-2xl overflow-hidden;
+    @apply bg-white/[0.03] border border-white/10;
+    @apply backdrop-blur-sm;
     transition: all 400ms cubic-bezier(0.4, 0, 0.2, 1);
   }
 
-  .news-card:hover {
+  .news-editorial-card:hover {
+    @apply bg-white/[0.06];
     transform: translateY(-6px);
     border-color: rgba(56, 189, 248, 0.3);
-    box-shadow: 0 20px 40px -12px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 20px 40px -12px rgba(0, 0, 0, 0.4);
   }
 
-  .news-link {
-    @apply block no-underline h-full flex flex-col;
+  .news-featured {
+    @apply md:col-span-2 md:row-span-2;
   }
 
-  .news-image {
+  .news-editorial-link {
+    @apply block no-underline h-full;
+  }
+
+  .news-featured .news-editorial-link {
+    @apply flex flex-col md:flex-row md:h-full;
+  }
+
+  .news-editorial-image {
     @apply relative aspect-[16/10] overflow-hidden;
   }
 
-  .news-image img {
+  .news-featured .news-editorial-image {
+    @apply md:w-1/2 md:aspect-auto;
+  }
+
+  .news-editorial-image img {
     @apply w-full h-full object-cover;
     transition: transform 600ms cubic-bezier(0.4, 0, 0.2, 1);
   }
 
-  .news-card:hover .news-image img {
+  .news-editorial-card:hover .news-editorial-image img {
     transform: scale(1.05);
   }
 
-  .news-date-badge {
-    @apply absolute top-3 right-3 px-3 py-1.5 rounded-full;
-    @apply bg-navy-deep/80 backdrop-blur-sm text-white/80 text-xs font-medium;
+  .news-image-overlay {
+    @apply absolute inset-0;
+    background: linear-gradient(to top, rgba(10, 15, 25, 0.4) 0%, transparent 50%);
   }
 
-  .news-body {
-    @apply p-5 md:p-6 flex flex-col flex-1;
+  .news-editorial-body {
+    @apply p-6 flex flex-col;
   }
 
-  .news-tags {
-    @apply flex flex-wrap gap-2 mb-3;
+  .news-featured .news-editorial-body {
+    @apply md:w-1/2 md:p-8 md:justify-center;
   }
 
-  .news-tag {
-    @apply text-xs font-bold uppercase tracking-wide text-accent;
+  .news-meta {
+    @apply flex items-center gap-3 mb-3;
   }
 
-  .news-title {
-    @apply text-lg font-bold text-ink mb-3 leading-snug;
+  .news-date {
+    @apply text-xs text-white/40;
+  }
+
+  .news-category {
+    @apply text-[10px] font-bold uppercase tracking-wider text-accent;
+  }
+
+  .news-editorial-title {
+    @apply text-lg font-bold text-white mb-3 leading-snug;
     display: -webkit-box;
     -webkit-line-clamp: 2;
     -webkit-box-orient: vertical;
@@ -1671,14 +1566,19 @@ const formatDate = (dateStr: string) => {
     transition: color 200ms ease;
   }
 
-  .news-card:hover .news-title {
+  .news-featured .news-editorial-title {
+    @apply text-2xl md:text-3xl;
+    -webkit-line-clamp: 3;
+  }
+
+  .news-editorial-card:hover .news-editorial-title {
     @apply text-accent;
   }
 
-  .news-excerpt {
-    @apply text-muted text-sm leading-relaxed mb-4 flex-1;
+  .news-editorial-excerpt {
+    @apply text-white/50 text-sm leading-relaxed mb-4;
     display: -webkit-box;
-    -webkit-line-clamp: 2;
+    -webkit-line-clamp: 3;
     -webkit-box-orient: vertical;
     overflow: hidden;
   }
@@ -1688,113 +1588,119 @@ const formatDate = (dateStr: string) => {
     transition: gap 300ms ease;
   }
 
-  .news-card:hover .news-read-more {
+  .news-editorial-card:hover .news-read-more {
     @apply gap-3;
   }
 
-  .news-mobile-cta {
+  .news-mobile-link {
     @apply text-center mt-10;
   }
 
   /* ============================================
-     About Section
+     About Section - Editorial Layout
      ============================================ */
-  .about-grid {
+  .about-section {
+    @apply relative py-20 md:py-28 pb-28 md:pb-36 bg-surface;
+  }
+
+  .about-editorial {
     @apply grid lg:grid-cols-2 gap-12 lg:gap-20 items-center;
   }
 
-  .about-content .section-title {
+  .about-content .section-title-editorial {
     @apply text-left;
   }
 
   .about-text {
-    @apply text-muted text-lg leading-relaxed mb-6;
+    @apply text-muted text-lg leading-relaxed mb-8;
   }
 
-  .pi-card {
-    @apply flex items-center gap-4 p-4 rounded-xl mb-6;
+  .pi-editorial-card {
+    @apply flex items-center gap-5 p-5 rounded-xl mb-8;
     @apply bg-surface-card border border-line/50 no-underline;
     transition: all 300ms ease;
   }
 
-  .pi-card:hover {
+  .pi-editorial-card:hover {
     @apply border-accent/30;
-    box-shadow: 0 10px 30px -8px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 10px 30px -8px rgba(0, 0, 0, 0.2);
   }
 
-  .pi-photo {
-    @apply w-14 h-14 rounded-full object-cover flex-shrink-0;
+  .pi-avatar {
+    @apply w-16 h-16 rounded-full object-cover flex-shrink-0;
     @apply ring-2 ring-accent/30;
   }
 
-  .pi-info {
+  .pi-details {
     @apply flex flex-col flex-1 min-w-0;
   }
 
   .pi-name {
-    @apply text-sm font-bold text-ink;
+    @apply text-base font-bold text-ink;
   }
 
-  .pi-title {
+  .pi-role {
     @apply text-xs font-bold uppercase tracking-wide text-accent;
   }
 
-  .pi-detail {
-    @apply text-xs text-muted mt-1;
-    display: -webkit-box;
-    -webkit-line-clamp: 2;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
+  .pi-bio {
+    @apply text-xs text-muted mt-1 line-clamp-2;
   }
 
   .pi-arrow {
-    @apply w-4 h-4 text-accent/40 flex-shrink-0;
+    @apply w-5 h-5 text-accent/40 flex-shrink-0;
     transition: all 200ms ease;
   }
 
-  .pi-card:hover .pi-arrow {
+  .pi-editorial-card:hover .pi-arrow {
     @apply text-accent;
     transform: translateX(4px);
   }
 
-  .about-stats {
-    @apply grid grid-cols-2 gap-4 lg:gap-5;
+  .about-stats-grid {
+    @apply grid grid-cols-2 gap-5;
   }
 
-  .stat-card {
-    @apply p-6 lg:p-7 rounded-2xl text-center;
+  .stat-editorial {
+    @apply p-6 lg:p-8 rounded-2xl text-center;
     @apply bg-surface-card border border-line/50;
     transition: all 300ms ease;
   }
 
-  .stat-card:hover {
+  .stat-editorial:hover {
     transform: translateY(-4px);
     border-color: rgba(56, 189, 248, 0.3);
-    box-shadow: 0 15px 30px -8px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 15px 30px -8px rgba(0, 0, 0, 0.2);
   }
 
-  .stat-number {
+  .stat-value {
     @apply text-4xl lg:text-5xl font-black text-accent inline;
+    font-variant-numeric: tabular-nums;
   }
 
-  .stat-plus {
-    @apply text-xl lg:text-2xl font-bold text-accent/70 ml-0.5;
+  .stat-suffix {
+    @apply text-xl lg:text-2xl font-bold text-accent/60 ml-0.5;
   }
 
   .stat-label {
-    @apply block text-xs font-semibold text-muted uppercase tracking-wider mt-2;
+    @apply block text-xs font-bold text-muted uppercase tracking-wider mt-2;
   }
 
   /* ============================================
-     CTA Section
+     Final CTA Section
      ============================================ */
-  .cta-bg {
+  .final-cta {
+    @apply relative py-20 md:py-28 overflow-hidden;
+    background: linear-gradient(180deg, #0b1929 0%, #0f172a 100%);
+  }
+
+  .final-cta-bg {
     @apply absolute inset-0 overflow-hidden;
   }
 
   .cta-orb {
     @apply absolute rounded-full;
-    filter: blur(100px);
+    filter: blur(120px);
   }
 
   .cta-orb-1 {
@@ -1807,136 +1713,126 @@ const formatDate = (dateStr: string) => {
     background: radial-gradient(circle, rgba(45, 212, 191, 0.12), transparent 70%);
   }
 
-  .cta-grid {
+  .cta-editorial-grid {
     @apply grid md:grid-cols-2 gap-6 lg:gap-8;
   }
 
-  .cta-card {
-    @apply relative p-8 md:p-10 rounded-2xl overflow-hidden;
+  .cta-editorial-card {
+    @apply relative p-8 md:p-10 rounded-2xl overflow-hidden text-center;
   }
 
   .cta-card-join {
     @apply border border-accent/30;
-    background: linear-gradient(135deg, rgba(56, 189, 248, 0.1) 0%, rgba(56, 189, 248, 0.02) 100%);
+    background: linear-gradient(135deg, rgba(56, 189, 248, 0.08) 0%, transparent 100%);
   }
 
   .cta-card-join::before {
     content: '';
-    @apply absolute inset-0 opacity-30;
+    @apply absolute inset-0 opacity-40;
     background: radial-gradient(circle at top right, rgba(56, 189, 248, 0.2), transparent 50%);
   }
 
-  .cta-card-funder {
+  .cta-card-funders {
     @apply border border-accent-2/30;
-    background: linear-gradient(135deg, rgba(45, 212, 191, 0.1) 0%, rgba(45, 212, 191, 0.02) 100%);
+    background: linear-gradient(135deg, rgba(45, 212, 191, 0.08) 0%, transparent 100%);
   }
 
-  .cta-card-funder::before {
+  .cta-card-funders::before {
     content: '';
-    @apply absolute inset-0 opacity-30;
+    @apply absolute inset-0 opacity-40;
     background: radial-gradient(circle at top right, rgba(45, 212, 191, 0.2), transparent 50%);
   }
 
-  .cta-card-content {
-    @apply relative z-10 text-center;
-  }
-
-  .cta-eyebrow {
-    @apply inline-block text-xs font-bold uppercase tracking-[0.2em] text-accent mb-4;
+  .cta-editorial-eyebrow {
+    @apply text-[10px] font-bold uppercase tracking-[0.2em] text-accent mb-4 block relative z-10;
   }
 
   .cta-eyebrow-alt {
     @apply text-accent-2;
   }
 
-  .cta-title {
-    @apply text-2xl md:text-3xl font-black text-white mb-4;
+  .cta-editorial-title {
+    @apply text-2xl md:text-3xl font-black text-white mb-4 relative z-10;
   }
 
-  .cta-desc {
-    @apply text-white/60 mb-6 max-w-md mx-auto;
+  .cta-editorial-desc {
+    @apply text-white/50 mb-6 max-w-sm mx-auto relative z-10;
   }
 
-  .btn-cta-primary {
+  .btn-cta-editorial {
     @apply inline-flex items-center gap-2 px-6 py-3;
-    @apply bg-accent text-white font-bold text-sm;
-    @apply rounded-full no-underline;
-    @apply transition-all duration-300;
+    @apply font-bold text-sm rounded-full no-underline;
+    @apply transition-all duration-300 relative z-10;
   }
 
-  .btn-cta-primary:hover {
-    @apply bg-accent/90 gap-3;
+  .btn-cta-editorial:hover {
+    @apply gap-3;
     transform: translateY(-2px);
   }
 
+  .btn-cta-primary {
+    @apply bg-accent text-white;
+  }
+
+  .btn-cta-primary:hover {
+    box-shadow: 0 10px 30px -5px rgba(56, 189, 248, 0.4);
+  }
+
   .btn-cta-secondary {
-    @apply inline-flex items-center gap-2 px-6 py-3;
-    @apply text-white font-bold text-sm;
-    @apply border-2 border-accent-2/50 rounded-full no-underline;
-    @apply transition-all duration-300;
+    @apply border-2 border-accent-2/50 text-white;
   }
 
   .btn-cta-secondary:hover {
-    @apply border-accent-2 bg-accent-2/10 gap-3;
+    @apply border-accent-2 bg-accent-2/10;
   }
 
   /* ============================================
-     Buttons
-     ============================================ */
-  .btn-primary {
-    @apply inline-flex items-center gap-2 px-5 py-2.5;
-    @apply bg-accent text-white font-bold text-sm;
-    @apply rounded-lg no-underline;
-    @apply transition-all duration-200;
-  }
-
-  .btn-primary:hover {
-    @apply bg-accent/90;
-    transform: translateY(-1px);
-  }
-
-  .btn-outline-light {
-    @apply inline-flex items-center gap-2 px-5 py-2.5;
-    @apply text-white font-bold text-sm;
-    @apply border border-white/30 rounded-lg no-underline;
-    @apply transition-all duration-200;
-  }
-
-  .btn-outline-light:hover {
-    @apply border-white/60 bg-white/10 gap-3;
-  }
-
-  /* ============================================
-     Responsive Adjustments
+     Responsive
      ============================================ */
   @media (max-width: 768px) {
     .hero-content {
       padding-top: 7rem;
-      padding-bottom: 8rem;
+      padding-bottom: 5rem;
     }
 
-    .hero-title {
+    .hero-masthead {
+      @apply hidden;
+    }
+
+    .title-line-1,
+    .title-line-2,
+    .title-line-3 {
       @apply text-4xl;
+      margin-left: 0;
     }
 
-    .hero-stats {
-      @apply gap-4;
+    .title-line-2 {
+      margin-left: 0.25em;
     }
 
-    .stat-value {
-      @apply text-xl;
+    .title-line-3 {
+      margin-left: 0.5em;
     }
 
-    .scroll-indicator {
-      @apply bottom-6;
+    .hero-quick-access {
+      @apply flex-col;
     }
 
-    .pillars-grid {
-      @apply gap-4;
+    .quick-card {
+      @apply w-full justify-center;
     }
 
-    .system-card {
-      min-height: 360px;
+    .system-feature {
+      min-height: 380px;
+    }
+
+    .organisms-mosaic {
+      @apply grid-cols-2;
+    }
+
+    .organism-tile-large {
+      @apply col-span-2 row-span-1;
+      aspect-ratio: 16/9;
     }
   }
 
@@ -1949,44 +1845,37 @@ const formatDate = (dateStr: string) => {
       transform: scale(1);
     }
 
-    .particle {
-      animation: none;
-    }
-
-    .badge-dot {
-      animation: none;
-    }
-
-    .title-accent {
-      animation: none;
-    }
-
-    .scroll-indicator {
+    .credential-badge {
       animation: none;
       opacity: 1;
     }
 
-    .scroll-dot {
+    .scroll-cue {
+      animation: none;
+      opacity: 1;
+    }
+
+    .scroll-cue-line {
       animation: none;
     }
 
-    .resilience-orb-1,
-    .resilience-orb-2 {
+    .framework-orb-1,
+    .framework-orb-2 {
       animation: none;
     }
 
-    .system-card,
-    .pillar-card,
-    .organism-card,
-    .news-card,
-    .stat-card,
-    .pi-card {
+    .system-feature,
+    .pillar-scientific,
+    .organism-tile,
+    .news-editorial-card,
+    .stat-editorial,
+    .pi-editorial-card {
       transition: none;
     }
 
-    .card-media img,
-    .organism-visual img,
-    .news-image img {
+    .feature-image img,
+    .tile-image img,
+    .news-editorial-image img {
       transition: none;
     }
   }
@@ -2034,7 +1923,7 @@ const formatDate = (dateStr: string) => {
       { threshold: 0.5 }
     );
 
-    document.querySelectorAll('.stat-number[data-target]').forEach((el) => {
+    document.querySelectorAll('.stat-value[data-target]').forEach((el) => {
       observer.observe(el);
     });
   };
