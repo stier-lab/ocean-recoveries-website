@@ -32,12 +32,9 @@ const formatDate = (dateStr: string) => {
       <div class="hero-grain"></div>
     </div>
 
-    <!-- Decorative elements -->
+    <!-- Decorative elements - simplified -->
     <div class="hero-decorative" aria-hidden="true">
-      <div class="hero-line hero-line-1"></div>
-      <div class="hero-line hero-line-2"></div>
       <div class="hero-corner hero-corner-tl"></div>
-      <div class="hero-corner hero-corner-br"></div>
     </div>
 
     <div class="hero-content">
@@ -61,7 +58,6 @@ const formatDate = (dateStr: string) => {
 
             <!-- Tagline - Editorial style -->
             <div class="hero-tagline-block scroll-reveal stagger-2">
-              <span class="tagline-number">01</span>
               <p class="hero-tagline">
                 Understanding collapse.<br />
                 <em>Designing recovery.</em>
@@ -87,8 +83,9 @@ const formatDate = (dateStr: string) => {
             </div>
           </div>
 
-          <!-- Right: Sidebar info -->
+          <!-- Right: Sidebar info - translucent panel for contrast -->
           <div class="hero-sidebar scroll-reveal stagger-5">
+            <div class="sidebar-panel">
             <!-- Audience paths -->
             <div class="sidebar-section">
               <span class="sidebar-label">Quick Access</span>
@@ -151,6 +148,7 @@ const formatDate = (dateStr: string) => {
                 </div>
               </a>
             </div>
+            </div><!-- close sidebar-panel -->
           </div>
         </div>
       </div>
@@ -829,17 +827,13 @@ const formatDate = (dateStr: string) => {
 
   .title-accent::after {
     content: '';
-    @apply absolute -bottom-1 left-0 w-full h-1 bg-accent/30;
+    @apply absolute -bottom-1 left-0 h-1 bg-accent/30;
+    width: 60%;
   }
 
   /* Editorial tagline block */
   .hero-tagline-block {
-    @apply flex items-start gap-4 mb-6 border-l-2 border-accent/50 pl-6;
-  }
-
-  .tagline-number {
-    @apply text-xs font-bold text-accent/60 mt-1;
-    font-variant-numeric: tabular-nums;
+    @apply mb-6 border-l-2 border-accent/50 pl-6;
   }
 
   .hero-tagline {
@@ -885,23 +879,32 @@ const formatDate = (dateStr: string) => {
 
   .btn-hero-secondary {
     @apply inline-flex items-center px-7 py-3.5;
-    @apply text-white font-semibold text-sm;
-    @apply border border-white/40 rounded-none no-underline;
+    @apply text-white font-bold text-sm;
+    @apply border-2 border-white/60 rounded-none no-underline;
+    @apply bg-white/5 backdrop-blur-sm;
     @apply transition-all duration-300;
   }
 
   .btn-hero-secondary:hover {
-    @apply border-white bg-white/10;
+    @apply border-white bg-white/15;
+    transform: translateY(-2px);
   }
 
   /* Sidebar */
   .hero-sidebar {
     @apply hidden lg:block;
-    @apply pt-16;
+    @apply pt-8;
+  }
+
+  .sidebar-panel {
+    @apply p-6 rounded-xl;
+    @apply bg-navy-deep/60 backdrop-blur-md;
+    @apply border border-white/10;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
   }
 
   .sidebar-section {
-    @apply mb-8;
+    @apply mb-6;
   }
 
   .sidebar-label {
@@ -913,32 +916,38 @@ const formatDate = (dateStr: string) => {
   }
 
   .audience-item {
-    @apply flex items-center gap-3 py-2 no-underline;
-    @apply text-sm text-white/60 transition-all duration-200;
+    @apply flex items-center gap-3 px-3 py-2.5 rounded-lg no-underline;
+    @apply text-sm font-medium text-white/80;
+    @apply bg-white/5 border border-white/10;
+    @apply transition-all duration-200;
   }
 
   .audience-item:hover {
-    @apply text-white;
+    @apply text-white bg-accent/20 border-accent/30;
   }
 
   .audience-item:hover .audience-icon {
-    @apply bg-accent/20 text-accent;
+    @apply text-accent;
   }
 
   .audience-icon {
-    @apply w-8 h-8 rounded-lg flex items-center justify-center;
-    @apply bg-white/5 text-white/40 transition-all duration-200;
+    @apply w-5 h-5 flex items-center justify-center flex-shrink-0;
+    @apply text-white/50 transition-all duration-200;
   }
 
   /* Funders */
   .funders-list {
-    @apply flex flex-wrap gap-2;
+    @apply flex items-center gap-4;
   }
 
   .funder {
-    @apply inline-block px-3 py-1.5;
-    @apply bg-white/5 text-white/60 text-xs font-semibold;
-    @apply border border-white/10;
+    @apply text-xs font-bold uppercase tracking-wider text-white/70;
+    @apply relative;
+  }
+
+  .funder:not(:last-child)::after {
+    content: '·';
+    @apply absolute -right-2.5 top-0 text-white/30;
   }
 
   /* Sidebar stat */
