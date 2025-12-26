@@ -135,6 +135,22 @@ const formatDate = (dateStr: string) => {
               <span class="stat-big">75+</span>
               <span class="stat-context">peer-reviewed publications on reef & kelp dynamics</span>
             </div>
+
+            <!-- Featured impact -->
+            <div class="sidebar-impact">
+              <span class="sidebar-label">Featured Impact</span>
+              <a href="/publications" class="impact-tile">
+                <div class="impact-icon">
+                  <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" class="w-5 h-5">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+                  </svg>
+                </div>
+                <div class="impact-text">
+                  <span class="impact-title">LTER Decision Tools</span>
+                  <span class="impact-desc">Predictive models for reef managers</span>
+                </div>
+              </a>
+            </div>
           </div>
         </div>
       </div>
@@ -241,6 +257,22 @@ const formatDate = (dateStr: string) => {
     <WaveDivider id="study-wave" fillColor="navy-deep" />
   </section>
 
+  <!-- Impact Quote Banner -->
+  <section class="impact-banner">
+    <div class="container">
+      <div class="impact-quote-block scroll-reveal">
+        <div class="quote-mark" aria-hidden="true">"</div>
+        <blockquote class="impact-quote">
+          Understanding why ecosystems collapse—and what makes them recover—is the first step toward restoration that actually works.
+        </blockquote>
+        <cite class="quote-attribution">
+          <span class="quote-author">Dr. Adrian Stier</span>
+          <span class="quote-role">Principal Investigator</span>
+        </cite>
+      </div>
+    </div>
+  </section>
+
   <!-- Resilience Framework Section -->
   <section class="resilience-section">
     <div class="resilience-bg">
@@ -271,11 +303,23 @@ const formatDate = (dateStr: string) => {
             <h3 class="pillar-title">Resistance</h3>
           </div>
           <p class="pillar-tagline">What prevents collapse when disturbance hits</p>
-          <ul class="pillar-list">
-            <li><span class="pillar-level pillar-level-1">Individual:</span> stress tolerance, damage thresholds</li>
-            <li><span class="pillar-level pillar-level-1">Population:</span> demographic buffering, spatial refugia</li>
-            <li><span class="pillar-level pillar-level-1">Ecosystem:</span> stabilizing feedbacks, trophic structure</li>
-          </ul>
+          <div class="pillar-scales">
+            <div class="scale-item scale-item-1">
+              <span class="scale-dot"></span>
+              <span class="scale-label">Individual</span>
+              <span class="scale-value">stress tolerance</span>
+            </div>
+            <div class="scale-item scale-item-1">
+              <span class="scale-dot"></span>
+              <span class="scale-label">Population</span>
+              <span class="scale-value">spatial refugia</span>
+            </div>
+            <div class="scale-item scale-item-1">
+              <span class="scale-dot"></span>
+              <span class="scale-label">Ecosystem</span>
+              <span class="scale-value">trophic structure</span>
+            </div>
+          </div>
         </div>
 
         <!-- Recovery -->
@@ -289,11 +333,23 @@ const formatDate = (dateStr: string) => {
             <h3 class="pillar-title">Recovery</h3>
           </div>
           <p class="pillar-tagline">What controls the speed and reliability of return</p>
-          <ul class="pillar-list">
-            <li><span class="pillar-level pillar-level-2">Individual:</span> wound healing, regeneration capacity</li>
-            <li><span class="pillar-level pillar-level-2">Population:</span> recruitment, connectivity</li>
-            <li><span class="pillar-level pillar-level-2">Ecosystem:</span> facilitation cascades, succession</li>
-          </ul>
+          <div class="pillar-scales">
+            <div class="scale-item scale-item-2">
+              <span class="scale-dot"></span>
+              <span class="scale-label">Individual</span>
+              <span class="scale-value">wound healing</span>
+            </div>
+            <div class="scale-item scale-item-2">
+              <span class="scale-dot"></span>
+              <span class="scale-label">Population</span>
+              <span class="scale-value">recruitment</span>
+            </div>
+            <div class="scale-item scale-item-2">
+              <span class="scale-dot"></span>
+              <span class="scale-label">Ecosystem</span>
+              <span class="scale-value">succession</span>
+            </div>
+          </div>
         </div>
 
         <!-- Reorganization -->
@@ -307,11 +363,23 @@ const formatDate = (dateStr: string) => {
             <h3 class="pillar-title">Reorganization</h3>
           </div>
           <p class="pillar-tagline">What determines the next state when return isn't possible</p>
-          <ul class="pillar-list">
-            <li><span class="pillar-level pillar-level-3">Individual:</span> how tolerances filter survivors</li>
-            <li><span class="pillar-level pillar-level-3">Population:</span> how populations reassemble</li>
-            <li><span class="pillar-level pillar-level-3">Ecosystem:</span> how interactions rewire</li>
-          </ul>
+          <div class="pillar-scales">
+            <div class="scale-item scale-item-3">
+              <span class="scale-dot"></span>
+              <span class="scale-label">Individual</span>
+              <span class="scale-value">survivor filtering</span>
+            </div>
+            <div class="scale-item scale-item-3">
+              <span class="scale-dot"></span>
+              <span class="scale-label">Population</span>
+              <span class="scale-value">reassembly</span>
+            </div>
+            <div class="scale-item scale-item-3">
+              <span class="scale-dot"></span>
+              <span class="scale-label">Ecosystem</span>
+              <span class="scale-value">rewiring</span>
+            </div>
+          </div>
         </div>
       </div>
 
@@ -415,7 +483,10 @@ const formatDate = (dateStr: string) => {
           </div>
           <div class="organism-content">
             <h3 class="organism-name">Corals</h3>
-            <p class="organism-desc">How colonies heal damage, regenerate tissue, and allocate energy under thermal stress.</p>
+            <div class="organism-questions">
+              <span class="question-chip">Wound healing</span>
+              <span class="question-chip">Thermal stress</span>
+            </div>
           </div>
         </div>
 
@@ -427,7 +498,10 @@ const formatDate = (dateStr: string) => {
           </div>
           <div class="organism-content">
             <h3 class="organism-name">Lobsters & Urchins</h3>
-            <p class="organism-desc">How consumers structure kelp dynamics through predation, grazing, and behavior.</p>
+            <div class="organism-questions">
+              <span class="question-chip">Predation</span>
+              <span class="question-chip">Grazing dynamics</span>
+            </div>
           </div>
         </div>
 
@@ -439,7 +513,10 @@ const formatDate = (dateStr: string) => {
           </div>
           <div class="organism-content">
             <h3 class="organism-name">Kelp</h3>
-            <p class="organism-desc">How resistance to grazing and storms interacts with recruitment for forest persistence.</p>
+            <div class="organism-questions">
+              <span class="question-chip">Storm resistance</span>
+              <span class="question-chip">Recruitment</span>
+            </div>
           </div>
         </div>
 
@@ -451,7 +528,10 @@ const formatDate = (dateStr: string) => {
           </div>
           <div class="organism-content">
             <h3 class="organism-name">Reef Fish</h3>
-            <p class="organism-desc">How fish–coral mutualisms enhance survival and how fishing alters stabilizing networks.</p>
+            <div class="organism-questions">
+              <span class="question-chip">Mutualisms</span>
+              <span class="question-chip">Network stability</span>
+            </div>
           </div>
         </div>
       </div>
@@ -875,6 +955,39 @@ const formatDate = (dateStr: string) => {
     @apply block text-sm text-white/50 leading-snug;
   }
 
+  /* Featured impact tile */
+  .sidebar-impact {
+    @apply mt-6 pt-6 border-t border-white/10;
+  }
+
+  .impact-tile {
+    @apply flex items-start gap-3 p-3 mt-2;
+    @apply bg-accent/5 border border-accent/20 rounded-lg;
+    @apply no-underline transition-all duration-200;
+  }
+
+  .impact-tile:hover {
+    @apply bg-accent/10 border-accent/40;
+    transform: translateX(4px);
+  }
+
+  .impact-icon {
+    @apply w-9 h-9 flex items-center justify-center flex-shrink-0;
+    @apply bg-accent/20 text-accent rounded-lg;
+  }
+
+  .impact-text {
+    @apply flex flex-col;
+  }
+
+  .impact-title {
+    @apply text-sm font-semibold text-white;
+  }
+
+  .impact-desc {
+    @apply text-xs text-white/50;
+  }
+
   /* Scroll indicator */
   .scroll-indicator {
     @apply absolute bottom-8 left-8 lg:left-12;
@@ -961,6 +1074,41 @@ const formatDate = (dateStr: string) => {
 
   .section-cta {
     @apply text-center mt-12;
+  }
+
+  /* ============================================
+     Impact Quote Banner
+     ============================================ */
+  .impact-banner {
+    @apply py-16 md:py-20;
+    background: linear-gradient(180deg, #0b1929 0%, #0f172a 100%);
+  }
+
+  .impact-quote-block {
+    @apply relative max-w-3xl mx-auto text-center px-4;
+  }
+
+  .quote-mark {
+    @apply absolute -top-4 left-1/2 -translate-x-1/2;
+    @apply text-8xl font-black text-accent/20 leading-none;
+    font-family: Georgia, serif;
+  }
+
+  .impact-quote {
+    @apply relative z-10 text-xl md:text-2xl lg:text-3xl font-medium text-white leading-relaxed;
+    @apply mb-6;
+  }
+
+  .quote-attribution {
+    @apply flex flex-col items-center gap-1 not-italic;
+  }
+
+  .quote-author {
+    @apply text-sm font-bold text-accent;
+  }
+
+  .quote-role {
+    @apply text-xs text-white/50 uppercase tracking-wider;
   }
 
   /* ============================================
@@ -1356,21 +1504,34 @@ const formatDate = (dateStr: string) => {
     @apply text-white/50 text-sm mb-5;
   }
 
-  .pillar-list {
-    @apply space-y-3;
+  /* Scannable scale items */
+  .pillar-scales {
+    @apply space-y-2.5;
   }
 
-  .pillar-list li {
-    @apply text-white/70 text-sm leading-relaxed;
+  .scale-item {
+    @apply flex items-center gap-3;
   }
 
-  .pillar-level {
-    @apply font-semibold;
+  .scale-dot {
+    @apply w-2 h-2 rounded-full flex-shrink-0;
   }
 
-  .pillar-level-1 { @apply text-accent; }
-  .pillar-level-2 { @apply text-accent-2; }
-  .pillar-level-3 { @apply text-amber-400; }
+  .scale-item-1 .scale-dot { @apply bg-accent; }
+  .scale-item-2 .scale-dot { @apply bg-accent-2; }
+  .scale-item-3 .scale-dot { @apply bg-amber-400; }
+
+  .scale-label {
+    @apply text-xs font-bold uppercase tracking-wider text-white/40 w-20 flex-shrink-0;
+  }
+
+  .scale-value {
+    @apply text-sm text-white/70;
+  }
+
+  .scale-item-1 .scale-label { @apply text-accent/60; }
+  .scale-item-2 .scale-label { @apply text-accent-2/60; }
+  .scale-item-3 .scale-label { @apply text-amber-400/60; }
 
   /* ============================================
      Organisms Grid
@@ -1417,8 +1578,13 @@ const formatDate = (dateStr: string) => {
     @apply text-lg font-bold text-ink mb-2;
   }
 
-  .organism-desc {
-    @apply text-muted text-sm leading-relaxed;
+  .organism-questions {
+    @apply flex flex-wrap gap-1.5;
+  }
+
+  .question-chip {
+    @apply text-xs font-medium px-2 py-1;
+    @apply bg-accent/10 text-accent border border-accent/20 rounded;
   }
 
   /* ============================================
