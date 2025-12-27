@@ -159,6 +159,101 @@ const breadcrumbs = [
     <WaveDivider id="pillars-wave" fillColor="navy-deep" />
   </section>
 
+  <!-- Resilience Across Scales -->
+  <section id="resilience" class="resilience-section">
+    <div class="container">
+      <div class="section-header scroll-reveal">
+        <span class="section-eyebrow section-eyebrow-light">Conceptual Framework</span>
+        <h2 class="section-title section-title-light">Resilience<br /><span class="title-gradient">Across Scales</span></h2>
+        <p class="section-desc section-desc-light">
+          When ecosystems collapse—or recover—it's because processes at the individual, population, and ecosystem level align (or conflict). We organize our work around three axes:
+        </p>
+      </div>
+
+      <div class="resilience-grid">
+        <!-- Resistance -->
+        <div class="resilience-card scroll-reveal stagger-1">
+          <div class="resilience-label">R1</div>
+          <div class="resilience-icon resilience-icon-1">
+            <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+            </svg>
+          </div>
+          <h3 class="resilience-title">Resistance</h3>
+          <p class="resilience-definition">What prevents collapse when disturbance hits</p>
+          <div class="resilience-scales">
+            <div class="scale-item">
+              <span class="scale-level">Individual</span>
+              <span class="scale-mechanism">stress tolerance</span>
+            </div>
+            <div class="scale-item">
+              <span class="scale-level">Population</span>
+              <span class="scale-mechanism">spatial refugia</span>
+            </div>
+            <div class="scale-item">
+              <span class="scale-level">Ecosystem</span>
+              <span class="scale-mechanism">trophic structure</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Recovery -->
+        <div class="resilience-card resilience-card-featured scroll-reveal stagger-2">
+          <div class="resilience-label">R2</div>
+          <div class="resilience-icon resilience-icon-2">
+            <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
+            </svg>
+          </div>
+          <h3 class="resilience-title">Recovery</h3>
+          <p class="resilience-definition">What controls the rate and reliability of return</p>
+          <div class="resilience-scales">
+            <div class="scale-item">
+              <span class="scale-level">Individual</span>
+              <span class="scale-mechanism">wound healing</span>
+            </div>
+            <div class="scale-item">
+              <span class="scale-level">Population</span>
+              <span class="scale-mechanism">recruitment</span>
+            </div>
+            <div class="scale-item">
+              <span class="scale-level">Ecosystem</span>
+              <span class="scale-mechanism">succession</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Reorganization -->
+        <div class="resilience-card scroll-reveal stagger-3">
+          <div class="resilience-label">R3</div>
+          <div class="resilience-icon resilience-icon-3">
+            <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4" />
+            </svg>
+          </div>
+          <h3 class="resilience-title">Reorganization</h3>
+          <p class="resilience-definition">What determines the next system when return isn't possible</p>
+          <div class="resilience-scales">
+            <div class="scale-item">
+              <span class="scale-level">Individual</span>
+              <span class="scale-mechanism">survivor filtering</span>
+            </div>
+            <div class="scale-item">
+              <span class="scale-level">Population</span>
+              <span class="scale-mechanism">reassembly</span>
+            </div>
+            <div class="scale-item">
+              <span class="scale-level">Ecosystem</span>
+              <span class="scale-mechanism">rewiring</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <WaveDivider id="resilience-wave" fillColor="surface" />
+  </section>
+
   <!-- Impact Pathway -->
   <section id="impact" class="impact-section">
     <div class="container">
@@ -617,6 +712,82 @@ const breadcrumbs = [
 
   .section-desc-light {
     @apply text-white/60;
+  }
+
+  /* ============================================
+     Resilience Across Scales Section
+     ============================================ */
+  .resilience-section {
+    @apply relative py-20 md:py-28 pb-28 md:pb-36 overflow-hidden;
+    background: linear-gradient(180deg, #0b1929 0%, #0f172a 50%, #0b1929 100%);
+  }
+
+  .resilience-grid {
+    @apply grid md:grid-cols-3 gap-6 lg:gap-8 max-w-5xl mx-auto;
+  }
+
+  .resilience-card {
+    @apply relative p-8 rounded-2xl;
+    @apply bg-white/[0.03] border border-white/10;
+    @apply backdrop-blur-sm;
+    transition: all 400ms cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .resilience-card:hover {
+    @apply bg-white/[0.05];
+    transform: translateY(-6px);
+    box-shadow: 0 20px 40px -12px rgba(0, 0, 0, 0.4);
+  }
+
+  .resilience-card-featured {
+    @apply bg-accent/[0.08] border-accent/30;
+  }
+
+  .resilience-label {
+    @apply absolute top-4 right-4;
+    @apply text-xs font-black text-white/20 tracking-wider;
+  }
+
+  .resilience-icon {
+    @apply w-14 h-14 rounded-xl flex items-center justify-center mb-5;
+    transition: transform 300ms ease;
+  }
+
+  .resilience-card:hover .resilience-icon {
+    transform: scale(1.1);
+  }
+
+  .resilience-icon-1 { @apply bg-accent/20 text-accent; }
+  .resilience-icon-2 { @apply bg-accent-2/20 text-accent-2; }
+  .resilience-icon-3 { @apply bg-amber-500/20 text-amber-400; }
+
+  .resilience-title {
+    @apply text-xl font-bold text-white mb-2;
+  }
+
+  .resilience-definition {
+    @apply text-sm text-white/50 mb-6;
+  }
+
+  .resilience-scales {
+    @apply space-y-3;
+  }
+
+  .scale-item {
+    @apply flex items-center justify-between gap-4;
+    @apply py-2 border-b border-white/5;
+  }
+
+  .scale-item:last-child {
+    @apply border-b-0;
+  }
+
+  .scale-level {
+    @apply text-[10px] font-bold uppercase tracking-wider text-white/30;
+  }
+
+  .scale-mechanism {
+    @apply text-sm text-white/70;
   }
 
   /* ============================================
