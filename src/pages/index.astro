@@ -79,41 +79,12 @@ const formatDate = (dateStr: string) => {
           </a>
           <a href="/join-us" class="btn-editorial-secondary">Join the Lab</a>
         </div>
-
-        <!-- Quick access cards -->
-        <div class="hero-quick-access scroll-reveal stagger-5">
-          <a href="/for-funders" class="quick-card">
-            <span class="quick-icon">
-              <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-              </svg>
-            </span>
-            <span class="quick-label">For Funders</span>
-          </a>
-          <a href="/join-us" class="quick-card">
-            <span class="quick-icon">
-              <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
-              </svg>
-            </span>
-            <span class="quick-label">For Students</span>
-          </a>
-          <a href="mailto:adrian.stier@lifesci.ucsb.edu?subject=Partnership%20Inquiry" class="quick-card">
-            <span class="quick-icon">
-              <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
-              </svg>
-            </span>
-            <span class="quick-label">For Partners</span>
-          </a>
-        </div>
       </div>
     </div>
 
     <!-- Scroll cue -->
     <div class="scroll-cue">
       <div class="scroll-cue-line"></div>
-      <span class="scroll-cue-text">Scroll to explore</span>
     </div>
 
     <WaveDivider id="hero-wave" fillColor="surface" />
@@ -686,13 +657,13 @@ const formatDate = (dateStr: string) => {
 
   .hero-content {
     @apply relative z-10 w-full;
-    padding-top: 9rem;
-    padding-bottom: 6rem;
+    padding-top: 5rem;
+    padding-bottom: 3rem;
   }
 
   /* Masthead */
   .hero-masthead {
-    @apply flex items-center gap-4 mb-10;
+    @apply flex items-center gap-4 mb-6;
   }
 
   .masthead-line {
@@ -706,11 +677,11 @@ const formatDate = (dateStr: string) => {
 
   /* Title block - Editorial treatment */
   .hero-title-block {
-    @apply mb-8;
+    @apply mb-5;
   }
 
   .hero-title {
-    @apply leading-[0.9] tracking-[-0.03em];
+    @apply leading-[0.95] tracking-[-0.02em];
   }
 
   .title-line {
@@ -718,13 +689,13 @@ const formatDate = (dateStr: string) => {
   }
 
   .title-line-1 {
-    @apply text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-black text-white;
+    @apply text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black text-white;
     margin-left: -0.04em;
   }
 
   .title-line-2 {
-    @apply text-5xl sm:text-6xl md:text-7xl lg:text-8xl;
-    margin-left: 0.5em;
+    @apply text-4xl sm:text-5xl md:text-6xl lg:text-7xl;
+    margin-left: 0.4em;
   }
 
   .title-serif {
@@ -737,23 +708,23 @@ const formatDate = (dateStr: string) => {
   }
 
   .title-line-3 {
-    @apply text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-black text-white;
-    margin-left: 2em;
+    @apply text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black text-white;
+    margin-left: 1.5em;
   }
 
   /* Tagline */
   .hero-tagline-wrapper {
-    @apply flex items-start gap-6 mb-6 max-w-xl;
+    @apply flex items-start gap-4 mb-4 max-w-xl;
   }
 
   .tagline-accent {
-    @apply w-1 flex-shrink-0 mt-2;
+    @apply w-1 flex-shrink-0 mt-1;
     @apply bg-gradient-to-b from-accent to-accent-2;
-    height: 60px;
+    height: 48px;
   }
 
   .hero-tagline {
-    @apply text-xl md:text-2xl text-white/80 leading-snug;
+    @apply text-lg md:text-xl text-white/80 leading-snug;
     font-weight: 400;
   }
 
@@ -763,16 +734,16 @@ const formatDate = (dateStr: string) => {
   }
 
   .hero-desc {
-    @apply text-base md:text-lg text-white/50 mb-10 leading-relaxed max-w-lg;
+    @apply text-sm md:text-base text-white/50 mb-6 leading-relaxed max-w-lg;
   }
 
   /* Actions */
   .hero-actions {
-    @apply flex flex-wrap items-center gap-4 mb-12;
+    @apply flex flex-wrap items-center gap-3;
   }
 
   .btn-editorial-primary {
-    @apply relative inline-flex items-center gap-3 px-7 py-4;
+    @apply relative inline-flex items-center gap-2 px-5 py-3;
     @apply bg-white text-navy-deep font-bold text-sm;
     @apply no-underline overflow-hidden;
     @apply transition-all duration-300;
@@ -817,7 +788,7 @@ const formatDate = (dateStr: string) => {
   }
 
   .btn-editorial-secondary {
-    @apply inline-flex items-center px-7 py-4;
+    @apply inline-flex items-center px-5 py-3;
     @apply text-white font-bold text-sm;
     @apply border-2 border-white/40 no-underline;
     @apply transition-all duration-300;
@@ -827,36 +798,9 @@ const formatDate = (dateStr: string) => {
     @apply border-white bg-white/10;
   }
 
-  /* Quick access cards */
-  .hero-quick-access {
-    @apply flex flex-wrap gap-3;
-  }
-
-  .quick-card {
-    @apply flex items-center gap-3 px-5 py-3;
-    @apply bg-white/[0.06] backdrop-blur-sm rounded-full;
-    @apply border border-white/10 no-underline;
-    @apply text-sm text-white/80;
-    @apply transition-all duration-300;
-  }
-
-  .quick-card:hover {
-    @apply bg-accent/20 border-accent/40 text-white;
-    transform: translateY(-2px);
-  }
-
-  .quick-icon {
-    @apply w-5 h-5 text-accent;
-  }
-
-  .quick-label {
-    @apply font-semibold;
-  }
-
   /* Scroll cue */
   .scroll-cue {
-    @apply absolute bottom-8 left-1/2 -translate-x-1/2;
-    @apply flex flex-col items-center gap-3;
+    @apply absolute bottom-6 left-1/2 -translate-x-1/2;
     animation: fadeIn 1s ease-out 1.5s forwards;
     opacity: 0;
   }
@@ -866,17 +810,13 @@ const formatDate = (dateStr: string) => {
   }
 
   .scroll-cue-line {
-    @apply w-px h-12 bg-gradient-to-b from-transparent via-white/30 to-accent;
+    @apply w-px h-8 bg-gradient-to-b from-transparent via-white/30 to-accent;
     animation: scrollPulse 2s ease-in-out infinite;
   }
 
   @keyframes scrollPulse {
     0%, 100% { opacity: 0.5; transform: scaleY(1); }
     50% { opacity: 1; transform: scaleY(1.1); }
-  }
-
-  .scroll-cue-text {
-    @apply text-[10px] font-bold uppercase tracking-[0.2em] text-white/40;
   }
 
   /* ============================================
@@ -1741,36 +1681,61 @@ const formatDate = (dateStr: string) => {
      Responsive
      ============================================ */
   @media (max-width: 768px) {
+    .hero {
+      padding-bottom: 3rem;
+    }
+
     .hero-content {
-      padding-top: 7rem;
-      padding-bottom: 5rem;
+      padding-top: 5rem;
+      padding-bottom: 0;
     }
 
     .hero-masthead {
       @apply hidden;
     }
 
+    .hero-title-block {
+      @apply mb-4;
+    }
+
     .title-line-1,
     .title-line-2,
     .title-line-3 {
-      @apply text-4xl;
+      @apply text-3xl;
       margin-left: 0;
     }
 
     .title-line-2 {
-      margin-left: 0.25em;
+      margin-left: 0.2em;
     }
 
     .title-line-3 {
-      margin-left: 0.5em;
+      margin-left: 0.4em;
     }
 
-    .hero-quick-access {
-      @apply flex-col;
+    .hero-tagline-wrapper {
+      @apply mb-3;
     }
 
-    .quick-card {
-      @apply w-full justify-center;
+    .tagline-accent {
+      height: 36px;
+    }
+
+    .hero-tagline {
+      @apply text-base;
+    }
+
+    .hero-desc {
+      @apply text-xs mb-4;
+    }
+
+    .hero-actions {
+      @apply gap-2;
+    }
+
+    .btn-editorial-primary,
+    .btn-editorial-secondary {
+      @apply px-4 py-2.5 text-xs;
     }
 
     .system-feature {
