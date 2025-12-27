@@ -8,22 +8,26 @@ const sortedTeam = [...currentTeam].sort((a, b) => a.order - b.order);
 const pi = sortedTeam.find(m => m.role === 'pi');
 const teamMembers = sortedTeam.filter(m => m.role !== 'pi');
 
-// Role styling
-const roleStyles: Record<string, { gradient: string; icon: string; label: string }> = {
-  pi: { gradient: 'from-amber-400 via-orange-400 to-rose-400', icon: '◆', label: 'Principal Investigator' },
-  postdoc: { gradient: 'from-teal-400 to-emerald-400', icon: '●', label: 'Postdoctoral Researcher' },
-  phd: { gradient: 'from-sky-400 to-blue-500', icon: '●', label: 'PhD Student' },
-  manager: { gradient: 'from-violet-400 to-purple-500', icon: '▲', label: 'Lab Manager' },
-  undergrad: { gradient: 'from-rose-400 to-pink-400', icon: '○', label: 'Undergraduate Researcher' },
+// Role styling - no more shape symbols
+const roleLabels: Record<string, string> = {
+  pi: 'Principal Investigator',
+  postdoc: 'Postdoctoral Researcher',
+  phd: 'PhD Student',
+  manager: 'Lab Manager',
+  undergrad: 'Undergraduate Researcher',
 };
 
-// Alumni role colors
-const alumniRoleColors: Record<string, string> = {
-  'Postdoc': 'teal',
-  'PhD': 'sky',
-  'MS Student': 'indigo',
-  'Lab Manager': 'amber',
-  'Undergraduate Researcher': 'rose',
+// Role colors for badges
+const roleColors: Record<string, string> = {
+  postdoc: 'teal',
+  phd: 'sky',
+  manager: 'violet',
+  undergrad: 'rose',
+};
+
+// Helper to check if image is a placeholder
+const isPlaceholderImage = (image: string) => {
+  return image.includes('man-scuba-diver-on-boat') || image.includes('placeholder');
 };
 ---
 
@@ -35,95 +39,32 @@ const alumniRoleColors: Record<string, string> = {
 >
   <BreadcrumbSchema items={[{ name: 'People', url: '/people' }]} />
 
-  <!-- Hero Section -->
-  <section class="hero-section">
-    <div class="hero-bg">
-      <div class="hero-gradient"></div>
-      <div class="hero-pattern"></div>
-    </div>
-
-    <div class="container relative z-10">
-      <div class="hero-content">
-        <span class="hero-eyebrow scroll-reveal">
-          <span class="eyebrow-line"></span>
-          <span>Ocean Recoveries Lab</span>
-          <span class="eyebrow-line"></span>
-        </span>
-
-        <h1 class="hero-title scroll-reveal stagger-1">
-          <span class="title-line">The Minds</span>
-          <span class="title-line title-accent">Behind the Science</span>
-        </h1>
-
-        <p class="hero-description scroll-reveal stagger-2">
-          A collaborative team of researchers, students, and staff dedicated to understanding how ocean ecosystems recover from disturbance — and how we can help accelerate that recovery.
-        </p>
-
-        <div class="hero-stats scroll-reveal stagger-3">
-          <div class="stat">
-            <span class="stat-number">{currentTeam.length}</span>
-            <span class="stat-label">Current Members</span>
-          </div>
-          <div class="stat-divider"></div>
-          <div class="stat">
-            <span class="stat-number">{alumni.length}</span>
-            <span class="stat-label">Alumni Network</span>
-          </div>
-          <div class="stat-divider"></div>
-          <div class="stat">
-            <span class="stat-number">2</span>
-            <span class="stat-label">Research Sites</span>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="hero-scroll-indicator scroll-reveal stagger-4">
-      <span>Meet the team</span>
-      <svg class="scroll-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"/>
-      </svg>
-    </div>
-  </section>
-
-  <!-- PI Feature Section -->
+  <!-- PI Hero Section - Left-aligned treatment -->
   {pi && (
-    <section class="pi-section" id="team">
+    <section class="pi-hero-section" id="team">
       <div class="container">
-        <div class="pi-card scroll-reveal">
-          <div class="pi-image-wrapper">
+        <div class="pi-hero scroll-reveal">
+          <div class="pi-photo-side">
             <img
               src={pi.image}
               alt={`${pi.name} portrait`}
-              class="pi-image"
+              class="pi-photo"
               loading="eager"
-              width="600"
-              height="720"
+              width="400"
+              height="500"
             />
-            <div class="pi-image-overlay"></div>
-            <div class="pi-role-badge">
-              <span class="role-icon">{roleStyles[pi.role].icon}</span>
-              <span>Principal Investigator</span>
-            </div>
           </div>
 
-          <div class="pi-content">
-            <div class="pi-header">
-              <h2 class="pi-name">{pi.name}</h2>
-              <p class="pi-title">{pi.title}</p>
-            </div>
+          <div class="pi-content-side">
+            <span class="pi-role-label">Principal Investigator</span>
+            <h2 class="pi-name">{pi.name}</h2>
+            <p class="pi-title">{pi.title}</p>
 
             <p class="pi-hook">{pi.hook}</p>
 
-            <div class="pi-tags">
-              {pi.tags.map((tag) => (
-                <span class="pi-tag">{tag}</span>
-              ))}
-            </div>
-
             <div class="pi-links">
               {pi.email && (
-                <a href={`mailto:${pi.email}`} class="pi-link" aria-label={`Email ${pi.name}`}>
+                <a href={`mailto:${pi.email}`} class="pi-link-primary" aria-label={`Email ${pi.name}`}>
                   <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                     <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
                     <polyline points="22,6 12,13 2,6" />
@@ -169,22 +110,22 @@ const alumniRoleColors: Record<string, string> = {
     <div class="container">
       <div class="section-header scroll-reveal">
         <h2 class="section-title">Lab Members</h2>
-        <p class="section-subtitle">Researchers and students driving our mission forward</p>
       </div>
 
       <div class="team-grid">
         {teamMembers.map((member, i) => {
-          const style = roleStyles[member.role];
-          const isPlaceholder = member.image.includes('man-scuba-diver-on-boat') || member.image.includes('placeholder');
+          const roleColor = roleColors[member.role] || 'sky';
+          const placeholder = isPlaceholderImage(member.image);
 
           return (
-            <article class={`team-card scroll-reveal stagger-${(i % 5) + 1}`}>
+            <article class={`team-card scroll-reveal stagger-${(i % 4) + 1}`}>
               <div class="team-card-inner">
                 <div class="team-photo-container">
-                  {isPlaceholder ? (
+                  {placeholder ? (
                     <div class="team-photo-placeholder">
-                      <span class="placeholder-initial">{member.name.charAt(0)}</span>
-                      <div class="placeholder-pattern"></div>
+                      <svg class="silhouette-icon" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
+                      </svg>
                     </div>
                   ) : (
                     <img
@@ -198,24 +139,14 @@ const alumniRoleColors: Record<string, string> = {
                   )}
                   <div class="team-photo-overlay"></div>
 
-                  <div class={`team-role-tag bg-gradient-to-r ${style.gradient}`}>
-                    <span class="role-icon">{style.icon}</span>
-                    <span>{style.label}</span>
-                  </div>
-
-                  <div class="team-hover-content">
-                    <p class="team-hover-hook">{member.hook}</p>
-                    <div class="team-hover-tags">
-                      {member.tags.slice(0, 3).map((tag) => (
-                        <span class="team-hover-tag">{tag}</span>
-                      ))}
-                    </div>
-                  </div>
+                  <span class={`team-role-badge role-${roleColor}`}>
+                    {roleLabels[member.role]}
+                  </span>
                 </div>
 
                 <div class="team-info">
                   <h3 class="team-name">{member.name}</h3>
-                  <p class="team-title">{member.title}</p>
+                  <p class="team-hook">{member.hook}</p>
 
                   <div class="team-actions">
                     {member.email ? (
@@ -245,64 +176,39 @@ const alumniRoleColors: Record<string, string> = {
     </div>
   </section>
 
-  <!-- Alumni Section -->
+  <!-- Alumni Section - Compressed List -->
   <section class="alumni-section" id="alumni">
     <div class="container">
       <div class="alumni-header scroll-reveal">
-        <div class="alumni-header-line"></div>
-        <div class="alumni-header-content">
-          <span class="alumni-eyebrow">Our Network</span>
-          <h2 class="alumni-title">Where Are They Now</h2>
-          <p class="alumni-subtitle">Tracing the impact of our alumni across the globe</p>
-        </div>
-        <div class="alumni-header-line"></div>
+        <h2 class="alumni-title">Alumni</h2>
+        <p class="alumni-subtitle">Where our former members are now</p>
       </div>
 
-      <div class="alumni-grid">
-        {alumni.map((alum, i) => {
-          const roleColor = alumniRoleColors[alum.role] || 'sky';
-          return (
-            <div class={`alumni-card scroll-reveal stagger-${(i % 6) + 1}`}>
-              <div class="alumni-card-inner">
-                {alum.image ? (
-                  <div class="alumni-photo-wrap">
-                    <img src={alum.image} alt={`${alum.name}`} class="alumni-photo" loading="lazy" width="56" height="56" />
-                  </div>
-                ) : (
-                  <div class={`alumni-avatar alumni-avatar-${roleColor}`}>
-                    <span class="alumni-initial">{alum.name.charAt(0)}</span>
-                  </div>
-                )}
-
-                <div class="alumni-info">
-                  <h3 class="alumni-name">{alum.name}</h3>
-                  <div class="alumni-meta">
-                    <span class={`alumni-role-dot alumni-dot-${roleColor}`}></span>
-                    <span class="alumni-role-text">{alum.role}</span>
-                    <span class="alumni-years">{alum.years}</span>
-                  </div>
-                  {alum.currentPosition && (
-                    <p class="alumni-current">{alum.currentPosition}</p>
-                  )}
-                </div>
-
-                {alum.linkedin && (
-                  <a
-                    href={alum.linkedin}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    class="alumni-linkedin"
-                    aria-label={`${alum.name}'s LinkedIn`}
-                  >
-                    <svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor">
-                      <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
-                    </svg>
-                  </a>
-                )}
-              </div>
+      <div class="alumni-list">
+        {alumni.map((alum) => (
+          <div class="alumni-item scroll-reveal">
+            <div class="alumni-info">
+              <span class="alumni-name">{alum.name}</span>
+              <span class="alumni-role">{alum.role}, {alum.years}</span>
+              {alum.currentPosition && (
+                <span class="alumni-current">→ {alum.currentPosition}</span>
+              )}
             </div>
-          );
-        })}
+            {alum.linkedin && (
+              <a
+                href={alum.linkedin}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="alumni-linkedin"
+                aria-label={`${alum.name}'s LinkedIn`}
+              >
+                <svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                </svg>
+              </a>
+            )}
+          </div>
+        ))}
       </div>
     </div>
   </section>
@@ -311,16 +217,10 @@ const alumniRoleColors: Record<string, string> = {
   <section class="join-section" id="join">
     <div class="join-bg">
       <div class="join-gradient"></div>
-      <div class="join-orbs">
-        <div class="join-orb join-orb-1"></div>
-        <div class="join-orb join-orb-2"></div>
-        <div class="join-orb join-orb-3"></div>
-      </div>
     </div>
 
     <div class="container relative z-10">
       <div class="join-content scroll-reveal">
-        <span class="join-eyebrow">Get Involved</span>
         <h2 class="join-title">
           Join Our <span class="join-title-accent">Mission</span>
         </h2>
@@ -346,197 +246,59 @@ const alumniRoleColors: Record<string, string> = {
 
 <style>
   /* ============================================
-     Hero Section
+     PI Hero Section - Left-aligned
      ============================================ */
-  .hero-section {
-    @apply relative min-h-[85vh] flex flex-col justify-center overflow-hidden;
-    padding-top: 6rem;
-    padding-bottom: 3rem;
+  .pi-hero-section {
+    @apply relative py-12 bg-surface;
+    padding-top: 8rem;
   }
 
-  .hero-bg {
-    @apply absolute inset-0;
+  .pi-hero {
+    @apply flex flex-col md:flex-row items-start gap-8 lg:gap-12;
   }
 
-  .hero-gradient {
-    @apply absolute inset-0;
-    background:
-      radial-gradient(ellipse 80% 50% at 50% -20%, rgba(56, 189, 248, 0.15), transparent),
-      radial-gradient(ellipse 60% 40% at 80% 50%, rgba(45, 212, 191, 0.08), transparent),
-      linear-gradient(180deg, #0b1929 0%, #0f172a 50%, #0f172a 100%);
+  .pi-photo-side {
+    @apply flex-shrink-0;
   }
 
-  .hero-pattern {
-    @apply absolute inset-0 opacity-[0.03];
-    background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%2338bdf8' fill-opacity='1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+  .pi-photo {
+    @apply w-48 h-60 md:w-56 md:h-72 object-cover rounded-xl;
+    @apply shadow-xl;
   }
 
-  .hero-content {
-    @apply max-w-3xl;
+  .pi-content-side {
+    @apply flex-1 py-2;
   }
 
-  .hero-eyebrow {
-    @apply flex items-center gap-4 mb-6;
-    @apply text-xs font-bold uppercase tracking-[0.2em] text-accent/80;
-  }
-
-  .eyebrow-line {
-    @apply h-px w-8 bg-gradient-to-r from-transparent to-accent/50;
-  }
-
-  .hero-eyebrow .eyebrow-line:last-child {
-    @apply bg-gradient-to-l;
-  }
-
-  .hero-title {
-    @apply text-fluid-5xl font-black leading-[0.95] tracking-tight mb-6;
-  }
-
-  .title-line {
-    @apply block text-ink;
-  }
-
-  .title-accent {
-    @apply bg-gradient-to-r from-accent via-accent-2 to-accent bg-clip-text text-transparent;
-    background-size: 200% auto;
-    animation: shimmer 8s ease-in-out infinite;
-  }
-
-  @keyframes shimmer {
-    0%, 100% { background-position: 0% center; }
-    50% { background-position: 100% center; }
-  }
-
-  .hero-description {
-    @apply text-lg text-muted leading-relaxed mb-10 max-w-xl;
-  }
-
-  .hero-stats {
-    @apply flex items-center gap-6 flex-wrap;
-  }
-
-  .stat {
-    @apply flex flex-col;
-  }
-
-  .stat-number {
-    @apply text-3xl font-black text-ink tabular-nums;
-  }
-
-  .stat-label {
-    @apply text-xs font-medium uppercase tracking-wide text-muted-2;
-  }
-
-  .stat-divider {
-    @apply w-px h-10 bg-line/50;
-  }
-
-  .hero-scroll-indicator {
-    @apply absolute bottom-8 left-1/2 -translate-x-1/2;
-    @apply flex flex-col items-center gap-2;
-    @apply text-xs font-medium uppercase tracking-wider text-muted-2;
-    animation: float 3s ease-in-out infinite;
-  }
-
-  .scroll-arrow {
-    @apply w-5 h-5;
-  }
-
-  @keyframes float {
-    0%, 100% { transform: translateX(-50%) translateY(0); }
-    50% { transform: translateX(-50%) translateY(6px); }
-  }
-
-  /* ============================================
-     PI Feature Section
-     ============================================ */
-  .pi-section {
-    @apply relative py-16 bg-surface;
-  }
-
-  .pi-card {
-    @apply grid md:grid-cols-2 gap-8 lg:gap-12 items-center;
-    @apply bg-surface-card rounded-2xl overflow-hidden;
-    @apply border border-line/50;
-    @apply transition-all duration-500;
-  }
-
-  .pi-card:hover {
-    @apply border-line;
-    box-shadow: 0 25px 60px -12px rgba(0, 0, 0, 0.5);
-  }
-
-  .pi-image-wrapper {
-    @apply relative aspect-[4/5] md:aspect-auto md:h-full min-h-[400px];
-  }
-
-  .pi-image {
-    @apply absolute inset-0 w-full h-full object-cover;
-    @apply transition-transform duration-700;
-  }
-
-  .pi-card:hover .pi-image {
-    @apply scale-105;
-  }
-
-  .pi-image-overlay {
-    @apply absolute inset-0;
-    background: linear-gradient(180deg, transparent 40%, rgba(15, 23, 42, 0.9) 100%);
-  }
-
-  .pi-role-badge {
-    @apply absolute top-4 left-4 z-10;
-    @apply inline-flex items-center gap-2 px-4 py-2;
-    @apply bg-gradient-to-r from-amber-400 via-orange-400 to-rose-400;
-    @apply text-white text-xs font-bold uppercase tracking-wide;
-    @apply rounded-full shadow-lg;
-  }
-
-  .role-icon {
-    @apply text-[10px];
-  }
-
-  .pi-content {
-    @apply p-8 md:py-12 md:pr-12;
-  }
-
-  .pi-header {
-    @apply mb-6;
+  .pi-role-label {
+    @apply inline-block text-xs font-bold uppercase tracking-wide;
+    @apply text-amber-400 mb-3;
   }
 
   .pi-name {
-    @apply text-3xl md:text-4xl font-black text-ink tracking-tight mb-2;
+    @apply text-3xl md:text-4xl font-black text-ink tracking-tight mb-1;
   }
 
   .pi-title {
-    @apply text-sm font-bold uppercase tracking-wide text-accent;
+    @apply text-sm font-medium text-muted mb-4;
   }
 
   .pi-hook {
-    @apply text-muted leading-relaxed mb-6;
-  }
-
-  .pi-tags {
-    @apply flex flex-wrap gap-2 mb-8;
-  }
-
-  .pi-tag {
-    @apply px-3 py-1.5 rounded-lg text-sm font-medium;
-    @apply bg-accent/10 text-accent border border-accent/20;
+    @apply text-muted leading-relaxed mb-6 max-w-xl;
   }
 
   .pi-links {
     @apply flex items-center gap-3;
   }
 
-  .pi-link {
+  .pi-link-primary {
     @apply inline-flex items-center gap-2 px-5 py-2.5;
     @apply text-sm font-semibold text-white;
     @apply bg-accent rounded-lg no-underline;
     @apply transition-all duration-200;
   }
 
-  .pi-link:hover {
+  .pi-link-primary:hover {
     @apply bg-accent/90;
     transform: translateY(-2px);
   }
@@ -555,19 +317,15 @@ const alumniRoleColors: Record<string, string> = {
      Team Grid Section
      ============================================ */
   .team-section {
-    @apply relative py-20 bg-surface;
+    @apply relative py-16 bg-surface;
   }
 
   .section-header {
-    @apply text-center mb-12;
+    @apply mb-10;
   }
 
   .section-title {
-    @apply text-3xl font-black text-ink tracking-tight mb-3;
-  }
-
-  .section-subtitle {
-    @apply text-muted;
+    @apply text-2xl font-bold text-ink tracking-tight;
   }
 
   .team-grid {
@@ -602,13 +360,12 @@ const alumniRoleColors: Record<string, string> = {
   }
 
   .team-card:hover .team-photo {
-    @apply scale-110;
+    @apply scale-105;
   }
 
   .team-photo-overlay {
     @apply absolute inset-0;
-    background: linear-gradient(180deg, transparent 30%, rgba(15, 23, 42, 0.95) 100%);
-    transition: opacity 400ms ease;
+    background: linear-gradient(180deg, transparent 50%, rgba(15, 23, 42, 0.7) 100%);
   }
 
   .team-photo-placeholder {
@@ -616,53 +373,31 @@ const alumniRoleColors: Record<string, string> = {
     background: linear-gradient(135deg, #1e3a5f 0%, #0f172a 100%);
   }
 
-  .team-photo-placeholder .placeholder-initial {
-    @apply text-6xl font-black text-accent/20;
+  .silhouette-icon {
+    @apply w-24 h-24 text-white/10;
   }
 
-  .placeholder-pattern {
-    @apply absolute inset-0 opacity-10;
-    background-image: url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%2338bdf8' fill-opacity='0.3'%3E%3Cpath d='M0 40L40 0H20L0 20M40 40V20L20 40'/%3E%3C/g%3E%3C/svg%3E");
-  }
-
-  .team-role-tag {
+  .team-role-badge {
     @apply absolute top-3 left-3 z-20;
-    @apply inline-flex items-center gap-1.5 px-3 py-1.5;
-    @apply text-white text-xs font-bold uppercase tracking-wide;
+    @apply inline-block px-3 py-1.5;
+    @apply text-xs font-bold uppercase tracking-wide;
     @apply rounded-full shadow-lg;
-    @apply transition-transform duration-300;
   }
 
-  .team-card:hover .team-role-tag {
-    transform: translateY(-2px);
+  .role-teal {
+    @apply bg-teal-500/90 text-white;
   }
 
-  .team-hover-content {
-    @apply absolute bottom-0 left-0 right-0 p-4;
-    @apply opacity-0 transform translate-y-4;
-    z-index: 30;
-    transition: all 400ms ease;
+  .role-sky {
+    @apply bg-sky-500/90 text-white;
   }
 
-  .team-card:hover .team-hover-content {
-    @apply opacity-100 translate-y-0;
+  .role-violet {
+    @apply bg-violet-500/90 text-white;
   }
 
-  .team-hover-hook {
-    @apply text-sm text-white/90 leading-relaxed mb-3;
-    display: -webkit-box;
-    -webkit-line-clamp: 3;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
-  }
-
-  .team-hover-tags {
-    @apply flex flex-wrap gap-1.5;
-  }
-
-  .team-hover-tag {
-    @apply px-2 py-1 rounded text-xs font-medium;
-    @apply bg-white/10 text-white/80 backdrop-blur-sm;
+  .role-rose {
+    @apply bg-rose-500/90 text-white;
   }
 
   .team-info {
@@ -670,11 +405,15 @@ const alumniRoleColors: Record<string, string> = {
   }
 
   .team-name {
-    @apply text-lg font-bold text-ink mb-1;
+    @apply text-lg font-bold text-ink mb-2;
   }
 
-  .team-title {
-    @apply text-xs font-bold uppercase tracking-wide text-muted mb-4;
+  .team-hook {
+    @apply text-sm text-muted leading-relaxed mb-4 flex-1;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
   }
 
   .team-actions {
@@ -701,136 +440,64 @@ const alumniRoleColors: Record<string, string> = {
   }
 
   /* ============================================
-     Alumni Section
+     Alumni Section - Compressed List
      ============================================ */
   .alumni-section {
-    @apply relative py-20 overflow-hidden;
-    background: linear-gradient(180deg, #0f172a 0%, #0b1929 50%, #0f172a 100%);
+    @apply relative py-16 overflow-hidden;
+    background: linear-gradient(180deg, #0f172a 0%, #0b1929 100%);
   }
 
   .alumni-header {
-    @apply flex items-center gap-6 mb-12;
-  }
-
-  .alumni-header-line {
-    @apply flex-1 h-px;
-    background: linear-gradient(90deg, transparent, rgba(56, 189, 248, 0.3), transparent);
-  }
-
-  .alumni-header-content {
-    @apply text-center flex-shrink-0;
-  }
-
-  .alumni-eyebrow {
-    @apply block text-xs font-bold uppercase tracking-[0.2em] text-accent/70 mb-2;
+    @apply mb-8;
   }
 
   .alumni-title {
-    @apply text-2xl md:text-3xl font-black text-ink tracking-tight mb-2;
+    @apply text-xl font-bold text-ink tracking-tight mb-1;
   }
 
   .alumni-subtitle {
     @apply text-sm text-muted;
   }
 
-  .alumni-grid {
-    @apply grid sm:grid-cols-2 lg:grid-cols-3 gap-4;
+  .alumni-list {
+    @apply grid md:grid-cols-2 lg:grid-cols-3 gap-3;
   }
 
-  .alumni-card {
-    @apply relative;
-  }
-
-  .alumni-card-inner {
-    @apply flex items-center gap-4 p-4 rounded-xl;
+  .alumni-item {
+    @apply flex items-center justify-between gap-3 p-3 rounded-lg;
     @apply border border-transparent;
-    @apply transition-all duration-300;
-    background: rgba(30, 41, 59, 0.4);
+    @apply transition-all duration-200;
+    background: rgba(30, 41, 59, 0.3);
   }
 
-  .alumni-card:hover .alumni-card-inner {
-    @apply border-line/50;
-    background: rgba(30, 41, 59, 0.7);
-    transform: translateX(4px);
+  .alumni-item:hover {
+    @apply border-line/30;
+    background: rgba(30, 41, 59, 0.5);
   }
-
-  .alumni-photo-wrap {
-    @apply relative flex-shrink-0;
-  }
-
-  .alumni-photo {
-    @apply w-14 h-14 rounded-full object-cover;
-    @apply ring-2 ring-line/50;
-  }
-
-  .alumni-avatar {
-    @apply w-14 h-14 rounded-full flex-shrink-0;
-    @apply flex items-center justify-center;
-    @apply ring-2;
-  }
-
-  .alumni-avatar-teal { @apply bg-teal-500/10 ring-teal-500/30; }
-  .alumni-avatar-sky { @apply bg-sky-500/10 ring-sky-500/30; }
-  .alumni-avatar-indigo { @apply bg-indigo-500/10 ring-indigo-500/30; }
-  .alumni-avatar-amber { @apply bg-amber-500/10 ring-amber-500/30; }
-  .alumni-avatar-rose { @apply bg-rose-500/10 ring-rose-500/30; }
-
-  .alumni-initial {
-    @apply text-lg font-bold;
-  }
-
-  .alumni-avatar-teal .alumni-initial { @apply text-teal-400; }
-  .alumni-avatar-sky .alumni-initial { @apply text-sky-400; }
-  .alumni-avatar-indigo .alumni-initial { @apply text-indigo-400; }
-  .alumni-avatar-amber .alumni-initial { @apply text-amber-400; }
-  .alumni-avatar-rose .alumni-initial { @apply text-rose-400; }
 
   .alumni-info {
-    @apply flex-1 min-w-0;
+    @apply flex flex-col min-w-0;
   }
 
   .alumni-name {
-    @apply text-sm font-semibold text-ink truncate mb-1;
+    @apply text-sm font-semibold text-ink truncate;
   }
 
-  .alumni-meta {
-    @apply flex items-center gap-2 text-xs text-muted-2 mb-1;
-  }
-
-  .alumni-role-dot {
-    @apply w-1.5 h-1.5 rounded-full flex-shrink-0;
-  }
-
-  .alumni-dot-teal { @apply bg-teal-400; }
-  .alumni-dot-sky { @apply bg-sky-400; }
-  .alumni-dot-indigo { @apply bg-indigo-400; }
-  .alumni-dot-amber { @apply bg-amber-400; }
-  .alumni-dot-rose { @apply bg-rose-400; }
-
-  .alumni-role-text {
-    @apply font-medium;
-  }
-
-  .alumni-years {
-    @apply text-muted-2;
-  }
-
-  .alumni-years::before {
-    content: '·';
-    @apply mr-2;
+  .alumni-role {
+    @apply text-xs text-muted-2;
   }
 
   .alumni-current {
-    @apply text-xs text-muted truncate;
+    @apply text-xs text-accent/80 truncate;
   }
 
   .alumni-linkedin {
-    @apply p-2.5 rounded-lg flex-shrink-0;
+    @apply p-2 rounded-lg flex-shrink-0;
     @apply text-muted opacity-50;
     @apply transition-all duration-200 no-underline;
   }
 
-  .alumni-card:hover .alumni-linkedin {
+  .alumni-item:hover .alumni-linkedin {
     @apply opacity-100;
   }
 
@@ -842,7 +509,7 @@ const alumniRoleColors: Record<string, string> = {
      Join CTA Section
      ============================================ */
   .join-section {
-    @apply relative py-24 overflow-hidden;
+    @apply relative py-20 overflow-hidden;
   }
 
   .join-bg {
@@ -854,48 +521,12 @@ const alumniRoleColors: Record<string, string> = {
     background: linear-gradient(135deg, #0b1929 0%, #0f172a 50%, #0b2545 100%);
   }
 
-  .join-orbs {
-    @apply absolute inset-0;
-  }
-
-  .join-orb {
-    @apply absolute rounded-full;
-    filter: blur(80px);
-  }
-
-  .join-orb-1 {
-    @apply w-96 h-96 -top-24 -left-24;
-    background: radial-gradient(circle, rgba(56, 189, 248, 0.15), transparent 70%);
-    animation: pulse-slow 8s ease-in-out infinite;
-  }
-
-  .join-orb-2 {
-    @apply w-80 h-80 top-1/2 -right-20;
-    background: radial-gradient(circle, rgba(45, 212, 191, 0.12), transparent 70%);
-    animation: pulse-slow 10s ease-in-out infinite 2s;
-  }
-
-  .join-orb-3 {
-    @apply w-64 h-64 -bottom-16 left-1/3;
-    background: radial-gradient(circle, rgba(56, 189, 248, 0.1), transparent 70%);
-    animation: pulse-slow 6s ease-in-out infinite 4s;
-  }
-
-  @keyframes pulse-slow {
-    0%, 100% { opacity: 0.5; transform: scale(1); }
-    50% { opacity: 1; transform: scale(1.1); }
-  }
-
   .join-content {
     @apply text-center max-w-xl mx-auto;
   }
 
-  .join-eyebrow {
-    @apply inline-block text-xs font-bold uppercase tracking-[0.2em] text-accent/70 mb-4;
-  }
-
   .join-title {
-    @apply text-4xl md:text-5xl font-black text-ink tracking-tight mb-4;
+    @apply text-3xl md:text-4xl font-black text-ink tracking-tight mb-4;
   }
 
   .join-title-accent {
@@ -939,43 +570,28 @@ const alumniRoleColors: Record<string, string> = {
      Responsive Adjustments
      ============================================ */
   @media (max-width: 768px) {
-    .hero-section {
-      min-height: auto;
-      padding-top: 7rem;
-      padding-bottom: 4rem;
+    .pi-hero-section {
+      padding-top: 6rem;
     }
 
-    .hero-scroll-indicator {
-      @apply hidden;
+    .pi-hero {
+      @apply items-center text-center;
     }
 
-    .hero-stats {
-      @apply gap-4;
+    .pi-content-side {
+      @apply text-center;
     }
 
-    .stat-number {
-      @apply text-2xl;
-    }
-
-    .pi-card {
-      @apply grid-cols-1;
-    }
-
-    .pi-image-wrapper {
-      @apply aspect-[4/3];
-      min-height: 280px;
+    .pi-links {
+      @apply justify-center;
     }
 
     .team-photo-container {
-      aspect-ratio: 3 / 4;
+      aspect-ratio: 1 / 1;
     }
 
-    .alumni-header {
-      @apply flex-col gap-4;
-    }
-
-    .alumni-header-line {
-      @apply w-16 h-px;
+    .alumni-list {
+      @apply grid-cols-1;
     }
   }
 
@@ -983,23 +599,8 @@ const alumniRoleColors: Record<string, string> = {
      Reduced Motion
      ============================================ */
   @media (prefers-reduced-motion: reduce) {
-    .title-accent {
-      animation: none;
-    }
-
-    .hero-scroll-indicator {
-      animation: none;
-    }
-
-    .join-orb-1,
-    .join-orb-2,
-    .join-orb-3 {
-      animation: none;
-    }
-
     .team-card:hover .team-card-inner,
-    .pi-card:hover,
-    .alumni-card:hover .alumni-card-inner,
+    .pi-link-primary:hover,
     .join-btn-primary:hover {
       transform: none;
     }
