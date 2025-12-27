@@ -89,6 +89,30 @@ const formatDate = (dateStr: string) => {
     <WaveDivider id="hero-wave" fillColor="surface" />
   </section>
 
+  <!-- Featured Publication Banner -->
+  <section class="featured-pub-banner">
+    <div class="container">
+      <a href="/news/body-size-variation-drives-changes-in-lobster-urchin-interac" class="featured-pub-card scroll-reveal">
+        <div class="featured-pub-badge">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+          </svg>
+          <span>Latest Kelp Forest Research</span>
+        </div>
+        <div class="featured-pub-content">
+          <h3 class="featured-pub-title">Body Size Variation Drives Changes in Lobster-Urchin Interactions</h3>
+          <p class="featured-pub-meta">DiFiore & Stier (2023) · Journal of Animal Ecology</p>
+        </div>
+        <div class="featured-pub-arrow">
+          <span>Read Summary</span>
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+          </svg>
+        </div>
+      </a>
+    </div>
+  </section>
+
   <!-- Where We Work Section -->
   <section id="field-sites" class="field-sites">
     <div class="container">
@@ -624,6 +648,58 @@ const formatDate = (dateStr: string) => {
 
   .section-desc-light {
     @apply text-white/50;
+  }
+
+  /* ============================================
+     Featured Publication Banner
+     ============================================ */
+  .featured-pub-banner {
+    @apply bg-surface py-6 md:py-8;
+  }
+
+  .featured-pub-card {
+    @apply flex flex-col md:flex-row items-start md:items-center gap-4 md:gap-6;
+    @apply p-5 md:p-6 rounded-2xl no-underline;
+    @apply bg-gradient-to-r from-green-500/10 to-teal-500/10;
+    @apply border border-green-500/20;
+    transition: all 300ms ease;
+  }
+
+  .featured-pub-card:hover {
+    @apply border-green-400/40;
+    transform: translateY(-2px);
+    box-shadow: 0 10px 30px -10px rgba(34, 197, 94, 0.2);
+  }
+
+  .featured-pub-badge {
+    @apply flex items-center gap-2;
+    @apply text-xs font-bold uppercase tracking-wider;
+    @apply text-green-400;
+    @apply flex-shrink-0;
+  }
+
+  .featured-pub-content {
+    @apply flex-1 min-w-0;
+  }
+
+  .featured-pub-title {
+    @apply text-base md:text-lg font-bold text-ink mb-1;
+    @apply line-clamp-1;
+  }
+
+  .featured-pub-meta {
+    @apply text-sm text-muted;
+  }
+
+  .featured-pub-arrow {
+    @apply flex items-center gap-2;
+    @apply text-sm font-bold text-green-400;
+    @apply flex-shrink-0;
+    transition: gap 300ms ease;
+  }
+
+  .featured-pub-card:hover .featured-pub-arrow {
+    @apply gap-3;
   }
 
   /* ============================================
