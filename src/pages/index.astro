@@ -64,7 +64,7 @@ const formatDate = (dateStr: string) => {
 
         <!-- Value proposition -->
         <p class="hero-desc scroll-reveal stagger-3">
-          We diagnose collapse, then design recoveries—linking mechanism to action.
+          We identify what traps ecosystems in degraded states and what tips them back to recovery, building decision support for real-world management.
         </p>
 
         <!-- Actions row -->
@@ -90,24 +90,24 @@ const formatDate = (dateStr: string) => {
     <WaveDivider id="hero-wave" fillColor="surface" />
   </section>
 
-  <!-- Study Systems Section - Editorial Cards -->
-  <section id="study-systems" class="study-systems">
+  <!-- Where We Work Section -->
+  <section id="field-sites" class="field-sites">
     <div class="container">
-      <!-- Section header with editorial treatment -->
+      <!-- Section header -->
       <div class="section-header-editorial scroll-reveal">
         <div class="header-rule"></div>
         <div class="header-content">
           <span class="section-number">01</span>
           <div class="header-text">
-            <span class="section-eyebrow">The Challenge</span>
+            <span class="section-eyebrow">Field Sites</span>
             <h2 class="section-title-editorial">
-              Two Ecosystems.<br />
-              <span class="title-serif-accent">One Research Approach.</span>
+              Where We<br />
+              <span class="title-serif-accent">Work</span>
             </h2>
           </div>
         </div>
         <p class="section-desc-editorial">
-          Coral reefs and kelp forests are collapsing worldwide. By studying both, we identify which recovery mechanisms generalize—and which interventions can scale.
+          Two ecosystems. Two LTER sites. Two modes of collapse. By comparing fast kelp dynamics with slow coral recovery, we discover which resilience mechanisms generalize—and which are system-specific.
         </p>
       </div>
 
@@ -116,71 +116,87 @@ const formatDate = (dateStr: string) => {
         <StudySitesMap client:load />
       </div>
 
-      <!-- Study System Cards - Magazine Layout -->
-      <div class="systems-magazine">
-        <!-- Coral Reefs - Feature Card -->
-        <a href="/research/coral-reefs" class="system-feature system-feature-coral scroll-reveal stagger-1">
-          <div class="feature-image">
+      <!-- Field Site Cards - Enhanced Layout -->
+      <div class="sites-grid">
+        <!-- Mo'orea Coral Reefs -->
+        <a href="/research/coral-reefs" class="site-card site-card-coral scroll-reveal stagger-1">
+          <div class="site-image">
             <img src="/images/cauliflower-coral-damselfish-reef.jpeg" alt="Coral reef ecosystem in Mo'orea" loading="lazy" />
-            <div class="feature-overlay"></div>
+            <div class="site-overlay"></div>
           </div>
-          <div class="feature-content">
-            <div class="feature-meta">
-              <span class="feature-location">
+          <div class="site-content">
+            <div class="site-header">
+              <div class="site-location">
                 <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
                 </svg>
-                Mo'orea, French Polynesia
-              </span>
-              <span class="feature-badge feature-badge-coral">Slow & chronic</span>
+                <span>Mo'orea, French Polynesia</span>
+              </div>
+              <span class="site-badge site-badge-coral">MCR LTER</span>
             </div>
-            <h3 class="feature-title">Coral Reefs</h3>
-            <p class="feature-excerpt">
-              From wound healing at the colony level to regeneration capacity and individual-to-population recovery dynamics.
-            </p>
-            <div class="feature-cta">
-              <span>Explore research</span>
+            <h3 class="site-title">Coral Reefs</h3>
+            <p class="site-dynamics">Slow collapse, chronic stress, multi-decade recovery</p>
+
+            <div class="site-resilience">
+              <h4 class="resilience-heading">Resilience dynamics:</h4>
+              <ul class="resilience-list">
+                <li><span class="r-label">Resistance</span> Colony stress tolerance, symbiont shuffling</li>
+                <li><span class="r-label">Recovery</span> Wound healing, larval recruitment, spatial rescue</li>
+                <li><span class="r-label">Reorganization</span> Community reassembly after bleaching</li>
+              </ul>
+            </div>
+
+            <div class="site-cta">
+              <span>Explore coral research</span>
               <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
               </svg>
             </div>
           </div>
-          <div class="feature-accent"></div>
+          <div class="site-accent"></div>
         </a>
 
-        <!-- Kelp Forests - Feature Card -->
-        <a href="/research/kelp-forests" class="system-feature system-feature-kelp scroll-reveal stagger-2">
-          <div class="feature-image">
+        <!-- Santa Barbara Kelp Forests -->
+        <a href="/research/kelp-forests" class="site-card site-card-kelp scroll-reveal stagger-2">
+          <div class="site-image">
             <img src="/images/giant-kelp-sunlight-underwater.jpeg" alt="Kelp forest ecosystem in Santa Barbara" loading="lazy" />
-            <div class="feature-overlay"></div>
+            <div class="site-overlay"></div>
           </div>
-          <div class="feature-content">
-            <div class="feature-meta">
-              <span class="feature-location">
+          <div class="site-content">
+            <div class="site-header">
+              <div class="site-location">
                 <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
                 </svg>
-                Santa Barbara, California
-              </span>
-              <span class="feature-badge feature-badge-kelp">Fast & nonlinear</span>
+                <span>Santa Barbara, California</span>
+              </div>
+              <span class="site-badge site-badge-kelp">SBC LTER</span>
             </div>
-            <h3 class="feature-title">Kelp Forests</h3>
-            <p class="feature-excerpt">
-              Consumer–predator feedbacks, tipping point dynamics, and breaking alternative stable states in temperate marine systems.
-            </p>
-            <div class="feature-cta">
-              <span>Explore research</span>
+            <h3 class="site-title">Kelp Forests</h3>
+            <p class="site-dynamics">Fast collapse, nonlinear dynamics, tipping points</p>
+
+            <div class="site-resilience">
+              <h4 class="resilience-heading">Resilience dynamics:</h4>
+              <ul class="resilience-list">
+                <li><span class="r-label">Resistance</span> Predator control of urchin grazing</li>
+                <li><span class="r-label">Recovery</span> Spore dispersal, rapid canopy regrowth</li>
+                <li><span class="r-label">Reorganization</span> Breaking urchin barrens, state shifts</li>
+              </ul>
+            </div>
+
+            <div class="site-cta">
+              <span>Explore kelp research</span>
               <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
               </svg>
             </div>
           </div>
-          <div class="feature-accent"></div>
+          <div class="site-accent"></div>
         </a>
       </div>
     </div>
 
-    <WaveDivider id="study-wave" fillColor="navy-deep" />
+    <WaveDivider id="sites-wave" fillColor="navy-deep" />
   </section>
 
   <!-- Recent News Section - Evidence of Impact -->
@@ -616,9 +632,9 @@ const formatDate = (dateStr: string) => {
   }
 
   /* ============================================
-     Study Systems - Magazine Layout
+     Field Sites - Where We Work
      ============================================ */
-  .study-systems {
+  .field-sites {
     @apply relative py-20 md:py-28 pb-28 md:pb-36 bg-surface;
   }
 
@@ -626,123 +642,149 @@ const formatDate = (dateStr: string) => {
     @apply max-w-5xl mx-auto mb-16;
   }
 
-  .systems-magazine {
+  .sites-grid {
     @apply grid md:grid-cols-2 gap-8 max-w-5xl mx-auto;
   }
 
-  .system-feature {
+  .site-card {
     @apply relative block rounded-2xl overflow-hidden no-underline;
-    @apply border border-line/50;
-    min-height: 480px;
+    @apply bg-surface-card border border-line/50;
     transition: all 500ms cubic-bezier(0.4, 0, 0.2, 1);
   }
 
-  .system-feature:hover {
+  .site-card:hover {
     transform: translateY(-8px);
     box-shadow: 0 30px 60px -12px rgba(0, 0, 0, 0.4);
   }
 
-  .feature-image {
-    @apply absolute inset-0;
+  .site-image {
+    @apply relative h-48 overflow-hidden;
   }
 
-  .feature-image img {
+  .site-image img {
     @apply w-full h-full object-cover;
     transform: scale(1.05);
     transition: transform 800ms cubic-bezier(0.4, 0, 0.2, 1);
   }
 
-  .system-feature:hover .feature-image img {
+  .site-card:hover .site-image img {
     transform: scale(1.12);
   }
 
-  .feature-overlay {
+  .site-overlay {
     @apply absolute inset-0;
     background: linear-gradient(
       to top,
-      rgba(10, 15, 25, 0.98) 0%,
-      rgba(10, 15, 25, 0.85) 35%,
-      rgba(10, 15, 25, 0.4) 60%,
-      transparent 100%
+      rgba(10, 15, 25, 0.6) 0%,
+      transparent 60%
     );
   }
 
-  .feature-content {
-    @apply absolute bottom-0 left-0 right-0 p-8;
+  .site-content {
+    @apply p-6 md:p-8;
   }
 
-  .feature-meta {
-    @apply flex flex-wrap items-center gap-3 mb-4;
+  .site-header {
+    @apply flex flex-wrap items-center justify-between gap-3 mb-4;
   }
 
-  .feature-location {
+  .site-location {
     @apply inline-flex items-center gap-1.5;
-    @apply text-xs font-bold uppercase tracking-wide text-white/60;
+    @apply text-xs font-bold uppercase tracking-wide text-muted;
   }
 
-  .feature-badge {
+  .site-badge {
     @apply text-[10px] font-bold uppercase tracking-wider px-3 py-1 rounded-full;
   }
 
-  .feature-badge-coral {
+  .site-badge-coral {
     @apply bg-orange-500/20 text-orange-300 border border-orange-500/30;
   }
 
-  .feature-badge-kelp {
+  .site-badge-kelp {
     @apply bg-green-500/20 text-green-300 border border-green-500/30;
   }
 
-  .feature-title {
-    @apply text-3xl md:text-4xl font-black text-white mb-3;
+  .site-title {
+    @apply text-2xl md:text-3xl font-black text-ink mb-2;
     transition: color 300ms ease;
   }
 
-  .system-feature-coral:hover .feature-title {
+  .site-card-coral:hover .site-title {
     color: #fb923c;
   }
 
-  .system-feature-kelp:hover .feature-title {
+  .site-card-kelp:hover .site-title {
     color: #4ade80;
   }
 
-  .feature-excerpt {
-    @apply text-white/60 text-sm leading-relaxed mb-4;
+  .site-dynamics {
+    @apply text-muted text-sm mb-6;
+    font-style: italic;
   }
 
-  .feature-cta {
+  .site-resilience {
+    @apply mb-6;
+  }
+
+  .resilience-heading {
+    @apply text-xs font-bold uppercase tracking-wider text-muted mb-3;
+  }
+
+  .resilience-list {
+    @apply space-y-2 list-none p-0 m-0;
+  }
+
+  .resilience-list li {
+    @apply text-sm text-ink/70 leading-relaxed;
+  }
+
+  .r-label {
+    @apply font-bold text-accent mr-2;
+  }
+
+  .site-card-coral .r-label {
+    color: #fb923c;
+  }
+
+  .site-card-kelp .r-label {
+    color: #4ade80;
+  }
+
+  .site-cta {
     @apply inline-flex items-center gap-2 font-bold text-sm;
     transition: gap 300ms ease;
   }
 
-  .system-feature-coral .feature-cta {
+  .site-card-coral .site-cta {
     color: #fb923c;
   }
 
-  .system-feature-kelp .feature-cta {
+  .site-card-kelp .site-cta {
     color: #4ade80;
   }
 
-  .system-feature:hover .feature-cta {
+  .site-card:hover .site-cta {
     @apply gap-3;
   }
 
-  .feature-accent {
+  .site-accent {
     @apply absolute top-0 left-0 right-0 h-1;
   }
 
-  .system-feature-coral .feature-accent {
+  .site-card-coral .site-accent {
     background: linear-gradient(90deg, #f97316, #fb923c);
   }
 
-  .system-feature-kelp .feature-accent {
+  .site-card-kelp .site-accent {
     background: linear-gradient(90deg, #22c55e, #4ade80);
   }
 
-  .system-feature-coral:hover {
+  .site-card-coral:hover {
     border-color: rgba(251, 146, 60, 0.4);
   }
 
-  .system-feature-kelp:hover {
+  .site-card-kelp:hover {
     border-color: rgba(74, 222, 128, 0.4);
   }
 
@@ -1165,9 +1207,6 @@ const formatDate = (dateStr: string) => {
       @apply px-4 py-2.5 text-xs;
     }
 
-    .system-feature {
-      min-height: 380px;
-    }
   }
 
   /* ============================================
@@ -1188,14 +1227,14 @@ const formatDate = (dateStr: string) => {
       animation: none;
     }
 
-    .system-feature,
+    .site-card,
     .news-editorial-card,
     .stat-editorial,
     .pi-editorial-card {
       transition: none;
     }
 
-    .feature-image img,
+    .site-image img,
     .news-editorial-image img {
       transition: none;
     }
