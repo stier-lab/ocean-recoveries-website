@@ -1,7 +1,6 @@
 ---
 import Layout from '@layouts/Layout.astro';
 import WaveDivider from '@components/shared/WaveDivider.astro';
-import StudySitesMap from '@components/research/StudySitesMap';
 import { posts } from '@data/posts';
 
 // Get 3 most recent news posts
@@ -111,10 +110,6 @@ const formatDate = (dateStr: string) => {
         </p>
       </div>
 
-      <!-- Interactive Map -->
-      <div class="map-container scroll-reveal">
-        <StudySitesMap client:load />
-      </div>
 
       <!-- Field Site Cards - Enhanced Layout -->
       <div class="sites-grid">
@@ -636,10 +631,6 @@ const formatDate = (dateStr: string) => {
      ============================================ */
   .field-sites {
     @apply relative py-20 md:py-28 pb-28 md:pb-36 bg-surface;
-  }
-
-  .map-container {
-    @apply max-w-5xl mx-auto mb-16;
   }
 
   .sites-grid {

@@ -3,6 +3,7 @@ import Layout from '@layouts/Layout.astro';
 import Breadcrumbs from '@components/layout/Breadcrumbs.astro';
 import WaveDivider from '@components/shared/WaveDivider.astro';
 import ResearchGlobe from '@components/research/ResearchGlobe';
+import StudySitesMap from '@components/research/StudySitesMap';
 import { studySystems, researchPillars } from '@data/research';
 
 const breadcrumbs = [
@@ -377,8 +378,13 @@ const breadcrumbs = [
         <span class="section-eyebrow">Where We Work</span>
         <h2 class="section-title">Study<br /><span class="title-gradient">Systems</span></h2>
         <p class="section-desc">
-          Our research focuses on two major marine ecosystems where we conduct long-term field experiments.
+          Two ecosystems. Two LTER sites. Two modes of collapse. By comparing fast kelp dynamics with slow coral recovery, we discover which resilience mechanisms generalize—and which are system-specific.
         </p>
+      </div>
+
+      <!-- Interactive Study Sites Map -->
+      <div class="study-sites-map-container scroll-reveal">
+        <StudySitesMap client:load />
       </div>
 
       <div class="systems-grid">
@@ -1008,6 +1014,13 @@ const breadcrumbs = [
     20% { opacity: 1; }
     80% { opacity: 1; }
     100% { transform: translateY(16px); opacity: 0; }
+  }
+
+  /* ============================================
+     Study Sites Map Container
+     ============================================ */
+  .study-sites-map-container {
+    @apply max-w-5xl mx-auto mb-16;
   }
 
   /* ============================================
