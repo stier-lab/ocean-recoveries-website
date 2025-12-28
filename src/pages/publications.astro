@@ -9,15 +9,11 @@ import { enrichPublicationsWithImages } from '@utils/publicationImages';
 // Enrich publications with images from news posts
 const publicationsWithImages = enrichPublicationsWithImages(publications, posts);
 
-// Calculate stats
+// Calculate stats for open science section
 const totalPublications = publications.length;
 const openAccessCount = publications.filter(p => p.openAccess).length;
 const dataCount = publications.filter(p => p.dataAvailable).length;
 const codeCount = publications.filter(p => p.codeUrl).length;
-
-// Get year range
-const years = publications.map(p => p.year);
-const yearRange = `${Math.min(...years)}–${Math.max(...years)}`;
 ---
 
 <Layout
@@ -32,59 +28,8 @@ const yearRange = `${Math.min(...years)}–${Math.max(...years)}`;
     ]}
   />
 
-  <!-- Page Header -->
-  <section class="page-header">
-    <div class="container">
-      <!-- Breadcrumbs -->
-      <nav class="breadcrumbs" aria-label="Breadcrumb">
-        <ol>
-          <li>
-            <a href="/">Home</a>
-          </li>
-          <li aria-hidden="true">
-            <svg class="chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
-            </svg>
-          </li>
-          <li>
-            <span aria-current="page">Publications</span>
-          </li>
-        </ol>
-      </nav>
-
-      <!-- Title and stats -->
-      <div class="header-content">
-        <div class="header-text">
-          <h1 class="page-title">
-            <span class="title-gradient">Publications</span>
-          </h1>
-          <p class="page-desc">
-            {totalPublications} peer-reviewed papers advancing our understanding of marine ecosystem
-            resilience, from coral reefs to kelp forests.
-          </p>
-        </div>
-
-        <!-- Quick stats -->
-        <div class="header-stats">
-          <div class="stat">
-            <span class="stat-value">{totalPublications}</span>
-            <span class="stat-label">Papers</span>
-          </div>
-          <div class="stat">
-            <span class="stat-value">{yearRange}</span>
-            <span class="stat-label">Years</span>
-          </div>
-          <div class="stat">
-            <span class="stat-value">{openAccessCount}</span>
-            <span class="stat-label">Open Access</span>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- All Publications -->
-  <section id="all-publications" class="all-publications">
+  <!-- Publications -->
+  <section class="publications-section">
     <div class="container">
       <PublicationList
         client:load
@@ -186,126 +131,10 @@ const yearRange = `${Math.min(...years)}–${Math.max(...years)}`;
 
 <style>
   /* ============================================
-     PAGE HEADER
+     PUBLICATIONS SECTION
      ============================================ */
-  .page-header {
-    padding: 6rem 0 3rem;
-    background: linear-gradient(180deg, #0c1929 0%, #0f172a 100%);
-    border-bottom: 1px solid rgba(56, 189, 248, 0.1);
-  }
-
-  /* Breadcrumbs */
-  .breadcrumbs {
-    margin-bottom: 2rem;
-  }
-
-  .breadcrumbs ol {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    margin: 0;
-    padding: 0;
-    list-style: none;
-  }
-
-  .breadcrumbs a {
-    color: rgba(241, 245, 249, 0.5);
-    text-decoration: none;
-    font-size: 0.875rem;
-    transition: color 0.2s ease;
-  }
-
-  .breadcrumbs a:hover {
-    color: #38bdf8;
-  }
-
-  .breadcrumbs .chevron {
-    width: 1rem;
-    height: 1rem;
-    color: rgba(241, 245, 249, 0.3);
-  }
-
-  .breadcrumbs span[aria-current] {
-    color: #f1f5f9;
-    font-weight: 500;
-    font-size: 0.875rem;
-  }
-
-  /* Header content */
-  .header-content {
-    display: flex;
-    align-items: flex-end;
-    justify-content: space-between;
-    gap: 2rem;
-    flex-wrap: wrap;
-  }
-
-  .header-text {
-    max-width: 600px;
-  }
-
-  .page-title {
-    font-size: clamp(2.5rem, 6vw, 3.5rem);
-    font-weight: 900;
-    line-height: 1;
-    margin: 0 0 1rem;
-    letter-spacing: -0.03em;
-  }
-
-  .title-gradient {
-    background: linear-gradient(135deg, #f1f5f9 0%, #38bdf8 50%, #2dd4bf 100%);
-    background-size: 200% 200%;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    animation: gradient-shift 8s ease-in-out infinite;
-  }
-
-  @keyframes gradient-shift {
-    0%, 100% { background-position: 0% 50%; }
-    50% { background-position: 100% 50%; }
-  }
-
-  .page-desc {
-    font-size: 1.125rem;
-    color: rgba(241, 245, 249, 0.6);
-    line-height: 1.6;
-    margin: 0;
-    max-width: 500px;
-  }
-
-  /* Header stats */
-  .header-stats {
-    display: flex;
-    gap: 2rem;
-  }
-
-  .stat {
-    text-align: center;
-  }
-
-  .stat-value {
-    display: block;
-    font-size: 1.75rem;
-    font-weight: 800;
-    color: #f1f5f9;
-    line-height: 1;
-  }
-
-  .stat-label {
-    display: block;
-    font-size: 0.75rem;
-    color: rgba(241, 245, 249, 0.5);
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-    margin-top: 0.25rem;
-  }
-
-  /* ============================================
-     ALL PUBLICATIONS SECTION
-     ============================================ */
-  .all-publications {
-    padding: 3rem 0 4rem;
+  .publications-section {
+    padding: 6rem 0 4rem;
     background: #0f172a;
   }
 
@@ -504,21 +333,8 @@ const yearRange = `${Math.min(...years)}–${Math.max(...years)}`;
      RESPONSIVE
      ============================================ */
   @media (max-width: 768px) {
-    .page-header {
-      padding: 5rem 0 2rem;
-    }
-
-    .header-content {
-      flex-direction: column;
-      align-items: flex-start;
-    }
-
-    .header-stats {
-      gap: 1.5rem;
-    }
-
-    .stat-value {
-      font-size: 1.5rem;
+    .publications-section {
+      padding: 5rem 0 3rem;
     }
 
     .stats-grid {
@@ -530,10 +346,6 @@ const yearRange = `${Math.min(...years)}–${Math.max(...years)}`;
      REDUCED MOTION
      ============================================ */
   @media (prefers-reduced-motion: reduce) {
-    .title-gradient {
-      animation: none;
-    }
-
     .stat-card:hover,
     .action-btn:hover {
       transform: none;
