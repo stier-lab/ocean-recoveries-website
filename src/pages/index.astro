@@ -92,16 +92,16 @@ const formatDate = (dateStr: string) => {
   <!-- Featured Publication Banner -->
   <section class="featured-pub-banner">
     <div class="container">
-      <a href="/news/body-size-variation-drives-changes-in-lobster-urchin-interac" class="featured-pub-card scroll-reveal">
+      <a href="/news/fish-are-providing-life-saving-services-to-corals-and-scient" class="featured-pub-card scroll-reveal">
         <div class="featured-pub-badge">
           <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
           </svg>
-          <span>Latest Kelp Forest Research</span>
+          <span>Latest Research</span>
         </div>
         <div class="featured-pub-content">
-          <h3 class="featured-pub-title">Body Size Variation Drives Changes in Lobster-Urchin Interactions</h3>
-          <p class="featured-pub-meta">DiFiore & Stier (2023) · Journal of Animal Ecology</p>
+          <h3 class="featured-pub-title">Fish Are Providing Life-Saving Services to Corals</h3>
+          <p class="featured-pub-meta">Stier et al. (2025) · Coral Reefs</p>
         </div>
         <div class="featured-pub-arrow">
           <span>Read Summary</span>
@@ -130,7 +130,7 @@ const formatDate = (dateStr: string) => {
           </div>
         </div>
         <p class="section-desc-editorial">
-          Two ecosystems. Two LTER sites. Two modes of collapse. By comparing fast kelp dynamics with slow coral recovery, we discover which resilience mechanisms generalize—and which are system-specific.
+          Long-term field experiments at two NSF LTER sites. In Mo'orea we study species interactions that help corals survive. In Santa Barbara we track predators that control urchin outbreaks and keep kelp forests healthy.
         </p>
       </div>
 
@@ -154,14 +154,15 @@ const formatDate = (dateStr: string) => {
               <span class="site-badge site-badge-coral">MCR LTER</span>
             </div>
             <h3 class="site-title">Coral Reefs</h3>
-            <p class="site-dynamics">Slow collapse, chronic stress, multi-decade recovery</p>
+            <p class="site-dynamics">How species interactions shape coral health and reef recovery</p>
 
-            <div class="site-resilience">
-              <h4 class="resilience-heading">Resilience dynamics:</h4>
-              <ul class="resilience-list">
-                <li><span class="r-label">Resistance</span> Colony stress tolerance, symbiont shuffling</li>
-                <li><span class="r-label">Recovery</span> Wound healing, larval recruitment, spatial rescue</li>
-                <li><span class="r-label">Reorganization</span> Community reassembly after bleaching</li>
+            <div class="site-research">
+              <h4 class="research-heading">What we study:</h4>
+              <ul class="research-list">
+                <li>Fish-coral mutualisms and nutrient exchange</li>
+                <li>Guard crabs defending corals from predators</li>
+                <li>Disturbance legacies and recovery trajectories</li>
+                <li>3D reef photogrammetry and coral growth</li>
               </ul>
             </div>
 
@@ -192,14 +193,15 @@ const formatDate = (dateStr: string) => {
               <span class="site-badge site-badge-kelp">SBC LTER</span>
             </div>
             <h3 class="site-title">Kelp Forests</h3>
-            <p class="site-dynamics">Fast collapse, nonlinear dynamics, tipping points</p>
+            <p class="site-dynamics">Predator-prey dynamics, fisheries, and ecosystem tipping points</p>
 
-            <div class="site-resilience">
-              <h4 class="resilience-heading">Resilience dynamics:</h4>
-              <ul class="resilience-list">
-                <li><span class="r-label">Resistance</span> Predator control of urchin grazing</li>
-                <li><span class="r-label">Recovery</span> Spore dispersal, rapid canopy regrowth</li>
-                <li><span class="r-label">Reorganization</span> Breaking urchin barrens, state shifts</li>
+            <div class="site-research">
+              <h4 class="research-heading">What we study:</h4>
+              <ul class="research-list">
+                <li>Lobster-urchin interactions and kelp persistence</li>
+                <li>Marine protected area spillover effects</li>
+                <li>Body size scaling in predator-prey systems</li>
+                <li>Thermal limits on predator control of urchins</li>
               </ul>
             </div>
 
@@ -790,31 +792,32 @@ const formatDate = (dateStr: string) => {
     font-style: italic;
   }
 
-  .site-resilience {
+  .site-research {
     @apply mb-6;
   }
 
-  .resilience-heading {
+  .research-heading {
     @apply text-xs font-bold uppercase tracking-wider text-muted mb-3;
   }
 
-  .resilience-list {
-    @apply space-y-2 list-none p-0 m-0;
+  .research-list {
+    @apply space-y-1.5 list-none p-0 m-0;
   }
 
-  .resilience-list li {
-    @apply text-sm text-ink/70 leading-relaxed;
+  .research-list li {
+    @apply text-sm text-ink/80 leading-relaxed pl-4 relative;
   }
 
-  .r-label {
-    @apply font-bold text-accent mr-2;
+  .research-list li::before {
+    content: '•';
+    @apply absolute left-0;
   }
 
-  .site-card-coral .r-label {
+  .site-card-coral .research-list li::before {
     color: #fb923c;
   }
 
-  .site-card-kelp .r-label {
+  .site-card-kelp .research-list li::before {
     color: #4ade80;
   }
 
