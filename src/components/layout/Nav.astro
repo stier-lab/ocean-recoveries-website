@@ -330,9 +330,14 @@ const isActive = (href: string) => {
     @apply text-ink;
   }
 
-  /* Transparent state (over hero) */
+  /* Transparent state (over hero) - subtle scrim for legibility */
   #nav-header[data-transparent="true"]:not(.scrolled) {
-    @apply bg-transparent;
+    background: linear-gradient(
+      180deg,
+      rgba(8, 15, 25, 0.6) 0%,
+      rgba(8, 15, 25, 0.3) 60%,
+      transparent 100%
+    );
   }
 
   #nav-header[data-transparent="true"]:not(.scrolled) .nav-logo-text,

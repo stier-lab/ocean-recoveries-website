@@ -28,56 +28,50 @@ const formatDate = (dateStr: string) => {
     <div class="hero-media">
       <div class="hero-image" style="background-image: url('/images/coral-reef-panorama-anthias-fish.jpeg');"></div>
       <div class="hero-overlay"></div>
+      <div class="hero-text-scrim"></div>
       <div class="hero-grain"></div>
     </div>
 
     <div class="hero-content">
       <div class="container">
-        <!-- Editorial masthead -->
-        <div class="hero-masthead scroll-reveal">
-          <div class="masthead-line"></div>
-          <span class="masthead-text">UC Santa Barbara</span>
-          <div class="masthead-line"></div>
-        </div>
+        <div class="hero-text-block">
+          <!-- Compact headline lockup -->
+          <div class="hero-title-block scroll-reveal stagger-1">
+            <h1 class="hero-title">
+              <span class="title-main">Ocean <span class="title-serif">Recoveries</span></span>
+              <span class="title-lab">Lab</span>
+            </h1>
+          </div>
 
-        <!-- Main title - 2 lines, only Recoveries stylized -->
-        <div class="hero-title-block">
-          <h1 class="hero-title scroll-reveal stagger-1">
-            <span class="title-line title-line-1">Ocean <span class="title-serif">Recoveries</span></span>
-            <span class="title-line title-line-2">Lab</span>
-          </h1>
-        </div>
+          <!-- Tagline - the slogan -->
+          <div class="hero-tagline-wrapper scroll-reveal stagger-2">
+            <div class="tagline-accent"></div>
+            <p class="hero-tagline">
+              Understanding <em>collapse</em>.<br />
+              Designing <em>recovery</em>.
+            </p>
+          </div>
 
-        <!-- Tagline - the slogan -->
-        <div class="hero-tagline-wrapper scroll-reveal stagger-2">
-          <div class="tagline-accent"></div>
-          <p class="hero-tagline">
-            Understanding <em>collapse</em>.<br />
-            Designing <em>recovery</em>.
+          <!-- Thesis statement -->
+          <p class="hero-desc scroll-reveal stagger-3">
+            We identify the ecological bottlenecks and thresholds that trap coral reefs and kelp forests in degraded states—and turn that science into decision tools for restoration and management across the Pacific.
           </p>
-        </div>
 
-        <!-- Thesis statement - mechanism + output (not just mission) -->
-        <p class="hero-desc scroll-reveal stagger-3">
-          We identify the ecological bottlenecks and thresholds that trap coral reefs and kelp forests in degraded states—and turn that science into decision tools for restoration and management across the Pacific.
-        </p>
+          <!-- Credibility line -->
+          <p class="hero-credibility scroll-reveal stagger-3">
+            Two decades of experiments across coral and kelp ecosystems.
+          </p>
 
-        <!-- Credibility line -->
-        <p class="hero-credibility scroll-reveal stagger-3">
-          Two decades of experiments across coral and kelp ecosystems.
-        </p>
-
-        <!-- Actions row -->
-        <div class="hero-actions scroll-reveal stagger-4">
-          <a href="#approach" class="btn-editorial-primary">
-            <span class="btn-text">How We Work</span>
-            <span class="btn-icon">
-              <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <!-- Actions row -->
+          <div class="hero-actions scroll-reveal stagger-4">
+            <a href="#approach" class="btn-hero-primary">
+              <span>How We Work</span>
+              <svg class="btn-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
               </svg>
-            </span>
-          </a>
-          <a href="/publications" class="btn-editorial-secondary">View Publications</a>
+            </a>
+            <a href="/publications" class="btn-hero-secondary">View Publications</a>
+          </div>
         </div>
       </div>
     </div>
@@ -500,7 +494,7 @@ const formatDate = (dateStr: string) => {
      ============================================ */
   .hero {
     @apply relative min-h-[100svh] flex items-start overflow-hidden;
-    padding-top: 7rem; /* Move content closer to nav */
+    padding-top: 6rem;
   }
 
   .hero-media {
@@ -518,19 +512,32 @@ const formatDate = (dateStr: string) => {
     to { transform: scale(1); }
   }
 
+  /* Base overlay - lighter to let image breathe */
   .hero-overlay {
     @apply absolute inset-0;
     background: linear-gradient(
       135deg,
-      rgba(8, 15, 25, 0.97) 0%,
-      rgba(8, 20, 35, 0.92) 40%,
-      rgba(11, 37, 69, 0.7) 70%,
-      rgba(11, 37, 69, 0.4) 100%
+      rgba(8, 15, 25, 0.75) 0%,
+      rgba(8, 20, 35, 0.6) 40%,
+      rgba(11, 37, 69, 0.4) 70%,
+      rgba(11, 37, 69, 0.2) 100%
+    );
+  }
+
+  /* Left-side text scrim for consistent readability */
+  .hero-text-scrim {
+    @apply absolute inset-0;
+    background: linear-gradient(
+      90deg,
+      rgba(8, 15, 25, 0.92) 0%,
+      rgba(8, 15, 25, 0.85) 25%,
+      rgba(8, 20, 35, 0.6) 50%,
+      transparent 70%
     );
   }
 
   .hero-grain {
-    @apply absolute inset-0 pointer-events-none opacity-[0.04];
+    @apply absolute inset-0 pointer-events-none opacity-[0.03];
     background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
   }
 
@@ -540,41 +547,29 @@ const formatDate = (dateStr: string) => {
     padding-bottom: 3rem;
   }
 
-  /* Masthead */
-  .hero-masthead {
-    @apply flex items-center gap-4 mb-4;
+  /* Text block constraint */
+  .hero-text-block {
+    @apply max-w-xl;
   }
 
-  .masthead-line {
-    @apply flex-1 h-px bg-gradient-to-r from-transparent via-white/20 to-transparent;
-  }
-
-  .masthead-text {
-    @apply text-[10px] font-bold uppercase tracking-[0.2em] text-white/50;
-    @apply px-4;
-  }
-
-  /* Title block */
+  /* Title block - compact lockup */
   .hero-title-block {
-    @apply mb-5;
+    @apply mb-4;
   }
 
   .hero-title {
-    @apply leading-[0.95] tracking-[-0.02em];
+    @apply flex flex-wrap items-baseline gap-x-3 gap-y-0;
+    line-height: 1;
   }
 
-  .title-line {
-    @apply block;
+  .title-main {
+    @apply text-4xl sm:text-5xl md:text-6xl font-black text-white;
+    letter-spacing: -0.02em;
   }
 
-  .title-line-1 {
-    @apply text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black text-white;
-    margin-left: -0.04em;
-  }
-
-  .title-line-2 {
-    @apply text-4xl sm:text-5xl md:text-6xl lg:text-7xl;
-    margin-left: 0.4em;
+  .title-lab {
+    @apply text-2xl sm:text-3xl md:text-4xl font-black text-white/70;
+    letter-spacing: -0.01em;
   }
 
   .title-serif {
@@ -586,25 +581,20 @@ const formatDate = (dateStr: string) => {
     background-clip: text;
   }
 
-  .title-line-3 {
-    @apply text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black text-white;
-    margin-left: 1.5em;
-  }
-
   /* Tagline */
   .hero-tagline-wrapper {
-    @apply flex items-start gap-4 mb-4 max-w-xl;
+    @apply flex items-start gap-3 mb-5;
   }
 
   .tagline-accent {
-    @apply w-1 flex-shrink-0 mt-1;
+    @apply w-0.5 flex-shrink-0 mt-1.5 rounded-full;
     @apply bg-gradient-to-b from-accent to-accent-2;
-    height: 48px;
+    height: 40px;
   }
 
   .hero-tagline {
-    @apply text-lg md:text-xl text-white/80 leading-snug;
-    font-weight: 400;
+    @apply text-base md:text-lg text-white/90 leading-snug;
+    font-weight: 450;
   }
 
   .hero-tagline em {
@@ -612,31 +602,99 @@ const formatDate = (dateStr: string) => {
     @apply text-accent not-italic font-medium;
   }
 
+  /* Description and credibility */
   .hero-desc {
-    @apply text-sm md:text-base text-white/70 mb-2 leading-relaxed max-w-xl;
+    @apply text-sm md:text-base text-white/80 mb-3 leading-relaxed;
   }
 
   .hero-credibility {
-    @apply text-xs md:text-sm text-white/40 mb-6 font-medium uppercase tracking-wider;
+    @apply text-xs text-white/50 mb-6 font-semibold uppercase tracking-wider;
   }
 
-  /* Actions */
+  /* Hero CTAs */
   .hero-actions {
     @apply flex flex-wrap items-center gap-3;
   }
 
+  .btn-hero-primary {
+    @apply inline-flex items-center gap-2 px-6 py-3;
+    @apply bg-accent text-white font-bold text-sm;
+    @apply rounded-sm no-underline;
+    @apply transition-all duration-200;
+    @apply shadow-lg shadow-accent/30;
+  }
+
+  .btn-hero-primary:hover {
+    @apply bg-accent/90;
+    transform: translateY(-1px);
+    box-shadow: 0 8px 20px -4px rgba(56, 189, 248, 0.4);
+  }
+
+  .btn-hero-primary:focus-visible {
+    @apply outline-none ring-2 ring-white ring-offset-2 ring-offset-navy-deep;
+  }
+
+  .btn-hero-primary .btn-icon {
+    @apply w-4 h-4 transition-transform duration-200;
+  }
+
+  .btn-hero-primary:hover .btn-icon {
+    transform: translateX(2px);
+  }
+
+  .btn-hero-secondary {
+    @apply inline-flex items-center px-6 py-3;
+    @apply text-white/90 font-bold text-sm;
+    @apply border border-white/30 rounded-sm no-underline;
+    @apply transition-all duration-200;
+  }
+
+  .btn-hero-secondary:hover {
+    @apply border-white/60 bg-white/10 text-white;
+  }
+
+  .btn-hero-secondary:focus-visible {
+    @apply outline-none ring-2 ring-white ring-offset-2 ring-offset-navy-deep;
+  }
+
+  /* Scroll cue */
+  .scroll-cue {
+    @apply absolute bottom-6 left-1/2 -translate-x-1/2;
+    animation: fadeIn 1s ease-out 1.5s forwards;
+    opacity: 0;
+  }
+
+  @keyframes fadeIn {
+    to { opacity: 1; }
+  }
+
+  .scroll-cue-line {
+    @apply w-px h-8 bg-gradient-to-b from-transparent via-white/30 to-accent;
+    animation: scrollPulse 2s ease-in-out infinite;
+  }
+
+  @keyframes scrollPulse {
+    0%, 100% { opacity: 0.5; transform: scaleY(1); }
+    50% { opacity: 1; transform: scaleY(1.1); }
+  }
+
+  /* Keep old btn-editorial classes for other sections */
   .btn-editorial-primary {
     @apply relative inline-flex items-center gap-2 px-5 py-3;
     @apply bg-white text-navy-deep font-bold text-sm;
     @apply no-underline overflow-hidden;
-    @apply transition-all duration-300;
+    @apply transition-all duration-200;
+  }
+
+  .btn-editorial-primary:focus-visible {
+    @apply outline-none ring-2 ring-accent ring-offset-2 ring-offset-surface;
   }
 
   .btn-editorial-primary::before {
     content: '';
     @apply absolute inset-0 bg-accent;
     transform: translateX(-101%);
-    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   }
 
   .btn-editorial-primary:hover::before {
@@ -645,7 +703,7 @@ const formatDate = (dateStr: string) => {
 
   .btn-editorial-primary .btn-text,
   .btn-editorial-primary .btn-icon {
-    @apply relative z-10 transition-colors duration-300;
+    @apply relative z-10 transition-colors duration-200;
   }
 
   .btn-editorial-primary:hover .btn-text,
@@ -674,32 +732,15 @@ const formatDate = (dateStr: string) => {
     @apply inline-flex items-center px-5 py-3;
     @apply text-white font-bold text-sm;
     @apply border-2 border-white/40 no-underline;
-    @apply transition-all duration-300;
+    @apply transition-all duration-200;
   }
 
   .btn-editorial-secondary:hover {
     @apply border-white bg-white/10;
   }
 
-  /* Scroll cue */
-  .scroll-cue {
-    @apply absolute bottom-6 left-1/2 -translate-x-1/2;
-    animation: fadeIn 1s ease-out 1.5s forwards;
-    opacity: 0;
-  }
-
-  @keyframes fadeIn {
-    to { opacity: 1; }
-  }
-
-  .scroll-cue-line {
-    @apply w-px h-8 bg-gradient-to-b from-transparent via-white/30 to-accent;
-    animation: scrollPulse 2s ease-in-out infinite;
-  }
-
-  @keyframes scrollPulse {
-    0%, 100% { opacity: 0.5; transform: scaleY(1); }
-    50% { opacity: 1; transform: scaleY(1.1); }
+  .btn-editorial-secondary:focus-visible {
+    @apply outline-none ring-2 ring-white ring-offset-2 ring-offset-navy-deep;
   }
 
   /* ============================================
@@ -1482,47 +1523,52 @@ const formatDate = (dateStr: string) => {
      ============================================ */
   @media (max-width: 768px) {
     .hero {
+      padding-top: 5rem;
       padding-bottom: 3rem;
     }
 
     .hero-content {
-      padding-top: 1.5rem;
+      padding-top: 1rem;
       padding-bottom: 0;
     }
 
-    .hero-masthead {
-      @apply hidden;
+    .hero-text-block {
+      @apply max-w-none;
+    }
+
+    /* Full-width scrim on mobile for better readability */
+    .hero-text-scrim {
+      background: linear-gradient(
+        180deg,
+        rgba(8, 15, 25, 0.9) 0%,
+        rgba(8, 15, 25, 0.8) 40%,
+        rgba(8, 20, 35, 0.6) 70%,
+        rgba(8, 20, 35, 0.4) 100%
+      );
     }
 
     .hero-title-block {
-      @apply mb-4;
-    }
-
-    .title-line-1,
-    .title-line-2,
-    .title-line-3 {
-      @apply text-3xl;
-      margin-left: 0;
-    }
-
-    .title-line-2 {
-      margin-left: 0.2em;
-    }
-
-    .title-line-3 {
-      margin-left: 0.4em;
-    }
-
-    .hero-tagline-wrapper {
       @apply mb-3;
     }
 
+    .title-main {
+      @apply text-3xl;
+    }
+
+    .title-lab {
+      @apply text-xl;
+    }
+
+    .hero-tagline-wrapper {
+      @apply mb-4;
+    }
+
     .tagline-accent {
-      height: 36px;
+      height: 32px;
     }
 
     .hero-tagline {
-      @apply text-base;
+      @apply text-sm;
     }
 
     .hero-desc {
@@ -1530,11 +1576,16 @@ const formatDate = (dateStr: string) => {
     }
 
     .hero-credibility {
-      @apply text-[10px] mb-4;
+      @apply text-[10px] mb-5;
     }
 
     .hero-actions {
-      @apply gap-2;
+      @apply flex-col w-full gap-2;
+    }
+
+    .btn-hero-primary,
+    .btn-hero-secondary {
+      @apply w-full justify-center;
     }
 
     .btn-editorial-primary,
