@@ -411,6 +411,12 @@ const recruitmentStatus = {
             and admission is an implicit contract. My goal is to help you develop creativity, rigor, and the
             skills to succeed in academia, government, NGOs, or wherever your career leads.
           </p>
+          <a href="/values" class="values-link">
+            <span>Read our full lab values</span>
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+            </svg>
+          </a>
         </div>
       </div>
     </div>
@@ -1227,6 +1233,16 @@ const recruitmentStatus = {
 
   .philosophy-note p {
     @apply text-sm text-muted leading-relaxed mx-auto;
+  }
+
+  .values-link {
+    @apply inline-flex items-center gap-2 mt-4;
+    @apply text-accent font-semibold text-sm;
+    @apply transition-all duration-200;
+  }
+
+  .values-link:hover {
+    @apply gap-3;
   }
 
   /* ========================================

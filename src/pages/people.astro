@@ -108,6 +108,7 @@ const isPlaceholderImage = (image: string) => {
       <header class="team-header scroll-reveal">
         <span class="team-eyebrow">The Team</span>
         <h2 class="team-title">Meet the<br/><span class="text-gradient">Researchers</span></h2>
+        <p class="team-subtitle">United by a shared commitment to rigorous science and grounded optimism. <a href="/values" class="team-values-link">Read our values →</a></p>
       </header>
 
       <div class="team-grid">
@@ -410,6 +411,19 @@ const isPlaceholderImage = (image: string) => {
   .team-title {
     @apply text-fluid-4xl font-black text-ink leading-none;
     letter-spacing: -0.02em;
+  }
+
+  .team-subtitle {
+    @apply text-muted text-sm mt-4 max-w-md;
+  }
+
+  .team-values-link {
+    @apply text-accent no-underline;
+    @apply transition-colors duration-200;
+  }
+
+  .team-values-link:hover {
+    @apply text-accent-2;
   }
 
   .team-grid {
