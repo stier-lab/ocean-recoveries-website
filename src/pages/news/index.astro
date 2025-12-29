@@ -59,11 +59,6 @@ const getDisplayTags = (tags: string[]) => {
 const featuredPost = sortedPosts[0];
 const secondaryPosts = sortedPosts.slice(1, 3);
 const allPosts = sortedPosts.slice(3);
-
-// Stats
-const totalArticles = posts.length;
-const oaCount = posts.filter(p => p.openAccess).length;
-const yearSpan = yearTags.length > 0 ? `${yearTags[yearTags.length - 1]}–${yearTags[0]}` : '';
 ---
 
 <Layout
@@ -71,54 +66,6 @@ const yearSpan = yearTags.length > 0 ? `${yearTags[yearTags.length - 1]}–${yea
   description="Latest news, research updates, and stories from the Ocean Recoveries Lab at UC Santa Barbara."
 >
   <a href="#main-content" class="skip-link">Skip to main content</a>
-
-  <!-- Hero Section -->
-  <section class="hero" aria-label="News page introduction">
-    <div class="hero-bg">
-      <div class="hero-gradient"></div>
-      <div class="hero-pattern"></div>
-      <div class="hero-orb hero-orb-1"></div>
-      <div class="hero-orb hero-orb-2"></div>
-    </div>
-
-    <div class="container hero-content">
-      <div class="hero-badge">
-        <span class="badge-dot"></span>
-        <span>Research Updates</span>
-      </div>
-
-      <h1 class="hero-title">
-        News & <span class="title-gradient">Research</span>
-      </h1>
-
-      <p class="hero-subtitle">
-        Stories from the frontier of marine ecosystem research. Explore our latest findings on coral reef resilience, kelp forest dynamics, and ocean conservation.
-      </p>
-
-      <div class="hero-stats">
-        <div class="stat">
-          <span class="stat-value">{totalArticles}</span>
-          <span class="stat-label">Articles</span>
-        </div>
-        <div class="stat-divider"></div>
-        <div class="stat">
-          <span class="stat-value">{oaCount}</span>
-          <span class="stat-label">Open Access</span>
-        </div>
-        <div class="stat-divider"></div>
-        <div class="stat">
-          <span class="stat-value">{yearSpan}</span>
-          <span class="stat-label">Research Years</span>
-        </div>
-      </div>
-    </div>
-
-    <div class="hero-wave">
-      <svg viewBox="0 0 1440 120" fill="none" preserveAspectRatio="none">
-        <path d="M0 120L60 110C120 100 240 80 360 70C480 60 600 60 720 65C840 70 960 80 1080 85C1200 90 1320 90 1380 90L1440 90V120H1380C1320 120 1200 120 1080 120C960 120 840 120 720 120C600 120 480 120 360 120C240 120 120 120 60 120H0Z" fill="#0f172a"/>
-      </svg>
-    </div>
-  </section>
 
   <!-- Featured Section -->
   <section class="featured-section" aria-label="Featured articles">
@@ -425,117 +372,9 @@ const yearSpan = yearTags.length > 0 ? `${yearTags[yearTags.length - 1]}–${yea
     @apply transition-all duration-200;
   }
 
-  /* Hero Section */
-  .hero {
-    @apply relative pt-24 pb-32 overflow-hidden;
-    background: linear-gradient(135deg, #0a1628 0%, #0f172a 50%, #1a2744 100%);
-  }
-
-  .hero-bg {
-    @apply absolute inset-0 overflow-hidden;
-  }
-
-  .hero-gradient {
-    @apply absolute inset-0;
-    background: radial-gradient(ellipse 80% 50% at 50% 0%, rgba(56, 189, 248, 0.12) 0%, transparent 60%);
-  }
-
-  .hero-pattern {
-    @apply absolute inset-0 opacity-[0.03];
-    background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
-  }
-
-  .hero-orb {
-    @apply absolute rounded-full blur-3xl;
-  }
-
-  .hero-orb-1 {
-    @apply w-96 h-96 -top-48 -right-24;
-    background: radial-gradient(circle, rgba(56, 189, 248, 0.15) 0%, transparent 70%);
-    animation: float 20s ease-in-out infinite;
-  }
-
-  .hero-orb-2 {
-    @apply w-80 h-80 bottom-0 -left-20;
-    background: radial-gradient(circle, rgba(45, 212, 191, 0.1) 0%, transparent 70%);
-    animation: float 25s ease-in-out infinite reverse;
-  }
-
-  @keyframes float {
-    0%, 100% { transform: translate(0, 0); }
-    50% { transform: translate(20px, -20px); }
-  }
-
-  .hero-content {
-    @apply relative z-10 text-center max-w-3xl mx-auto;
-  }
-
-  .hero-badge {
-    @apply inline-flex items-center gap-2 px-4 py-2 mb-6;
-    @apply bg-white/5 border border-white/10 rounded-full;
-    @apply text-sm font-medium text-white/70;
-  }
-
-  .badge-dot {
-    @apply w-2 h-2 rounded-full bg-accent;
-    animation: pulse 2s ease-in-out infinite;
-  }
-
-  @keyframes pulse {
-    0%, 100% { opacity: 1; }
-    50% { opacity: 0.5; }
-  }
-
-  .hero-title {
-    @apply text-4xl md:text-5xl lg:text-6xl font-black text-white mb-6;
-    @apply tracking-tight leading-tight;
-  }
-
-  .title-gradient {
-    background: linear-gradient(135deg, #38bdf8 0%, #2dd4bf 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-  }
-
-  .hero-subtitle {
-    @apply text-lg md:text-xl text-white/60 mb-10 max-w-2xl mx-auto;
-    @apply leading-relaxed;
-  }
-
-  .hero-stats {
-    @apply inline-flex items-center gap-6 md:gap-8 px-8 py-4;
-    @apply bg-white/5 border border-white/10 rounded-2xl;
-    @apply backdrop-blur-sm;
-  }
-
-  .stat {
-    @apply text-center;
-  }
-
-  .stat-value {
-    @apply block text-2xl md:text-3xl font-bold text-white mb-1;
-  }
-
-  .stat-label {
-    @apply text-xs md:text-sm text-white/50 uppercase tracking-wider;
-  }
-
-  .stat-divider {
-    @apply w-px h-10 bg-white/10;
-  }
-
-  .hero-wave {
-    @apply absolute bottom-0 left-0 right-0;
-  }
-
-  .hero-wave svg {
-    @apply w-full h-20 md:h-28;
-  }
-
   /* Featured Section */
   .featured-section {
-    @apply py-12 bg-surface;
+    @apply pt-28 pb-12 bg-surface;
   }
 
   .featured-grid {
