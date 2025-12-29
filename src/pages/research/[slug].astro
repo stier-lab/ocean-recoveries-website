@@ -936,10 +936,12 @@ const isCoral = theme.slug === 'coral-reefs';
   @media (min-width: 768px) and (hover: hover) {
     .finding-card:hover .finding-front {
       transform: rotateY(-180deg);
+      visibility: hidden;
     }
 
     .finding-card:hover .finding-back {
       transform: rotateY(0deg);
+      visibility: visible;
     }
   }
 
