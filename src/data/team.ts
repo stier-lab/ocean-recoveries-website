@@ -50,8 +50,7 @@ export const currentTeam: TeamMember[] = [
     name: 'Adnan Alalawi',
     role: 'phd',
     title: 'PhD Student',
-    // TODO: Replace placeholder image for Adnan Alalawi with actual headshot
-    image: '/images/man-scuba-diver-on-boat.jpg',
+    image: '/images/adnan.jpg',
     hook: 'Designs artificial reefs and uses soundscapes to accelerate recovery on degraded reefs.',
     tags: ['Restoration', 'Bioacoustics', 'Artificial reefs'],
     email: 'adnan@ucsb.edu',

@@ -2,11 +2,17 @@
 import Layout from '@layouts/Layout.astro';
 import WaveDivider from '@components/shared/WaveDivider.astro';
 import { posts } from '@data/posts';
+import { currentTeam } from '@data/team';
 
 // Get 3 most recent news posts
 const recentPosts = [...posts]
   .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
   .slice(0, 3);
+
+// Get team members for preview (first 4)
+const teamPreview = [...currentTeam]
+  .sort((a, b) => a.order - b.order)
+  .slice(0, 4);
 
 // Format date helper
 const formatDate = (dateStr: string) => {
@@ -23,13 +29,21 @@ const formatDate = (dateStr: string) => {
   description="Research lab at UC Santa Barbara identifying ecological bottlenecks and thresholds that trap coral reefs and kelp forests in degraded states—and turning that science into decision tools for restoration."
   keywords={['Ocean Recoveries Lab', 'coral reef research', 'kelp forest ecology', 'marine conservation', 'UC Santa Barbara', 'Adrian Stier', 'ecosystem resilience', 'restoration ecology']}
 >
-  <!-- Hero Section - Thesis + Mechanism + Output -->
+  <!-- Hero Section - Simplified & More Impactful -->
   <section class="hero">
     <div class="hero-media">
       <div class="hero-image" style="background-image: url('/images/coral-reef-panorama-anthias-fish.jpeg');"></div>
       <div class="hero-overlay"></div>
       <div class="hero-text-scrim"></div>
       <div class="hero-grain"></div>
+      <!-- Subtle animated particles -->
+      <div class="hero-particles" aria-hidden="true">
+        <div class="particle particle-1"></div>
+        <div class="particle particle-2"></div>
+        <div class="particle particle-3"></div>
+        <div class="particle particle-4"></div>
+        <div class="particle particle-5"></div>
+      </div>
     </div>
 
     <div class="hero-content">
@@ -43,18 +57,17 @@ const formatDate = (dateStr: string) => {
             </h1>
           </div>
 
-          <!-- Tagline - the slogan -->
+          <!-- Tagline - LARGER and more prominent -->
           <div class="hero-tagline-wrapper scroll-reveal stagger-2">
-            <div class="tagline-accent"></div>
             <p class="hero-tagline">
               Understanding <em>collapse</em>.<br />
               Designing <em>recovery</em>.
             </p>
           </div>
 
-          <!-- Thesis statement -->
+          <!-- Simplified thesis - shorter -->
           <p class="hero-desc scroll-reveal stagger-3">
-            We identify the ecological bottlenecks and thresholds that trap coral reefs and kelp forests in degraded states—and turn that science into decision tools for restoration and management across the Pacific.
+            We identify the ecological bottlenecks that trap coral reefs and kelp forests in degraded states—and turn that science into decision tools for restoration.
           </p>
 
           <!-- Actions row -->
@@ -79,13 +92,13 @@ const formatDate = (dateStr: string) => {
     <WaveDivider id="hero-wave" fillColor="surface" />
   </section>
 
-  <!-- How We Work Section - Approach BEFORE geography -->
+  <!-- How We Work Section - More Visual -->
   <section id="approach" class="approach-section">
     <div class="container">
-      <!-- Intro block with unifying question directly below -->
+      <!-- Intro block -->
       <div class="approach-intro scroll-reveal">
         <div class="approach-header">
-          <span class="approach-eyebrow">Methods</span>
+          <span class="approach-eyebrow">Our Approach</span>
           <h2 class="approach-headline">
             How We <span class="approach-headline-emphasis">Work</span>
           </h2>
@@ -93,51 +106,47 @@ const formatDate = (dateStr: string) => {
         <p class="approach-thesis">
           We run experiments, synthesize evidence across systems, and build models that translate results into actionable thresholds and decision tools.
         </p>
-        <!-- Unifying question as slim callout -->
-        <div class="approach-question">
-          <span class="question-arrow">→</span>
-          <p class="question-inline">
-            <span class="question-prefix">One question drives everything:</span>
-            How can we engineer ecosystem resilience in a rapidly changing world?
-          </p>
-        </div>
       </div>
 
-      <!-- Three method cards as "answers" -->
+      <!-- Method cards with numbers -->
       <div class="approach-grid">
         <div class="approach-card scroll-reveal stagger-1">
+          <div class="card-number">01</div>
           <div class="approach-icon">
-            <!-- Flask icon for experiments -->
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
               <path stroke-linecap="round" stroke-linejoin="round" d="M9.75 3.104v5.714a2.25 2.25 0 01-.659 1.591L5 14.5M9.75 3.104c-.251.023-.501.05-.75.082m.75-.082a24.301 24.301 0 014.5 0m0 0v5.714c0 .597.237 1.17.659 1.591L19.8 15.3M14.25 3.104c.251.023.501.05.75.082M19.8 15.3l-1.57.393A9.065 9.065 0 0112 15a9.065 9.065 0 00-6.23.693L5 14.5m14.8.8l1.402 1.402c1.232 1.232.65 3.318-1.067 3.611A48.309 48.309 0 0112 21c-2.773 0-5.491-.235-8.135-.687-1.718-.293-2.3-2.379-1.067-3.61L5 14.5" />
             </svg>
           </div>
-          <h3 class="approach-title">Experiments</h3>
-          <ul class="approach-list">
-            <li><span class="list-what">Test mechanisms in the field</span></li>
-            <li><span class="list-how">Manipulate key interactions</span></li>
-            <li><span class="list-why">Quantify effects on recovery</span></li>
-          </ul>
+          <h3 class="approach-title">Field Experiments</h3>
+          <p class="approach-desc">
+            Test mechanisms in the field by manipulating key species interactions and quantifying effects on ecosystem recovery.
+          </p>
+          <div class="approach-example">
+            <span class="example-label">Example:</span>
+            <span>Guard crab exclusion experiments on coral colonies</span>
+          </div>
         </div>
 
         <div class="approach-card scroll-reveal stagger-2">
+          <div class="card-number">02</div>
           <div class="approach-icon">
-            <!-- Layers/stack icon for synthesis -->
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
               <path stroke-linecap="round" stroke-linejoin="round" d="M6.429 9.75L2.25 12l4.179 2.25m0-4.5l5.571 3 5.571-3m-11.142 0L2.25 7.5 12 2.25l9.75 5.25-4.179 2.25m0 0L21.75 12l-4.179 2.25m0 0l4.179 2.25L12 21.75l-9.75-5.25 4.179-2.25m11.142 0l-5.571 3-5.571-3" />
             </svg>
           </div>
-          <h3 class="approach-title">Synthesis</h3>
-          <ul class="approach-list">
-            <li><span class="list-what">Systematic review & meta-analysis</span></li>
-            <li><span class="list-how">Compare across ecosystems</span></li>
-            <li><span class="list-why">Estimate robust effect sizes</span></li>
-          </ul>
+          <h3 class="approach-title">Evidence Synthesis</h3>
+          <p class="approach-desc">
+            Systematic review and meta-analysis to compare recovery drivers across ecosystems and estimate robust effect sizes.
+          </p>
+          <div class="approach-example">
+            <span class="example-label">Example:</span>
+            <span>Global analysis of coral recovery trajectories</span>
+          </div>
         </div>
 
         <div class="approach-card scroll-reveal stagger-3">
+          <div class="card-number">03</div>
           <div class="approach-icon">
-            <!-- Network/nodes icon for predictive models -->
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
               <circle cx="12" cy="5" r="2" />
               <circle cx="5" cy="19" r="2" />
@@ -145,21 +154,36 @@ const formatDate = (dateStr: string) => {
               <path stroke-linecap="round" stroke-linejoin="round" d="M12 7v4m0 0l-5 6m5-6l5 6" />
             </svg>
           </div>
-          <h3 class="approach-title">Modeling</h3>
-          <ul class="approach-list">
-            <li><span class="list-what">Theory, simulation & statistical models</span></li>
-            <li><span class="list-how">Translate data into thresholds</span></li>
-            <li><span class="list-why">Generate decision-support tools</span></li>
-          </ul>
+          <h3 class="approach-title">Predictive Modeling</h3>
+          <p class="approach-desc">
+            Theory and simulation models that translate field data into thresholds and decision-support tools for managers.
+          </p>
+          <div class="approach-example">
+            <span class="example-label">Output:</span>
+            <span>Urchin barren risk indicators for MPAs</span>
+          </div>
         </div>
       </div>
 
+      <!-- Unifying question as callout -->
+      <div class="approach-question scroll-reveal">
+        <div class="question-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09zM18.259 8.715L18 9.75l-.259-1.035a3.375 3.375 0 00-2.455-2.456L14.25 6l1.036-.259a3.375 3.375 0 002.455-2.456L18 2.25l.259 1.035a3.375 3.375 0 002.456 2.456L21.75 6l-1.035.259a3.375 3.375 0 00-2.456 2.456zM16.894 20.567L16.5 21.75l-.394-1.183a2.25 2.25 0 00-1.423-1.423L13.5 18.75l1.183-.394a2.25 2.25 0 001.423-1.423l.394-1.183.394 1.183a2.25 2.25 0 001.423 1.423l1.183.394-1.183.394a2.25 2.25 0 00-1.423 1.423z" />
+          </svg>
+        </div>
+        <p class="question-text">
+          <span class="question-prefix">One question drives everything:</span>
+          How can we engineer ecosystem resilience in a rapidly changing world?
+        </p>
+      </div>
     </div>
 
-    <WaveDivider id="approach-wave" fillColor="navy-deep" />
+    <!-- Gradient transition instead of wave -->
+    <div class="section-fade-dark"></div>
   </section>
 
-  <!-- Field Sites Section - Now as context, not first -->
+  <!-- Field Sites Section -->
   <section id="field-sites" class="field-sites">
     <div class="field-sites-bg">
       <div class="field-sites-gradient"></div>
@@ -169,10 +193,10 @@ const formatDate = (dateStr: string) => {
       <div class="sites-intro scroll-reveal">
         <span class="sites-eyebrow">Field Sites</span>
         <h2 class="sites-headline">
-          In the <span class="sites-headline-emphasis">Field</span>
+          Where We <span class="sites-headline-emphasis">Work</span>
         </h2>
         <p class="sites-thesis">
-          A volcanic island lagoon. A temperate kelp forest coastline. Same questions about resilience and recovery—different ecosystems, transferable insights. Both backed by decades of NSF Long Term Ecological Research data.
+          A volcanic island lagoon. A temperate kelp forest coastline. Same questions about resilience—different ecosystems, transferable insights.
         </p>
       </div>
 
@@ -204,11 +228,6 @@ const formatDate = (dateStr: string) => {
                 <li>Guard crabs defending against crown-of-thorns</li>
                 <li>Priority effects in community reassembly</li>
               </ul>
-            </div>
-
-            <div class="site-output">
-              <span class="output-label">Management output:</span>
-              <span class="output-text">Restoration strategy evaluation tools for coral recovery</span>
             </div>
 
             <div class="site-cta">
@@ -249,11 +268,6 @@ const formatDate = (dateStr: string) => {
               </ul>
             </div>
 
-            <div class="site-output">
-              <span class="output-label">Management output:</span>
-              <span class="output-text">Predator-based indicators for urchin barren risk</span>
-            </div>
-
             <div class="site-cta">
               <span>Explore kelp research</span>
               <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -264,19 +278,26 @@ const formatDate = (dateStr: string) => {
           <div class="site-accent"></div>
         </a>
       </div>
+
+      <!-- LTER Badge -->
+      <div class="lter-badge scroll-reveal">
+        <span class="lter-text">Backed by decades of</span>
+        <span class="lter-highlight">NSF Long Term Ecological Research</span>
+        <span class="lter-text">data at both sites</span>
+      </div>
     </div>
 
     <WaveDivider id="sites-wave" fillColor="surface" />
   </section>
 
-  <!-- Recent Work Section - Proof after approach -->
+  <!-- Recent Work Section - Enhanced Featured Article -->
   <section class="news-section">
     <div class="container">
       <div class="news-header scroll-reveal">
         <div class="news-intro">
           <span class="news-eyebrow">Recent Work</span>
           <h2 class="news-headline">
-            Evidence of <span class="news-headline-emphasis">Impact</span>
+            Latest <span class="news-headline-emphasis">Research</span>
           </h2>
         </div>
         <a href="/publications" class="btn-outline-editorial-dark hidden sm:inline-flex">
@@ -287,21 +308,47 @@ const formatDate = (dateStr: string) => {
         </a>
       </div>
 
-      <div class="news-editorial-grid">
-        {recentPosts.map((post, i) => (
-          <article class={`news-editorial-card ${i === 0 ? 'news-featured' : ''} scroll-reveal stagger-${i + 1}`}>
-            <a href={`/news/${post.slug}`} class="news-editorial-link">
-              <div class="news-editorial-image">
-                <img src={post.featuredImage} alt={post.title} loading={i === 0 ? 'eager' : 'lazy'} />
+      <!-- Featured Article - Full Width -->
+      {recentPosts[0] && (
+        <article class="news-featured scroll-reveal">
+          <a href={`/news/${recentPosts[0].slug}`} class="featured-link">
+            <div class="featured-image">
+              <img src={recentPosts[0].featuredImage} alt={recentPosts[0].title} loading="eager" />
+              <div class="featured-overlay"></div>
+            </div>
+            <div class="featured-content">
+              <div class="featured-meta">
+                <time class="featured-date">{formatDate(recentPosts[0].date)}</time>
+                <span class="featured-category">{recentPosts[0].tags[0]}</span>
+              </div>
+              <h3 class="featured-title">{recentPosts[0].title}</h3>
+              <p class="featured-excerpt">{recentPosts[0].excerpt}</p>
+              <span class="featured-cta">
+                Read the full story
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                </svg>
+              </span>
+            </div>
+          </a>
+        </article>
+      )}
+
+      <!-- Secondary Articles Grid -->
+      <div class="news-grid">
+        {recentPosts.slice(1).map((post, i) => (
+          <article class={`news-card scroll-reveal stagger-${i + 1}`}>
+            <a href={`/news/${post.slug}`} class="news-link">
+              <div class="news-image">
+                <img src={post.featuredImage} alt={post.title} loading="lazy" />
                 <div class="news-image-overlay"></div>
               </div>
-              <div class="news-editorial-body">
+              <div class="news-body">
                 <div class="news-meta">
                   <time class="news-date">{formatDate(post.date)}</time>
                   <span class="news-category">{post.tags[0]}</span>
                 </div>
-                <h3 class="news-editorial-title">{post.title}</h3>
-                {i === 0 && <p class="news-editorial-excerpt">{post.excerpt}</p>}
+                <h3 class="news-title">{post.title}</h3>
                 <span class="news-read-more">
                   Read more
                   <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -319,33 +366,44 @@ const formatDate = (dateStr: string) => {
       </div>
     </div>
 
-    <WaveDivider id="news-wave" fillColor="navy-deep" />
+    <!-- Gradient transition -->
+    <div class="section-fade-dark"></div>
   </section>
 
-  <!-- Team Section - Differentiating the lab -->
+  <!-- Team Section - Balanced with Visual -->
   <section class="team-section">
     <div class="team-bg">
       <div class="team-gradient"></div>
     </div>
 
     <div class="container relative z-10">
-      <div class="team-editorial">
+      <div class="team-layout">
+        <!-- Left: Content -->
         <div class="team-content scroll-reveal">
           <span class="team-eyebrow">The Team</span>
           <h2 class="team-headline">
             Who We <span class="team-headline-emphasis">Are</span>
           </h2>
           <p class="team-text">
-            An interdisciplinary group combining field ecology, quantitative modeling, and restoration science—working in Mo'orea and Santa Barbara, collaborating with managers and conservation practitioners.
+            An interdisciplinary group combining field ecology, quantitative modeling, and restoration science—working in Mo'orea and Santa Barbara.
           </p>
 
           <!-- Inline stats -->
           <div class="team-stats-inline">
-            <span class="stat-inline"><strong>75+</strong> publications</span>
-            <span class="stat-divider">•</span>
-            <span class="stat-inline"><strong>15</strong> years field research</span>
-            <span class="stat-divider">•</span>
-            <span class="stat-inline"><strong>2</strong> LTER sites</span>
+            <div class="stat-item">
+              <span class="stat-value">75+</span>
+              <span class="stat-label">publications</span>
+            </div>
+            <div class="stat-divider"></div>
+            <div class="stat-item">
+              <span class="stat-value">15</span>
+              <span class="stat-label">years field research</span>
+            </div>
+            <div class="stat-divider"></div>
+            <div class="stat-item">
+              <span class="stat-value">2</span>
+              <span class="stat-label">LTER sites</span>
+            </div>
           </div>
 
           <!-- What makes us different -->
@@ -376,19 +434,6 @@ const formatDate = (dateStr: string) => {
             </div>
           </div>
 
-          <!-- PI Card -->
-          <a href="/people" class="pi-editorial-card">
-            <img src="/images/adrian.png" alt="Adrian Stier" class="pi-avatar" />
-            <div class="pi-details">
-              <span class="pi-name">Adrian Stier</span>
-              <span class="pi-role">Associate Professor, EEMB</span>
-              <span class="pi-bio">Research on reef and kelp dynamics. NSF CAREER awardee.</span>
-            </div>
-            <svg class="pi-arrow" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
-            </svg>
-          </a>
-
           <a href="/people" class="btn-editorial-primary btn-editorial-light">
             <span class="btn-text">Meet the Full Team</span>
             <span class="btn-icon">
@@ -399,13 +444,66 @@ const formatDate = (dateStr: string) => {
           </a>
         </div>
 
+        <!-- Right: Team Preview Grid -->
+        <div class="team-preview scroll-reveal">
+          <div class="team-preview-grid">
+            {teamPreview.map((member, i) => (
+              <a href="/people" class={`team-preview-card stagger-${i + 1}`}>
+                <div class="preview-image">
+                  {member.image && !member.image.includes('placeholder') ? (
+                    <img src={member.image} alt={member.name} loading="lazy" />
+                  ) : (
+                    <div class="preview-placeholder">
+                      <span>{member.name.charAt(0)}</span>
+                    </div>
+                  )}
+                </div>
+                <div class="preview-info">
+                  <span class="preview-name">{member.name}</span>
+                  <span class="preview-role">{member.title}</span>
+                </div>
+              </a>
+            ))}
+          </div>
+          <p class="team-preview-more">+ {currentTeam.length - 4} more team members</p>
+        </div>
       </div>
     </div>
 
     <WaveDivider id="team-wave" fillColor="surface" />
   </section>
 
-  <!-- Final CTA Section - Segmented Pathways -->
+  <!-- Funders/Partners Section - Social Proof -->
+  <section class="funders-section">
+    <div class="container">
+      <div class="funders-content scroll-reveal">
+        <span class="funders-label">Supported By</span>
+        <div class="funders-logos">
+          <div class="funder-item">
+            <span class="funder-text">NSF</span>
+            <span class="funder-sub">National Science Foundation</span>
+          </div>
+          <div class="funder-divider"></div>
+          <div class="funder-item">
+            <span class="funder-text">MCR LTER</span>
+            <span class="funder-sub">Mo'orea Coral Reef</span>
+          </div>
+          <div class="funder-divider"></div>
+          <div class="funder-item">
+            <span class="funder-text">SBC LTER</span>
+            <span class="funder-sub">Santa Barbara Coastal</span>
+          </div>
+          <div class="funder-divider"></div>
+          <div class="funder-item">
+            <span class="funder-text">UCSB</span>
+            <span class="funder-sub">UC Santa Barbara</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Final CTA Section -->
   <section class="final-cta">
     <div class="container">
       <div class="cta-intro scroll-reveal">
@@ -417,8 +515,8 @@ const formatDate = (dateStr: string) => {
 
       <!-- Segmented CTA tiles -->
       <div class="cta-tiles">
-        <!-- Students -->
-        <div class="cta-tile cta-tile-students scroll-reveal stagger-1">
+        <!-- Students - Primary -->
+        <div class="cta-tile cta-tile-primary scroll-reveal stagger-1">
           <div class="tile-icon">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
               <path stroke-linecap="round" stroke-linejoin="round" d="M4.26 10.147a60.436 60.436 0 00-.491 6.347A48.627 48.627 0 0112 20.904a48.627 48.627 0 018.232-4.41 60.46 60.46 0 00-.491-6.347m-15.482 0a50.57 50.57 0 00-2.658-.813A59.905 59.905 0 0112 3.493a59.902 59.902 0 0110.399 5.84c-.896.248-1.783.52-2.658.814m-15.482 0A50.697 50.697 0 0112 13.489a50.702 50.702 0 017.74-3.342M6.75 15a.75.75 0 100-1.5.75.75 0 000 1.5zm0 0v-3.675A55.378 55.378 0 0112 8.443m-7.007 11.55A5.981 5.981 0 006.75 15.75v-1.5" />
@@ -426,9 +524,9 @@ const formatDate = (dateStr: string) => {
           </div>
           <h3 class="tile-title">Train With Us</h3>
           <p class="tile-desc">
-            Undergrads, grad students, and postdocs. Hands-on field work, quantitative training, and co-authorship.
+            Undergrads, grad students, and postdocs. Hands-on field work, quantitative training, and co-authorship opportunities.
           </p>
-          <a href="/join-us" class="tile-link">
+          <a href="/join" class="tile-link tile-link-primary">
             <span>View opportunities</span>
             <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
@@ -437,7 +535,7 @@ const formatDate = (dateStr: string) => {
         </div>
 
         <!-- Collaborators -->
-        <div class="cta-tile cta-tile-collab scroll-reveal stagger-2">
+        <div class="cta-tile cta-tile-secondary scroll-reveal stagger-2">
           <div class="tile-icon">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
               <path stroke-linecap="round" stroke-linejoin="round" d="M18 18.72a9.094 9.094 0 003.741-.479 3 3 0 00-4.682-2.72m.94 3.198l.001.031c0 .225-.012.447-.037.666A11.944 11.944 0 0112 21c-2.17 0-4.207-.576-5.963-1.584A6.062 6.062 0 016 18.719m12 0a5.971 5.971 0 00-.941-3.197m0 0A5.995 5.995 0 0012 12.75a5.995 5.995 0 00-5.058 2.772m0 0a3 3 0 00-4.681 2.72 8.986 8.986 0 003.74.477m.94-3.197a5.971 5.971 0 00-.94 3.197M15 6.75a3 3 0 11-6 0 3 3 0 016 0zm6 3a2.25 2.25 0 11-4.5 0 2.25 2.25 0 014.5 0zm-13.5 0a2.25 2.25 0 11-4.5 0 2.25 2.25 0 014.5 0z" />
@@ -445,7 +543,7 @@ const formatDate = (dateStr: string) => {
           </div>
           <h3 class="tile-title">Collaborate</h3>
           <p class="tile-desc">
-            Managers and practitioners. We build tools and provide data for restoration planning and MPA evaluation.
+            Managers and practitioners seeking restoration tools, MPA evaluation data, or research partnerships.
           </p>
           <a href="mailto:astier@ucsb.edu" class="tile-link">
             <span>Get in touch</span>
@@ -456,13 +554,13 @@ const formatDate = (dateStr: string) => {
         </div>
 
         <!-- Support -->
-        <div class="cta-tile cta-tile-funders scroll-reveal stagger-3">
+        <div class="cta-tile cta-tile-secondary scroll-reveal stagger-3">
           <div class="tile-icon">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
               <path stroke-linecap="round" stroke-linejoin="round" d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12z" />
             </svg>
           </div>
-          <h3 class="tile-title">Support the Research</h3>
+          <h3 class="tile-title">Support Research</h3>
           <p class="tile-desc">
             Philanthropic partners enable student training, field expeditions, and open-access tool development.
           </p>
@@ -485,11 +583,10 @@ const formatDate = (dateStr: string) => {
   @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600&display=swap');
 
   /* ============================================
-     Hero Section
+     Hero Section - Simplified & More Impactful
      ============================================ */
   .hero {
-    @apply relative min-h-[100svh] flex items-start overflow-hidden;
-    padding-top: 6rem;
+    @apply relative min-h-[100svh] flex items-center overflow-hidden;
   }
 
   .hero-media {
@@ -507,7 +604,6 @@ const formatDate = (dateStr: string) => {
     to { transform: scale(1); }
   }
 
-  /* Base overlay - lighter to let image breathe */
   .hero-overlay {
     @apply absolute inset-0;
     background: linear-gradient(
@@ -519,7 +615,6 @@ const formatDate = (dateStr: string) => {
     );
   }
 
-  /* Left-side text scrim for consistent readability */
   .hero-text-scrim {
     @apply absolute inset-0;
     background: linear-gradient(
@@ -536,20 +631,40 @@ const formatDate = (dateStr: string) => {
     background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
   }
 
-  .hero-content {
-    @apply relative z-10 w-full;
-    padding-top: 2rem;
-    padding-bottom: 3rem;
+  /* Floating particles */
+  .hero-particles {
+    @apply absolute inset-0 pointer-events-none overflow-hidden;
   }
 
-  /* Text block constraint */
+  .particle {
+    @apply absolute rounded-full;
+    background: rgba(56, 189, 248, 0.3);
+    animation: float-particle 20s ease-in-out infinite;
+  }
+
+  .particle-1 { width: 4px; height: 4px; top: 20%; left: 60%; animation-delay: 0s; }
+  .particle-2 { width: 3px; height: 3px; top: 40%; left: 70%; animation-delay: -5s; }
+  .particle-3 { width: 5px; height: 5px; top: 60%; left: 55%; animation-delay: -10s; }
+  .particle-4 { width: 3px; height: 3px; top: 30%; left: 80%; animation-delay: -15s; }
+  .particle-5 { width: 4px; height: 4px; top: 70%; left: 75%; animation-delay: -8s; }
+
+  @keyframes float-particle {
+    0%, 100% { transform: translate(0, 0) scale(1); opacity: 0.3; }
+    25% { transform: translate(20px, -30px) scale(1.2); opacity: 0.6; }
+    50% { transform: translate(-10px, -50px) scale(0.8); opacity: 0.4; }
+    75% { transform: translate(30px, -20px) scale(1.1); opacity: 0.5; }
+  }
+
+  .hero-content {
+    @apply relative z-10 w-full py-20;
+  }
+
   .hero-text-block {
     @apply max-w-xl;
   }
 
-  /* Title block - compact lockup */
   .hero-title-block {
-    @apply mb-4;
+    @apply mb-6;
   }
 
   .hero-title {
@@ -576,85 +691,65 @@ const formatDate = (dateStr: string) => {
     background-clip: text;
   }
 
-  /* Tagline */
+  /* Tagline - LARGER */
   .hero-tagline-wrapper {
-    @apply flex items-start gap-3 mb-5;
-  }
-
-  .tagline-accent {
-    @apply w-0.5 flex-shrink-0 mt-1.5 rounded-full;
-    @apply bg-gradient-to-b from-accent to-accent-2;
-    height: 40px;
+    @apply mb-8;
   }
 
   .hero-tagline {
-    @apply text-base md:text-lg text-white/90 leading-snug;
-    font-weight: 450;
+    @apply text-2xl md:text-3xl lg:text-4xl text-white leading-tight;
+    font-weight: 500;
   }
 
   .hero-tagline em {
     font-family: 'Playfair Display', Georgia, serif;
-    @apply text-accent not-italic font-medium;
+    @apply text-accent not-italic font-semibold;
   }
 
-  /* Description and credibility */
   .hero-desc {
-    @apply text-sm md:text-base text-white/80 mb-3 leading-relaxed;
+    @apply text-base md:text-lg text-white/70 mb-8 leading-relaxed max-w-lg;
   }
 
-  .hero-credibility {
-    @apply text-xs text-white/50 mb-6 font-semibold uppercase tracking-wider;
-  }
-
-  /* Hero CTAs */
   .hero-actions {
-    @apply flex flex-wrap items-center gap-3;
+    @apply flex flex-wrap items-center gap-4;
   }
 
   .btn-hero-primary {
-    @apply inline-flex items-center gap-2 px-6 py-3;
+    @apply inline-flex items-center gap-2 px-7 py-4;
     @apply bg-accent text-white font-bold text-sm;
-    @apply rounded-sm no-underline;
-    @apply transition-all duration-200;
-    @apply shadow-lg shadow-accent/30;
+    @apply rounded-full no-underline;
+    @apply transition-all duration-300;
+    box-shadow: 0 8px 30px -4px rgba(56, 189, 248, 0.4);
   }
 
   .btn-hero-primary:hover {
     @apply bg-accent/90;
-    transform: translateY(-1px);
-    box-shadow: 0 8px 20px -4px rgba(56, 189, 248, 0.4);
-  }
-
-  .btn-hero-primary:focus-visible {
-    @apply outline-none ring-2 ring-white ring-offset-2 ring-offset-navy-deep;
+    transform: translateY(-2px);
+    box-shadow: 0 12px 40px -4px rgba(56, 189, 248, 0.5);
   }
 
   .btn-hero-primary .btn-icon {
-    @apply w-4 h-4 transition-transform duration-200;
+    @apply w-4 h-4 transition-transform duration-300;
   }
 
   .btn-hero-primary:hover .btn-icon {
-    transform: translateX(2px);
+    transform: translateX(3px);
   }
 
   .btn-hero-secondary {
-    @apply inline-flex items-center px-6 py-3;
-    @apply text-white/90 font-bold text-sm;
-    @apply border border-white/30 rounded-sm no-underline;
-    @apply transition-all duration-200;
+    @apply inline-flex items-center px-7 py-4;
+    @apply text-white font-bold text-sm;
+    @apply border-2 border-white/30 rounded-full no-underline;
+    @apply transition-all duration-300;
   }
 
   .btn-hero-secondary:hover {
     @apply border-white/60 bg-white/10 text-white;
   }
 
-  .btn-hero-secondary:focus-visible {
-    @apply outline-none ring-2 ring-white ring-offset-2 ring-offset-navy-deep;
-  }
-
   /* Scroll cue */
   .scroll-cue {
-    @apply absolute bottom-6 left-1/2 -translate-x-1/2;
+    @apply absolute bottom-8 left-1/2 -translate-x-1/2;
     animation: fadeIn 1s ease-out 1.5s forwards;
     opacity: 0;
   }
@@ -664,7 +759,7 @@ const formatDate = (dateStr: string) => {
   }
 
   .scroll-cue-line {
-    @apply w-px h-8 bg-gradient-to-b from-transparent via-white/30 to-accent;
+    @apply w-px h-10 bg-gradient-to-b from-transparent via-white/30 to-accent;
     animation: scrollPulse 2s ease-in-out infinite;
   }
 
@@ -673,147 +768,15 @@ const formatDate = (dateStr: string) => {
     50% { opacity: 1; transform: scaleY(1.1); }
   }
 
-  /* Keep old btn-editorial classes for other sections */
-  .btn-editorial-primary {
-    @apply relative inline-flex items-center gap-2 px-5 py-3;
-    @apply bg-white text-navy-deep font-bold text-sm;
-    @apply no-underline overflow-hidden;
-    @apply transition-all duration-200;
-  }
-
-  .btn-editorial-primary:focus-visible {
-    @apply outline-none ring-2 ring-accent ring-offset-2 ring-offset-surface;
-  }
-
-  .btn-editorial-primary::before {
-    content: '';
-    @apply absolute inset-0 bg-accent;
-    transform: translateX(-101%);
-    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  }
-
-  .btn-editorial-primary:hover::before {
-    transform: translateX(0);
-  }
-
-  .btn-editorial-primary .btn-text,
-  .btn-editorial-primary .btn-icon {
-    @apply relative z-10 transition-colors duration-200;
-  }
-
-  .btn-editorial-primary:hover .btn-text,
-  .btn-editorial-primary:hover .btn-icon {
-    @apply text-white;
-  }
-
-  .btn-editorial-primary .btn-icon {
-    @apply w-4 h-4;
-  }
-
-  .btn-editorial-primary.btn-editorial-light {
-    @apply bg-accent text-white;
-  }
-
-  .btn-editorial-primary.btn-editorial-light::before {
-    @apply bg-white;
-  }
-
-  .btn-editorial-primary.btn-editorial-light:hover .btn-text,
-  .btn-editorial-primary.btn-editorial-light:hover .btn-icon {
-    @apply text-navy-deep;
-  }
-
-  .btn-editorial-secondary {
-    @apply inline-flex items-center px-5 py-3;
-    @apply text-white font-bold text-sm;
-    @apply border-2 border-white/40 no-underline;
-    @apply transition-all duration-200;
-  }
-
-  .btn-editorial-secondary:hover {
-    @apply border-white bg-white/10;
-  }
-
-  .btn-editorial-secondary:focus-visible {
-    @apply outline-none ring-2 ring-white ring-offset-2 ring-offset-navy-deep;
-  }
-
   /* ============================================
-     Section Headers - Editorial Style
-     ============================================ */
-  .section-header-editorial {
-    @apply mb-12;
-  }
-
-  .header-rule {
-    @apply w-full h-px bg-gradient-to-r from-line via-line/50 to-transparent mb-8;
-  }
-
-  .header-rule-light {
-    @apply bg-gradient-to-r from-white/20 via-white/10 to-transparent;
-  }
-
-  .header-content {
-    @apply flex items-start gap-6 mb-6;
-  }
-
-  .section-number {
-    @apply text-5xl font-black text-accent/20;
-    font-variant-numeric: tabular-nums;
-    line-height: 0.8;
-  }
-
-  .section-number-light {
-    @apply text-accent/30;
-  }
-
-  .header-text {
-    @apply flex flex-col gap-2;
-  }
-
-  .section-eyebrow {
-    @apply text-[10px] font-bold uppercase tracking-[0.2em] text-accent;
-  }
-
-  .section-eyebrow-light {
-    @apply text-accent-2;
-  }
-
-  .section-title-editorial {
-    @apply text-3xl md:text-4xl lg:text-5xl font-black text-ink tracking-tight leading-[1.1];
-  }
-
-  .section-title-light {
-    @apply text-white;
-  }
-
-  .title-serif-accent {
-    font-family: 'Playfair Display', Georgia, serif;
-    @apply font-semibold italic;
-    background: linear-gradient(135deg, #38bdf8 0%, #2dd4bf 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-  }
-
-  .section-desc-editorial {
-    @apply text-lg text-muted leading-relaxed max-w-2xl;
-  }
-
-  .section-desc-light {
-    @apply text-white/60;
-  }
-
-  /* ============================================
-     Approach Section - How We Work
+     Approach Section - More Visual
      ============================================ */
   .approach-section {
-    @apply relative py-20 md:py-28 pb-28 md:pb-36 bg-surface;
+    @apply relative py-20 md:py-28 bg-surface;
   }
 
-  /* Intro block */
   .approach-intro {
-    @apply max-w-3xl mb-10;
+    @apply max-w-3xl mb-12;
   }
 
   .approach-header {
@@ -829,97 +792,94 @@ const formatDate = (dateStr: string) => {
   }
 
   .approach-headline-emphasis {
-    @apply font-black italic;
+    font-family: 'Playfair Display', Georgia, serif;
+    @apply font-semibold italic;
   }
 
   .approach-thesis {
-    @apply text-base md:text-lg text-ink/80 leading-relaxed mb-5;
-    font-weight: 450;
+    @apply text-base md:text-lg text-ink/70 leading-relaxed;
   }
 
-  /* Slim question callout */
-  .approach-question {
-    @apply flex items-start gap-3 py-3 px-4 rounded-lg;
-    @apply bg-accent/[0.08] border-l-2 border-accent;
-  }
-
-  .question-arrow {
-    @apply text-accent font-bold text-lg shrink-0 mt-0.5;
-  }
-
-  .question-inline {
-    @apply text-sm md:text-base text-ink/90 leading-relaxed m-0;
-  }
-
-  .question-prefix {
-    @apply font-semibold text-accent;
-  }
-
-  .question-inline em {
-    @apply not-italic font-semibold text-ink;
-  }
-
-  /* Cards grid */
+  /* Method cards with numbers */
   .approach-grid {
-    @apply grid md:grid-cols-3 gap-5 lg:gap-6 mb-8;
+    @apply grid md:grid-cols-3 gap-6 lg:gap-8 mb-12;
   }
 
   .approach-card {
-    @apply p-5 lg:p-6 rounded-xl;
-    @apply bg-surface-card/80 border border-line;
-    box-shadow: 0 4px 20px -4px rgba(0, 0, 0, 0.15);
-    transition: all 300ms cubic-bezier(0.4, 0, 0.2, 1);
+    @apply relative p-6 lg:p-8 rounded-2xl;
+    @apply bg-surface-card border border-line;
+    transition: all 400ms cubic-bezier(0.4, 0, 0.2, 1);
   }
 
   .approach-card:hover {
-    @apply border-accent/40 bg-surface-card;
-    transform: translateY(-4px);
-    box-shadow: 0 16px 32px -8px rgba(0, 0, 0, 0.25);
+    @apply border-accent/40;
+    transform: translateY(-6px);
+    box-shadow: 0 24px 48px -12px rgba(0, 0, 0, 0.25);
+  }
+
+  .card-number {
+    @apply absolute top-4 right-4 text-5xl font-black text-accent/10;
+    font-variant-numeric: tabular-nums;
   }
 
   .approach-icon {
-    @apply w-10 h-10 mb-4 text-accent;
+    @apply w-12 h-12 mb-5 text-accent;
   }
 
   .approach-icon svg {
     @apply w-full h-full;
-    stroke-width: 1.5;
   }
 
   .approach-title {
-    @apply text-base font-bold text-ink mb-3;
+    @apply text-lg font-bold text-ink mb-3;
   }
 
-  .approach-list {
-    @apply list-none p-0 m-0 space-y-1.5;
+  .approach-desc {
+    @apply text-sm text-ink/70 leading-relaxed mb-4;
   }
 
-  .approach-list li {
-    @apply text-sm text-ink/75 leading-snug pl-3 relative;
+  .approach-example {
+    @apply text-xs text-ink/50 pt-4 border-t border-line/50;
   }
 
-  .approach-list li::before {
-    content: '•';
-    @apply absolute left-0 text-accent/60;
+  .example-label {
+    @apply font-bold text-accent/70 mr-1;
   }
 
-  .list-what {
-    @apply font-medium text-ink/90;
+  /* Question callout */
+  .approach-question {
+    @apply flex items-start gap-4 p-6 rounded-2xl max-w-2xl mx-auto;
+    background: linear-gradient(135deg, rgba(56, 189, 248, 0.08) 0%, rgba(45, 212, 191, 0.05) 100%);
+    border: 1px solid rgba(56, 189, 248, 0.2);
   }
 
-  .list-how {
-    @apply text-ink/70;
+  .question-icon {
+    @apply w-8 h-8 text-accent shrink-0;
   }
 
-  .list-why {
-    @apply text-ink/70;
+  .question-icon svg {
+    @apply w-full h-full;
+  }
+
+  .question-text {
+    @apply text-base md:text-lg text-ink/90 leading-relaxed m-0;
+  }
+
+  .question-prefix {
+    @apply block text-sm font-bold text-accent mb-1;
+  }
+
+  /* Section fade transition */
+  .section-fade-dark {
+    @apply absolute bottom-0 left-0 right-0 h-32 pointer-events-none;
+    background: linear-gradient(to bottom, transparent, #0b1929);
   }
 
   /* ============================================
      Field Sites Section
      ============================================ */
   .field-sites {
-    @apply relative py-20 md:py-28 pb-28 md:pb-36 overflow-hidden;
+    @apply relative py-20 md:py-28 pb-32 md:pb-40 overflow-hidden;
   }
 
   .field-sites-bg {
@@ -931,9 +891,8 @@ const formatDate = (dateStr: string) => {
     background: linear-gradient(180deg, #0b1929 0%, #0f172a 50%, #0b1929 100%);
   }
 
-  /* Sites intro - unified header */
   .sites-intro {
-    @apply max-w-3xl mb-10;
+    @apply max-w-3xl mb-12;
   }
 
   .sites-eyebrow {
@@ -945,32 +904,33 @@ const formatDate = (dateStr: string) => {
   }
 
   .sites-headline-emphasis {
-    @apply font-black italic;
+    font-family: 'Playfair Display', Georgia, serif;
+    @apply font-semibold italic;
   }
 
   .sites-thesis {
-    @apply text-base md:text-lg text-white/70 leading-relaxed;
-    font-weight: 450;
+    @apply text-base md:text-lg text-white/60 leading-relaxed;
   }
 
   .sites-grid {
-    @apply grid md:grid-cols-2 gap-8 max-w-5xl mx-auto;
+    @apply grid md:grid-cols-2 gap-8 max-w-5xl mx-auto mb-10;
   }
 
   .site-card {
     @apply relative flex flex-col rounded-2xl overflow-hidden no-underline;
-    @apply bg-white/[0.03] border border-white/10;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.1);
     transition: all 500ms cubic-bezier(0.4, 0, 0.2, 1);
   }
 
   .site-card:hover {
-    @apply bg-white/[0.06];
+    background: rgba(255, 255, 255, 0.06);
     transform: translateY(-8px);
     box-shadow: 0 30px 60px -12px rgba(0, 0, 0, 0.5);
   }
 
   .site-image {
-    @apply relative h-48 overflow-hidden;
+    @apply relative h-52 overflow-hidden;
   }
 
   .site-image img {
@@ -1006,11 +966,15 @@ const formatDate = (dateStr: string) => {
   }
 
   .site-badge-coral {
-    @apply bg-orange-500/20 text-orange-300 border border-orange-500/30;
+    background: rgba(251, 146, 60, 0.2);
+    color: #fb923c;
+    border: 1px solid rgba(251, 146, 60, 0.3);
   }
 
   .site-badge-kelp {
-    @apply bg-green-500/20 text-green-300 border border-green-500/30;
+    background: rgba(74, 222, 128, 0.2);
+    color: #4ade80;
+    border: 1px solid rgba(74, 222, 128, 0.3);
   }
 
   .site-title {
@@ -1018,17 +982,11 @@ const formatDate = (dateStr: string) => {
     transition: color 300ms ease;
   }
 
-  .site-card-coral:hover .site-title {
-    color: #fb923c;
-  }
-
-  .site-card-kelp:hover .site-title {
-    color: #4ade80;
-  }
+  .site-card-coral:hover .site-title { color: #fb923c; }
+  .site-card-kelp:hover .site-title { color: #4ade80; }
 
   .site-dynamics {
-    @apply text-white/50 text-sm mb-5;
-    font-style: italic;
+    @apply text-white/50 text-sm mb-5 italic;
   }
 
   .site-research {
@@ -1052,75 +1010,49 @@ const formatDate = (dateStr: string) => {
     @apply absolute left-0;
   }
 
-  .site-card-coral .research-list li::before {
-    color: #fb923c;
-  }
-
-  .site-card-kelp .research-list li::before {
-    color: #4ade80;
-  }
-
-  .site-output {
-    @apply flex flex-col gap-1 mb-5 p-3 rounded-lg bg-white/[0.03];
-  }
-
-  .output-label {
-    @apply text-[10px] font-bold uppercase tracking-wider text-accent/70;
-  }
-
-  .output-text {
-    @apply text-sm text-white/80;
-  }
+  .site-card-coral .research-list li::before { color: #fb923c; }
+  .site-card-kelp .research-list li::before { color: #4ade80; }
 
   .site-cta {
     @apply mt-auto inline-flex items-center gap-2 font-bold text-sm;
     transition: gap 300ms ease;
   }
 
-  .site-card-coral .site-cta {
-    color: #fb923c;
-  }
+  .site-card-coral .site-cta { color: #fb923c; }
+  .site-card-kelp .site-cta { color: #4ade80; }
 
-  .site-card-kelp .site-cta {
-    color: #4ade80;
-  }
-
-  .site-card:hover .site-cta {
-    @apply gap-3;
-  }
+  .site-card:hover .site-cta { @apply gap-3; }
 
   .site-accent {
     @apply absolute top-0 left-0 right-0 h-1;
   }
 
-  .site-card-coral .site-accent {
-    background: linear-gradient(90deg, #f97316, #fb923c);
+  .site-card-coral .site-accent { background: linear-gradient(90deg, #f97316, #fb923c); }
+  .site-card-kelp .site-accent { background: linear-gradient(90deg, #22c55e, #4ade80); }
+
+  .site-card-coral:hover { border-color: rgba(251, 146, 60, 0.3); }
+  .site-card-kelp:hover { border-color: rgba(74, 222, 128, 0.3); }
+
+  /* LTER Badge */
+  .lter-badge {
+    @apply text-center text-sm text-white/50;
   }
 
-  .site-card-kelp .site-accent {
-    background: linear-gradient(90deg, #22c55e, #4ade80);
-  }
-
-  .site-card-coral:hover {
-    border-color: rgba(251, 146, 60, 0.3);
-  }
-
-  .site-card-kelp:hover {
-    border-color: rgba(74, 222, 128, 0.3);
+  .lter-highlight {
+    @apply font-bold text-accent;
   }
 
   /* ============================================
-     News Section
+     News Section - Enhanced
      ============================================ */
   .news-section {
-    @apply relative py-20 md:py-28 pb-28 md:pb-36 bg-surface;
+    @apply relative py-20 md:py-28 bg-surface;
   }
 
   .news-header {
     @apply flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4 mb-10;
   }
 
-  /* News intro - unified header */
   .news-intro {
     @apply flex-1;
   }
@@ -1134,7 +1066,8 @@ const formatDate = (dateStr: string) => {
   }
 
   .news-headline-emphasis {
-    @apply font-black italic;
+    font-family: 'Playfair Display', Georgia, serif;
+    @apply font-semibold italic;
   }
 
   .btn-outline-editorial-dark {
@@ -1145,69 +1078,133 @@ const formatDate = (dateStr: string) => {
   }
 
   .btn-outline-editorial-dark:hover {
-    @apply border-accent text-accent bg-accent/5 gap-3;
+    @apply border-accent text-accent gap-3;
+    background: rgba(56, 189, 248, 0.05);
   }
 
-  .news-editorial-grid {
-    @apply grid md:grid-cols-3 gap-6 lg:gap-8;
+  /* Featured Article - Full Width */
+  .news-featured {
+    @apply mb-8 rounded-2xl overflow-hidden;
+    background: rgba(30, 41, 59, 0.5);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    transition: all 500ms cubic-bezier(0.4, 0, 0.2, 1);
   }
 
-  .news-editorial-card {
-    @apply rounded-2xl overflow-hidden;
+  .news-featured:hover {
+    border-color: rgba(56, 189, 248, 0.3);
+    transform: translateY(-4px);
+    box-shadow: 0 24px 48px -12px rgba(0, 0, 0, 0.3);
+  }
+
+  .featured-link {
+    @apply flex flex-col md:flex-row no-underline;
+  }
+
+  .featured-image {
+    @apply relative md:w-1/2 aspect-[16/10] md:aspect-auto overflow-hidden;
+  }
+
+  .featured-image img {
+    @apply w-full h-full object-cover;
+    transition: transform 700ms cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .news-featured:hover .featured-image img {
+    transform: scale(1.05);
+  }
+
+  .featured-overlay {
+    @apply absolute inset-0;
+    background: linear-gradient(to right, rgba(15, 23, 42, 0.4) 0%, transparent 100%);
+  }
+
+  .featured-content {
+    @apply flex-1 p-8 md:p-10 flex flex-col justify-center;
+  }
+
+  .featured-meta {
+    @apply flex items-center gap-4 mb-4;
+  }
+
+  .featured-date {
+    @apply text-sm text-muted;
+  }
+
+  .featured-category {
+    @apply text-xs font-bold uppercase tracking-wider text-accent;
+  }
+
+  .featured-title {
+    @apply text-2xl md:text-3xl font-black text-ink mb-4 leading-tight;
+    transition: color 300ms ease;
+  }
+
+  .news-featured:hover .featured-title {
+    @apply text-accent;
+  }
+
+  .featured-excerpt {
+    @apply text-muted leading-relaxed mb-6;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  .featured-cta {
+    @apply inline-flex items-center gap-2 font-bold text-accent;
+    transition: gap 300ms ease;
+  }
+
+  .news-featured:hover .featured-cta {
+    @apply gap-3;
+  }
+
+  /* Secondary News Grid */
+  .news-grid {
+    @apply grid md:grid-cols-2 gap-6;
+  }
+
+  .news-card {
+    @apply rounded-xl overflow-hidden;
     @apply bg-surface-card border border-line/50;
     transition: all 400ms cubic-bezier(0.4, 0, 0.2, 1);
   }
 
-  .news-editorial-card:hover {
+  .news-card:hover {
     @apply border-accent/30;
-    transform: translateY(-6px);
-    box-shadow: 0 20px 40px -12px rgba(0, 0, 0, 0.3);
+    transform: translateY(-4px);
+    box-shadow: 0 16px 32px -8px rgba(0, 0, 0, 0.25);
   }
 
-  .news-featured {
-    @apply md:col-span-2 md:row-span-2;
+  .news-link {
+    @apply flex flex-col sm:flex-row no-underline h-full;
   }
 
-  .news-editorial-link {
-    @apply block no-underline h-full;
+  .news-image {
+    @apply relative sm:w-40 aspect-[16/10] sm:aspect-square overflow-hidden shrink-0;
   }
 
-  .news-featured .news-editorial-link {
-    @apply flex flex-col md:flex-row md:h-full;
-  }
-
-  .news-editorial-image {
-    @apply relative aspect-[16/10] overflow-hidden;
-  }
-
-  .news-featured .news-editorial-image {
-    @apply md:w-1/2 md:aspect-auto;
-  }
-
-  .news-editorial-image img {
+  .news-image img {
     @apply w-full h-full object-cover;
-    transition: transform 600ms cubic-bezier(0.4, 0, 0.2, 1);
+    transition: transform 500ms ease;
   }
 
-  .news-editorial-card:hover .news-editorial-image img {
+  .news-card:hover .news-image img {
     transform: scale(1.05);
   }
 
   .news-image-overlay {
     @apply absolute inset-0;
-    background: linear-gradient(to top, rgba(10, 15, 25, 0.4) 0%, transparent 50%);
+    background: linear-gradient(to top, rgba(10, 15, 25, 0.3) 0%, transparent 50%);
   }
 
-  .news-editorial-body {
-    @apply p-6 flex flex-col;
-  }
-
-  .news-featured .news-editorial-body {
-    @apply md:w-1/2 md:p-8 md:justify-center;
+  .news-body {
+    @apply flex-1 p-5 flex flex-col;
   }
 
   .news-meta {
-    @apply flex items-center gap-3 mb-3;
+    @apply flex items-center gap-3 mb-2;
   }
 
   .news-date {
@@ -1218,8 +1215,8 @@ const formatDate = (dateStr: string) => {
     @apply text-[10px] font-bold uppercase tracking-wider text-accent;
   }
 
-  .news-editorial-title {
-    @apply text-lg font-bold text-ink mb-3 leading-snug;
+  .news-title {
+    @apply text-base font-bold text-ink mb-auto leading-snug;
     display: -webkit-box;
     -webkit-line-clamp: 2;
     -webkit-box-orient: vertical;
@@ -1227,29 +1224,16 @@ const formatDate = (dateStr: string) => {
     transition: color 200ms ease;
   }
 
-  .news-featured .news-editorial-title {
-    @apply text-2xl md:text-3xl;
-    -webkit-line-clamp: 3;
-  }
-
-  .news-editorial-card:hover .news-editorial-title {
+  .news-card:hover .news-title {
     @apply text-accent;
   }
 
-  .news-editorial-excerpt {
-    @apply text-muted text-sm leading-relaxed mb-4;
-    display: -webkit-box;
-    -webkit-line-clamp: 3;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
-  }
-
   .news-read-more {
-    @apply inline-flex items-center gap-2 text-accent text-sm font-bold mt-auto;
+    @apply inline-flex items-center gap-2 text-accent text-sm font-bold mt-3;
     transition: gap 300ms ease;
   }
 
-  .news-editorial-card:hover .news-read-more {
+  .news-card:hover .news-read-more {
     @apply gap-3;
   }
 
@@ -1258,10 +1242,10 @@ const formatDate = (dateStr: string) => {
   }
 
   /* ============================================
-     Team Section
+     Team Section - Balanced Layout
      ============================================ */
   .team-section {
-    @apply relative py-20 md:py-28 pb-28 md:pb-36 overflow-hidden;
+    @apply relative py-20 md:py-28 pb-32 md:pb-40 overflow-hidden;
   }
 
   .team-bg {
@@ -1273,11 +1257,14 @@ const formatDate = (dateStr: string) => {
     background: linear-gradient(180deg, #0b1929 0%, #0f172a 50%, #0b1929 100%);
   }
 
-  .team-editorial {
-    @apply max-w-3xl;
+  .team-layout {
+    @apply grid lg:grid-cols-2 gap-12 lg:gap-16 items-center;
   }
 
-  /* Team intro - unified header */
+  .team-content {
+    @apply max-w-xl;
+  }
+
   .team-eyebrow {
     @apply block text-xs font-bold uppercase tracking-widest text-accent mb-2;
   }
@@ -1287,26 +1274,34 @@ const formatDate = (dateStr: string) => {
   }
 
   .team-headline-emphasis {
-    @apply font-black italic;
+    font-family: 'Playfair Display', Georgia, serif;
+    @apply font-semibold italic;
   }
 
   .team-text {
-    @apply text-white/70 text-base md:text-lg leading-relaxed mb-4;
-    font-weight: 450;
+    @apply text-white/60 text-base md:text-lg leading-relaxed mb-6;
   }
 
-  /* Inline stats */
+  /* Stats inline */
   .team-stats-inline {
-    @apply flex flex-wrap items-center gap-x-4 gap-y-2 mb-8;
-    @apply text-sm text-white/60;
+    @apply flex flex-wrap items-center gap-6 mb-8 pb-8;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
   }
 
-  .stat-inline strong {
-    @apply text-white font-bold;
+  .stat-item {
+    @apply flex flex-col;
+  }
+
+  .stat-value {
+    @apply text-2xl font-black text-accent;
+  }
+
+  .stat-label {
+    @apply text-xs text-white/40 uppercase tracking-wide;
   }
 
   .stat-divider {
-    @apply text-white/30;
+    @apply w-px h-10 bg-white/10;
   }
 
   .team-differentiators {
@@ -1329,86 +1324,120 @@ const formatDate = (dateStr: string) => {
     @apply text-sm text-white/70;
   }
 
-  .pi-editorial-card {
-    @apply flex items-center gap-5 p-5 rounded-xl mb-8;
-    @apply bg-white/[0.03] border border-white/10 no-underline;
+  .btn-editorial-primary {
+    @apply relative inline-flex items-center gap-2 px-6 py-3;
+    @apply bg-accent text-white font-bold text-sm;
+    @apply rounded-full no-underline overflow-hidden;
+    @apply transition-all duration-300;
+  }
+
+  .btn-editorial-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px -4px rgba(56, 189, 248, 0.4);
+  }
+
+  .btn-editorial-primary .btn-icon {
+    @apply w-4 h-4 transition-transform duration-300;
+  }
+
+  .btn-editorial-primary:hover .btn-icon {
+    transform: translateX(3px);
+  }
+
+  /* Team Preview Grid */
+  .team-preview {
+    @apply relative;
+  }
+
+  .team-preview-grid {
+    @apply grid grid-cols-2 gap-4;
+  }
+
+  .team-preview-card {
+    @apply flex flex-col items-center p-4 rounded-xl no-underline;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.08);
     transition: all 300ms ease;
   }
 
-  .pi-editorial-card:hover {
-    @apply bg-white/[0.06] border-accent/30;
-    box-shadow: 0 10px 30px -8px rgba(0, 0, 0, 0.3);
-  }
-
-  .pi-avatar {
-    @apply w-16 h-16 rounded-full object-cover flex-shrink-0;
-    @apply ring-2 ring-accent/30;
-  }
-
-  .pi-details {
-    @apply flex flex-col flex-1 min-w-0;
-  }
-
-  .pi-name {
-    @apply text-base font-bold text-white;
-  }
-
-  .pi-role {
-    @apply text-xs font-bold uppercase tracking-wide text-accent;
-  }
-
-  .pi-bio {
-    @apply text-xs text-white/50 mt-1 line-clamp-2;
-  }
-
-  .pi-arrow {
-    @apply w-5 h-5 text-white/30 flex-shrink-0;
-    transition: all 200ms ease;
-  }
-
-  .pi-editorial-card:hover .pi-arrow {
-    @apply text-accent;
-    transform: translateX(4px);
-  }
-
-  .team-stats-grid {
-    @apply grid grid-cols-2 gap-5;
-  }
-
-  .stat-editorial {
-    @apply p-6 lg:p-8 rounded-2xl text-center;
-    @apply bg-white/[0.03] border border-white/10;
-    transition: all 300ms ease;
-  }
-
-  .stat-editorial:hover {
-    @apply bg-white/[0.06];
-    transform: translateY(-4px);
+  .team-preview-card:hover {
+    background: rgba(255, 255, 255, 0.06);
     border-color: rgba(56, 189, 248, 0.3);
-    box-shadow: 0 15px 30px -8px rgba(0, 0, 0, 0.3);
+    transform: translateY(-4px);
   }
 
-  .stat-value {
-    @apply text-4xl lg:text-5xl font-black text-accent inline;
-    font-variant-numeric: tabular-nums;
+  .preview-image {
+    @apply w-20 h-20 rounded-full overflow-hidden mb-3;
+    @apply ring-2 ring-white/10;
   }
 
-  .stat-suffix {
-    @apply text-xl lg:text-2xl font-bold text-accent/60 ml-0.5;
+  .preview-image img {
+    @apply w-full h-full object-cover;
   }
 
-  .stat-label {
-    @apply block text-xs font-bold text-white/40 uppercase tracking-wider mt-2;
+  .preview-placeholder {
+    @apply w-full h-full flex items-center justify-center;
+    @apply bg-surface-card text-accent/50 text-2xl font-bold;
+  }
+
+  .preview-info {
+    @apply text-center;
+  }
+
+  .preview-name {
+    @apply block text-sm font-bold text-white;
+  }
+
+  .preview-role {
+    @apply block text-xs text-white/40;
+  }
+
+  .team-preview-more {
+    @apply text-center text-sm text-white/40 mt-4;
   }
 
   /* ============================================
-     Final CTA Section - Segmented Pathways
+     Funders Section - Social Proof
+     ============================================ */
+  .funders-section {
+    @apply py-12 bg-surface border-y border-line/30;
+  }
+
+  .funders-content {
+    @apply text-center;
+  }
+
+  .funders-label {
+    @apply block text-xs font-bold uppercase tracking-widest text-muted mb-6;
+  }
+
+  .funders-logos {
+    @apply flex flex-wrap items-center justify-center gap-8 md:gap-12;
+  }
+
+  .funder-item {
+    @apply flex flex-col items-center;
+  }
+
+  .funder-text {
+    @apply text-lg font-black text-ink/60;
+  }
+
+  .funder-sub {
+    @apply text-xs text-muted;
+  }
+
+  .funder-divider {
+    @apply w-px h-8 bg-line/50 hidden md:block;
+  }
+
+  /* ============================================
+     Final CTA Section
      ============================================ */
   .final-cta {
     @apply relative py-20 md:py-28 bg-surface;
   }
 
-  /* CTA intro - unified header */
   .cta-intro {
     @apply mb-12 text-center;
   }
@@ -1422,7 +1451,8 @@ const formatDate = (dateStr: string) => {
   }
 
   .cta-headline-emphasis {
-    @apply font-black italic;
+    font-family: 'Playfair Display', Georgia, serif;
+    @apply font-semibold italic;
   }
 
   .cta-tiles {
@@ -1434,51 +1464,33 @@ const formatDate = (dateStr: string) => {
     @apply border transition-all duration-300;
   }
 
-  .cta-tile-students {
-    @apply bg-accent/5 border-accent/20;
+  .cta-tile-primary {
+    @apply bg-accent/10 border-accent/30;
+    box-shadow: 0 0 40px -10px rgba(56, 189, 248, 0.2);
   }
 
-  .cta-tile-students:hover {
-    @apply bg-accent/10 border-accent/40;
-    transform: translateY(-4px);
-    box-shadow: 0 20px 40px -12px rgba(56, 189, 248, 0.2);
+  .cta-tile-primary:hover {
+    @apply bg-accent/15 border-accent/50;
+    transform: translateY(-6px);
+    box-shadow: 0 20px 50px -10px rgba(56, 189, 248, 0.3);
   }
 
-  .cta-tile-collab {
+  .cta-tile-secondary {
     @apply bg-surface-card border-line/50;
   }
 
-  .cta-tile-collab:hover {
+  .cta-tile-secondary:hover {
     @apply border-line;
     transform: translateY(-4px);
-    box-shadow: 0 20px 40px -12px rgba(0, 0, 0, 0.3);
-  }
-
-  .cta-tile-funders {
-    @apply bg-accent-2/5 border-accent-2/20;
-  }
-
-  .cta-tile-funders:hover {
-    @apply bg-accent-2/10 border-accent-2/40;
-    transform: translateY(-4px);
-    box-shadow: 0 20px 40px -12px rgba(45, 212, 191, 0.2);
+    box-shadow: 0 16px 32px -8px rgba(0, 0, 0, 0.25);
   }
 
   .tile-icon {
     @apply w-12 h-12 mx-auto mb-5;
   }
 
-  .cta-tile-students .tile-icon {
-    @apply text-accent;
-  }
-
-  .cta-tile-collab .tile-icon {
-    @apply text-muted;
-  }
-
-  .cta-tile-funders .tile-icon {
-    @apply text-accent-2;
-  }
+  .cta-tile-primary .tile-icon { @apply text-accent; }
+  .cta-tile-secondary .tile-icon { @apply text-muted; }
 
   .tile-icon svg {
     @apply w-full h-full;
@@ -1493,20 +1505,12 @@ const formatDate = (dateStr: string) => {
   }
 
   .tile-link {
-    @apply inline-flex items-center gap-2 font-bold text-sm no-underline;
+    @apply inline-flex items-center gap-2 font-bold text-sm text-ink no-underline;
     @apply transition-all duration-300;
   }
 
-  .cta-tile-students .tile-link {
+  .tile-link-primary {
     @apply text-accent;
-  }
-
-  .cta-tile-collab .tile-link {
-    @apply text-ink;
-  }
-
-  .cta-tile-funders .tile-link {
-    @apply text-accent-2;
   }
 
   .cta-tile:hover .tile-link {
@@ -1518,20 +1522,9 @@ const formatDate = (dateStr: string) => {
      ============================================ */
   @media (max-width: 768px) {
     .hero {
-      padding-top: 5rem;
-      padding-bottom: 3rem;
+      @apply items-start pt-24;
     }
 
-    .hero-content {
-      padding-top: 1rem;
-      padding-bottom: 0;
-    }
-
-    .hero-text-block {
-      @apply max-w-none;
-    }
-
-    /* Full-width scrim on mobile for better readability */
     .hero-text-scrim {
       background: linear-gradient(
         180deg,
@@ -1542,40 +1535,12 @@ const formatDate = (dateStr: string) => {
       );
     }
 
-    .hero-title-block {
-      @apply mb-3;
-    }
-
-    .title-main {
-      @apply text-3xl;
-    }
-
-    .title-lab {
+    .hero-tagline {
       @apply text-xl;
     }
 
-    .hero-tagline-wrapper {
-      @apply mb-4;
-    }
-
-    .tagline-accent {
-      height: 32px;
-    }
-
-    .hero-tagline {
-      @apply text-sm;
-    }
-
-    .hero-desc {
-      @apply text-xs mb-2;
-    }
-
-    .hero-credibility {
-      @apply text-[10px] mb-5;
-    }
-
     .hero-actions {
-      @apply flex-col w-full gap-2;
+      @apply flex-col w-full;
     }
 
     .btn-hero-primary,
@@ -1583,21 +1548,20 @@ const formatDate = (dateStr: string) => {
       @apply w-full justify-center;
     }
 
-    .btn-editorial-primary,
-    .btn-editorial-secondary {
-      @apply px-4 py-2.5 text-xs;
-    }
-
-    .approach-grid {
+    .team-layout {
       @apply grid-cols-1;
     }
 
-    .unifying-question {
-      @apply flex-col;
+    .team-preview-grid {
+      @apply grid-cols-2;
     }
 
-    .question-accent {
-      @apply w-full h-1;
+    .funders-logos {
+      @apply gap-6;
+    }
+
+    .funder-divider {
+      @apply hidden;
     }
   }
 
@@ -1608,6 +1572,11 @@ const formatDate = (dateStr: string) => {
     .hero-image {
       animation: none;
       transform: scale(1);
+    }
+
+    .particle {
+      animation: none;
+      opacity: 0.3;
     }
 
     .scroll-cue {
@@ -1621,15 +1590,16 @@ const formatDate = (dateStr: string) => {
 
     .approach-card,
     .site-card,
-    .news-editorial-card,
-    .stat-editorial,
-    .pi-editorial-card,
+    .news-featured,
+    .news-card,
+    .team-preview-card,
     .cta-tile {
       transition: none;
     }
 
     .site-image img,
-    .news-editorial-image img {
+    .featured-image img,
+    .news-image img {
       transition: none;
     }
   }
@@ -1660,59 +1630,11 @@ const formatDate = (dateStr: string) => {
     }
   };
 
-  // Count-up animation for stats
-  const initCountUp = () => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            const el = entry.target as HTMLElement;
-            const target = parseInt(el.dataset.target || '0', 10);
-            el.textContent = '0';
-            animateCount(el, target);
-            observer.unobserve(el);
-          }
-        });
-      },
-      { threshold: 0.5 }
-    );
-
-    document.querySelectorAll('.stat-value[data-target]').forEach((el) => {
-      observer.observe(el);
-    });
-  };
-
-  const animateCount = (el: HTMLElement, target: number) => {
-    const duration = 1800;
-    const start = performance.now();
-
-    const update = (currentTime: number) => {
-      const elapsed = currentTime - start;
-      const progress = Math.min(elapsed / duration, 1);
-      const eased = 1 - Math.pow(1 - progress, 4);
-      const current = Math.round(eased * target);
-
-      el.textContent = current.toString();
-
-      if (progress < 1) {
-        requestAnimationFrame(update);
-      }
-    };
-
-    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-      el.textContent = target.toString();
-    } else {
-      requestAnimationFrame(update);
-    }
-  };
-
   // Initialize
   initParallax();
-  initCountUp();
 
   // Re-init after view transitions
   document.addEventListener('astro:after-swap', () => {
     initParallax();
-    initCountUp();
   });
 </script>
