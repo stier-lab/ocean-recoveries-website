@@ -96,71 +96,87 @@ const formatDate = (dateStr: string) => {
   <!-- How We Work Section - Approach BEFORE geography -->
   <section id="approach" class="approach-section">
     <div class="container">
-      <div class="section-header-editorial scroll-reveal">
-        <div class="header-rule"></div>
-        <div class="header-content">
-          <span class="section-number">01</span>
-          <div class="header-text">
-            <span class="section-eyebrow">Our Approach</span>
-            <h2 class="section-title-editorial">
-              How We<br />
-              <span class="title-serif-accent">Work</span>
-            </h2>
-          </div>
+      <!-- Intro block with unifying question directly below -->
+      <div class="approach-intro scroll-reveal">
+        <div class="approach-header">
+          <span class="approach-eyebrow">Methods</span>
+          <h2 class="approach-headline">
+            How We <span class="approach-headline-emphasis">Work</span>
+          </h2>
         </div>
-        <p class="section-desc-editorial">
+        <p class="approach-thesis">
           We combine manipulative field experiments with quantitative models to understand why ecosystems fail—and what interventions actually work.
         </p>
+        <!-- Unifying question as slim callout -->
+        <div class="approach-question">
+          <span class="question-arrow">→</span>
+          <p class="question-inline">
+            <span class="question-prefix">One question drives everything:</span>
+            What ecological levers determine whether a disturbed ecosystem <em>recovers</em>, <em>shifts</em>, or <em>stays trapped</em>?
+          </p>
+        </div>
       </div>
 
-      <!-- Three pillars of approach -->
+      <!-- Three method cards as "answers" -->
       <div class="approach-grid">
         <div class="approach-card scroll-reveal stagger-1">
           <div class="approach-icon">
+            <!-- Flask icon for experiments -->
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
               <path stroke-linecap="round" stroke-linejoin="round" d="M9.75 3.104v5.714a2.25 2.25 0 01-.659 1.591L5 14.5M9.75 3.104c-.251.023-.501.05-.75.082m.75-.082a24.301 24.301 0 014.5 0m0 0v5.714c0 .597.237 1.17.659 1.591L19.8 15.3M14.25 3.104c.251.023.501.05.75.082M19.8 15.3l-1.57.393A9.065 9.065 0 0112 15a9.065 9.065 0 00-6.23.693L5 14.5m14.8.8l1.402 1.402c1.232 1.232.65 3.318-1.067 3.611A48.309 48.309 0 0112 21c-2.773 0-5.491-.235-8.135-.687-1.718-.293-2.3-2.379-1.067-3.61L5 14.5" />
             </svg>
           </div>
-          <h3 class="approach-title">Manipulative Experiments</h3>
-          <p class="approach-desc">
-            Field experiments that manipulate key interactions—predators, mutualists, competitors—to isolate causal mechanisms of collapse and recovery.
-          </p>
+          <h3 class="approach-title">Field Experiments</h3>
+          <ul class="approach-list">
+            <li><span class="list-what">Manipulative trials</span></li>
+            <li><span class="list-how">Alter predators, mutualists, competitors</span></li>
+            <li><span class="list-why">Isolate causal mechanisms</span></li>
+          </ul>
         </div>
 
         <div class="approach-card scroll-reveal stagger-2">
           <div class="approach-icon">
+            <!-- 3D cube / scan icon for precision measurement -->
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 3v11.25A2.25 2.25 0 006 16.5h2.25M3.75 3h-1.5m1.5 0h16.5m0 0h1.5m-1.5 0v11.25A2.25 2.25 0 0118 16.5h-2.25m-7.5 0h7.5m-7.5 0l-1 3m8.5-3l1 3m0 0l.5 1.5m-.5-1.5h-9.5m0 0l-.5 1.5m.75-9l3-3 2.148 2.148A12.061 12.061 0 0116.5 7.605" />
+              <path stroke-linecap="round" stroke-linejoin="round" d="M21 7.5l-9-5.25L3 7.5m18 0l-9 5.25m9-5.25v9l-9 5.25M3 7.5l9 5.25M3 7.5v9l9 5.25m0-9v9" />
             </svg>
           </div>
-          <h3 class="approach-title">High-Resolution Measurement</h3>
-          <p class="approach-desc">
-            3D photogrammetry, physiological assays, and demographic tracking to quantify structure, function, and change at scales that matter.
-          </p>
+          <h3 class="approach-title">Precision Measurement</h3>
+          <ul class="approach-list">
+            <li><span class="list-what">3D photogrammetry & tracking</span></li>
+            <li><span class="list-how">Physiological & demographic data</span></li>
+            <li><span class="list-why">Quantify change at scales that matter</span></li>
+          </ul>
         </div>
 
         <div class="approach-card scroll-reveal stagger-3">
           <div class="approach-icon">
+            <!-- Network/nodes icon for predictive models -->
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M4.745 3A23.933 23.933 0 003 12c0 3.183.62 6.22 1.745 9M19.5 3c.967 2.78 1.5 5.817 1.5 9s-.533 6.22-1.5 9M8.25 8.885l1.444-.89a.75.75 0 011.105.402l2.402 7.206a.75.75 0 001.104.401l1.445-.889m-8.25.75l.213.09a1.687 1.687 0 002.062-.617l4.45-6.676a1.688 1.688 0 012.062-.618l.213.09" />
+              <circle cx="12" cy="5" r="2" />
+              <circle cx="5" cy="19" r="2" />
+              <circle cx="19" cy="19" r="2" />
+              <path stroke-linecap="round" stroke-linejoin="round" d="M12 7v4m0 0l-5 6m5-6l5 6" />
             </svg>
           </div>
           <h3 class="approach-title">Predictive Models</h3>
-          <p class="approach-desc">
-            Theory and simulation that translate empirical results into thresholds, early warning signals, and restoration strategy evaluation tools.
-          </p>
+          <ul class="approach-list">
+            <li><span class="list-what">Theory & simulation</span></li>
+            <li><span class="list-how">Translate data to thresholds</span></li>
+            <li><span class="list-why">Generate decision tools</span></li>
+          </ul>
         </div>
       </div>
 
-      <!-- Unifying question callout -->
-      <div class="unifying-question scroll-reveal">
-        <div class="question-accent"></div>
-        <div class="question-content">
-          <span class="question-label">The question that unifies our work:</span>
-          <p class="question-text">
-            What ecological levers—species interactions, trophic control, environmental thresholds—determine whether a disturbed ecosystem recovers to its prior state, shifts to an alternative state, or remains trapped in degradation?
-          </p>
-        </div>
+      <!-- Connecting chips -->
+      <div class="approach-chips scroll-reveal">
+        <span class="approach-chip">Experiments</span>
+        <span class="chip-connector">+</span>
+        <span class="approach-chip">Measurement</span>
+        <span class="chip-connector">+</span>
+        <span class="approach-chip">Models</span>
+        <span class="chip-connector">=</span>
+        <span class="approach-chip approach-chip-result">Actionable science</span>
       </div>
     </div>
 
@@ -791,60 +807,126 @@ const formatDate = (dateStr: string) => {
     @apply relative py-20 md:py-28 pb-28 md:pb-36 bg-surface;
   }
 
+  /* Intro block */
+  .approach-intro {
+    @apply max-w-3xl mb-10;
+  }
+
+  .approach-header {
+    @apply mb-4;
+  }
+
+  .approach-eyebrow {
+    @apply block text-xs font-bold uppercase tracking-widest text-accent mb-2;
+  }
+
+  .approach-headline {
+    @apply text-3xl md:text-4xl font-black text-ink leading-tight;
+  }
+
+  .approach-headline-emphasis {
+    @apply font-black italic;
+  }
+
+  .approach-thesis {
+    @apply text-base md:text-lg text-ink/80 leading-relaxed mb-5;
+    font-weight: 450;
+  }
+
+  /* Slim question callout */
+  .approach-question {
+    @apply flex items-start gap-3 py-3 px-4 rounded-lg;
+    @apply bg-accent/[0.08] border-l-2 border-accent;
+  }
+
+  .question-arrow {
+    @apply text-accent font-bold text-lg shrink-0 mt-0.5;
+  }
+
+  .question-inline {
+    @apply text-sm md:text-base text-ink/90 leading-relaxed m-0;
+  }
+
+  .question-prefix {
+    @apply font-semibold text-accent;
+  }
+
+  .question-inline em {
+    @apply not-italic font-semibold text-ink;
+  }
+
+  /* Cards grid */
   .approach-grid {
-    @apply grid md:grid-cols-3 gap-6 lg:gap-8 mb-12;
+    @apply grid md:grid-cols-3 gap-5 lg:gap-6 mb-8;
   }
 
   .approach-card {
-    @apply p-6 lg:p-8 rounded-2xl;
-    @apply bg-surface-card border border-line/50;
-    transition: all 400ms cubic-bezier(0.4, 0, 0.2, 1);
+    @apply p-5 lg:p-6 rounded-xl;
+    @apply bg-surface-card/80 border border-line;
+    box-shadow: 0 4px 20px -4px rgba(0, 0, 0, 0.15);
+    transition: all 300ms cubic-bezier(0.4, 0, 0.2, 1);
   }
 
   .approach-card:hover {
-    @apply border-accent/30;
+    @apply border-accent/40 bg-surface-card;
     transform: translateY(-4px);
-    box-shadow: 0 20px 40px -12px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 16px 32px -8px rgba(0, 0, 0, 0.25);
   }
 
   .approach-icon {
-    @apply w-12 h-12 mb-5 text-accent;
+    @apply w-10 h-10 mb-4 text-accent;
   }
 
   .approach-icon svg {
     @apply w-full h-full;
+    stroke-width: 1.5;
   }
 
   .approach-title {
-    @apply text-lg font-bold text-ink mb-3;
+    @apply text-base font-bold text-ink mb-3;
   }
 
-  .approach-desc {
-    @apply text-sm text-muted leading-relaxed;
+  .approach-list {
+    @apply list-none p-0 m-0 space-y-1.5;
   }
 
-  /* Unifying question */
-  .unifying-question {
-    @apply flex gap-5 p-6 lg:p-8 rounded-2xl;
-    @apply bg-accent/5 border border-accent/20;
+  .approach-list li {
+    @apply text-sm text-ink/75 leading-snug pl-3 relative;
   }
 
-  .question-accent {
-    @apply w-1 flex-shrink-0 rounded-full;
-    @apply bg-gradient-to-b from-accent to-accent-2;
+  .approach-list li::before {
+    content: '•';
+    @apply absolute left-0 text-accent/60;
   }
 
-  .question-content {
-    @apply flex flex-col gap-2;
+  .list-what {
+    @apply font-medium text-ink/90;
   }
 
-  .question-label {
-    @apply text-xs font-bold uppercase tracking-wider text-accent;
+  .list-how {
+    @apply text-ink/70;
   }
 
-  .question-text {
-    @apply text-base md:text-lg text-ink/90 leading-relaxed italic;
-    font-family: 'Playfair Display', Georgia, serif;
+  .list-why {
+    @apply text-ink/70;
+  }
+
+  /* Chips connector */
+  .approach-chips {
+    @apply flex flex-wrap items-center justify-center gap-2 md:gap-3;
+  }
+
+  .approach-chip {
+    @apply px-3 py-1.5 text-xs font-bold uppercase tracking-wide;
+    @apply bg-surface-card border border-line rounded-full text-muted;
+  }
+
+  .chip-connector {
+    @apply text-muted/50 font-light text-sm;
+  }
+
+  .approach-chip-result {
+    @apply bg-accent/10 border-accent/30 text-accent;
   }
 
   /* ============================================
