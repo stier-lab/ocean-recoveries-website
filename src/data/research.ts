@@ -39,9 +39,9 @@ export const studySystems: StudySystem[] = [
     title: 'Coral Reefs',
     tagline: 'Field experiments and models reveal how biotic interactions, disturbance legacies, and species associations shape coral resilience.',
     heroImage: '/images/cauliflower-coral-damselfish-reef.jpeg',
-    description: `Coral reefs are among the most biodiverse ecosystems on Earth, yet they face unprecedented threats from climate change, ocean acidification, and local stressors. Our research combines long-term field experiments in French Polynesia with mathematical models to understand what drives coral reef resilience and recovery.
+    description: `Mo'orea, French Polynesia offers an ideal natural laboratory for studying coral reef resilience. The island's fringing reefs—accessible by shore, sheltered by a barrier reef, and spanning distinct habitat zones—allow controlled field experiments that would be impossible on more remote or fragmented reef systems. This accessibility has enabled decades of continuous research on the same reef communities.
 
-We work at the Moorea Coral Reef Long Term Ecological Research (MCR LTER) site, studying how coral-associated fishes and invertebrates influence coral health, how disturbance legacies affect recovery trajectories, and how predator-prey interactions structure reef communities. Our work spans from the molecular mechanisms of coral-fish mutualisms to the ecosystem-scale dynamics of reef recovery after bleaching events.`,
+Our work here combines long-term field experiments with mathematical models to understand what drives coral recovery. We study how coral-associated fishes and invertebrates influence coral health, how disturbance legacies affect recovery trajectories, and how predator-prey interactions structure reef communities. The MCR Long Term Ecological Research site provides unparalleled baseline data—tracking reef recovery after cyclones, crown-of-thorns outbreaks, and bleaching events since 2004.`,
     questions: [
       'How do coral-associated fishes and invertebrates benefit coral health and resilience?',
       'What role do guard crabs play in protecting corals from predators and competitors?',
@@ -137,7 +137,7 @@ We work at the Moorea Coral Reef Long Term Ecological Research (MCR LTER) site, 
     fieldSite: {
       name: 'Moorea Coral Reef LTER',
       location: 'Moorea, French Polynesia',
-      description: 'The MCR LTER site provides long-term data on coral reef dynamics, enabling us to study disturbance, recovery, and species interactions across reef habitats. Our research here has tracked reef recovery after major disturbances including cyclones, crown-of-thorns outbreaks, and bleaching events.',
+      description: 'A volcanic island 17 km northwest of Tahiti, with a well-characterized reef system that provides the perfect setting for experimental ecology. Twenty years of continuous monitoring give us the context to interpret our experiments within real ecosystem dynamics.',
       image: '/images/moorea-mountain-tropical-island-view.jpeg',
       url: 'https://mcr.lternet.edu/',
     },
@@ -147,9 +147,9 @@ We work at the Moorea Coral Reef Long Term Ecological Research (MCR LTER) site, 
     title: 'Kelp Forests',
     tagline: 'Understanding predator-prey dynamics, foundation species stability, and fisheries benefits along the California coast.',
     heroImage: '/images/giant-kelp-sunlight-underwater.jpeg',
-    description: `Giant kelp forests along the California coast are highly productive ecosystems that support diverse marine life and valuable fisheries. These underwater forests face threats from warming oceans, marine heatwaves, and shifts in species interactions.
+    description: `The Santa Barbara Channel offers exceptional conditions for studying kelp forest dynamics. Consistent upwelling drives high productivity, the Channel Islands create natural gradients of fishing pressure and oceanographic conditions, and established marine protected areas provide large-scale experimental contrasts. These features make it one of the best places in the world to study how predator-prey dynamics shape temperate reef ecosystems.
 
-We work at the Santa Barbara Coastal Long Term Ecological Research (SBC LTER) site, studying how predator-prey dynamics shape ecosystem structure. Our research focuses on the interactions between spiny lobsters, sea urchins, and kelp, using field experiments, long-term monitoring data, and population models to understand ecosystem dynamics and inform fisheries management. We combine laboratory experiments on predator physiology with 18+ years of field monitoring to understand how kelp forests resist and recover from disturbance.`,
+Our research focuses on the interactions between spiny lobsters, sea urchins, and kelp—using field experiments, long-term monitoring data, and population models to understand ecosystem dynamics and inform fisheries management. We combine laboratory experiments on predator physiology with 20+ years of continuous field monitoring through the SBC Long Term Ecological Research site, detecting patterns that shorter studies miss.`,
     questions: [
       'What keeps urchin populations in check and prevents kelp forest collapse?',
       'How do marine protected areas benefit both conservation and fisheries?',
@@ -233,7 +233,7 @@ We work at the Santa Barbara Coastal Long Term Ecological Research (SBC LTER) si
     fieldSite: {
       name: 'Santa Barbara Coastal LTER',
       location: 'Santa Barbara Channel, California',
-      description: 'The SBC LTER site enables long-term research on kelp forest dynamics, tracking how environmental change and species interactions shape these productive ecosystems. With 18+ years of continuous monitoring, we can detect patterns that shorter studies miss.',
+      description: 'A 100 km stretch of coast from Pt. Conception to Ventura, with giant kelp beds, rocky reefs, and established marine protected areas. Two decades of baseline data let us separate natural cycles from long-term trends.',
       image: '/images/kelp-hero.jpeg',
       url: 'https://sbclter.msi.ucsb.edu/',
     },
