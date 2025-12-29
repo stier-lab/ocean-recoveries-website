@@ -67,9 +67,20 @@ const allPosts = sortedPosts.slice(3);
 >
   <a href="#main-content" class="skip-link">Skip to main content</a>
 
+  <!-- Page Header -->
+  <section class="page-header">
+    <div class="container">
+      <div class="header-content">
+        <h1 class="page-title">News & Research</h1>
+        <p class="page-description">Stories from our work on coral reef resilience, kelp forest dynamics, and ocean conservation.</p>
+      </div>
+    </div>
+  </section>
+
   <!-- Featured Section -->
   <section class="featured-section" aria-label="Featured articles">
     <div class="container">
+      <div class="section-label">Latest Stories</div>
       <div class="featured-grid">
         <!-- Main Featured -->
         <article class="featured-main" data-reveal>
@@ -233,6 +244,9 @@ const allPosts = sortedPosts.slice(3);
   <!-- Main Content -->
   <main id="main-content" class="articles-section">
     <div class="container">
+      <div class="section-header-row">
+        <div class="section-label">All Articles</div>
+      </div>
       <!-- Articles Grid -->
       <div class="articles-grid" id="articles-grid">
         {allPosts.map((post, i) => (
@@ -372,9 +386,31 @@ const allPosts = sortedPosts.slice(3);
     @apply transition-all duration-200;
   }
 
+  /* Page Header */
+  .page-header {
+    @apply pt-28 pb-8 bg-surface;
+  }
+
+  .header-content {
+    @apply max-w-2xl;
+  }
+
+  .page-title {
+    @apply text-3xl md:text-4xl font-black text-ink mb-3;
+    letter-spacing: -0.02em;
+  }
+
+  .page-description {
+    @apply text-muted text-lg;
+  }
+
   /* Featured Section */
   .featured-section {
-    @apply pt-28 pb-12 bg-surface;
+    @apply pb-8 bg-surface;
+  }
+
+  .section-label {
+    @apply text-xs font-semibold uppercase tracking-widest text-accent mb-6;
   }
 
   .featured-grid {
@@ -557,9 +593,8 @@ const allPosts = sortedPosts.slice(3);
 
   /* Filters Bar */
   .filters-bar {
-    @apply py-4 bg-surface sticky top-0 z-40;
-    @apply border-b border-line/30;
-    @apply backdrop-blur-xl;
+    @apply py-6 bg-surface;
+    @apply border-y border-line/20;
   }
 
   .filters-inner {
