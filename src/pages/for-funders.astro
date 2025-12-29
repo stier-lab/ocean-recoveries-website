@@ -12,10 +12,10 @@ const trackRecord = {
 
 // Current and past funders
 const keyFunders = [
-  { name: "National Science Foundation", abbrev: "NSF", note: "OCE, DEB, LTER", logo: "/images/logo-nsf.jpg", url: "https://www.nsf.gov/" },
-  { name: "W.M. Keck Foundation", abbrev: "Keck", note: "Research grants", logo: "/images/logo-keck.png", url: "https://www.wmkeck.org/" },
-  { name: "CA Ocean Protection Council", abbrev: "OPC", note: "Kelp management", logo: "/images/logo-opc.png", url: "https://www.opc.ca.gov/" },
-  { name: "UC Natural Reserve System", abbrev: "UCNRS", note: "Field access", logo: null, url: "https://ucnrs.org/" },
+  { name: "National Science Foundation", abbrev: "NSF", note: "OCE, DEB, LTER", url: "https://www.nsf.gov/" },
+  { name: "W.M. Keck Foundation", abbrev: "Keck", note: "Research grants", url: "https://www.wmkeck.org/" },
+  { name: "CA Ocean Protection Council", abbrev: "OPC", note: "Kelp management", url: "https://www.opc.ca.gov/" },
+  { name: "UC Natural Reserve System", abbrev: "UCNRS", note: "Field access", url: "https://ucnrs.org/" },
 ];
 
 // What funding supports - honest costs
@@ -278,11 +278,7 @@ const partners = [
         {keyFunders.map((funder) => (
           <a href={funder.url} target="_blank" rel="noopener noreferrer" class="funder-card-link">
             <div class="funder-card">
-              {funder.logo ? (
-                <img src={funder.logo} alt={funder.name} class="funder-logo" />
-              ) : (
-                <span class="funder-abbrev">{funder.abbrev}</span>
-              )}
+              <span class="funder-abbrev">{funder.abbrev}</span>
               <span class="funder-name">{funder.name}</span>
               <span class="funder-note">{funder.note}</span>
             </div>
@@ -705,16 +701,6 @@ const partners = [
     @apply bg-white/[0.06];
     border-color: rgba(56, 189, 248, 0.3);
     transform: translateY(-4px);
-  }
-
-  .funder-logo {
-    @apply h-14 w-auto object-contain mb-2;
-    filter: grayscale(100%) brightness(1.5);
-    transition: filter 400ms ease;
-  }
-
-  .funder-card-link:hover .funder-logo {
-    filter: grayscale(0%) brightness(1);
   }
 
   .funder-abbrev {

@@ -478,26 +478,32 @@ const formatDate = (dateStr: string) => {
     <div class="container">
       <div class="funders-content scroll-reveal">
         <span class="funders-label">Research supported by</span>
-        <div class="funders-logos">
-          <a href="https://www.nsf.gov/" target="_blank" rel="noopener noreferrer" class="funder-logo-link" title="National Science Foundation">
-            <img src="/images/logo-nsf.jpg" alt="NSF - National Science Foundation" class="funder-logo" />
+        <div class="funders-strip">
+          <a href="https://www.nsf.gov/" target="_blank" rel="noopener noreferrer" class="funder-item" title="National Science Foundation">
+            <span class="funder-abbrev">NSF</span>
+            <span class="funder-full">National Science Foundation</span>
           </a>
-          <a href="https://www.wmkeck.org/" target="_blank" rel="noopener noreferrer" class="funder-logo-link" title="W.M. Keck Foundation">
-            <img src="/images/logo-keck.png" alt="W.M. Keck Foundation" class="funder-logo" />
+          <span class="funder-divider"></span>
+          <a href="https://www.wmkeck.org/" target="_blank" rel="noopener noreferrer" class="funder-item" title="W.M. Keck Foundation">
+            <span class="funder-abbrev">Keck</span>
+            <span class="funder-full">W.M. Keck Foundation</span>
           </a>
-          <a href="https://www.opc.ca.gov/" target="_blank" rel="noopener noreferrer" class="funder-logo-link" title="California Ocean Protection Council">
-            <img src="/images/logo-opc.png" alt="California Ocean Protection Council" class="funder-logo" />
+          <span class="funder-divider"></span>
+          <a href="https://www.opc.ca.gov/" target="_blank" rel="noopener noreferrer" class="funder-item" title="California Ocean Protection Council">
+            <span class="funder-abbrev">OPC</span>
+            <span class="funder-full">CA Ocean Protection Council</span>
           </a>
-          <a href="https://mcr.lternet.edu/" target="_blank" rel="noopener noreferrer" class="funder-logo-link funder-logo-text" title="Moorea Coral Reef Long Term Ecological Research">
-            <span class="funder-text-main">MCR LTER</span>
-            <span class="funder-text-sub">Moorea Coral Reef</span>
+          <span class="funder-divider"></span>
+          <a href="https://mcr.lternet.edu/" target="_blank" rel="noopener noreferrer" class="funder-item" title="Moorea Coral Reef Long Term Ecological Research">
+            <span class="funder-abbrev">MCR LTER</span>
+            <span class="funder-full">Moorea Coral Reef</span>
           </a>
-          <a href="https://sbclter.msi.ucsb.edu/" target="_blank" rel="noopener noreferrer" class="funder-logo-link funder-logo-text" title="Santa Barbara Coastal Long Term Ecological Research">
-            <span class="funder-text-main">SBC LTER</span>
-            <span class="funder-text-sub">Santa Barbara Coastal</span>
+          <span class="funder-divider"></span>
+          <a href="https://sbclter.msi.ucsb.edu/" target="_blank" rel="noopener noreferrer" class="funder-item" title="Santa Barbara Coastal Long Term Ecological Research">
+            <span class="funder-abbrev">SBC LTER</span>
+            <span class="funder-full">Santa Barbara Coastal</span>
           </a>
         </div>
-        <p class="funders-caption">Enabling long-term research across Pacific and California ecosystems</p>
       </div>
     </div>
   </section>
@@ -1396,13 +1402,13 @@ const formatDate = (dateStr: string) => {
   }
 
   /* ============================================
-     Funders Section - Social Proof
+     Funders Section - Credibility Strip
      ============================================ */
   .funders-section {
-    @apply py-16 md:py-20;
-    background: #1e293b;
-    border-top: 1px solid rgba(255, 255, 255, 0.05);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    @apply py-12 md:py-16;
+    background: linear-gradient(180deg, #0f172a 0%, #1e293b 50%, #0f172a 100%);
+    border-top: 1px solid rgba(255, 255, 255, 0.03);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.03);
   }
 
   .funders-content {
@@ -1410,59 +1416,46 @@ const formatDate = (dateStr: string) => {
   }
 
   .funders-label {
-    @apply block text-xs font-bold uppercase tracking-widest text-muted mb-8;
+    @apply block text-xs font-medium uppercase tracking-widest mb-8;
+    color: rgba(241, 245, 249, 0.4);
   }
 
-  .funders-logos {
-    @apply flex flex-wrap items-center justify-center gap-8 md:gap-12 lg:gap-16;
+  .funders-strip {
+    @apply flex flex-wrap items-center justify-center gap-6 md:gap-8;
   }
 
-  .funder-logo-link {
-    @apply block transition-all;
-    transition-duration: 400ms;
-    opacity: 0.6;
+  .funder-item {
+    @apply flex flex-col items-center no-underline transition-all;
+    transition-duration: 300ms;
   }
 
-  .funder-logo-link:hover {
-    opacity: 1;
+  .funder-item:hover {
     transform: translateY(-2px);
   }
 
-  .funder-logo {
-    @apply h-12 md:h-14 w-auto object-contain;
-    filter: grayscale(100%) brightness(1.5);
-    transition: filter 400ms ease;
+  .funder-item:hover .funder-abbrev {
+    color: #38bdf8;
   }
 
-  .funder-logo-link:hover .funder-logo {
-    filter: grayscale(0%) brightness(1);
+  .funder-item:hover .funder-full {
+    color: rgba(241, 245, 249, 0.6);
   }
 
-  /* Text-based funder items (for LTER sites without logos) */
-  .funder-logo-text {
-    @apply flex flex-col items-center no-underline;
+  .funder-abbrev {
+    @apply text-lg md:text-xl font-bold tracking-tight transition-colors;
+    color: rgba(241, 245, 249, 0.7);
+    transition-duration: 300ms;
   }
 
-  .funder-text-main {
-    @apply text-lg font-black text-ink/60 transition-colors;
-    transition-duration: 400ms;
+  .funder-full {
+    @apply text-xs transition-colors;
+    color: rgba(241, 245, 249, 0.35);
+    transition-duration: 300ms;
   }
 
-  .funder-text-sub {
-    @apply text-xs text-muted transition-colors;
-    transition-duration: 400ms;
-  }
-
-  .funder-logo-link:hover .funder-text-main {
-    @apply text-ink;
-  }
-
-  .funder-logo-link:hover .funder-text-sub {
-    @apply text-ink/70;
-  }
-
-  .funders-caption {
-    @apply mt-8 text-sm text-muted/70 max-w-md mx-auto;
+  .funder-divider {
+    @apply hidden md:block w-px h-10;
+    background: rgba(255, 255, 255, 0.1);
   }
 
   /* ============================================
