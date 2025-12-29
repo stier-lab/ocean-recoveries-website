@@ -29,28 +29,15 @@ const isPlaceholderImage = (image: string) => {
 >
   <BreadcrumbSchema items={[{ name: 'People', url: '/people' }]} />
 
-  <!-- Page Header -->
-  <section class="page-header">
-    <div class="header-bg">
-      <div class="header-gradient"></div>
-      <div class="header-texture"></div>
-    </div>
-
-    <div class="container relative z-10">
-      <div class="header-content scroll-reveal">
-        <span class="header-eyebrow">Ocean Recoveries Lab</span>
-        <h1 class="header-title">Our <span class="text-gradient">Team</span></h1>
-        <p class="header-subtitle">
-          United by a shared commitment to rigorous science and grounded optimism.
-          <a href="/values" class="values-link">Read our values &rarr;</a>
-        </p>
-      </div>
-    </div>
-  </section>
-
-  <!-- Team Grid - 6 Person Layout -->
+  <!-- Team Grid - Direct Start -->
   <section class="team-section" id="team">
     <div class="container">
+      <header class="team-header scroll-reveal">
+        <h1 class="team-title">Our Team</h1>
+        <p class="team-subtitle">
+          United by rigorous science and grounded optimism. <a href="/values" class="values-link">Read our values &rarr;</a>
+        </p>
+      </header>
       <div class="team-grid">
         {sortedTeam.map((member, i) => {
           const placeholder = isPlaceholderImage(member.image);
@@ -228,44 +215,24 @@ const isPlaceholderImage = (image: string) => {
 
 <style>
   /* ============================================
-     Page Header
+     Team Section
      ============================================ */
-  .page-header {
-    @apply relative pt-32 pb-16;
+  .team-section {
+    @apply relative pt-28 pb-16;
+    background: #0f172a;
   }
 
-  .header-bg {
-    @apply absolute inset-0;
+  .team-header {
+    @apply mb-10;
   }
 
-  .header-gradient {
-    @apply absolute inset-0;
-    background:
-      radial-gradient(ellipse 70% 50% at 50% 0%, rgba(56, 189, 248, 0.08) 0%, transparent 50%),
-      linear-gradient(180deg, #0f172a 0%, #0b1929 100%);
+  .team-title {
+    @apply text-fluid-3xl font-black text-ink mb-2;
+    letter-spacing: -0.02em;
   }
 
-  .header-texture {
-    @apply absolute inset-0 opacity-20 pointer-events-none;
-    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
-  }
-
-  .header-content {
-    @apply text-center max-w-2xl mx-auto;
-  }
-
-  .header-eyebrow {
-    @apply inline-block text-xs font-bold uppercase tracking-[0.2em] text-accent/80 mb-4;
-  }
-
-  .header-title {
-    @apply text-fluid-5xl font-black text-ink mb-6;
-    letter-spacing: -0.03em;
-    line-height: 1.05;
-  }
-
-  .header-subtitle {
-    @apply text-fluid-lg text-muted leading-relaxed;
+  .team-subtitle {
+    @apply text-muted text-lg;
   }
 
   .values-link {
@@ -275,14 +242,6 @@ const isPlaceholderImage = (image: string) => {
 
   .values-link:hover {
     @apply text-accent-2;
-  }
-
-  /* ============================================
-     Team Grid - 6 Person Layout
-     ============================================ */
-  .team-section {
-    @apply relative py-16;
-    background: #0f172a;
   }
 
   .team-grid {
