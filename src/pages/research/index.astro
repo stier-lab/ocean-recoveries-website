@@ -58,8 +58,54 @@ const breadcrumbs = [
             moving insights from lab and field to classrooms, observatories, and coastal decision tables.
           </p>
 
+          <!-- Research Area Cards -->
+          <div class="research-areas scroll-reveal stagger-3">
+            <a href="/research/coral-reefs" class="research-area-card research-area-coral">
+              <div class="research-area-image">
+                <img src="/images/cauliflower-coral-damselfish-reef.jpeg" alt="" loading="eager" />
+              </div>
+              <div class="research-area-content">
+                <span class="research-area-location">
+                  <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                  </svg>
+                  Mo'orea, French Polynesia
+                </span>
+                <h3 class="research-area-title">Coral Reefs</h3>
+                <p class="research-area-desc">How biotic interactions shape coral resilience</p>
+                <span class="research-area-cta">
+                  Explore research
+                  <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                  </svg>
+                </span>
+              </div>
+            </a>
+            <a href="/research/kelp-forests" class="research-area-card research-area-kelp">
+              <div class="research-area-image">
+                <img src="/images/giant-kelp-sunlight-underwater.jpeg" alt="" loading="eager" />
+              </div>
+              <div class="research-area-content">
+                <span class="research-area-location">
+                  <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                  </svg>
+                  Santa Barbara, California
+                </span>
+                <h3 class="research-area-title">Kelp Forests</h3>
+                <p class="research-area-desc">Predator-prey dynamics and fisheries benefits</p>
+                <span class="research-area-cta">
+                  Explore research
+                  <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                  </svg>
+                </span>
+              </div>
+            </a>
+          </div>
+
           <!-- Jump Navigation -->
-          <nav class="jump-nav scroll-reveal stagger-3" aria-label="Jump to section">
+          <nav class="jump-nav scroll-reveal stagger-4" aria-label="Jump to section">
             <a href="#pillars" class="jump-link" data-section="pillars">
               <span>Research Pillars</span>
               <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -100,6 +146,27 @@ const breadcrumbs = [
     <WaveDivider id="hero-wave" fillColor="surface" />
   </section>
 
+  <!-- Sticky Section Nav (Desktop) -->
+  <nav class="sticky-nav" id="sticky-nav" aria-label="Page sections">
+    <div class="sticky-nav-inner">
+      <a href="#pillars" class="sticky-nav-link" data-section="pillars">
+        <span>Pillars</span>
+      </a>
+      <a href="#resilience" class="sticky-nav-link" data-section="resilience">
+        <span>Resilience</span>
+      </a>
+      <a href="#impact" class="sticky-nav-link" data-section="impact">
+        <span>Impact</span>
+      </a>
+      <a href="#systems" class="sticky-nav-link" data-section="systems">
+        <span>Systems</span>
+      </a>
+      <a href="#sites" class="sticky-nav-link" data-section="sites">
+        <span>Sites</span>
+      </a>
+    </div>
+  </nav>
+
   <!-- Three Research Pillars -->
   <section id="pillars" class="pillars-section">
     <div class="pillars-bg">
@@ -110,7 +177,7 @@ const breadcrumbs = [
     <div class="container relative z-10">
       <div class="section-header scroll-reveal">
         <span class="section-eyebrow">How We Work</span>
-        <h2 class="section-title">Three Research<br /><span class="title-gradient">Pillars</span></h2>
+        <h2 class="section-title">Three Research <span class="title-gradient">Pillars</span></h2>
         <p class="section-desc">
           Our work integrates across three interconnected approaches — from fundamental science to actionable solutions.
         </p>
@@ -165,7 +232,7 @@ const breadcrumbs = [
     <div class="container">
       <div class="section-header scroll-reveal">
         <span class="section-eyebrow section-eyebrow-light">Conceptual Framework</span>
-        <h2 class="section-title section-title-light">Resilience<br /><span class="title-gradient">Across Scales</span></h2>
+        <h2 class="section-title section-title-light">Resilience <span class="title-gradient">Across Scales</span></h2>
         <p class="section-desc section-desc-light">
           When ecosystems collapse—or recover—it's because processes at the individual, population, and ecosystem level align (or conflict). We organize our work around three axes:
         </p>
@@ -260,7 +327,7 @@ const breadcrumbs = [
     <div class="container">
       <div class="section-header scroll-reveal">
         <span class="section-eyebrow section-eyebrow-light">From Questions to Action</span>
-        <h2 class="section-title section-title-light">Our Impact<br /><span class="title-gradient">Pathway</span></h2>
+        <h2 class="section-title section-title-light">Our Impact <span class="title-gradient">Pathway</span></h2>
         <p class="section-desc section-desc-light">
           Research flows through four connected stages, each building on the last to create real-world impact.
         </p>
@@ -337,18 +404,18 @@ const breadcrumbs = [
         </svg>
       </div>
 
-      <!-- Mobile version -->
-      <div class="pipeline-mobile md:hidden scroll-reveal">
-        <div class="mobile-flow">
+      <!-- Mobile version - semantic ordered list -->
+      <nav class="pipeline-mobile md:hidden scroll-reveal" aria-label="Research impact pathway">
+        <ol class="mobile-flow" role="list">
           {[
             { title: 'First Principles', desc: 'Fundamental questions about ecosystem dynamics' },
             { title: 'Quantitative Models', desc: 'Predictive tools and scenario forecasting' },
             { title: 'Reproducible Data', desc: 'Open science and shared datasets' },
             { title: 'Tools & Protocols', desc: 'Practical implementation guides' }
           ].map((step, i) => (
-            <>
-              <div class={`mobile-step stagger-${i + 1}`}>
-                <div class="mobile-node">
+            <li class={`mobile-step-wrapper stagger-${i + 1}`}>
+              <div class="mobile-step">
+                <div class="mobile-node" aria-hidden="true">
                   <span class="mobile-node-number">{i + 1}</span>
                 </div>
                 <div class="mobile-content">
@@ -357,15 +424,15 @@ const breadcrumbs = [
                 </div>
               </div>
               {i < 3 && (
-                <div class="mobile-connector">
+                <div class="mobile-connector" aria-hidden="true">
                   <div class="mobile-line"></div>
                   <div class="mobile-particle" style={`animation-delay: ${i * 0.3}s`}></div>
                 </div>
               )}
-            </>
+            </li>
           ))}
-        </div>
-      </div>
+        </ol>
+      </nav>
     </div>
 
     <WaveDivider id="impact-wave" fillColor="surface" />
@@ -376,7 +443,7 @@ const breadcrumbs = [
     <div class="container">
       <div class="section-header scroll-reveal">
         <span class="section-eyebrow">Where We Work</span>
-        <h2 class="section-title">Study<br /><span class="title-gradient">Systems</span></h2>
+        <h2 class="section-title">Study <span class="title-gradient">Systems</span></h2>
         <p class="section-desc">
           Two ecosystems. Two LTER sites. Two modes of collapse. By comparing fast kelp dynamics with slow coral recovery, we discover which resilience mechanisms generalize—and which are system-specific.
         </p>
@@ -431,7 +498,7 @@ const breadcrumbs = [
     <div class="container">
       <div class="section-header scroll-reveal">
         <span class="section-eyebrow section-eyebrow-light">Our Locations</span>
-        <h2 class="section-title section-title-light">Field<br /><span class="title-gradient">Sites</span></h2>
+        <h2 class="section-title section-title-light">Field <span class="title-gradient">Sites</span></h2>
         <p class="section-desc section-desc-light">
           Research stations across the Pacific where we conduct long-term experiments and monitor ecosystem change.
         </p>
@@ -451,7 +518,7 @@ const breadcrumbs = [
       <div class="collab-card scroll-reveal">
         <div class="collab-content">
           <span class="section-eyebrow">Partner With Us</span>
-          <h2 class="collab-title">Interested in<br /><span class="title-gradient">Collaborating?</span></h2>
+          <h2 class="collab-title">Interested in <span class="title-gradient">Collaborating?</span></h2>
           <p class="collab-desc">
             We work with researchers, conservation organizations, and communities worldwide.
             If you're interested in partnering on research or applying our findings, we'd love to hear from you.
@@ -603,6 +670,68 @@ const breadcrumbs = [
     @apply text-accent font-semibold;
   }
 
+  /* Research Area Cards in Hero */
+  .research-areas {
+    @apply grid md:grid-cols-2 gap-4 max-w-3xl mx-auto mb-8;
+  }
+
+  .research-area-card {
+    @apply relative flex overflow-hidden rounded-xl no-underline;
+    @apply bg-white/[0.06] border border-white/15;
+    @apply transition-all duration-300;
+    min-height: 120px;
+  }
+
+  .research-area-card:hover {
+    @apply bg-white/[0.1] border-white/25;
+    transform: translateY(-3px);
+  }
+
+  .research-area-card:focus-visible {
+    @apply outline-2 outline-offset-2 outline-accent;
+  }
+
+  .research-area-image {
+    @apply relative w-24 sm:w-28 flex-shrink-0;
+  }
+
+  .research-area-image img {
+    @apply absolute inset-0 w-full h-full object-cover;
+  }
+
+  .research-area-content {
+    @apply flex flex-col justify-center p-4 gap-1;
+  }
+
+  .research-area-location {
+    @apply flex items-center gap-1 text-[10px] uppercase tracking-wider font-semibold text-accent-2;
+  }
+
+  .research-area-title {
+    @apply text-base font-bold text-white;
+  }
+
+  .research-area-desc {
+    @apply text-xs text-white/60 leading-snug;
+  }
+
+  .research-area-cta {
+    @apply inline-flex items-center gap-1.5 text-xs font-semibold text-accent mt-1;
+    @apply transition-all duration-200;
+  }
+
+  .research-area-card:hover .research-area-cta {
+    @apply gap-2.5;
+  }
+
+  .research-area-coral {
+    border-left: 3px solid #f97316;
+  }
+
+  .research-area-kelp {
+    border-left: 3px solid #22c55e;
+  }
+
   /* Jump Navigation */
   .jump-nav {
     @apply flex flex-wrap justify-center gap-3;
@@ -674,8 +803,52 @@ const breadcrumbs = [
   }
 
   /* ============================================
+     Sticky Section Nav
+     ============================================ */
+  .sticky-nav {
+    @apply hidden md:block;
+    @apply sticky top-16 z-40;
+    @apply bg-surface/95 backdrop-blur-md;
+    @apply border-b border-line/30;
+    @apply opacity-0 -translate-y-full pointer-events-none;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+  }
+
+  .sticky-nav.visible {
+    @apply opacity-100 translate-y-0 pointer-events-auto;
+  }
+
+  .sticky-nav-inner {
+    @apply max-w-5xl mx-auto px-6;
+    @apply flex items-center justify-center gap-1;
+    @apply py-3;
+  }
+
+  .sticky-nav-link {
+    @apply px-4 py-2 rounded-full text-sm font-medium;
+    @apply text-muted no-underline;
+    @apply transition-all duration-200;
+  }
+
+  .sticky-nav-link:hover {
+    @apply text-ink bg-white/5;
+  }
+
+  .sticky-nav-link:focus-visible {
+    @apply outline-2 outline-offset-2 outline-accent;
+  }
+
+  .sticky-nav-link.active {
+    @apply text-accent bg-accent/10;
+  }
+
+  /* ============================================
      Section Styling
      ============================================ */
+  section[id] {
+    scroll-margin-top: 8rem;
+  }
+
   .pillars-section,
   .systems-section,
   .collab-section {
@@ -683,7 +856,8 @@ const breadcrumbs = [
   }
 
   .impact-section,
-  .sites-section {
+  .sites-section,
+  .resilience-section {
     @apply relative py-20 md:py-28 pb-28 md:pb-36 overflow-hidden;
     background: linear-gradient(180deg, #0b1929 0%, #0f172a 50%, #0b1929 100%);
   }
@@ -706,6 +880,16 @@ const breadcrumbs = [
 
   .section-title {
     @apply text-3xl md:text-4xl lg:text-5xl font-black text-ink tracking-tight mb-4 leading-tight;
+    text-wrap: balance;
+    max-width: 20ch;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  @supports not (text-wrap: balance) {
+    .section-title {
+      max-width: 16ch;
+    }
   }
 
   .section-title-light {
@@ -723,11 +907,6 @@ const breadcrumbs = [
   /* ============================================
      Resilience Across Scales Section
      ============================================ */
-  .resilience-section {
-    @apply relative py-20 md:py-28 pb-28 md:pb-36 overflow-hidden;
-    background: linear-gradient(180deg, #0b1929 0%, #0f172a 50%, #0b1929 100%);
-  }
-
   .resilience-grid {
     @apply grid md:grid-cols-3 gap-6 lg:gap-8 max-w-5xl mx-auto;
   }
@@ -831,8 +1010,9 @@ const breadcrumbs = [
   }
 
   .pillar-card {
-    @apply relative p-7 lg:p-8 rounded-2xl;
+    @apply relative p-6 lg:p-8 rounded-2xl h-full;
     @apply border border-line/50;
+    @apply flex flex-col;
     background: linear-gradient(135deg, rgba(30, 41, 59, 0.7) 0%, rgba(30, 41, 59, 0.5) 100%);
     backdrop-filter: blur(10px);
     transition: all 400ms ease;
@@ -845,7 +1025,7 @@ const breadcrumbs = [
   }
 
   .pillar-number {
-    @apply absolute top-6 right-6 text-4xl font-black;
+    @apply absolute top-5 right-5 text-3xl lg:text-4xl font-black;
     background: linear-gradient(135deg, rgba(56, 189, 248, 0.25) 0%, rgba(45, 212, 191, 0.15) 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -861,7 +1041,7 @@ const breadcrumbs = [
   }
 
   .pillar-icon {
-    @apply w-14 h-14 mb-5 rounded-xl;
+    @apply w-12 h-12 lg:w-14 lg:h-14 mb-4 rounded-xl;
     @apply flex items-center justify-center;
     transition: transform 400ms ease;
   }
@@ -875,19 +1055,24 @@ const breadcrumbs = [
   .pillar-icon-3 { @apply bg-amber-500/20 text-amber-400; }
 
   .pillar-title {
-    @apply text-xl font-bold text-ink mb-3;
+    @apply text-lg lg:text-xl font-bold text-ink mb-2;
   }
 
   .pillar-desc {
     @apply text-muted text-sm leading-relaxed mb-5;
+    max-width: 32ch;
   }
 
   .pillar-topics {
-    @apply space-y-2.5 border-t border-line/50 pt-5;
+    @apply space-y-2 border-t border-line/50 pt-4 mt-auto;
   }
 
   .pillar-topics li {
-    @apply flex items-start gap-2.5 text-muted text-sm;
+    @apply flex items-start gap-2 text-muted text-sm leading-snug;
+  }
+
+  .pillar-topics li svg {
+    @apply mt-0.5 flex-shrink-0;
   }
 
   /* ============================================
@@ -969,6 +1154,14 @@ const breadcrumbs = [
   /* Mobile Pipeline */
   .pipeline-mobile {
     @apply max-w-md mx-auto;
+  }
+
+  .mobile-flow {
+    @apply list-none p-0 m-0;
+  }
+
+  .mobile-step-wrapper {
+    @apply list-none;
   }
 
   .mobile-step {
@@ -1145,6 +1338,7 @@ const breadcrumbs = [
 
   .collab-title {
     @apply text-2xl md:text-3xl font-black text-ink tracking-tight mb-4;
+    text-wrap: balance;
   }
 
   .collab-desc {
@@ -1295,24 +1489,41 @@ const breadcrumbs = [
     }
   };
 
-  // Active section indicator for jump navigation
+  // Active section indicator for jump navigation and sticky nav
   const initJumpNavHighlight = () => {
     const sections = document.querySelectorAll('section[id]');
     const jumpLinks = document.querySelectorAll('.jump-link[data-section]');
+    const stickyNav = document.getElementById('sticky-nav');
+    const stickyLinks = document.querySelectorAll('.sticky-nav-link[data-section]');
+    const hero = document.querySelector('.hero');
 
-    if (sections.length === 0 || jumpLinks.length === 0) return;
+    if (sections.length === 0) return;
 
-    const observer = new IntersectionObserver((entries) => {
+    // Section active state observer
+    const sectionObserver = new IntersectionObserver((entries) => {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
           const sectionId = entry.target.id;
 
+          // Update jump links
           jumpLinks.forEach((link) => {
             const linkSection = link.getAttribute('data-section');
             if (linkSection === sectionId) {
               link.classList.add('active');
             } else {
               link.classList.remove('active');
+            }
+          });
+
+          // Update sticky nav links
+          stickyLinks.forEach((link) => {
+            const linkSection = link.getAttribute('data-section');
+            if (linkSection === sectionId) {
+              link.classList.add('active');
+              link.setAttribute('aria-current', 'true');
+            } else {
+              link.classList.remove('active');
+              link.removeAttribute('aria-current');
             }
           });
         }
@@ -1323,10 +1534,33 @@ const breadcrumbs = [
     });
 
     sections.forEach((section) => {
-      if (section.id) observer.observe(section);
+      if (section.id) sectionObserver.observe(section);
     });
 
-    return () => observer.disconnect();
+    // Sticky nav visibility observer
+    if (hero && stickyNav) {
+      const heroObserver = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            stickyNav.classList.remove('visible');
+          } else {
+            stickyNav.classList.add('visible');
+          }
+        });
+      }, {
+        rootMargin: '-80px 0px 0px 0px',
+        threshold: 0
+      });
+
+      heroObserver.observe(hero);
+
+      return () => {
+        sectionObserver.disconnect();
+        heroObserver.disconnect();
+      };
+    }
+
+    return () => sectionObserver.disconnect();
   };
 
   // Particle Animation for Pipeline Diagram
