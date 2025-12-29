@@ -20,17 +20,16 @@ const formatDate = (dateStr: string) => {
 
 <Layout
   title="Ocean Recoveries Lab | Engineering Resilience from Organisms to Ecosystems"
-  description="Research lab at UC Santa Barbara studying coral reef and kelp forest resilience. We trace the mechanisms of resistance, recovery, and reorganization to make restoration predictable."
-  keywords={['Ocean Recoveries Lab', 'coral reef research', 'kelp forest ecology', 'marine conservation', 'UC Santa Barbara', 'Adrian Stier', 'ecosystem resilience']}
+  description="Research lab at UC Santa Barbara identifying ecological bottlenecks and thresholds that trap coral reefs and kelp forests in degraded states—and turning that science into decision tools for restoration."
+  keywords={['Ocean Recoveries Lab', 'coral reef research', 'kelp forest ecology', 'marine conservation', 'UC Santa Barbara', 'Adrian Stier', 'ecosystem resilience', 'restoration ecology']}
 >
-  <!-- Hero Section - Scientific Editorial Style -->
+  <!-- Hero Section - Thesis + Mechanism + Output -->
   <section class="hero">
     <div class="hero-media">
       <div class="hero-image" style="background-image: url('/images/coral-reef-panorama-anthias-fish.jpeg');"></div>
       <div class="hero-overlay"></div>
       <div class="hero-grain"></div>
     </div>
-
 
     <div class="hero-content">
       <div class="container">
@@ -41,7 +40,7 @@ const formatDate = (dateStr: string) => {
           <div class="masthead-line"></div>
         </div>
 
-        <!-- Main title - dramatic editorial treatment -->
+        <!-- Main title -->
         <div class="hero-title-block">
           <h1 class="hero-title scroll-reveal stagger-1">
             <span class="title-line title-line-1">Ocean</span>
@@ -52,7 +51,7 @@ const formatDate = (dateStr: string) => {
           </h1>
         </div>
 
-        <!-- Tagline with editorial flourish -->
+        <!-- Tagline - the slogan -->
         <div class="hero-tagline-wrapper scroll-reveal stagger-2">
           <div class="tagline-accent"></div>
           <p class="hero-tagline">
@@ -61,28 +60,27 @@ const formatDate = (dateStr: string) => {
           </p>
         </div>
 
-        <!-- Mission statement - answers Who/What/Where/Why -->
+        <!-- Thesis statement - mechanism + output (not just mission) -->
         <p class="hero-desc scroll-reveal stagger-3">
-          We're an ecology lab at UC Santa Barbara studying why coral reefs and kelp forests collapse—and what it takes to bring them back. Our field experiments and models inform restoration and management across the Pacific.
+          We identify the ecological bottlenecks and thresholds that trap coral reefs and kelp forests in degraded states—and turn that science into decision tools for restoration and management across the Pacific.
         </p>
 
-        <!-- New paper announcement -->
-        <a href="/news/fish-are-providing-life-saving-services-to-corals-and-scient" class="new-paper-link scroll-reveal stagger-3">
-          <span class="new-badge">New</span>
-          <span class="new-paper-text">Stier et al. (2025) in Coral Reefs →</span>
-        </a>
+        <!-- Credibility line -->
+        <p class="hero-credibility scroll-reveal stagger-3">
+          Long-term experiments and models at two NSF LTER sites.
+        </p>
 
         <!-- Actions row -->
         <div class="hero-actions scroll-reveal stagger-4">
           <a href="/research" class="btn-editorial-primary">
-            <span class="btn-text">Explore Our Research</span>
+            <span class="btn-text">How We Work</span>
             <span class="btn-icon">
               <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
               </svg>
             </span>
           </a>
-          <a href="/join-us" class="btn-editorial-secondary">Join the Lab</a>
+          <a href="/publications" class="btn-editorial-secondary">View Publications</a>
         </div>
       </div>
     </div>
@@ -95,29 +93,105 @@ const formatDate = (dateStr: string) => {
     <WaveDivider id="hero-wave" fillColor="surface" />
   </section>
 
-  <!-- Where We Work Section -->
-  <section id="field-sites" class="field-sites">
+  <!-- How We Work Section - Approach BEFORE geography -->
+  <section id="approach" class="approach-section">
     <div class="container">
-      <!-- Section header -->
       <div class="section-header-editorial scroll-reveal">
         <div class="header-rule"></div>
         <div class="header-content">
           <span class="section-number">01</span>
           <div class="header-text">
-            <span class="section-eyebrow">Field Sites</span>
+            <span class="section-eyebrow">Our Approach</span>
             <h2 class="section-title-editorial">
-              Where We<br />
+              How We<br />
               <span class="title-serif-accent">Work</span>
             </h2>
           </div>
         </div>
         <p class="section-desc-editorial">
-          Long-term field experiments at two NSF LTER sites. In Mo'orea we study species interactions that help corals survive. In Santa Barbara we track predators that control urchin outbreaks and keep kelp forests healthy.
+          We combine manipulative field experiments with quantitative models to understand why ecosystems fail—and what interventions actually work.
         </p>
       </div>
 
+      <!-- Three pillars of approach -->
+      <div class="approach-grid">
+        <div class="approach-card scroll-reveal stagger-1">
+          <div class="approach-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9.75 3.104v5.714a2.25 2.25 0 01-.659 1.591L5 14.5M9.75 3.104c-.251.023-.501.05-.75.082m.75-.082a24.301 24.301 0 014.5 0m0 0v5.714c0 .597.237 1.17.659 1.591L19.8 15.3M14.25 3.104c.251.023.501.05.75.082M19.8 15.3l-1.57.393A9.065 9.065 0 0112 15a9.065 9.065 0 00-6.23.693L5 14.5m14.8.8l1.402 1.402c1.232 1.232.65 3.318-1.067 3.611A48.309 48.309 0 0112 21c-2.773 0-5.491-.235-8.135-.687-1.718-.293-2.3-2.379-1.067-3.61L5 14.5" />
+            </svg>
+          </div>
+          <h3 class="approach-title">Manipulative Experiments</h3>
+          <p class="approach-desc">
+            Field experiments that manipulate key interactions—predators, mutualists, competitors—to isolate causal mechanisms of collapse and recovery.
+          </p>
+        </div>
 
-      <!-- Field Site Cards - Enhanced Layout -->
+        <div class="approach-card scroll-reveal stagger-2">
+          <div class="approach-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 3v11.25A2.25 2.25 0 006 16.5h2.25M3.75 3h-1.5m1.5 0h16.5m0 0h1.5m-1.5 0v11.25A2.25 2.25 0 0118 16.5h-2.25m-7.5 0h7.5m-7.5 0l-1 3m8.5-3l1 3m0 0l.5 1.5m-.5-1.5h-9.5m0 0l-.5 1.5m.75-9l3-3 2.148 2.148A12.061 12.061 0 0116.5 7.605" />
+            </svg>
+          </div>
+          <h3 class="approach-title">High-Resolution Measurement</h3>
+          <p class="approach-desc">
+            3D photogrammetry, physiological assays, and demographic tracking to quantify structure, function, and change at scales that matter.
+          </p>
+        </div>
+
+        <div class="approach-card scroll-reveal stagger-3">
+          <div class="approach-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M4.745 3A23.933 23.933 0 003 12c0 3.183.62 6.22 1.745 9M19.5 3c.967 2.78 1.5 5.817 1.5 9s-.533 6.22-1.5 9M8.25 8.885l1.444-.89a.75.75 0 011.105.402l2.402 7.206a.75.75 0 001.104.401l1.445-.889m-8.25.75l.213.09a1.687 1.687 0 002.062-.617l4.45-6.676a1.688 1.688 0 012.062-.618l.213.09" />
+            </svg>
+          </div>
+          <h3 class="approach-title">Predictive Models</h3>
+          <p class="approach-desc">
+            Theory and simulation that translate empirical results into thresholds, early warning signals, and restoration strategy evaluation tools.
+          </p>
+        </div>
+      </div>
+
+      <!-- Unifying question callout -->
+      <div class="unifying-question scroll-reveal">
+        <div class="question-accent"></div>
+        <div class="question-content">
+          <span class="question-label">The question that unifies our work:</span>
+          <p class="question-text">
+            What ecological levers—species interactions, trophic control, environmental thresholds—determine whether a disturbed ecosystem recovers to its prior state, shifts to an alternative state, or remains trapped in degradation?
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <WaveDivider id="approach-wave" fillColor="navy-deep" />
+  </section>
+
+  <!-- Field Sites Section - Now as context, not first -->
+  <section id="field-sites" class="field-sites">
+    <div class="field-sites-bg">
+      <div class="field-sites-gradient"></div>
+    </div>
+
+    <div class="container relative z-10">
+      <div class="section-header-editorial scroll-reveal">
+        <div class="header-rule header-rule-light"></div>
+        <div class="header-content">
+          <span class="section-number section-number-light">02</span>
+          <div class="header-text">
+            <span class="section-eyebrow section-eyebrow-light">Field Sites</span>
+            <h2 class="section-title-editorial section-title-light">
+              Where We<br />
+              <span class="title-serif-accent">Work</span>
+            </h2>
+          </div>
+        </div>
+        <p class="section-desc-editorial section-desc-light">
+          Two NSF Long Term Ecological Research sites. Same questions about resilience and recovery—different systems, different mechanisms, transferable insights.
+        </p>
+      </div>
+
+      <!-- Field Site Cards -->
       <div class="sites-grid">
         <!-- Mo'orea Coral Reefs -->
         <a href="/research/coral-reefs" class="site-card site-card-coral scroll-reveal stagger-1">
@@ -136,16 +210,20 @@ const formatDate = (dateStr: string) => {
               <span class="site-badge site-badge-coral">MCR LTER</span>
             </div>
             <h3 class="site-title">Coral Reefs</h3>
-            <p class="site-dynamics">How species interactions shape coral health and reef recovery</p>
+            <p class="site-dynamics">Species interactions that accelerate or impede coral recovery</p>
 
             <div class="site-research">
-              <h4 class="research-heading">What we study:</h4>
+              <h4 class="research-heading">Key mechanisms:</h4>
               <ul class="research-list">
-                <li>Fish-coral mutualisms and nutrient exchange</li>
-                <li>Guard crabs defending corals from predators</li>
-                <li>Disturbance legacies and recovery trajectories</li>
-                <li>3D reef photogrammetry and coral growth</li>
+                <li>Fish-coral mutualisms and nutrient subsidies</li>
+                <li>Guard crabs defending against crown-of-thorns</li>
+                <li>Priority effects in community reassembly</li>
               </ul>
+            </div>
+
+            <div class="site-output">
+              <span class="output-label">Management output:</span>
+              <span class="output-text">Restoration strategy evaluation tools for coral recovery</span>
             </div>
 
             <div class="site-cta">
@@ -175,16 +253,20 @@ const formatDate = (dateStr: string) => {
               <span class="site-badge site-badge-kelp">SBC LTER</span>
             </div>
             <h3 class="site-title">Kelp Forests</h3>
-            <p class="site-dynamics">Predator-prey dynamics, fisheries, and ecosystem tipping points</p>
+            <p class="site-dynamics">Predator control of urchin barrens and ecosystem tipping points</p>
 
             <div class="site-research">
-              <h4 class="research-heading">What we study:</h4>
+              <h4 class="research-heading">Key mechanisms:</h4>
               <ul class="research-list">
-                <li>Lobster-urchin interactions and kelp persistence</li>
-                <li>Marine protected area spillover effects</li>
-                <li>Body size scaling in predator-prey systems</li>
-                <li>Thermal limits on predator control of urchins</li>
+                <li>Lobster-urchin size thresholds for kelp persistence</li>
+                <li>MPA spillover and fishery interactions</li>
+                <li>Thermal limits on predator effectiveness</li>
               </ul>
+            </div>
+
+            <div class="site-output">
+              <span class="output-label">Management output:</span>
+              <span class="output-text">Predator-based indicators for urchin barren risk</span>
             </div>
 
             <div class="site-cta">
@@ -199,23 +281,19 @@ const formatDate = (dateStr: string) => {
       </div>
     </div>
 
-    <WaveDivider id="sites-wave" fillColor="navy-deep" />
+    <WaveDivider id="sites-wave" fillColor="surface" />
   </section>
 
-  <!-- Recent News Section - Evidence of Impact -->
+  <!-- Recent Work Section - Proof after approach -->
   <section class="news-section">
-    <div class="news-bg">
-      <div class="news-gradient-overlay"></div>
-    </div>
-
-    <div class="container relative z-10">
+    <div class="container">
       <div class="news-header scroll-reveal">
         <div class="news-header-text">
-          <span class="section-eyebrow section-eyebrow-light">Latest Findings</span>
-          <h2 class="section-title-editorial section-title-light">What We're Discovering</h2>
+          <span class="section-eyebrow">Recent Work</span>
+          <h2 class="section-title-editorial">Evidence of<br /><span class="title-serif-accent">Impact</span></h2>
         </div>
-        <a href="/news" class="btn-outline-editorial hidden sm:inline-flex">
-          <span>View all news</span>
+        <a href="/publications" class="btn-outline-editorial-dark hidden sm:inline-flex">
+          <span>All publications</span>
           <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
           </svg>
@@ -238,7 +316,7 @@ const formatDate = (dateStr: string) => {
                 <h3 class="news-editorial-title">{post.title}</h3>
                 {i === 0 && <p class="news-editorial-excerpt">{post.excerpt}</p>}
                 <span class="news-read-more">
-                  Read article
+                  Read more
                   <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
                   </svg>
@@ -250,26 +328,58 @@ const formatDate = (dateStr: string) => {
       </div>
 
       <div class="news-mobile-link scroll-reveal sm:hidden">
-        <a href="/news" class="btn-outline-editorial">View All News</a>
+        <a href="/publications" class="btn-outline-editorial-dark">View All Publications</a>
       </div>
     </div>
 
-    <WaveDivider id="news-wave" fillColor="surface" />
+    <WaveDivider id="news-wave" fillColor="navy-deep" />
   </section>
 
-  <!-- About Section -->
-  <section class="about-section">
-    <div class="container">
-      <div class="about-editorial">
-        <div class="about-content scroll-reveal">
-          <span class="section-eyebrow">The Team</span>
-          <h2 class="section-title-editorial">
+  <!-- Team Section - Differentiating the lab -->
+  <section class="team-section">
+    <div class="team-bg">
+      <div class="team-gradient"></div>
+    </div>
+
+    <div class="container relative z-10">
+      <div class="team-editorial">
+        <div class="team-content scroll-reveal">
+          <span class="section-eyebrow section-eyebrow-light">The Team</span>
+          <h2 class="section-title-editorial section-title-light">
             Who<br />
             <span class="title-serif-accent">We Are</span>
           </h2>
-          <p class="about-text">
-            Led by Adrian Stier in UC Santa Barbara's Department of Ecology, Evolution & Marine Biology. We're graduate students, postdocs, and undergrads working at two NSF Long Term Ecological Research sites to understand what makes ecosystems resilient—and how to restore them when they're not.
+          <p class="team-text">
+            An interdisciplinary group combining field ecology, quantitative modeling, and restoration science. We're grad students, postdocs, and undergrads embedded at two NSF LTER sites, collaborating with managers and conservation practitioners.
           </p>
+
+          <!-- What makes us different -->
+          <div class="team-differentiators">
+            <div class="differentiator">
+              <span class="diff-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12c0 1.268-.63 2.39-1.593 3.068a3.745 3.745 0 01-1.043 3.296 3.745 3.745 0 01-3.296 1.043A3.745 3.745 0 0112 21c-1.268 0-2.39-.63-3.068-1.593a3.746 3.746 0 01-3.296-1.043 3.745 3.745 0 01-1.043-3.296A3.745 3.745 0 013 12c0-1.268.63-2.39 1.593-3.068a3.745 3.745 0 011.043-3.296 3.746 3.746 0 013.296-1.043A3.746 3.746 0 0112 3c1.268 0 2.39.63 3.068 1.593a3.746 3.746 0 013.296 1.043 3.746 3.746 0 011.043 3.296A3.745 3.745 0 0121 12z" />
+                </svg>
+              </span>
+              <span class="diff-text">Embedded at long-term research sites</span>
+            </div>
+            <div class="differentiator">
+              <span class="diff-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12c0 1.268-.63 2.39-1.593 3.068a3.745 3.745 0 01-1.043 3.296 3.745 3.745 0 01-3.296 1.043A3.745 3.745 0 0112 21c-1.268 0-2.39-.63-3.068-1.593a3.746 3.746 0 01-3.296-1.043 3.745 3.745 0 01-1.043-3.296A3.745 3.745 0 013 12c0-1.268.63-2.39 1.593-3.068a3.745 3.745 0 011.043-3.296 3.746 3.746 0 013.296-1.043A3.746 3.746 0 0112 3c1.268 0 2.39.63 3.068 1.593a3.746 3.746 0 013.296 1.043 3.746 3.746 0 011.043 3.296A3.745 3.745 0 0121 12z" />
+                </svg>
+              </span>
+              <span class="diff-text">Theory-driven experimental design</span>
+            </div>
+            <div class="differentiator">
+              <span class="diff-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12c0 1.268-.63 2.39-1.593 3.068a3.745 3.745 0 01-1.043 3.296 3.745 3.745 0 01-3.296 1.043A3.745 3.745 0 0112 21c-1.268 0-2.39-.63-3.068-1.593a3.746 3.746 0 01-3.296-1.043 3.745 3.745 0 01-1.043-3.296A3.745 3.745 0 013 12c0-1.268.63-2.39 1.593-3.068a3.745 3.745 0 011.043-3.296 3.746 3.746 0 013.296-1.043A3.746 3.746 0 0112 3c1.268 0 2.39.63 3.068 1.593a3.746 3.746 0 013.296 1.043 3.746 3.746 0 011.043 3.296A3.745 3.745 0 0121 12z" />
+                </svg>
+              </span>
+              <span class="diff-text">Outputs for managers, not just papers</span>
+            </div>
+          </div>
 
           <!-- PI Card -->
           <a href="/people" class="pi-editorial-card">
@@ -277,15 +387,15 @@ const formatDate = (dateStr: string) => {
             <div class="pi-details">
               <span class="pi-name">Adrian Stier</span>
               <span class="pi-role">Associate Professor, EEMB</span>
-              <span class="pi-bio">Long-term experiments at MCR and SBC LTER. 75+ papers on reef and kelp dynamics.</span>
+              <span class="pi-bio">75+ papers on reef and kelp dynamics. NSF CAREER awardee.</span>
             </div>
             <svg class="pi-arrow" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
             </svg>
           </a>
 
-          <a href="/people" class="btn-editorial-primary btn-editorial-dark">
-            <span class="btn-text">Meet the Team</span>
+          <a href="/people" class="btn-editorial-primary btn-editorial-light">
+            <span class="btn-text">Meet the Full Team</span>
             <span class="btn-icon">
               <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
@@ -294,7 +404,7 @@ const formatDate = (dateStr: string) => {
           </a>
         </div>
 
-        <div class="about-stats-grid">
+        <div class="team-stats-grid">
           <div class="stat-editorial scroll-reveal stagger-1">
             <span class="stat-value" data-target="75">75</span>
             <span class="stat-suffix">+</span>
@@ -319,35 +429,76 @@ const formatDate = (dateStr: string) => {
       </div>
     </div>
 
-    <WaveDivider id="about-wave" fillColor="navy-deep" />
+    <WaveDivider id="team-wave" fillColor="surface" />
   </section>
 
-  <!-- Final CTA Section - Single Primary Action -->
+  <!-- Final CTA Section - Segmented Pathways -->
   <section class="final-cta">
-    <div class="final-cta-bg">
-      <div class="cta-orb cta-orb-1"></div>
-      <div class="cta-orb cta-orb-2"></div>
-    </div>
-
-    <div class="container relative z-10">
-      <div class="cta-centered scroll-reveal">
-        <span class="cta-editorial-eyebrow">Ready to Make an Impact?</span>
-        <h2 class="cta-centered-title">
-          Join the Next Generation of<br />
-          <span class="title-serif-accent">Ocean Scientists</span>
+    <div class="container">
+      <div class="cta-header scroll-reveal">
+        <span class="section-eyebrow">Get Involved</span>
+        <h2 class="section-title-editorial">
+          Work With<br />
+          <span class="title-serif-accent">Us</span>
         </h2>
-        <p class="cta-centered-desc">
-          We're seeking curious minds at all career stages—undergraduates, graduate students, and postdocs—who want to understand why ecosystems fail and what makes restoration succeed.
-        </p>
-        <div class="cta-centered-actions">
-          <a href="/join-us" class="btn-cta-editorial btn-cta-primary">
-            <span>View Open Positions</span>
+      </div>
+
+      <!-- Segmented CTA tiles -->
+      <div class="cta-tiles">
+        <!-- Students -->
+        <div class="cta-tile cta-tile-students scroll-reveal stagger-1">
+          <div class="tile-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M4.26 10.147a60.436 60.436 0 00-.491 6.347A48.627 48.627 0 0112 20.904a48.627 48.627 0 018.232-4.41 60.46 60.46 0 00-.491-6.347m-15.482 0a50.57 50.57 0 00-2.658-.813A59.905 59.905 0 0112 3.493a59.902 59.902 0 0110.399 5.84c-.896.248-1.783.52-2.658.814m-15.482 0A50.697 50.697 0 0112 13.489a50.702 50.702 0 017.74-3.342M6.75 15a.75.75 0 100-1.5.75.75 0 000 1.5zm0 0v-3.675A55.378 55.378 0 0112 8.443m-7.007 11.55A5.981 5.981 0 006.75 15.75v-1.5" />
+            </svg>
+          </div>
+          <h3 class="tile-title">Train With Us</h3>
+          <p class="tile-desc">
+            Undergrads, grad students, and postdocs. Hands-on field work, quantitative training, and co-authorship.
+          </p>
+          <a href="/join-us" class="tile-link">
+            <span>View opportunities</span>
             <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
             </svg>
           </a>
-          <a href="/for-funders" class="btn-cta-link">
-            Or partner with us as a funder →
+        </div>
+
+        <!-- Collaborators -->
+        <div class="cta-tile cta-tile-collab scroll-reveal stagger-2">
+          <div class="tile-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M18 18.72a9.094 9.094 0 003.741-.479 3 3 0 00-4.682-2.72m.94 3.198l.001.031c0 .225-.012.447-.037.666A11.944 11.944 0 0112 21c-2.17 0-4.207-.576-5.963-1.584A6.062 6.062 0 016 18.719m12 0a5.971 5.971 0 00-.941-3.197m0 0A5.995 5.995 0 0012 12.75a5.995 5.995 0 00-5.058 2.772m0 0a3 3 0 00-4.681 2.72 8.986 8.986 0 003.74.477m.94-3.197a5.971 5.971 0 00-.94 3.197M15 6.75a3 3 0 11-6 0 3 3 0 016 0zm6 3a2.25 2.25 0 11-4.5 0 2.25 2.25 0 014.5 0zm-13.5 0a2.25 2.25 0 11-4.5 0 2.25 2.25 0 014.5 0z" />
+            </svg>
+          </div>
+          <h3 class="tile-title">Collaborate</h3>
+          <p class="tile-desc">
+            Managers and practitioners. We build tools and provide data for restoration planning and MPA evaluation.
+          </p>
+          <a href="mailto:astier@ucsb.edu" class="tile-link">
+            <span>Get in touch</span>
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+            </svg>
+          </a>
+        </div>
+
+        <!-- Funders -->
+        <div class="cta-tile cta-tile-funders scroll-reveal stagger-3">
+          <div class="tile-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M12 21v-8.25M15.75 21v-8.25M8.25 21v-8.25M3 9l9-6 9 6m-1.5 12V10.332A48.36 48.36 0 0012 9.75c-2.551 0-5.056.2-7.5.582V21M3 21h18M12 6.75h.008v.008H12V6.75z" />
+            </svg>
+          </div>
+          <h3 class="tile-title">Fund Our Work</h3>
+          <p class="tile-desc">
+            Philanthropy and grants. Support student training, field expeditions, and tool development.
+          </p>
+          <a href="/for-funders" class="tile-link">
+            <span>Learn more</span>
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+            </svg>
           </a>
         </div>
       </div>
@@ -362,7 +513,7 @@ const formatDate = (dateStr: string) => {
   @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600&display=swap');
 
   /* ============================================
-     Hero Section - Scientific Editorial
+     Hero Section
      ============================================ */
   .hero {
     @apply relative min-h-[100svh] flex items-center overflow-hidden;
@@ -419,7 +570,7 @@ const formatDate = (dateStr: string) => {
     @apply px-4;
   }
 
-  /* Title block - Editorial treatment */
+  /* Title block */
   .hero-title-block {
     @apply mb-5;
   }
@@ -478,28 +629,11 @@ const formatDate = (dateStr: string) => {
   }
 
   .hero-desc {
-    @apply text-sm md:text-base text-white/50 mb-4 leading-relaxed max-w-lg;
+    @apply text-sm md:text-base text-white/70 mb-2 leading-relaxed max-w-xl;
   }
 
-  /* New paper announcement */
-  .new-paper-link {
-    @apply inline-flex items-center gap-2 mb-6 no-underline;
-    @apply text-sm text-white/60;
-    transition: all 200ms ease;
-  }
-
-  .new-paper-link:hover {
-    @apply text-accent;
-  }
-
-  .new-badge {
-    @apply text-[10px] font-bold uppercase tracking-wider;
-    @apply px-2 py-0.5 rounded-full;
-    @apply bg-accent/20 text-accent;
-  }
-
-  .new-paper-text {
-    @apply font-medium;
+  .hero-credibility {
+    @apply text-xs md:text-sm text-white/40 mb-6 font-medium uppercase tracking-wider;
   }
 
   /* Actions */
@@ -539,16 +673,16 @@ const formatDate = (dateStr: string) => {
     @apply w-4 h-4;
   }
 
-  .btn-editorial-primary.btn-editorial-dark {
+  .btn-editorial-primary.btn-editorial-light {
     @apply bg-accent text-white;
   }
 
-  .btn-editorial-primary.btn-editorial-dark::before {
+  .btn-editorial-primary.btn-editorial-light::before {
     @apply bg-white;
   }
 
-  .btn-editorial-primary.btn-editorial-dark:hover .btn-text,
-  .btn-editorial-primary.btn-editorial-dark:hover .btn-icon {
+  .btn-editorial-primary.btn-editorial-light:hover .btn-text,
+  .btn-editorial-primary.btn-editorial-light:hover .btn-icon {
     @apply text-navy-deep;
   }
 
@@ -642,24 +776,91 @@ const formatDate = (dateStr: string) => {
     background-clip: text;
   }
 
-  .title-serif-inline {
-    font-family: 'Playfair Display', Georgia, serif;
-    @apply font-semibold italic text-accent;
-  }
-
   .section-desc-editorial {
     @apply text-lg text-muted leading-relaxed max-w-2xl;
   }
 
   .section-desc-light {
-    @apply text-white/50;
+    @apply text-white/60;
   }
 
   /* ============================================
-     Field Sites - Where We Work
+     Approach Section - How We Work
+     ============================================ */
+  .approach-section {
+    @apply relative py-20 md:py-28 pb-28 md:pb-36 bg-surface;
+  }
+
+  .approach-grid {
+    @apply grid md:grid-cols-3 gap-6 lg:gap-8 mb-12;
+  }
+
+  .approach-card {
+    @apply p-6 lg:p-8 rounded-2xl;
+    @apply bg-surface-card border border-line/50;
+    transition: all 400ms cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .approach-card:hover {
+    @apply border-accent/30;
+    transform: translateY(-4px);
+    box-shadow: 0 20px 40px -12px rgba(0, 0, 0, 0.3);
+  }
+
+  .approach-icon {
+    @apply w-12 h-12 mb-5 text-accent;
+  }
+
+  .approach-icon svg {
+    @apply w-full h-full;
+  }
+
+  .approach-title {
+    @apply text-lg font-bold text-ink mb-3;
+  }
+
+  .approach-desc {
+    @apply text-sm text-muted leading-relaxed;
+  }
+
+  /* Unifying question */
+  .unifying-question {
+    @apply flex gap-5 p-6 lg:p-8 rounded-2xl;
+    @apply bg-accent/5 border border-accent/20;
+  }
+
+  .question-accent {
+    @apply w-1 flex-shrink-0 rounded-full;
+    @apply bg-gradient-to-b from-accent to-accent-2;
+  }
+
+  .question-content {
+    @apply flex flex-col gap-2;
+  }
+
+  .question-label {
+    @apply text-xs font-bold uppercase tracking-wider text-accent;
+  }
+
+  .question-text {
+    @apply text-base md:text-lg text-ink/90 leading-relaxed italic;
+    font-family: 'Playfair Display', Georgia, serif;
+  }
+
+  /* ============================================
+     Field Sites Section
      ============================================ */
   .field-sites {
-    @apply relative py-20 md:py-28 pb-28 md:pb-36 bg-surface;
+    @apply relative py-20 md:py-28 pb-28 md:pb-36 overflow-hidden;
+  }
+
+  .field-sites-bg {
+    @apply absolute inset-0;
+  }
+
+  .field-sites-gradient {
+    @apply absolute inset-0;
+    background: linear-gradient(180deg, #0b1929 0%, #0f172a 50%, #0b1929 100%);
   }
 
   .sites-grid {
@@ -668,13 +869,14 @@ const formatDate = (dateStr: string) => {
 
   .site-card {
     @apply relative block rounded-2xl overflow-hidden no-underline;
-    @apply bg-surface-card border border-line/50;
+    @apply bg-white/[0.03] border border-white/10;
     transition: all 500ms cubic-bezier(0.4, 0, 0.2, 1);
   }
 
   .site-card:hover {
+    @apply bg-white/[0.06];
     transform: translateY(-8px);
-    box-shadow: 0 30px 60px -12px rgba(0, 0, 0, 0.4);
+    box-shadow: 0 30px 60px -12px rgba(0, 0, 0, 0.5);
   }
 
   .site-image {
@@ -693,11 +895,7 @@ const formatDate = (dateStr: string) => {
 
   .site-overlay {
     @apply absolute inset-0;
-    background: linear-gradient(
-      to top,
-      rgba(10, 15, 25, 0.6) 0%,
-      transparent 60%
-    );
+    background: linear-gradient(to top, rgba(10, 15, 25, 0.6) 0%, transparent 60%);
   }
 
   .site-content {
@@ -710,7 +908,7 @@ const formatDate = (dateStr: string) => {
 
   .site-location {
     @apply inline-flex items-center gap-1.5;
-    @apply text-xs font-bold uppercase tracking-wide text-muted;
+    @apply text-xs font-bold uppercase tracking-wide text-white/50;
   }
 
   .site-badge {
@@ -726,7 +924,7 @@ const formatDate = (dateStr: string) => {
   }
 
   .site-title {
-    @apply text-2xl md:text-3xl font-black text-ink mb-2;
+    @apply text-2xl md:text-3xl font-black text-white mb-2;
     transition: color 300ms ease;
   }
 
@@ -739,24 +937,24 @@ const formatDate = (dateStr: string) => {
   }
 
   .site-dynamics {
-    @apply text-muted text-sm mb-6;
+    @apply text-white/50 text-sm mb-5;
     font-style: italic;
   }
 
   .site-research {
-    @apply mb-6;
+    @apply mb-5;
   }
 
   .research-heading {
-    @apply text-xs font-bold uppercase tracking-wider text-muted mb-3;
+    @apply text-xs font-bold uppercase tracking-wider text-white/40 mb-2;
   }
 
   .research-list {
-    @apply space-y-1.5 list-none p-0 m-0;
+    @apply space-y-1 list-none p-0 m-0;
   }
 
   .research-list li {
-    @apply text-sm text-ink/80 leading-relaxed pl-4 relative;
+    @apply text-sm text-white/70 leading-relaxed pl-4 relative;
   }
 
   .research-list li::before {
@@ -770,6 +968,18 @@ const formatDate = (dateStr: string) => {
 
   .site-card-kelp .research-list li::before {
     color: #4ade80;
+  }
+
+  .site-output {
+    @apply flex flex-col gap-1 mb-5 p-3 rounded-lg bg-white/[0.03];
+  }
+
+  .output-label {
+    @apply text-[10px] font-bold uppercase tracking-wider text-accent/70;
+  }
+
+  .output-text {
+    @apply text-sm text-white/80;
   }
 
   .site-cta {
@@ -802,43 +1012,33 @@ const formatDate = (dateStr: string) => {
   }
 
   .site-card-coral:hover {
-    border-color: rgba(251, 146, 60, 0.4);
+    border-color: rgba(251, 146, 60, 0.3);
   }
 
   .site-card-kelp:hover {
-    border-color: rgba(74, 222, 128, 0.4);
-  }
-
-  .btn-outline-editorial {
-    @apply inline-flex items-center gap-2 px-6 py-3;
-    @apply text-white font-bold text-sm;
-    @apply border border-white/30 rounded-full no-underline;
-    @apply transition-all duration-300;
-  }
-
-  .btn-outline-editorial:hover {
-    @apply border-accent bg-accent/10 gap-3;
+    border-color: rgba(74, 222, 128, 0.3);
   }
 
   /* ============================================
-     News Section - Editorial Grid
+     News Section
      ============================================ */
   .news-section {
-    @apply relative py-20 md:py-28 pb-28 md:pb-36 overflow-hidden;
-    background: linear-gradient(180deg, #0b1929 0%, #0f172a 50%, #0b1929 100%);
-  }
-
-  .news-bg {
-    @apply absolute inset-0;
-  }
-
-  .news-gradient-overlay {
-    @apply absolute inset-0;
-    background: radial-gradient(ellipse at center, transparent 0%, rgba(11, 25, 41, 0.5) 100%);
+    @apply relative py-20 md:py-28 pb-28 md:pb-36 bg-surface;
   }
 
   .news-header {
     @apply flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4 mb-10;
+  }
+
+  .btn-outline-editorial-dark {
+    @apply inline-flex items-center gap-2 px-6 py-3;
+    @apply text-ink font-bold text-sm;
+    @apply border border-line rounded-full no-underline;
+    @apply transition-all duration-300;
+  }
+
+  .btn-outline-editorial-dark:hover {
+    @apply border-accent text-accent bg-accent/5 gap-3;
   }
 
   .news-editorial-grid {
@@ -847,16 +1047,14 @@ const formatDate = (dateStr: string) => {
 
   .news-editorial-card {
     @apply rounded-2xl overflow-hidden;
-    @apply bg-white/[0.03] border border-white/10;
-    @apply backdrop-blur-sm;
+    @apply bg-surface-card border border-line/50;
     transition: all 400ms cubic-bezier(0.4, 0, 0.2, 1);
   }
 
   .news-editorial-card:hover {
-    @apply bg-white/[0.06];
+    @apply border-accent/30;
     transform: translateY(-6px);
-    border-color: rgba(56, 189, 248, 0.3);
-    box-shadow: 0 20px 40px -12px rgba(0, 0, 0, 0.4);
+    box-shadow: 0 20px 40px -12px rgba(0, 0, 0, 0.3);
   }
 
   .news-featured {
@@ -906,7 +1104,7 @@ const formatDate = (dateStr: string) => {
   }
 
   .news-date {
-    @apply text-xs text-white/40;
+    @apply text-xs text-muted;
   }
 
   .news-category {
@@ -914,7 +1112,7 @@ const formatDate = (dateStr: string) => {
   }
 
   .news-editorial-title {
-    @apply text-lg font-bold text-white mb-3 leading-snug;
+    @apply text-lg font-bold text-ink mb-3 leading-snug;
     display: -webkit-box;
     -webkit-line-clamp: 2;
     -webkit-box-orient: vertical;
@@ -932,7 +1130,7 @@ const formatDate = (dateStr: string) => {
   }
 
   .news-editorial-excerpt {
-    @apply text-white/50 text-sm leading-relaxed mb-4;
+    @apply text-muted text-sm leading-relaxed mb-4;
     display: -webkit-box;
     -webkit-line-clamp: 3;
     -webkit-box-orient: vertical;
@@ -953,33 +1151,58 @@ const formatDate = (dateStr: string) => {
   }
 
   /* ============================================
-     About Section - Editorial Layout
+     Team Section
      ============================================ */
-  .about-section {
-    @apply relative py-20 md:py-28 pb-28 md:pb-36 bg-surface;
+  .team-section {
+    @apply relative py-20 md:py-28 pb-28 md:pb-36 overflow-hidden;
   }
 
-  .about-editorial {
+  .team-bg {
+    @apply absolute inset-0;
+  }
+
+  .team-gradient {
+    @apply absolute inset-0;
+    background: linear-gradient(180deg, #0b1929 0%, #0f172a 50%, #0b1929 100%);
+  }
+
+  .team-editorial {
     @apply grid lg:grid-cols-2 gap-12 lg:gap-20 items-center;
   }
 
-  .about-content .section-title-editorial {
-    @apply text-left;
+  .team-text {
+    @apply text-white/60 text-lg leading-relaxed mb-6;
   }
 
-  .about-text {
-    @apply text-muted text-lg leading-relaxed mb-8;
+  .team-differentiators {
+    @apply space-y-3 mb-8;
+  }
+
+  .differentiator {
+    @apply flex items-center gap-3;
+  }
+
+  .diff-icon {
+    @apply w-5 h-5 text-accent-2;
+  }
+
+  .diff-icon svg {
+    @apply w-full h-full;
+  }
+
+  .diff-text {
+    @apply text-sm text-white/70;
   }
 
   .pi-editorial-card {
     @apply flex items-center gap-5 p-5 rounded-xl mb-8;
-    @apply bg-surface-card border border-line/50 no-underline;
+    @apply bg-white/[0.03] border border-white/10 no-underline;
     transition: all 300ms ease;
   }
 
   .pi-editorial-card:hover {
-    @apply border-accent/30;
-    box-shadow: 0 10px 30px -8px rgba(0, 0, 0, 0.2);
+    @apply bg-white/[0.06] border-accent/30;
+    box-shadow: 0 10px 30px -8px rgba(0, 0, 0, 0.3);
   }
 
   .pi-avatar {
@@ -992,7 +1215,7 @@ const formatDate = (dateStr: string) => {
   }
 
   .pi-name {
-    @apply text-base font-bold text-ink;
+    @apply text-base font-bold text-white;
   }
 
   .pi-role {
@@ -1000,11 +1223,11 @@ const formatDate = (dateStr: string) => {
   }
 
   .pi-bio {
-    @apply text-xs text-muted mt-1 line-clamp-2;
+    @apply text-xs text-white/50 mt-1 line-clamp-2;
   }
 
   .pi-arrow {
-    @apply w-5 h-5 text-accent/40 flex-shrink-0;
+    @apply w-5 h-5 text-white/30 flex-shrink-0;
     transition: all 200ms ease;
   }
 
@@ -1013,20 +1236,21 @@ const formatDate = (dateStr: string) => {
     transform: translateX(4px);
   }
 
-  .about-stats-grid {
+  .team-stats-grid {
     @apply grid grid-cols-2 gap-5;
   }
 
   .stat-editorial {
     @apply p-6 lg:p-8 rounded-2xl text-center;
-    @apply bg-surface-card border border-line/50;
+    @apply bg-white/[0.03] border border-white/10;
     transition: all 300ms ease;
   }
 
   .stat-editorial:hover {
+    @apply bg-white/[0.06];
     transform: translateY(-4px);
     border-color: rgba(56, 189, 248, 0.3);
-    box-shadow: 0 15px 30px -8px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 15px 30px -8px rgba(0, 0, 0, 0.3);
   }
 
   .stat-value {
@@ -1039,132 +1263,114 @@ const formatDate = (dateStr: string) => {
   }
 
   .stat-label {
-    @apply block text-xs font-bold text-muted uppercase tracking-wider mt-2;
+    @apply block text-xs font-bold text-white/40 uppercase tracking-wider mt-2;
   }
 
   /* ============================================
-     Final CTA Section
+     Final CTA Section - Segmented Pathways
      ============================================ */
   .final-cta {
-    @apply relative py-20 md:py-28 overflow-hidden;
-    background: linear-gradient(180deg, #0b1929 0%, #0f172a 100%);
+    @apply relative py-20 md:py-28 bg-surface;
   }
 
-  .final-cta-bg {
-    @apply absolute inset-0 overflow-hidden;
+  .cta-header {
+    @apply mb-12 text-center;
   }
 
-  .cta-orb {
-    @apply absolute rounded-full;
-    filter: blur(120px);
+  .cta-header .section-eyebrow {
+    @apply mb-2;
   }
 
-  .cta-orb-1 {
-    @apply w-[400px] h-[400px] top-0 left-1/4;
-    background: radial-gradient(circle, rgba(56, 189, 248, 0.15), transparent 70%);
+  .cta-header .section-title-editorial {
+    @apply mx-auto;
   }
 
-  .cta-orb-2 {
-    @apply w-[350px] h-[350px] bottom-0 right-1/4;
-    background: radial-gradient(circle, rgba(45, 212, 191, 0.12), transparent 70%);
+  .cta-tiles {
+    @apply grid md:grid-cols-3 gap-6 lg:gap-8 max-w-4xl mx-auto;
   }
 
-  .cta-editorial-grid {
-    @apply grid md:grid-cols-2 gap-6 lg:gap-8;
+  .cta-tile {
+    @apply p-6 lg:p-8 rounded-2xl text-center;
+    @apply border transition-all duration-300;
   }
 
-  .cta-editorial-card {
-    @apply relative p-8 md:p-10 rounded-2xl overflow-hidden text-center;
+  .cta-tile-students {
+    @apply bg-accent/5 border-accent/20;
   }
 
-  .cta-card-join {
-    @apply border border-accent/30;
-    background: linear-gradient(135deg, rgba(56, 189, 248, 0.08) 0%, transparent 100%);
+  .cta-tile-students:hover {
+    @apply bg-accent/10 border-accent/40;
+    transform: translateY(-4px);
+    box-shadow: 0 20px 40px -12px rgba(56, 189, 248, 0.2);
   }
 
-  .cta-card-join::before {
-    content: '';
-    @apply absolute inset-0 opacity-40;
-    background: radial-gradient(circle at top right, rgba(56, 189, 248, 0.2), transparent 50%);
+  .cta-tile-collab {
+    @apply bg-surface-card border-line/50;
   }
 
-  .cta-card-funders {
-    @apply border border-accent-2/30;
-    background: linear-gradient(135deg, rgba(45, 212, 191, 0.08) 0%, transparent 100%);
+  .cta-tile-collab:hover {
+    @apply border-line;
+    transform: translateY(-4px);
+    box-shadow: 0 20px 40px -12px rgba(0, 0, 0, 0.3);
   }
 
-  .cta-card-funders::before {
-    content: '';
-    @apply absolute inset-0 opacity-40;
-    background: radial-gradient(circle at top right, rgba(45, 212, 191, 0.2), transparent 50%);
+  .cta-tile-funders {
+    @apply bg-accent-2/5 border-accent-2/20;
   }
 
-  .cta-editorial-eyebrow {
-    @apply text-[10px] font-bold uppercase tracking-[0.2em] text-accent mb-4 block relative z-10;
+  .cta-tile-funders:hover {
+    @apply bg-accent-2/10 border-accent-2/40;
+    transform: translateY(-4px);
+    box-shadow: 0 20px 40px -12px rgba(45, 212, 191, 0.2);
   }
 
-  .cta-eyebrow-alt {
+  .tile-icon {
+    @apply w-12 h-12 mx-auto mb-5;
+  }
+
+  .cta-tile-students .tile-icon {
+    @apply text-accent;
+  }
+
+  .cta-tile-collab .tile-icon {
+    @apply text-muted;
+  }
+
+  .cta-tile-funders .tile-icon {
     @apply text-accent-2;
   }
 
-  .cta-editorial-title {
-    @apply text-2xl md:text-3xl font-black text-white mb-4 relative z-10;
+  .tile-icon svg {
+    @apply w-full h-full;
   }
 
-  .cta-editorial-desc {
-    @apply text-white/50 mb-6 max-w-sm mx-auto relative z-10;
+  .tile-title {
+    @apply text-lg font-bold text-ink mb-3;
   }
 
-  .btn-cta-editorial {
-    @apply inline-flex items-center gap-2 px-6 py-3;
-    @apply font-bold text-sm rounded-full no-underline;
-    @apply transition-all duration-300 relative z-10;
+  .tile-desc {
+    @apply text-sm text-muted leading-relaxed mb-5;
   }
 
-  .btn-cta-editorial:hover {
+  .tile-link {
+    @apply inline-flex items-center gap-2 font-bold text-sm no-underline;
+    @apply transition-all duration-300;
+  }
+
+  .cta-tile-students .tile-link {
+    @apply text-accent;
+  }
+
+  .cta-tile-collab .tile-link {
+    @apply text-ink;
+  }
+
+  .cta-tile-funders .tile-link {
+    @apply text-accent-2;
+  }
+
+  .cta-tile:hover .tile-link {
     @apply gap-3;
-    transform: translateY(-2px);
-  }
-
-  .btn-cta-primary {
-    @apply bg-accent text-white;
-  }
-
-  .btn-cta-primary:hover {
-    box-shadow: 0 10px 30px -5px rgba(56, 189, 248, 0.4);
-  }
-
-  .btn-cta-secondary {
-    @apply border-2 border-accent-2/50 text-white;
-  }
-
-  .btn-cta-secondary:hover {
-    @apply border-accent-2 bg-accent-2/10;
-  }
-
-  /* Centered CTA Layout */
-  .cta-centered {
-    @apply max-w-2xl mx-auto text-center;
-  }
-
-  .cta-centered-title {
-    @apply text-3xl md:text-4xl lg:text-5xl font-black text-white mb-6 leading-tight;
-  }
-
-  .cta-centered-desc {
-    @apply text-lg text-white/60 mb-8 leading-relaxed;
-  }
-
-  .cta-centered-actions {
-    @apply flex flex-col items-center gap-4;
-  }
-
-  .btn-cta-link {
-    @apply text-sm text-white/50 no-underline transition-colors;
-  }
-
-  .btn-cta-link:hover {
-    @apply text-accent-2;
   }
 
   /* ============================================
@@ -1216,7 +1422,11 @@ const formatDate = (dateStr: string) => {
     }
 
     .hero-desc {
-      @apply text-xs mb-4;
+      @apply text-xs mb-2;
+    }
+
+    .hero-credibility {
+      @apply text-[10px] mb-4;
     }
 
     .hero-actions {
@@ -1228,6 +1438,17 @@ const formatDate = (dateStr: string) => {
       @apply px-4 py-2.5 text-xs;
     }
 
+    .approach-grid {
+      @apply grid-cols-1;
+    }
+
+    .unifying-question {
+      @apply flex-col;
+    }
+
+    .question-accent {
+      @apply w-full h-1;
+    }
   }
 
   /* ============================================
@@ -1248,10 +1469,12 @@ const formatDate = (dateStr: string) => {
       animation: none;
     }
 
+    .approach-card,
     .site-card,
     .news-editorial-card,
     .stat-editorial,
-    .pi-editorial-card {
+    .pi-editorial-card,
+    .cta-tile {
       transition: none;
     }
 
