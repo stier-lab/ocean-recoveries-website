@@ -14,6 +14,10 @@ const totalPublications = publications.length;
 const openAccessCount = publications.filter(p => p.openAccess).length;
 const dataCount = publications.filter(p => p.dataAvailable).length;
 const codeCount = publications.filter(p => p.codeUrl).length;
+
+// Get year range
+const years = publications.map(p => p.year).filter(Boolean);
+const yearRange = years.length > 0 ? `${Math.min(...years)}–${Math.max(...years)}` : '';
 ---
 
 <Layout
@@ -27,6 +31,41 @@ const codeCount = publications.filter(p => p.codeUrl).length;
       { name: 'Publications', url: '/publications' }
     ]}
   />
+
+  <!-- Page Header -->
+  <section class="page-header">
+    <div class="header-bg"></div>
+    <div class="container">
+      <div class="header-content">
+        <div class="header-eyebrow">
+          <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+          </svg>
+          <span>Peer-Reviewed Research</span>
+        </div>
+        <h1 class="page-title">Publications</h1>
+        <p class="page-description">
+          {totalPublications} papers spanning coral reef resilience, kelp forest dynamics, and marine conservation.
+        </p>
+        <div class="header-stats">
+          <div class="stat-item">
+            <span class="stat-value">{totalPublications}</span>
+            <span class="stat-label">Publications</span>
+          </div>
+          <div class="stat-divider"></div>
+          <div class="stat-item">
+            <span class="stat-value">{openAccessCount}</span>
+            <span class="stat-label">Open Access</span>
+          </div>
+          <div class="stat-divider"></div>
+          <div class="stat-item">
+            <span class="stat-value">{yearRange}</span>
+            <span class="stat-label">Years Active</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
   <!-- Publications -->
   <section class="publications-section">
@@ -131,10 +170,104 @@ const codeCount = publications.filter(p => p.codeUrl).length;
 
 <style>
   /* ============================================
+     PAGE HEADER
+     ============================================ */
+  .page-header {
+    position: relative;
+    padding: 7rem 0 3rem;
+    background: #0f172a;
+    overflow: hidden;
+  }
+
+  .header-bg {
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse 80% 50% at 50% -20%, rgba(56, 189, 248, 0.08) 0%, transparent 50%),
+      radial-gradient(ellipse 60% 40% at 80% 80%, rgba(45, 212, 191, 0.05) 0%, transparent 40%);
+    pointer-events: none;
+  }
+
+  .header-content {
+    position: relative;
+    max-width: 640px;
+  }
+
+  .header-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+    font-size: 0.8rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: #38bdf8;
+  }
+
+  .header-eyebrow svg {
+    width: 1.125rem;
+    height: 1.125rem;
+    opacity: 0.8;
+  }
+
+  .page-title {
+    font-size: clamp(2.25rem, 5vw, 3rem);
+    font-weight: 800;
+    color: #f1f5f9;
+    line-height: 1.1;
+    letter-spacing: -0.025em;
+    margin: 0 0 0.75rem;
+  }
+
+  .page-description {
+    font-size: 1.125rem;
+    color: rgba(241, 245, 249, 0.6);
+    line-height: 1.6;
+    margin: 0 0 1.5rem;
+  }
+
+  .header-stats {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+  }
+
+  .stat-item {
+    display: flex;
+    flex-direction: column;
+    gap: 0.125rem;
+  }
+
+  .stat-value {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #f1f5f9;
+    line-height: 1;
+    font-variant-numeric: tabular-nums;
+  }
+
+  .stat-label {
+    font-size: 0.75rem;
+    font-weight: 500;
+    color: rgba(241, 245, 249, 0.45);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  .stat-divider {
+    width: 1px;
+    height: 2rem;
+    background: rgba(255, 255, 255, 0.1);
+  }
+
+  /* ============================================
      PUBLICATIONS SECTION
      ============================================ */
   .publications-section {
-    padding: 6rem 0 4rem;
+    padding: 3rem 0 4rem;
     background: #0f172a;
   }
 
@@ -333,8 +466,21 @@ const codeCount = publications.filter(p => p.codeUrl).length;
      RESPONSIVE
      ============================================ */
   @media (max-width: 768px) {
+    .page-header {
+      padding: 6rem 0 2rem;
+    }
+
+    .header-stats {
+      flex-wrap: wrap;
+      gap: 1rem 1.5rem;
+    }
+
+    .stat-divider {
+      display: none;
+    }
+
     .publications-section {
-      padding: 5rem 0 3rem;
+      padding: 2rem 0 3rem;
     }
 
     .stats-grid {
