@@ -43,7 +43,7 @@ export const currentTeam: TeamMember[] = [
     image: '/images/raine.jpg',
     hook: 'Theoretician modeling kelp and coral reef ecosystems; building a restoration strategy evaluation tool to guide effective coral recovery.',
     tags: ['Theory', 'Kelp', 'Coral reefs', 'Restoration modeling'],
-    email: 'raine@ucsb.edu',
+    email: 'adetmer@ucsb.edu',
     order: 2,
   },
   {
@@ -63,7 +63,7 @@ export const currentTeam: TeamMember[] = [
     image: '/images/molly.jpg',
     hook: 'Marine molecular biologist integrating genomic and field approaches to understand coral wound healing and resilience under climate stress.',
     tags: ['Molecular ecology', 'Coral resilience', 'Wound healing', 'Genomics'],
-    email: 'molly@ucsb.edu',
+    email: 'mollybrzezinski@ucsb.edu',
     order: 4,
   },
   {
@@ -73,6 +73,7 @@ export const currentTeam: TeamMember[] = [
     image: '/images/hayden.jpg',
     hook: 'Works on algal functional traits and coral regeneration experiments; creating bio-art with the Coal Oil Point Reserve.',
     tags: ['Algae traits', 'Coral regeneration', 'Bio art'],
+    email: 'haydenvega@ucsb.edu',
     order: 5,
   },
   {
@@ -82,6 +83,7 @@ export const currentTeam: TeamMember[] = [
     image: '/images/jaden.jpg',
     hook: 'Exploring alternative fisheries strategies that integrate marine protected areas to optimize the California spiny lobster fishery.',
     tags: ['Fisheries modeling', 'MPAs', 'Lobster fishery'],
+    email: 'jorli@ucsb.edu',
     order: 6,
   },
 ];
