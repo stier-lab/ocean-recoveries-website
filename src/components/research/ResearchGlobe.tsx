@@ -376,11 +376,11 @@ export default function ResearchMap() {
         @keyframes fadeInMarker {
           from {
             opacity: 0;
-            transform: translate(var(--x), var(--y)) scale(0.5);
+            transform: scale(0.5);
           }
           to {
             opacity: 1;
-            transform: translate(var(--x), var(--y)) scale(1);
+            transform: scale(1);
           }
         }
 
