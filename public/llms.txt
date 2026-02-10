@@ -88,7 +88,7 @@ This site provides JSON-LD structured data on every page including:
 - WebSite schema with SearchAction
 
 ## Last Updated
-2024-12-22
+2026-02-09
 
 ## License
 Website content is copyrighted. Academic publications may have various licenses - check individual DOIs.

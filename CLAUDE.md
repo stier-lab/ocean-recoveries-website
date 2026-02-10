@@ -25,8 +25,10 @@ ocean-recoveries-website/
 │   ├── components/          # Astro and React components
 │   │   ├── layout/         # Nav.astro, Footer.astro, Breadcrumbs.astro
 │   │   ├── publications/   # PublicationList.tsx (React)
-│   │   ├── people/         # PersonCard.astro
-│   │   └── shared/         # ThemeToggle.astro
+│   │   ├── people/         # PersonCard.astro (unused)
+│   │   ├── research/       # ResearchGlobe.tsx, StudySitesMap.tsx (React)
+│   │   ├── seo/            # JSON-LD schema components
+│   │   └── shared/         # CommandPalette.astro, GlobalEffects.astro, ThemeToggle.astro
 │   ├── data/               # TypeScript data files (source of truth)
 │   │   ├── posts.ts        # AI-generated news articles (~77 posts)
 │   │   ├── publications.ts # 75 publications with metadata
@@ -149,6 +151,34 @@ Uses fluid typography with `clamp()` for responsive sizing.
 
 ## Important Patterns
 
+### View Transition Listener Cleanup
+
+Astro view transitions preserve `window` and `document` across page swaps. Any `addEventListener` on these targets must be cleaned up to prevent accumulation. Use this pattern in all `<script>` tags that register global listeners:
+
+```typescript
+let currentHandler: (() => void) | null = null;
+
+const init = () => {
+  // Clean up previous listener
+  if (currentHandler) {
+    window.removeEventListener('scroll', currentHandler);
+    currentHandler = null;
+  }
+  // ... setup ...
+  currentHandler = handler;
+  window.addEventListener('scroll', handler, { passive: true });
+};
+
+init();
+document.addEventListener('astro:after-swap', init);
+```
+
+For `IntersectionObserver`, call `.disconnect()` on the previous observer before creating a new one.
+
+Element-scoped listeners (on DOM nodes inside `<main>`) are safe — they get replaced during view transitions.
+
+React components with `useEffect` cleanup are also safe.
+
 ### Image References
 
 All images are referenced from `/images/` (maps to `public/images/`):
@@ -196,9 +226,11 @@ The `PublicationList.tsx` React component provides:
 ## Notes for Future Sessions
 
 1. **Data is in TypeScript files, not JSON** - The source of truth is in `src/data/*.ts`
-2. **News is auto-generated** - Don't manually edit `posts.ts` content; regenerate from analyzed/
-3. **75 publications, ~77 posts** - Some publications have multiple news posts
-4. **Images need optimization** - Raw images go in `assets/`, optimized versions in `public/images/`
+2. **News is auto-generated** - Don't manually edit `posts.ts` content; regenerate via `node scripts/generate-news.cjs`
+3. **75 publications, 77 posts** - Some publications have multiple news posts; 2 recent 2025 pubs in posts.ts not yet in publications.ts
+4. **Images need optimization** - Raw images go in `assets/`, optimized versions in `public/images/`. ~22 unreferenced images (~43 MB) and several oversized images (up to 21 MB) remain in `public/images/`
+5. **View transition listener leaks** - The #1 bug category historically. Always clean up `window`/`document` listeners in `<script>` tags (see pattern above)
+6. **Dead components** - `PersonCard.astro`, `ScholarlyArticleSchema.astro`, and `PersonSchema.astro` exist but are unused
 
 ---
 

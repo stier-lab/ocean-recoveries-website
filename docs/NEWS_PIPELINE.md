@@ -13,20 +13,22 @@ The pipeline converts scientific publications (PDFs) into engaging news-style ar
 
 ```
 publications/
-├── analyzed/           # AI-generated analysis JSON files (75 files)
+├── analyzed/           # AI-generated analysis JSON files (77 files)
 │   ├── 1-analysis.json
 │   ├── 2-analysis.json
 │   └── ...
-└── pdfs/               # Source PDF files (if available)
+├── extracted/          # PDF text extractions (per-PDF JSON)
+├── Lab Publications/   # Source PDF files (86 PDFs)
+└── publications_full.json  # Unified publication database
 
 scripts/
-├── analyze-publication.cjs    # Main AI analysis script
-├── build-posts-from-analysis.cjs  # Converts JSONs to posts.ts
+├── generate-ai-news.cjs      # AI analysis + article generation (requires ANTHROPIC_API_KEY)
+├── generate-news.cjs          # Build hook: converts analyzed JSONs to posts.ts (npm run prebuild)
 ├── extract-pdfs.cjs           # PDF text extraction
 └── PIPELINE_PRD.md            # Detailed pipeline documentation
 
 src/data/
-└── posts.ts            # Generated TypeScript file with all posts
+└── posts.ts            # Auto-generated TypeScript file with all posts (DO NOT EDIT DIRECTLY)
 ```
 
 ## Quick Start
@@ -38,19 +40,19 @@ src/data/
 
 ### Analyzing a New Publication
 
-1. Add the publication PDF to `publications/pdfs/`
+1. Add the publication PDF to `publications/Lab Publications/`
 
-2. Run the analysis:
+2. Run PDF extraction:
    ```bash
-   ANTHROPIC_API_KEY=your-key node scripts/analyze-publication.cjs --id <publication_id>
+   node scripts/extract-pdfs.cjs
    ```
 
-3. Rebuild posts.ts:
+3. Generate AI news article:
    ```bash
-   node scripts/build-posts-from-analysis.cjs
+   ANTHROPIC_API_KEY=your-key node scripts/generate-ai-news.cjs --recent 1
    ```
 
-4. Rebuild the website:
+4. Rebuild the website (this runs `generate-news.cjs` as prebuild):
    ```bash
    npm run build
    ```

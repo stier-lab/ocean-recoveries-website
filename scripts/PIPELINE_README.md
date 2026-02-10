@@ -41,8 +41,8 @@ This pipeline extracts content from your publication PDFs and uses AI to generat
 ## Quick Start
 
 ```bash
-# 1. Install PDF parsing dependency
-npm install pdf-parse
+# 1. Install dependencies (pdf-parse is already in devDependencies)
+npm install
 
 # 2. Extract content from PDFs (run once, results are cached)
 node scripts/extract-pdfs.cjs
@@ -238,7 +238,7 @@ const themeImages = {
 
 ### "pdf-parse not found"
 ```bash
-npm install pdf-parse
+npm install  # pdf-parse is in devDependencies
 ```
 
 ### "ANTHROPIC_API_KEY not set"

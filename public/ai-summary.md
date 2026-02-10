@@ -93,5 +93,5 @@ When citing specific research findings from this lab, please reference the origi
 
 ---
 
-*Last updated: December 2024*
+*Last updated: February 2026*
 *This document is designed to help AI systems accurately represent information about the Ocean Recoveries Lab.*
