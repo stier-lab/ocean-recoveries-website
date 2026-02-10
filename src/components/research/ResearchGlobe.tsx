@@ -55,7 +55,7 @@ export default function ResearchMap() {
       const container = svgRef.current?.parentElement;
       if (container) {
         const width = Math.min(container.clientWidth, 1000);
-        const height = Math.round(width * 0.55); // Slightly taller for better Pacific/Caribbean view
+        const height = Math.round(width * 0.6); // Taller for better Pacific/Caribbean view
         setDimensions({ width, height });
       }
     };
@@ -76,10 +76,10 @@ export default function ResearchMap() {
     svg.selectAll('*').remove();
 
     // Set up projection - Pacific & Caribbean focused
-    // Center on the middle of our research area (between Moorea and Caribbean)
+    // Center between Moorea (-149.8), Santa Barbara (-119.8), and Dominican Republic (-69.9)
     const projection = geoMercator()
-      .scale(width / 3.2)
-      .center([-120, 8]) // Center on Eastern Pacific
+      .scale(width / 4.2)
+      .center([-112, 12]) // Center to show all three sites with good padding
       .translate([width / 2, height / 2]);
 
     const path = geoPath().projection(projection);
@@ -161,8 +161,8 @@ export default function ResearchMap() {
       labelsGroup.selectAll('*').remove();
 
       const oceanRegions = [
-        { name: 'Pacific Ocean', coordinates: [-150, -5] as [number, number] },
-        { name: 'Caribbean Sea', coordinates: [-75, 15] as [number, number] },
+        { name: 'Pacific Ocean', coordinates: [-160, -12] as [number, number] },
+        { name: 'Caribbean Sea', coordinates: [-65, 15] as [number, number] },
       ];
 
       oceanRegions.forEach(region => {
@@ -172,12 +172,12 @@ export default function ResearchMap() {
         labelsGroup.append('text')
           .attr('x', coords[0])
           .attr('y', coords[1])
-          .attr('fill', 'rgba(56, 189, 248, 0.25)')
-          .attr('font-size', '16px')
+          .attr('fill', 'rgba(56, 189, 248, 0.18)')
+          .attr('font-size', '13px')
           .attr('font-weight', '600')
           .attr('font-family', 'Inter, system-ui, sans-serif')
           .attr('text-anchor', 'middle')
-          .attr('letter-spacing', '3px')
+          .attr('letter-spacing', '4px')
           .text(region.name.toUpperCase());
       });
     };
@@ -237,9 +237,13 @@ export default function ResearchMap() {
         const coords = projection(site.coordinates);
         if (!coords) return;
 
-        const markerGroup = markersGroup.append('g')
+        // Outer group handles positioning (SVG transform)
+        // Inner group handles animation (CSS transform) so they don't conflict
+        const positionGroup = markersGroup.append('g')
+          .attr('transform', `translate(${coords[0]}, ${coords[1]})`);
+
+        const markerGroup = positionGroup.append('g')
           .attr('class', 'site-marker-group')
-          .attr('transform', `translate(${coords[0]}, ${coords[1]})`)
           .style('cursor', 'pointer')
           .style('opacity', 0)
           .style('animation', `fadeInMarker 0.5s ease-out ${index * 0.15}s forwards`);
