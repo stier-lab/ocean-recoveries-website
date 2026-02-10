@@ -1298,7 +1298,7 @@ Gallagher, Austin J.; Brandl, Simon J.; Stier, Adrian C. (2016). Intraspecific v
 *This paper is Open Access.*`,
   },
   {
-    slug: "only-3-of-world-s-large-predators-are-actually-recovering-gl",
+    slug: "only-3-of-world-s-large-predators-are-actually-recovering-gl-2",
     title: "Only 3% of World's Large Predators Are Actually Recovering - Global Study Reveals Alarming Trend",
     date: "2016-01-15",
     author: "Marshall et al.",
@@ -1855,7 +1855,7 @@ McKeon, C. Seabird; Stier, Adrian C.; McIlroy, Shelby E.; Bolker, Benjamin M. (2
 [Read the full paper](https://doi.org/10.1007/s00442-012-2275-2)`,
   },
   {
-    slug: "axolotls-lose-their-superpower-when-they-transform-into-land",
+    slug: "axolotls-lose-their-superpower-when-they-transform-into-land-2",
     title: "Axolotls Lose Their Superpower When They Transform Into Land-Dwelling Adults",
     date: "2012-01-15",
     author: "Seifert et al.",

@@ -161,9 +161,11 @@
 
     addInteractivity();
 
-    // Re-add after content changes
+    // Re-add after content changes (disconnect previous observer first)
+    if ((window as any).__cursorObserver) (window as any).__cursorObserver.disconnect();
     const observer = new MutationObserver(addInteractivity);
     observer.observe(document.body, { childList: true, subtree: true });
+    (window as any).__cursorObserver = observer;
   };
 
   // Magnetic Button Effect
@@ -199,9 +201,11 @@
 
     addMagneticEffect();
 
-    // Re-add after content changes
-    const observer = new MutationObserver(addMagneticEffect);
-    observer.observe(document.body, { childList: true, subtree: true });
+    // Re-add after content changes (disconnect previous observer first)
+    if ((window as any).__magneticObserver) (window as any).__magneticObserver.disconnect();
+    const magneticObserver = new MutationObserver(addMagneticEffect);
+    magneticObserver.observe(document.body, { childList: true, subtree: true });
+    (window as any).__magneticObserver = magneticObserver;
   };
 
   // Initialize all

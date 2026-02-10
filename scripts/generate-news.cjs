@@ -231,6 +231,18 @@ for (const file of files) {
   posts.push(post);
 }
 
+// Deduplicate slugs: if multiple posts share a slug, append a suffix
+const slugCounts = {};
+for (const post of posts) {
+  if (!slugCounts[post.slug]) {
+    slugCounts[post.slug] = 0;
+  }
+  slugCounts[post.slug]++;
+  if (slugCounts[post.slug] > 1) {
+    post.slug = `${post.slug}-${slugCounts[post.slug]}`;
+  }
+}
+
 // Sort posts by date descending (newest first)
 posts.sort((a, b) => new Date(b.date) - new Date(a.date));
 

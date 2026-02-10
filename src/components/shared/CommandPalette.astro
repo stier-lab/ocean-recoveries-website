@@ -330,7 +330,10 @@ const searchIndex = [
 
     // Load search index
     const indexScript = document.getElementById('search-index');
-    const searchIndex = indexScript ? JSON.parse(indexScript.textContent || '[]') : [];
+    let searchIndex: any[] = [];
+    try {
+      searchIndex = indexScript ? JSON.parse(indexScript.textContent || '[]') : [];
+    } catch { /* invalid JSON — fall back to empty index */ }
 
     let activeIndex = 0;
     let currentItems: HTMLElement[] = [];

@@ -186,6 +186,7 @@ export default function ResearchMap() {
     const loadWorldData = async () => {
       try {
         const response = await fetch('https://cdn.jsdelivr.net/npm/world-atlas@2/countries-110m.json');
+        if (!response.ok) throw new Error(`HTTP ${response.status}`);
         const world = await response.json();
         const topojson = await import('topojson-client');
         const countries = topojson.feature(world, world.objects.countries) as unknown as FeatureCollection<Geometry, GeoJsonProperties>;
