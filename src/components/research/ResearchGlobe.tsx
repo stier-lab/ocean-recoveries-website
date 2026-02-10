@@ -69,6 +69,9 @@ export default function ResearchMap() {
   useEffect(() => {
     if (!svgRef.current) return;
 
+    let cancelled = false;
+    const abortController = new AbortController();
+
     const svg = d3.select(svgRef.current);
     const { width, height } = dimensions;
 
@@ -185,16 +188,21 @@ export default function ResearchMap() {
     // Load world topology data
     const loadWorldData = async () => {
       try {
-        const response = await fetch('https://cdn.jsdelivr.net/npm/world-atlas@2/countries-110m.json');
+        const response = await fetch('https://cdn.jsdelivr.net/npm/world-atlas@2/countries-110m.json', {
+          signal: abortController.signal,
+        });
         if (!response.ok) throw new Error(`HTTP ${response.status}`);
         const world = await response.json();
+        if (cancelled) return;
         const topojson = await import('topojson-client');
+        if (cancelled) return;
         const countries = topojson.feature(world, world.objects.countries) as unknown as FeatureCollection<Geometry, GeoJsonProperties>;
         landDataRef.current = countries;
         countriesPath.datum(countries).attr('d', path as unknown as string);
         renderOceanLabels();
         renderMarkers();
       } catch (error) {
+        if (cancelled) return;
         console.error('Failed to load world data:', error);
         // Still render markers even if map fails
         renderOceanLabels();
@@ -333,6 +341,10 @@ export default function ResearchMap() {
 
     loadWorldData();
 
+    return () => {
+      cancelled = true;
+      abortController.abort();
+    };
   }, [dimensions]);
 
   return (

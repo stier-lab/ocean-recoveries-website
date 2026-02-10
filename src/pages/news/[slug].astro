@@ -945,7 +945,26 @@ const hasToc = tableOfContents.length > 2; // More than just Citation and Share
 </style>
 
 <script>
+  // Store handler references to prevent scroll listener leaks on view transitions
+  let currentProgressHandler: (() => void) | null = null;
+  let currentBackToTopHandler: (() => void) | null = null;
+  let currentTocHandler: (() => void) | null = null;
+
   const initArticle = () => {
+    // Remove previous scroll handlers to prevent listener leaks
+    if (currentProgressHandler) {
+      window.removeEventListener('scroll', currentProgressHandler);
+      currentProgressHandler = null;
+    }
+    if (currentBackToTopHandler) {
+      window.removeEventListener('scroll', currentBackToTopHandler);
+      currentBackToTopHandler = null;
+    }
+    if (currentTocHandler) {
+      window.removeEventListener('scroll', currentTocHandler);
+      currentTocHandler = null;
+    }
+
     // Reading progress bar
     const progressBar = document.getElementById('reading-progress');
     const article = document.querySelector('.article-body');
@@ -960,6 +979,7 @@ const hasToc = tableOfContents.length > 2; // More than just Citation and Share
         progressBar.style.width = `${progress}%`;
       };
 
+      currentProgressHandler = updateProgress;
       window.addEventListener('scroll', updateProgress, { passive: true });
       updateProgress();
     }
@@ -971,6 +991,7 @@ const hasToc = tableOfContents.length > 2; // More than just Citation and Share
         backToTop.classList.toggle('visible', window.scrollY > 500);
       };
 
+      currentBackToTopHandler = toggleBackToTop;
       window.addEventListener('scroll', toggleBackToTop, { passive: true });
       toggleBackToTop();
 
@@ -1065,6 +1086,7 @@ const hasToc = tableOfContents.length > 2; // More than just Citation and Share
         }
       };
 
+      currentTocHandler = updateTocHighlight;
       window.addEventListener('scroll', updateTocHighlight, { passive: true });
       updateTocHighlight();
 

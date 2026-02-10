@@ -498,7 +498,15 @@ const structuredData = {
 
 <script>
   // Highlight active section in navigation
+  let currentObserver: IntersectionObserver | null = null;
+
   const initActiveNav = () => {
+    // Disconnect previous observer to prevent leak during view transitions
+    if (currentObserver) {
+      currentObserver.disconnect();
+      currentObserver = null;
+    }
+
     const sections = document.querySelectorAll('.value-section');
     const navLinks = document.querySelectorAll('.value-nav-link');
 
@@ -522,6 +530,7 @@ const structuredData = {
     );
 
     sections.forEach((section) => observer.observe(section));
+    currentObserver = observer;
   };
 
   initActiveNav();

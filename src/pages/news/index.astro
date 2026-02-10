@@ -1037,7 +1037,16 @@ const allPosts = sortedPosts.slice(3);
 </style>
 
 <script>
+  // Store handler reference to prevent document click listener leak on view transitions
+  let currentCloseDropdownsHandler: (() => void) | null = null;
+
   const initNewsPage = () => {
+    // Remove previous document-level click handler to prevent listener leak
+    if (currentCloseDropdownsHandler) {
+      document.removeEventListener('click', currentCloseDropdownsHandler);
+      currentCloseDropdownsHandler = null;
+    }
+
     // Elements
     const searchInput = document.getElementById('search-input') as HTMLInputElement;
     const clearSearch = document.getElementById('clear-search');
@@ -1100,6 +1109,7 @@ const allPosts = sortedPosts.slice(3);
       if (e.key === 'Escape') closeDropdowns();
     });
 
+    currentCloseDropdownsHandler = closeDropdowns;
     document.addEventListener('click', closeDropdowns);
 
     // Sort posts

@@ -354,7 +354,11 @@ const searchIndex = [
     const close = () => {
       overlay?.classList.remove('open');
       if (input) input.value = '';
-      document.body.style.overflow = '';
+      // Only restore body scroll if the mobile menu isn't also open (it also locks scroll)
+      const mobileMenu = document.getElementById('mobile-menu');
+      if (!mobileMenu?.classList.contains('open')) {
+        document.body.style.overflow = '';
+      }
       resetSearch();
     };
 

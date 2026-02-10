@@ -79,7 +79,6 @@ export default {
         'fade-in': 'fadeIn 0.6s ease-out forwards',
         'fade-up': 'fadeUp 0.6s ease-out forwards',
         'slide-up': 'slideUp 0.6s ease-out forwards',
-        'count-up': 'countUp 1.5s ease-out forwards',
         'bounce-subtle': 'bounceSubtle 2s ease-in-out infinite',
       },
       keyframes: {
