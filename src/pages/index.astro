@@ -1583,7 +1583,7 @@ const formatDate = (dateStr: string) => {
       @apply grid-cols-2;
     }
 
-    .funders-logos {
+    .funders-strip {
       @apply gap-6;
     }
 
@@ -1634,7 +1634,15 @@ const formatDate = (dateStr: string) => {
 
 <script>
   // Parallax effect for hero
+  let currentScrollHandler: (() => void) | null = null;
+
   const initParallax = () => {
+    // Remove previous scroll handler to prevent listener leak
+    if (currentScrollHandler) {
+      window.removeEventListener('scroll', currentScrollHandler);
+      currentScrollHandler = null;
+    }
+
     const heroImage = document.querySelector('.hero-image') as HTMLElement;
     if (!heroImage) return;
 
@@ -1653,6 +1661,7 @@ const formatDate = (dateStr: string) => {
     };
 
     if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      currentScrollHandler = handleScroll;
       window.addEventListener('scroll', handleScroll, { passive: true });
     }
   };

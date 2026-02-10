@@ -448,7 +448,13 @@ const isActive = (href: string) => {
 </style>
 
 <script>
+  // Store cleanup function to prevent event listener accumulation across view transitions
+  let navCleanup: (() => void) | null = null;
+
   const initNav = () => {
+    // Clean up previous listeners before re-initializing
+    if (navCleanup) navCleanup();
+
     const header = document.getElementById('nav-header');
     const mobileMenuButton = document.getElementById('mobile-menu-button');
     const mobileMenu = document.getElementById('mobile-menu');
@@ -481,28 +487,16 @@ const isActive = (href: string) => {
       document.body.style.overflow = '';
     };
 
-    // Event listeners
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    mobileMenuButton.addEventListener('click', toggleMobileMenu);
-
-    mobileMenu.querySelectorAll('a').forEach((link) => {
-      link.addEventListener('click', closeMobileMenu);
-    });
-
     // Close on escape key
-    document.addEventListener('keydown', (e) => {
+    const handleKeydown = (e: KeyboardEvent) => {
       if (e.key === 'Escape' && mobileMenu.classList.contains('open')) {
         closeMobileMenu();
+        mobileMenuButton.focus();
       }
-    });
-
-    // Initial check
-    handleScroll();
+    };
 
     // Handle search button click - trigger command palette
-    const searchBtn = document.getElementById('nav-search-btn');
-    searchBtn?.addEventListener('click', () => {
-      // Simulate Cmd+K to open command palette
+    const handleSearchClick = () => {
       const event = new KeyboardEvent('keydown', {
         key: 'k',
         metaKey: true,
@@ -510,7 +504,34 @@ const isActive = (href: string) => {
         bubbles: true,
       });
       document.dispatchEvent(event);
+    };
+
+    // Event listeners
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    mobileMenuButton.addEventListener('click', toggleMobileMenu);
+    document.addEventListener('keydown', handleKeydown);
+
+    const mobileLinks = mobileMenu.querySelectorAll('a');
+    mobileLinks.forEach((link) => {
+      link.addEventListener('click', closeMobileMenu);
     });
+
+    const searchBtn = document.getElementById('nav-search-btn');
+    searchBtn?.addEventListener('click', handleSearchClick);
+
+    // Initial check
+    handleScroll();
+
+    // Return cleanup function
+    navCleanup = () => {
+      window.removeEventListener('scroll', handleScroll);
+      mobileMenuButton.removeEventListener('click', toggleMobileMenu);
+      document.removeEventListener('keydown', handleKeydown);
+      mobileLinks.forEach((link) => {
+        link.removeEventListener('click', closeMobileMenu);
+      });
+      searchBtn?.removeEventListener('click', handleSearchClick);
+    };
   };
 
   // Run on load and after view transitions

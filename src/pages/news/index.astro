@@ -236,7 +236,7 @@ const allPosts = sortedPosts.slice(3);
       <!-- Active Filters & Results -->
       <div class="filters-meta">
         <div class="active-filters" id="active-filters" role="status" aria-live="polite"></div>
-        <span class="results-count" id="results-text">{sortedPosts.length} articles</span>
+        <span class="results-count" id="results-text">{allPosts.length} articles</span>
       </div>
     </div>
   </section>
@@ -1140,6 +1140,11 @@ const allPosts = sortedPosts.slice(3);
       // Hide all first
       allCards.forEach(card => card.classList.add('hidden'));
 
+      // Reorder cards in the DOM to reflect sort order
+      if (articlesGrid) {
+        matchingCards.forEach(card => articlesGrid.appendChild(card));
+      }
+
       // Show paginated results
       let shown = 0;
       matchingCards.forEach((card, i) => {
@@ -1195,20 +1200,29 @@ const allPosts = sortedPosts.slice(3);
       }
 
       if (filters.length === 0) {
-        activeFiltersEl.innerHTML = '';
+        activeFiltersEl.textContent = '';
         return;
       }
 
-      activeFiltersEl.innerHTML = filters.map(f => `
-        <span class="filter-tag">
-          ${f.label}
-          <button data-type="${f.type}" data-value="${f.value}" aria-label="Remove ${f.label} filter">
-            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
-            </svg>
-          </button>
-        </span>
-      `).join('') + `<button class="clear-all-btn">Clear all</button>`;
+      // Build filter tags safely using DOM methods to prevent XSS
+      activeFiltersEl.textContent = '';
+      filters.forEach(f => {
+        const span = document.createElement('span');
+        span.className = 'filter-tag';
+        span.textContent = f.label;
+
+        const btn = document.createElement('button');
+        btn.dataset.type = f.type;
+        btn.dataset.value = f.value;
+        btn.setAttribute('aria-label', `Remove ${f.label} filter`);
+        btn.innerHTML = `<svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" /></svg>`;
+        span.appendChild(btn);
+        activeFiltersEl.appendChild(span);
+      });
+      const clearBtn = document.createElement('button');
+      clearBtn.className = 'clear-all-btn';
+      clearBtn.textContent = 'Clear all';
+      activeFiltersEl.appendChild(clearBtn);
 
       activeFiltersEl.querySelectorAll('[data-type]').forEach(btn => {
         btn.addEventListener('click', () => {

@@ -1467,7 +1467,15 @@ const recruitmentStatus = {
 
 <script>
   // Parallax effect for hero
+  let currentScrollHandler: (() => void) | null = null;
+
   const initParallax = () => {
+    // Remove previous scroll handler to prevent listener leak
+    if (currentScrollHandler) {
+      window.removeEventListener('scroll', currentScrollHandler);
+      currentScrollHandler = null;
+    }
+
     const parallaxBg = document.querySelector('.parallax-bg') as HTMLElement;
     if (!parallaxBg) return;
 
@@ -1486,6 +1494,7 @@ const recruitmentStatus = {
     };
 
     if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      currentScrollHandler = handleScroll;
       window.addEventListener('scroll', handleScroll, { passive: true });
     }
   };

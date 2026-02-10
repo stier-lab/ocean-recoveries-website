@@ -14,7 +14,7 @@ export interface BlogPost {
 
 export const posts: BlogPost[] = [
   {
-    slug: "fish-populations-don-t-follow-simple-rules-and-that-changes-",
+    slug: "fish-populations-don-t-follow-simple-rules-and-that-changes",
     title: "Fish Populations Don't Follow Simple Rules—And That Changes Everything We Thought We Knew",
     date: "2025-12-18",
     author: "Stier et al.",
@@ -259,7 +259,7 @@ Kopecky, Kai L.; Stier, Adrian C.; Schmitt, Russell J.; Holbrook, Sally J.; Moel
 *This paper is Open Access.*`,
   },
   {
-    slug: "predators-may-actually-help-coral-reefs-by-eating-the-wrong-",
+    slug: "predators-may-actually-help-coral-reefs-by-eating-the-wrong",
     title: "Predators May Actually Help Coral Reefs by Eating the 'Wrong' Fish",
     date: "2023-01-15",
     author: "Moeller et al.",
@@ -566,7 +566,7 @@ Detmer, A. Raine; Miller, Robert J.; Reed, Daniel C.; Bell, Tom W.; Stier, Adria
     excerpt: "This paper develops theoretical models to understand how food web structure - the feeding relationships between species at different trophic levels - influences species-area relationships on islands and isolated habitats.",
     featuredImage: "/images/forested-islands-aerial-ocean-view.JPG",
     tags: ["Publication","2021","Conservation"],
-    doiUrl: "https://doi.org/https://doi.org/10.1017/9781108569422.017",
+    doiUrl: "https://doi.org/10.1017/9781108569422.017",
     openAccess: false,
     pdfUrl: "https://drive.google.com/open?id=1ZMBdWT7AmosWZ_fLywSaKhW4oFVcA5DP&usp=drive_fs",
     content: `Our theoretical models reveal how food web structure influences species-area relationships on islands and isolated habitats. We built mathematical models based on neutral theory and food web dynamics to predict how species richness at different trophic levels should vary with habitat area, testing scenarios from simple food chains to complex webs.
@@ -583,7 +583,7 @@ Understanding how food web interactions scale with area could help predict which
 
 Holt, Robert D.; Gravel, Dominique; Stier, Adrian; Rosindell, James (2021). On the Interface of Food Webs and Spatial Ecology: The Trophic Dimension of Species–Area Relationships. **.
 
-[Read the full paper](https://doi.org/https://doi.org/10.1017/9781108569422.017)`,
+[Read the full paper](https://doi.org/10.1017/9781108569422.017)`,
   },
   {
     slug: "safety-in-numbers-doesn-t-work-for-baby-corals-under-attack",
@@ -675,7 +675,7 @@ Levin, Phillip S; Gray, Steven A; Möllmann, Christian; Stier, Adrian C (2021). 
 [Read the full paper](https://doi.org/10.1093/biosci/biaa117)`,
   },
   {
-    slug: "native-fish-vastly-outnumber-invasive-lionfish-in-caribbean-",
+    slug: "native-fish-vastly-outnumber-invasive-lionfish-in-caribbean",
     title: "Native Fish Vastly Outnumber Invasive Lionfish in Caribbean Panama Waters",
     date: "2021-01-15",
     author: "Samhouri et al.",
@@ -1147,7 +1147,7 @@ Lynham, J.; Halpern, B.S.; Blenckner, T.; Essington, T.; Estes, J.; Hunsicker, M
 [Read the full paper](https://doi.org/10.1016/j.marpol.2016.11.011)`,
   },
   {
-    slug: "scientists-develop-early-warning-system-for-ocean-ecosystem-",
+    slug: "scientists-develop-early-warning-system-for-ocean-ecosystem",
     title: "Scientists Develop Early Warning System for Ocean Ecosystem Collapse",
     date: "2017-01-15",
     author: "Samhouri et al.",
@@ -1394,7 +1394,7 @@ Stier, Adrian C.; Samhouri, Jameal F.; Novak, Mark; Marshall, Kristin N.; Ward, 
     excerpt: "This paper examines how mutualisms - cooperative relationships between species - operate within broader ecological communities, using African acacia trees and their ant partners as a primary example to show why understanding the full community context is essential for explaining these interactions.",
     featuredImage: "/images/bee-pollination.jpeg",
     tags: ["Publication","2015","Mutualism"],
-    doiUrl: "https://doi.org/https://doi.org/10.1093/acprof:oso/9780199675654.003.0009",
+    doiUrl: "https://doi.org/10.1093/acprof:oso/9780199675654.003.0009",
     openAccess: false,
     pdfUrl: "https://drive.google.com/open?id=1QjafQTm9QN0AWQ-9lh0moCdY4bHKjHZm&usp=drive_fs",
     content: `We observed Crematogaster nigriceps ants systematically destroying the flower buds of their acacia tree hosts. These ants weren't just failing to protect their hosts from browsing giraffes - they were actively sterilizing the trees, preventing reproduction entirely while imposing metabolic costs sufficient to reduce the plant's growth rate.
@@ -1413,7 +1413,7 @@ Many questions remain about how community context shapes other mutualisms. Scien
 
 Palmer, Todd M.; Pringle, Elizabeth G.; Stier, Adrian; Holt, Robert D. (2015). Mutualism in a community context. **.
 
-[Read the full paper](https://doi.org/https://doi.org/10.1093/acprof:oso/9780199675654.003.0009)`,
+[Read the full paper](https://doi.org/10.1093/acprof:oso/9780199675654.003.0009)`,
   },
   {
     slug: "tree-genes-control-how-fish-shape-entire-aquatic-ecosystems",
@@ -1445,7 +1445,7 @@ Rudman, Seth M.; Rodriguez-Cabal, Mariano A.; Stier, Adrian; Sato, Takuya; Heavy
 *This paper is Open Access.*`,
   },
   {
-    slug: "scientists-offer-blueprint-for-managing-ocean-ecosystems-on-",
+    slug: "scientists-offer-blueprint-for-managing-ocean-ecosystems-on",
     title: "Scientists Offer Blueprint for Managing Ocean Ecosystems on the Brink of Collapse",
     date: "2015-01-15",
     author: "Selkoe et al.",
@@ -1679,7 +1679,7 @@ White, J. Wilson; Rassweiler, Andrew; Samhouri, Jameal F.; Stier, Adrian C.; Whi
 *This paper is Open Access.*`,
   },
   {
-    slug: "illegal-shark-fishing-vessel-caught-with-379-dead-sharks-in-",
+    slug: "illegal-shark-fishing-vessel-caught-with-379-dead-sharks-in",
     title: "Illegal Shark Fishing Vessel Caught with 379 Dead Sharks in Galápagos Marine Reserve",
     date: "2013-01-15",
     author: "Carr et al.",
@@ -2054,7 +2054,7 @@ Heinlein, J. M.; Stier, A. C.; Steele, M. A. (2010). Predators reduce abundance 
 [Read the full paper](https://doi.org/10.1007/s00338-010-0592-7)`,
   },
   {
-    slug: "tiny-snails-are-secretly-devastating-coral-reefs-across-the-",
+    slug: "tiny-snails-are-secretly-devastating-coral-reefs-across-the",
     title: "Tiny Snails Are Secretly Devastating Coral Reefs Across the Pacific",
     date: "2010-01-15",
     author: "Shima et al.",

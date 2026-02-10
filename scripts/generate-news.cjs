@@ -91,7 +91,8 @@ function slugify(text) {
     .toLowerCase()
     .replace(/[^a-z0-9]+/g, '-')
     .replace(/(^-|-$)/g, '')
-    .substring(0, 60);
+    .substring(0, 60)
+    .replace(/-$/, '');
 }
 
 function getTagsForPost(analysis) {
@@ -267,17 +268,18 @@ export const posts: BlogPost[] = [
 `;
 
 for (const post of posts) {
+  const escDQ = (s) => (s || '').replace(/\\/g, '\\\\').replace(/"/g, '\\"');
   tsContent += `  {
-    slug: "${post.slug}",
-    title: "${post.title.replace(/"/g, '\\"')}",
+    slug: "${escDQ(post.slug)}",
+    title: "${escDQ(post.title)}",
     date: "${post.date}",
-    author: "${post.author}",
-    excerpt: "${post.excerpt.replace(/"/g, '\\"').replace(/\n/g, ' ')}",
+    author: "${escDQ(post.author)}",
+    excerpt: "${escDQ(post.excerpt).replace(/\n/g, ' ')}",
     featuredImage: "${post.featuredImage}",
     tags: ${JSON.stringify(post.tags)},
-    doiUrl: "${post.doiUrl}",
+    doiUrl: "${escDQ(post.doiUrl)}",
     openAccess: ${post.openAccess},
-    pdfUrl: "${post.pdfUrl}",
+    pdfUrl: "${escDQ(post.pdfUrl)}",
     content: \`${post.content}\`,
   },
 `;

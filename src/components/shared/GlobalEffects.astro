@@ -98,8 +98,15 @@
 </style>
 
 <script>
+  // Store cleanup functions to prevent listener accumulation across view transitions
+  let scrollCleanup: (() => void) | null = null;
+  let cursorCleanup: (() => void) | null = null;
+
   // Scroll Progress Bar
   const initScrollProgress = () => {
+    // Clean up previous scroll listener
+    if (scrollCleanup) scrollCleanup();
+
     const progressBar = document.getElementById('scrollProgress');
     if (!progressBar) return;
 
@@ -112,10 +119,17 @@
 
     window.addEventListener('scroll', updateProgress, { passive: true });
     updateProgress();
+
+    scrollCleanup = () => {
+      window.removeEventListener('scroll', updateProgress);
+    };
   };
 
   // Custom Cursor
   const initCustomCursor = () => {
+    // Clean up previous cursor listeners and animation
+    if (cursorCleanup) cursorCleanup();
+
     const cursor = document.getElementById('customCursor');
     const cursorDot = document.getElementById('customCursorDot');
 
@@ -131,13 +145,16 @@
     let mouseY = 0;
     let cursorX = 0;
     let cursorY = 0;
+    let animFrameId: number | null = null;
 
-    document.addEventListener('mousemove', (e) => {
+    const handleMouseMove = (e: MouseEvent) => {
       mouseX = e.clientX;
       mouseY = e.clientY;
       cursorDot.style.left = `${mouseX}px`;
       cursorDot.style.top = `${mouseY}px`;
-    });
+    };
+
+    document.addEventListener('mousemove', handleMouseMove);
 
     // Smooth cursor follow
     const animateCursor = () => {
@@ -145,7 +162,7 @@
       cursorY += (mouseY - cursorY) * 0.15;
       cursor.style.left = `${cursorX}px`;
       cursor.style.top = `${cursorY}px`;
-      requestAnimationFrame(animateCursor);
+      animFrameId = requestAnimationFrame(animateCursor);
     };
     animateCursor();
 
@@ -166,6 +183,15 @@
     const observer = new MutationObserver(addInteractivity);
     observer.observe(document.body, { childList: true, subtree: true });
     (window as any).__cursorObserver = observer;
+
+    cursorCleanup = () => {
+      document.removeEventListener('mousemove', handleMouseMove);
+      if (animFrameId !== null) cancelAnimationFrame(animFrameId);
+      if ((window as any).__cursorObserver) {
+        (window as any).__cursorObserver.disconnect();
+        (window as any).__cursorObserver = null;
+      }
+    };
   };
 
   // Magnetic Button Effect

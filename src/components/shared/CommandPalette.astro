@@ -320,7 +320,12 @@ const searchIndex = [
 </style>
 
 <script>
+  // Store cleanup function to prevent event listener accumulation across view transitions
+  let cmdCleanup: (() => void) | null = null;
+
   const initCommandPalette = () => {
+    // Clean up previous listeners before re-initializing
+    if (cmdCleanup) cmdCleanup();
     const overlay = document.getElementById('command-palette');
     const input = document.getElementById('cmd-input') as HTMLInputElement;
     const quickActions = document.getElementById('cmd-quick-actions');
@@ -471,7 +476,7 @@ const searchIndex = [
     };
 
     // Keyboard shortcuts
-    document.addEventListener('keydown', (e) => {
+    const handleKeydown = (e: KeyboardEvent) => {
       // Open with Cmd/Ctrl + K
       if ((e.metaKey || e.ctrlKey) && e.key === 'k') {
         e.preventDefault();
@@ -512,23 +517,28 @@ const searchIndex = [
         selectCurrent();
         return;
       }
-    });
+    };
+
+    document.addEventListener('keydown', handleKeydown);
 
     // Click backdrop to close
-    overlay?.querySelector('.cmd-backdrop')?.addEventListener('click', close);
+    const backdrop = overlay?.querySelector('.cmd-backdrop');
+    backdrop?.addEventListener('click', close);
 
     // Search input
     let debounceTimer: ReturnType<typeof setTimeout>;
-    input?.addEventListener('input', () => {
+    const handleInput = () => {
       clearTimeout(debounceTimer);
       debounceTimer = setTimeout(() => {
         search(input.value);
       }, 150);
-    });
+    };
+    input?.addEventListener('input', handleInput);
 
     // Mouse hover on items
-    overlay?.addEventListener('mousemove', (e) => {
-      const item = (e.target as HTMLElement).closest('.cmd-item');
+    const handleMouseMove = (e: Event) => {
+      const mouseEvent = e as MouseEvent;
+      const item = (mouseEvent.target as HTMLElement).closest('.cmd-item');
       if (item) {
         const index = parseInt(item.getAttribute('data-index') || '0', 10);
         if (index !== activeIndex) {
@@ -536,10 +546,20 @@ const searchIndex = [
           updateActiveItems();
         }
       }
-    });
+    };
+    overlay?.addEventListener('mousemove', handleMouseMove);
 
     // Initialize
     updateActiveItems();
+
+    // Store cleanup function
+    cmdCleanup = () => {
+      document.removeEventListener('keydown', handleKeydown);
+      backdrop?.removeEventListener('click', close);
+      input?.removeEventListener('input', handleInput);
+      overlay?.removeEventListener('mousemove', handleMouseMove);
+      clearTimeout(debounceTimer);
+    };
   };
 
   // Initialize on load and after view transitions

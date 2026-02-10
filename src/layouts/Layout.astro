@@ -44,6 +44,9 @@ const defaultKeywords = [
 const allKeywords = [...new Set([...keywords, ...defaultKeywords])];
 
 const siteTitle = title === 'Home' ? 'Ocean Recoveries Lab' : `${title} | Ocean Recoveries Lab`;
+
+// Ensure og:image is an absolute URL (social crawlers require this)
+const absoluteImage = image.startsWith('http') ? image : new URL(image, Astro.site || Astro.url.origin).href;
 ---
 
 <!doctype html>
@@ -86,7 +89,7 @@ const siteTitle = title === 'Home' ? 'Ocean Recoveries Lab' : `${title} | Ocean 
     <meta property="og:url" content={canonicalUrl} />
     <meta property="og:title" content={siteTitle} />
     <meta property="og:description" content={description} />
-    <meta property="og:image" content={image} />
+    <meta property="og:image" content={absoluteImage} />
     <meta property="og:site_name" content="Ocean Recoveries Lab" />
 
     <!-- Twitter -->
@@ -94,7 +97,7 @@ const siteTitle = title === 'Home' ? 'Ocean Recoveries Lab' : `${title} | Ocean 
     <meta name="twitter:url" content={canonicalUrl} />
     <meta name="twitter:title" content={siteTitle} />
     <meta name="twitter:description" content={description} />
-    <meta name="twitter:image" content={image} />
+    <meta name="twitter:image" content={absoluteImage} />
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />

@@ -199,3 +199,15 @@ The `PublicationList.tsx` React component provides:
 2. **News is auto-generated** - Don't manually edit `posts.ts` content; regenerate from analyzed/
 3. **75 publications, ~77 posts** - Some publications have multiple news posts
 4. **Images need optimization** - Raw images go in `assets/`, optimized versions in `public/images/`
+
+---
+
+## File Ownership (parallel work)
+- `src/` — Astro source, pages and components splittable
+- `data/` — data files, independent from UI code
+- `publications/` — publication records, independent
+- `assets/` — images/media, independent
+- `scripts/` — utility scripts, independent
+- `tests/` — each test is independent
+- `docs/` — documentation, independent
+- `public/` — static assets, independent
