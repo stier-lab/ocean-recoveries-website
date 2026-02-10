@@ -135,7 +135,15 @@ const absoluteImage = image.startsWith('http') ? image : new URL(image, Astro.si
 
     <!-- Scroll reveal observer -->
     <script>
+      let currentScrollRevealObserver: IntersectionObserver | null = null;
+
       const initScrollReveal = () => {
+        // Disconnect previous observer to prevent leak during view transitions
+        if (currentScrollRevealObserver) {
+          currentScrollRevealObserver.disconnect();
+          currentScrollRevealObserver = null;
+        }
+
         const observer = new IntersectionObserver(
           (entries) => {
             entries.forEach((entry) => {
@@ -154,6 +162,8 @@ const absoluteImage = image.startsWith('http') ? image : new URL(image, Astro.si
         document.querySelectorAll('.scroll-reveal').forEach((el) => {
           observer.observe(el);
         });
+
+        currentScrollRevealObserver = observer;
       };
 
       // Run on initial load
