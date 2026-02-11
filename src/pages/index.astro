@@ -118,7 +118,6 @@ const formatDate = (dateStr: string) => {
       <!-- Method cards with numbers -->
       <div class="approach-grid">
         <div class="approach-card scroll-reveal stagger-1">
-          <div class="card-number">01</div>
           <div class="approach-icon">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
               <path stroke-linecap="round" stroke-linejoin="round" d="M9.75 3.104v5.714a2.25 2.25 0 01-.659 1.591L5 14.5M9.75 3.104c-.251.023-.501.05-.75.082m.75-.082a24.301 24.301 0 014.5 0m0 0v5.714c0 .597.237 1.17.659 1.591L19.8 15.3M14.25 3.104c.251.023.501.05.75.082M19.8 15.3l-1.57.393A9.065 9.065 0 0112 15a9.065 9.065 0 00-6.23.693L5 14.5m14.8.8l1.402 1.402c1.232 1.232.65 3.318-1.067 3.611A48.309 48.309 0 0112 21c-2.773 0-5.491-.235-8.135-.687-1.718-.293-2.3-2.379-1.067-3.61L5 14.5" />
@@ -128,14 +127,9 @@ const formatDate = (dateStr: string) => {
           <p class="approach-desc">
             Test mechanisms in the field by manipulating key species interactions and quantifying effects on ecosystem recovery.
           </p>
-          <div class="approach-example">
-            <span class="example-label">Example:</span>
-            <span>Guard crab exclusion experiments on coral colonies</span>
-          </div>
         </div>
 
         <div class="approach-card scroll-reveal stagger-2">
-          <div class="card-number">02</div>
           <div class="approach-icon">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
               <path stroke-linecap="round" stroke-linejoin="round" d="M6.429 9.75L2.25 12l4.179 2.25m0-4.5l5.571 3 5.571-3m-11.142 0L2.25 7.5 12 2.25l9.75 5.25-4.179 2.25m0 0L21.75 12l-4.179 2.25m0 0l4.179 2.25L12 21.75l-9.75-5.25 4.179-2.25m11.142 0l-5.571 3-5.571-3" />
@@ -145,14 +139,9 @@ const formatDate = (dateStr: string) => {
           <p class="approach-desc">
             Systematic review and meta-analysis to compare recovery drivers across ecosystems and estimate robust effect sizes.
           </p>
-          <div class="approach-example">
-            <span class="example-label">Example:</span>
-            <span>Global analysis of coral recovery trajectories</span>
-          </div>
         </div>
 
         <div class="approach-card scroll-reveal stagger-3">
-          <div class="card-number">03</div>
           <div class="approach-icon">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
               <circle cx="12" cy="5" r="2" />
@@ -165,10 +154,6 @@ const formatDate = (dateStr: string) => {
           <p class="approach-desc">
             Theory and simulation models that translate field data into thresholds and decision-support tools for managers.
           </p>
-          <div class="approach-example">
-            <span class="example-label">Output:</span>
-            <span>Urchin barren risk indicators for MPAs</span>
-          </div>
         </div>
       </div>
 
@@ -802,23 +787,20 @@ const formatDate = (dateStr: string) => {
 
   .approach-card {
     @apply relative p-6 lg:p-8 rounded-2xl;
-    @apply bg-surface-card border border-line;
+    background: rgba(30, 41, 59, 0.4);
+    border: 1px solid rgba(255, 255, 255, 0.06);
     transition: all 400ms cubic-bezier(0.4, 0, 0.2, 1);
   }
 
   .approach-card:hover {
-    @apply border-accent/40;
-    transform: translateY(-6px);
-    box-shadow: 0 24px 48px -12px rgba(0, 0, 0, 0.25);
-  }
-
-  .card-number {
-    @apply absolute top-4 right-4 text-5xl font-black text-accent/10;
-    font-variant-numeric: tabular-nums;
+    background: rgba(30, 41, 59, 0.6);
+    border-color: rgba(56, 189, 248, 0.2);
+    transform: translateY(-4px);
+    box-shadow: 0 20px 40px -12px rgba(0, 0, 0, 0.3);
   }
 
   .approach-icon {
-    @apply w-12 h-12 mb-5 text-accent;
+    @apply w-10 h-10 mb-4 text-accent;
   }
 
   .approach-icon svg {
@@ -826,26 +808,18 @@ const formatDate = (dateStr: string) => {
   }
 
   .approach-title {
-    @apply text-lg font-bold text-ink mb-3;
+    @apply text-lg font-bold text-ink mb-2;
   }
 
   .approach-desc {
-    @apply text-sm text-ink/70 leading-relaxed mb-4;
-  }
-
-  .approach-example {
-    @apply text-xs text-ink/50 pt-4 border-t border-line/50;
-  }
-
-  .example-label {
-    @apply font-bold text-accent/70 mr-1;
+    @apply text-sm text-ink/60 leading-relaxed;
   }
 
   /* Question callout */
   .approach-question {
     @apply flex items-start gap-4 p-6 rounded-2xl max-w-2xl mx-auto;
-    background: linear-gradient(135deg, rgba(56, 189, 248, 0.08) 0%, rgba(45, 212, 191, 0.05) 100%);
-    border: 1px solid rgba(56, 189, 248, 0.2);
+    background: rgba(56, 189, 248, 0.04);
+    border: 1px solid rgba(56, 189, 248, 0.1);
   }
 
   .question-icon {
