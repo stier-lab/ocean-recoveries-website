@@ -520,17 +520,9 @@ const hasToc = tableOfContents.length > 2; // More than just Citation and Share
   }
 
   .title-text {
-    background: linear-gradient(135deg, #ffffff 0%, #38bdf8 50%, #ffffff 100%);
-    background-size: 200% 200%;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    animation: gradient-shift 8s ease-in-out infinite;
-  }
-
-  @keyframes gradient-shift {
-    0%, 100% { background-position: 0% 50%; }
-    50% { background-position: 100% 50%; }
+    /* Solid white over the dark hero gradient — restrained, no
+       animated text gradient (anti-AI editorial direction). */
+    color: #ffffff;
   }
 
   @keyframes fadeUp {
@@ -815,7 +807,9 @@ const hasToc = tableOfContents.length > 2; // More than just Citation and Share
 
   /* Related Section */
   .related-section {
-    @apply py-20 bg-navy-highlight;
+    @apply py-20;
+    background-color: #E8DFD2;
+    border-top: 1px solid rgba(15, 41, 66, 0.12);
   }
 
   .related-heading {

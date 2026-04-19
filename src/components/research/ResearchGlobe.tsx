@@ -103,10 +103,10 @@ export default function ResearchMap() {
       .attr('stop-color', '#0c4a6e'); // Deep tropical blue center
     oceanGradient.append('stop')
       .attr('offset', '50%')
-      .attr('stop-color', '#0f172a');
+      .attr('stop-color', '#F4EFE6');
     oceanGradient.append('stop')
       .attr('offset', '100%')
-      .attr('stop-color', '#1e293b');
+      .attr('stop-color', '#E8DFD2');
 
     // Glow filter for markers
     const glow = defs.append('filter')
@@ -140,14 +140,14 @@ export default function ResearchMap() {
       .datum(graticule())
       .attr('d', path as unknown as string)
       .attr('fill', 'none')
-      .attr('stroke', 'rgba(56, 189, 248, 0.1)')
+      .attr('stroke', 'rgba(58, 107, 122, 0.1)')
       .attr('stroke-width', 0.5);
 
     // Countries path
     const countriesPath = map.append('path')
       .attr('class', 'countries')
-      .attr('fill', 'rgba(30, 41, 59, 0.95)')
-      .attr('stroke', 'rgba(56, 189, 248, 0.25)')
+      .attr('fill', 'rgba(232, 223, 210, 0.95)')
+      .attr('stroke', 'rgba(58, 107, 122, 0.25)')
       .attr('stroke-width', 0.5);
 
     // Ocean region labels
@@ -175,7 +175,7 @@ export default function ResearchMap() {
         labelsGroup.append('text')
           .attr('x', coords[0])
           .attr('y', coords[1])
-          .attr('fill', 'rgba(56, 189, 248, 0.18)')
+          .attr('fill', 'rgba(58, 107, 122, 0.18)')
           .attr('font-size', '13px')
           .attr('font-weight', '600')
           .attr('font-family', 'Inter, system-ui, sans-serif')
@@ -229,7 +229,7 @@ export default function ResearchMap() {
         connectionsGroup.append('path')
           .attr('d', `M ${start[0]} ${start[1]} Q ${midX} ${midY} ${end[0]} ${end[1]}`)
           .attr('fill', 'none')
-          .attr('stroke', 'rgba(56, 189, 248, 0.3)')
+          .attr('stroke', 'rgba(58, 107, 122, 0.3)')
           .attr('stroke-width', 1.5)
           .attr('stroke-dasharray', '6 4')
           .style('animation', 'dash 30s linear infinite');
@@ -261,7 +261,7 @@ export default function ResearchMap() {
           .attr('class', 'pulse-ring')
           .attr('r', 20)
           .attr('fill', 'none')
-          .attr('stroke', site.type === 'coral' ? '#f97316' : '#38bdf8')
+          .attr('stroke', site.type === 'coral' ? '#f97316' : '#3A6B7A')
           .attr('stroke-width', 2)
           .attr('opacity', 0.4)
           .style('animation', 'pulse 2.5s ease-out infinite');
@@ -269,14 +269,14 @@ export default function ResearchMap() {
         // Inner glow circle
         markerGroup.append('circle')
           .attr('r', 12)
-          .attr('fill', site.type === 'coral' ? 'rgba(249, 115, 22, 0.3)' : 'rgba(56, 189, 248, 0.3)')
+          .attr('fill', site.type === 'coral' ? 'rgba(249, 115, 22, 0.3)' : 'rgba(58, 107, 122, 0.3)')
           .style('filter', 'url(#markerGlow)');
 
         // Main marker
         markerGroup.append('circle')
           .attr('class', 'marker-main')
           .attr('r', 8)
-          .attr('fill', site.type === 'coral' ? '#f97316' : '#38bdf8')
+          .attr('fill', site.type === 'coral' ? '#f97316' : '#3A6B7A')
           .attr('stroke', '#fff')
           .attr('stroke-width', 2.5);
 
@@ -301,7 +301,7 @@ export default function ResearchMap() {
           .attr('height', 24)
           .attr('rx', 12)
           .attr('fill', 'rgba(15, 23, 42, 0.9)')
-          .attr('stroke', site.type === 'coral' ? 'rgba(249, 115, 22, 0.5)' : 'rgba(56, 189, 248, 0.5)')
+          .attr('stroke', site.type === 'coral' ? 'rgba(249, 115, 22, 0.5)' : 'rgba(58, 107, 122, 0.5)')
           .attr('stroke-width', 1);
 
         labelGroup.append('text')
@@ -369,7 +369,7 @@ export default function ResearchMap() {
           min-width: 0;
           border-radius: 1rem;
           overflow: hidden;
-          border: 1px solid rgba(56, 189, 248, 0.2);
+          border: 1px solid rgba(58, 107, 122, 0.2);
           background: linear-gradient(135deg, rgba(15, 23, 42, 0.95) 0%, rgba(30, 58, 95, 0.95) 100%);
         }
 
@@ -432,14 +432,14 @@ export default function ResearchMap() {
           align-items: center;
           gap: 0.5rem;
           font-size: 0.875rem;
-          color: rgba(255, 255, 255, 0.7);
+          color: rgba(15, 41, 66, 0.7);
         }
 
         .legend-dot {
           width: 12px;
           height: 12px;
           border-radius: 50%;
-          border: 2px solid rgba(255, 255, 255, 0.5);
+          border: 2px solid rgba(15, 41, 66, 0.5);
         }
 
         .legend-dot.coral {
@@ -447,7 +447,7 @@ export default function ResearchMap() {
         }
 
         .legend-dot.kelp {
-          background: #38bdf8;
+          background: #3A6B7A;
         }
 
         .sites-list {
@@ -462,8 +462,8 @@ export default function ResearchMap() {
           gap: 1rem;
           padding: 1rem;
           border-radius: 1rem;
-          background: rgba(30, 41, 59, 0.6);
-          border: 1px solid rgba(255, 255, 255, 0.1);
+          background: rgba(232, 223, 210, 0.6);
+          border: 1px solid rgba(15, 41, 66, 0.1);
           text-align: left;
           cursor: pointer;
           transition: all 0.3s;
@@ -471,14 +471,14 @@ export default function ResearchMap() {
         }
 
         .site-btn:hover {
-          background: rgba(56, 189, 248, 0.1);
-          border-color: rgba(56, 189, 248, 0.3);
+          background: rgba(58, 107, 122, 0.1);
+          border-color: rgba(58, 107, 122, 0.3);
           transform: translateX(4px);
         }
 
         .site-btn.selected {
-          background: rgba(56, 189, 248, 0.15);
-          border-color: rgba(56, 189, 248, 0.5);
+          background: rgba(58, 107, 122, 0.15);
+          border-color: rgba(58, 107, 122, 0.5);
         }
 
         .site-indicator {
@@ -487,7 +487,7 @@ export default function ResearchMap() {
           border-radius: 50%;
           flex-shrink: 0;
           margin-top: 3px;
-          border: 2px solid rgba(255, 255, 255, 0.5);
+          border: 2px solid rgba(15, 41, 66, 0.5);
         }
 
         .site-indicator.coral {
@@ -495,7 +495,7 @@ export default function ResearchMap() {
         }
 
         .site-indicator.kelp {
-          background: #38bdf8;
+          background: #3A6B7A;
         }
 
         .site-info h4 {
@@ -506,7 +506,7 @@ export default function ResearchMap() {
         }
 
         .site-info .location {
-          color: rgba(255, 255, 255, 0.5);
+          color: rgba(15, 41, 66, 0.5);
           font-size: 0.875rem;
         }
 
@@ -514,8 +514,8 @@ export default function ResearchMap() {
           margin-top: 1.5rem;
           padding: 1.5rem;
           border-radius: 1rem;
-          background: rgba(56, 189, 248, 0.1);
-          border: 1px solid rgba(56, 189, 248, 0.2);
+          background: rgba(58, 107, 122, 0.1);
+          border: 1px solid rgba(58, 107, 122, 0.2);
         }
 
         .site-details h3 {
@@ -526,14 +526,14 @@ export default function ResearchMap() {
         }
 
         .site-details .location {
-          color: #38bdf8;
+          color: #3A6B7A;
           font-size: 0.875rem;
           font-weight: 600;
           margin-bottom: 1rem;
         }
 
         .site-details p {
-          color: rgba(255, 255, 255, 0.7);
+          color: rgba(15, 41, 66, 0.7);
           font-size: 0.875rem;
           line-height: 1.6;
           margin-bottom: 1rem;
@@ -549,13 +549,13 @@ export default function ResearchMap() {
           display: flex;
           align-items: center;
           gap: 0.5rem;
-          color: rgba(255, 255, 255, 0.8);
+          color: rgba(15, 41, 66, 0.8);
           font-size: 0.875rem;
           padding: 0.5rem 0;
         }
 
         .site-details li svg {
-          color: #2dd4bf;
+          color: #5A8A8A;
           flex-shrink: 0;
         }
       `}</style>

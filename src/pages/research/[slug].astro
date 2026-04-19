@@ -588,7 +588,7 @@ const isCoral = theme.slug === 'coral-reefs';
 
   .particle {
     @apply absolute rounded-full;
-    background: radial-gradient(circle, rgba(56, 189, 248, 0.6) 0%, transparent 70%);
+    background: radial-gradient(circle, rgba(58, 107, 122, 0.6) 0%, transparent 70%);
     animation: particleFloat linear infinite;
   }
 
@@ -631,7 +631,6 @@ const isCoral = theme.slug === 'coral-reefs';
     background-clip: text;
     -webkit-text-fill-color: transparent;
     background-size: 200% 200%;
-    animation: gradientShift 8s ease-in-out infinite;
   }
 
   .coral-gradient {
@@ -639,7 +638,7 @@ const isCoral = theme.slug === 'coral-reefs';
   }
 
   .kelp-gradient {
-    background-image: linear-gradient(135deg, #fff 0%, #34d399 30%, #2dd4bf 60%, #34d399 100%);
+    background-image: linear-gradient(135deg, #fff 0%, #34d399 30%, #5A8A8A 60%, #34d399 100%);
   }
 
   @keyframes gradientShift {
@@ -684,7 +683,7 @@ const isCoral = theme.slug === 'coral-reefs';
   .hero-pub-link:hover {
     @apply bg-accent;
     transform: translateY(-2px);
-    box-shadow: 0 10px 30px rgba(56, 189, 248, 0.3);
+    box-shadow: 0 1px 2px rgba(15, 41, 66, 0.08);
   }
 
   @keyframes fadeUp {
@@ -713,14 +712,15 @@ const isCoral = theme.slug === 'coral-reefs';
     50% { transform: translateX(-50%) translateY(8px); }
   }
 
-  /* Wave Divider */
+  /* Wave Divider — fills with cream paper to transition from dark hero
+     image into the paper article body */
   .wave-divider {
-    @apply relative -mt-1 bg-surface;
+    @apply relative -mt-1 bg-paper;
   }
 
   .wave-divider svg {
     @apply block w-full h-16 md:h-24;
-    fill: rgb(15, 23, 42);
+    fill: #F4EFE6;
   }
 
   /* ============================================
@@ -762,7 +762,7 @@ const isCoral = theme.slug === 'coral-reefs';
      ============================================ */
   .section-questions {
     @apply relative py-24 md:py-32 overflow-hidden;
-    background: linear-gradient(180deg, rgba(30, 41, 59, 0.5) 0%, rgba(15, 23, 42, 1) 100%);
+    background: linear-gradient(180deg, rgba(232, 223, 210, 0.5) 0%, rgba(15, 23, 42, 1) 100%);
   }
 
   .questions-bg {
@@ -784,7 +784,7 @@ const isCoral = theme.slug === 'coral-reefs';
   }
 
   .coral-orb { background: rgba(251, 146, 60, 0.08); }
-  .kelp-orb { background: rgba(45, 212, 191, 0.08); }
+  .kelp-orb { background: rgba(90, 138, 138, 0.08); }
 
   @keyframes orbFloat {
     0%, 100% { transform: translate(0, 0) scale(1); }
@@ -904,7 +904,7 @@ const isCoral = theme.slug === 'coral-reefs';
   }
 
   .kelp-finding-back {
-    background: linear-gradient(135deg, rgba(52, 211, 153, 0.15) 0%, rgba(45, 212, 191, 0.15) 100%);
+    background: linear-gradient(135deg, rgba(52, 211, 153, 0.15) 0%, rgba(90, 138, 138, 0.15) 100%);
     @apply border border-teal-500/30;
   }
 
@@ -974,12 +974,12 @@ const isCoral = theme.slug === 'coral-reefs';
      ============================================ */
   .section-gallery {
     @apply relative py-24 md:py-32 overflow-hidden;
-    background: linear-gradient(180deg, rgba(30, 41, 59, 0.5) 0%, rgba(15, 23, 42, 1) 100%);
+    background: linear-gradient(180deg, rgba(232, 223, 210, 0.5) 0%, rgba(15, 23, 42, 1) 100%);
   }
 
   .gallery-bg {
     @apply absolute inset-0;
-    background: radial-gradient(ellipse at 50% 0%, rgba(56, 189, 248, 0.05) 0%, transparent 60%);
+    background: radial-gradient(ellipse at 50% 0%, rgba(58, 107, 122, 0.05) 0%, transparent 60%);
   }
 
   .gallery-grid {
@@ -1152,7 +1152,7 @@ const isCoral = theme.slug === 'coral-reefs';
      ============================================ */
   .section-publications {
     @apply relative py-24 md:py-32 overflow-hidden;
-    background: linear-gradient(180deg, rgba(30, 41, 59, 0.5) 0%, rgba(15, 23, 42, 1) 100%);
+    background: linear-gradient(180deg, rgba(232, 223, 210, 0.5) 0%, rgba(15, 23, 42, 1) 100%);
   }
 
   .publications-bg {
@@ -1257,7 +1257,7 @@ const isCoral = theme.slug === 'coral-reefs';
   .btn-view-all:hover {
     @apply bg-accent text-white border-accent;
     transform: translateY(-2px);
-    box-shadow: 0 10px 30px rgba(56, 189, 248, 0.3);
+    box-shadow: 0 1px 2px rgba(15, 41, 66, 0.08);
   }
 
   /* ============================================
@@ -1368,7 +1368,7 @@ const isCoral = theme.slug === 'coral-reefs';
     @apply relative p-10 md:p-14 rounded-3xl;
     @apply text-center;
     @apply border border-line/50;
-    background: linear-gradient(135deg, rgba(30, 41, 59, 0.6) 0%, rgba(30, 41, 59, 0.3) 100%);
+    background: linear-gradient(135deg, rgba(232, 223, 210, 0.6) 0%, rgba(232, 223, 210, 0.3) 100%);
     backdrop-filter: blur(20px);
   }
 
@@ -1394,7 +1394,7 @@ const isCoral = theme.slug === 'coral-reefs';
   .btn-primary:hover {
     @apply bg-accent/90;
     transform: translateY(-2px);
-    box-shadow: 0 10px 30px rgba(56, 189, 248, 0.3);
+    box-shadow: 0 1px 2px rgba(15, 41, 66, 0.08);
   }
 
   .btn-secondary {

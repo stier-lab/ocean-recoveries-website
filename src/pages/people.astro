@@ -17,8 +17,8 @@ const roleLabels: Record<string, string> = {
 
 const roleAccents: Record<string, { bg: string; text: string; glow: string }> = {
   pi: { bg: 'rgba(251, 191, 36, 0.15)', text: '#fbbf24', glow: 'rgba(251, 191, 36, 0.3)' },
-  postdoc: { bg: 'rgba(45, 212, 191, 0.15)', text: '#2dd4bf', glow: 'rgba(45, 212, 191, 0.3)' },
-  phd: { bg: 'rgba(56, 189, 248, 0.15)', text: '#38bdf8', glow: 'rgba(56, 189, 248, 0.3)' },
+  postdoc: { bg: 'rgba(90, 138, 138, 0.15)', text: '#5A8A8A', glow: 'rgba(90, 138, 138, 0.3)' },
+  phd: { bg: 'rgba(58, 107, 122, 0.15)', text: '#3A6B7A', glow: 'rgba(58, 107, 122, 0.3)' },
   manager: { bg: 'rgba(167, 139, 250, 0.15)', text: '#a78bfa', glow: 'rgba(167, 139, 250, 0.3)' },
   undergrad: { bg: 'rgba(251, 113, 133, 0.15)', text: '#fb7185', glow: 'rgba(251, 113, 133, 0.3)' },
 };
@@ -271,7 +271,7 @@ const isPlaceholderImage = (image: string) => {
   .ambient-orb-1 {
     width: 600px;
     height: 600px;
-    background: radial-gradient(circle, rgba(56, 189, 248, 0.3) 0%, transparent 70%);
+    background: radial-gradient(circle, rgba(58, 107, 122, 0.3) 0%, transparent 70%);
     top: -200px;
     right: -200px;
     animation-delay: 0s;
@@ -280,7 +280,7 @@ const isPlaceholderImage = (image: string) => {
   .ambient-orb-2 {
     width: 500px;
     height: 500px;
-    background: radial-gradient(circle, rgba(45, 212, 191, 0.25) 0%, transparent 70%);
+    background: radial-gradient(circle, rgba(90, 138, 138, 0.25) 0%, transparent 70%);
     bottom: 100px;
     left: -150px;
     animation-delay: -7s;
@@ -306,7 +306,7 @@ const isPlaceholderImage = (image: string) => {
      ============================================ */
   .team-section {
     @apply relative pt-28 pb-20;
-    background: linear-gradient(180deg, #0f172a 0%, #0b1929 100%);
+    background: linear-gradient(180deg, #F4EFE6 0%, #0b1929 100%);
   }
 
   .team-header {
@@ -315,7 +315,7 @@ const isPlaceholderImage = (image: string) => {
 
   .header-accent {
     @apply absolute -left-4 top-0 w-1 h-full;
-    background: linear-gradient(180deg, #38bdf8 0%, #2dd4bf 100%);
+    background: linear-gradient(180deg, #3A6B7A 0%, #5A8A8A 100%);
     border-radius: 2px;
   }
 
@@ -404,8 +404,8 @@ const isPlaceholderImage = (image: string) => {
     transform: translateY(-8px);
     box-shadow:
       0 32px 64px -16px rgba(0, 0, 0, 0.5),
-      0 0 0 1px rgba(255, 255, 255, 0.05),
-      inset 0 1px 0 rgba(255, 255, 255, 0.05);
+      0 0 0 1px rgba(15, 41, 66, 0.05),
+      inset 0 1px 0 rgba(15, 41, 66, 0.05);
   }
 
   /* Card Image Section */
@@ -441,7 +441,7 @@ const isPlaceholderImage = (image: string) => {
   /* Placeholder Avatar */
   .card-placeholder {
     @apply absolute inset-0 flex items-center justify-center;
-    background: linear-gradient(135deg, #1e3a5f 0%, #0f172a 100%);
+    background: linear-gradient(135deg, #1e3a5f 0%, #F4EFE6 100%);
   }
 
   .placeholder-initial {
@@ -470,7 +470,7 @@ const isPlaceholderImage = (image: string) => {
     color: var(--card-accent);
     border-radius: 4px;
     backdrop-filter: blur(8px);
-    border: 1px solid rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(15, 41, 66, 0.08);
   }
 
   .role-dot {
@@ -528,15 +528,15 @@ const isPlaceholderImage = (image: string) => {
   }
 
   .team-card:hover .card-tag {
-    background: rgba(255, 255, 255, 0.08);
-    border-color: rgba(255, 255, 255, 0.1);
-    color: rgba(241, 245, 249, 0.8);
+    background: rgba(15, 41, 66, 0.08);
+    border-color: rgba(15, 41, 66, 0.1);
+    color: rgba(15, 41, 66, 0.8);
   }
 
   /* Card Footer */
   .card-footer {
     @apply flex items-center justify-between pt-4 mt-auto;
-    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    border-top: 1px solid rgba(15, 41, 66, 0.05);
   }
 
   .card-links {
@@ -573,14 +573,14 @@ const isPlaceholderImage = (image: string) => {
 
   .alumni-gradient {
     @apply absolute inset-0;
-    background: linear-gradient(180deg, #0b1929 0%, #0f172a 50%, #0b1929 100%);
+    background: linear-gradient(180deg, #0b1929 0%, #F4EFE6 50%, #0b1929 100%);
   }
 
   .alumni-pattern {
     @apply absolute inset-0 opacity-5;
     background-image:
-      radial-gradient(circle at 20% 50%, rgba(56, 189, 248, 0.3) 0%, transparent 50%),
-      radial-gradient(circle at 80% 50%, rgba(45, 212, 191, 0.3) 0%, transparent 50%);
+      radial-gradient(circle at 20% 50%, rgba(58, 107, 122, 0.3) 0%, transparent 50%),
+      radial-gradient(circle at 80% 50%, rgba(90, 138, 138, 0.3) 0%, transparent 50%);
   }
 
   .alumni-header {
@@ -590,9 +590,9 @@ const isPlaceholderImage = (image: string) => {
   .alumni-eyebrow {
     @apply inline-block px-4 py-1.5 mb-4;
     @apply text-xs font-bold uppercase tracking-[0.2em] text-accent;
-    background: rgba(56, 189, 248, 0.1);
+    background: rgba(58, 107, 122, 0.1);
     border-radius: 20px;
-    border: 1px solid rgba(56, 189, 248, 0.2);
+    border: 1px solid rgba(58, 107, 122, 0.2);
   }
 
   .alumni-title {
@@ -628,15 +628,15 @@ const isPlaceholderImage = (image: string) => {
   .alumni-card-inner {
     @apply flex items-center gap-4 p-4 rounded-xl;
     @apply border transition-all;
-    background: rgba(255, 255, 255, 0.03);
-    border-color: rgba(255, 255, 255, 0.05);
+    background: rgba(15, 41, 66, 0.03);
+    border-color: rgba(15, 41, 66, 0.05);
     transition-duration: 400ms;
     backdrop-filter: blur(4px);
   }
 
   .alumni-card:hover .alumni-card-inner {
-    background: rgba(255, 255, 255, 0.05);
-    border-color: rgba(255, 255, 255, 0.1);
+    background: rgba(15, 41, 66, 0.05);
+    border-color: rgba(15, 41, 66, 0.1);
     transform: translateX(8px);
   }
 
@@ -705,12 +705,12 @@ const isPlaceholderImage = (image: string) => {
 
   .join-gradient {
     @apply absolute inset-0;
-    background: linear-gradient(180deg, #0b1929 0%, #0b2545 50%, #0f172a 100%);
+    background: linear-gradient(180deg, #0b1929 0%, #0b2545 50%, #F4EFE6 100%);
   }
 
   .join-glow {
     @apply absolute inset-0;
-    background: radial-gradient(ellipse 80% 60% at 50% 100%, rgba(56, 189, 248, 0.15) 0%, transparent 60%);
+    background: radial-gradient(ellipse 80% 60% at 50% 100%, rgba(58, 107, 122, 0.15) 0%, transparent 60%);
   }
 
   .join-content {
@@ -720,9 +720,9 @@ const isPlaceholderImage = (image: string) => {
   .join-eyebrow {
     @apply inline-block px-4 py-1.5 mb-6;
     @apply text-xs font-bold uppercase tracking-[0.2em] text-accent;
-    background: rgba(56, 189, 248, 0.1);
+    background: rgba(58, 107, 122, 0.1);
     border-radius: 20px;
-    border: 1px solid rgba(56, 189, 248, 0.2);
+    border: 1px solid rgba(58, 107, 122, 0.2);
   }
 
   .join-title {
@@ -744,9 +744,7 @@ const isPlaceholderImage = (image: string) => {
     @apply bg-accent rounded-full;
     @apply transition-all;
     transition-duration: 400ms;
-    box-shadow:
-      0 8px 32px rgba(56, 189, 248, 0.3),
-      inset 0 1px 0 rgba(255, 255, 255, 0.2);
+    box-shadow: 0 1px 2px rgba(15, 41, 66, 0.08);
   }
 
   .join-btn-primary svg {
@@ -755,9 +753,7 @@ const isPlaceholderImage = (image: string) => {
 
   .join-btn-primary:hover {
     transform: translateY(-3px);
-    box-shadow:
-      0 16px 48px rgba(56, 189, 248, 0.4),
-      inset 0 1px 0 rgba(255, 255, 255, 0.2);
+    box-shadow: 0 1px 2px rgba(15, 41, 66, 0.08);
   }
 
   .join-btn-primary:hover svg {

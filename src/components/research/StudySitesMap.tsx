@@ -35,7 +35,7 @@ const studySites: StudySite[] = [
     failureMode: 'Fast, nonlinear collapse',
     signals: ['Urchin barrens', 'Predator loss', 'Detrital starvation'],
     researchLink: '/research/kelp-forests',
-    color: '#38bdf8',
+    color: '#3A6B7A',
     description: 'Consumer feedbacks can flip forests to barrens in months. We study what governs the tipping point—and what breaks the lock.',
   },
 ];
@@ -58,7 +58,7 @@ export default function StudySitesMap() {
     <div
       style={{
         background: 'rgba(15, 23, 42, 0.6)',
-        border: '1px solid rgba(56, 189, 248, 0.15)',
+        border: '1px solid rgba(58, 107, 122, 0.15)',
         borderRadius: '1.5rem',
         overflow: 'hidden',
       }}
@@ -71,7 +71,7 @@ export default function StudySitesMap() {
           gap: '1rem',
           padding: '1.5rem',
           background: 'linear-gradient(180deg, rgba(10, 22, 40, 0.8) 0%, rgba(15, 23, 42, 0.4) 100%)',
-          borderBottom: '1px solid rgba(56, 189, 248, 0.1)',
+          borderBottom: '1px solid rgba(58, 107, 122, 0.1)',
         }}
       >
         {studySites.map((site) => (
@@ -107,7 +107,7 @@ export default function StudySitesMap() {
               style={{
                 fontSize: '0.875rem',
                 fontWeight: 600,
-                color: '#f1f5f9',
+                color: '#0F2942',
               }}
             >
               {site.ecosystem}
@@ -115,7 +115,7 @@ export default function StudySitesMap() {
             <span
               style={{
                 fontSize: '0.75rem',
-                color: 'rgba(241, 245, 249, 0.5)',
+                color: 'rgba(15, 41, 66, 0.5)',
               }}
             >
               {site.name}
@@ -171,9 +171,9 @@ export default function StudySitesMap() {
               padding: '0.5rem 0.875rem',
               background: 'rgba(15, 23, 42, 0.9)',
               backdropFilter: 'blur(8px)',
-              border: '1px solid rgba(255, 255, 255, 0.1)',
+              border: '1px solid rgba(15, 41, 66, 0.1)',
               borderRadius: '2rem',
-              color: '#f1f5f9',
+              color: '#0F2942',
               fontSize: '0.8125rem',
               fontWeight: 600,
             }}
@@ -227,7 +227,7 @@ export default function StudySitesMap() {
               style={{
                 fontSize: '1.75rem',
                 fontWeight: 800,
-                color: '#f1f5f9',
+                color: '#0F2942',
                 margin: 0,
                 letterSpacing: '-0.02em',
                 transition: 'opacity 0.15s ease',
@@ -242,7 +242,7 @@ export default function StudySitesMap() {
             style={{
               fontSize: '0.9375rem',
               lineHeight: 1.6,
-              color: 'rgba(241, 245, 249, 0.7)',
+              color: 'rgba(15, 41, 66, 0.7)',
               margin: 0,
               transition: 'opacity 0.15s ease',
               opacity: isAnimating ? 0.5 : 1,
@@ -255,7 +255,7 @@ export default function StudySitesMap() {
           <div
             style={{
               background: 'rgba(0, 0, 0, 0.2)',
-              border: '1px solid rgba(255, 255, 255, 0.08)',
+              border: '1px solid rgba(15, 41, 66, 0.08)',
               borderRadius: '0.75rem',
               padding: '1rem',
               transition: 'opacity 0.15s ease',
@@ -284,7 +284,7 @@ export default function StudySitesMap() {
                   fontWeight: 700,
                   textTransform: 'uppercase',
                   letterSpacing: '0.08em',
-                  color: 'rgba(241, 245, 249, 0.5)',
+                  color: 'rgba(15, 41, 66, 0.5)',
                 }}
               >
                 Failure Mode
@@ -294,7 +294,7 @@ export default function StudySitesMap() {
               style={{
                 fontSize: '1rem',
                 fontWeight: 700,
-                color: '#f1f5f9',
+                color: '#0F2942',
                 margin: '0 0 0.75rem',
               }}
             >
@@ -309,11 +309,11 @@ export default function StudySitesMap() {
                     alignItems: 'center',
                     gap: '0.375rem',
                     padding: '0.375rem 0.625rem',
-                    background: 'rgba(255, 255, 255, 0.05)',
-                    border: '1px solid rgba(255, 255, 255, 0.08)',
+                    background: 'rgba(15, 41, 66, 0.05)',
+                    border: '1px solid rgba(15, 41, 66, 0.08)',
                     borderRadius: '0.375rem',
                     fontSize: '0.75rem',
-                    color: 'rgba(241, 245, 249, 0.8)',
+                    color: 'rgba(15, 41, 66, 0.8)',
                   }}
                 >
                   <svg

@@ -156,7 +156,7 @@ const structuredData = {
   {values.map((value, index) => (
     <section
       id={value.id}
-      class={`value-section ${index % 2 === 0 ? 'bg-surface' : 'bg-navy-highlight'}`}
+      class={`value-section ${index % 2 === 0 ? 'bg-paper' : 'bg-paper-surface'}`}
     >
       <div class="container">
         <div class={`value-content ${index % 2 === 1 ? 'md:flex-row-reverse' : ''}`}>
@@ -220,7 +220,7 @@ const structuredData = {
 
   .bubble {
     @apply absolute rounded-full;
-    background: radial-gradient(circle at 30% 30%, rgba(56, 189, 248, 0.3), rgba(45, 212, 191, 0.1));
+    background: radial-gradient(circle at 30% 30%, rgba(58, 107, 122, 0.3), rgba(90, 138, 138, 0.1));
     animation: float-up linear infinite;
     opacity: 0;
   }
@@ -239,12 +239,11 @@ const structuredData = {
 
   /* Gradient Text */
   .gradient-text {
-    background: linear-gradient(135deg, #ffffff 0%, #38bdf8 40%, #2dd4bf 80%, #38bdf8 100%);
+    background: linear-gradient(135deg, #ffffff 0%, #3A6B7A 40%, #5A8A8A 80%, #3A6B7A 100%);
     background-size: 200% 200%;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
-    animation: gradient-shift 8s ease-in-out infinite;
   }
 
   @keyframes gradient-shift {
@@ -314,12 +313,12 @@ const structuredData = {
     content: '';
     @apply absolute inset-0 rounded-xl opacity-0;
     @apply transition-opacity duration-300;
-    background: radial-gradient(circle at center, rgba(56, 189, 248, 0.3), transparent 70%);
+    background: radial-gradient(circle at center, rgba(58, 107, 122, 0.3), transparent 70%);
   }
 
   .value-text:hover .value-icon {
     @apply scale-110;
-    box-shadow: 0 0 20px rgba(56, 189, 248, 0.3);
+    box-shadow: 0 1px 2px rgba(15, 41, 66, 0.08);
   }
 
   .value-text:hover .value-icon::before {
