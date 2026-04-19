@@ -4,37 +4,61 @@ export default {
   theme: {
     extend: {
       colors: {
-        // Editorial-scientific palette — cream paper, navy ink
+        // ===== Editorial-scientific palette =====
+        // Paper theme is the site-wide default (cream + navy ink).
+        // Legacy dark-surface tokens remain for CTA strips and the (now-retired)
+        // dark footer sections.
+
+        // Paper theme — explicit, namespaced tokens (prefer these going forward)
+        paper: {
+          DEFAULT: '#F4EFE6',       // Warm cream — body background
+          surface: '#E8DFD2',       // Elevated paper cards
+          surface2: '#EDE6D9',      // Slightly lighter card tint (hover/alt)
+          ink: '#0F2942',           // Deep navy ink — primary text on paper
+          'ink-2': '#2C4057',       // Slightly softer ink for secondary headings
+          muted: '#5A6D82',         // Muted paper ink — captions / meta (AA on cream)
+          line: '#C8BDA8',          // Warm paper border / rule
+          'line-2': '#A8A08E',      // Deeper rule for emphasis
+          2: '#EDE6D9',             // Legacy alias (homepage authored pre-namespacing)
+          3: '#E4DBC8',             // Legacy alias
+        },
+
+        // Accent — desaturated deep-ocean teal, restrained (site-wide)
+        accent: {
+          DEFAULT: '#3A6B7A',
+          2: '#5A8A8A',
+          warm: '#C4564A',          // Used sparingly (rust / coral)
+        },
+
+        // Since we committed to a paper-first aesthetic site-wide, the
+        // legacy tokens below all point at paper-theme values. This means
+        // existing `bg-surface text-ink` markup on subpages renders as
+        // navy-on-cream rather than the previous navy-on-navy regression.
+        // A light-ink variant is still available via `text-ink-light` for
+        // the few dark sections (CTA "back cover", inline dark footer bits).
         ink: {
-          DEFAULT: '#0F2942',   // Deep navy ink — primary text on paper
-          2: '#1F3A54',         // Slightly softer for secondary headings
-          light: '#f1f5f9',     // Legacy light-text for dark sections
+          DEFAULT: '#0F2942',       // Deep navy ink — site-wide text default
+          2: '#2C4057',             // Softer navy for secondary headings
+          light: '#f1f5f9',         // Legacy light ink (for dark sections)
         },
         muted: {
-          DEFAULT: '#52606F',   // Muted ink for body on paper
-          2: '#7A8896',         // Even softer for meta
-        },
-        accent: {
-          DEFAULT: '#3A6B7A',   // Desaturated deep ocean teal
-          2: '#5A8A8A',         // Muted teal
-          warm: '#C4564A',      // Sparingly used rust/coral
-        },
-        // Paper background is the new default
-        paper: {
-          DEFAULT: '#F4EFE6',   // Warm off-white "paper"
-          2: '#EDE6D9',         // Slightly deeper tint for sections/cards
-          3: '#E4DBC8',         // Deeper still for rules/borders
+          DEFAULT: '#5A6D82',       // Paper-muted — AA-contrast meta on cream
+          2: '#7A8896',
+          light: 'rgba(241, 245, 249, 0.6)', // legacy dark-mode muted
         },
         surface: {
-          DEFAULT: '#0F2942',   // Dark navy now a sectional accent
-          card: '#EDE6D9',      // Card = slightly deeper paper tint
-          dark: '#0F172A',      // Legacy dark surface
+          DEFAULT: '#F4EFE6',       // Paper cream — site-wide default bg
+          card: '#E8DFD2',          // Elevated paper card
+          dark: '#0F172A',          // Legacy dark surface (CTA strip / dark sections)
+          navy: '#0F2942',          // Deep navy (CTA back-cover)
         },
         line: {
-          DEFAULT: '#C8BFAC',   // Warm paper border
+          DEFAULT: '#C8BDA8',       // Warm paper border
           2: '#A8A08E',
+          dark: 'rgba(255,255,255,0.1)', // legacy dark-mode rule
         },
-        // Legacy/sectional navy accents (kept for dark sections)
+
+        // Legacy/sectional navy accents (kept for CTA and dark sections)
         'navy-deep': '#0F2942',
         'navy-dark': '#0F172A',
         'navy-card': '#1e293b',

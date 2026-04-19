@@ -543,7 +543,7 @@ const issueDate = new Date().toLocaleDateString('en-US', {
   }
 
   .hero-meta dt {
-    @apply font-mono text-[10px] uppercase tracking-[0.18em] text-ink/55 mb-1;
+    @apply font-mono text-[10px] uppercase tracking-[0.18em] text-ink/70 mb-1;
   }
 
   .hero-meta dd {
@@ -564,7 +564,10 @@ const issueDate = new Date().toLocaleDateString('en-US', {
 
   .hero-figure-frame img {
     @apply w-full h-auto;
-    aspect-ratio: 4 / 5;
+    /* Landscape crop to match the panorama source. The 4:3 ratio gives
+       the figure some vertical presence without forcing a destructive
+       portrait crop on a landscape photo. */
+    aspect-ratio: 4 / 3;
     object-fit: cover;
     display: block;
   }
@@ -580,7 +583,7 @@ const issueDate = new Date().toLocaleDateString('en-US', {
   }
 
   .figcap-text {
-    @apply font-sans text-xs text-ink/70 italic leading-snug;
+    @apply font-sans text-xs text-ink/85 italic leading-snug;
   }
 
   /* ============================================

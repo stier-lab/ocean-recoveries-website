@@ -44,7 +44,20 @@
   }
 
   :focus-visible {
-    @apply outline-2 outline-offset-2 outline-accent;
+    /* Use a darker ring (navy ink) for reliable visibility on cream
+       paper. The desaturated accent teal is borderline against the
+       warm cream background. */
+    outline: 2px solid #0F2942;
+    outline-offset: 3px;
+    border-radius: 2px;
+  }
+
+  /* On explicitly dark surfaces, use the accent ring so it is visible */
+  .bg-navy-deep :focus-visible,
+  .bg-surface-dark :focus-visible,
+  .bg-surface-navy :focus-visible,
+  .cta :focus-visible {
+    outline-color: #F4EFE6;
   }
 
   /* Headings — serif-led, ink color, NO gradient */
@@ -286,21 +299,26 @@
     transform: scale(1.02);
   }
 
-  /* Reduced motion */
+  /* Reduced motion — targeted to elements that actually animate in our
+     editorial design, so user-agent styles and focus-ring transitions
+     remain untouched. */
   @media (prefers-reduced-motion: reduce) {
-    .scroll-reveal,
+    .scroll-reveal {
+      transition: none !important;
+      opacity: 1 !important;
+      transform: none !important;
+    }
+
     .card,
     .btn,
     .chip,
     .img-zoom img,
-    * {
+    .animate-fade-in,
+    .animate-fade-up,
+    .animate-slide-up,
+    .animate-bounce-subtle {
       transition: none !important;
       animation: none !important;
-    }
-
-    .scroll-reveal {
-      opacity: 1 !important;
-      transform: none !important;
     }
   }
 
