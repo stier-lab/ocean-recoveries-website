@@ -1,6 +1,5 @@
 ---
 import Layout from '@layouts/Layout.astro';
-import WaveDivider from '@components/shared/WaveDivider.astro';
 import { posts } from '@data/posts';
 import { currentTeam } from '@data/team';
 
@@ -14,14 +13,19 @@ const teamPreview = [...currentTeam]
   .sort((a, b) => a.order - b.order)
   .slice(0, 4);
 
-// Format date helper
+// Format date — long form, editorial
 const formatDate = (dateStr: string) => {
   return new Date(dateStr).toLocaleDateString('en-US', {
     year: 'numeric',
-    month: 'short',
+    month: 'long',
     day: 'numeric',
   });
 };
+
+const issueDate = new Date().toLocaleDateString('en-US', {
+  year: 'numeric',
+  month: 'long',
+});
 ---
 
 <Layout
@@ -29,297 +33,266 @@ const formatDate = (dateStr: string) => {
   description="Research lab at UC Santa Barbara identifying ecological bottlenecks and thresholds that trap coral reefs and kelp forests in degraded states—and turning that science into decision tools for restoration."
   keywords={['Ocean Recoveries Lab', 'coral reef research', 'kelp forest ecology', 'marine conservation', 'UC Santa Barbara', 'Adrian Stier', 'ecosystem resilience', 'restoration ecology']}
 >
-  <!-- Hero Section - Simplified & More Impactful -->
+  <!-- ============================================
+       Hero — Editorial masthead
+       Cream paper, navy ink, serif headline
+       No particles, no Ken Burns, no gradient text
+       ============================================ -->
   <section class="hero">
-    <div class="hero-media">
-      <div class="hero-image" style="background-image: url('/images/coral-reef-panorama-anthias-fish.jpeg');"></div>
-      <div class="hero-overlay"></div>
-      <div class="hero-text-scrim"></div>
-      <div class="hero-grain"></div>
-      <!-- Subtle animated particles -->
-      <div class="hero-particles" aria-hidden="true">
-        <div class="particle particle-1"></div>
-        <div class="particle particle-2"></div>
-        <div class="particle particle-3"></div>
-        <div class="particle particle-4"></div>
-        <div class="particle particle-5"></div>
+    <div class="container">
+      <!-- Masthead bar -->
+      <div class="masthead scroll-reveal">
+        <span class="masthead-issue">Vol. 01 &middot; {issueDate}</span>
+        <span class="masthead-rule"></span>
+        <span class="masthead-meta">UC Santa Barbara &middot; Ecology, Evolution &amp; Marine Biology</span>
       </div>
-    </div>
 
-    <div class="hero-content">
-      <div class="container">
-        <div class="hero-text-block">
-          <!-- Institutional eyebrow -->
-          <div class="hero-eyebrow scroll-reveal stagger-1">
-            <span>UC Santa Barbara</span>
-            <span class="hero-eyebrow-sep"></span>
-            <span>Ecology, Evolution & Marine Biology</span>
-          </div>
+      <div class="hero-grid">
+        <!-- Left: typographic hero -->
+        <div class="hero-text">
+          <p class="hero-kicker scroll-reveal stagger-1">Ocean Recoveries Lab</p>
 
-          <!-- Compact headline lockup -->
-          <div class="hero-title-block scroll-reveal stagger-1">
-            <h1 class="hero-title">
-              <span class="title-main">Ocean <span class="title-serif">Recoveries</span></span>
-              <span class="title-lab">Lab</span>
-            </h1>
-          </div>
+          <h1 class="hero-title scroll-reveal stagger-1">
+            Understanding <em>collapse</em>.<br />
+            Designing <em>recovery</em>.
+          </h1>
 
-          <!-- Tagline - LARGER and more prominent -->
-          <div class="hero-tagline-wrapper scroll-reveal stagger-2">
-            <p class="hero-tagline">
-              Understanding <em>collapse</em>.<br />
-              Designing <em>recovery</em>.
-            </p>
-          </div>
-
-          <!-- Simplified thesis - shorter -->
-          <p class="hero-desc scroll-reveal stagger-3">
-            We identify the ecological bottlenecks that trap coral reefs and kelp forests in degraded states—and turn that science into decision tools for restoration.
+          <p class="hero-deck scroll-reveal stagger-2">
+            We identify the ecological bottlenecks that trap coral reefs and kelp forests
+            in degraded states&mdash;and turn that science into decision tools for restoration.
           </p>
 
-          <!-- Actions row -->
-          <div class="hero-actions scroll-reveal stagger-4">
-            <a href="/research/coral-reefs" class="btn-hero-primary">
-              <span>Explore Our Research</span>
-              <svg class="btn-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+          <div class="hero-actions scroll-reveal stagger-3">
+            <a href="/research/coral-reefs" class="btn btn-primary">
+              <span>Explore the research</span>
+              <svg class="btn-arrow" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17 8l4 4m0 0l-4 4m4-4H3" />
               </svg>
             </a>
-            <a href="/publications" class="btn-hero-secondary">View Publications</a>
+            <a href="/publications" class="btn btn-secondary">View publications</a>
           </div>
+
+          <!-- Editorial byline / dateline -->
+          <dl class="hero-meta scroll-reveal stagger-4">
+            <div>
+              <dt>Principal Investigator</dt>
+              <dd>Adrian Stier, PhD</dd>
+            </div>
+            <div>
+              <dt>Field Sites</dt>
+              <dd>Mo&apos;orea &middot; Santa Barbara</dd>
+            </div>
+            <div>
+              <dt>Est.</dt>
+              <dd><span class="font-mono">2015</span></dd>
+            </div>
+          </dl>
         </div>
+
+        <!-- Right: editorial photo plate -->
+        <figure class="hero-figure scroll-reveal stagger-2">
+          <div class="hero-figure-frame">
+            <img
+              src="/images/coral-reef-panorama-anthias-fish.jpeg"
+              alt="Anthias fish over a coral reef in Mo'orea, French Polynesia"
+              class="photo-editorial"
+              loading="eager"
+            />
+          </div>
+          <figcaption>
+            <span class="figcap-label">Plate I</span>
+            <span class="figcap-text">
+              Anthias schooling above a recovering reef, Mo&apos;orea, French Polynesia.
+            </span>
+          </figcaption>
+        </figure>
       </div>
     </div>
-
-    <!-- Scroll cue -->
-    <div class="scroll-cue">
-      <div class="scroll-cue-line"></div>
-    </div>
-
-    <WaveDivider id="hero-wave" fillColor="surface" />
   </section>
 
-  <!-- How We Work Section - More Visual -->
-  <section id="approach" class="approach-section">
+  <!-- ============================================
+       Section 01 — Approach
+       ============================================ -->
+  <section id="approach" class="approach">
     <div class="container">
-      <!-- Intro block -->
+      <div class="section-rule"><span>01 / Approach</span></div>
+
       <div class="approach-intro scroll-reveal">
-        <div class="approach-header">
-          <span class="approach-eyebrow">Our Approach</span>
-          <h2 class="approach-headline">
-            How We <span class="approach-headline-emphasis">Work</span>
-          </h2>
-        </div>
-        <p class="approach-thesis">
-          We run experiments, synthesize evidence across systems, and build models that translate results into actionable thresholds and decision tools.
+        <h2 class="approach-headline">How we work.</h2>
+        <p class="lead">
+          We run experiments, synthesize evidence across systems, and build models that
+          translate results into actionable thresholds and decision tools.
         </p>
       </div>
 
-      <!-- Method cards with numbers -->
       <div class="approach-grid">
-        <div class="approach-card scroll-reveal stagger-1">
-          <div class="approach-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M9.75 3.104v5.714a2.25 2.25 0 01-.659 1.591L5 14.5M9.75 3.104c-.251.023-.501.05-.75.082m.75-.082a24.301 24.301 0 014.5 0m0 0v5.714c0 .597.237 1.17.659 1.591L19.8 15.3M14.25 3.104c.251.023.501.05.75.082M19.8 15.3l-1.57.393A9.065 9.065 0 0112 15a9.065 9.065 0 00-6.23.693L5 14.5m14.8.8l1.402 1.402c1.232 1.232.65 3.318-1.067 3.611A48.309 48.309 0 0112 21c-2.773 0-5.491-.235-8.135-.687-1.718-.293-2.3-2.379-1.067-3.61L5 14.5" />
-            </svg>
-          </div>
+        <article class="approach-item scroll-reveal stagger-1">
+          <span class="approach-num">01</span>
           <h3 class="approach-title">Field Experiments</h3>
           <p class="approach-desc">
-            Test mechanisms in the field by manipulating key species interactions and quantifying effects on ecosystem recovery.
+            Test mechanisms in the field by manipulating key species interactions and
+            quantifying effects on ecosystem recovery.
           </p>
-        </div>
+        </article>
 
-        <div class="approach-card scroll-reveal stagger-2">
-          <div class="approach-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M6.429 9.75L2.25 12l4.179 2.25m0-4.5l5.571 3 5.571-3m-11.142 0L2.25 7.5 12 2.25l9.75 5.25-4.179 2.25m0 0L21.75 12l-4.179 2.25m0 0l4.179 2.25L12 21.75l-9.75-5.25 4.179-2.25m11.142 0l-5.571 3-5.571-3" />
-            </svg>
-          </div>
+        <article class="approach-item scroll-reveal stagger-2">
+          <span class="approach-num">02</span>
           <h3 class="approach-title">Evidence Synthesis</h3>
           <p class="approach-desc">
-            Systematic review and meta-analysis to compare recovery drivers across ecosystems and estimate robust effect sizes.
+            Systematic review and meta-analysis to compare recovery drivers across
+            ecosystems and estimate robust effect sizes.
           </p>
-        </div>
+        </article>
 
-        <div class="approach-card scroll-reveal stagger-3">
-          <div class="approach-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-              <circle cx="12" cy="5" r="2" />
-              <circle cx="5" cy="19" r="2" />
-              <circle cx="19" cy="19" r="2" />
-              <path stroke-linecap="round" stroke-linejoin="round" d="M12 7v4m0 0l-5 6m5-6l5 6" />
-            </svg>
-          </div>
+        <article class="approach-item scroll-reveal stagger-3">
+          <span class="approach-num">03</span>
           <h3 class="approach-title">Predictive Modeling</h3>
           <p class="approach-desc">
-            Theory and simulation models that translate field data into thresholds and decision-support tools for managers.
+            Theory and simulation models that translate field data into thresholds and
+            decision-support tools for managers.
           </p>
-        </div>
+        </article>
       </div>
 
-      <!-- Unifying question as callout -->
-      <div class="approach-question scroll-reveal">
-        <div class="question-icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09zM18.259 8.715L18 9.75l-.259-1.035a3.375 3.375 0 00-2.455-2.456L14.25 6l1.036-.259a3.375 3.375 0 002.455-2.456L18 2.25l.259 1.035a3.375 3.375 0 002.456 2.456L21.75 6l-1.035.259a3.375 3.375 0 00-2.456 2.456zM16.894 20.567L16.5 21.75l-.394-1.183a2.25 2.25 0 00-1.423-1.423L13.5 18.75l1.183-.394a2.25 2.25 0 001.423-1.423l.394-1.183.394 1.183a2.25 2.25 0 001.423 1.423l1.183.394-1.183.394a2.25 2.25 0 00-1.423 1.423z" />
-          </svg>
-        </div>
-        <p class="question-text">
-          <span class="question-prefix">One question drives everything:</span>
-          How can we engineer ecosystem resilience in a rapidly changing world?
+      <!-- Pull-quote — the unifying question -->
+      <aside class="approach-quote scroll-reveal">
+        <p class="pull-quote">
+          &ldquo;How can we engineer ecosystem resilience in a rapidly changing world?&rdquo;
         </p>
-      </div>
+        <p class="approach-quote-attr">One question drives every project in the lab.</p>
+      </aside>
     </div>
-
-    <!-- Gradient transition instead of wave -->
-    <div class="section-fade-dark"></div>
   </section>
 
-  <!-- Field Sites Section -->
-  <section id="field-sites" class="field-sites">
-    <div class="field-sites-bg">
-      <div class="field-sites-gradient"></div>
-    </div>
+  <!-- ============================================
+       Section 02 — Field Sites
+       ============================================ -->
+  <section id="field-sites" class="sites">
+    <div class="container">
+      <div class="section-rule"><span>02 / Field Sites</span></div>
 
-    <div class="container relative z-10">
       <div class="sites-intro scroll-reveal">
-        <span class="sites-eyebrow">Field Sites</span>
-        <h2 class="sites-headline">
-          Where We <span class="sites-headline-emphasis">Work</span>
-        </h2>
-        <p class="sites-thesis">
-          A volcanic island lagoon. A temperate kelp forest coastline. Same questions about resilience—different ecosystems, transferable insights.
+        <h2 class="sites-headline">Where we work.</h2>
+        <p class="lead">
+          A volcanic island lagoon. A temperate kelp forest coastline. The same questions
+          about resilience&mdash;different ecosystems, transferable insights.
         </p>
       </div>
 
-      <!-- Field Site Cards -->
       <div class="sites-grid">
-        <!-- Mo'orea Coral Reefs -->
-        <a href="/research/coral-reefs" class="site-card site-card-coral scroll-reveal stagger-1">
-          <div class="site-image">
-            <img src="/images/cauliflower-coral-damselfish-reef.jpeg" alt="Coral reef ecosystem in Mo'orea" loading="lazy" />
-            <div class="site-overlay"></div>
-          </div>
-          <div class="site-content">
-            <div class="site-header">
-              <div class="site-location">
-                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
-                </svg>
-                <span>Mo'orea, French Polynesia</span>
-              </div>
-              <span class="site-badge site-badge-coral">MCR LTER</span>
+        <!-- Mo'orea -->
+        <a href="/research/coral-reefs" class="site scroll-reveal stagger-1">
+          <figure class="site-figure img-zoom">
+            <img
+              src="/images/cauliflower-coral-damselfish-reef.jpeg"
+              alt="Cauliflower coral and damselfish, Mo'orea reef"
+              class="photo-editorial"
+              loading="lazy"
+            />
+          </figure>
+          <div class="site-body">
+            <div class="site-meta">
+              <span class="site-loc font-mono">Mo&apos;orea, French Polynesia</span>
+              <span class="badge">MCR LTER</span>
             </div>
             <h3 class="site-title">Coral Reefs</h3>
-            <p class="site-dynamics">Species interactions that accelerate or impede coral recovery</p>
-
-            <div class="site-research">
-              <h4 class="research-heading">Key mechanisms:</h4>
-              <ul class="research-list">
-                <li>Fish-coral mutualisms and nutrient subsidies</li>
-                <li>Guard crabs defending against crown-of-thorns</li>
-                <li>Priority effects in community reassembly</li>
-              </ul>
-            </div>
-
-            <div class="site-cta">
-              <span>Explore coral research</span>
-              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+            <p class="site-deck">
+              Species interactions that accelerate or impede coral recovery.
+            </p>
+            <ul class="site-list">
+              <li>Fish&ndash;coral mutualisms and nutrient subsidies</li>
+              <li>Guard crabs defending against crown-of-thorns</li>
+              <li>Priority effects in community reassembly</li>
+            </ul>
+            <span class="site-cta">
+              Explore coral research
+              <svg class="cta-arrow" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17 8l4 4m0 0l-4 4m4-4H3" />
               </svg>
-            </div>
+            </span>
           </div>
-          <div class="site-accent"></div>
         </a>
 
-        <!-- Santa Barbara Kelp Forests -->
-        <a href="/research/kelp-forests" class="site-card site-card-kelp scroll-reveal stagger-2">
-          <div class="site-image">
-            <img src="/images/giant-kelp-sunlight-underwater.jpeg" alt="Kelp forest ecosystem in Santa Barbara" loading="lazy" />
-            <div class="site-overlay"></div>
-          </div>
-          <div class="site-content">
-            <div class="site-header">
-              <div class="site-location">
-                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
-                </svg>
-                <span>Santa Barbara, California</span>
-              </div>
-              <span class="site-badge site-badge-kelp">SBC LTER</span>
+        <!-- Santa Barbara -->
+        <a href="/research/kelp-forests" class="site scroll-reveal stagger-2">
+          <figure class="site-figure img-zoom">
+            <img
+              src="/images/giant-kelp-sunlight-underwater.jpeg"
+              alt="Giant kelp, Santa Barbara Channel"
+              class="photo-editorial"
+              loading="lazy"
+            />
+          </figure>
+          <div class="site-body">
+            <div class="site-meta">
+              <span class="site-loc font-mono">Santa Barbara, California</span>
+              <span class="badge">SBC LTER</span>
             </div>
             <h3 class="site-title">Kelp Forests</h3>
-            <p class="site-dynamics">Predator control of urchin barrens and ecosystem tipping points</p>
-
-            <div class="site-research">
-              <h4 class="research-heading">Key mechanisms:</h4>
-              <ul class="research-list">
-                <li>Lobster-urchin size thresholds for kelp persistence</li>
-                <li>MPA spillover and fishery interactions</li>
-                <li>Thermal limits on predator effectiveness</li>
-              </ul>
-            </div>
-
-            <div class="site-cta">
-              <span>Explore kelp research</span>
-              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+            <p class="site-deck">
+              Predator control of urchin barrens and ecosystem tipping points.
+            </p>
+            <ul class="site-list">
+              <li>Lobster&ndash;urchin size thresholds for kelp persistence</li>
+              <li>MPA spillover and fishery interactions</li>
+              <li>Thermal limits on predator effectiveness</li>
+            </ul>
+            <span class="site-cta">
+              Explore kelp research
+              <svg class="cta-arrow" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17 8l4 4m0 0l-4 4m4-4H3" />
               </svg>
-            </div>
+            </span>
           </div>
-          <div class="site-accent"></div>
         </a>
       </div>
 
-      <!-- LTER Badge -->
-      <div class="lter-badge scroll-reveal">
-        <span class="lter-text">Backed by decades of</span>
-        <span class="lter-highlight">NSF Long Term Ecological Research</span>
-        <span class="lter-text">data at both sites</span>
-      </div>
+      <p class="sites-footnote scroll-reveal">
+        Backed by decades of <strong>NSF Long Term Ecological Research</strong> data at both sites.
+      </p>
     </div>
-
-    <WaveDivider id="sites-wave" fillColor="surface" />
   </section>
 
-  <!-- Recent Work Section - Enhanced Featured Article -->
-  <section class="news-section">
+  <!-- ============================================
+       Section 03 — Recent Work (Latest Research)
+       ============================================ -->
+  <section class="news">
     <div class="container">
+      <div class="section-rule"><span>03 / Latest Research</span></div>
+
       <div class="news-header scroll-reveal">
-        <div class="news-intro">
-          <span class="news-eyebrow">Recent Work</span>
-          <h2 class="news-headline">
-            Latest <span class="news-headline-emphasis">Research</span>
-          </h2>
-        </div>
-        <a href="/publications" class="btn-outline-editorial-dark hidden sm:inline-flex">
-          <span>All publications</span>
-          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+        <h2 class="news-headline">Recent work.</h2>
+        <a href="/publications" class="news-all">
+          All publications
+          <svg class="cta-arrow" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17 8l4 4m0 0l-4 4m4-4H3" />
           </svg>
         </a>
       </div>
 
-      <!-- 3 equal research tiles -->
       <div class="news-tiles">
         {recentPosts.map((post, i) => (
           <article class={`news-tile scroll-reveal stagger-${i + 1}`}>
             <a href={`/news/${post.slug}`} class="news-tile-link">
-              <div class="news-tile-image">
-                <img src={post.featuredImage} alt={post.title} loading={i === 0 ? "eager" : "lazy"} />
-                <div class="news-tile-overlay"></div>
-              </div>
+              <figure class="news-tile-image img-zoom">
+                <img
+                  src={post.featuredImage}
+                  alt={post.title}
+                  class="photo-editorial"
+                  loading={i === 0 ? "eager" : "lazy"}
+                />
+              </figure>
               <div class="news-tile-body">
                 <div class="news-tile-meta">
                   <time class="news-tile-date">{formatDate(post.date)}</time>
-                  <span class="news-tile-category">{post.tags[0]}</span>
+                  <span class="news-tile-cat">{post.tags[0]}</span>
                 </div>
                 <h3 class="news-tile-title">{post.title}</h3>
                 <p class="news-tile-excerpt">{post.excerpt}</p>
                 <span class="news-tile-cta">
                   Read more
-                  <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                  <svg class="cta-arrow" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17 8l4 4m0 0l-4 4m4-4H3" />
                   </svg>
                 </span>
               </div>
@@ -327,221 +300,161 @@ const formatDate = (dateStr: string) => {
           </article>
         ))}
       </div>
-
-      <div class="news-mobile-link scroll-reveal sm:hidden">
-        <a href="/publications" class="btn-outline-editorial-dark">View All Publications</a>
-      </div>
     </div>
-
-    <!-- Gradient transition -->
-    <div class="section-fade-dark"></div>
   </section>
 
-  <!-- Team Section - Balanced with Visual -->
-  <section class="team-section">
-    <div class="team-bg">
-      <div class="team-gradient"></div>
-    </div>
+  <!-- ============================================
+       Section 04 — The Team
+       ============================================ -->
+  <section class="team">
+    <div class="container">
+      <div class="section-rule"><span>04 / The Team</span></div>
 
-    <div class="container relative z-10">
       <div class="team-layout">
-        <!-- Left: Content -->
         <div class="team-content scroll-reveal">
-          <span class="team-eyebrow">The Team</span>
-          <h2 class="team-headline">
-            Who We <span class="team-headline-emphasis">Are</span>
-          </h2>
-          <p class="team-text">
-            An interdisciplinary group combining field ecology, quantitative modeling, and restoration science—working in Mo'orea and Santa Barbara.
+          <h2 class="team-headline">Who we are.</h2>
+          <p class="lead">
+            An interdisciplinary group combining field ecology, quantitative modeling, and
+            restoration science&mdash;working in Mo&apos;orea and Santa Barbara.
           </p>
 
-          <!-- Inline stats -->
-          <div class="team-stats-inline">
-            <div class="stat-item">
-              <span class="stat-value">75+</span>
-              <span class="stat-label">publications</span>
+          <!-- Editorial stat block: mono numbers, sans labels -->
+          <dl class="stats">
+            <div class="stat">
+              <dt class="stat-num">75<span class="stat-num-sup">+</span></dt>
+              <dd class="stat-tag">Publications</dd>
             </div>
-            <div class="stat-divider"></div>
-            <div class="stat-item">
-              <span class="stat-value">15</span>
-              <span class="stat-label">years field research</span>
+            <div class="stat">
+              <dt class="stat-num">15</dt>
+              <dd class="stat-tag">Years field research</dd>
             </div>
-            <div class="stat-divider"></div>
-            <div class="stat-item">
-              <span class="stat-value">2</span>
-              <span class="stat-label">LTER sites</span>
+            <div class="stat">
+              <dt class="stat-num">02</dt>
+              <dd class="stat-tag">LTER sites</dd>
             </div>
-          </div>
+          </dl>
 
-          <!-- What makes us different -->
-          <div class="team-differentiators">
-            <div class="differentiator">
-              <span class="diff-icon">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                  <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12c0 1.268-.63 2.39-1.593 3.068a3.745 3.745 0 01-1.043 3.296 3.745 3.745 0 01-3.296 1.043A3.745 3.745 0 0112 21c-1.268 0-2.39-.63-3.068-1.593a3.746 3.746 0 01-3.296-1.043 3.745 3.745 0 01-1.043-3.296A3.745 3.745 0 013 12c0-1.268.63-2.39 1.593-3.068a3.745 3.745 0 011.043-3.296 3.746 3.746 0 013.296-1.043A3.746 3.746 0 0112 3c1.268 0 2.39.63 3.068 1.593a3.746 3.746 0 013.296 1.043 3.746 3.746 0 011.043 3.296A3.745 3.745 0 0121 12z" />
-                </svg>
-              </span>
-              <span class="diff-text">Decades of baseline data at each site</span>
-            </div>
-            <div class="differentiator">
-              <span class="diff-icon">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                  <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12c0 1.268-.63 2.39-1.593 3.068a3.745 3.745 0 01-1.043 3.296 3.745 3.745 0 01-3.296 1.043A3.745 3.745 0 0112 21c-1.268 0-2.39-.63-3.068-1.593a3.746 3.746 0 01-3.296-1.043 3.745 3.745 0 01-1.043-3.296A3.745 3.745 0 013 12c0-1.268.63-2.39 1.593-3.068a3.745 3.745 0 011.043-3.296 3.746 3.746 0 013.296-1.043A3.746 3.746 0 0112 3c1.268 0 2.39.63 3.068 1.593a3.746 3.746 0 013.296 1.043 3.746 3.746 0 011.043 3.296A3.745 3.745 0 0121 12z" />
-                </svg>
-              </span>
-              <span class="diff-text">Theory-driven experimental design</span>
-            </div>
-            <div class="differentiator">
-              <span class="diff-icon">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                  <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12c0 1.268-.63 2.39-1.593 3.068a3.745 3.745 0 01-1.043 3.296 3.745 3.745 0 01-3.296 1.043A3.745 3.745 0 0112 21c-1.268 0-2.39-.63-3.068-1.593a3.746 3.746 0 01-3.296-1.043 3.745 3.745 0 01-1.043-3.296A3.745 3.745 0 013 12c0-1.268.63-2.39 1.593-3.068a3.745 3.745 0 011.043-3.296 3.746 3.746 0 013.296-1.043A3.746 3.746 0 0112 3c1.268 0 2.39.63 3.068 1.593a3.746 3.746 0 013.296 1.043 3.746 3.746 0 011.043 3.296A3.745 3.745 0 0121 12z" />
-                </svg>
-              </span>
-              <span class="diff-text">Outputs for managers, not just papers</span>
-            </div>
-          </div>
+          <ul class="diff-list">
+            <li><span class="diff-mark">&mdash;</span> Decades of baseline data at each site</li>
+            <li><span class="diff-mark">&mdash;</span> Theory-driven experimental design</li>
+            <li><span class="diff-mark">&mdash;</span> Outputs for managers, not just papers</li>
+          </ul>
 
-          <a href="/people" class="btn-editorial-primary btn-editorial-light">
-            <span class="btn-text">Meet the Full Team</span>
-            <span class="btn-icon">
-              <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
-              </svg>
-            </span>
+          <a href="/people" class="btn btn-primary team-cta">
+            <span>Meet the full team</span>
+            <svg class="btn-arrow" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+            </svg>
           </a>
         </div>
 
-        <!-- Right: Team Preview Grid -->
         <div class="team-preview scroll-reveal">
           <div class="team-preview-grid">
             {teamPreview.map((member, i) => (
-              <a href="/people" class={`team-preview-card stagger-${i + 1}`}>
-                <div class="preview-image">
+              <a href="/people" class={`tp-card stagger-${i + 1}`}>
+                <div class="tp-image img-zoom">
                   {member.image && !member.image.includes('placeholder') ? (
-                    <img src={member.image} alt={member.name} loading="lazy" />
+                    <img
+                      src={member.image}
+                      alt={member.name}
+                      class="photo-editorial"
+                      loading="lazy"
+                    />
                   ) : (
-                    <div class="preview-placeholder">
+                    <div class="tp-placeholder">
                       <span>{member.name.charAt(0)}</span>
                     </div>
                   )}
                 </div>
-                <div class="preview-info">
-                  <span class="preview-name">{member.name}</span>
-                  <span class="preview-role">{member.title}</span>
+                <div class="tp-info">
+                  <span class="tp-name">{member.name}</span>
+                  <span class="tp-role">{member.title}</span>
                 </div>
               </a>
             ))}
           </div>
-          <a href="/people" class="team-preview-more">+ {currentTeam.length - 4} more team members</a>
+          <a href="/people" class="tp-more">+ {currentTeam.length - 4} more team members &rarr;</a>
         </div>
       </div>
     </div>
-
-    <WaveDivider id="team-wave" fillColor="surface" />
   </section>
 
-  <!-- Funders/Partners Section - Credibility Strip -->
-  <section class="funders-section">
+  <!-- ============================================
+       Section 05 — Funders strip
+       ============================================ -->
+  <section class="funders">
     <div class="container">
+      <div class="section-rule"><span>05 / Support</span></div>
+
       <div class="funders-content scroll-reveal">
-        <span class="funders-label">Research supported by</span>
-        <div class="funders-strip">
-          <a href="https://www.nsf.gov/" target="_blank" rel="noopener noreferrer" class="funder-item" title="National Science Foundation">
-            <span class="funder-abbrev">NSF</span>
+        <p class="funders-label">Research supported by</p>
+        <ul class="funders-strip">
+          <li><a href="https://www.nsf.gov/" target="_blank" rel="noopener noreferrer" class="funder">
+            <span class="funder-abbr">NSF</span>
             <span class="funder-full">National Science Foundation</span>
-          </a>
-          <span class="funder-divider"></span>
-          <a href="https://www.wmkeck.org/" target="_blank" rel="noopener noreferrer" class="funder-item" title="W.M. Keck Foundation">
-            <span class="funder-abbrev">Keck</span>
+          </a></li>
+          <li><a href="https://www.wmkeck.org/" target="_blank" rel="noopener noreferrer" class="funder">
+            <span class="funder-abbr">Keck</span>
             <span class="funder-full">W.M. Keck Foundation</span>
-          </a>
-          <span class="funder-divider"></span>
-          <a href="https://www.opc.ca.gov/" target="_blank" rel="noopener noreferrer" class="funder-item" title="California Ocean Protection Council">
-            <span class="funder-abbrev">OPC</span>
+          </a></li>
+          <li><a href="https://www.opc.ca.gov/" target="_blank" rel="noopener noreferrer" class="funder">
+            <span class="funder-abbr">OPC</span>
             <span class="funder-full">CA Ocean Protection Council</span>
-          </a>
-          <span class="funder-divider"></span>
-          <a href="https://mcr.lternet.edu/" target="_blank" rel="noopener noreferrer" class="funder-item" title="Moorea Coral Reef Long Term Ecological Research">
-            <span class="funder-abbrev">MCR LTER</span>
+          </a></li>
+          <li><a href="https://mcr.lternet.edu/" target="_blank" rel="noopener noreferrer" class="funder">
+            <span class="funder-abbr">MCR&middot;LTER</span>
             <span class="funder-full">Moorea Coral Reef</span>
-          </a>
-          <span class="funder-divider"></span>
-          <a href="https://sbclter.msi.ucsb.edu/" target="_blank" rel="noopener noreferrer" class="funder-item" title="Santa Barbara Coastal Long Term Ecological Research">
-            <span class="funder-abbrev">SBC LTER</span>
+          </a></li>
+          <li><a href="https://sbclter.msi.ucsb.edu/" target="_blank" rel="noopener noreferrer" class="funder">
+            <span class="funder-abbr">SBC&middot;LTER</span>
             <span class="funder-full">Santa Barbara Coastal</span>
-          </a>
-        </div>
+          </a></li>
+        </ul>
       </div>
     </div>
   </section>
 
-  <!-- Final CTA Section -->
-  <section class="final-cta">
+  <!-- ============================================
+       Section 06 — Get Involved
+       Inverted: dark navy "back cover"
+       ============================================ -->
+  <section class="cta">
     <div class="container">
+      <div class="cta-rule"><span>06 / Get Involved</span></div>
+
       <div class="cta-intro scroll-reveal">
-        <span class="cta-eyebrow">Get Involved</span>
-        <h2 class="cta-headline">
-          Work With <span class="cta-headline-emphasis">Us</span>
-        </h2>
+        <h2 class="cta-headline">Work with us.</h2>
       </div>
 
-      <!-- Segmented CTA tiles - equal weight -->
       <div class="cta-tiles">
-        <!-- Students -->
         <a href="/join" class="cta-tile scroll-reveal stagger-1">
-          <div class="tile-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M4.26 10.147a60.436 60.436 0 00-.491 6.347A48.627 48.627 0 0112 20.904a48.627 48.627 0 018.232-4.41 60.46 60.46 0 00-.491-6.347m-15.482 0a50.57 50.57 0 00-2.658-.813A59.905 59.905 0 0112 3.493a59.902 59.902 0 0110.399 5.84c-.896.248-1.783.52-2.658.814m-15.482 0A50.697 50.697 0 0112 13.489a50.702 50.702 0 017.74-3.342M6.75 15a.75.75 0 100-1.5.75.75 0 000 1.5zm0 0v-3.675A55.378 55.378 0 0112 8.443m-7.007 11.55A5.981 5.981 0 006.75 15.75v-1.5" />
-            </svg>
-          </div>
-          <h3 class="tile-title">Train With Us</h3>
-          <p class="tile-desc">
-            Undergrads, grad students, and postdocs. Hands-on field work, quantitative training, and co-authorship opportunities.
+          <span class="cta-tile-num font-mono">01</span>
+          <h3 class="cta-tile-title">Train with us</h3>
+          <p class="cta-tile-desc">
+            Undergrads, grad students, and postdocs. Hands-on field work, quantitative
+            training, and co-authorship opportunities.
           </p>
-          <span class="tile-cta">
-            <span>View opportunities</span>
-            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
-            </svg>
-          </span>
+          <span class="cta-tile-link">View opportunities &rarr;</span>
         </a>
 
-        <!-- Collaborators -->
         <a href="mailto:astier@ucsb.edu" class="cta-tile scroll-reveal stagger-2">
-          <div class="tile-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M18 18.72a9.094 9.094 0 003.741-.479 3 3 0 00-4.682-2.72m.94 3.198l.001.031c0 .225-.012.447-.037.666A11.944 11.944 0 0112 21c-2.17 0-4.207-.576-5.963-1.584A6.062 6.062 0 016 18.719m12 0a5.971 5.971 0 00-.941-3.197m0 0A5.995 5.995 0 0012 12.75a5.995 5.995 0 00-5.058 2.772m0 0a3 3 0 00-4.681 2.72 8.986 8.986 0 003.74.477m.94-3.197a5.971 5.971 0 00-.94 3.197M15 6.75a3 3 0 11-6 0 3 3 0 016 0zm6 3a2.25 2.25 0 11-4.5 0 2.25 2.25 0 014.5 0zm-13.5 0a2.25 2.25 0 11-4.5 0 2.25 2.25 0 014.5 0z" />
-            </svg>
-          </div>
-          <h3 class="tile-title">Collaborate</h3>
-          <p class="tile-desc">
-            Managers and practitioners seeking restoration tools, MPA evaluation data, or research partnerships.
+          <span class="cta-tile-num font-mono">02</span>
+          <h3 class="cta-tile-title">Collaborate</h3>
+          <p class="cta-tile-desc">
+            Managers and practitioners seeking restoration tools, MPA evaluation data,
+            or research partnerships.
           </p>
-          <span class="tile-cta">
-            <span>Get in touch</span>
-            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
-            </svg>
-          </span>
+          <span class="cta-tile-link">Get in touch &rarr;</span>
         </a>
 
-        <!-- Support -->
         <a href="/for-funders" class="cta-tile scroll-reveal stagger-3">
-          <div class="tile-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12z" />
-            </svg>
-          </div>
-          <h3 class="tile-title">Support Research</h3>
-          <p class="tile-desc">
-            Philanthropic partners enable student training, field expeditions, and open-access tool development.
+          <span class="cta-tile-num font-mono">03</span>
+          <h3 class="cta-tile-title">Support research</h3>
+          <p class="cta-tile-desc">
+            Philanthropic partners enable student training, field expeditions, and
+            open-access tool development.
           </p>
-          <span class="tile-cta">
-            <span>Learn more</span>
-            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
-            </svg>
-          </span>
+          <span class="cta-tile-link">Learn more &rarr;</span>
         </a>
       </div>
     </div>
@@ -550,543 +463,348 @@ const formatDate = (dateStr: string) => {
 
 <style>
   /* ============================================
-     Hero Section - Simplified & More Impactful
+     HERO — editorial masthead
      ============================================ */
   .hero {
-    @apply relative min-h-[100svh] flex items-center overflow-hidden;
+    @apply relative pt-28 md:pt-36 pb-20 md:pb-28;
+    background-color: #F4EFE6;
   }
 
-  .hero-media {
-    @apply absolute inset-0;
+  .masthead {
+    @apply flex items-center gap-4 mb-12 md:mb-16;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid rgba(15, 41, 66, 0.2);
   }
 
-  .hero-image {
-    @apply absolute inset-0 bg-cover bg-center bg-no-repeat;
-    transform: scale(1.02);
-    animation: heroZoom 25s ease-out forwards;
+  .masthead-issue {
+    @apply font-mono text-xs uppercase tracking-[0.2em] text-ink;
   }
 
-  @keyframes heroZoom {
-    from { transform: scale(1.02); }
-    to { transform: scale(1); }
+  .masthead-rule {
+    flex: 1;
+    height: 1px;
+    background: rgba(15, 41, 66, 0.18);
   }
 
-  .hero-overlay {
-    @apply absolute inset-0;
-    background: linear-gradient(
-      135deg,
-      rgba(8, 15, 25, 0.75) 0%,
-      rgba(8, 20, 35, 0.6) 40%,
-      rgba(11, 37, 69, 0.4) 70%,
-      rgba(11, 37, 69, 0.2) 100%
-    );
+  .masthead-meta {
+    @apply font-mono text-xs uppercase tracking-[0.18em] text-ink/60 hidden md:block;
   }
 
-  .hero-text-scrim {
-    @apply absolute inset-0;
-    background: linear-gradient(
-      90deg,
-      rgba(8, 15, 25, 0.92) 0%,
-      rgba(8, 15, 25, 0.85) 25%,
-      rgba(8, 20, 35, 0.6) 50%,
-      transparent 70%
-    );
+  .hero-grid {
+    @apply grid lg:grid-cols-12 gap-10 lg:gap-12 items-start;
   }
 
-  .hero-grain {
-    @apply absolute inset-0 pointer-events-none opacity-[0.03];
-    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+  .hero-text {
+    @apply lg:col-span-7;
   }
 
-  /* Floating particles */
-  .hero-particles {
-    @apply absolute inset-0 pointer-events-none overflow-hidden;
+  .hero-kicker {
+    @apply font-mono text-xs uppercase tracking-[0.22em] text-accent mb-6;
   }
 
-  .particle {
-    @apply absolute rounded-full;
-    background: rgba(56, 189, 248, 0.3);
-    animation: float-particle 20s ease-in-out infinite;
-  }
-
-  .particle-1 { width: 4px; height: 4px; top: 20%; left: 60%; animation-delay: 0s; }
-  .particle-2 { width: 3px; height: 3px; top: 40%; left: 70%; animation-delay: -5s; }
-  .particle-3 { width: 5px; height: 5px; top: 60%; left: 55%; animation-delay: -10s; }
-  .particle-4 { width: 3px; height: 3px; top: 30%; left: 80%; animation-delay: -15s; }
-  .particle-5 { width: 4px; height: 4px; top: 70%; left: 75%; animation-delay: -8s; }
-
-  @keyframes float-particle {
-    0%, 100% { transform: translate(0, 0) scale(1); opacity: 0.3; }
-    25% { transform: translate(20px, -30px) scale(1.2); opacity: 0.6; }
-    50% { transform: translate(-10px, -50px) scale(0.8); opacity: 0.4; }
-    75% { transform: translate(30px, -20px) scale(1.1); opacity: 0.5; }
-  }
-
-  .hero-content {
-    @apply relative z-10 w-full py-20;
-  }
-
-  .hero-text-block {
-    @apply max-w-xl;
-  }
-
-  .hero-eyebrow {
-    @apply flex items-center gap-2 text-xs font-medium uppercase tracking-widest text-white/50 mb-5;
-  }
-
-  .hero-eyebrow-sep {
-    @apply w-3 h-px bg-white/30;
-  }
-
-  .hero-title-block {
-    @apply mb-6;
-  }
-
+  /* The headline — solid ink, no gradient, serif */
   .hero-title {
-    @apply flex flex-wrap items-baseline gap-x-3 gap-y-0;
-    line-height: 1;
-  }
-
-  .title-main {
-    @apply text-4xl sm:text-5xl md:text-6xl font-black text-white;
+    @apply font-serif text-ink mb-8;
+    font-size: clamp(2.5rem, 1.6rem + 4.2vw, 5.25rem);
+    font-weight: 700;
+    line-height: 1.05;
     letter-spacing: -0.02em;
   }
 
-  .title-lab {
-    @apply text-2xl sm:text-3xl md:text-4xl font-black text-white/70;
-    letter-spacing: -0.01em;
-  }
-
-  .title-serif {
-    font-family: 'Playfair Display', Georgia, serif;
-    @apply font-semibold italic;
-    background: linear-gradient(135deg, #38bdf8 0%, #2dd4bf 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-  }
-
-  /* Tagline - LARGER */
-  .hero-tagline-wrapper {
-    @apply mb-8;
-  }
-
-  .hero-tagline {
-    @apply text-2xl md:text-3xl lg:text-4xl text-white leading-tight;
+  .hero-title em {
+    font-style: italic;
     font-weight: 500;
+    color: #3A6B7A;
   }
 
-  .hero-tagline em {
-    font-family: 'Playfair Display', Georgia, serif;
-    @apply text-accent not-italic font-semibold;
-  }
-
-  .hero-desc {
-    @apply text-base md:text-lg text-white/70 mb-8 leading-relaxed max-w-lg;
+  .hero-deck {
+    @apply font-sans text-ink/80 mb-10;
+    font-size: clamp(1.0625rem, 0.95rem + 0.45vw, 1.25rem);
+    line-height: 1.65;
+    max-width: 38rem;
   }
 
   .hero-actions {
-    @apply flex flex-wrap items-center gap-4;
+    @apply flex flex-wrap items-center gap-3 mb-12;
   }
 
-  .btn-hero-primary {
-    @apply inline-flex items-center gap-2 px-7 py-4;
-    @apply bg-accent text-white font-bold text-sm;
-    @apply rounded-full no-underline;
-    @apply transition-all duration-300;
-    box-shadow: 0 8px 30px -4px rgba(56, 189, 248, 0.4);
+  .btn-arrow {
+    @apply w-4 h-4 transition-transform duration-200;
   }
 
-  .btn-hero-primary:hover {
-    @apply bg-accent/90;
-    transform: translateY(-2px);
-    box-shadow: 0 12px 40px -4px rgba(56, 189, 248, 0.5);
+  .btn:hover .btn-arrow {
+    transform: translateX(2px);
   }
 
-  .btn-hero-primary .btn-icon {
-    @apply w-4 h-4 transition-transform duration-300;
+  .hero-meta {
+    @apply grid grid-cols-3 gap-6 pt-8;
+    border-top: 1px solid rgba(15, 41, 66, 0.15);
+    max-width: 36rem;
   }
 
-  .btn-hero-primary:hover .btn-icon {
-    transform: translateX(3px);
+  .hero-meta dt {
+    @apply font-mono text-[10px] uppercase tracking-[0.18em] text-ink/55 mb-1;
   }
 
-  .btn-hero-secondary {
-    @apply inline-flex items-center px-7 py-4;
-    @apply text-white font-bold text-sm;
-    @apply border-2 border-white/30 rounded-full no-underline;
-    @apply transition-all duration-300;
+  .hero-meta dd {
+    @apply font-sans text-sm text-ink;
   }
 
-  .btn-hero-secondary:hover {
-    @apply border-white/60 bg-white/10 text-white;
+  /* Photo plate */
+  .hero-figure {
+    @apply lg:col-span-5;
   }
 
-  /* Scroll cue */
-  .scroll-cue {
-    @apply absolute bottom-8 left-1/2 -translate-x-1/2;
-    animation: fadeIn 1s ease-out 1.5s forwards;
-    opacity: 0;
+  .hero-figure-frame {
+    @apply overflow-hidden;
+    background: #EDE6D9;
+    padding: 0.5rem;
+    border: 1px solid rgba(15, 41, 66, 0.12);
   }
 
-  @keyframes fadeIn {
-    to { opacity: 1; }
+  .hero-figure-frame img {
+    @apply w-full h-auto;
+    aspect-ratio: 4 / 5;
+    object-fit: cover;
+    display: block;
   }
 
-  .scroll-cue-line {
-    @apply w-px h-10 bg-gradient-to-b from-transparent via-white/30 to-accent;
-    animation: scrollPulse 2s ease-in-out infinite;
+  .hero-figure figcaption {
+    @apply mt-3 flex gap-3 items-baseline;
+    border-top: 1px solid rgba(15, 41, 66, 0.12);
+    padding-top: 0.75rem;
   }
 
-  @keyframes scrollPulse {
-    0%, 100% { opacity: 0.5; transform: scaleY(1); }
-    50% { opacity: 1; transform: scaleY(1.1); }
+  .figcap-label {
+    @apply font-mono text-[10px] uppercase tracking-[0.2em] text-accent;
+  }
+
+  .figcap-text {
+    @apply font-sans text-xs text-ink/70 italic leading-snug;
   }
 
   /* ============================================
-     Approach Section - More Visual
+     APPROACH
      ============================================ */
-  .approach-section {
-    @apply relative py-20 md:py-28 bg-surface;
+  .approach {
+    @apply relative py-24 md:py-32;
   }
 
   .approach-intro {
-    @apply max-w-3xl mb-12;
-  }
-
-  .approach-header {
-    @apply mb-4;
-  }
-
-  .approach-eyebrow {
-    @apply block text-xs font-bold uppercase tracking-widest text-accent mb-2;
+    @apply max-w-3xl mb-16;
   }
 
   .approach-headline {
-    @apply text-3xl md:text-4xl font-black text-ink leading-tight;
+    @apply font-serif text-ink mb-5;
+    font-size: clamp(1.875rem, 1.4rem + 1.8vw, 3rem);
+    font-weight: 600;
+    line-height: 1.15;
   }
 
-  .approach-headline-emphasis {
-    font-family: 'Playfair Display', Georgia, serif;
-    @apply font-semibold italic;
-  }
-
-  .approach-thesis {
-    @apply text-base md:text-lg text-ink/70 leading-relaxed;
-  }
-
-  /* Method cards with numbers */
   .approach-grid {
-    @apply grid md:grid-cols-3 gap-6 lg:gap-8 mb-12;
+    @apply grid md:grid-cols-3 gap-10 md:gap-12 mb-20;
+    border-top: 1px solid rgba(15, 41, 66, 0.15);
+    padding-top: 2.5rem;
   }
 
-  .approach-card {
-    @apply relative p-6 lg:p-8 rounded-2xl;
-    background: rgba(30, 41, 59, 0.4);
-    border: 1px solid rgba(255, 255, 255, 0.06);
-    transition: all 400ms cubic-bezier(0.4, 0, 0.2, 1);
+  .approach-item {
+    @apply relative;
   }
 
-  .approach-card:hover {
-    background: rgba(30, 41, 59, 0.6);
-    border-color: rgba(56, 189, 248, 0.2);
-    transform: translateY(-4px);
-    box-shadow: 0 20px 40px -12px rgba(0, 0, 0, 0.3);
-  }
-
-  .approach-icon {
-    @apply w-10 h-10 mb-4 text-accent;
-  }
-
-  .approach-icon svg {
-    @apply w-full h-full;
+  .approach-num {
+    @apply block font-mono text-xs uppercase tracking-[0.22em] text-accent mb-4;
   }
 
   .approach-title {
-    @apply text-lg font-bold text-ink mb-2;
+    @apply font-serif text-ink mb-3;
+    font-size: clamp(1.25rem, 1.1rem + 0.5vw, 1.5rem);
+    font-weight: 600;
   }
 
   .approach-desc {
-    @apply text-sm text-ink/60 leading-relaxed;
+    @apply font-sans text-ink/75;
+    font-size: 0.9375rem;
+    line-height: 1.65;
   }
 
-  /* Question callout */
-  .approach-question {
-    @apply flex items-start gap-4 p-6 rounded-2xl max-w-2xl mx-auto;
-    background: rgba(56, 189, 248, 0.04);
-    border: 1px solid rgba(56, 189, 248, 0.1);
+  .approach-quote {
+    @apply max-w-3xl mx-auto py-8;
+    text-align: left;
   }
 
-  .question-icon {
-    @apply w-8 h-8 text-accent shrink-0;
-  }
-
-  .question-icon svg {
-    @apply w-full h-full;
-  }
-
-  .question-text {
-    @apply text-base md:text-lg text-ink/90 leading-relaxed m-0;
-  }
-
-  .question-prefix {
-    @apply block text-sm font-bold text-accent mb-1;
-  }
-
-  /* Section fade transition */
-  .section-fade-dark {
-    @apply absolute bottom-0 left-0 right-0 h-32 pointer-events-none;
-    background: linear-gradient(to bottom, transparent, #0b1929);
+  .approach-quote-attr {
+    @apply font-mono text-xs uppercase tracking-[0.18em] text-ink/55 mt-5 ml-6;
   }
 
   /* ============================================
-     Field Sites Section
+     SITES
      ============================================ */
-  .field-sites {
-    @apply relative py-20 md:py-28 pb-32 md:pb-40 overflow-hidden;
-  }
-
-  .field-sites-bg {
-    @apply absolute inset-0;
-  }
-
-  .field-sites-gradient {
-    @apply absolute inset-0;
-    background: linear-gradient(180deg, #0b1929 0%, #0f172a 50%, #0b1929 100%);
+  .sites {
+    @apply relative py-24 md:py-32;
+    background: #EDE6D9;
   }
 
   .sites-intro {
-    @apply max-w-3xl mb-12;
-  }
-
-  .sites-eyebrow {
-    @apply block text-xs font-bold uppercase tracking-widest text-accent mb-2;
+    @apply max-w-3xl mb-16;
   }
 
   .sites-headline {
-    @apply text-3xl md:text-4xl font-black text-white leading-tight mb-4;
-  }
-
-  .sites-headline-emphasis {
-    font-family: 'Playfair Display', Georgia, serif;
-    @apply font-semibold italic;
-  }
-
-  .sites-thesis {
-    @apply text-base md:text-lg text-white/60 leading-relaxed;
+    @apply font-serif text-ink mb-5;
+    font-size: clamp(1.875rem, 1.4rem + 1.8vw, 3rem);
+    font-weight: 600;
+    line-height: 1.15;
   }
 
   .sites-grid {
-    @apply grid md:grid-cols-2 gap-8 max-w-5xl mx-auto mb-10;
+    @apply grid md:grid-cols-2 gap-10 md:gap-12 mb-12;
   }
 
-  .site-card {
-    @apply relative flex flex-col rounded-2xl overflow-hidden no-underline;
-    background: rgba(255, 255, 255, 0.03);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    transition: all 500ms cubic-bezier(0.4, 0, 0.2, 1);
+  .site {
+    @apply block no-underline;
+    color: inherit;
+    transition: transform 300ms ease;
   }
 
-  .site-card:hover {
-    background: rgba(255, 255, 255, 0.06);
-    transform: translateY(-8px);
-    box-shadow: 0 30px 60px -12px rgba(0, 0, 0, 0.5);
+  .site:hover .site-title {
+    color: #3A6B7A;
   }
 
-  .site-image {
-    @apply relative h-52 overflow-hidden;
+  .site-figure {
+    @apply mb-6;
+    background: #F4EFE6;
+    padding: 0.5rem;
+    border: 1px solid rgba(15, 41, 66, 0.1);
   }
 
-  .site-image img {
-    @apply w-full h-full object-cover;
-    transform: scale(1.05);
-    transition: transform 800ms cubic-bezier(0.4, 0, 0.2, 1);
+  .site-figure img {
+    @apply w-full;
+    aspect-ratio: 16 / 10;
+    object-fit: cover;
+    display: block;
   }
 
-  .site-card:hover .site-image img {
-    transform: scale(1.12);
+  .site-body {
+    @apply px-1;
   }
 
-  .site-overlay {
-    @apply absolute inset-0;
-    background: linear-gradient(to top, rgba(10, 15, 25, 0.6) 0%, transparent 60%);
+  .site-meta {
+    @apply flex flex-wrap items-center gap-3 mb-3;
   }
 
-  .site-content {
-    @apply flex-1 flex flex-col p-6 md:p-8;
-  }
-
-  .site-header {
-    @apply flex flex-wrap items-center justify-between gap-3 mb-4;
-  }
-
-  .site-location {
-    @apply inline-flex items-center gap-1.5;
-    @apply text-xs font-bold uppercase tracking-wide text-white/50;
-  }
-
-  .site-badge {
-    @apply text-[10px] font-bold uppercase tracking-wider px-3 py-1 rounded-full;
-  }
-
-  .site-badge-coral {
-    background: rgba(251, 146, 60, 0.2);
-    color: #fb923c;
-    border: 1px solid rgba(251, 146, 60, 0.3);
-  }
-
-  .site-badge-kelp {
-    background: rgba(74, 222, 128, 0.2);
-    color: #4ade80;
-    border: 1px solid rgba(74, 222, 128, 0.3);
+  .site-loc {
+    @apply text-xs uppercase tracking-[0.15em] text-ink/60;
   }
 
   .site-title {
-    @apply text-2xl md:text-3xl font-black text-white mb-2;
-    transition: color 300ms ease;
+    @apply font-serif text-ink mb-3;
+    font-size: clamp(1.5rem, 1.2rem + 1.2vw, 2.25rem);
+    font-weight: 600;
+    transition: color 200ms ease;
   }
 
-  .site-card-coral:hover .site-title { color: #fb923c; }
-  .site-card-kelp:hover .site-title { color: #4ade80; }
-
-  .site-dynamics {
-    @apply text-white/50 text-sm mb-5 italic;
+  .site-deck {
+    @apply font-sans text-ink/75 italic mb-5;
+    font-size: 1rem;
+    line-height: 1.55;
+    max-width: 40ch;
   }
 
-  .site-research {
-    @apply mb-5;
+  .site-list {
+    @apply list-none p-0 m-0 mb-6 space-y-2;
   }
 
-  .research-heading {
-    @apply text-xs font-bold uppercase tracking-wider text-white/40 mb-2;
+  .site-list li {
+    @apply font-sans text-sm text-ink/80 leading-relaxed;
+    padding-left: 1.5rem;
+    position: relative;
   }
 
-  .research-list {
-    @apply space-y-1 list-none p-0 m-0;
+  .site-list li::before {
+    content: '\2014'; /* em dash */
+    position: absolute;
+    left: 0;
+    color: rgba(58, 107, 122, 0.6);
   }
-
-  .research-list li {
-    @apply text-sm text-white/70 leading-relaxed pl-4 relative;
-  }
-
-  .research-list li::before {
-    content: '•';
-    @apply absolute left-0;
-  }
-
-  .site-card-coral .research-list li::before { color: #fb923c; }
-  .site-card-kelp .research-list li::before { color: #4ade80; }
 
   .site-cta {
-    @apply mt-auto inline-flex items-center gap-2 font-bold text-sm;
-    transition: gap 300ms ease;
+    @apply inline-flex items-center gap-2 font-mono text-xs uppercase tracking-[0.18em] text-accent;
   }
 
-  .site-card-coral .site-cta { color: #fb923c; }
-  .site-card-kelp .site-cta { color: #4ade80; }
-
-  .site-card:hover .site-cta { @apply gap-3; }
-
-  .site-accent {
-    @apply absolute top-0 left-0 right-0 h-1;
+  .cta-arrow {
+    @apply w-4 h-4 transition-transform duration-200;
   }
 
-  .site-card-coral .site-accent { background: linear-gradient(90deg, #f97316, #fb923c); }
-  .site-card-kelp .site-accent { background: linear-gradient(90deg, #22c55e, #4ade80); }
-
-  .site-card-coral:hover { border-color: rgba(251, 146, 60, 0.3); }
-  .site-card-kelp:hover { border-color: rgba(74, 222, 128, 0.3); }
-
-  /* LTER Badge */
-  .lter-badge {
-    @apply text-center text-sm text-white/50;
+  .site:hover .cta-arrow,
+  .news-tile:hover .cta-arrow,
+  .news-all:hover .cta-arrow {
+    transform: translateX(3px);
   }
 
-  .lter-highlight {
-    @apply font-bold text-accent;
+  .sites-footnote {
+    @apply text-center font-sans text-sm text-ink/65 mt-4 pt-8;
+    border-top: 1px solid rgba(15, 41, 66, 0.15);
   }
 
   /* ============================================
-     News Section - Enhanced
+     NEWS
      ============================================ */
-  .news-section {
-    @apply relative py-20 md:py-28 bg-surface;
+  .news {
+    @apply relative py-24 md:py-32;
   }
 
   .news-header {
-    @apply flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4 mb-10;
-  }
-
-  .news-intro {
-    @apply flex-1;
-  }
-
-  .news-eyebrow {
-    @apply block text-xs font-bold uppercase tracking-widest text-accent mb-2;
+    @apply flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4 mb-12;
   }
 
   .news-headline {
-    @apply text-3xl md:text-4xl font-black text-ink leading-tight;
+    @apply font-serif text-ink;
+    font-size: clamp(1.875rem, 1.4rem + 1.8vw, 3rem);
+    font-weight: 600;
+    line-height: 1.15;
   }
 
-  .news-headline-emphasis {
-    font-family: 'Playfair Display', Georgia, serif;
-    @apply font-semibold italic;
+  .news-all {
+    @apply inline-flex items-center gap-2 font-mono text-xs uppercase tracking-[0.18em] text-accent no-underline;
+    text-decoration: none;
+    border-bottom: 1px solid rgba(58, 107, 122, 0.4);
+    padding-bottom: 2px;
   }
 
-  .btn-outline-editorial-dark {
-    @apply inline-flex items-center gap-2 px-6 py-3;
-    @apply text-ink font-bold text-sm;
-    @apply border border-line rounded-full no-underline;
-    @apply transition-all duration-300;
+  .news-all:hover {
+    border-bottom-color: rgba(58, 107, 122, 1);
   }
 
-  .btn-outline-editorial-dark:hover {
-    @apply border-accent text-accent gap-3;
-    background: rgba(56, 189, 248, 0.05);
-  }
-
-  /* News Tiles - 3 equal cards */
   .news-tiles {
-    @apply grid md:grid-cols-3 gap-6;
+    @apply grid md:grid-cols-3 gap-10 md:gap-8;
+    border-top: 1px solid rgba(15, 41, 66, 0.15);
+    padding-top: 2.5rem;
   }
 
   .news-tile {
-    @apply rounded-2xl overflow-hidden;
-    @apply bg-surface-card border border-line/50;
-    transition: all 400ms cubic-bezier(0.4, 0, 0.2, 1);
-  }
-
-  .news-tile:hover {
-    @apply border-accent/30;
-    transform: translateY(-4px);
-    box-shadow: 0 16px 32px -8px rgba(0, 0, 0, 0.25);
+    @apply block;
   }
 
   .news-tile-link {
-    @apply flex flex-col no-underline h-full;
+    @apply flex flex-col h-full no-underline;
+    color: inherit;
   }
 
   .news-tile-image {
-    @apply relative aspect-[16/10] overflow-hidden;
+    @apply mb-5;
+    background: #EDE6D9;
+    padding: 0.375rem;
+    border: 1px solid rgba(15, 41, 66, 0.1);
   }
 
   .news-tile-image img {
-    @apply w-full h-full object-cover;
-    transition: transform 600ms cubic-bezier(0.4, 0, 0.2, 1);
-  }
-
-  .news-tile:hover .news-tile-image img {
-    transform: scale(1.05);
-  }
-
-  .news-tile-overlay {
-    @apply absolute inset-0;
-    background: linear-gradient(to top, rgba(10, 15, 25, 0.3) 0%, transparent 50%);
+    @apply w-full;
+    aspect-ratio: 16 / 10;
+    object-fit: cover;
+    display: block;
   }
 
   .news-tile-body {
-    @apply flex-1 p-5 md:p-6 flex flex-col;
+    @apply flex-1 flex flex-col px-1;
   }
 
   .news-tile-meta {
@@ -1094,28 +812,35 @@ const formatDate = (dateStr: string) => {
   }
 
   .news-tile-date {
-    @apply text-xs text-muted;
+    @apply font-mono text-[11px] text-ink/60 uppercase tracking-wider;
   }
 
-  .news-tile-category {
-    @apply text-[10px] font-bold uppercase tracking-wider text-accent;
+  .news-tile-cat {
+    @apply font-mono text-[10px] uppercase tracking-[0.18em] text-accent;
+    border-left: 1px solid rgba(15, 41, 66, 0.2);
+    padding-left: 0.75rem;
   }
 
   .news-tile-title {
-    @apply text-base md:text-lg font-bold text-ink mb-3 leading-snug;
+    @apply font-serif text-ink mb-3;
+    font-size: 1.25rem;
+    font-weight: 600;
+    line-height: 1.25;
     display: -webkit-box;
-    -webkit-line-clamp: 2;
+    -webkit-line-clamp: 3;
     -webkit-box-orient: vertical;
     overflow: hidden;
     transition: color 200ms ease;
   }
 
-  .news-tile:hover .news-tile-title {
-    @apply text-accent;
+  .news-tile-link:hover .news-tile-title {
+    color: #3A6B7A;
   }
 
   .news-tile-excerpt {
-    @apply text-sm text-muted leading-relaxed mb-4;
+    @apply font-sans text-ink/70 mb-4;
+    font-size: 0.9375rem;
+    line-height: 1.6;
     display: -webkit-box;
     -webkit-line-clamp: 3;
     -webkit-box-orient: vertical;
@@ -1123,426 +848,306 @@ const formatDate = (dateStr: string) => {
   }
 
   .news-tile-cta {
-    @apply inline-flex items-center gap-2 text-accent text-sm font-bold mt-auto;
-    transition: gap 300ms ease;
-  }
-
-  .news-tile:hover .news-tile-cta {
-    @apply gap-3;
-  }
-
-  .news-mobile-link {
-    @apply text-center mt-10;
+    @apply inline-flex items-center gap-2 mt-auto font-mono text-xs uppercase tracking-[0.18em] text-accent;
   }
 
   /* ============================================
-     Team Section - Balanced Layout
+     TEAM
      ============================================ */
-  .team-section {
-    @apply relative py-20 md:py-28 pb-32 md:pb-40 overflow-hidden;
-  }
-
-  .team-bg {
-    @apply absolute inset-0;
-  }
-
-  .team-gradient {
-    @apply absolute inset-0;
-    background: linear-gradient(180deg, #0b1929 0%, #0f172a 50%, #0b1929 100%);
+  .team {
+    @apply relative py-24 md:py-32;
+    background: #EDE6D9;
   }
 
   .team-layout {
-    @apply grid lg:grid-cols-2 gap-12 lg:gap-16 items-center;
+    @apply grid lg:grid-cols-12 gap-12 lg:gap-16 items-start;
   }
 
   .team-content {
-    @apply max-w-xl;
-  }
-
-  .team-eyebrow {
-    @apply block text-xs font-bold uppercase tracking-widest text-accent mb-2;
+    @apply lg:col-span-7;
   }
 
   .team-headline {
-    @apply text-3xl md:text-4xl font-black text-white leading-tight mb-4;
+    @apply font-serif text-ink mb-5;
+    font-size: clamp(1.875rem, 1.4rem + 1.8vw, 3rem);
+    font-weight: 600;
+    line-height: 1.15;
   }
 
-  .team-headline-emphasis {
-    font-family: 'Playfair Display', Georgia, serif;
-    @apply font-semibold italic;
+  /* Stat row — Plex Mono numerics, sans labels */
+  .stats {
+    @apply flex flex-wrap items-end gap-12 my-10 pb-10;
+    border-bottom: 1px solid rgba(15, 41, 66, 0.18);
   }
 
-  .team-text {
-    @apply text-white/60 text-base md:text-lg leading-relaxed mb-6;
+  .stat dt.stat-num {
+    @apply font-mono text-ink;
+    font-size: clamp(2.5rem, 2rem + 2vw, 3.75rem);
+    font-weight: 500;
+    line-height: 0.95;
+    letter-spacing: -0.025em;
   }
 
-  /* Stats inline */
-  .team-stats-inline {
-    @apply flex flex-wrap items-center gap-6 mb-8 pb-8;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  .stat-num-sup {
+    font-size: 0.55em;
+    vertical-align: super;
+    color: #3A6B7A;
+    margin-left: 0.05em;
   }
 
-  .stat-item {
-    @apply flex flex-col;
+  .stat dd.stat-tag {
+    @apply font-sans text-xs uppercase tracking-[0.15em] text-ink/55 mt-2;
   }
 
-  .stat-value {
-    @apply text-2xl font-black text-accent;
+  .diff-list {
+    @apply list-none p-0 m-0 space-y-2 mb-10;
   }
 
-  .stat-label {
-    @apply text-xs text-white/40 uppercase tracking-wide;
+  .diff-list li {
+    @apply font-sans text-ink/80;
+    font-size: 1rem;
+    line-height: 1.6;
   }
 
-  .stat-divider {
-    @apply w-px h-10 bg-white/10;
+  .diff-mark {
+    @apply font-mono text-accent mr-2;
   }
 
-  .team-differentiators {
-    @apply space-y-3 mb-8;
+  .team-cta {
+    @apply mt-2;
   }
 
-  .differentiator {
-    @apply flex items-center gap-3;
-  }
-
-  .diff-icon {
-    @apply w-5 h-5 text-accent-2;
-  }
-
-  .diff-icon svg {
-    @apply w-full h-full;
-  }
-
-  .diff-text {
-    @apply text-sm text-white/70;
-  }
-
-  .btn-editorial-primary {
-    @apply relative inline-flex items-center gap-2 px-6 py-3;
-    @apply bg-accent text-white font-bold text-sm;
-    @apply rounded-full no-underline overflow-hidden;
-    @apply transition-all duration-300;
-  }
-
-  .btn-editorial-primary:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 8px 24px -4px rgba(56, 189, 248, 0.4);
-  }
-
-  .btn-editorial-primary .btn-icon {
-    @apply w-4 h-4 transition-transform duration-300;
-  }
-
-  .btn-editorial-primary:hover .btn-icon {
-    transform: translateX(3px);
-  }
-
-  /* Team Preview Grid */
   .team-preview {
-    @apply relative;
+    @apply lg:col-span-5;
   }
 
   .team-preview-grid {
-    @apply grid grid-cols-2 gap-4;
+    @apply grid grid-cols-2 gap-5;
   }
 
-  .team-preview-card {
-    @apply flex flex-col items-center p-4 rounded-xl no-underline;
-    background: rgba(255, 255, 255, 0.03);
-    border: 1px solid rgba(255, 255, 255, 0.08);
-    transition: all 300ms ease;
+  .tp-card {
+    @apply block no-underline;
+    color: inherit;
+    transition: transform 250ms ease;
   }
 
-  .team-preview-card:hover {
-    background: rgba(255, 255, 255, 0.06);
-    border-color: rgba(56, 189, 248, 0.3);
-    transform: translateY(-4px);
+  .tp-image {
+    @apply mb-3 overflow-hidden;
+    background: #F4EFE6;
+    padding: 0.25rem;
+    border: 1px solid rgba(15, 41, 66, 0.1);
   }
 
-  .preview-image {
-    @apply w-20 h-20 rounded-full overflow-hidden mb-3;
-    @apply ring-2 ring-white/10;
+  .tp-image img {
+    @apply w-full;
+    aspect-ratio: 4 / 5;
+    object-fit: cover;
+    display: block;
   }
 
-  .preview-image img {
-    @apply w-full h-full object-cover;
+  .tp-placeholder {
+    @apply w-full flex items-center justify-center;
+    aspect-ratio: 4 / 5;
+    background: #EDE6D9;
+    color: rgba(58, 107, 122, 0.6);
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 2.5rem;
+    font-weight: 600;
   }
 
-  .preview-placeholder {
-    @apply w-full h-full flex items-center justify-center;
-    @apply bg-surface-card text-accent/50 text-2xl font-bold;
+  .tp-info {
+    @apply px-1;
   }
 
-  .preview-info {
-    @apply text-center;
+  .tp-name {
+    @apply block font-serif text-ink text-base;
+    font-weight: 600;
+    line-height: 1.3;
   }
 
-  .preview-name {
-    @apply block text-sm font-bold text-white;
+  .tp-role {
+    @apply block font-mono text-[11px] uppercase tracking-[0.12em] text-ink/55 mt-1;
   }
 
-  .preview-role {
-    @apply block text-xs text-white/40;
+  .tp-more {
+    @apply block text-sm font-sans text-ink/65 mt-6 no-underline;
+    border-bottom: 1px dashed rgba(15, 41, 66, 0.2);
+    padding-bottom: 4px;
+    width: max-content;
   }
 
-  .team-preview-more {
-    @apply block text-center text-sm text-white/40 mt-4 no-underline transition-colors duration-300;
-  }
-
-  .team-preview-more:hover {
+  .tp-more:hover {
     @apply text-accent;
+    border-bottom-color: rgba(58, 107, 122, 0.6);
   }
 
   /* ============================================
-     Funders Section - Credibility Strip
+     FUNDERS
      ============================================ */
-  .funders-section {
-    @apply py-12 md:py-16;
-    background: linear-gradient(180deg, #0f172a 0%, #1e293b 50%, #0f172a 100%);
-    border-top: 1px solid rgba(255, 255, 255, 0.03);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+  .funders {
+    @apply py-20 md:py-24;
   }
 
   .funders-content {
-    @apply text-center;
+    @apply mt-2;
   }
 
   .funders-label {
-    @apply block text-xs font-medium uppercase tracking-widest mb-8;
-    color: rgba(241, 245, 249, 0.4);
+    @apply font-mono text-xs uppercase tracking-[0.2em] text-ink/55 mb-8;
   }
 
   .funders-strip {
-    @apply flex flex-wrap items-center justify-center gap-6 md:gap-8;
+    @apply flex flex-wrap items-end gap-x-10 gap-y-6 list-none p-0 m-0;
   }
 
-  .funder-item {
-    @apply flex flex-col items-center no-underline transition-all;
-    transition-duration: 300ms;
+  .funder {
+    @apply flex flex-col no-underline;
+    color: inherit;
+    transition: color 250ms ease;
   }
 
-  .funder-item:hover {
-    transform: translateY(-2px);
+  .funder:hover .funder-abbr {
+    color: #3A6B7A;
   }
 
-  .funder-item:hover .funder-abbrev {
-    color: #38bdf8;
-  }
-
-  .funder-item:hover .funder-full {
-    color: rgba(241, 245, 249, 0.6);
-  }
-
-  .funder-abbrev {
-    @apply text-lg md:text-xl font-bold tracking-tight transition-colors;
-    color: rgba(241, 245, 249, 0.7);
-    transition-duration: 300ms;
+  .funder-abbr {
+    @apply font-serif text-ink;
+    font-size: 1.5rem;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    transition: color 250ms ease;
   }
 
   .funder-full {
-    @apply text-xs transition-colors;
-    color: rgba(241, 245, 249, 0.35);
-    transition-duration: 300ms;
-  }
-
-  .funder-divider {
-    @apply hidden md:block w-px h-10;
-    background: rgba(255, 255, 255, 0.1);
+    @apply font-mono text-[11px] uppercase tracking-[0.15em] text-ink/55 mt-1;
   }
 
   /* ============================================
-     Final CTA Section
+     CTA — inverted dark "back cover"
      ============================================ */
-  .final-cta {
-    @apply relative py-20 md:py-28 bg-surface;
+  .cta {
+    @apply relative py-24 md:py-32;
+    background: #0F2942;
+    color: #F4EFE6;
+  }
+
+  .cta-rule {
+    @apply flex items-center gap-4 mb-12;
+  }
+
+  .cta-rule::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: rgba(244, 239, 230, 0.18);
+  }
+
+  .cta-rule span {
+    @apply font-mono text-xs uppercase tracking-[0.2em];
+    color: rgba(244, 239, 230, 0.65);
   }
 
   .cta-intro {
-    @apply mb-12 text-center;
-  }
-
-  .cta-eyebrow {
-    @apply block text-xs font-bold uppercase tracking-widest text-accent mb-2;
+    @apply mb-14;
   }
 
   .cta-headline {
-    @apply text-3xl md:text-4xl font-black text-ink leading-tight;
-  }
-
-  .cta-headline-emphasis {
-    font-family: 'Playfair Display', Georgia, serif;
-    @apply font-semibold italic;
+    @apply font-serif;
+    color: #F4EFE6;
+    font-size: clamp(2rem, 1.4rem + 2.4vw, 3.5rem);
+    font-weight: 600;
+    line-height: 1.1;
   }
 
   .cta-tiles {
-    @apply grid md:grid-cols-3 gap-6 lg:gap-8 max-w-4xl mx-auto;
+    @apply grid md:grid-cols-3 gap-10 md:gap-12;
   }
 
   .cta-tile {
-    @apply p-6 lg:p-8 rounded-2xl text-center no-underline flex flex-col;
-    @apply bg-surface-card border border-line/50;
-    @apply transition-all duration-300;
+    @apply block no-underline;
+    color: #F4EFE6;
+    border-top: 1px solid rgba(244, 239, 230, 0.2);
+    padding-top: 1.5rem;
+    transition: border-color 250ms ease;
   }
 
   .cta-tile:hover {
-    @apply border-accent/40;
-    transform: translateY(-6px);
-    box-shadow: 0 20px 50px -10px rgba(56, 189, 248, 0.2);
+    border-top-color: #F4EFE6;
   }
 
-  .tile-icon {
-    @apply w-12 h-12 mx-auto mb-5 text-accent;
+  .cta-tile-num {
+    @apply text-xs uppercase tracking-[0.2em];
+    color: rgba(244, 239, 230, 0.55);
   }
 
-  .tile-icon svg {
-    @apply w-full h-full;
+  .cta-tile-title {
+    @apply font-serif mt-4 mb-3;
+    color: #F4EFE6;
+    font-size: 1.5rem;
+    font-weight: 600;
+    line-height: 1.2;
   }
 
-  .tile-title {
-    @apply text-lg font-bold text-ink mb-3;
+  .cta-tile-desc {
+    @apply font-sans mb-5;
+    color: rgba(244, 239, 230, 0.75);
+    font-size: 0.9375rem;
+    line-height: 1.6;
   }
 
-  .tile-desc {
-    @apply text-sm text-muted leading-relaxed mb-5;
+  .cta-tile-link {
+    @apply font-mono text-xs uppercase tracking-[0.18em];
+    color: rgba(244, 239, 230, 0.85);
+    border-bottom: 1px solid rgba(244, 239, 230, 0.4);
+    padding-bottom: 2px;
+    transition: border-color 200ms ease;
   }
 
-  .tile-cta {
-    @apply inline-flex items-center justify-center gap-2 mt-auto;
-    @apply px-5 py-2.5 rounded-full text-sm font-bold;
-    @apply bg-accent/10 text-accent;
-    @apply transition-all duration-300;
-  }
-
-  .cta-tile:hover .tile-cta {
-    @apply bg-accent/20 gap-3;
+  .cta-tile:hover .cta-tile-link {
+    border-bottom-color: #F4EFE6;
   }
 
   /* ============================================
-     Responsive
+     RESPONSIVE
      ============================================ */
   @media (max-width: 768px) {
     .hero {
-      @apply items-start pt-24;
+      @apply pt-24 pb-16;
     }
 
-    .hero-text-scrim {
-      background: linear-gradient(
-        180deg,
-        rgba(8, 15, 25, 0.9) 0%,
-        rgba(8, 15, 25, 0.8) 40%,
-        rgba(8, 20, 35, 0.6) 70%,
-        rgba(8, 20, 35, 0.4) 100%
-      );
+    .hero-grid {
+      gap: 2.5rem;
     }
 
-    .hero-tagline {
-      @apply text-xl;
+    .hero-meta {
+      @apply grid-cols-1 gap-4;
     }
 
     .hero-actions {
-      @apply flex-col w-full;
+      @apply flex-col w-full items-stretch;
     }
 
-    .btn-hero-primary,
-    .btn-hero-secondary {
+    .btn {
       @apply w-full justify-center;
     }
 
-    .team-layout {
-      @apply grid-cols-1;
-    }
-
-    .team-preview-grid {
-      @apply grid-cols-2;
+    .stats {
+      @apply gap-8;
     }
 
     .funders-strip {
-      @apply gap-6;
-    }
-
-    .funder-divider {
-      @apply hidden;
+      @apply gap-x-6 gap-y-5;
     }
   }
 
-  /* ============================================
-     Reduced Motion
-     ============================================ */
   @media (prefers-reduced-motion: reduce) {
-    .hero-image {
-      animation: none;
-      transform: scale(1);
-    }
-
-    .particle {
-      animation: none;
-      opacity: 0.3;
-    }
-
-    .scroll-cue {
-      animation: none;
-      opacity: 1;
-    }
-
-    .scroll-cue-line {
-      animation: none;
-    }
-
-    .approach-card,
-    .site-card,
+    .approach-item,
+    .site,
     .news-tile,
-    .team-preview-card,
-    .cta-tile {
-      transition: none;
-    }
-
-    .site-image img,
-    .news-tile-image img {
+    .tp-card,
+    .cta-tile,
+    .funder {
       transition: none;
     }
   }
 </style>
-
-<script>
-  // Parallax effect for hero
-  let currentScrollHandler: (() => void) | null = null;
-
-  const initParallax = () => {
-    // Remove previous scroll handler to prevent listener leak
-    if (currentScrollHandler) {
-      window.removeEventListener('scroll', currentScrollHandler);
-      currentScrollHandler = null;
-    }
-
-    const heroImage = document.querySelector('.hero-image') as HTMLElement;
-    if (!heroImage) return;
-
-    let ticking = false;
-
-    const handleScroll = () => {
-      if (!ticking) {
-        requestAnimationFrame(() => {
-          const scrolled = window.scrollY;
-          const rate = scrolled * 0.3;
-          heroImage.style.transform = `scale(1) translateY(${rate}px)`;
-          ticking = false;
-        });
-        ticking = true;
-      }
-    };
-
-    if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-      currentScrollHandler = handleScroll;
-      window.addEventListener('scroll', handleScroll, { passive: true });
-    }
-  };
-
-  // Initialize
-  initParallax();
-
-  // Re-init after view transitions
-  document.addEventListener('astro:after-swap', () => {
-    initParallax();
-  });
-</script>

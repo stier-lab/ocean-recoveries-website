@@ -3,14 +3,17 @@
 @tailwind utilities;
 
 /* ============================================
-   Ocean Recoveries Lab - Global Styles
-   Navy Theme (No Light/Dark Toggle)
+   Ocean Recoveries Lab - Editorial-Scientific
+   Light "paper" theme — navy ink on warm cream
+   Prototype A: Anti-AI editorial pivot
    ============================================ */
 
 @layer base {
-  /* Font loaded via Google Fonts <link> in Layout.astro — no duplicate @font-face needed */
+  /* Fonts loaded via <link> in Layout.astro:
+     - Inter (sans)
+     - Playfair Display (serif headlines)
+     - IBM Plex Mono (data, DOIs, dates, stat numbers) */
 
-  /* Base resets */
   *,
   *::before,
   *::after {
@@ -21,166 +24,227 @@
     scroll-behavior: smooth;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    background-color: #F4EFE6;
   }
 
   body {
-    @apply font-sans text-ink bg-surface;
-    line-height: 1.6;
+    @apply font-sans text-ink bg-paper;
+    font-size: 17px;
+    line-height: 1.7;
     min-height: 100vh;
+    /* Faint warm paper texture using a layered radial wash */
+    background-image:
+      radial-gradient(ellipse at 20% 0%, rgba(196, 86, 74, 0.025) 0%, transparent 55%),
+      radial-gradient(ellipse at 80% 100%, rgba(58, 107, 122, 0.04) 0%, transparent 50%);
+    background-attachment: fixed;
   }
 
-  /* Selection */
   ::selection {
-    @apply bg-accent/30;
+    @apply bg-accent/20 text-ink;
   }
 
-  /* Focus styles */
   :focus-visible {
     @apply outline-2 outline-offset-2 outline-accent;
   }
 
-  /* Headings */
+  /* Headings — serif-led, ink color, NO gradient */
   h1, h2, h3, h4, h5, h6 {
-    @apply font-sans font-extrabold leading-tight tracking-tight text-ink;
+    @apply font-serif text-ink;
+    font-weight: 600;
+    line-height: 1.15;
+    letter-spacing: -0.005em;
   }
 
   h1 {
-    @apply text-fluid-5xl font-black;
-    letter-spacing: -0.02em;
-  }
-
-  h2 {
-    @apply text-fluid-4xl font-black;
+    @apply text-fluid-5xl;
+    font-weight: 700;
     letter-spacing: -0.015em;
   }
 
+  h2 {
+    @apply text-fluid-4xl;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+  }
+
   h3 {
-    @apply text-fluid-2xl font-extrabold text-ink-2;
+    @apply text-fluid-2xl;
+    font-weight: 600;
   }
 
   h4 {
-    @apply text-fluid-xl font-bold;
+    @apply text-fluid-xl;
+    font-weight: 600;
   }
 
-  /* Paragraphs */
+  /* Body — Inter, longer measure, generous leading */
   p {
-    @apply text-muted max-w-prose;
+    @apply font-sans text-ink/85;
+    max-width: 65ch;
+    line-height: 1.7;
   }
 
-  /* Links */
   a {
-    @apply text-accent underline-offset-2 decoration-accent/40 transition-colors duration-200;
+    @apply text-accent transition-colors duration-200;
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 3px;
+    text-decoration-color: rgba(58, 107, 122, 0.35);
   }
 
   a:hover {
-    @apply decoration-2;
+    text-decoration-color: rgba(58, 107, 122, 0.85);
   }
 
-  /* Images */
   img {
     @apply max-w-full h-auto;
   }
 }
 
 @layer components {
-  /* Skip link for accessibility */
+  /* Skip link */
   .skip-link {
     @apply absolute left-[-9999px] top-auto w-px h-px overflow-hidden;
   }
 
   .skip-link:focus {
-    @apply fixed left-4 top-4 px-3 py-2 bg-accent text-white rounded-lg z-[1000] w-auto h-auto;
+    @apply fixed left-4 top-4 px-3 py-2 bg-accent text-paper rounded z-[1000] w-auto h-auto;
   }
 
-  /* Container */
+  /* Container — slightly tighter for editorial feel */
   .container {
     @apply max-w-[1100px] mx-auto px-edge;
   }
 
-  /* Cards */
+  /* Cards — flat, hairline border, subtle bg shift on hover */
   .card {
-    @apply bg-surface-card border border-line rounded-lg shadow p-6;
-    @apply transition-all duration-300 ease-spring;
+    @apply bg-paper-2 border border-line/60 rounded-none p-6;
+    @apply transition-colors duration-300 ease-out;
   }
 
   .card:hover {
-    @apply -translate-y-1 shadow-lg;
+    @apply bg-paper-3 border-line;
+    /* No transform, no big shadow — editorial restraint */
   }
 
-  /* Buttons */
+  /* Buttons — squared, restrained */
   .btn {
     @apply inline-flex items-center justify-center gap-2;
-    @apply px-4 py-3 rounded-xl font-bold text-sm leading-none;
-    @apply transition-all duration-200 ease-spring;
+    @apply px-5 py-3 rounded-none font-medium text-sm leading-none;
+    @apply transition-colors duration-200;
     @apply min-h-[44px] no-underline;
   }
 
   .btn-primary {
-    @apply bg-accent text-white;
-    @apply shadow-lg hover:shadow-xl hover:-translate-y-0.5;
-    @apply hover:bg-accent/90;
+    @apply bg-ink text-paper;
+    @apply hover:bg-accent;
   }
 
   .btn-secondary {
-    @apply bg-transparent border-2 border-line text-ink;
-    @apply hover:border-accent hover:text-accent;
+    @apply bg-transparent border border-ink text-ink;
+    @apply hover:bg-ink hover:text-paper;
   }
 
   .btn-ghost {
-    @apply bg-white/10 border border-white/20 text-white;
-    @apply hover:bg-white/20;
+    @apply bg-paper-2 border border-line text-ink;
+    @apply hover:bg-paper-3;
   }
 
-  /* Chips / Tags */
+  /* Chips */
   .chip {
     @apply inline-flex items-center gap-2 px-3 py-2;
-    @apply border border-line rounded-xl bg-surface-card;
-    @apply font-bold text-sm text-ink;
-    @apply transition-all duration-200;
-    @apply min-h-[38px] shadow-sm;
+    @apply border border-line rounded-none bg-paper-2;
+    @apply font-mono text-xs text-ink;
+    @apply transition-colors duration-200;
+    @apply min-h-[36px];
   }
 
   .chip:hover {
-    @apply -translate-y-0.5 shadow-md;
+    @apply bg-paper-3;
   }
 
   .chip.active {
-    @apply bg-accent border-accent text-white;
+    @apply bg-ink border-ink text-paper;
   }
 
   /* Badge */
   .badge {
-    @apply inline-flex items-center px-2.5 py-1 rounded-full;
-    @apply text-xs font-bold uppercase tracking-wide;
-    @apply bg-accent/20 text-accent;
+    @apply inline-flex items-center px-2 py-0.5;
+    @apply font-mono text-[10px] uppercase tracking-[0.15em];
+    @apply text-accent border border-accent/30 bg-transparent;
   }
 
   .badge-success {
-    @apply bg-accent-2/20 text-accent-2;
+    @apply text-accent-2 border-accent-2/40;
   }
 
-  /* Section spacing */
+  /* Section spacing — generous editorial whitespace */
   .section {
-    @apply py-s4;
+    @apply py-s5;
   }
 
-  /* Eyebrow text */
+  /* Eyebrow — Plex Mono, sectional number */
   .eyebrow {
-    @apply uppercase tracking-[0.12em] text-xs font-extrabold text-accent mb-2 block;
+    @apply font-mono text-xs uppercase tracking-[0.18em] text-accent mb-3 block;
   }
 
-  /* Lead text */
+  /* Lead paragraph */
   .lead {
-    @apply text-fluid-lg text-muted leading-relaxed;
+    @apply text-fluid-lg text-ink/80 leading-relaxed font-sans;
+    max-width: 60ch;
+  }
+
+  /* Editorial section rule — thin line + section number in mono.
+     Use as: <div class="section-rule"><span>01 / Approach</span></div> */
+  .section-rule {
+    @apply flex items-center gap-4 mb-12;
+  }
+
+  .section-rule::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: rgba(15, 41, 66, 0.18);
+  }
+
+  .section-rule span {
+    @apply font-mono text-xs uppercase tracking-[0.2em] text-ink/60;
+  }
+
+  /* Pull-quote */
+  .pull-quote {
+    @apply font-serif text-fluid-3xl leading-snug text-ink;
+    font-style: italic;
+    font-weight: 500;
+    border-left: 2px solid #0F2942;
+    padding-left: 1.5rem;
+    max-width: 45ch;
+  }
+
+  /* Stat — Plex Mono number, small sans label */
+  .stat-num {
+    @apply font-mono text-4xl md:text-5xl text-ink;
+    font-weight: 500;
+    letter-spacing: -0.02em;
+    line-height: 1;
+  }
+
+  .stat-tag {
+    @apply font-sans text-xs uppercase tracking-[0.15em] text-ink/55 mt-2 block;
+  }
+
+  /* Editorial photo treatment — subtle grain + desat */
+  .photo-editorial {
+    filter: contrast(0.95) saturate(0.9);
   }
 }
 
 @layer utilities {
-  /* Scroll reveal animation base state */
+  /* Scroll reveal — kept but gentler */
   .scroll-reveal {
     opacity: 0;
-    transform: translateY(20px);
-    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+    transform: translateY(12px);
+    transition: opacity 0.7s ease-out, transform 0.7s ease-out;
   }
 
   .scroll-reveal.visible {
@@ -188,7 +252,6 @@
     transform: translateY(0);
   }
 
-  /* Stagger delays for grid items */
   .stagger-1 { transition-delay: 50ms; }
   .stagger-2 { transition-delay: 100ms; }
   .stagger-3 { transition-delay: 150ms; }
@@ -200,27 +263,27 @@
   .stagger-9 { transition-delay: 450ms; }
   .stagger-10 { transition-delay: 500ms; }
 
-  /* Glassmorphism */
-  .glass {
-    @apply bg-surface/70 backdrop-blur-md border border-line/50;
-  }
-
-  /* Text gradient */
+  /* Text gradient retired — keep class as a safe no-op for any stragglers */
   .text-gradient {
-    @apply bg-gradient-to-r from-accent to-accent-2 bg-clip-text text-transparent;
+    @apply text-ink;
   }
 
-  /* Image hover zoom */
+  /* Glassmorphism retired — degrade gracefully to paper */
+  .glass {
+    @apply bg-paper-2 border border-line/50;
+  }
+
+  /* Image hover zoom — softened to a subtle 1.02 lift */
   .img-zoom {
     @apply overflow-hidden;
   }
 
   .img-zoom img {
-    @apply transition-transform duration-500 ease-out;
+    @apply transition-transform duration-700 ease-out;
   }
 
   .img-zoom:hover img {
-    @apply scale-105;
+    transform: scale(1.02);
   }
 
   /* Reduced motion */
@@ -241,7 +304,6 @@
     }
   }
 
-  /* Hide scrollbar utility */
   .no-scrollbar {
     -ms-overflow-style: none;
     scrollbar-width: none;
@@ -251,20 +313,10 @@
     display: none;
   }
 
-  /* Aspect ratios */
-  .aspect-hero {
-    aspect-ratio: 16 / 9;
-  }
+  .aspect-hero { aspect-ratio: 16 / 9; }
+  .aspect-card { aspect-ratio: 4 / 3; }
+  .aspect-portrait { aspect-ratio: 5 / 6; }
 
-  .aspect-card {
-    aspect-ratio: 4 / 3;
-  }
-
-  .aspect-portrait {
-    aspect-ratio: 5 / 6;
-  }
-
-  /* Line clamp utilities */
   .line-clamp-2 {
     display: -webkit-box;
     -webkit-line-clamp: 2;
@@ -281,10 +333,9 @@
 }
 
 /* ============================================
-   View Transitions
+   View Transitions (kept, gentler)
    ============================================ */
 
-/* Root page transition - smooth crossfade with subtle slide */
 ::view-transition-old(root) {
   animation: page-fade-out 0.25s ease-out forwards;
 }
@@ -294,56 +345,30 @@
 }
 
 @keyframes page-fade-out {
-  from {
-    opacity: 1;
-    transform: translateY(0);
-  }
-  to {
-    opacity: 0;
-    transform: translateY(-8px);
-  }
+  from { opacity: 1; transform: translateY(0); }
+  to   { opacity: 0; transform: translateY(-6px); }
 }
 
 @keyframes page-fade-in {
-  from {
-    opacity: 0;
-    transform: translateY(8px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+  from { opacity: 0; transform: translateY(6px); }
+  to   { opacity: 1; transform: translateY(0); }
 }
 
-/* Keep nav persistent during transitions */
 ::view-transition-old(nav),
 ::view-transition-new(nav) {
   animation: none;
 }
 
-/* Hero image morph transitions */
 ::view-transition-old(hero-image),
-::view-transition-new(hero-image) {
-  animation-duration: 0.4s;
-  animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-/* Card morph transitions */
+::view-transition-new(hero-image),
 ::view-transition-old(card-image),
-::view-transition-new(card-image) {
-  animation-duration: 0.35s;
-  animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-  mix-blend-mode: normal;
-}
-
-/* Title morph transitions */
+::view-transition-new(card-image),
 ::view-transition-old(page-title),
 ::view-transition-new(page-title) {
-  animation-duration: 0.3s;
-  animation-timing-function: ease-out;
+  animation-duration: 0.35s;
+  animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-/* Reduced motion - instant transitions */
 @media (prefers-reduced-motion: reduce) {
   ::view-transition-old(root),
   ::view-transition-new(root),

@@ -4,33 +4,41 @@ export default {
   theme: {
     extend: {
       colors: {
-        // Navy-based color palette
+        // Editorial-scientific palette — cream paper, navy ink
         ink: {
-          DEFAULT: '#f1f5f9',  // Light text on dark bg
-          2: '#e2e8f0',
+          DEFAULT: '#0F2942',   // Deep navy ink — primary text on paper
+          2: '#1F3A54',         // Slightly softer for secondary headings
+          light: '#f1f5f9',     // Legacy light-text for dark sections
         },
         muted: {
-          DEFAULT: '#94a3b8',  // Muted text on dark bg
-          2: '#64748b',
+          DEFAULT: '#52606F',   // Muted ink for body on paper
+          2: '#7A8896',         // Even softer for meta
         },
         accent: {
-          DEFAULT: '#38bdf8',  // Sky blue accent
-          2: '#2dd4bf',        // Teal accent
-          warm: '#ff6f5b',     // Coral/warm accent
+          DEFAULT: '#3A6B7A',   // Desaturated deep ocean teal
+          2: '#5A8A8A',         // Muted teal
+          warm: '#C4564A',      // Sparingly used rust/coral
+        },
+        // Paper background is the new default
+        paper: {
+          DEFAULT: '#F4EFE6',   // Warm off-white "paper"
+          2: '#EDE6D9',         // Slightly deeper tint for sections/cards
+          3: '#E4DBC8',         // Deeper still for rules/borders
         },
         surface: {
-          DEFAULT: '#0f172a',  // Dark navy background
-          card: '#1e293b',     // Slightly lighter card bg
+          DEFAULT: '#0F2942',   // Dark navy now a sectional accent
+          card: '#EDE6D9',      // Card = slightly deeper paper tint
+          dark: '#0F172A',      // Legacy dark surface
         },
         line: {
-          DEFAULT: '#334155',  // Border/line color
-          2: '#475569',
+          DEFAULT: '#C8BFAC',   // Warm paper border
+          2: '#A8A08E',
         },
-        // Semantic background colors (flattened for opacity support)
-        'navy-deep': '#0b2545',    // Deepest navy (bg-primary)
-        'navy-dark': '#0f172a',    // Dark slate (bg-secondary)
-        'navy-card': '#1e293b',    // Card background
-        'navy-highlight': '#1e3a5f', // Highlighted sections
+        // Legacy/sectional navy accents (kept for dark sections)
+        'navy-deep': '#0F2942',
+        'navy-dark': '#0F172A',
+        'navy-card': '#1e293b',
+        'navy-highlight': '#1e3a5f',
       },
       fontFamily: {
         sans: [
@@ -42,6 +50,23 @@ export default {
           'Roboto',
           'Arial',
           'sans-serif',
+        ],
+        serif: [
+          'Playfair Display',
+          'Georgia',
+          'Cambria',
+          '"Times New Roman"',
+          'Times',
+          'serif',
+        ],
+        mono: [
+          '"IBM Plex Mono"',
+          'ui-monospace',
+          'SFMono-Regular',
+          'Menlo',
+          'Monaco',
+          'Consolas',
+          'monospace',
         ],
       },
       fontSize: {
@@ -71,9 +96,10 @@ export default {
         lg: '1.375rem',     // 22px
       },
       boxShadow: {
-        DEFAULT: '0 6px 16px rgba(0, 0, 0, 0.2)',
-        lg: '0 18px 42px rgba(0, 0, 0, 0.3)',
-        glow: '0 0 20px rgba(56, 189, 248, 0.3)',
+        // Editorial shadows: hairline, paper-on-paper, no glow
+        DEFAULT: '0 1px 0 rgba(15, 41, 66, 0.08)',
+        lg: '0 6px 18px rgba(15, 41, 66, 0.08)',
+        glow: 'none',
       },
       animation: {
         'fade-in': 'fadeIn 0.6s ease-out forwards',
