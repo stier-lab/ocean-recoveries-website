@@ -71,3 +71,6 @@ screenshots/
 # Temporary files
 *.csv.bak
 .vercel
+
+# Claude Code local settings
+.claude/settings.local.json
