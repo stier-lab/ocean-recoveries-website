@@ -1,7 +1,6 @@
 ---
 const currentYear = new Date().getFullYear();
 
-// Build timestamp for "Last updated" - captured at build time
 const buildDate = new Date();
 const lastUpdated = buildDate.toLocaleDateString('en-US', {
   month: 'short',
@@ -42,17 +41,26 @@ const quickLinks = [
 ];
 ---
 
-<footer class="bg-navy-deep text-white/90 mt-auto">
-  <div class="container py-s4">
-    <div class="grid md:grid-cols-3 gap-8 md:gap-12">
+<footer class="paper-footer mt-auto">
+  <div class="container py-16 md:py-20">
+    <!-- Top hairline rule + colophon row -->
+    <div class="footer-colophon">
+      <span class="footer-colophon-mark font-mono text-xs uppercase tracking-[0.2em] text-accent">ORL</span>
+      <span class="footer-colophon-rule"></span>
+      <span class="footer-colophon-meta font-mono text-xs uppercase tracking-[0.18em] text-ink/65 hidden md:inline">
+        UC Santa Barbara &middot; EEMB
+      </span>
+    </div>
+
+    <div class="grid md:grid-cols-3 gap-12 md:gap-16 mt-10">
       <!-- About -->
       <div>
-        <h3 class="text-white font-black text-xl mb-4">Ocean Recoveries Lab</h3>
-        <p class="text-white/70 text-sm leading-relaxed mb-4">
+        <h3 class="font-serif text-ink text-xl font-semibold mb-3">Ocean Recoveries Lab</h3>
+        <p class="font-sans text-ink/75 text-sm leading-relaxed mb-5">
           Understanding why ecosystems fail. Learning how to help them recover.
         </p>
-        <address class="text-white/70 text-sm not-italic leading-relaxed">
-          Department of Ecology, Evolution & Marine Biology<br />
+        <address class="font-sans text-ink/70 text-sm not-italic leading-relaxed">
+          Department of Ecology, Evolution &amp; Marine Biology<br />
           University of California, Santa Barbara<br />
           Santa Barbara, CA 93106
         </address>
@@ -60,14 +68,14 @@ const quickLinks = [
 
       <!-- Quick Links -->
       <div>
-        <h4 class="text-white font-bold text-sm uppercase tracking-wide mb-4">Quick Links</h4>
+        <h4 class="font-mono text-xs uppercase tracking-[0.18em] text-ink/65 mb-4">Quick Links</h4>
         <nav aria-label="Footer navigation">
           <ul class="space-y-2">
             {quickLinks.map((link) => (
               <li>
                 <a
                   href={link.href}
-                  class="text-white/70 hover:text-white text-sm no-underline transition-colors"
+                  class="font-sans text-ink/85 hover:text-accent text-sm no-underline transition-colors"
                 >
                   {link.label}
                 </a>
@@ -79,33 +87,33 @@ const quickLinks = [
 
       <!-- Connect -->
       <div>
-        <h4 class="text-white font-bold text-sm uppercase tracking-wide mb-4">Connect</h4>
-        <div class="flex gap-3 mb-4">
+        <h4 class="font-mono text-xs uppercase tracking-[0.18em] text-ink/65 mb-4">Connect</h4>
+        <div class="flex gap-2 mb-5">
           {socialLinks.map((link) => (
             <a
               href={link.href}
               target="_blank"
               rel="noopener noreferrer"
-              class="w-10 h-10 rounded-lg bg-white/10 hover:bg-white/20 flex items-center justify-center transition-colors"
+              class="footer-social-icon"
               aria-label={link.name}
             >
               {link.icon === 'instagram' && (
-                <svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                <svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
                   <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
                 </svg>
               )}
               {link.icon === 'scholar' && (
-                <svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                <svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
                   <path d="M12 24a7 7 0 110-14 7 7 0 010 14zm0-24L0 9.5l4.838 3.94A8 8 0 0112 9a8 8 0 017.162 4.44L24 9.5 12 0z" />
                 </svg>
               )}
               {link.icon === 'orcid' && (
-                <svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                <svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
                   <path d="M12 0C5.372 0 0 5.372 0 12s5.372 12 12 12 12-5.372 12-12S18.628 0 12 0zM7.369 4.378c.525 0 .947.431.947.947s-.422.947-.947.947a.95.95 0 01-.947-.947c0-.525.422-.947.947-.947zm-.722 3.038h1.444v10.041H6.647V7.416zm3.562 0h3.9c3.712 0 5.344 2.653 5.344 5.025 0 2.578-2.016 5.025-5.325 5.025h-3.919V7.416zm1.444 1.303v7.444h2.297c3.272 0 4.022-2.484 4.022-3.722 0-2.016-1.284-3.722-4.097-3.722h-2.222z" />
                 </svg>
               )}
               {link.icon === 'github' && (
-                <svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                <svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
                   <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
                 </svg>
               )}
@@ -114,7 +122,7 @@ const quickLinks = [
         </div>
         <a
           href="mailto:astier@ucsb.edu"
-          class="text-white/70 hover:text-white text-sm no-underline transition-colors"
+          class="font-mono text-ink/85 hover:text-accent text-sm no-underline transition-colors"
         >
           astier@ucsb.edu
         </a>
@@ -122,27 +130,79 @@ const quickLinks = [
     </div>
 
     <!-- Bottom bar -->
-    <div class="mt-8 pt-8 border-t border-white/10 flex flex-col sm:flex-row justify-between items-center gap-4">
-      <div class="flex flex-col sm:flex-row items-center gap-2 sm:gap-4">
-        <p class="text-white/50 text-sm">
+    <div class="footer-bottom">
+      <div class="flex flex-col sm:flex-row items-start sm:items-center gap-2 sm:gap-4">
+        <p class="font-mono text-xs uppercase tracking-[0.12em] text-ink/60">
           &copy; {currentYear} Ocean Recoveries Lab, UC Santa Barbara
         </p>
-        <span class="hidden sm:inline text-white/30">·</span>
-        <p class="text-white/40 text-xs flex items-center gap-1.5">
-          <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
-          </svg>
-          <span>Updated {lastUpdated}</span>
+        <span class="hidden sm:inline text-ink/30">&middot;</span>
+        <p class="font-mono text-xs text-ink/55">
+          Updated {lastUpdated}
         </p>
       </div>
-      <div class="flex items-center gap-4">
-        <a href="/privacy" class="text-white/50 hover:text-white/70 text-sm no-underline transition-colors">
+      <div class="flex items-center gap-5">
+        <a href="/privacy" class="font-mono text-xs uppercase tracking-[0.12em] text-ink/60 hover:text-accent no-underline transition-colors">
           Privacy
         </a>
-        <a href="/accessibility" class="text-white/50 hover:text-white/70 text-sm no-underline transition-colors">
+        <a href="/accessibility" class="font-mono text-xs uppercase tracking-[0.12em] text-ink/60 hover:text-accent no-underline transition-colors">
           Accessibility
         </a>
       </div>
     </div>
   </div>
 </footer>
+
+<style>
+  .paper-footer {
+    background-color: #F4EFE6;
+    border-top: 1px solid rgba(15, 41, 66, 0.15);
+  }
+
+  .footer-colophon {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid rgba(15, 41, 66, 0.12);
+  }
+
+  .footer-colophon-rule {
+    flex: 1;
+    height: 1px;
+    background: rgba(15, 41, 66, 0.18);
+  }
+
+  .footer-social-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 2rem;
+    height: 2rem;
+    color: rgba(15, 41, 66, 0.7);
+    border: 1px solid rgba(15, 41, 66, 0.18);
+    transition: color 200ms ease, border-color 200ms ease;
+    text-decoration: none;
+  }
+
+  .footer-social-icon:hover {
+    color: #3A6B7A;
+    border-color: rgba(58, 107, 122, 0.6);
+  }
+
+  .footer-bottom {
+    margin-top: 3rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid rgba(15, 41, 66, 0.12);
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  @media (min-width: 640px) {
+    .footer-bottom {
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+    }
+  }
+</style>
