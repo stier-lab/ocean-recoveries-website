@@ -36,14 +36,6 @@ const formatDate = (dateStr: string) => {
       <div class="hero-overlay"></div>
       <div class="hero-text-scrim"></div>
       <div class="hero-grain"></div>
-      <!-- Subtle animated particles -->
-      <div class="hero-particles" aria-hidden="true">
-        <div class="particle particle-1"></div>
-        <div class="particle particle-2"></div>
-        <div class="particle particle-3"></div>
-        <div class="particle particle-4"></div>
-        <div class="particle particle-5"></div>
-      </div>
     </div>
 
     <div class="hero-content">
@@ -562,13 +554,6 @@ const formatDate = (dateStr: string) => {
 
   .hero-image {
     @apply absolute inset-0 bg-cover bg-center bg-no-repeat;
-    transform: scale(1.02);
-    animation: heroZoom 25s ease-out forwards;
-  }
-
-  @keyframes heroZoom {
-    from { transform: scale(1.02); }
-    to { transform: scale(1); }
   }
 
   .hero-overlay {
@@ -596,30 +581,6 @@ const formatDate = (dateStr: string) => {
   .hero-grain {
     @apply absolute inset-0 pointer-events-none opacity-[0.03];
     background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
-  }
-
-  /* Floating particles */
-  .hero-particles {
-    @apply absolute inset-0 pointer-events-none overflow-hidden;
-  }
-
-  .particle {
-    @apply absolute rounded-full;
-    background: rgba(56, 189, 248, 0.3);
-    animation: float-particle 20s ease-in-out infinite;
-  }
-
-  .particle-1 { width: 4px; height: 4px; top: 20%; left: 60%; animation-delay: 0s; }
-  .particle-2 { width: 3px; height: 3px; top: 40%; left: 70%; animation-delay: -5s; }
-  .particle-3 { width: 5px; height: 5px; top: 60%; left: 55%; animation-delay: -10s; }
-  .particle-4 { width: 3px; height: 3px; top: 30%; left: 80%; animation-delay: -15s; }
-  .particle-5 { width: 4px; height: 4px; top: 70%; left: 75%; animation-delay: -8s; }
-
-  @keyframes float-particle {
-    0%, 100% { transform: translate(0, 0) scale(1); opacity: 0.3; }
-    25% { transform: translate(20px, -30px) scale(1.2); opacity: 0.6; }
-    50% { transform: translate(-10px, -50px) scale(0.8); opacity: 0.4; }
-    75% { transform: translate(30px, -20px) scale(1.1); opacity: 0.5; }
   }
 
   .hero-content {
@@ -694,13 +655,13 @@ const formatDate = (dateStr: string) => {
     @apply bg-accent text-white font-bold text-sm;
     @apply rounded-full no-underline;
     @apply transition-all duration-300;
-    box-shadow: 0 8px 30px -4px rgba(56, 189, 248, 0.4);
+    box-shadow: 0 4px 16px -4px rgba(0, 0, 0, 0.4);
   }
 
   .btn-hero-primary:hover {
     @apply bg-accent/90;
     transform: translateY(-2px);
-    box-shadow: 0 12px 40px -4px rgba(56, 189, 248, 0.5);
+    box-shadow: 0 8px 24px -6px rgba(0, 0, 0, 0.5);
   }
 
   .btn-hero-primary .btn-icon {
@@ -1227,7 +1188,7 @@ const formatDate = (dateStr: string) => {
 
   .btn-editorial-primary:hover {
     transform: translateY(-2px);
-    box-shadow: 0 8px 24px -4px rgba(56, 189, 248, 0.4);
+    box-shadow: 0 6px 20px -6px rgba(0, 0, 0, 0.5);
   }
 
   .btn-editorial-primary .btn-icon {
@@ -1387,8 +1348,8 @@ const formatDate = (dateStr: string) => {
 
   .cta-tile:hover {
     @apply border-accent/40;
-    transform: translateY(-6px);
-    box-shadow: 0 20px 50px -10px rgba(56, 189, 248, 0.2);
+    transform: translateY(-4px);
+    box-shadow: 0 12px 32px -10px rgba(0, 0, 0, 0.5);
   }
 
   .tile-icon {
@@ -1470,16 +1431,6 @@ const formatDate = (dateStr: string) => {
      Reduced Motion
      ============================================ */
   @media (prefers-reduced-motion: reduce) {
-    .hero-image {
-      animation: none;
-      transform: scale(1);
-    }
-
-    .particle {
-      animation: none;
-      opacity: 0.3;
-    }
-
     .scroll-cue {
       animation: none;
       opacity: 1;
