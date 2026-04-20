@@ -2,7 +2,6 @@
 import { ViewTransitions } from 'astro:transitions';
 import Nav from '@components/layout/Nav.astro';
 import Footer from '@components/layout/Footer.astro';
-import GlobalEffects from '@components/shared/GlobalEffects.astro';
 import CommandPalette from '@components/shared/CommandPalette.astro';
 import OrganizationSchema from '@components/seo/OrganizationSchema.astro';
 import WebsiteSchema from '@components/seo/WebsiteSchema.astro';
@@ -127,7 +126,6 @@ const absoluteImage = image.startsWith('http') ? image : new URL(image, Astro.si
     )}
   </head>
   <body class="min-h-screen flex flex-col antialiased">
-    <GlobalEffects />
     <a href="#main-content" class="skip-link">Skip to main content</a>
 
     <Nav transition:persist />
