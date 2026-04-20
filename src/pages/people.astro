@@ -17,8 +17,8 @@ const roleLabels: Record<string, string> = {
 
 const roleAccents: Record<string, { bg: string; text: string; glow: string }> = {
   pi: { bg: 'rgba(251, 191, 36, 0.15)', text: '#fbbf24', glow: 'rgba(251, 191, 36, 0.3)' },
-  postdoc: { bg: 'rgba(45, 212, 191, 0.15)', text: '#2dd4bf', glow: 'rgba(45, 212, 191, 0.3)' },
-  phd: { bg: 'rgba(56, 189, 248, 0.15)', text: '#38bdf8', glow: 'rgba(56, 189, 248, 0.3)' },
+  postdoc: { bg: 'rgba(79, 182, 165, 0.15)', text: '#4FB6A5', glow: 'rgba(79, 182, 165, 0.3)' },
+  phd: { bg: 'rgba(77, 168, 201, 0.15)', text: '#4DA8C9', glow: 'rgba(77, 168, 201, 0.3)' },
   manager: { bg: 'rgba(167, 139, 250, 0.15)', text: '#a78bfa', glow: 'rgba(167, 139, 250, 0.3)' },
   undergrad: { bg: 'rgba(251, 113, 133, 0.15)', text: '#fb7185', glow: 'rgba(251, 113, 133, 0.3)' },
 };
@@ -271,7 +271,7 @@ const isPlaceholderImage = (image: string) => {
   .ambient-orb-1 {
     width: 600px;
     height: 600px;
-    background: radial-gradient(circle, rgba(56, 189, 248, 0.3) 0%, transparent 70%);
+    background: radial-gradient(circle, rgba(77, 168, 201, 0.3) 0%, transparent 70%);
     top: -200px;
     right: -200px;
     animation-delay: 0s;
@@ -280,7 +280,7 @@ const isPlaceholderImage = (image: string) => {
   .ambient-orb-2 {
     width: 500px;
     height: 500px;
-    background: radial-gradient(circle, rgba(45, 212, 191, 0.25) 0%, transparent 70%);
+    background: radial-gradient(circle, rgba(79, 182, 165, 0.25) 0%, transparent 70%);
     bottom: 100px;
     left: -150px;
     animation-delay: -7s;
@@ -315,7 +315,7 @@ const isPlaceholderImage = (image: string) => {
 
   .header-accent {
     @apply absolute -left-4 top-0 w-1 h-full;
-    background: linear-gradient(180deg, #38bdf8 0%, #2dd4bf 100%);
+    background: linear-gradient(180deg, #4DA8C9 0%, #4FB6A5 100%);
     border-radius: 2px;
   }
 
@@ -579,8 +579,8 @@ const isPlaceholderImage = (image: string) => {
   .alumni-pattern {
     @apply absolute inset-0 opacity-5;
     background-image:
-      radial-gradient(circle at 20% 50%, rgba(56, 189, 248, 0.3) 0%, transparent 50%),
-      radial-gradient(circle at 80% 50%, rgba(45, 212, 191, 0.3) 0%, transparent 50%);
+      radial-gradient(circle at 20% 50%, rgba(77, 168, 201, 0.3) 0%, transparent 50%),
+      radial-gradient(circle at 80% 50%, rgba(79, 182, 165, 0.3) 0%, transparent 50%);
   }
 
   .alumni-header {
@@ -590,9 +590,9 @@ const isPlaceholderImage = (image: string) => {
   .alumni-eyebrow {
     @apply inline-block px-4 py-1.5 mb-4;
     @apply text-xs font-bold uppercase tracking-[0.2em] text-accent;
-    background: rgba(56, 189, 248, 0.1);
+    background: rgba(77, 168, 201, 0.1);
     border-radius: 20px;
-    border: 1px solid rgba(56, 189, 248, 0.2);
+    border: 1px solid rgba(77, 168, 201, 0.2);
   }
 
   .alumni-title {
@@ -710,7 +710,7 @@ const isPlaceholderImage = (image: string) => {
 
   .join-glow {
     @apply absolute inset-0;
-    background: radial-gradient(ellipse 80% 60% at 50% 100%, rgba(56, 189, 248, 0.15) 0%, transparent 60%);
+    background: radial-gradient(ellipse 80% 60% at 50% 100%, rgba(77, 168, 201, 0.15) 0%, transparent 60%);
   }
 
   .join-content {
@@ -720,9 +720,9 @@ const isPlaceholderImage = (image: string) => {
   .join-eyebrow {
     @apply inline-block px-4 py-1.5 mb-6;
     @apply text-xs font-bold uppercase tracking-[0.2em] text-accent;
-    background: rgba(56, 189, 248, 0.1);
+    background: rgba(77, 168, 201, 0.1);
     border-radius: 20px;
-    border: 1px solid rgba(56, 189, 248, 0.2);
+    border: 1px solid rgba(77, 168, 201, 0.2);
   }
 
   .join-title {
@@ -745,7 +745,7 @@ const isPlaceholderImage = (image: string) => {
     @apply transition-all;
     transition-duration: 400ms;
     box-shadow:
-      0 8px 32px rgba(56, 189, 248, 0.3),
+      0 8px 32px rgba(77, 168, 201, 0.3),
       inset 0 1px 0 rgba(255, 255, 255, 0.2);
   }
 
@@ -756,7 +756,7 @@ const isPlaceholderImage = (image: string) => {
   .join-btn-primary:hover {
     transform: translateY(-3px);
     box-shadow:
-      0 16px 48px rgba(56, 189, 248, 0.4),
+      0 16px 48px rgba(77, 168, 201, 0.4),
       inset 0 1px 0 rgba(255, 255, 255, 0.2);
   }
 

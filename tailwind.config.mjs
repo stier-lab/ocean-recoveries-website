@@ -14,8 +14,8 @@ export default {
           2: '#64748b',
         },
         accent: {
-          DEFAULT: '#38bdf8',  // Sky blue accent
-          2: '#2dd4bf',        // Teal accent
+          DEFAULT: '#4DA8C9',  // Desaturated ocean blue (was #38bdf8)
+          2: '#4FB6A5',        // Desaturated teal (was #2dd4bf)
           warm: '#ff6f5b',     // Coral/warm accent
         },
         surface: {
@@ -42,6 +42,13 @@ export default {
           'Roboto',
           'Arial',
           'sans-serif',
+        ],
+        mono: [
+          'IBM Plex Mono',
+          'ui-monospace',
+          'SFMono-Regular',
+          'Menlo',
+          'monospace',
         ],
       },
       fontSize: {

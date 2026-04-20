@@ -35,7 +35,7 @@ const studySites: StudySite[] = [
     failureMode: 'Fast, nonlinear collapse',
     signals: ['Urchin barrens', 'Predator loss', 'Detrital starvation'],
     researchLink: '/research/kelp-forests',
-    color: '#38bdf8',
+    color: '#4DA8C9',
     description: 'Consumer feedbacks can flip forests to barrens in months. We study what governs the tipping point—and what breaks the lock.',
   },
 ];
@@ -58,7 +58,7 @@ export default function StudySitesMap() {
     <div
       style={{
         background: 'rgba(15, 23, 42, 0.6)',
-        border: '1px solid rgba(56, 189, 248, 0.15)',
+        border: '1px solid rgba(77, 168, 201, 0.15)',
         borderRadius: '1.5rem',
         overflow: 'hidden',
       }}
@@ -71,7 +71,7 @@ export default function StudySitesMap() {
           gap: '1rem',
           padding: '1.5rem',
           background: 'linear-gradient(180deg, rgba(10, 22, 40, 0.8) 0%, rgba(15, 23, 42, 0.4) 100%)',
-          borderBottom: '1px solid rgba(56, 189, 248, 0.1)',
+          borderBottom: '1px solid rgba(77, 168, 201, 0.1)',
         }}
       >
         {studySites.map((site) => (

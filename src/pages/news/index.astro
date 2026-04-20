@@ -32,7 +32,7 @@ const topicConfig: Record<string, { color: string; label: string }> = {
 
 const getTopicColor = (tags: string[]) => {
   const topic = tags.find(t => topicConfig[t]);
-  return topic ? topicConfig[topic].color : '#38bdf8';
+  return topic ? topicConfig[topic].color : '#4DA8C9';
 };
 
 // Format date
@@ -96,7 +96,7 @@ const allPosts = sortedPosts.slice(3);
               </div>
               <div class="featured-tags">
                 {getDisplayTags(featuredPost.tags).slice(0, 2).map(tag => (
-                  <span class="featured-tag" style={`--tag-color: ${topicConfig[tag]?.color || '#38bdf8'}`}>{tag}</span>
+                  <span class="featured-tag" style={`--tag-color: ${topicConfig[tag]?.color || '#4DA8C9'}`}>{tag}</span>
                 ))}
               </div>
               <h2 class="featured-title">{featuredPost.title}</h2>
@@ -190,7 +190,7 @@ const allPosts = sortedPosts.slice(3);
             <button
               class="pill"
               data-tag={topic}
-              style={`--pill-color: ${topicConfig[topic]?.color || '#38bdf8'}`}
+              style={`--pill-color: ${topicConfig[topic]?.color || '#4DA8C9'}`}
               aria-pressed="false"
             >
               {topic}
@@ -645,8 +645,8 @@ const allPosts = sortedPosts.slice(3);
   }
 
   .pill:not(.active):hover {
-    border-color: var(--pill-color, #38bdf8);
-    color: var(--pill-color, #38bdf8);
+    border-color: var(--pill-color, #4DA8C9);
+    color: var(--pill-color, #4DA8C9);
   }
 
   .filter-controls {

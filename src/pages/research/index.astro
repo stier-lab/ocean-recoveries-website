@@ -338,9 +338,9 @@ const breadcrumbs = [
         <svg class="pipeline-svg" viewBox="0 0 1000 300" preserveAspectRatio="xMidYMid meet" aria-hidden="true">
           <defs>
             <linearGradient id="lineGradient1" x1="0%" y1="0%" x2="100%" y2="0%">
-              <stop offset="0%" stop-color="#38bdf8" stop-opacity="0.3" />
-              <stop offset="50%" stop-color="#2dd4bf" stop-opacity="0.6" />
-              <stop offset="100%" stop-color="#38bdf8" stop-opacity="0.3" />
+              <stop offset="0%" stop-color="#4DA8C9" stop-opacity="0.3" />
+              <stop offset="50%" stop-color="#4FB6A5" stop-opacity="0.6" />
+              <stop offset="100%" stop-color="#4DA8C9" stop-opacity="0.3" />
             </linearGradient>
             <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
               <feGaussianBlur stdDeviation="3" result="blur" />
@@ -592,7 +592,7 @@ const breadcrumbs = [
 
   .particle {
     @apply absolute rounded-full;
-    background: rgba(56, 189, 248, 0.4);
+    background: rgba(77, 168, 201, 0.4);
     animation: float 15s ease-in-out infinite;
   }
 
@@ -989,13 +989,13 @@ const breadcrumbs = [
 
   .pillar-orb-1 {
     @apply w-[500px] h-[500px] -top-32 -right-32;
-    background: radial-gradient(circle, rgba(56, 189, 248, 0.12), transparent 70%);
+    background: radial-gradient(circle, rgba(77, 168, 201, 0.12), transparent 70%);
     animation: orbFloat 20s ease-in-out infinite;
   }
 
   .pillar-orb-2 {
     @apply w-[400px] h-[400px] -bottom-24 -left-24;
-    background: radial-gradient(circle, rgba(45, 212, 191, 0.1), transparent 70%);
+    background: radial-gradient(circle, rgba(79, 182, 165, 0.1), transparent 70%);
     animation: orbFloat 25s ease-in-out infinite reverse;
   }
 
@@ -1020,13 +1020,13 @@ const breadcrumbs = [
 
   .pillar-card:hover {
     transform: translateY(-6px);
-    border-color: rgba(56, 189, 248, 0.3);
-    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.4), 0 0 30px rgba(56, 189, 248, 0.1);
+    border-color: rgba(77, 168, 201, 0.3);
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.4), 0 0 30px rgba(77, 168, 201, 0.1);
   }
 
   .pillar-number {
     @apply absolute top-5 right-5 text-3xl lg:text-4xl font-black;
-    background: linear-gradient(135deg, rgba(56, 189, 248, 0.25) 0%, rgba(45, 212, 191, 0.15) 100%);
+    background: linear-gradient(135deg, rgba(77, 168, 201, 0.25) 0%, rgba(79, 182, 165, 0.15) 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -1034,7 +1034,7 @@ const breadcrumbs = [
   }
 
   .pillar-card:hover .pillar-number {
-    background: linear-gradient(135deg, rgba(56, 189, 248, 0.5) 0%, rgba(45, 212, 191, 0.4) 100%);
+    background: linear-gradient(135deg, rgba(77, 168, 201, 0.5) 0%, rgba(79, 182, 165, 0.4) 100%);
     -webkit-background-clip: text;
     background-clip: text;
     transform: scale(1.1);
@@ -1101,7 +1101,7 @@ const breadcrumbs = [
   }
 
   .node-glow {
-    fill: rgba(56, 189, 248, 0.1);
+    fill: rgba(77, 168, 201, 0.1);
     animation: node-pulse 3s ease-in-out infinite;
   }
 
@@ -1112,17 +1112,17 @@ const breadcrumbs = [
 
   .node-ring {
     fill: none;
-    stroke: rgba(56, 189, 248, 0.3);
+    stroke: rgba(77, 168, 201, 0.3);
     stroke-width: 2;
   }
 
   .node-core {
-    fill: #38bdf8;
+    fill: #4DA8C9;
     transition: fill 300ms ease;
   }
 
   .node:hover .node-core {
-    fill: #2dd4bf;
+    fill: #4FB6A5;
   }
 
   .node {
@@ -1199,7 +1199,7 @@ const breadcrumbs = [
   .mobile-particle {
     @apply w-2 h-2 rounded-full bg-accent-2;
     animation: flow-down 2s ease-in-out infinite;
-    box-shadow: 0 0 8px #2dd4bf;
+    box-shadow: 0 0 8px #4FB6A5;
   }
 
   @keyframes flow-down {
@@ -1232,8 +1232,8 @@ const breadcrumbs = [
 
   .system-card:hover {
     transform: translateY(-8px);
-    border-color: rgba(56, 189, 248, 0.4);
-    box-shadow: 0 30px 60px -12px rgba(0, 0, 0, 0.3), 0 0 40px rgba(56, 189, 248, 0.1);
+    border-color: rgba(77, 168, 201, 0.4);
+    box-shadow: 0 30px 60px -12px rgba(0, 0, 0, 0.3), 0 0 40px rgba(77, 168, 201, 0.1);
   }
 
   .system-card-media {
@@ -1328,8 +1328,8 @@ const breadcrumbs = [
   .collab-card::before {
     content: '';
     @apply absolute inset-0 opacity-30;
-    background: radial-gradient(circle at top right, rgba(56, 189, 248, 0.15), transparent 50%),
-                radial-gradient(circle at bottom left, rgba(45, 212, 191, 0.15), transparent 50%);
+    background: radial-gradient(circle at top right, rgba(77, 168, 201, 0.15), transparent 50%),
+                radial-gradient(circle at bottom left, rgba(79, 182, 165, 0.15), transparent 50%);
   }
 
   .collab-content {
@@ -1590,7 +1590,7 @@ const breadcrumbs = [
     const paths: SVGPathElement[] = [path1, path2, path3];
 
     const particleCount = 2;
-    const colors = ['#38bdf8', '#2dd4bf'];
+    const colors = ['#4DA8C9', '#4FB6A5'];
 
     paths.forEach((_, pathIndex) => {
       for (let i = 0; i < particleCount; i++) {
