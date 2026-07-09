@@ -17,6 +17,21 @@ export interface Publication {
 
 export const publications: Publication[] = [
   {
+    id: 'vega-2026-biolett',
+    title: "Coral-associated fishes accelerate coral wound healing and photosynthetic recovery",
+    authors: "Vega, Hayden, Osenberg, Craig W., Seifert, Ashley W., Munk, Ninah, Stier, Adrian C.",
+    year: 2026,
+    journal: "Biology Letters",
+    doi: "10.1098/rsbl.2026.0177",
+    abstract: "Coral resilience is increasingly recognized as the product of complex interactions between corals, their endosymbiotic algae and external symbionts such as fishes and invertebrates. While previous studies have documented how coral-associated fishes influence coral growth and thermal tolerance, their role in supporting tissue repair and regeneration following physical injury remains poorly understood. Here, we experimentally test whether coral-associated fishes facilitate wound healing in the coral Pocillopora spp. We imposed small and large wounds and monitored healing in the presence and absence of coral-dwelling damselfishes (Dascyllus flavicaudus). Corals exposed to fishes exhibited faster wound closure and higher photosynthetic efficiency in recently regenerated tissue, particularly for larger wounds. These findings suggest that coral-associated fishes promote the energetic and microenvironmental conditions necessary for tissue repair. Our results extend the emerging understanding of coral holobiont resilience, highlighting the importance of external symbionts in sustaining coral recovery from physical disturbances.",
+    themes: ["Coral"],
+    featured: true,
+    openAccess: false,
+    dataAvailable: false,
+    pdfUrl: "https://drive.google.com/open?id=1fXL6SgnHfVD8NxQ-lqqMuFpwlYcU3B3r",
+    citationCount: 0,
+  },
+  {
     id: '1',
     title: "Fish services to corals: a review of how coral-associated fishes benefit corals",
     authors: "Stier, Adrian C., Chase, Tory J., Osenberg, Craig W.",
