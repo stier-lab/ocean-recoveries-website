@@ -14,9 +14,67 @@ export interface BlogPost {
 
 export const posts: BlogPost[] = [
   {
+    slug: "coral-s-live-in-fish-are-reef-medics-that-speed-wound-healin",
+    title: "Coral's Live-In Fish Are Reef Medics That Speed Wound Healing",
+    date: "2026-06-16",
+    author: "Vega et al.",
+    excerpt: "In a Mo'orea experiment, corals sharing their branches with damselfish healed injuries far faster, closing large wounds roughly twice as quickly and holding onto their photosynthetic performance, revealing that reef fishes help corals recover from physical damage, not just grow.",
+    featuredImage: "/images/pocillopora-damselfish-reef-school.jpeg",
+    tags: ["Publication","2026","Coral","Mutualism","Recovery","Symbiosis"],
+    doiUrl: "https://doi.org/10.1098/rsbl.2026.0177",
+    openAccess: true,
+    pdfUrl: "https://drive.google.com/open?id=1fXL6SgnHfVD8NxQ-lqqMuFpwlYcU3B3r&usp=drive_fs",
+    content: `We have come to think of a coral not as a single organism but as a holobiont: a coral animal, its photosynthetic algae, and a broader cast of fishes and invertebrates that live in and around its branches. Much of the recent excitement about these partnerships has focused on how they help corals cope with slow, large-scale stressors like warming and bleaching. But corals also face a more immediate hazard: physical injury from predators, storms, and handling. A wound that fails to close can be overgrown by algae or invaded by pathogens, threatening the whole colony. Whether the fishes living inside a coral help it heal those wounds had gone almost entirely untested. Led by Hayden Vega, and working with Craig Osenberg, Ashley Seifert, Ninah Munk, and me, we set out to find out.
+
+At the Gump Station in Mo'orea, French Polynesia, we ran a controlled experiment on the branching coral Pocillopora, one of the most common reef-builders in the lagoon and a favorite home of the yellowtail damselfish, Dascyllus flavicaudus. We cut 72 coral fragments to a standard size, then gave them either no wound, a small wound, or a large wound. Half the tanks housed a group of damselfish; the other half had none. Every coral received the same food and light. Then, for three weeks, we photographed the wounds and watched them close.
+
+The fish made a striking difference, and the difference grew with the size of the injury. For small wounds, corals living with damselfish healed about 38% faster than corals without them. For large wounds, the effect was even larger: healing rates jumped by 55%, so that wounded corals with fish closed their injuries roughly twice as fast as those without. By the end of the experiment, most of the wounds on corals with fish had fully closed, while most of the wounds on corals without fish were still open. Because our clock stopped at 21 days, we almost certainly underestimated how much the fish helped.
+
+Healing was not the only thing that suffered when fish were absent. We also measured photosynthetic efficiency, a gauge of how well the coral's algal symbionts were working. In corals with damselfish, that efficiency stayed high regardless of how badly the coral had been wounded. In corals without fish, it fell steadily as wounds got larger. Turf algae told the same story: colonizing algae took hold on wounds about nine times more often when fish were absent, exactly where a coral can least afford the competition. Interestingly, the fish did not measurably change how much new skeleton the corals laid down. Their benefit was concentrated in tissue repair and symbiont performance.
+
+Why would a resident fish speed a coral's recovery? Several mechanisms likely act together. Damselfish excrete ammonium-rich waste that fertilizes the coral's algae, supplying the extra energy that rebuilding tissue demands. Their constant movement through the branches, especially at night when oxygen runs low and the metabolic cost of healing is high, stirs water and delivers oxygen. And by keeping wounds from being smothered by algae, they buy the coral time to close them. Together, these findings add tissue repair to the growing list of ways coral-associated fishes bolster reef resilience, alongside their known roles in coral growth and heat tolerance. Protecting these everyday partnerships may be as important for reef recovery as protecting the corals themselves.
+
+## Citation
+
+Vega, Hayden; Osenberg, Craig W.; Seifert, Ashley W.; Munk, Ninah; Stier, Adrian C. (2026). Coral-associated fishes accelerate coral wound healing and photosynthetic recovery. *Biology Letters*.
+
+[Read the full paper](https://doi.org/10.1098/rsbl.2026.0177)
+
+*This paper is Open Access.*`,
+  },
+  {
+    slug: "why-choosing-the-best-coral-can-backfire-for-damselfish",
+    title: "Why Choosing the Best Coral Can Backfire for Damselfish",
+    date: "2026-03-19",
+    author: "Detmer et al.",
+    excerpt: "Our model of coral-damselfish mutualisms shows that fish should evolve a strong preference for large, high-quality corals, yet that individually smart choice can leave the whole fish population smaller and slower to recover, a hidden eco-evolutionary conflict born from how host quality changes with age.",
+    featuredImage: "/images/damselfish-pair-acropora-coral.jpeg",
+    tags: ["Publication","2026","Mutualism","Coral","Models","Symbiosis"],
+    doiUrl: "https://doi.org/10.1016/j.ecolmodel.2026.111567",
+    openAccess: true,
+    pdfUrl: "https://drive.google.com/open?id=1-eHhMANhgWw5ZZrCs4cwlYbpwRdvg3yY&usp=drive_fs",
+    content: `Partners in a mutualism are rarely all alike. A branching coral shifts from a tiny, vulnerable juvenile to a large, structurally complex adult over its lifetime, and from the perspective of a coral-dwelling damselfish, a big adult coral is simply a better home than a small one. When the quality of a partner changes this dramatically across its life, which hosts should a fish choose to settle on, and does that choice, repeated across a whole population, help or hurt the partnership? Led by Raine Detmer, and with Craig Osenberg, Holly Moeller, and me, we built a mathematical model to work through the consequences.
+
+Our model follows a long-lived host through three life stages, from juvenile to small adult to large adult, with host quality rising as the coral grows. The damselfish partner helps its host in one of two ways: by boosting the coral's growth through nutrients from its waste (a nutritional mutualism), or by improving the coral's survival, for example by deterring predators (a defensive mutualism). We then let the fish's behavior evolve. The key trait was how strongly recruiting fish preferred to settle on large, adult corals rather than spreading themselves across corals of all sizes.
+
+Evolution gave a clear and intuitive answer: fish should evolve a strong preference for the best, adult hosts. An individual fish that settles on a high-quality coral has the best odds of surviving, so that preference is favored generation after generation. But when we tallied the consequences for the whole fish population, the intuitive answer turned out to be self-defeating. Populations of choosy fish were often smaller, and recovered more slowly from disturbances, than populations that spread their benefits more evenly across corals of every age. By ignoring juvenile corals, the fish gave up a chance to help small hosts grow into the very adult hosts they depend on.
+
+This gap between what is best for the individual and what is best for the population was largest for nutritional mutualisms, cases where the fish speeds its host's growth. There, helping a juvenile coral pays a compounding dividend, because a faster-growing juvenile becomes a large adult sooner, expanding the supply of high-quality homes down the line. For defensive mutualisms, where the fish mainly improves survival rather than growth, the conflict all but vanished: the evolutionarily favored behavior and the population-optimal behavior lined up closely. Notably, this tension emerged with no cheating or exploitation anywhere in the system. It is a conflict born purely from how host quality changes with age.
+
+To check that our model was describing something real, we turned to survey data on Pocillopora corals and their resident damselfish, including Dascyllus flavicaudus, Dascyllus aruanus, and Chromis viridis, in Mo'orea. As the model predicts, damselfish were scarce on small colonies and virtually absent from the smallest, juvenile corals, crowding instead onto larger adult hosts. That strong real-world preference for high-quality hosts matches the behavior our model says should evolve, and reminds us that the choices which look smartest for an individual are not always the ones that keep a partnership, or a population, healthy. For anyone hoping to conserve or restore these coral-fish relationships, it is a case for watching the evolutionary and the ecological dynamics at once.
+
+## Citation
+
+Detmer, A. Raine; Osenberg, Craig W.; Stier, Adrian C.; Moeller, Holly V. (2026). Eco-evo conflicts in a stage-structured mutualism: modeling the consequences of ontogenetic variation in host quality. *Ecological Modelling*.
+
+[Read the full paper](https://doi.org/10.1016/j.ecolmodel.2026.111567)
+
+*This paper is Open Access.*`,
+  },
+  {
     slug: "fish-populations-don-t-follow-simple-rules-and-that-changes",
     title: "Fish Populations Don't Follow Simple Rules—And That Changes Everything We Thought We Knew",
-    date: "2025-12-18",
+    date: "2025-12-19",
     author: "Stier et al.",
     excerpt: "This meta-analysis of 38 reef fish species across 56 studies reveals that the strength of density-dependent mortality varies dramatically both within and among species, challenging our understanding of how fish populations are regulated.",
     featuredImage: "/images/barracuda-school-underwater-blue.jpg",
@@ -43,7 +101,7 @@ Stier, Adrian C.; Osenberg, Craig W. (2025). Widespread Heterogeneity in Density
   {
     slug: "climate-change-forces-an-impossible-choice-for-fisheries-sav",
     title: "Climate Change Forces an Impossible Choice for Fisheries: Save the Fish or Save the Jobs?",
-    date: "2025-12-18",
+    date: "2025-12-19",
     author: "Samhouri et al.",
     excerpt: "This modeling study reveals a fundamental trade-off in fisheries management under climate change: strategies that protect fish populations often reduce harvest, while strategies maximizing harvest can leave populations vulnerable.",
     featuredImage: "/images/hurricane-earth-from-space.jpeg",
@@ -74,7 +132,7 @@ Samhouri, Jameal F.; Detmer, A. Raine; Marshall, Kristin N.; Stier, Adrian C.; B
   {
     slug: "fish-are-providing-life-saving-services-to-corals-and-scient",
     title: "Fish Are Providing Life-Saving Services to Corals—And Scientists Are Just Beginning to Understand How",
-    date: "2025-12-16",
+    date: "2025-12-17",
     author: "Stier et al.",
     excerpt: "This review paper synthesizes how certain fish species that live closely with corals provide vital services to their coral hosts, including enhanced oxygenation, nutrient delivery, sediment removal, and protection from predators and diseases.",
     featuredImage: "/images/chromis-acropora.jpeg",

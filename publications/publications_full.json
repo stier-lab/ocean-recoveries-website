@@ -2942,5 +2942,35 @@
     },
     "newsGenerated": false,
     "newsGeneratedAt": null
+  },
+  {
+    "id": "78",
+    "title": "Coral-associated fishes accelerate coral wound healing and photosynthetic recovery",
+    "authors": "Vega, Hayden; Osenberg, Craig W.; Seifert, Ashley W.; Munk, Ninah; Stier, Adrian C.",
+    "year": 2026,
+    "journal": "Biology Letters",
+    "doi": "10.1098/rsbl.2026.0177",
+    "themes": [
+      "Coral"
+    ],
+    "audienceLevel": "Research",
+    "pdfUrl": "https://drive.google.com/open?id=1fXL6SgnHfVD8NxQ-lqqMuFpwlYcU3B3r&usp=drive_fs",
+    "doiUrl": "https://doi.org/10.1098/rsbl.2026.0177"
+  },
+  {
+    "id": "79",
+    "title": "Eco-evo conflicts in a stage-structured mutualism: modeling the consequences of ontogenetic variation in host quality",
+    "authors": "Detmer, A. Raine; Osenberg, Craig W.; Stier, Adrian C.; Moeller, Holly V.",
+    "year": 2026,
+    "journal": "Ecological Modelling",
+    "doi": "10.1016/j.ecolmodel.2026.111567",
+    "themes": [
+      "Coral",
+      "Mutualism",
+      "Models"
+    ],
+    "audienceLevel": "Research",
+    "pdfUrl": "https://drive.google.com/open?id=1-eHhMANhgWw5ZZrCs4cwlYbpwRdvg3yY&usp=drive_fs",
+    "doiUrl": "https://doi.org/10.1016/j.ecolmodel.2026.111567"
   }
 ]

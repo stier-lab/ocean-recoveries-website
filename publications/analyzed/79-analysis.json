@@ -1,0 +1,43 @@
+{
+  "publicationId": "79",
+  "title": "Eco-evo conflicts in a stage-structured mutualism: modeling the consequences of ontogenetic variation in host quality",
+  "authors": "Detmer, A. Raine; Osenberg, Craig W.; Stier, Adrian C.; Moeller, Holly V.",
+  "year": 2026,
+  "journal": "Ecological Modelling",
+  "doi": "10.1016/j.ecolmodel.2026.111567",
+  "doiUrl": "https://doi.org/10.1016/j.ecolmodel.2026.111567",
+  "openAccess": true,
+  "analyzedAt": "2026-03-18T12:00:00.000Z",
+  "expertReviewed": true,
+  "accuracyScore": 9,
+  "issuesFound": 0,
+  "analysis": {
+    "summary": "Our model of coral-damselfish mutualisms shows that fish should evolve a strong preference for large, high-quality corals, yet that individually smart choice can leave the whole fish population smaller and slower to recover, a hidden eco-evolutionary conflict born from how host quality changes with age.",
+    "keyQuestion": "When a host's quality rises as it ages, how should a mutualistic partner choose which hosts to settle on, and what does that choice mean for the partner's population?",
+    "approach": "A stage-structured mathematical model of a long-lived host (juvenile, small adult, large adult) and its coral-dwelling damselfish partner, using adaptive dynamics to find evolutionarily stable partner preferences under nutritional versus defensive mutualisms, compared against survey data from Mo'orea.",
+    "keyFindings": [
+      "Partners always evolved a strong preference for large, high-quality adult hosts",
+      "That evolutionarily stable preference often produced smaller partner populations and slower recovery from disturbance than weaker preferences would",
+      "The conflict between individual-optimal and population-optimal behavior was largest for nutritional mutualisms and negligible for defensive ones",
+      "Field surveys of Pocillopora and their damselfish matched the model: fish avoided small and juvenile corals and crowded onto adult colonies"
+    ],
+    "stickyFact": "The choice that is best for an individual damselfish, settling only on the biggest corals, can leave its whole population smaller and slower to bounce back.",
+    "whyItMatters": "It reveals a new kind of eco-evolutionary conflict that arises without any cheating, showing that understanding and conserving coral-fish partnerships requires tracking their evolutionary and ecological dynamics together.",
+    "location": "Mo'orea, French Polynesia (empirical comparison); theoretical model",
+    "species": "Branching corals (Pocillopora) and coral-dwelling damselfish including Dascyllus flavicaudus, Dascyllus aruanus, and Chromis viridis",
+    "themes": [
+      "stage-structured mutualism",
+      "coral-fish interactions",
+      "partner choice",
+      "adaptive dynamics model",
+      "marine symbiosis"
+    ],
+    "newsHeadline": "Why Choosing the Best Coral Can Backfire for Damselfish",
+    "essay": "Partners in a mutualism are rarely all alike. A branching coral shifts from a tiny, vulnerable juvenile to a large, structurally complex adult over its lifetime, and from the perspective of a coral-dwelling damselfish, a big adult coral is simply a better home than a small one. When the quality of a partner changes this dramatically across its life, which hosts should a fish choose to settle on, and does that choice, repeated across a whole population, help or hurt the partnership? Led by Raine Detmer, and with Craig Osenberg, Holly Moeller, and me, we built a mathematical model to work through the consequences.\n\nOur model follows a long-lived host through three life stages, from juvenile to small adult to large adult, with host quality rising as the coral grows. The damselfish partner helps its host in one of two ways: by boosting the coral's growth through nutrients from its waste (a nutritional mutualism), or by improving the coral's survival, for example by deterring predators (a defensive mutualism). We then let the fish's behavior evolve. The key trait was how strongly recruiting fish preferred to settle on large, adult corals rather than spreading themselves across corals of all sizes.\n\nEvolution gave a clear and intuitive answer: fish should evolve a strong preference for the best, adult hosts. An individual fish that settles on a high-quality coral has the best odds of surviving, so that preference is favored generation after generation. But when we tallied the consequences for the whole fish population, the intuitive answer turned out to be self-defeating. Populations of choosy fish were often smaller, and recovered more slowly from disturbances, than populations that spread their benefits more evenly across corals of every age. By ignoring juvenile corals, the fish gave up a chance to help small hosts grow into the very adult hosts they depend on.\n\nThis gap between what is best for the individual and what is best for the population was largest for nutritional mutualisms, cases where the fish speeds its host's growth. There, helping a juvenile coral pays a compounding dividend, because a faster-growing juvenile becomes a large adult sooner, expanding the supply of high-quality homes down the line. For defensive mutualisms, where the fish mainly improves survival rather than growth, the conflict all but vanished: the evolutionarily favored behavior and the population-optimal behavior lined up closely. Notably, this tension emerged with no cheating or exploitation anywhere in the system. It is a conflict born purely from how host quality changes with age.\n\nTo check that our model was describing something real, we turned to survey data on Pocillopora corals and their resident damselfish, including Dascyllus flavicaudus, Dascyllus aruanus, and Chromis viridis, in Mo'orea. As the model predicts, damselfish were scarce on small colonies and virtually absent from the smallest, juvenile corals, crowding instead onto larger adult hosts. That strong real-world preference for high-quality hosts matches the behavior our model says should evolve, and reminds us that the choices which look smartest for an individual are not always the ones that keep a partnership, or a population, healthy. For anyone hoping to conserve or restore these coral-fish relationships, it is a case for watching the evolutionary and the ecological dynamics at once."
+  },
+  "reviewDetails": {
+    "overallAssessment": "The article accurately represents the key findings of this research.",
+    "issues": []
+  },
+  "featuredImage": "/images/damselfish-pair-acropora-coral.jpeg"
+}

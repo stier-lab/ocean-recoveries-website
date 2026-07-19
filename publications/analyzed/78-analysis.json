@@ -1,0 +1,43 @@
+{
+  "publicationId": "78",
+  "title": "Coral-associated fishes accelerate coral wound healing and photosynthetic recovery",
+  "authors": "Vega, Hayden; Osenberg, Craig W.; Seifert, Ashley W.; Munk, Ninah; Stier, Adrian C.",
+  "year": 2026,
+  "journal": "Biology Letters",
+  "doi": "10.1098/rsbl.2026.0177",
+  "doiUrl": "https://doi.org/10.1098/rsbl.2026.0177",
+  "openAccess": true,
+  "analyzedAt": "2026-06-15T12:00:00.000Z",
+  "expertReviewed": true,
+  "accuracyScore": 9,
+  "issuesFound": 0,
+  "analysis": {
+    "summary": "In a Mo'orea experiment, corals sharing their branches with damselfish healed injuries far faster, closing large wounds roughly twice as quickly and holding onto their photosynthetic performance, revealing that reef fishes help corals recover from physical damage, not just grow.",
+    "keyQuestion": "Do the fishes that live inside a coral help it heal after physical injury?",
+    "approach": "A controlled tank experiment at the Gump Station in Mo'orea used 72 fragments of the branching coral Pocillopora, each given no wound, a small wound, or a large wound, in the presence or absence of the yellowtail damselfish Dascyllus flavicaudus, with healing tracked over 21 days.",
+    "keyFindings": [
+      "Damselfish presence sped wound healing, and the effect grew with wound size: 38% faster healing for small wounds and 55% faster for large wounds",
+      "Most large wounds on corals with fish fully closed within 21 days, while most wounds on corals without fish remained open",
+      "Wounded corals with fish maintained high photosynthetic efficiency, whereas efficiency declined with wound size when fish were absent",
+      "Turf algae colonized wounds about nine times more often when fish were absent; fish did not affect skeletal growth"
+    ],
+    "stickyFact": "Corals with resident damselfish closed large wounds about twice as fast as corals without fish.",
+    "whyItMatters": "Wound healing is a frontline component of coral resilience, and showing that resident fishes accelerate it means protecting coral-associated biodiversity may be as important for reef recovery as protecting the corals themselves.",
+    "location": "Richard B. Gump South Pacific Research Station, Mo'orea, French Polynesia",
+    "species": "Branching coral Pocillopora spp. and the yellowtail damselfish Dascyllus flavicaudus",
+    "themes": [
+      "coral resilience",
+      "coral-fish mutualism",
+      "tissue regeneration",
+      "reef recovery",
+      "marine symbiosis"
+    ],
+    "newsHeadline": "Coral's Live-In Fish Are Reef Medics That Speed Wound Healing",
+    "essay": "We have come to think of a coral not as a single organism but as a holobiont: a coral animal, its photosynthetic algae, and a broader cast of fishes and invertebrates that live in and around its branches. Much of the recent excitement about these partnerships has focused on how they help corals cope with slow, large-scale stressors like warming and bleaching. But corals also face a more immediate hazard: physical injury from predators, storms, and handling. A wound that fails to close can be overgrown by algae or invaded by pathogens, threatening the whole colony. Whether the fishes living inside a coral help it heal those wounds had gone almost entirely untested. Led by Hayden Vega, and working with Craig Osenberg, Ashley Seifert, Ninah Munk, and me, we set out to find out.\n\nAt the Gump Station in Mo'orea, French Polynesia, we ran a controlled experiment on the branching coral Pocillopora, one of the most common reef-builders in the lagoon and a favorite home of the yellowtail damselfish, Dascyllus flavicaudus. We cut 72 coral fragments to a standard size, then gave them either no wound, a small wound, or a large wound. Half the tanks housed a group of damselfish; the other half had none. Every coral received the same food and light. Then, for three weeks, we photographed the wounds and watched them close.\n\nThe fish made a striking difference, and the difference grew with the size of the injury. For small wounds, corals living with damselfish healed about 38% faster than corals without them. For large wounds, the effect was even larger: healing rates jumped by 55%, so that wounded corals with fish closed their injuries roughly twice as fast as those without. By the end of the experiment, most of the wounds on corals with fish had fully closed, while most of the wounds on corals without fish were still open. Because our clock stopped at 21 days, we almost certainly underestimated how much the fish helped.\n\nHealing was not the only thing that suffered when fish were absent. We also measured photosynthetic efficiency, a gauge of how well the coral's algal symbionts were working. In corals with damselfish, that efficiency stayed high regardless of how badly the coral had been wounded. In corals without fish, it fell steadily as wounds got larger. Turf algae told the same story: colonizing algae took hold on wounds about nine times more often when fish were absent, exactly where a coral can least afford the competition. Interestingly, the fish did not measurably change how much new skeleton the corals laid down. Their benefit was concentrated in tissue repair and symbiont performance.\n\nWhy would a resident fish speed a coral's recovery? Several mechanisms likely act together. Damselfish excrete ammonium-rich waste that fertilizes the coral's algae, supplying the extra energy that rebuilding tissue demands. Their constant movement through the branches, especially at night when oxygen runs low and the metabolic cost of healing is high, stirs water and delivers oxygen. And by keeping wounds from being smothered by algae, they buy the coral time to close them. Together, these findings add tissue repair to the growing list of ways coral-associated fishes bolster reef resilience, alongside their known roles in coral growth and heat tolerance. Protecting these everyday partnerships may be as important for reef recovery as protecting the corals themselves."
+  },
+  "reviewDetails": {
+    "overallAssessment": "The article accurately represents the key findings of this research.",
+    "issues": []
+  },
+  "featuredImage": "/images/pocillopora-damselfish-reef-school.jpeg"
+}

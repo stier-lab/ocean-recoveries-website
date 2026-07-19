@@ -179,8 +179,8 @@ for (const file of files) {
   let month = '01';
   let day = '15';
 
-  if (data.year === 2025) {
-    // For 2025 publications, use later months to reflect recency
+  if (data.year >= 2025) {
+    // For 2025+ publications, use later months to reflect recency
     // Use analyzedAt date if available, otherwise default to recent
     if (data.analyzedAt) {
       const analyzedDate = new Date(data.analyzedAt);
