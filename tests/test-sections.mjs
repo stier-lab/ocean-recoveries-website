@@ -91,7 +91,7 @@ async function main() {
   await testPageSections(browser, '/research', 'research');
   await testPageSections(browser, '/publications', 'publications');
   await testPageSections(browser, '/news', 'news');
-  await testPageSections(browser, '/join-us', 'join-us');
+  await testPageSections(browser, '/join', 'join');
 
   await browser.close();
   console.log('\n✓ All section screenshots complete!');

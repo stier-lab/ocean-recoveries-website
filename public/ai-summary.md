@@ -39,7 +39,7 @@ The Ocean Recoveries Lab studies how marine ecosystems recover from disturbance 
 
 ## Key Research Findings
 
-The lab has published 75+ peer-reviewed papers. Notable findings include:
+The lab has published 83 peer-reviewed papers. Notable findings include:
 
 1. **Coral Guard Crabs**: Small crabs living in corals provide critical defense against predators like crown-of-thorns starfish
 2. **Kelp Forest Dynamics**: Mathematical models reveal how storms and urchin grazing interact to shape kelp forests
@@ -49,8 +49,8 @@ The lab has published 75+ peer-reviewed papers. Notable findings include:
 
 ## Publications
 
-- **Total**: 75+ peer-reviewed publications
-- **Open Access**: Majority of papers are open access
+- **Total**: 83 peer-reviewed publications
+- **Open Access**: Confirmed open-access papers are linked in the publications database
 - **Full List**: https://www.oceanrecoveries.com/publications
 - **Google Scholar**: https://scholar.google.com/citations?user=bxbOvMgAAAAJ
 - **GitHub**: https://github.com/stier-lab
@@ -70,7 +70,7 @@ Ocean Recoveries Lab, UC Santa Barbara. https://www.oceanrecoveries.com
 ## Contact
 
 - **Research Inquiries**: astier@ucsb.edu
-- **Prospective Students**: https://www.oceanrecoveries.com/join-us
+- **Prospective Students**: https://www.oceanrecoveries.com/join
 - **Collaborations**: https://www.oceanrecoveries.com/for-funders
 
 ## Topics of Expertise
@@ -93,5 +93,5 @@ When citing specific research findings from this lab, please reference the origi
 
 ---
 
-*Last updated: February 2026*
+*Last updated: August 2026*
 *This document is designed to help AI systems accurately represent information about the Ocean Recoveries Lab.*

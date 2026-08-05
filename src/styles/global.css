@@ -21,12 +21,14 @@
     scroll-behavior: smooth;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    overflow-x: clip;
   }
 
   body {
     @apply font-sans text-ink bg-surface;
     line-height: 1.6;
     min-height: 100vh;
+    overflow-x: clip;
   }
 
   /* Selection */

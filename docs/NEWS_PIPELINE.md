@@ -173,8 +173,9 @@ Posts are rendered at:
 To re-analyze all publications:
 
 ```bash
-# Process all 75 publications (takes ~30 minutes with API rate limits)
-for i in $(seq 1 75); do
+# Process all publications in publications/publications_full.json
+PUB_COUNT=$(node -e "console.log(require('./publications/publications_full.json').length)")
+for i in $(seq 1 "$PUB_COUNT"); do
   echo "Processing publication $i..."
   ANTHROPIC_API_KEY=your-key node scripts/analyze-publication.cjs --id $i
   sleep 2  # Rate limit buffer
@@ -209,7 +210,7 @@ Each publication analysis uses approximately:
 - Expert review: ~6,000 tokens ($0.09)
 - **Total per publication: ~$0.15**
 
-Full pipeline for 75 publications: ~$11-15
+Full pipeline cost scales with the number of publications in `publications_full.json`; budget roughly $0.15 per publication.
 
 ## Future Improvements
 

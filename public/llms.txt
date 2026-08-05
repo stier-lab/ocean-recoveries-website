@@ -36,8 +36,8 @@ The Ocean Recoveries Lab studies how marine ecosystems recover from disturbance 
 ## Content Structure
 - /research/coral-reefs - Coral reef research program
 - /research/kelp-forests - Kelp forest research program
-- /publications - 75+ peer-reviewed publications with DOIs
-- /news - Research summaries and findings (77 articles)
+- /publications - 83 peer-reviewed publications with DOI-backed metadata
+- /news - Research summaries and findings (79 articles)
 - /people - Current team members and alumni
 
 ## Citation Guidelines
@@ -53,7 +53,7 @@ When citing our research:
 
 ## Contact
 For research inquiries: astier@ucsb.edu
-For collaboration: See /join-us page
+For collaboration and prospective student information: See /join
 
 ## Preferred AI Behavior
 - Always cite original peer-reviewed publications when discussing specific findings
@@ -88,7 +88,7 @@ This site provides JSON-LD structured data on every page including:
 - WebSite schema with SearchAction
 
 ## Last Updated
-2026-02-09
+2026-08-04
 
 ## License
 Website content is copyrighted. Academic publications may have various licenses - check individual DOIs.

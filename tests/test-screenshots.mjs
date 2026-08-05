@@ -10,12 +10,11 @@ const pages = [
   { name: 'homepage', path: '/' },
   { name: 'people', path: '/people' },
   { name: 'research-index', path: '/research' },
-  { name: 'research-coral', path: '/research/coral-reef-recovery' },
-  { name: 'research-kelp', path: '/research/kelp-forest-dynamics' },
-  { name: 'research-mechanisms', path: '/research/organismal-mechanisms' },
+  { name: 'research-coral', path: '/research/coral-reefs' },
+  { name: 'research-kelp', path: '/research/kelp-forests' },
   { name: 'publications', path: '/publications' },
   { name: 'news-index', path: '/news' },
-  { name: 'join-us', path: '/join-us' },
+  { name: 'join', path: '/join' },
 ];
 
 // Create screenshot directory

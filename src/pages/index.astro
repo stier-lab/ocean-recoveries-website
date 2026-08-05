@@ -3,6 +3,7 @@ import Layout from '@layouts/Layout.astro';
 import WaveDivider from '@components/shared/WaveDivider.astro';
 import { posts } from '@data/posts';
 import { currentTeam } from '@data/team';
+import { publications } from '@data/publications';
 
 // Get 3 most recent news posts
 const recentPosts = [...posts]
@@ -13,6 +14,8 @@ const recentPosts = [...posts]
 const teamPreview = [...currentTeam]
   .sort((a, b) => a.order - b.order)
   .slice(0, 4);
+
+const totalPublications = publications.length;
 
 // Format date helper
 const formatDate = (dateStr: string) => {
@@ -342,7 +345,7 @@ const formatDate = (dateStr: string) => {
           <!-- Inline stats -->
           <div class="team-stats-inline">
             <div class="stat-item">
-              <span class="stat-value">75+</span>
+              <span class="stat-value">{totalPublications}</span>
               <span class="stat-label">publications</span>
             </div>
             <div class="stat-divider"></div>

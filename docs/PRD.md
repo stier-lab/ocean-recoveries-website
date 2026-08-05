@@ -71,7 +71,7 @@ Build a modern, performant static website for the Ocean Recoveries Lab (oceanrec
 ├── news/
 │   └── index.astro               # Blog/news listing
 │   └── [slug].astro              # Individual blog posts
-├── join-us/
+├── join/
 │   └── index.astro               # Opportunities page
 └── featured-papers/               # (Optional, may integrate into publications)
 ```
@@ -204,7 +204,7 @@ Build a modern, performant static website for the Ocean Recoveries Lab (oceanrec
 - Pagination or infinite scroll
 - Individual post pages with rich markdown support
 
-### 7. Join Us Page (`/join-us`)
+### 7. Join Us Page (`/join`)
 
 - Welcoming hero
 - Opportunity sections (undergrad, grad, postdoc)

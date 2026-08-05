@@ -28,8 +28,8 @@ ocean-recoveries-website/
 ├── src/
 │   ├── components/         # Astro & React components
 │   ├── data/              # TypeScript data files (source of truth)
-│   │   ├── posts.ts       # News articles (~77 AI-generated)
-│   │   ├── publications.ts # 75 publications
+│   │   ├── posts.ts       # News articles generated from analyzed publications
+│   │   ├── publications.ts # Publication metadata
 │   │   ├── team.ts        # Team members & alumni
 │   │   └── research.ts    # Research systems & pillars
 │   ├── layouts/           # Page layouts
@@ -54,7 +54,7 @@ ocean-recoveries-website/
 | Coral Reefs | `/research/coral-reefs` | Coral research theme |
 | Kelp Forests | `/research/kelp-forests` | Kelp research theme |
 | News | `/news` | AI-generated publication summaries |
-| Join Us | `/join-us` | Opportunities |
+| Join Us | `/join` | Opportunities |
 
 ## Content Management
 

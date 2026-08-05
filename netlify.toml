@@ -5,6 +5,27 @@
 [build.environment]
   NODE_VERSION = "20"
 
+# Canonical aliases kept alive for old inbound links
+[[redirects]]
+  from = "/join-us"
+  to = "/join"
+  status = 301
+
+[[redirects]]
+  from = "/research/coral-reef-recovery"
+  to = "/research/coral-reefs"
+  status = 301
+
+[[redirects]]
+  from = "/research/kelp-forest-dynamics"
+  to = "/research/kelp-forests"
+  status = 301
+
+[[redirects]]
+  from = "/research/organismal-mechanisms"
+  to = "/research"
+  status = 301
+
 # Redirects for SPA-like behavior with View Transitions
 [[redirects]]
   from = "/*"

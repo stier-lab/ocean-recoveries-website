@@ -285,7 +285,7 @@ node scripts/generate-ai-news.cjs --verbose
 
 Using Claude Sonnet:
 - ~2000 tokens per article generation
-- 75 publications ≈ 150,000 tokens
+- Token use scales with the number of publications in `publications/publications_full.json`
 - Approximate cost: $0.45-0.90 total
 
 Articles are generated once and cached. Re-running only processes new publications unless `--force` is used.
@@ -298,7 +298,7 @@ Articles are generated once and cached. Re-running only processes new publicatio
 ╚══════════════════════════════════════════╝
 
 📄 Loading publications database...
-   Found 75 publications
+   Found [current source count] publications
 
 📌 Processing 62 eligible publications
 

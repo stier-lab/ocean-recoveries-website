@@ -5,8 +5,8 @@ import WaveDivider from '@components/shared/WaveDivider.astro';
 // Recruitment status
 const recruitmentStatus = {
   isLimited: true,
-  message: "Due to budget cuts at NSF and within the University of California system, I'm not accepting new students this fall unless they already have external fellowship support (e.g., NSF GRFP, Fulbright).",
-  note: "If you do have funding or are applying for it, I'm happy to chat about fit and projects."
+  message: "I'm planning to search for 1-2 graduate students in the Fall 2026 application cycle, with an anticipated Fall 2027 start.",
+  note: "Prospective students with strong research fit or external fellowship plans are welcome to get in touch as the application cycle approaches."
 };
 
 ---
@@ -28,7 +28,7 @@ const recruitmentStatus = {
       <!-- Status Badge -->
       <div class="hero-badge inline-flex items-center gap-2.5 px-4 py-2 rounded-full bg-amber-500/20 backdrop-blur-sm border border-amber-500/30 mb-6">
         <span class="w-2 h-2 rounded-full bg-amber-400 animate-pulse"></span>
-        <span class="text-sm font-medium text-amber-200 tracking-wide">Limited recruitment (see details)</span>
+        <span class="text-sm font-medium text-amber-200 tracking-wide">Fall 2026 recruitment</span>
       </div>
 
       <h1 class="hero-title mb-6">
@@ -68,7 +68,7 @@ const recruitmentStatus = {
             </svg>
           </div>
           <div class="status-content">
-            <p class="status-title">Status (Fall 2025)</p>
+            <p class="status-title">Status (Fall 2026 applications)</p>
             <p class="status-message">{recruitmentStatus.message}</p>
             <p class="status-note">{recruitmentStatus.note}</p>
           </div>
@@ -369,7 +369,7 @@ const recruitmentStatus = {
       </div>
 
       <p class="text-center text-sm text-muted mt-8 scroll-reveal">
-        Please verify all dates on the official <a href="https://www.eemb.ucsb.edu/graduate" target="_blank" rel="noopener" class="text-accent hover:underline">EEMB</a> and <a href="https://www.graddiv.ucsb.edu/" target="_blank" rel="noopener" class="text-accent hover:underline">UCSB Graduate Division</a> websites.
+        Please verify all dates on the official <a href="https://www.eemb.ucsb.edu/academics/graduate" target="_blank" rel="noopener" class="text-accent hover:underline">EEMB</a> and <a href="https://www.graddiv.ucsb.edu/" target="_blank" rel="noopener" class="text-accent hover:underline">UCSB Graduate Division</a> websites.
       </p>
     </div>
   </section>

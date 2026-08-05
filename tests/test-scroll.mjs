@@ -76,7 +76,7 @@ async function main() {
     { path: '/research', name: 'research' },
     { path: '/publications', name: 'publications' },
     { path: '/news', name: 'news' },
-    { path: '/join-us', name: 'join-us' },
+    { path: '/join', name: 'join' },
   ];
 
   for (const p of pages) {

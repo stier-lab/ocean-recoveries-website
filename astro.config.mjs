@@ -3,6 +3,13 @@ import tailwind from '@astrojs/tailwind';
 import react from '@astrojs/react';
 import sitemap from '@astrojs/sitemap';
 
+const legacyAliasPaths = [
+  '/join-us',
+  '/research/coral-reef-recovery',
+  '/research/kelp-forest-dynamics',
+  '/research/organismal-mechanisms',
+];
+
 // https://astro.build/config
 export default defineConfig({
   site: 'https://www.oceanrecoveries.com',
@@ -13,7 +20,11 @@ export default defineConfig({
     react(),
     sitemap({
       // Include all important pages
-      filter: (page) => !page.includes('/api/'),
+      filter: (page) => {
+        if (page.includes('/api/')) return false;
+        const { pathname } = new URL(page);
+        return !legacyAliasPaths.includes(pathname.replace(/\/$/, ''));
+      },
       // Set change frequency and priority
       changefreq: 'weekly',
       priority: 0.7,

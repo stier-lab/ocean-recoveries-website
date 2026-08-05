@@ -16,7 +16,7 @@ export const posts: BlogPost[] = [
   {
     slug: "coral-s-live-in-fish-are-reef-medics-that-speed-wound-healin",
     title: "Coral's Live-In Fish Are Reef Medics That Speed Wound Healing",
-    date: "2026-06-16",
+    date: "2026-06-15",
     author: "Vega et al.",
     excerpt: "In a Mo'orea experiment, corals sharing their branches with damselfish healed injuries far faster, closing large wounds roughly twice as quickly and holding onto their photosynthetic performance, revealing that reef fishes help corals recover from physical damage, not just grow.",
     featuredImage: "/images/pocillopora-damselfish-reef-school.jpeg",
@@ -45,7 +45,7 @@ Vega, Hayden; Osenberg, Craig W.; Seifert, Ashley W.; Munk, Ninah; Stier, Adrian
   {
     slug: "why-choosing-the-best-coral-can-backfire-for-damselfish",
     title: "Why Choosing the Best Coral Can Backfire for Damselfish",
-    date: "2026-03-19",
+    date: "2026-03-18",
     author: "Detmer et al.",
     excerpt: "Our model of coral-damselfish mutualisms shows that fish should evolve a strong preference for large, high-quality corals, yet that individually smart choice can leave the whole fish population smaller and slower to recover, a hidden eco-evolutionary conflict born from how host quality changes with age.",
     featuredImage: "/images/damselfish-pair-acropora-coral.jpeg",
@@ -74,7 +74,7 @@ Detmer, A. Raine; Osenberg, Craig W.; Stier, Adrian C.; Moeller, Holly V. (2026)
   {
     slug: "fish-populations-don-t-follow-simple-rules-and-that-changes",
     title: "Fish Populations Don't Follow Simple Rules—And That Changes Everything We Thought We Knew",
-    date: "2025-12-19",
+    date: "2025-12-18",
     author: "Stier et al.",
     excerpt: "This meta-analysis of 38 reef fish species across 56 studies reveals that the strength of density-dependent mortality varies dramatically both within and among species, challenging our understanding of how fish populations are regulated.",
     featuredImage: "/images/barracuda-school-underwater-blue.jpg",
@@ -101,7 +101,7 @@ Stier, Adrian C.; Osenberg, Craig W. (2025). Widespread Heterogeneity in Density
   {
     slug: "climate-change-forces-an-impossible-choice-for-fisheries-sav",
     title: "Climate Change Forces an Impossible Choice for Fisheries: Save the Fish or Save the Jobs?",
-    date: "2025-12-19",
+    date: "2025-12-18",
     author: "Samhouri et al.",
     excerpt: "This modeling study reveals a fundamental trade-off in fisheries management under climate change: strategies that protect fish populations often reduce harvest, while strategies maximizing harvest can leave populations vulnerable.",
     featuredImage: "/images/hurricane-earth-from-space.jpeg",
@@ -132,7 +132,7 @@ Samhouri, Jameal F.; Detmer, A. Raine; Marshall, Kristin N.; Stier, Adrian C.; B
   {
     slug: "fish-are-providing-life-saving-services-to-corals-and-scient",
     title: "Fish Are Providing Life-Saving Services to Corals—And Scientists Are Just Beginning to Understand How",
-    date: "2025-12-17",
+    date: "2025-12-16",
     author: "Stier et al.",
     excerpt: "This review paper synthesizes how certain fish species that live closely with corals provide vital services to their coral hosts, including enhanced oxygenation, nutrient delivery, sediment removal, and protection from predators and diseases.",
     featuredImage: "/images/chromis-acropora.jpeg",
@@ -508,7 +508,7 @@ Samhouri, Jameal F.; Shelton, Andrew Olaf; Williams, Gregory D.; Feist, Blake E.
     tags: ["Publication","2022"],
     doiUrl: "https://doi.org/10.3389/fmars.2022.945204",
     openAccess: true,
-    pdfUrl: "https://drive.google.com/open?id=1lzmygs-zbu9cSlXlRYjk7B5I1dW4leDy&usp=drive_fs",
+    pdfUrl: "",
     content: `Our analysis of 40 years of data from the North Sea reveals something unsettling: this heavily fished and rapidly warming ecosystem has crossed a threshold and fundamentally reorganized itself in ways that appear irreversible. We found evidence of a previously undetected regime shift that challenges how we think about ocean recovery.
 
 We wanted to answer a deceptively simple question: when marine ecosystems undergo dramatic changes, can they bounce back? The North Sea is one of the most heavily human impacted marine areas in the world, experiencing both intensive fishing pressure and rapid warming. We assembled 40 years of data covering everything from plankton to commercially important fish species, then applied catastrophe theory and stochastic cusp modeling to detect regime shifts and test whether they showed hysteresis—the technical term for irreversibility.

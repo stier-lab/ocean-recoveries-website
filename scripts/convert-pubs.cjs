@@ -117,6 +117,7 @@ function getJournal(pub) {
   if (doi.includes('fmars.')) return 'Frontiers in Marine Science';
   if (doi.includes('s41559')) return 'Nature Ecology & Evolution';
   if (doi.includes('s41586')) return 'Nature';
+  if (doi.includes('d41586')) return 'Nature';
   if (doi.includes('rspb.')) return 'Proceedings of the Royal Society B';
   if (doi.includes('meps')) return 'Marine Ecology Progress Series';
   if (doi.includes('s00338')) return 'Coral Reefs';
@@ -129,13 +130,18 @@ function getJournal(pub) {
   if (doi.includes('pone.')) return 'PLoS ONE';
   if (doi.includes('peerj.')) return 'PeerJ';
   if (doi.includes('ecosphere')) return 'Ecosphere';
+  if (doi.includes('1600-0706')) return 'Oikos';
   if (doi.includes('aqua')) return 'Aquatic Sciences';
   if (doi.includes('cris')) return 'Reviews in Fisheries Science';
   if (doi.includes('fish')) return 'Fish and Fisheries';
   if (doi.includes('cub.')) return 'Current Biology';
+  if (doi.includes('9781108569422')) return 'The Species–Area Relationship';
+  if (doi.includes('acprof:oso/9780199675654')) return 'Mutualism';
+  if (doi.includes('b978-0-12-374711-2')) return 'Treatise on Estuarine and Coastal Science';
+  if (doi.includes('cbo9781139049382')) return 'Marine Protected Areas';
 
   // Default
-  return 'Scientific Journal';
+  return 'Publication venue not listed';
 }
 
 // Generate TypeScript output
