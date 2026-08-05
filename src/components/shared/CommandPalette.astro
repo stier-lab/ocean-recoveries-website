@@ -280,6 +280,79 @@ const searchIndex = [
     @apply text-xs text-muted flex-shrink-0;
   }
 
+  /*
+   * Search results are inserted with innerHTML, so Astro scoped selectors do
+   * not attach to them. Keep the generated rows styled explicitly.
+   */
+  :global(#cmd-results-list .cmd-item) {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.75rem 1rem;
+    color: #f1f5f9;
+    text-decoration: none;
+    cursor: pointer;
+    transition: background-color 150ms ease, color 150ms ease;
+  }
+
+  :global(#cmd-results-list .cmd-item:hover),
+  :global(#cmd-results-list .cmd-item.active) {
+    background-color: rgba(77, 168, 201, 0.1);
+  }
+
+  :global(#cmd-results-list .cmd-item-icon) {
+    width: 2rem;
+    height: 2rem;
+    display: flex;
+    flex: 0 0 auto;
+    align-items: center;
+    justify-content: center;
+    border-radius: 0.5rem;
+    color: #94a3b8;
+    background-color: #0f172a;
+  }
+
+  :global(#cmd-results-list .cmd-item.active .cmd-item-icon) {
+    color: #4DA8C9;
+    background-color: rgba(77, 168, 201, 0.2);
+  }
+
+  :global(#cmd-results-list .cmd-item-icon svg) {
+    width: 1rem;
+    height: 1rem;
+    flex: 0 0 auto;
+  }
+
+  :global(#cmd-results-list .cmd-item-content) {
+    min-width: 0;
+    flex: 1 1 auto;
+  }
+
+  :global(#cmd-results-list .cmd-item-title) {
+    display: block;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    font-size: 0.875rem;
+    font-weight: 500;
+  }
+
+  :global(#cmd-results-list .cmd-item-subtitle) {
+    display: block;
+    margin-top: 0.125rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    color: #94a3b8;
+    font-size: 0.75rem;
+  }
+
+  :global(#cmd-results-list .cmd-item-type) {
+    flex: 0 0 auto;
+    color: #94a3b8;
+    font-size: 0.75rem;
+  }
+
   /* No Results */
   .cmd-no-results {
     @apply flex flex-col items-center justify-center py-12 text-muted;
@@ -347,7 +420,10 @@ const searchIndex = [
     // Open/close functions
     const open = () => {
       overlay?.classList.add('open');
-      input?.focus();
+      const focusInput = () => input?.focus({ preventScroll: true });
+      focusInput();
+      requestAnimationFrame(focusInput);
+      window.setTimeout(focusInput, 100);
       document.body.style.overflow = 'hidden';
       updateActiveItems();
     };
@@ -526,6 +602,12 @@ const searchIndex = [
 
     document.addEventListener('keydown', handleKeydown);
 
+    const handleExternalOpen = (e: Event) => {
+      e.preventDefault();
+      open();
+    };
+    document.addEventListener('open-command-palette', handleExternalOpen);
+
     // Click backdrop to close
     const backdrop = overlay?.querySelector('.cmd-backdrop');
     backdrop?.addEventListener('click', close);
@@ -560,6 +642,7 @@ const searchIndex = [
     // Store cleanup function
     cmdCleanup = () => {
       document.removeEventListener('keydown', handleKeydown);
+      document.removeEventListener('open-command-palette', handleExternalOpen);
       backdrop?.removeEventListener('click', close);
       input?.removeEventListener('input', handleInput);
       overlay?.removeEventListener('mousemove', handleMouseMove);

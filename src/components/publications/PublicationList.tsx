@@ -281,7 +281,7 @@ export default function PublicationList({ publications, themes }: Props) {
               <button
                 key={theme}
                 onClick={() => toggleTheme(theme)}
-                className={`flex-shrink-0 px-3 py-1.5 rounded-full text-sm font-semibold transition-all flex items-center gap-1.5 focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2 focus:ring-offset-surface ${
+                className={`flex-shrink-0 min-h-[44px] px-3 py-2.5 rounded-full text-sm font-semibold transition-all flex items-center gap-1.5 focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2 focus:ring-offset-surface ${
                   selectedThemes.includes(theme)
                     ? 'bg-accent text-white shadow-md'
                     : 'bg-surface-card border border-line text-muted hover:border-accent hover:text-accent'
@@ -302,7 +302,7 @@ export default function PublicationList({ publications, themes }: Props) {
             {hasFilters && (
               <button
                 onClick={clearFilters}
-                className="flex-shrink-0 ml-2 px-3 py-1.5 rounded-full text-sm font-semibold bg-accent-warm/10 text-accent-warm hover:bg-accent-warm/20 transition-colors flex items-center gap-1.5 focus:outline-none focus:ring-2 focus:ring-accent-warm"
+                className="flex-shrink-0 min-h-[44px] ml-2 px-3 py-2.5 rounded-full text-sm font-semibold bg-accent-warm/10 text-accent-warm hover:bg-accent-warm/20 transition-colors flex items-center gap-1.5 focus:outline-none focus:ring-2 focus:ring-accent-warm"
                 aria-label={`Clear ${activeFilterCount} active filter${activeFilterCount > 1 ? 's' : ''}`}
               >
                 <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -336,7 +336,7 @@ export default function PublicationList({ publications, themes }: Props) {
         {hasMore && (
           <button
             onClick={showAll}
-            className="text-sm font-semibold text-accent hover:text-accent/80 flex items-center gap-1 transition-colors"
+            className="min-h-[44px] px-2 -mr-2 text-sm font-semibold text-accent hover:text-accent/80 flex items-center gap-1 transition-colors rounded-md focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2 focus:ring-offset-surface"
           >
             Show all
             <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -471,7 +471,7 @@ export default function PublicationList({ publications, themes }: Props) {
                     <div className="mb-3">
                       <button
                         onClick={() => setExpandedId(expandedId === pub.id ? null : pub.id)}
-                        className="text-sm font-semibold text-accent hover:text-accent/80 transition-colors flex items-center gap-1.5 focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2 focus:ring-offset-surface-card rounded-md px-1 -ml-1"
+                        className="min-h-[44px] text-sm font-semibold text-accent hover:text-accent/80 transition-colors flex items-center gap-1.5 focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2 focus:ring-offset-surface-card rounded-md px-2 -ml-2"
                         aria-expanded={expandedId === pub.id}
                         aria-controls={`abstract-${pub.id}`}
                       >
@@ -513,7 +513,7 @@ export default function PublicationList({ publications, themes }: Props) {
                     {pub.newsSlug && (
                       <a
                         href={`/news/${pub.newsSlug}`}
-                        className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-accent-2/10 text-accent-2 text-sm font-semibold hover:bg-accent-2 hover:text-white transition-all focus:outline-none focus:ring-2 focus:ring-accent-2 focus:ring-offset-2 focus:ring-offset-surface-card"
+                        className="inline-flex min-h-[44px] items-center gap-1.5 px-3 py-2.5 rounded-lg bg-accent-2/10 text-accent-2 text-sm font-semibold hover:bg-accent-2 hover:text-white transition-all focus:outline-none focus:ring-2 focus:ring-accent-2 focus:ring-offset-2 focus:ring-offset-surface-card"
                         title="Read our summary of this research"
                       >
                         <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -527,7 +527,7 @@ export default function PublicationList({ publications, themes }: Props) {
                         href={`https://doi.org/${pub.doi}`}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-accent/10 text-accent text-sm font-semibold hover:bg-accent hover:text-white transition-all focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2 focus:ring-offset-surface-card"
+                        className="inline-flex min-h-[44px] items-center gap-1.5 px-3 py-2.5 rounded-lg bg-accent/10 text-accent text-sm font-semibold hover:bg-accent hover:text-white transition-all focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2 focus:ring-offset-surface-card"
                       >
                         <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
@@ -540,7 +540,7 @@ export default function PublicationList({ publications, themes }: Props) {
                         href={pub.pdfUrl}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-line/50 text-ink text-sm font-semibold hover:bg-accent hover:text-white transition-all focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2 focus:ring-offset-surface-card"
+                        className="inline-flex min-h-[44px] items-center gap-1.5 px-3 py-2.5 rounded-lg bg-line/50 text-ink text-sm font-semibold hover:bg-accent hover:text-white transition-all focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2 focus:ring-offset-surface-card"
                       >
                         <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
@@ -553,7 +553,7 @@ export default function PublicationList({ publications, themes }: Props) {
                         href={pub.codeUrl}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-line/50 text-ink text-sm font-semibold hover:bg-accent hover:text-white transition-all focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2 focus:ring-offset-surface-card"
+                        className="inline-flex min-h-[44px] items-center gap-1.5 px-3 py-2.5 rounded-lg bg-line/50 text-ink text-sm font-semibold hover:bg-accent hover:text-white transition-all focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2 focus:ring-offset-surface-card"
                       >
                         <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
@@ -640,7 +640,7 @@ export default function PublicationList({ publications, themes }: Props) {
               or{' '}
               <button
                 onClick={showAll}
-                className="text-accent hover:underline focus:outline-none focus:ring-2 focus:ring-accent rounded"
+                className="inline-flex min-h-[44px] items-center px-2 -mx-2 text-accent hover:underline focus:outline-none focus:ring-2 focus:ring-accent rounded"
               >
                 show all {filteredPubs.length} at once
               </button>
