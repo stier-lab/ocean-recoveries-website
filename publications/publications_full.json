@@ -2972,5 +2972,33 @@
     "audienceLevel": "Research",
     "pdfUrl": "https://drive.google.com/open?id=1-eHhMANhgWw5ZZrCs4cwlYbpwRdvg3yY&usp=drive_fs",
     "doiUrl": "https://doi.org/10.1016/j.ecolmodel.2026.111567"
+  },
+  {
+    "id": "80",
+    "title": "Scale-dependent effects of species richness and asynchrony regulate the temporal stability of consumer-mediated nutrient dynamics",
+    "authors": "White, Mack; James, W. Ryan; Lemoine, Nathan P.; Peters, Joseph R.; Stier, Adrian C.; Emery, Kyle A.; Castorani, Max C. N.; Capone, Dante A.; Štajner, Anya; Enright, Lauren N.; Grier, Shalanda R.; Cawley, Grace F.; Spivak, Amanda C.; Nelson, James A.; Hopcroft, Russell R.; Chen, Angel; Lyon, Nicholas J.; Kui, Li; Caselle, Jennifer E.; Strickland, Bradley A.; Allgeier, Jacob E.; Rehage, Jennifer S.; Burkepile, Deron E.",
+    "year": 2026,
+    "journal": "Proceedings of the National Academy of Sciences",
+    "doi": "10.1073/pnas.2532469123",
+    "abstract": "Understanding the factors that regulate ecosystem processes, such as nutrient cycling, is increasingly important as global change accelerates the degradation and defaunation of ecosystems. In marine ecosystems, fish communities recycle and redistribute nutrients through excretion, directly influencing nutrient dynamics with implications for community dynamics and ecosystem function. The stability of consumer-mediated nutrient dynamics (CND) is threatened as global change disrupts species interactions, rewires food webs, and alters biogeochemical cycles. However, the stability of CND has rarely been quantified. While decades of research on primary producers show that biodiversity can buffer ecosystem functions against environmental variability, we know little about whether consumer diversity can have similar effects for CND. We estimated the temporal stability of nitrogen supply for marine fish communities using 146 time series, spanning ~25 y (1999-2023) and six long-term monitoring programs across coral reefs, mangrove creeks, seagrass beds, and kelp forests and representing ~1.5 million individual fishes. Across ecosystems, species richness strongly and positively predicted the temporal stability of CND, consistent with diversity-stability theory. However, richness was not the dominant driver within ecosystems. Instead, species asynchrony (i.e., variation in biomass fluctuations among multiple species) emerged as the strongest and most consistent predictor, with higher synchrony destabilizing CND. These findings extend biodiversity-stability theory to consumers and show that both biodiversity and dynamic community properties govern the stability of CND, with implications for conserving marine ecosystem function in the wake of global change.",
+    "plainSummary": "A long-term synthesis of marine fish communities shows that diverse, asynchronous fish assemblages help stabilize consumer-mediated nitrogen supply across coral reefs, mangrove creeks, seagrass beds, and kelp forests.",
+    "whyItMatters": "The paper extends biodiversity-stability theory to consumers and shows that fish-community composition can affect the reliability of nutrient cycling, not only total biomass or species counts.",
+    "themes": [
+      "Research",
+      "Coral",
+      "Kelp"
+    ],
+    "audienceLevel": "Research",
+    "policyRelevance": "",
+    "studyType": "Synthesis",
+    "methods": "Long-term time-series synthesis; consumer-mediated nutrient dynamics; biodiversity-stability analysis",
+    "region": "",
+    "keywords": "consumer-mediated nutrient dynamics; biodiversity; temporal stability; species richness; asynchrony; marine fish communities",
+    "pdfUrl": "",
+    "doiUrl": "https://doi.org/10.1073/pnas.2532469123",
+    "citationCount": 0,
+    "openAccess": true,
+    "newsGenerated": false,
+    "newsGeneratedAt": null
   }
 ]

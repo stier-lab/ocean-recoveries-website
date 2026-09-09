@@ -4,10 +4,11 @@ import WaveDivider from '@components/shared/WaveDivider.astro';
 import { posts } from '@data/posts';
 import { currentTeam } from '@data/team';
 import { publications } from '@data/publications';
+import { formatSiteDate, parseSiteDate } from '@utils/date';
 
 // Get 3 most recent news posts
 const recentPosts = [...posts]
-  .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
+  .sort((a, b) => parseSiteDate(b.date).getTime() - parseSiteDate(a.date).getTime())
   .slice(0, 3);
 
 // Get team members for preview (first 4)
@@ -17,14 +18,7 @@ const teamPreview = [...currentTeam]
 
 const totalPublications = publications.length;
 
-// Format date helper
-const formatDate = (dateStr: string) => {
-  return new Date(dateStr).toLocaleDateString('en-US', {
-    year: 'numeric',
-    month: 'short',
-    day: 'numeric',
-  });
-};
+const formatDate = formatSiteDate;
 ---
 
 <Layout

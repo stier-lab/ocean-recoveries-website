@@ -1,0 +1,43 @@
+{
+  "publicationId": "80",
+  "title": "Scale-dependent effects of species richness and asynchrony regulate the temporal stability of consumer-mediated nutrient dynamics",
+  "authors": "White, Mack; James, W. Ryan; Lemoine, Nathan P.; Peters, Joseph R.; Stier, Adrian C.; Emery, Kyle A.; Castorani, Max C. N.; Capone, Dante A.; Štajner, Anya; Enright, Lauren N.; Grier, Shalanda R.; Cawley, Grace F.; Spivak, Amanda C.; Nelson, James A.; Hopcroft, Russell R.; Chen, Angel; Lyon, Nicholas J.; Kui, Li; Caselle, Jennifer E.; Strickland, Bradley A.; Allgeier, Jacob E.; Rehage, Jennifer S.; Burkepile, Deron E.",
+  "year": 2026,
+  "journal": "Proceedings of the National Academy of Sciences",
+  "doi": "10.1073/pnas.2532469123",
+  "doiUrl": "https://doi.org/10.1073/pnas.2532469123",
+  "openAccess": true,
+  "analyzedAt": "2026-09-08T12:00:00.000Z",
+  "expertReviewed": true,
+  "accuracyScore": 9,
+  "issuesFound": 0,
+  "analysis": {
+    "summary": "A PNAS synthesis of 146 marine fish-community time series shows that species richness and asynchronous biomass fluctuations help stabilize consumer-mediated nitrogen supply across coral reefs, mangroves, seagrass beds, and kelp forests.",
+    "keyQuestion": "Do diverse marine consumer communities make nutrient supply more temporally stable, and does that relationship change with spatial scale?",
+    "approach": "The study estimated nitrogen supply from long-term fish-community monitoring data, using 146 time series spanning roughly 25 years, six monitoring programs, four ecosystem types, and approximately 1.5 million individual fishes.",
+    "keyFindings": [
+      "Species richness positively predicted the temporal stability of consumer-mediated nutrient dynamics across ecosystems",
+      "Within ecosystems, species asynchrony was the strongest and most consistent predictor of stability",
+      "Higher synchrony in fish biomass fluctuations destabilized consumer-mediated nitrogen supply",
+      "The results extend biodiversity-stability theory from primary producers to marine consumers"
+    ],
+    "stickyFact": "The synthesis represents approximately 1.5 million individual fishes observed across coral reefs, mangrove creeks, seagrass beds, and kelp forests.",
+    "whyItMatters": "Fish communities do not only provide biomass or biodiversity; they recycle nutrients in ways that help ecosystems function. If global change causes consumer species to fluctuate in lockstep or disappear, nutrient supply may become less stable even when total fish abundance looks adequate.",
+    "location": "Coral reefs, mangrove creeks, seagrass beds, and kelp forests across six long-term marine monitoring programs",
+    "species": "Marine fish communities",
+    "themes": [
+      "marine nutrient cycling",
+      "consumer diversity",
+      "ecosystem stability",
+      "coral reefs",
+      "kelp forests"
+    ],
+    "newsHeadline": "Fish Diversity Helps Keep Ocean Nutrient Cycling Stable",
+    "essay": "Fish are often treated as harvest, predators, grazers, or biodiversity. This paper puts another role in the foreground: fish move nutrients through marine ecosystems. Through excretion, fish recycle nitrogen and other nutrients back into the water and benthos, shaping the conditions that algae, corals, seagrasses, microbes, and other organisms experience. If those nutrient flows swing wildly through time, ecosystem function can become less reliable even when the community still looks diverse on paper. Led by Mack White and a large collaborative team, we asked whether the diversity of marine fish communities makes consumer-mediated nutrient dynamics more stable. The synthesis drew on 146 time series from six long-term monitoring programs, spanning roughly 25 years from 1999 to 2023 and representing about 1.5 million individual fishes. The data covered coral reefs, mangrove creeks, seagrass beds, and kelp forests, which made it possible to ask whether the same stability logic holds across very different marine ecosystems. Across ecosystems, species richness was strongly and positively associated with the temporal stability of nitrogen supply. That result matches a central idea from biodiversity-stability theory: when more species contribute to an ecosystem process, the process can be buffered against environmental variability. But richness was not the whole story, especially within individual ecosystems. The more consistent local signal was asynchrony. Fish species do not all rise and fall together. Some increase when others decline, and those offsetting fluctuations can keep total nutrient supply steadier through time. When fish biomass fluctuated more synchronously, consumer-mediated nutrient dynamics became less stable. In other words, a community can lose functional stability not only by losing species, but also by having the remaining species respond to change in the same way at the same time. That point matters for conservation and management because nutrient cycling is one of the quieter ways animals hold ecosystems together. Protecting fish diversity is not just about maintaining species lists or total biomass. It is also about preserving a portfolio of consumers whose different responses through time help keep ecosystem processes from becoming erratic as oceans warm, food webs change, and marine communities are increasingly disturbed."
+  },
+  "reviewDetails": {
+    "overallAssessment": "The article accurately represents the peer-reviewed PNAS metadata and abstract.",
+    "issues": []
+  },
+  "featuredImage": "/images/yellow-striped-grunts-coral-reef.jpeg"
+}

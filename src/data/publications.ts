@@ -17,6 +17,21 @@ export interface Publication {
 
 export const publications: Publication[] = [
   {
+    id: 'white-2026-pnas-cnd',
+    title: "Scale-dependent effects of species richness and asynchrony regulate the temporal stability of consumer-mediated nutrient dynamics",
+    authors: "White, Mack; James, W. Ryan; Lemoine, Nathan P.; Peters, Joseph R.; Stier, Adrian C.; Emery, Kyle A.; Castorani, Max C. N.; Capone, Dante A.; Štajner, Anya; Enright, Lauren N.; Grier, Shalanda R.; Cawley, Grace F.; Spivak, Amanda C.; Nelson, James A.; Hopcroft, Russell R.; Chen, Angel; Lyon, Nicholas J.; Kui, Li; Caselle, Jennifer E.; Strickland, Bradley A.; Allgeier, Jacob E.; Rehage, Jennifer S.; Burkepile, Deron E.",
+    year: 2026,
+    journal: "Proceedings of the National Academy of Sciences",
+    doi: "10.1073/pnas.2532469123",
+    abstract: "Understanding the factors that regulate ecosystem processes, such as nutrient cycling, is increasingly important as global change accelerates the degradation and defaunation of ecosystems. In marine ecosystems, fish communities recycle and redistribute nutrients through excretion, directly influencing nutrient dynamics with implications for community dynamics and ecosystem function. The stability of consumer-mediated nutrient dynamics is threatened as global change disrupts species interactions, rewires food webs, and alters biogeochemical cycles. Using 146 marine fish-community time series spanning roughly 25 years and six long-term monitoring programs, this study found that species richness and species asynchrony help stabilize nitrogen supply across coral reefs, mangrove creeks, seagrass beds, and kelp forests.",
+    themes: ["Research", "Coral", "Kelp"],
+    featured: false,
+    openAccess: true,
+    dataAvailable: false,
+    pdfUrl: undefined,
+    citationCount: 0,
+  },
+  {
     id: 'vega-2026-biolett',
     title: "Coral-associated fishes accelerate coral wound healing and photosynthetic recovery",
     authors: "Vega, Hayden, Osenberg, Craig W., Seifert, Ashley W., Munk, Ninah, Stier, Adrian C.",

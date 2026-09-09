@@ -4,18 +4,25 @@ import Breadcrumbs from '@components/layout/Breadcrumbs.astro';
 import ArticleSchema from '@components/seo/ArticleSchema.astro';
 import BreadcrumbSchema from '@components/seo/BreadcrumbSchema.astro';
 import { posts } from '@data/posts';
+import { formatSiteDate, getSiteDateYear } from '@utils/date';
 
 export function getStaticPaths() {
-  return posts.map((post) => ({
-    params: { slug: post.slug },
-    props: { post },
-  }));
+  return posts.flatMap((post) => [
+    {
+      params: { slug: post.slug },
+      props: { post },
+    },
+    ...(post.aliases || []).map((alias) => ({
+      params: { slug: alias },
+      props: { post },
+    })),
+  ]);
 }
 
 const { post } = Astro.props;
 
 const formatDate = (dateStr: string) => {
-  return new Date(dateStr).toLocaleDateString('en-US', {
+  return formatSiteDate(dateStr, {
     year: 'numeric',
     month: 'long',
     day: 'numeric',
@@ -34,7 +41,7 @@ const extractKeyFindings = (content: string): string[] => {
   for (const sentence of sentences) {
     // Look for sentences with statistics, percentages, or key finding indicators
     if (
-      /\d+%|\d+x|\d+-fold|increased|decreased|found that|revealed|discovered|showed|demonstrated/i.test(sentence) &&
+      /\d+%|\d+x|\d+-fold|increased|decreased|found that|showed|demonstrated/i.test(sentence) &&
       !/citation|doi|paper|read the full/i.test(sentence)
     ) {
       const cleaned = sentence.trim().replace(/^\*+|\*+$/g, '').trim();
@@ -51,7 +58,7 @@ const extractKeyFindings = (content: string): string[] => {
 const extractPullQuote = (content: string): string | null => {
   const sentences = content.split(/[.!?]+/).filter(s => s.trim().length > 40 && s.trim().length < 180);
   for (const sentence of sentences) {
-    if (/remarkable|surprising|troubling|critical|essential|unprecedented|striking/i.test(sentence) &&
+    if (/surprising|important|substantial|essential|striking/i.test(sentence) &&
         !/citation|doi/i.test(sentence)) {
       return sentence.trim() + '.';
     }
@@ -74,7 +81,7 @@ const breadcrumbs = [
 
 // Format citation for copy
 const formatCitation = () => {
-  const year = new Date(post.date).getFullYear();
+  const year = getSiteDateYear(post.date);
   return `${post.author} (${year}). ${post.title}. Ocean Recoveries Lab.${post.doiUrl ? ` ${post.doiUrl}` : ''}`;
 };
 
@@ -112,6 +119,7 @@ const hasToc = tableOfContents.length > 2; // More than just Citation and Share
   title={post.title}
   description={post.excerpt}
   image={post.featuredImage}
+  canonicalUrl={new URL(`/news/${post.slug}`, Astro.site || Astro.url.origin).href}
   keywords={post.tags}
 >
   <!-- SEO Structured Data -->

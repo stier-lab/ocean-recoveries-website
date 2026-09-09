@@ -6,6 +6,7 @@ import { researchThemes } from '@data/research';
 import { publications } from '@data/publications';
 import { posts } from '@data/posts';
 import { enrichPublicationsWithImages } from '@utils/publicationImages';
+import { formatSiteDate, parseSiteDate } from '@utils/date';
 
 export function getStaticPaths() {
   return researchThemes.map((theme) => ({
@@ -46,7 +47,7 @@ const relatedNews = posts
     const searchText = `${post.title} ${post.excerpt} ${post.tags.join(' ')}`.toLowerCase();
     return newsKeywords.some(keyword => searchText.includes(keyword.toLowerCase()));
   })
-  .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
+  .sort((a, b) => parseSiteDate(b.date).getTime() - parseSiteDate(a.date).getTime())
   .slice(0, 6);
 
 const breadcrumbs = [
@@ -476,7 +477,7 @@ const isCoral = theme.slug === 'coral-reefs';
                 <img src={post.featuredImage} alt="" loading="lazy" />
                 <div class="news-image-overlay"></div>
                 <div class={`news-date-badge ${isCoral ? 'coral-badge' : 'kelp-badge'}`}>
-                  {new Date(post.date).toLocaleDateString('en-US', { month: 'short', year: 'numeric' })}
+                  {formatSiteDate(post.date, { month: 'short', year: 'numeric' })}
                 </div>
               </div>
               <div class="news-content">

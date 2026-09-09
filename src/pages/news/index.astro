@@ -1,9 +1,10 @@
 ---
 import Layout from '@layouts/Layout.astro';
 import { posts } from '@data/posts';
+import { formatSiteDate, parseSiteDate } from '@utils/date';
 
 // Sort posts by date (newest first)
-const sortedPosts = [...posts].sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
+const sortedPosts = [...posts].sort((a, b) => parseSiteDate(b.date).getTime() - parseSiteDate(a.date).getTime());
 
 // Get unique tags with counts
 const tagCounts = posts.reduce((acc, post) => {
@@ -35,14 +36,7 @@ const getTopicColor = (tags: string[]) => {
   return topic ? topicConfig[topic].color : '#4DA8C9';
 };
 
-// Format date
-const formatDate = (dateStr: string) => {
-  return new Date(dateStr).toLocaleDateString('en-US', {
-    year: 'numeric',
-    month: 'short',
-    day: 'numeric',
-  });
-};
+const formatDate = formatSiteDate;
 
 // Calculate reading time
 const getReadingTime = (content: string) => {

@@ -167,6 +167,13 @@ for (const file of files) {
   }
 
   const slug = slugify(data.analysis.newsHeadline || data.title);
+  const aliases = [
+    data.analysis.slug,
+    ...(Array.isArray(data.analysis.previousSlugs) ? data.analysis.previousSlugs : []),
+  ]
+    .filter(Boolean)
+    .map(String)
+    .filter((alias) => alias !== slug);
   // Use the assigned featuredImage from the analysis file (assigned by assign-publication-images.cjs)
   // Fall back to theme-based selection only if no image assigned
   const image = data.featuredImage || getImageForPost(data);
@@ -223,6 +230,7 @@ for (const file of files) {
     excerpt: data.analysis.summary || '',
     featuredImage: image,
     tags,
+    aliases: [...new Set(aliases)],
     content: escapeForTemplate(content),
     doiUrl: data.doiUrl || '',
     openAccess: data.openAccess || false,
@@ -244,6 +252,19 @@ for (const post of posts) {
   }
 }
 
+// Keep legacy aliases for old links, but never allow an alias route to collide.
+const canonicalSlugs = new Set(posts.map((post) => post.slug));
+const claimedAliases = new Set();
+for (const post of posts) {
+  post.aliases = (post.aliases || []).filter((alias) => {
+    if (alias === post.slug || canonicalSlugs.has(alias) || claimedAliases.has(alias)) {
+      return false;
+    }
+    claimedAliases.add(alias);
+    return true;
+  });
+}
+
 // Sort posts by date descending (newest first)
 posts.sort((a, b) => new Date(b.date) - new Date(a.date));
 
@@ -258,6 +279,7 @@ let tsContent = `export interface BlogPost {
   excerpt: string;
   featuredImage: string;
   tags: string[];
+  aliases?: string[];
   content: string;
   doiUrl?: string;
   openAccess?: boolean;
@@ -277,6 +299,7 @@ for (const post of posts) {
     excerpt: "${escDQ(post.excerpt).replace(/\n/g, ' ')}",
     featuredImage: "${post.featuredImage}",
     tags: ${JSON.stringify(post.tags)},
+    aliases: ${JSON.stringify(post.aliases || [])},
     doiUrl: "${escDQ(post.doiUrl)}",
     openAccess: ${post.openAccess},
     pdfUrl: "${escDQ(post.pdfUrl)}",

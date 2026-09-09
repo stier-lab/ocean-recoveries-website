@@ -17,6 +17,14 @@
       "location": "tropical"
     },
     {
+      "filename": "yellow-striped-grunts-coral-reef.jpeg",
+      "description": "Large school of yellow striped grunts and banded butterflyfish over a coral reef with vase sponges",
+      "species": ["yellow striped grunt", "haemulon", "banded butterflyfish", "chaetodon striatus"],
+      "habitat": ["coral reef", "sponge reef", "tropical reef"],
+      "themes": ["reef fish", "fish school", "consumer diversity", "nutrient cycling", "coral reef", "biodiversity"],
+      "location": "tropical"
+    },
+    {
       "filename": "trapezia-coral-crab-hiding.jpg",
       "description": "Red-spotted Trapezia coral guard crab with yellow eyes hiding between brown Pocillopora coral branches",
       "species": ["trapezia", "coral guard crab", "pocillopora"],
