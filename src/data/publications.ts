@@ -27,8 +27,9 @@ export const publications: Publication[] = [
     themes: ["Research", "Coral", "Kelp"],
     featured: false,
     openAccess: true,
-    dataAvailable: false,
-    pdfUrl: undefined,
+    dataAvailable: true,
+    pdfUrl: "https://www.pnas.org/doi/pdf/10.1073/pnas.2532469123",
+    codeUrl: "https://doi.org/10.5281/zenodo.22049683",
     citationCount: 0,
   },
   {

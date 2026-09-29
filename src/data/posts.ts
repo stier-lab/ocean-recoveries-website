@@ -25,8 +25,18 @@ export const posts: BlogPost[] = [
     aliases: [],
     doiUrl: "https://doi.org/10.1073/pnas.2532469123",
     openAccess: true,
-    pdfUrl: "",
+    pdfUrl: "https://www.pnas.org/doi/pdf/10.1073/pnas.2532469123",
     content: `Fish are often treated as harvest, predators, grazers, or biodiversity. This paper puts another role in the foreground: fish move nutrients through marine ecosystems. Through excretion, fish recycle nitrogen and other nutrients back into the water and benthos, shaping the conditions that algae, corals, seagrasses, microbes, and other organisms experience. If those nutrient flows swing wildly through time, ecosystem function can become less reliable even when the community still looks diverse on paper. Led by Mack White and a large collaborative team, we asked whether the diversity of marine fish communities makes consumer-mediated nutrient dynamics more stable. The synthesis drew on 146 time series from six long-term monitoring programs, spanning roughly 25 years from 1999 to 2023 and representing about 1.5 million individual fishes. The data covered coral reefs, mangrove creeks, seagrass beds, and kelp forests, which made it possible to ask whether the same stability logic holds across very different marine ecosystems. Across ecosystems, species richness was strongly and positively associated with the temporal stability of nitrogen supply. That result matches a central idea from biodiversity-stability theory: when more species contribute to an ecosystem process, the process can be buffered against environmental variability. But richness was not the whole story, especially within individual ecosystems. The more consistent local signal was asynchrony. Fish species do not all rise and fall together. Some increase when others decline, and those offsetting fluctuations can keep total nutrient supply steadier through time. When fish biomass fluctuated more synchronously, consumer-mediated nutrient dynamics became less stable. In other words, a community can lose functional stability not only by losing species, but also by having the remaining species respond to change in the same way at the same time. That point matters for conservation and management because nutrient cycling is one of the quieter ways animals hold ecosystems together. Protecting fish diversity is not just about maintaining species lists or total biomass. It is also about preserving a portfolio of consumers whose different responses through time help keep ecosystem processes from becoming erratic as oceans warm, food webs change, and marine communities are increasingly disturbed.
+
+This study grew out of the LTER Marine Consumer Nutrient Dynamics Synthesis working group hosted at NCEAS. Mack White led the synthesis, drawing on the work of our collaborators and the teams who maintained the long-term monitoring records.
+
+## Paper and supporting materials
+
+[Download the paper (PDF)](https://www.pnas.org/doi/pdf/10.1073/pnas.2532469123)
+
+[Download the SI Appendix (PDF)](https://www.pnas.org/doi/suppl/10.1073/pnas.2532469123/suppl_file/pnas.2532469123.sapp.pdf)
+
+[Data and code on Zenodo](https://doi.org/10.5281/zenodo.22049683)
 
 ## Citation
 

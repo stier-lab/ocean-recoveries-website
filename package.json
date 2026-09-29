@@ -13,6 +13,7 @@
     "check": "astro check",
     "test": "playwright test",
     "generate-news": "node scripts/generate-news.cjs",
+    "index-adobe-stock": "node scripts/index-adobe-stock-assets.cjs",
     "prepare": "[ -d .git ] && git config core.hooksPath .husky || true"
   },
   "dependencies": {
