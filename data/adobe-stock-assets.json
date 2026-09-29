@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-29T01:53:11.192Z",
+  "generatedAt": "2026-09-29T16:17:00.587Z",
   "note": "Generated from local EXIF metadata. Adobe Stock license history still needs account sign-in for authoritative reconciliation.",
   "sourceChecks": {
     "assetsDir": "assets",
@@ -10,11 +10,11 @@
     "adobeStockLicenseHistory": "Blocked at Adobe sign-in in Codex in-app browser."
   },
   "summary": {
-    "adobeStockAssetsInRepo": 140,
+    "adobeStockAssetsInRepo": 149,
     "photosInRepo": 136,
     "vectorsInRepo": 4,
-    "videosInRepo": 0,
-    "externalAdobeStockMediaNotCopied": 2
+    "videosInRepo": 9,
+    "externalAdobeStockMediaNotCopied": 0
   },
   "duplicateStockIds": [
     {
@@ -874,6 +874,24 @@
         "reef macro"
       ],
       "sha256": "4486284e58429d78a7016e8150a6cd21d91ee2347d8f2c2ff04c4491605d7144"
+    },
+    {
+      "stockId": "1209360091",
+      "filename": "vibrant-fish-swimming-above-colorful-coral-reef-1209360091.mov",
+      "path": "assets/vibrant-fish-swimming-above-colorful-coral-reef-1209360091.mov",
+      "mediaType": "video",
+      "fileType": "MP4",
+      "width": 1920,
+      "height": 1080,
+      "duration": "0:00:56",
+      "title": null,
+      "credit": null,
+      "creator": null,
+      "copyright": null,
+      "rights": null,
+      "category": "coral reef",
+      "keywords": [],
+      "sha256": "54842ddfccd4245792cbd7c58577458a3963e456a5984fea02df65714715030e"
     },
     {
       "stockId": "128423038",
@@ -3025,6 +3043,26 @@
       "sha256": "e76807ede7abbfc80abfb20adb3e483f7dbba91b1e5bce22a0a4849b66f25152"
     },
     {
+      "stockId": "224804025",
+      "filename": "glassy-sweepers-and-elkhorn-coral-in-caribbean-sea-224804025.mov",
+      "path": "assets/glassy-sweepers-and-elkhorn-coral-in-caribbean-sea-224804025.mov",
+      "mediaType": "video",
+      "fileType": "MOV",
+      "width": 1920,
+      "height": 1080,
+      "duration": "15.02 s",
+      "title": "Stock 2",
+      "credit": null,
+      "creator": null,
+      "copyright": null,
+      "rights": null,
+      "category": "coral reef",
+      "keywords": [
+        "iMovie"
+      ],
+      "sha256": "56c3b58bcf25fec30e5e45dc4dd07af3d3f3452b40e61ef911acced979d29e4c"
+    },
+    {
       "stockId": "229528110",
       "filename": "channel clinging crab,Mithrax spinosissimus.jpeg",
       "path": "assets/channel clinging crab,Mithrax spinosissimus.jpeg",
@@ -3115,6 +3153,24 @@
         "we"
       ],
       "sha256": "f4abdd3158a34d4acef8680452e35989e38e29ff85b5c95e672ca548d5eae293"
+    },
+    {
+      "stockId": "230617177",
+      "filename": "school-of-fish-sharks-swim-in-a-circle-230617177.mov",
+      "path": "assets/school-of-fish-sharks-swim-in-a-circle-230617177.mov",
+      "mediaType": "video",
+      "fileType": "MP4",
+      "width": 1920,
+      "height": 1080,
+      "duration": "0:00:30",
+      "title": null,
+      "credit": null,
+      "creator": null,
+      "copyright": null,
+      "rights": null,
+      "category": "reef fish",
+      "keywords": [],
+      "sha256": "5761aa8065be52b3c2736da377015169c717b12c31805d559b56b70d42328e7f"
     },
     {
       "stockId": "230695999",
@@ -4730,6 +4786,24 @@
       "sha256": "94a7d86c13f99b919eaf8f68f52ce6e733b28ab48ed5fd779d63940409c217b5"
     },
     {
+      "stockId": "301251599",
+      "filename": "reticulated-dascyllus-sheltering-in-branching-coral-manado-indonesia-301251599.mov",
+      "path": "assets/reticulated-dascyllus-sheltering-in-branching-coral-manado-indonesia-301251599.mov",
+      "mediaType": "video",
+      "fileType": "MP4",
+      "width": 1920,
+      "height": 1080,
+      "duration": "25.83 s",
+      "title": null,
+      "credit": null,
+      "creator": null,
+      "copyright": null,
+      "rights": null,
+      "category": "coral reef",
+      "keywords": [],
+      "sha256": "c88364fd24b098914f168746b60c78178a3a2458e88e8fcf7f9c6dd9872d5f6b"
+    },
+    {
       "stockId": "305461735",
       "filename": "whale-ship.jpeg",
       "path": "assets/whale-ship.jpeg",
@@ -5960,6 +6034,24 @@
       "sha256": "265b72e32d486633863bf1bb10d90d39301025de77235a724ffea7ee5eb6e570"
     },
     {
+      "stockId": "401217735",
+      "filename": "fishing-boat-pulling-salmon-net-alaska-slow-motion-401217735.mov",
+      "path": "assets/fishing-boat-pulling-salmon-net-alaska-slow-motion-401217735.mov",
+      "mediaType": "video",
+      "fileType": "MP4",
+      "width": 2048,
+      "height": 1080,
+      "duration": "19.46 s",
+      "title": null,
+      "credit": null,
+      "creator": null,
+      "copyright": null,
+      "rights": null,
+      "category": "reef fish",
+      "keywords": [],
+      "sha256": "edcd6c374f7dce6ce2d6eafcdc21e773a27b7b81fbb62109e507d1c55931d4c3"
+    },
+    {
       "stockId": "41226813",
       "filename": "acropora-palmata-elkhorn-coral.jpeg",
       "path": "assets/acropora-palmata-elkhorn-coral.jpeg",
@@ -6991,6 +7083,24 @@
         "white background"
       ],
       "sha256": "7005bd1f479865828ed760900890bcc0a7973c3e1f9ac05ffdecdfa5f2891a8f"
+    },
+    {
+      "stockId": "509966357",
+      "filename": "aerial-fishing-boats-in-vietnam-overfishing-concept-509966357.mov",
+      "path": "assets/aerial-fishing-boats-in-vietnam-overfishing-concept-509966357.mov",
+      "mediaType": "video",
+      "fileType": "MP4",
+      "width": 1920,
+      "height": 1080,
+      "duration": "20.52 s",
+      "title": null,
+      "credit": null,
+      "creator": null,
+      "copyright": null,
+      "rights": null,
+      "category": "reef fish",
+      "keywords": [],
+      "sha256": "281b9e05c5ee19b0a010d4aff298d4e7523cd2a43d52c6233084d52cbcf291c0"
     },
     {
       "stockId": "527782834",
@@ -8077,6 +8187,24 @@
       "sha256": "c8fce58c34a990191799be74442c279f58b36cfdae76945c38b8cc2086efe6dd"
     },
     {
+      "stockId": "667972509",
+      "filename": "parrotfish-swim-above-purple-hued-coral-great-barrier-reef-667972509.mov",
+      "path": "assets/parrotfish-swim-above-purple-hued-coral-great-barrier-reef-667972509.mov",
+      "mediaType": "video",
+      "fileType": "MOV",
+      "width": 3840,
+      "height": 2160,
+      "duration": "12.24 s",
+      "title": null,
+      "credit": null,
+      "creator": null,
+      "copyright": null,
+      "rights": null,
+      "category": "coral reef",
+      "keywords": [],
+      "sha256": "bf3674c9c9cd8e77f08ba587432aacb6a822678dab64e8b5b2f3597abbbe7bf9"
+    },
+    {
       "stockId": "670271098",
       "filename": "lorenz-attractor-abstract-art.jpeg",
       "path": "assets/lorenz-attractor-abstract-art.jpeg",
@@ -8253,6 +8381,26 @@
       "sha256": "349c2a893e67a7831e3dfc758d2e4ddf2b3a20c14b09c3876c3363f6c04d02c1"
     },
     {
+      "stockId": "787553349",
+      "filename": "bleached-elkhorn-coral-787553349.mov",
+      "path": "assets/bleached-elkhorn-coral-787553349.mov",
+      "mediaType": "video",
+      "fileType": "MP4",
+      "width": 1920,
+      "height": 1080,
+      "duration": "12.98 s",
+      "title": "bleached_apal1",
+      "credit": null,
+      "creator": null,
+      "copyright": null,
+      "rights": null,
+      "category": "coral reef",
+      "keywords": [
+        "iMovie"
+      ],
+      "sha256": "551b0175707aac29c859653b135cc99a8389317f62a9b8efebdcb23cd50d74e8"
+    },
+    {
       "stockId": "85659279",
       "filename": "seagrass.jpeg",
       "path": "assets/seagrass.jpeg",
@@ -8301,6 +8449,24 @@
         "weed"
       ],
       "sha256": "7259d45685fa52bf72d91956c3f13d5f82b1a97b927ce0d0b62005cde67e4ac5"
+    },
+    {
+      "stockId": "864120573",
+      "filename": "large-porites-lutea-coral-on-coral-reef-864120573.mov",
+      "path": "assets/large-porites-lutea-coral-on-coral-reef-864120573.mov",
+      "mediaType": "video",
+      "fileType": "MOV",
+      "width": 3840,
+      "height": 2160,
+      "duration": "14.95 s",
+      "title": null,
+      "credit": null,
+      "creator": null,
+      "copyright": null,
+      "rights": null,
+      "category": "coral reef",
+      "keywords": [],
+      "sha256": "cb22ac464dae6f970a59ec95c2ae2f534882ccd58c13ddc31e59f632e39c4cda"
     },
     {
       "stockId": "89362676",
@@ -8529,6 +8695,24 @@
   ],
   "externalMedia": [
     {
+      "stockId": "1209360091",
+      "filename": "AdobeStock_1209360091.mov",
+      "path": "~/Downloads/AdobeStock_1209360091.mov",
+      "mediaType": "video",
+      "fileType": "MP4",
+      "width": 1920,
+      "height": 1080,
+      "duration": "0:00:56",
+      "title": null,
+      "credit": null,
+      "category": "general",
+      "representedBy": [
+        "assets/vibrant-fish-swimming-above-colorful-coral-reef-1209360091.mov"
+      ],
+      "notCopiedReason": "Already represented in repo assets.",
+      "sha256": "54842ddfccd4245792cbd7c58577458a3963e456a5984fea02df65714715030e"
+    },
+    {
       "stockId": "224804025",
       "filename": "AdobeStock_224804025.mov",
       "path": "~/Desktop/palmata-rse-assets/AdobeStock_224804025.mov",
@@ -8540,9 +8724,101 @@
       "title": "Stock 2",
       "credit": null,
       "category": "general",
-      "representedBy": [],
-      "notCopiedReason": "External Adobe Stock media found outside repo; videos are catalogued but not copied into the website assets by default.",
+      "representedBy": [
+        "assets/glassy-sweepers-and-elkhorn-coral-in-caribbean-sea-224804025.mov"
+      ],
+      "notCopiedReason": "Already represented in repo assets.",
       "sha256": "56c3b58bcf25fec30e5e45dc4dd07af3d3f3452b40e61ef911acced979d29e4c"
+    },
+    {
+      "stockId": "230617177",
+      "filename": "AdobeStock_230617177.mov",
+      "path": "~/Downloads/AdobeStock_230617177.mov",
+      "mediaType": "video",
+      "fileType": "MP4",
+      "width": 1920,
+      "height": 1080,
+      "duration": "0:00:30",
+      "title": null,
+      "credit": null,
+      "category": "general",
+      "representedBy": [
+        "assets/school-of-fish-sharks-swim-in-a-circle-230617177.mov"
+      ],
+      "notCopiedReason": "Already represented in repo assets.",
+      "sha256": "5761aa8065be52b3c2736da377015169c717b12c31805d559b56b70d42328e7f"
+    },
+    {
+      "stockId": "301251599",
+      "filename": "AdobeStock_301251599.mov",
+      "path": "~/Downloads/AdobeStock_301251599.mov",
+      "mediaType": "video",
+      "fileType": "MP4",
+      "width": 1920,
+      "height": 1080,
+      "duration": "25.83 s",
+      "title": null,
+      "credit": null,
+      "category": "general",
+      "representedBy": [
+        "assets/reticulated-dascyllus-sheltering-in-branching-coral-manado-indonesia-301251599.mov"
+      ],
+      "notCopiedReason": "Already represented in repo assets.",
+      "sha256": "c88364fd24b098914f168746b60c78178a3a2458e88e8fcf7f9c6dd9872d5f6b"
+    },
+    {
+      "stockId": "401217735",
+      "filename": "AdobeStock_401217735.mov",
+      "path": "~/Downloads/AdobeStock_401217735.mov",
+      "mediaType": "video",
+      "fileType": "MP4",
+      "width": 2048,
+      "height": 1080,
+      "duration": "19.46 s",
+      "title": null,
+      "credit": null,
+      "category": "general",
+      "representedBy": [
+        "assets/fishing-boat-pulling-salmon-net-alaska-slow-motion-401217735.mov"
+      ],
+      "notCopiedReason": "Already represented in repo assets.",
+      "sha256": "edcd6c374f7dce6ce2d6eafcdc21e773a27b7b81fbb62109e507d1c55931d4c3"
+    },
+    {
+      "stockId": "509966357",
+      "filename": "AdobeStock_509966357.mov",
+      "path": "~/Downloads/AdobeStock_509966357.mov",
+      "mediaType": "video",
+      "fileType": "MP4",
+      "width": 1920,
+      "height": 1080,
+      "duration": "20.52 s",
+      "title": null,
+      "credit": null,
+      "category": "general",
+      "representedBy": [
+        "assets/aerial-fishing-boats-in-vietnam-overfishing-concept-509966357.mov"
+      ],
+      "notCopiedReason": "Already represented in repo assets.",
+      "sha256": "281b9e05c5ee19b0a010d4aff298d4e7523cd2a43d52c6233084d52cbcf291c0"
+    },
+    {
+      "stockId": "667972509",
+      "filename": "AdobeStock_667972509.mov",
+      "path": "~/Downloads/AdobeStock_667972509.mov",
+      "mediaType": "video",
+      "fileType": "MOV",
+      "width": 3840,
+      "height": 2160,
+      "duration": "12.24 s",
+      "title": null,
+      "credit": null,
+      "category": "general",
+      "representedBy": [
+        "assets/parrotfish-swim-above-purple-hued-coral-great-barrier-reef-667972509.mov"
+      ],
+      "notCopiedReason": "Already represented in repo assets.",
+      "sha256": "bf3674c9c9cd8e77f08ba587432aacb6a822678dab64e8b5b2f3597abbbe7bf9"
     },
     {
       "stockId": "787553349",
@@ -8556,9 +8832,29 @@
       "title": "bleached_apal1",
       "credit": null,
       "category": "climate",
-      "representedBy": [],
-      "notCopiedReason": "External Adobe Stock media found outside repo; videos are catalogued but not copied into the website assets by default.",
+      "representedBy": [
+        "assets/bleached-elkhorn-coral-787553349.mov"
+      ],
+      "notCopiedReason": "Already represented in repo assets.",
       "sha256": "551b0175707aac29c859653b135cc99a8389317f62a9b8efebdcb23cd50d74e8"
+    },
+    {
+      "stockId": "864120573",
+      "filename": "AdobeStock_864120573.mov",
+      "path": "~/Downloads/AdobeStock_864120573.mov",
+      "mediaType": "video",
+      "fileType": "MOV",
+      "width": 3840,
+      "height": 2160,
+      "duration": "14.95 s",
+      "title": null,
+      "credit": null,
+      "category": "general",
+      "representedBy": [
+        "assets/large-porites-lutea-coral-on-coral-reef-864120573.mov"
+      ],
+      "notCopiedReason": "Already represented in repo assets.",
+      "sha256": "cb22ac464dae6f970a59ec95c2ae2f534882ccd58c13ddc31e59f632e39c4cda"
     }
   ]
 }

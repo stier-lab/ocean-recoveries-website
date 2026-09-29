@@ -1,18 +1,21 @@
 {
-  "generatedAt": "2026-09-29T01:53:11.271Z",
+  "generatedAt": "2026-09-29T16:18:12.114Z",
   "source": "Adobe Stock License History scraped from signed-in account; signed S3 URLs intentionally excluded.",
   "totals": {
     "licensedAssets": 188,
     "licensedImages": 174,
     "licensedVideos": 12,
-    "indexedAdobeStockAssetsInRepo": 140,
+    "indexedAdobeStockAssetsInRepo": 149,
     "indexedPhotosInRepo": 136,
     "indexedVectorsInRepo": 4,
     "externalVideosCatalogued": 2,
-    "importedThisRun": 34,
+    "importedThisRun": 43,
     "recoveredExistingLocalPhotosThisRun": 3,
     "remainingImageGaps": 44,
-    "remainingVideoGaps": 10
+    "remainingVideoGaps": 3,
+    "indexedVideosInRepo": 9,
+    "externalAdobeStockMediaNotCopied": 0,
+    "importedVideosThisRun": 9
   },
   "importedThisRun": [
     {
@@ -722,23 +725,9 @@
       "author": "Tetiana",
       "titleSlug": null,
       "href": null,
-      "mediaType": "4K Video"
-    },
-    {
-      "stockId": "667972509",
-      "page": 7,
-      "author": "SeaLight Pictures PL",
-      "titleSlug": "parrotfish-swim-above-purple-hued-coral-as-the-camera-glides-forward-through-cerulean-waters-great-barrier-reef",
-      "href": "https://stock.adobe.com/video/parrotfish-swim-above-purple-hued-coral-as-the-camera-glides-forward-through-cerulean-waters-great-barrier-reef/667972509",
-      "mediaType": "4K Video"
-    },
-    {
-      "stockId": "1209360091",
-      "page": 7,
-      "author": "videodive",
-      "titleSlug": "vibrant-fish-swimming-above-colorful-coral-reef-colorful-coral-reef-teeming-with-vibrant-fish-swimming-above-and-around-captured-in-clear-blue-waters-during-daytime",
-      "href": "https://stock.adobe.com/video/vibrant-fish-swimming-above-colorful-coral-reef-colorful-coral-reef-teeming-with-vibrant-fish-swimming-above-and-around-captured-in-clear-blue-waters-during-daytime/1209360091",
-      "mediaType": "video"
+      "mediaType": "4K Video",
+      "status": "unavailable-on-adobe-detail-page",
+      "note": "Direct Adobe Stock video detail lookup and ID search did not return an active video result on 2026-09-29."
     },
     {
       "stockId": "1405345972",
@@ -746,55 +735,88 @@
       "author": "Velvet",
       "titleSlug": null,
       "href": null,
-      "mediaType": "HD Video"
-    },
-    {
-      "stockId": "301251599",
-      "page": 8,
-      "author": "Naucrates UW",
-      "titleSlug": "reticulated-dascyllus-sheltering-in-branching-coral-manado-indonesia",
-      "href": "https://stock.adobe.com/video/reticulated-dascyllus-sheltering-in-branching-coral-manado-indonesia/301251599",
-      "mediaType": "HD Video"
-    },
-    {
-      "stockId": "864120573",
-      "page": 9,
-      "author": "blackboxguild",
-      "titleSlug": "a-large-porites-lutea-coral-on-the-ocean-floor-surrounded-by-coral-reef-and-clear-blue-water-this-underwater-scene-highlights-the-coral-s-detailed-textures-showcasing-the-diverse-marine-life",
-      "href": "https://stock.adobe.com/video/a-large-porites-lutea-coral-on-the-ocean-floor-surrounded-by-coral-reef-and-clear-blue-water-this-underwater-scene-highlights-the-coral-s-detailed-textures-showcasing-the-diverse-marine-life/864120573",
-      "mediaType": "4K Video"
-    },
-    {
-      "stockId": "509966357",
-      "page": 12,
-      "author": "blackboxguild",
-      "titleSlug": "aerial-fishing-boats-in-vietnam-southeast-asia-moored-on-ocean-harbor-bay-overfishing-concept",
-      "href": "https://stock.adobe.com/video/aerial-fishing-boats-in-vietnam-southeast-asia-moored-on-ocean-harbor-bay-overfishing-concept/509966357",
-      "mediaType": "HD Video"
-    },
-    {
-      "stockId": "401217735",
-      "page": 12,
-      "author": "blackboxguild",
-      "titleSlug": "fishing-boat-pulling-out-a-net-full-of-salmon-fish-from-pacific-ocean-water-near-alaskan-coast-usa-slow-motion",
-      "href": "https://stock.adobe.com/video/fishing-boat-pulling-out-a-net-full-of-salmon-fish-from-pacific-ocean-water-near-alaskan-coast-usa-slow-motion/401217735",
-      "mediaType": "HD Video"
-    },
-    {
-      "stockId": "230617177",
-      "page": 12,
-      "author": "annavideo",
-      "titleSlug": "school-of-fish-sharks-swim-in-a-circle",
-      "href": "https://stock.adobe.com/video/school-of-fish-sharks-swim-in-a-circle/230617177",
-      "mediaType": "video"
+      "mediaType": "HD Video",
+      "status": "unavailable-on-adobe-detail-page",
+      "note": "Direct Adobe Stock video detail lookup and ID search did not return an active video result on 2026-09-29."
     },
     {
       "stockId": "423050432",
       "page": 19,
       "author": "VideoSample",
-      "titleSlug": null,
-      "href": null,
-      "mediaType": "Video"
+      "titleSlug": "side-dashes-title",
+      "href": "https://stock.adobe.com/templates/side-dashes-title/423050432",
+      "mediaType": "Motion Graphics Template",
+      "status": "adobe-motion-graphics-template-not-video-file",
+      "note": "Adobe Stock identifies this item as a MOGRT motion graphics template, not a downloadable video file."
     }
-  ]
+  ],
+  "importedVideosThisRun": [
+    {
+      "stockId": "787553349",
+      "path": "assets/bleached-elkhorn-coral-787553349.mov",
+      "title": "Bleached elkhorn coral",
+      "href": "https://stock.adobe.com/video/bleached-elkhorn-coral/787553349",
+      "source": "Copied from previously downloaded licensed local file."
+    },
+    {
+      "stockId": "224804025",
+      "path": "assets/glassy-sweepers-and-elkhorn-coral-in-caribbean-sea-224804025.mov",
+      "title": "Glassy Sweepers and Elkhorn Coral in Caribbean Sea",
+      "href": "https://stock.adobe.com/video/glassy-sweepers-and-elkhorn-coral-in-caribbean-sea/224804025",
+      "source": "Copied from previously downloaded licensed local file."
+    },
+    {
+      "stockId": "230617177",
+      "path": "assets/school-of-fish-sharks-swim-in-a-circle-230617177.mov",
+      "title": "School Of Fish.Sharks swim in a circle.",
+      "href": "https://stock.adobe.com/video/school-of-fish-sharks-swim-in-a-circle/230617177",
+      "source": "Re-downloaded from Adobe Stock license history."
+    },
+    {
+      "stockId": "667972509",
+      "path": "assets/parrotfish-swim-above-purple-hued-coral-great-barrier-reef-667972509.mov",
+      "title": "Parrotfish swim above purple hued coral as the camera glides forward through cerulean waters, Great Barrier Reef",
+      "href": "https://stock.adobe.com/video/parrotfish-swim-above-purple-hued-coral-as-the-camera-glides-forward-through-cerulean-waters-great-barrier-reef/667972509",
+      "source": "Re-downloaded from Adobe Stock license history."
+    },
+    {
+      "stockId": "1209360091",
+      "path": "assets/vibrant-fish-swimming-above-colorful-coral-reef-1209360091.mov",
+      "title": "Vibrant Fish Swimming Above Colorful Coral Reef",
+      "href": "https://stock.adobe.com/video/vibrant-fish-swimming-above-colorful-coral-reef-colorful-coral-reef-teeming-with-vibrant-fish-swimming-above-and-around-captured-in-clear-blue-waters-during-daytime/1209360091",
+      "source": "Re-downloaded from Adobe Stock license history."
+    },
+    {
+      "stockId": "301251599",
+      "path": "assets/reticulated-dascyllus-sheltering-in-branching-coral-manado-indonesia-301251599.mov",
+      "title": "Reticulated Dascyllus sheltering in branching coral. Manado (Indonesia)",
+      "href": "https://stock.adobe.com/video/reticulated-dascyllus-sheltering-in-branching-coral-manado-indonesia/301251599",
+      "source": "Re-downloaded from Adobe Stock license history."
+    },
+    {
+      "stockId": "864120573",
+      "path": "assets/large-porites-lutea-coral-on-coral-reef-864120573.mov",
+      "title": "A large Porites lutea coral on the ocean floor",
+      "href": "https://stock.adobe.com/video/a-large-porites-lutea-coral-on-the-ocean-floor-surrounded-by-coral-reef-and-clear-blue-water-this-underwater-scene-highlights-the-coral-s-detailed-textures-showcasing-the-diverse-marine-life/864120573",
+      "source": "Re-downloaded from Adobe Stock license history."
+    },
+    {
+      "stockId": "509966357",
+      "path": "assets/aerial-fishing-boats-in-vietnam-overfishing-concept-509966357.mov",
+      "title": "Aerial, fishing boats in Vietnam, Southeast Asia moored on ocean harbor bay. Overfishing concept",
+      "href": "https://stock.adobe.com/video/aerial-fishing-boats-in-vietnam-southeast-asia-moored-on-ocean-harbor-bay-overfishing-concept/509966357",
+      "source": "Re-downloaded from Adobe Stock license history."
+    },
+    {
+      "stockId": "401217735",
+      "path": "assets/fishing-boat-pulling-salmon-net-alaska-slow-motion-401217735.mov",
+      "title": "Fishing Boat Pulling Out a Net Full of Salmon Fish From Pacific Ocean Water Near Alaskan Coast, USA. Slow Motion",
+      "href": "https://stock.adobe.com/video/fishing-boat-pulling-out-a-net-full-of-salmon-fish-from-pacific-ocean-water-near-alaskan-coast-usa-slow-motion/401217735",
+      "source": "Re-downloaded from Adobe Stock license history."
+    }
+  ],
+  "remainingVideoGapCounts": {
+    "unavailable-on-adobe-detail-page": 2,
+    "adobe-motion-graphics-template-not-video-file": 1
+  }
 }

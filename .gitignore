@@ -59,6 +59,12 @@ ehthumbs.db
 *.MP4
 *.tif
 *.TIF
+!assets/*.m4v
+!assets/*.mov
+!assets/*.mp4
+!assets/*.M4V
+!assets/*.MOV
+!assets/*.MP4
 
 # Image databases (generated)
 data/image-recommendations.json

@@ -250,6 +250,10 @@ const externalMedia = externalMetadata
   .filter((record) => record.mediaType === "video" || record.representedBy.length === 0)
   .sort((a, b) => a.filename.localeCompare(b.filename));
 
+const externalAdobeStockMediaNotCopied = externalMedia.filter(
+  (record) => record.representedBy.length === 0,
+).length;
+
 const manifest = {
   generatedAt: new Date().toISOString(),
   note: "Generated from local EXIF metadata. Adobe Stock license history still needs account sign-in for authoritative reconciliation.",
@@ -263,7 +267,7 @@ const manifest = {
     photosInRepo: assets.filter((asset) => asset.mediaType === "photo").length,
     vectorsInRepo: assets.filter((asset) => asset.mediaType === "vector").length,
     videosInRepo: assets.filter((asset) => asset.mediaType === "video").length,
-    externalAdobeStockMediaNotCopied: externalMedia.length,
+    externalAdobeStockMediaNotCopied,
   },
   duplicateStockIds: duplicateGroups(assets, "stockId"),
   duplicateHashes: duplicateGroups(assets, "sha256"),
@@ -306,6 +310,8 @@ fs.writeFileSync(csvPath, `${rows.map((row) => row.map(csvEscape).join(",")).joi
 console.log(`Indexed ${assets.length} Adobe Stock-like repo assets`);
 console.log(`Wrote ${cleanRelative(jsonPath)}`);
 console.log(`Wrote ${cleanRelative(csvPath)}`);
-if (externalMedia.length) {
-  console.log(`Catalogued ${externalMedia.length} external Adobe Stock media files not copied into assets`);
+if (externalAdobeStockMediaNotCopied) {
+  console.log(
+    `Catalogued ${externalAdobeStockMediaNotCopied} external Adobe Stock media files not copied into assets`,
+  );
 }
