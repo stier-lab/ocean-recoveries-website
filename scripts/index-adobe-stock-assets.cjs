@@ -12,7 +12,9 @@ const jsonPath = path.join(dataDir, "adobe-stock-assets.json");
 const csvPath = path.join(dataDir, "adobe-stock-assets.csv");
 
 const imageExt = /\.(jpe?g|png|webp)$/i;
-const mediaExt = /\.(jpe?g|png|webp|mov|m4v|mp4)$/i;
+const vectorExt = /\.(ai|eps|svg)$/i;
+const videoExt = /\.(mov|m4v|mp4)$/i;
+const mediaExt = /\.(jpe?g|png|webp|ai|eps|svg|mov|m4v|mp4)$/i;
 
 const defaultExternalDirs = [
   path.join(process.env.HOME || "", "Downloads"),
@@ -89,7 +91,10 @@ function adobeStockId(item) {
   if (item.Source && /^\d+$/.test(String(item.Source))) return String(item.Source);
 
   const match = String(item.FileName || "").match(/^AdobeStock_(\d+)/i);
-  return match ? match[1] : null;
+  if (match) return match[1];
+
+  const renamedMatch = String(item.FileName || "").match(/[-_](\d{6,})(?=\.[^.]+$)/);
+  return renamedMatch ? renamedMatch[1] : null;
 }
 
 function isAdobeStockLike(item) {
@@ -143,13 +148,12 @@ function displayPath(filePath) {
 function makeAssetRecord(item) {
   const fullPath = path.join(item.Directory, item.FileName);
   const keywords = arrayValue(item.Keywords || item.Subject);
-  const fileType = String(item.FileType || "").toLowerCase();
 
   return {
     stockId: adobeStockId(item),
     filename: item.FileName,
     path: cleanRelative(fullPath),
-    mediaType: imageExt.test(item.FileName) ? "photo" : "video",
+    mediaType: mediaTypeFor(item.FileName),
     fileType: item.FileType || null,
     width: item.ImageWidth || null,
     height: item.ImageHeight || null,
@@ -173,7 +177,7 @@ function makeExternalRecord(item, representedBy) {
     stockId: adobeStockId(item),
     filename: item.FileName,
     path: displayPath(fullPath),
-    mediaType: imageExt.test(item.FileName) ? "photo" : "video",
+    mediaType: mediaTypeFor(item.FileName),
     fileType: item.FileType || null,
     width: item.ImageWidth || null,
     height: item.ImageHeight || null,
@@ -187,6 +191,13 @@ function makeExternalRecord(item, representedBy) {
       : "External Adobe Stock media found outside repo; videos are catalogued but not copied into the website assets by default.",
     sha256: sha256(fullPath),
   };
+}
+
+function mediaTypeFor(fileName) {
+  if (imageExt.test(fileName)) return "photo";
+  if (vectorExt.test(fileName)) return "vector";
+  if (videoExt.test(fileName)) return "video";
+  return "media";
 }
 
 function csvEscape(value) {
@@ -250,6 +261,7 @@ const manifest = {
   summary: {
     adobeStockAssetsInRepo: assets.length,
     photosInRepo: assets.filter((asset) => asset.mediaType === "photo").length,
+    vectorsInRepo: assets.filter((asset) => asset.mediaType === "vector").length,
     videosInRepo: assets.filter((asset) => asset.mediaType === "video").length,
     externalAdobeStockMediaNotCopied: externalMedia.length,
   },

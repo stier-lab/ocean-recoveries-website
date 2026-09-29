@@ -1,0 +1,800 @@
+{
+  "generatedAt": "2026-09-29T01:53:11.271Z",
+  "source": "Adobe Stock License History scraped from signed-in account; signed S3 URLs intentionally excluded.",
+  "totals": {
+    "licensedAssets": 188,
+    "licensedImages": 174,
+    "licensedVideos": 12,
+    "indexedAdobeStockAssetsInRepo": 140,
+    "indexedPhotosInRepo": 136,
+    "indexedVectorsInRepo": 4,
+    "externalVideosCatalogued": 2,
+    "importedThisRun": 34,
+    "recoveredExistingLocalPhotosThisRun": 3,
+    "remainingImageGaps": 44,
+    "remainingVideoGaps": 10
+  },
+  "importedThisRun": [
+    {
+      "stockId": "530488246",
+      "path": "assets/herring-roe-kazunoko-530488246.jpeg",
+      "title": "数の子1",
+      "licenseHistoryPage": 1,
+      "href": "https://stock.adobe.com/images/1/530488246"
+    },
+    {
+      "stockId": "184741825",
+      "path": "assets/aerial-view-of-leadbetter-point-at-sunrise-santa-barbara-california-184741825.jpeg",
+      "title": "aerial view of Leadbetter Point at sunrise, Santa Barbara, California",
+      "licenseHistoryPage": 3,
+      "href": "https://stock.adobe.com/images/aerial-view-of-leadbetter-point-at-sunrise-santa-barbara-california/184741825"
+    },
+    {
+      "stockId": "1144918753",
+      "path": "assets/striated-surgeonfish-or-lined-bristletooth-ctenochaetus-striatus-1144918753.jpeg",
+      "title": "Striated surgeonfish or lined bristletooth (Ctenochaetus striatus) undersea, Red Sea, Egypt, Sharm El Sheikh, Montazah Bay",
+      "licenseHistoryPage": 3,
+      "href": "https://stock.adobe.com/images/striated-surgeonfish-or-lined-bristletooth-ctenochaetus-striatus-undersea-red-sea-egypt-sharm-el-sheikh-montazah-bay/1144918753"
+    },
+    {
+      "stockId": "360797033",
+      "path": "assets/queen-anne-hill-seattle-washington-downtown-city-skyline-lake-union-360797033.jpeg",
+      "title": "Queen Anne Hill Seattle Washington Downtown City Skyline Lake Union",
+      "licenseHistoryPage": 4,
+      "href": "https://stock.adobe.com/images/queen-anne-hill-seattle-washington-downtown-city-skyline-lake-union/360797033"
+    },
+    {
+      "stockId": "380400074",
+      "path": "assets/ophiodon-elongatus-lingcod-380400074.jpeg",
+      "title": "Ophiodon elongatus, Lingcod",
+      "licenseHistoryPage": 5,
+      "href": "https://stock.adobe.com/images/ophiodon-elongatus-lingcod/380400074"
+    },
+    {
+      "stockId": "236156588",
+      "path": "assets/commercial-fishing-boat-sailing-in-bosphorus-istanbul-turkey-236156588.jpeg",
+      "title": "Commercial fishing boat sailing in Bosphorus, istanbul, Turkey",
+      "licenseHistoryPage": 5,
+      "href": "https://stock.adobe.com/images/commercial-fishing-boat-sailing-in-bosphorus-istanbul-turkey/236156588"
+    },
+    {
+      "stockId": "128423038",
+      "path": "assets/sockeye-salmon-jumping-over-waterfall-128423038.jpeg",
+      "title": "Sockeye Salmon jumping over waterfall",
+      "licenseHistoryPage": 6,
+      "href": "https://stock.adobe.com/images/sockeye-salmon-jumping-over-waterfall/128423038"
+    },
+    {
+      "stockId": "1074005957",
+      "path": "assets/relocating-young-staghorn-coral-to-a-damaged-reef-off-key-largo-1074005957.jpeg",
+      "title": "Relocating young Staghorn Coral to a damaged reef off Key Largo, Florida Keys, Young staghorn epoxied to bare reef substrate.",
+      "licenseHistoryPage": 6,
+      "href": "https://stock.adobe.com/images/relocating-young-staghorn-coral-to-a-damaged-reef-off-key-largo-florida-keys-young-staghorn-epoxied-to-bare-reef-substrate/1074005957"
+    },
+    {
+      "stockId": "260282941",
+      "path": "assets/scad-jamb-under-water-sea-ecosystem-large-school-of-fish-on-a-blue-260282941.jpeg",
+      "title": "scad jamb under water / sea ecosystem, large school of fish on a blue background, abstract fish alive",
+      "licenseHistoryPage": 6,
+      "href": "https://stock.adobe.com/images/scad-jamb-under-water-sea-ecosystem-large-school-of-fish-on-a-blue-background-abstract-fish-alive/260282941"
+    },
+    {
+      "stockId": "552748421",
+      "path": "assets/big-data-technology-and-data-science-illustration-data-flow-concept-552748421.jpeg",
+      "title": "Big data technology and data science illustration. Data flow concept. Querying, analysing, visualizing complex information. Neural network for artificial intelligence. Data mining. Business analytics.",
+      "licenseHistoryPage": 6,
+      "href": "https://stock.adobe.com/images/big-data-technology-and-data-science-illustration-data-flow-concept-querying-analysing-visualizing-complex-information-neural-network-for-artificial-intelligence-data-mining-business-analytics/552748421"
+    },
+    {
+      "stockId": "1363121054",
+      "path": "assets/data-analytics-vector-icon-set-adjustable-line-weight-chart-graph-1363121054.ai",
+      "title": "Data Analytics Vector Icon Set | Adjustable Line Weight | Chart, graph, analysis, report, growth, trend, statistics, pie chart, bar graph, line graph, scatter plot, dashboard, infographic icons",
+      "licenseHistoryPage": 6,
+      "href": "https://stock.adobe.com/images/data-analytics-vector-icon-set-adjustable-line-weight-chart-graph-analysis-report-growth-trend-statistics-pie-chart-bar-graph-line-graph-scatter-plot-dashboard-infographic-icons/1363121054"
+    },
+    {
+      "stockId": "281866464",
+      "path": "assets/channel-islands-california-usa-kelp-forests-during-scuba-diving-in-281866464.jpeg",
+      "title": "CHANNEL ISLANDS, California (USA): kelp forests during scuba diving in Channel Islands, California. Underwater shot.",
+      "licenseHistoryPage": 7,
+      "href": "https://stock.adobe.com/images/channel-islands-california-usa-kelp-forests-during-scuba-diving-in-channel-islands-california-underwater-shot/281866464"
+    },
+    {
+      "stockId": "508237701",
+      "path": "assets/crystal-structure-of-human-p450-3a4-in-complex-with-erythromycin-red-508237701.jpeg",
+      "title": "Crystal structure of human P450 3A4 in complex with erythromycin (red). The protoporphyrin is shown in green. 3D cartoon and Gaussian surface models, PDB 2j0D, white background.",
+      "licenseHistoryPage": 7,
+      "href": "https://stock.adobe.com/images/crystal-structure-of-human-p450-3a4-in-complex-with-erythromycin-red-the-protoporphyrin-is-shown-in-green-3d-cartoon-and-gaussian-surface-models-pdb-2j0d-white-background/508237701"
+    },
+    {
+      "stockId": "260730256",
+      "path": "assets/pocillopora-damicornis-eg-47-260730256.jpeg",
+      "title": "Pocillopora damicornis EG-47",
+      "licenseHistoryPage": 8,
+      "href": "https://stock.adobe.com/images/pocillopora-damicornis-eg-47/260730256"
+    },
+    {
+      "stockId": "168542867",
+      "path": "assets/scuba-diver-on-coral-reef-168542867.jpeg",
+      "title": "Scuba diver on coral reef",
+      "licenseHistoryPage": 8,
+      "href": "https://stock.adobe.com/images/scuba-diver-on-coral-reef/168542867"
+    },
+    {
+      "stockId": "527782834",
+      "path": "assets/man-scuba-diver-checking-beautiful-colorful-healthy-coral-reef-with-527782834.jpeg",
+      "title": "Man scuba diver checking beautiful colorful healthy coral reef with diversity of hard corals",
+      "licenseHistoryPage": 8,
+      "href": "https://stock.adobe.com/images/man-scuba-diver-checking-beautiful-colorful-healthy-coral-reef-with-diversity-of-hard-corals/527782834"
+    },
+    {
+      "stockId": "906899247",
+      "path": "assets/a-humpback-whale-trapped-in-a-large-fishing-net-highlighting-the-issue-906899247.jpeg",
+      "title": "A humpback whale trapped in a large fishing net, highlighting the issue of marine pollution and wildlife conservation",
+      "licenseHistoryPage": 8,
+      "href": "https://stock.adobe.com/images/a-humpback-whale-trapped-in-a-large-fishing-net-highlighting-the-issue-of-marine-pollution-and-wildlife-conservation/906899247"
+    },
+    {
+      "stockId": "245429971",
+      "path": "assets/haemulon-flavolineatum-the-french-grunt-245429971.jpeg",
+      "title": "Haemulon flavolineatum, the French grunt",
+      "licenseHistoryPage": 8,
+      "href": "https://stock.adobe.com/images/haemulon-flavolineatum-the-french-grunt/245429971"
+    },
+    {
+      "stockId": "17841601",
+      "path": "assets/gregoire-noir-dans-le-lagon-de-la-reunion-17841601.jpeg",
+      "title": "Grégoire noir dans le lagon de la Réunion",
+      "licenseHistoryPage": 9,
+      "href": "https://stock.adobe.com/images/gregoire-noir-dans-le-lagon-de-la-reunion/17841601"
+    },
+    {
+      "stockId": "682706956",
+      "path": "assets/black-solid-icon-for-research-682706956.ai",
+      "title": "Black solid icon for research",
+      "licenseHistoryPage": 11,
+      "href": "https://stock.adobe.com/images/black-solid-icon-for-research/682706956"
+    },
+    {
+      "stockId": "610720068",
+      "path": "assets/symbol-of-scientific-literature-thin-line-icon-of-biochemistry-and-610720068.ai",
+      "title": "Symbol of Scientific Literature. Thin Line Icon of Biochemistry and Genetics. Stroke Pictogram Graphic for Web Design. High-Quality Outline Vector Symbol Concept. Premium Monoline Beauty.",
+      "licenseHistoryPage": 11,
+      "href": "https://stock.adobe.com/images/symbol-of-scientific-literature-thin-line-icon-of-biochemistry-and-genetics-stroke-pictogram-graphic-for-web-design-high-quality-outline-vector-symbol-concept-premium-monoline-beauty/610720068"
+    },
+    {
+      "stockId": "320740006",
+      "path": "assets/school-of-trevally-fish-320740006.jpeg",
+      "title": "school of trevally fish",
+      "licenseHistoryPage": 12,
+      "href": "https://stock.adobe.com/images/school-of-trevally-fish/320740006"
+    },
+    {
+      "stockId": "136629995",
+      "path": "assets/underwater-sunlight-136629995.jpeg",
+      "title": "Underwater sunlight",
+      "licenseHistoryPage": 13,
+      "href": "https://stock.adobe.com/images/underwater-sunlight/136629995"
+    },
+    {
+      "stockId": "612877048",
+      "path": "assets/speedometer-tachometer-icon-speedometer-indicator-icon-collection-612877048.ai",
+      "title": "Speedometer, tachometer icon. Speedometer indicator icon collection. Speed indicator vector icons",
+      "licenseHistoryPage": 13,
+      "href": "https://stock.adobe.com/images/speedometer-tachometer-icon-speedometer-indicator-icon-collection-speed-indicator-vector-icons/612877048"
+    },
+    {
+      "stockId": "240969638",
+      "path": "assets/little-woman-looks-amazed-at-the-big-clock-240969638.jpeg",
+      "title": "little woman looks amazed at the big clock",
+      "licenseHistoryPage": 13,
+      "href": "https://stock.adobe.com/images/little-woman-looks-amazed-at-the-big-clock/240969638"
+    },
+    {
+      "stockId": "397962220",
+      "path": "assets/hard-coral-and-macro-algae-competing-for-space-on-a-red-sea-coral-reef-397962220.jpeg",
+      "title": "Hard coral and macro algae competing for space on a Red Sea coral reef",
+      "licenseHistoryPage": 14,
+      "href": "https://stock.adobe.com/images/hard-coral-and-macro-algae-competing-for-space-on-a-red-sea-coral-reef/397962220"
+    },
+    {
+      "stockId": "158874683",
+      "path": "assets/fishing-boat-dragging-a-net-throught-the-water-of-the-waddensea-the-158874683.jpeg",
+      "title": "Fishing boat dragging a net throught the water of the Waddensea, The Netherlands. Lots of seagulls",
+      "licenseHistoryPage": 15,
+      "href": "https://stock.adobe.com/images/fishing-boat-dragging-a-net-throught-the-water-of-the-waddensea-the-netherlands-lots-of-seagulls/158874683"
+    },
+    {
+      "stockId": "100526045",
+      "path": "assets/colorful-coral-reef-with-many-fishes-and-sea-turtle-100526045.jpeg",
+      "title": "colorful coral reef with many fishes and sea turtle",
+      "licenseHistoryPage": 15,
+      "href": "https://stock.adobe.com/images/colorful-coral-reef-with-many-fishes-and-sea-turtle/100526045"
+    },
+    {
+      "stockId": "351565102",
+      "path": "assets/card-for-world-oceans-day-or-water-day-blue-planet-crystal-glass-globe-351565102.jpeg",
+      "title": "Card for World Oceans Day or Water Day. Blue planet crystal glass globe in human hand on pure sea background. Saving environment, save, protect clean planet and ecology, sustainable lifestyle concept.",
+      "licenseHistoryPage": 16,
+      "href": "https://stock.adobe.com/images/card-for-world-oceans-day-or-water-day-blue-planet-crystal-glass-globe-in-human-hand-on-pure-sea-background-saving-environment-save-protect-clean-planet-and-ecology-sustainable-lifestyle-concept/351565102"
+    },
+    {
+      "stockId": "137759377",
+      "path": "assets/scuba-diver-looking-at-ice-hole-while-ice-diving-137759377.jpeg",
+      "title": "Scuba diver looking at ice hole, while ice diving",
+      "licenseHistoryPage": 16,
+      "href": "https://stock.adobe.com/images/scuba-diver-looking-at-ice-hole-while-ice-diving/137759377"
+    },
+    {
+      "stockId": "289853728",
+      "path": "assets/chromis-viridis-289853728.jpeg",
+      "title": "加計呂麻島の枝珊瑚とデバスズメダイ / Chromis viridis",
+      "licenseHistoryPage": 17,
+      "href": "https://stock.adobe.com/images/chromis-viridis/289853728"
+    },
+    {
+      "stockId": "356414485",
+      "path": "assets/panoramic-aerial-shot-of-christmas-island-and-lagoon-in-kiribati-356414485.jpeg",
+      "title": "Panoramic aerial shot of Christmas Island and lagoon in Kiribati",
+      "licenseHistoryPage": 19,
+      "href": "https://stock.adobe.com/images/panoramic-aerial-shot-of-christmas-island-and-lagoon-in-kiribati/356414485"
+    },
+    {
+      "stockId": "243704212",
+      "path": "assets/high-resolution-world-map-in-blue-243704212.jpeg",
+      "title": "High resolution world map in blue",
+      "licenseHistoryPage": 19,
+      "href": "https://stock.adobe.com/images/high-resolution-world-map-in-blue/243704212"
+    },
+    {
+      "stockId": "259251575",
+      "path": "assets/many-fish-swimming-with-kelp-259251575.jpeg",
+      "title": "many fish swimming with kelp",
+      "licenseHistoryPage": 15,
+      "href": "https://stock.adobe.com/images/many-fish-swimming-with-kelp/259251575"
+    }
+  ],
+  "recoveredExistingLocalPhotosThisRun": [
+    {
+      "stockId": "280700266",
+      "path": "assets/Red spotted Coral Crab, Trapezia rufopunctata, is a species of guard crabs in the family Trapeziidae.jpeg"
+    },
+    {
+      "stockId": "344359626",
+      "path": "assets/lobster-in-underwater-trap-cage.jpeg"
+    },
+    {
+      "stockId": "233483513",
+      "path": "assets/fishing-boat-seagulls-rocky-coast.jpeg"
+    }
+  ],
+  "remainingImageGaps": [
+    {
+      "stockId": "976083033",
+      "page": 1,
+      "author": "Mike Workman",
+      "titleSlug": null,
+      "href": null,
+      "status": "unavailable-on-adobe-detail-page",
+      "detailPageTitle": "Stock photos, royalty-free images, graphics, vectors & videos | Adobe Stock",
+      "error": "No visible commerce CTA found"
+    },
+    {
+      "stockId": "474174153",
+      "page": 4,
+      "author": "VectorMine",
+      "titleSlug": "rivalry-as-business-competition-conflict-or-negotiation-tiny-person-concept-businessman-challenge-and-employee-confrontation-about-opposition-interest-vector-illustration-teamwork-disagreement",
+      "href": "https://stock.adobe.com/images/rivalry-as-business-competition-conflict-or-negotiation-tiny-person-concept-businessman-challenge-and-employee-confrontation-about-opposition-interest-vector-illustration-teamwork-disagreement/474174153",
+      "status": "licensed-vector-or-illustration-not-photo",
+      "detailPageTitle": "Rivalry as business competition, conflict or negotiation tiny person concept. Businessman challenge and employee confrontation about opposition interest vector illustration. Teamwork disagreement. Stock Vector | Adobe Stock",
+      "error": "No signed asset URL observed"
+    },
+    {
+      "stockId": "153080887",
+      "page": 5,
+      "author": "PixMarket",
+      "titleSlug": "circle-infographic-templates",
+      "href": "https://stock.adobe.com/images/circle-infographic-templates/153080887",
+      "status": "licensed-vector-or-illustration-not-photo",
+      "detailPageTitle": "Circle Infographic Templates Stock Vector | Adobe Stock",
+      "error": "No signed asset URL observed"
+    },
+    {
+      "stockId": "527203214",
+      "page": 6,
+      "author": "Ysclips",
+      "titleSlug": "inclusion-social-equity-icon-simple-outline-style-help-support-gender-equality-community-care-age-and-culture-diversity-people-group-save-thin-line-vector-illustration-eps-10",
+      "href": "https://stock.adobe.com/images/inclusion-social-equity-icon-simple-outline-style-help-support-gender-equality-community-care-age-and-culture-diversity-people-group-save-thin-line-vector-illustration-eps-10/527203214",
+      "status": "licensed-vector-or-illustration-not-photo",
+      "detailPageTitle": "Inclusion social equity icon. Simple outline style. Help, support, gender equality, community care, age and culture diversity. People group save thin line vector illustration. EPS 10. Stock Vector | Adobe Stock",
+      "error": "No signed asset URL observed"
+    },
+    {
+      "stockId": "650670166",
+      "page": 9,
+      "author": "d3_plus",
+      "titleSlug": null,
+      "href": null,
+      "status": "unavailable-on-adobe-detail-page",
+      "detailPageTitle": "Stock photos, royalty-free images, graphics, vectors & videos | Adobe Stock",
+      "error": "No visible commerce CTA found"
+    },
+    {
+      "stockId": "344012741",
+      "page": 9,
+      "author": "MariLee",
+      "titleSlug": "vector-illustration-of-a-sessile-filter-feeding-coral-polyp-with-labeled-parts",
+      "href": "https://stock.adobe.com/images/vector-illustration-of-a-sessile-filter-feeding-coral-polyp-with-labeled-parts/344012741",
+      "status": "licensed-vector-or-illustration-not-photo",
+      "detailPageTitle": "Vector illustration of a sessile filter feeding coral polyp with labeled parts. Stock Vector | Adobe Stock",
+      "error": "No signed asset URL observed"
+    },
+    {
+      "stockId": "359103483",
+      "page": 9,
+      "author": "VectorStockDesign",
+      "titleSlug": "metabolism-icon-linear-vector-illustration-from-biology-collection-outline-metabolism-icon-vector-thin-line-symbol-for-use-on-web-and-mobile-apps-logo-print-media",
+      "href": "https://stock.adobe.com/images/metabolism-icon-linear-vector-illustration-from-biology-collection-outline-metabolism-icon-vector-thin-line-symbol-for-use-on-web-and-mobile-apps-logo-print-media/359103483",
+      "status": "licensed-vector-or-illustration-not-photo",
+      "detailPageTitle": "Metabolism icon. Linear vector illustration from biology collection. Outline metabolism icon vector. Thin line symbol for use on web and mobile apps, logo, print media. Stock Vector | Adobe Stock",
+      "error": "Error: Timed out running CDP command \"Page.getFrameTree\" for tab 2\nwaiting on click for selector button[data-t=\"stock-shell-commerce-cta\"] >> visible=true >> nth=0\nLocator diagnostics: {\"kind\":\"action_failed\",\"action\":\"click\",\"locator\":\"button[data-t=\\\"stock-shell-commerce-cta\\\"] >> visible=true >> nth=0\",\"matchCount\":1,\"matches\":[{\"ariaLabel\":\"License button\",\"disabled\":false,\"role\":null,\"tag\":\"button\",\"text\":\"Re-download for free\",\"type\":\"submit\",\"visible\":true}],\"visibleCount\":1,\"truncated\":false}"
+    },
+    {
+      "stockId": "75065993",
+      "page": 9,
+      "author": "jan stopka",
+      "titleSlug": "coral-silhouettes",
+      "href": "https://stock.adobe.com/images/coral-silhouettes/75065993",
+      "status": "licensed-vector-or-illustration-not-photo",
+      "detailPageTitle": "coral silhouettes Stock Vector | Adobe Stock",
+      "error": "No signed asset URL observed"
+    },
+    {
+      "stockId": "191029047",
+      "page": 10,
+      "author": "sakurra",
+      "titleSlug": "hydra-genus-structure",
+      "href": "https://stock.adobe.com/images/hydra-genus-structure/191029047",
+      "status": "licensed-vector-or-illustration-not-photo",
+      "detailPageTitle": "Hydra (genus). Structure Stock Vector | Adobe Stock",
+      "error": "No signed asset URL observed"
+    },
+    {
+      "stockId": "304560498",
+      "page": 10,
+      "author": "Viks_jin",
+      "titleSlug": "dna-abstract-3d-polygonal-wireframe-dna-molecule-medical-science-genetic-biotechnology-chemistry-biology-gene-cell-concept-vector-illustration-or-background-innovation-technology-concept",
+      "href": "https://stock.adobe.com/images/dna-abstract-3d-polygonal-wireframe-dna-molecule-medical-science-genetic-biotechnology-chemistry-biology-gene-cell-concept-vector-illustration-or-background-innovation-technology-concept/304560498",
+      "status": "licensed-vector-or-illustration-not-photo",
+      "detailPageTitle": "DNA. Abstract 3d polygonal wireframe DNA molecule. Medical science, genetic biotechnology, chemistry biology, gene cell concept vector illustration or background. innovation technology concept Stock Vector | Adobe Stock",
+      "error": "No signed asset URL observed"
+    },
+    {
+      "stockId": "369720929",
+      "page": 10,
+      "author": "IMG visuals icons",
+      "titleSlug": "community-engagement-blue-gradient-concept-icon-teamwork-for-corporate-project-union-support-partnership-for-work-idea-thin-line-illustration-vector-isolated-outline-rgb-color-drawing",
+      "href": "https://stock.adobe.com/images/community-engagement-blue-gradient-concept-icon-teamwork-for-corporate-project-union-support-partnership-for-work-idea-thin-line-illustration-vector-isolated-outline-rgb-color-drawing/369720929",
+      "status": "licensed-vector-or-illustration-not-photo",
+      "detailPageTitle": "Community engagement blue gradient concept icon. Teamwork for corporate project. Union support. Partnership for work idea thin line illustration. Vector isolated outline RGB color drawing Stock Vector | Adobe Stock",
+      "error": "No signed asset URL observed"
+    },
+    {
+      "stockId": "421308101",
+      "page": 10,
+      "author": "stas111",
+      "titleSlug": "business-training-and-workshop-excellent-icons-collection-in-two-different-styles",
+      "href": "https://stock.adobe.com/images/business-training-and-workshop-excellent-icons-collection-in-two-different-styles/421308101",
+      "status": "licensed-vector-or-illustration-not-photo",
+      "detailPageTitle": "Business training and workshop excellent icons collection in two different styles Stock Vector | Adobe Stock",
+      "error": "No signed asset URL observed"
+    },
+    {
+      "stockId": "164138183",
+      "page": 10,
+      "author": "supanut",
+      "titleSlug": "battery-icon",
+      "href": "https://stock.adobe.com/images/battery-icon/164138183",
+      "status": "licensed-vector-or-illustration-not-photo",
+      "detailPageTitle": "battery icon Stock Vector | Adobe Stock",
+      "error": "No signed asset URL observed"
+    },
+    {
+      "stockId": "512379031",
+      "page": 10,
+      "author": "Sasha",
+      "titleSlug": null,
+      "href": null,
+      "status": "unavailable-on-adobe-detail-page",
+      "detailPageTitle": "Stock photos, royalty-free images, graphics, vectors & videos | Adobe Stock",
+      "error": "No visible commerce CTA found"
+    },
+    {
+      "stockId": "90947699",
+      "page": 10,
+      "author": "Crystal Eye Media",
+      "titleSlug": "animals-as-symbols-for-speed-in-tech-industry-products-and-softwares-editable-clip-art",
+      "href": "https://stock.adobe.com/images/animals-as-symbols-for-speed-in-tech-industry-products-and-softwares-editable-clip-art/90947699",
+      "status": "licensed-vector-or-illustration-not-photo",
+      "detailPageTitle": "Animals as symbols for speed in tech industry products and softwares. Editable Clip Art. Stock Vector | Adobe Stock",
+      "error": "No signed asset URL observed"
+    },
+    {
+      "stockId": "457356271",
+      "page": 10,
+      "author": "trinset",
+      "titleSlug": "biology-diagram-show-concept-of-central-dogma-for-rna-transcription-and-protein-translation-in-cell",
+      "href": "https://stock.adobe.com/images/biology-diagram-show-concept-of-central-dogma-for-rna-transcription-and-protein-translation-in-cell/457356271",
+      "status": "licensed-vector-or-illustration-not-photo",
+      "detailPageTitle": "Biology diagram show concept of Central Dogma for RNA transcription and protein translation in cell Stock Vector | Adobe Stock",
+      "error": "No signed asset URL observed"
+    },
+    {
+      "stockId": "212909985",
+      "page": 11,
+      "author": "Lady-Luck",
+      "titleSlug": "the-growth-stage-of-crown-of-thorns-starfish-or-seastar-or-acanthaster-planci-isolated-on-white-background-vector-illustration",
+      "href": "https://stock.adobe.com/images/the-growth-stage-of-crown-of-thorns-starfish-or-seastar-or-acanthaster-planci-isolated-on-white-background-vector-illustration/212909985",
+      "status": "licensed-vector-or-illustration-not-photo",
+      "detailPageTitle": "The growth stage of crown of thorns starfish or seastar or Acanthaster planci isolated on white background. Vector illustration. Stock Vector | Adobe Stock",
+      "error": "No signed asset URL observed"
+    },
+    {
+      "stockId": "97678464",
+      "page": 11,
+      "author": "TheCatDesign",
+      "titleSlug": "set-of-anchors-rudders-icons-and-ropes-vector-illustration",
+      "href": "https://stock.adobe.com/images/set-of-anchors-rudders-icons-and-ropes-vector-illustration/97678464",
+      "status": "licensed-vector-or-illustration-not-photo",
+      "detailPageTitle": "Set of anchors, rudders icons, and ropes. Vector illustration. Stock Vector | Adobe Stock",
+      "error": "No signed asset URL observed"
+    },
+    {
+      "stockId": "293925589",
+      "page": 11,
+      "author": "zaurrahimov",
+      "titleSlug": "cyclone-icon-in-different-style-vector-illustration-two-colored-and-black-cyclone-vector-icons-designed-in-filled-outline-line-and-stroke-style-can-be-used-for-web-mobile-ui",
+      "href": "https://stock.adobe.com/images/cyclone-icon-in-different-style-vector-illustration-two-colored-and-black-cyclone-vector-icons-designed-in-filled-outline-line-and-stroke-style-can-be-used-for-web-mobile-ui/293925589",
+      "status": "licensed-vector-or-illustration-not-photo",
+      "detailPageTitle": "cyclone icon in different style vector illustration. two colored and black cyclone vector icons designed in filled, outline, line and stroke style can be used for web, mobile, ui Stock Vector | Adobe Stock",
+      "error": "No signed asset URL observed"
+    },
+    {
+      "stockId": "615653649",
+      "page": 11,
+      "author": "WEBTECHOPS",
+      "titleSlug": "black-line-icon-for-synthesis",
+      "href": "https://stock.adobe.com/images/black-line-icon-for-synthesis/615653649",
+      "status": "licensed-vector-or-illustration-not-photo",
+      "detailPageTitle": "Black line icon for synthesis Stock Vector | Adobe Stock",
+      "error": "No signed asset URL observed"
+    },
+    {
+      "stockId": "271045825",
+      "page": 11,
+      "author": "Viks_jin",
+      "titleSlug": "dna-abstract-3d-polygonal-wireframe-dna-molecule-medical-science-genetic-biotechnology-chemistry-biology-gene-cell-concept-vector-illustration-or-background-innovation-technology-concept",
+      "href": "https://stock.adobe.com/images/dna-abstract-3d-polygonal-wireframe-dna-molecule-medical-science-genetic-biotechnology-chemistry-biology-gene-cell-concept-vector-illustration-or-background-innovation-technology-concept/271045825",
+      "status": "licensed-vector-or-illustration-not-photo",
+      "detailPageTitle": "DNA. Abstract 3d polygonal wireframe DNA molecule. Medical science, genetic biotechnology, chemistry biology, gene cell concept vector illustration or background. innovation technology concept Stock Vector | Adobe Stock",
+      "error": "No signed asset URL observed"
+    },
+    {
+      "stockId": "628607366",
+      "page": 11,
+      "author": "nexusby",
+      "titleSlug": "kcal-reducing-icon-cut-calories-line-vector",
+      "href": "https://stock.adobe.com/images/kcal-reducing-icon-cut-calories-line-vector/628607366",
+      "status": "licensed-vector-or-illustration-not-photo",
+      "detailPageTitle": "kcal reducing icon, cut calories line vector Stock Vector | Adobe Stock",
+      "error": "No signed asset URL observed"
+    },
+    {
+      "stockId": "444860868",
+      "page": 11,
+      "author": "blueringmedia",
+      "titleSlug": "parrotfish-in-cartoon-style-isolated-on-white-background",
+      "href": "https://stock.adobe.com/images/parrotfish-in-cartoon-style-isolated-on-white-background/444860868",
+      "status": "licensed-vector-or-illustration-not-photo",
+      "detailPageTitle": "Parrotfish in cartoon style isolated on white background Stock Vector | Adobe Stock",
+      "error": "No signed asset URL observed"
+    },
+    {
+      "stockId": "366730263",
+      "page": 11,
+      "author": "Astibuag",
+      "titleSlug": "big-data-visual-representation-cluster-analysis-visualization-advanced-analytics-global-network-connected-nodes-beauty-of-data-abstract-background",
+      "href": "https://stock.adobe.com/images/big-data-visual-representation-cluster-analysis-visualization-advanced-analytics-global-network-connected-nodes-beauty-of-data-abstract-background/366730263",
+      "status": "licensed-vector-or-illustration-not-photo",
+      "detailPageTitle": "Big data visual representation. Cluster analysis visualization. Advanced analytics. Global network. Connected nodes. Beauty of data abstract background. Stock Vector | Adobe Stock",
+      "error": "No signed asset URL observed"
+    },
+    {
+      "stockId": "448141112",
+      "page": 12,
+      "author": "arthead",
+      "titleSlug": "abstract-stream-information-with-ball-array-and-binary-code-filtering-machine-algorithms-sorting-data-vector-technology-background-big-data-visualization-information-analytics-concept",
+      "href": "https://stock.adobe.com/images/abstract-stream-information-with-ball-array-and-binary-code-filtering-machine-algorithms-sorting-data-vector-technology-background-big-data-visualization-information-analytics-concept/448141112",
+      "status": "licensed-vector-or-illustration-not-photo",
+      "detailPageTitle": "Abstract stream information with ball array and binary code. Filtering machine algorithms. Sorting data. Vector technology background. Big data visualization. Information analytics concept. Stock Vector | Adobe Stock",
+      "error": "No signed asset URL observed"
+    },
+    {
+      "stockId": "237477664",
+      "page": 12,
+      "author": "Gunay",
+      "titleSlug": "gear-circuit-board-data-integration-icon-element-of-business-icon-for-mobile-concept-and-web-apps-detailed-gear-circuit-board-data-integration-icon-can-be-used-for-web",
+      "href": "https://stock.adobe.com/images/gear-circuit-board-data-integration-icon-element-of-business-icon-for-mobile-concept-and-web-apps-detailed-gear-circuit-board-data-integration-icon-can-be-used-for-web/237477664",
+      "status": "licensed-vector-or-illustration-not-photo",
+      "detailPageTitle": "gear, circuit board, data integration icon. Element of business icon for mobile concept and web apps. Detailed gear, circuit board, data integration icon can be used for web Stock Vector | Adobe Stock",
+      "error": "No signed asset URL observed"
+    },
+    {
+      "stockId": "364141659",
+      "page": 12,
+      "author": "NikolaM",
+      "titleSlug": "black-silhouettes-of-divers-on-a-white-background",
+      "href": "https://stock.adobe.com/images/black-silhouettes-of-divers-on-a-white-background/364141659",
+      "status": "licensed-vector-or-illustration-not-photo",
+      "detailPageTitle": "Black silhouettes of divers on a white background Stock Vector | Adobe Stock",
+      "error": "No signed asset URL observed"
+    },
+    {
+      "stockId": "641064458",
+      "page": 13,
+      "author": "Isaac",
+      "titleSlug": null,
+      "href": null,
+      "status": "unavailable-on-adobe-detail-page",
+      "detailPageTitle": "Stock photos, royalty-free images, graphics, vectors & videos | Adobe Stock",
+      "error": "No visible commerce CTA found"
+    },
+    {
+      "stockId": "83703946",
+      "page": 13,
+      "author": "blueringmedia",
+      "titleSlug": "petri-dish",
+      "href": "https://stock.adobe.com/images/petri-dish/83703946",
+      "status": "licensed-vector-or-illustration-not-photo",
+      "detailPageTitle": "Petri dish Stock Vector | Adobe Stock",
+      "error": "No signed asset URL observed"
+    },
+    {
+      "stockId": "193535060",
+      "page": 14,
+      "author": "Kazakova Maryia",
+      "titleSlug": "developmental-stages-of-jellyfish-life-cycle",
+      "href": "https://stock.adobe.com/images/developmental-stages-of-jellyfish-life-cycle/193535060",
+      "status": "licensed-vector-or-illustration-not-photo",
+      "detailPageTitle": "Developmental stages of jellyfish life cycle Stock Vector | Adobe Stock",
+      "error": "No signed asset URL observed"
+    },
+    {
+      "stockId": "232259059",
+      "page": 14,
+      "author": "vladayoung",
+      "titleSlug": "vector-illustrations-of-corals-collection-of-drawn-sea-polyps-on-white-background",
+      "href": "https://stock.adobe.com/images/vector-illustrations-of-corals-collection-of-drawn-sea-polyps-on-white-background/232259059",
+      "status": "licensed-vector-or-illustration-not-photo",
+      "detailPageTitle": "Vector illustrations of corals. Collection of drawn sea polyps on white background. Stock Vector | Adobe Stock",
+      "error": "No signed asset URL observed"
+    },
+    {
+      "stockId": "251977591",
+      "page": 14,
+      "author": "boxerx",
+      "titleSlug": "set-of-black-grunge-hand-drawn-arrows-isolated-on-white-vector-illustration",
+      "href": "https://stock.adobe.com/images/set-of-black-grunge-hand-drawn-arrows-isolated-on-white-vector-illustration/251977591",
+      "status": "licensed-vector-or-illustration-not-photo",
+      "detailPageTitle": "Set of black grunge hand drawn arrows isolated on white. Vector illustration Stock Vector | Adobe Stock",
+      "error": "No signed asset URL observed"
+    },
+    {
+      "stockId": "105268627",
+      "page": 14,
+      "author": "molekuul.be",
+      "titleSlug": "ammonia-nh3-molecule-flat-icon-style",
+      "href": "https://stock.adobe.com/images/ammonia-nh3-molecule-flat-icon-style/105268627",
+      "status": "licensed-vector-or-illustration-not-photo",
+      "detailPageTitle": "Ammonia (NH3) molecule, flat icon style. Stock Vector | Adobe Stock",
+      "error": "No signed asset URL observed"
+    },
+    {
+      "stockId": "138311730",
+      "page": 14,
+      "author": "Ilya Rumyantsev",
+      "titleSlug": "empty-transparent-horizontal-glass-showcase-isolated-on-simple-background-vector",
+      "href": "https://stock.adobe.com/images/empty-transparent-horizontal-glass-showcase-isolated-on-simple-background-vector/138311730",
+      "status": "licensed-vector-or-illustration-not-photo",
+      "detailPageTitle": "Empty transparent horizontal glass showcase, Isolated on simple background, vector Stock Vector | Adobe Stock",
+      "error": "No signed asset URL observed"
+    },
+    {
+      "stockId": "151433170",
+      "page": 14,
+      "author": "19792310",
+      "titleSlug": "blank-vector-aquarium-on-a-checkered-background-vector-illustration",
+      "href": "https://stock.adobe.com/images/blank-vector-aquarium-on-a-checkered-background-vector-illustration/151433170",
+      "status": "licensed-vector-or-illustration-not-photo",
+      "detailPageTitle": "Blank vector aquarium on a checkered background, vector illustration Stock Vector | Adobe Stock",
+      "error": "No signed asset URL observed"
+    },
+    {
+      "stockId": "202897054",
+      "page": 14,
+      "author": "Daniel Berkmann",
+      "titleSlug": "symbol-set-temperaturen",
+      "href": "https://stock.adobe.com/images/symbol-set-temperaturen/202897054",
+      "status": "licensed-vector-or-illustration-not-photo",
+      "detailPageTitle": "Symbol-Set - Temperaturen Stock Vector | Adobe Stock",
+      "error": "No signed asset URL observed"
+    },
+    {
+      "stockId": "276002732",
+      "page": 15,
+      "author": "Enola99d",
+      "titleSlug": "silhouette-of-tropical-black-manta-ray-fish-underwater-sea-life-logo-design",
+      "href": "https://stock.adobe.com/images/silhouette-of-tropical-black-manta-ray-fish-underwater-sea-life-logo-design/276002732",
+      "status": "licensed-vector-or-illustration-not-photo",
+      "detailPageTitle": "Silhouette of Tropical Black Manta Ray Fish Underwater Sea Life logo design Stock Vector | Adobe Stock",
+      "error": "No signed asset URL observed"
+    },
+    {
+      "stockId": "316229790",
+      "page": 15,
+      "author": "oleg7799",
+      "titleSlug": "octopus-logo-isolated-octopus-on-white-background",
+      "href": "https://stock.adobe.com/images/octopus-logo-isolated-octopus-on-white-background/316229790",
+      "status": "licensed-vector-or-illustration-not-photo",
+      "detailPageTitle": "Octopus logo. Isolated octopus on white background Stock Vector | Adobe Stock",
+      "error": "No signed asset URL observed"
+    },
+    {
+      "stockId": "298431279",
+      "page": 15,
+      "author": "VectorMine",
+      "titleSlug": "biodiversity-vector-illustration-flat-tiny-various-wildlife-person-concept",
+      "href": "https://stock.adobe.com/images/biodiversity-vector-illustration-flat-tiny-various-wildlife-person-concept/298431279",
+      "status": "licensed-vector-or-illustration-not-photo",
+      "detailPageTitle": "Biodiversity vector illustration. Flat tiny various wildlife person concept Stock Vector | Adobe Stock",
+      "error": "No signed asset URL observed"
+    },
+    {
+      "stockId": "412172322",
+      "page": 15,
+      "author": "Anch",
+      "titleSlug": "inclusion-and-diversity-infographic-vector-set-people-vector-logo-for-website",
+      "href": "https://stock.adobe.com/images/inclusion-and-diversity-infographic-vector-set-people-vector-logo-for-website/412172322",
+      "status": "licensed-vector-or-illustration-not-photo",
+      "detailPageTitle": "Inclusion and diversity infographic vector set, people vector logo for website Stock Vector | Adobe Stock",
+      "error": "No signed asset URL observed"
+    },
+    {
+      "stockId": "499719329",
+      "page": 16,
+      "author": "100% HAND-CRAFTED",
+      "titleSlug": "ocean-fauna-scientist-concept-young-male-ichthyologist-holds-red-book-with-endangered-species-of-animals-zoologist-studies-rare-fish-and-marine-life-cartoon-contemporary-flat-vector-illustration",
+      "href": "https://stock.adobe.com/images/ocean-fauna-scientist-concept-young-male-ichthyologist-holds-red-book-with-endangered-species-of-animals-zoologist-studies-rare-fish-and-marine-life-cartoon-contemporary-flat-vector-illustration/499719329",
+      "status": "unresolved",
+      "detailPageTitle": null,
+      "error": "Browser Use cannot open https://stock.adobe.com/images/ocean-fauna-scientist-concept-young-male-ichthyologist-holds-red-book-with-endangered-species-of-animals-zoologist-studies-rare-fish-and-marine-life-cartoon-contemporary-flat-vector-illustration/499719329 in tab 2. Browser reported: net::ERR_ABORTED"
+    },
+    {
+      "stockId": "142192364",
+      "page": 16,
+      "author": "relif",
+      "titleSlug": "tra-n-ng-icon-concept",
+      "href": "https://stock.adobe.com/images/tra-n-ng-icon-concept/142192364",
+      "status": "licensed-vector-or-illustration-not-photo",
+      "detailPageTitle": "Traınıng Icon Concept Stock Vector | Adobe Stock",
+      "error": "No signed asset URL observed"
+    },
+    {
+      "stockId": "429149342",
+      "page": 16,
+      "author": "Rimsky",
+      "titleSlug": "silhouette-of-coral-reef-with-fish-and-scuba-diver-on-a-blue-sea-background-underwater-marine-wildlife-nature-vector-illustration",
+      "href": "https://stock.adobe.com/images/silhouette-of-coral-reef-with-fish-and-scuba-diver-on-a-blue-sea-background-underwater-marine-wildlife-nature-vector-illustration/429149342",
+      "status": "licensed-vector-or-illustration-not-photo",
+      "detailPageTitle": "Silhouette of coral reef with fish and scuba diver on a blue sea background. Underwater marine wildlife. Nature vector illustration. Stock Vector | Adobe Stock",
+      "error": "No signed asset URL observed"
+    },
+    {
+      "stockId": "419118256",
+      "page": 19,
+      "author": "VectorMine",
+      "titleSlug": "co2-reduction-to-reduce-carbon-dioxide-greenhouse-gases-tiny-person-concept",
+      "href": "https://stock.adobe.com/images/co2-reduction-to-reduce-carbon-dioxide-greenhouse-gases-tiny-person-concept/419118256",
+      "status": "licensed-vector-or-illustration-not-photo",
+      "detailPageTitle": "CO2 reduction to reduce carbon dioxide greenhouse gases tiny person concept Stock Vector | Adobe Stock",
+      "error": "No signed asset URL observed"
+    }
+  ],
+  "remainingImageGapCounts": {
+    "unavailable-on-adobe-detail-page": 4,
+    "licensed-vector-or-illustration-not-photo": 39,
+    "unresolved": 1
+  },
+  "remainingVideoGaps": [
+    {
+      "stockId": "1693276021",
+      "page": 5,
+      "author": "Tetiana",
+      "titleSlug": null,
+      "href": null,
+      "mediaType": "4K Video"
+    },
+    {
+      "stockId": "667972509",
+      "page": 7,
+      "author": "SeaLight Pictures PL",
+      "titleSlug": "parrotfish-swim-above-purple-hued-coral-as-the-camera-glides-forward-through-cerulean-waters-great-barrier-reef",
+      "href": "https://stock.adobe.com/video/parrotfish-swim-above-purple-hued-coral-as-the-camera-glides-forward-through-cerulean-waters-great-barrier-reef/667972509",
+      "mediaType": "4K Video"
+    },
+    {
+      "stockId": "1209360091",
+      "page": 7,
+      "author": "videodive",
+      "titleSlug": "vibrant-fish-swimming-above-colorful-coral-reef-colorful-coral-reef-teeming-with-vibrant-fish-swimming-above-and-around-captured-in-clear-blue-waters-during-daytime",
+      "href": "https://stock.adobe.com/video/vibrant-fish-swimming-above-colorful-coral-reef-colorful-coral-reef-teeming-with-vibrant-fish-swimming-above-and-around-captured-in-clear-blue-waters-during-daytime/1209360091",
+      "mediaType": "video"
+    },
+    {
+      "stockId": "1405345972",
+      "page": 7,
+      "author": "Velvet",
+      "titleSlug": null,
+      "href": null,
+      "mediaType": "HD Video"
+    },
+    {
+      "stockId": "301251599",
+      "page": 8,
+      "author": "Naucrates UW",
+      "titleSlug": "reticulated-dascyllus-sheltering-in-branching-coral-manado-indonesia",
+      "href": "https://stock.adobe.com/video/reticulated-dascyllus-sheltering-in-branching-coral-manado-indonesia/301251599",
+      "mediaType": "HD Video"
+    },
+    {
+      "stockId": "864120573",
+      "page": 9,
+      "author": "blackboxguild",
+      "titleSlug": "a-large-porites-lutea-coral-on-the-ocean-floor-surrounded-by-coral-reef-and-clear-blue-water-this-underwater-scene-highlights-the-coral-s-detailed-textures-showcasing-the-diverse-marine-life",
+      "href": "https://stock.adobe.com/video/a-large-porites-lutea-coral-on-the-ocean-floor-surrounded-by-coral-reef-and-clear-blue-water-this-underwater-scene-highlights-the-coral-s-detailed-textures-showcasing-the-diverse-marine-life/864120573",
+      "mediaType": "4K Video"
+    },
+    {
+      "stockId": "509966357",
+      "page": 12,
+      "author": "blackboxguild",
+      "titleSlug": "aerial-fishing-boats-in-vietnam-southeast-asia-moored-on-ocean-harbor-bay-overfishing-concept",
+      "href": "https://stock.adobe.com/video/aerial-fishing-boats-in-vietnam-southeast-asia-moored-on-ocean-harbor-bay-overfishing-concept/509966357",
+      "mediaType": "HD Video"
+    },
+    {
+      "stockId": "401217735",
+      "page": 12,
+      "author": "blackboxguild",
+      "titleSlug": "fishing-boat-pulling-out-a-net-full-of-salmon-fish-from-pacific-ocean-water-near-alaskan-coast-usa-slow-motion",
+      "href": "https://stock.adobe.com/video/fishing-boat-pulling-out-a-net-full-of-salmon-fish-from-pacific-ocean-water-near-alaskan-coast-usa-slow-motion/401217735",
+      "mediaType": "HD Video"
+    },
+    {
+      "stockId": "230617177",
+      "page": 12,
+      "author": "annavideo",
+      "titleSlug": "school-of-fish-sharks-swim-in-a-circle",
+      "href": "https://stock.adobe.com/video/school-of-fish-sharks-swim-in-a-circle/230617177",
+      "mediaType": "video"
+    },
+    {
+      "stockId": "423050432",
+      "page": 19,
+      "author": "VideoSample",
+      "titleSlug": null,
+      "href": null,
+      "mediaType": "Video"
+    }
+  ]
+}
