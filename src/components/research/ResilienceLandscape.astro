@@ -20,7 +20,7 @@ const processes = [
       ['Population', 'spatial refugia'],
       ['Ecosystem', 'trophic structure'],
     ],
-    status: 'Resistance: a disturbance nudges the system, but the ridge holds it in the healthy basin.',
+    status: 'Resistance: a disturbance, like a marine heatwave, nudges the forest, but the ridge holds it in place.',
   },
   {
     key: 'recovery',
@@ -33,7 +33,7 @@ const processes = [
       ['Population', 'recruitment'],
       ['Ecosystem', 'succession'],
     ],
-    status: 'Recovery: a bigger disturbance pushes the system up the slope, and it rolls back to the healthy basin.',
+    status: 'Recovery: a bigger disturbance thins the kelp, and the forest regrows back to its basin.',
   },
   {
     key: 'reorganization',
@@ -46,7 +46,7 @@ const processes = [
       ['Population', 'reassembly'],
       ['Ecosystem', 'rewiring'],
     ],
-    status: 'Reorganization: the disturbance pushes the system over the ridge, and it settles into a different state.',
+    status: 'Reorganization: urchins overgraze past the ridge, and the forest flips to an urchin barren that persists.',
   },
 ];
 const CURVE =
@@ -62,8 +62,8 @@ const CURVE =
       aria-labelledby="rl-svg-title"
     >
       <title id="rl-svg-title">
-        A stability landscape. A ball, representing an ecosystem, rests in a deep basin labeled kelp forest or coral
-        reef. A ridge separates it from a shallower basin labeled urchin barren or algal reef.
+        A stability landscape. A ball, representing a kelp forest ecosystem, rests in a deep basin labeled kelp forest.
+        A ridge separates it from a shallower basin labeled urchin barren.
       </title>
       <defs>
         <linearGradient id="rl-ground" x1="0" x2="0" y1="0" y2="1">
@@ -116,10 +116,10 @@ const CURVE =
 
       <!-- Basin labels -->
       <g transform="translate(290 372)"><g class="rl-grow rl-basin" data-basin="left">
-        <text text-anchor="middle" class="rl-label">Kelp forest · coral reef</text>
+        <text text-anchor="middle" class="rl-label">Kelp forest</text>
       </g></g>
       <g transform="translate(860 314)"><g class="rl-grow rl-basin" data-basin="right">
-        <text text-anchor="middle" class="rl-label">Urchin barren · algal reef</text>
+        <text text-anchor="middle" class="rl-label">Urchin barren</text>
       </g></g>
 
       <!-- Disturbance ripple and the ball (positioned by script) -->
