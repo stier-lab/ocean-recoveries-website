@@ -1,0 +1,167 @@
+---
+/**
+ * Rennick, DiFiore, Curtis, Reed & Stier (2022) Ecology, e3673.
+ * "Detrital supply suppresses deforestation to maintain healthy kelp forest ecosystems"
+ *
+ * From the paper:
+ * - Grazing (consumptive capacity) rose linearly with urchin biomass:
+ *   purple slope 0.02, red slope 0.0091 (g kelp per g urchin per day). Results, Fig. 2.
+ * - Detrital supply = kelp lost as blades and fronds; compared with grazing as (G - D)/(G + D). Methods, Fig. 5.
+ * - When grazing > detritus: kelp ~50-fold lower on average (Abstract, Fig. 4b) and kelp declined or
+ *   changed little 91% of the time vs 42% when detritus exceeded grazing (Results, Fig. 5).
+ * - Reference thresholds: ~668 g/m2 (Ling et al. 2015) and 1246 g/m2 (Dean et al. 1984); kelp often
+ *   stayed high above them. Local maximum observed urchin biomass 2038 g/m2 (Methods).
+ */
+import InteractiveFrame from './InteractiveFrame.astro';
+---
+
+<InteractiveFrame
+  title="Can the urchins out-eat the drift?"
+  intro="Urchins mostly eat kelp that has already broken off and drifted to the seafloor. This study found that kelp forests flip to barrens when urchins can eat more than that drift supplies. Set the urchin biomass and the drift supply, and see which side wins."
+  source="Model and numbers from Rennick, DiFiore, Curtis, Reed & Stier (2022), Ecology: grazing slopes from the mesocosm experiments (Fig. 2); the 50-fold, 91% and 42% figures from 21 years of SBC LTER data (Figs. 4–5). The kelp drawing is illustrative. The drift slider's range is set for display; the paper estimated drift at each site from monthly kelp-loss data."
+>
+  <div class="kd" data-kd>
+    <div class="kd-stage">
+      <svg class="kd-svg" viewBox="0 0 600 330" role="img" aria-label="A balance scale comparing drift kelp supply with urchin grazing capacity, above a kelp forest drawing.">
+        <!-- seafloor and kelp -->
+        <rect x="0" y="292" width="600" height="38" fill="#1e3a5f"></rect>
+        <g class="kd-kelp">
+          {[70, 140, 210, 390, 460, 530].map((x, i) => (
+            <g class="kd-stipe" style={`--x:${x}px; --d:${i * 40}ms`} transform={`translate(${x} 292)`}>
+              <path d="M0,0 C-8,-40 8,-80 0,-120 C-8,-150 6,-170 0,-190" fill="none" stroke="#4FB6A5" stroke-width="3"></path>
+              <ellipse cx="-10" cy="-50" rx="12" ry="5" fill="#4FB6A5" transform="rotate(-30 -10 -50)"></ellipse>
+              <ellipse cx="10" cy="-90" rx="12" ry="5" fill="#4FB6A5" transform="rotate(30 10 -90)"></ellipse>
+              <ellipse cx="-10" cy="-130" rx="12" ry="5" fill="#4FB6A5" transform="rotate(-30 -10 -130)"></ellipse>
+              <ellipse cx="9" cy="-165" rx="11" ry="5" fill="#4FB6A5" transform="rotate(30 9 -165)"></ellipse>
+            </g>
+          ))}
+        </g>
+        <g class="kd-urchins">
+          {[100, 175, 250, 330, 420, 495].map((x) => (
+            <g transform={`translate(${x} 288)`}>
+              <circle r="7" fill="#7c3aed"></circle>
+              <path d="M-11,0 H11 M0,-11 V7 M-8,-8 L8,6 M8,-8 L-8,6" stroke="#a78bfa" stroke-width="1.5"></path>
+            </g>
+          ))}
+        </g>
+
+        <!-- balance -->
+        <g transform="translate(300 40)">
+          <path d="M0,0 L-14,46 H14 Z" fill="#334155"></path>
+          <g class="kd-beam">
+            <rect x="-170" y="-4" width="340" height="8" rx="4" fill="#94a3b8"></rect>
+            <circle r="7" fill="#e2e8f0"></circle>
+            <g class="kd-pan kd-pan-l" transform="translate(-160 0)">
+              <line x1="0" y1="0" x2="0" y2="34" stroke="#94a3b8" stroke-width="2"></line>
+              <path d="M-42,34 H42 L34,48 H-34 Z" fill="#4FB6A5"></path>
+              <rect x="-62" y="54" width="124" height="40" rx="6" fill="#0f172a" fill-opacity="0.8"></rect>
+              <text y="68" text-anchor="middle" class="kd-pan-label">Drift supply</text>
+              <text y="86" text-anchor="middle" class="kd-pan-val" data-kd-dval>20</text>
+            </g>
+            <g class="kd-pan kd-pan-r" transform="translate(160 0)">
+              <line x1="0" y1="0" x2="0" y2="34" stroke="#94a3b8" stroke-width="2"></line>
+              <path d="M-42,34 H42 L34,48 H-34 Z" fill="#a78bfa"></path>
+              <rect x="-62" y="54" width="124" height="40" rx="6" fill="#0f172a" fill-opacity="0.8"></rect>
+              <text y="68" text-anchor="middle" class="kd-pan-label">Urchin grazing</text>
+              <text y="86" text-anchor="middle" class="kd-pan-val" data-kd-gval>14</text>
+            </g>
+          </g>
+        </g>
+      </svg>
+    </div>
+
+    <div class="pi-controls">
+      <div class="pi-field">
+        <div class="pi-field-top"><label for="kd-purple">Purple urchin biomass</label><output for="kd-purple" data-kd-out="purple">700 g/m²</output></div>
+        <input class="pi-range" id="kd-purple" type="range" min="0" max="2000" step="10" value="700" aria-describedby="kd-th">
+        <div class="kd-ticks" aria-hidden="true">
+          <span style="left: 33.4%">668</span><span style="left: 62.3%">1246</span>
+        </div>
+        <span class="pi-hint" id="kd-th">Marks show urchin biomass thresholds from earlier studies (668 g/m², Ling et al. 2015; 1246 g/m², Dean et al. 1984). This study found kelp often stayed healthy above both.</span>
+      </div>
+      <div class="pi-field">
+        <div class="pi-field-top"><label for="kd-red">Red urchin biomass</label><output for="kd-red" data-kd-out="red">0 g/m²</output></div>
+        <input class="pi-range" id="kd-red" type="range" min="0" max="2000" step="10" value="0">
+        <span class="pi-hint">Red urchins ate less than half as much kelp per gram as purple urchins.</span>
+      </div>
+      <div class="pi-field">
+        <div class="pi-field-top"><label for="kd-drift">Drift kelp supply</label><output for="kd-drift" data-kd-out="drift">20 g/m²/day</output></div>
+        <input class="pi-range" id="kd-drift" type="range" min="0" max="50" step="1" value="20">
+      </div>
+    </div>
+
+    <div class="pi-verdict" data-kd-verdict aria-live="polite"></div>
+    <p class="pi-note" data-kd-ratio></p>
+  </div>
+</InteractiveFrame>
+
+<style>
+  .kd { display: grid; gap: 1.25rem; }
+  .kd-stage { border-radius: 0.75rem; background: linear-gradient(180deg, #0b2545 0%, #0f172a 100%); overflow: hidden; }
+  .kd-svg { width: 100%; height: auto; display: block; }
+  .kd-pan-label { font: 600 13px Inter, system-ui, sans-serif; fill: rgba(255,255,255,0.75); }
+  .kd-pan-val { font: 800 15px Inter, system-ui, sans-serif; fill: #fff; }
+  .kd-beam { transition: transform 600ms cubic-bezier(.34,1.3,.64,1); }
+  .kd-pan { transition: transform 600ms cubic-bezier(.34,1.3,.64,1); }
+  .kd-stipe { transform-box: view-box; transform-origin: 0 0; transform: translate(var(--x), 292px) scaleY(0.68); transition: transform 700ms ease var(--d), opacity 700ms ease var(--d); }
+  .kd[data-state='barren'] .kd-stipe { transform: translate(var(--x), 292px) scaleY(0.09); opacity: 0.5; }
+  .kd-urchins { opacity: 0.35; transition: opacity 600ms ease; }
+  .kd[data-state='barren'] .kd-urchins { opacity: 1; }
+  .kd-ticks { position: relative; height: 1rem; font-size: 0.7rem; color: rgba(255,255,255,0.5); }
+  .kd-ticks span { position: absolute; transform: translateX(-50%); }
+  .kd-ticks span::before { content: ''; position: absolute; left: 50%; top: -6px; width: 1px; height: 6px; background: rgba(255,255,255,0.4); }
+  @media (prefers-reduced-motion: reduce) {
+    .kd-beam, .kd-pan, .kd-stipe, .kd-urchins { transition: none; }
+  }
+</style>
+
+<script>
+  const PURPLE = 0.02;   // g kelp per g urchin per day (Fig. 2)
+  const RED = 0.0091;
+
+  const init = () => {
+    document.querySelectorAll<HTMLElement>('[data-kd]').forEach((root) => {
+      if (root.dataset.bound) return;
+      root.dataset.bound = '1';
+      const purple = root.querySelector<HTMLInputElement>('#kd-purple')!;
+      const red = root.querySelector<HTMLInputElement>('#kd-red')!;
+      const drift = root.querySelector<HTMLInputElement>('#kd-drift')!;
+      const out = (k: string) => root.querySelector<HTMLOutputElement>(`[data-kd-out="${k}"]`)!;
+      const beam = root.querySelector<SVGGElement>('.kd-beam')!;
+      const panL = root.querySelector<SVGGElement>('.kd-pan-l')!;
+      const panR = root.querySelector<SVGGElement>('.kd-pan-r')!;
+      const dval = root.querySelector<SVGTextElement>('[data-kd-dval]')!;
+      const gval = root.querySelector<SVGTextElement>('[data-kd-gval]')!;
+      const verdict = root.querySelector<HTMLElement>('[data-kd-verdict]')!;
+      const ratio = root.querySelector<HTMLElement>('[data-kd-ratio]')!;
+
+      const update = () => {
+        const p = +purple.value, r = +red.value, D = +drift.value;
+        const G = PURPLE * p + RED * r;
+        out('purple').textContent = `${p} g/m²`;
+        out('red').textContent = `${r} g/m²`;
+        out('drift').textContent = `${D} g/m²/day`;
+        dval.textContent = `${D.toFixed(1)} g/m²/day`;
+        gval.textContent = `${G.toFixed(1)} g/m²/day`;
+
+        const prop = G + D > 0 ? (G - D) / (G + D) : 0;  // the paper's Fig. 5 axis
+        const angle = 16 * prop;
+        beam.setAttribute('transform', `rotate(${angle.toFixed(2)})`);
+        // keep pans hanging vertically
+        panL.setAttribute('transform', `translate(-160 0) rotate(${(-angle).toFixed(2)})`);
+        panR.setAttribute('transform', `translate(160 0) rotate(${(-angle).toFixed(2)})`);
+
+        const over = G > D;
+        root.dataset.state = over ? 'barren' : 'forest';
+        verdict.style.setProperty('--pi-v', over ? '#a78bfa' : '#4FB6A5');
+        verdict.innerHTML = over
+          ? '<strong>Grazing outpaces the drift.</strong> Urchins run out of drift kelp and start eating standing kelp. In 21 years of Santa Barbara data, kelp declined or barely changed 91% of the time under these conditions, and kelp biomass averaged about 50 times lower.'
+          : '<strong>Drift outpaces grazing.</strong> Urchins can be fed by drift kelp alone, so standing kelp is spared. Under these conditions kelp declined or barely changed only 42% of the time, and kelp sometimes grew even where urchins were abundant.';
+        ratio.textContent = `Balance (grazing − drift) / (grazing + drift) = ${prop.toFixed(2)}. The paper found kelp tended to shrink as this rose above zero.`;
+      };
+      [purple, red, drift].forEach((el) => el.addEventListener('input', update));
+      update();
+    });
+  };
+  document.addEventListener('astro:page-load', init);
+</script>

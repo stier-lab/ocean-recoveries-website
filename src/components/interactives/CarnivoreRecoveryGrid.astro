@@ -1,0 +1,153 @@
+---
+/**
+ * Ingeman, Zhao, Wolf, Williams, Ritger, Ripple, Kopecky, Dillon, DiFiore, Curtis, Csik, Bui & Stier (2022)
+ * Scientific Reports 12: 10005. "Glimmers of hope in large carnivore recoveries"
+ *
+ * From the paper (Abstract, Results, Fig. 1):
+ * - 362 large carnivore species. 137 threatened (37.8%); Red List averages 27% all species, 18% vertebrates.
+ * - Sharks and rays 60.9% threatened (28 species); marine mammals 26.5% (18 of 68).
+ * - 39 species (~10%) show one or both indicators of recovery; omitting marine mammals, 21 of 294 (7.3%),
+ *   so marine mammals account for 18.
+ * - 12 species (3.3%) genuinely improved in extinction risk, "mostly limited to" marine mammals
+ *   (exact split not reported, so it is not drawn).
+ * - Recovery associated with species legislation and management of direct exploitation.
+ */
+import InteractiveFrame from './InteractiveFrame.astro';
+const N = 362;
+const MM = 68;
+---
+
+<InteractiveFrame
+  title="362 predators, a handful of recoveries"
+  intro="Each dot is one of the 362 large carnivore species in this synthesis, from sharks to big cats to eagles. Switch views to see how many are threatened, and how few are recovering."
+  source="Counts from Ingeman et al. (2022), Scientific Reports (Abstract, Results, Fig. 1), based on IUCN Red List status and population trends. Dot positions are arbitrary within each group; only the counts are data. The paper doesn't say exactly how many of the 12 improved species are marine mammals, so the outline is hidden in that view."
+>
+  <div class="cr" data-cr data-mode="threatened">
+    <div class="cr-top">
+      <div class="pi-seg" role="group" aria-label="What to show">
+        <button type="button" data-mode="threatened" aria-pressed="true">Threatened</button>
+        <button type="button" data-mode="recovery" aria-pressed="false">Any sign of recovery</button>
+        <button type="button" data-mode="improved" aria-pressed="false">Status improved</button>
+      </div>
+      <div class="pi-seg">
+        <button type="button" data-cr-mm aria-pressed="false">Outline marine mammals</button>
+      </div>
+    </div>
+
+    <div class="cr-grid-wrap" role="img" aria-label="A grid of 362 dots, one per large carnivore species, with the selected group highlighted." data-cr-img>
+      <div class="cr-grid" aria-hidden="true">
+        {Array.from({ length: N }, (_, i) => (
+          <span class={`cr-dot${i < MM ? ' is-mm' : ''}`} style={`--s:${(i % 26) * 12 + Math.floor(i / 26) * 8}ms`}></span>
+        ))}
+      </div>
+    </div>
+
+    <div class="cr-count"><span class="cr-big" data-cr-big>137</span><span class="cr-of">of 362 species</span></div>
+    <div class="pi-verdict" data-cr-verdict aria-live="polite"></div>
+  </div>
+</InteractiveFrame>
+
+<style>
+  .cr { display: grid; gap: 1.1rem; }
+  .cr-top { display: flex; flex-wrap: wrap; gap: 0.6rem; justify-content: space-between; }
+  .cr-grid-wrap { border-radius: 0.75rem; background: rgba(255,255,255,0.03); padding: 0.9rem; }
+  .cr-grid { display: grid; grid-template-columns: repeat(26, minmax(0, 1fr)); gap: 4px; }
+  .cr-dot {
+    aspect-ratio: 1; border-radius: 50%;
+    background: rgba(255, 255, 255, 0.14);
+    box-shadow: 0 0 0 0 transparent;
+    transition: background-color 350ms ease var(--s), box-shadow 300ms ease, transform 350ms ease var(--s);
+  }
+  .cr-dot.is-on { background: var(--cr-c); transform: scale(1.12); }
+  .cr[data-mode='threatened'] { --cr-c: #fb7185; }
+  .cr[data-mode='recovery'] { --cr-c: #4FB6A5; }
+  .cr[data-mode='improved'] { --cr-c: #facc15; }
+  .cr[data-mm='on'] .cr-dot.is-mm { box-shadow: 0 0 0 1.5px #7dd3fc; }
+  .cr-count { display: flex; align-items: baseline; gap: 0.6rem; }
+  .cr-big { font-size: 2.5rem; font-weight: 900; line-height: 1; color: var(--cr-c); font-variant-numeric: tabular-nums; }
+  .cr-of { color: rgba(255,255,255,0.65); }
+  .cr-seg-disabled { opacity: 0.45; }
+  @media (max-width: 480px) { .cr-grid { gap: 2px; } .cr-grid-wrap { padding: 0.6rem; } }
+  @media (prefers-reduced-motion: reduce) { .cr-dot { transition: none; } }
+</style>
+
+<script>
+  type Mode = 'threatened' | 'recovery' | 'improved';
+  const N = 362, MM = 68;
+  // [marine mammals, everyone else]; improved has no reported split
+  const COUNTS: Record<Mode, { total: number; mm?: number }> = {
+    threatened: { total: 137, mm: 18 },
+    recovery: { total: 39, mm: 18 },
+    improved: { total: 12 },
+  };
+  const TEXT: Record<Mode, (mmOn: boolean) => string> = {
+    threatened: (mm) => mm
+      ? '<strong>18 of 68 marine mammals are threatened (27%),</strong> the lowest share of any group. Sharks and rays are the highest, at 61%.'
+      : '<strong>38% of large carnivores are threatened</strong>, well above the Red List average of 27% for all species and 18% for vertebrates.',
+    recovery: (mm) => mm
+      ? '<strong>Marine mammals account for 18 of the 39 recoveries.</strong> Leave them out and the share of recovering species drops to 7.3% (21 of 294). Baleen whales alone make up nearly 18% of all recoveries.'
+      : '<strong>Only about 10% show any sign of recovery</strong>: an increasing population, an improved threat status, or both.',
+    improved: () => '<strong>Just 12 species (3.3%) have genuinely improved in extinction risk</strong>, mostly marine mammals. Recovery was linked to species legislation and to managing direct exploitation such as hunting and fishing.',
+  };
+
+  // Deterministic shuffle so lit dots look scattered but never jump on re-render
+  const shuffled = (n: number, seed: number) => {
+    const a = Array.from({ length: n }, (_, i) => i);
+    let s = seed;
+    for (let i = n - 1; i > 0; i--) {
+      s = (s * 9301 + 49297) % 233280;
+      const j = Math.floor((s / 233280) * (i + 1));
+      [a[i], a[j]] = [a[j], a[i]];
+    }
+    return a;
+  };
+
+  const init = () => {
+    document.querySelectorAll<HTMLElement>('[data-cr]').forEach((root) => {
+      if (root.dataset.bound) return;
+      root.dataset.bound = '1';
+      const dots = Array.from(root.querySelectorAll<HTMLElement>('.cr-dot'));
+      const modeBtns = Array.from(root.querySelectorAll<HTMLButtonElement>('button[data-mode]'));
+      const mmBtn = root.querySelector<HTMLButtonElement>('[data-cr-mm]')!;
+      const big = root.querySelector<HTMLElement>('[data-cr-big]')!;
+      const verdict = root.querySelector<HTMLElement>('[data-cr-verdict]')!;
+      const img = root.querySelector<HTMLElement>('[data-cr-img]')!;
+      const mmIdx = shuffled(MM, 7);
+      const otherIdx = shuffled(N - MM, 11).map((i) => i + MM);
+      const allIdx = shuffled(N, 3);
+      let mode: Mode = 'threatened';
+      let mmOn = false;
+
+      const render = () => {
+        const c = COUNTS[mode];
+        const on = new Set<number>();
+        if (c.mm !== undefined) {
+          mmIdx.slice(0, c.mm).forEach((i) => on.add(i));
+          otherIdx.slice(0, c.total - c.mm).forEach((i) => on.add(i));
+        } else {
+          allIdx.slice(0, c.total).forEach((i) => on.add(i));
+        }
+        dots.forEach((d, i) => d.classList.toggle('is-on', on.has(i)));
+        const showMm = mmOn && c.mm !== undefined;
+        root.dataset.mode = mode;
+        root.dataset.mm = showMm ? 'on' : 'off';
+        mmBtn.disabled = c.mm === undefined;
+        mmBtn.classList.toggle('cr-seg-disabled', mmBtn.disabled);
+        mmBtn.setAttribute('aria-pressed', String(showMm));
+        big.textContent = showMm ? `${c.mm} + ${c.total - (c.mm ?? 0)}` : String(c.total);
+        verdict.style.setProperty('--pi-v', getComputedStyle(root).getPropertyValue('--cr-c'));
+        verdict.innerHTML = TEXT[mode](showMm);
+        img.setAttribute('aria-label', `A grid of 362 dots, one per large carnivore species, with ${c.total} highlighted.`);
+      };
+
+      modeBtns.forEach((b) => b.addEventListener('click', () => {
+        mode = b.dataset.mode as Mode;
+        modeBtns.forEach((x) => x.setAttribute('aria-pressed', String(x === b)));
+        render();
+      }));
+      mmBtn.addEventListener('click', () => { mmOn = !mmOn; render(); });
+      render();
+    });
+  };
+  document.addEventListener('astro:page-load', init);
+</script>

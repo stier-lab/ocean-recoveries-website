@@ -1,0 +1,25 @@
+---
+/**
+ * Picks the interactive for a paper by its DOI. Papers without one render nothing.
+ * Keyed by DOI (not slug) because news slugs are regenerated from analysis files.
+ * To add one: build the component from the paper's own model or results, then map its DOI here.
+ */
+import KelpDetritusBalance from './KelpDetritusBalance.astro';
+import CoralWoundHealing from './CoralWoundHealing.astro';
+import CarnivoreRecoveryGrid from './CarnivoreRecoveryGrid.astro';
+
+interface Props {
+  doiUrl?: string;
+}
+const { doiUrl } = Astro.props;
+const doi = (doiUrl || '').replace(/^https?:\/\/(dx\.)?doi\.org\//i, '').toLowerCase();
+
+const byDoi: Record<string, any> = {
+  '10.1002/ecy.3673': KelpDetritusBalance,
+  '10.1098/rsbl.2026.0177': CoralWoundHealing,
+  '10.1038/s41598-022-13671-7': CarnivoreRecoveryGrid,
+};
+const Interactive = byDoi[doi];
+---
+
+{Interactive && <Interactive />}

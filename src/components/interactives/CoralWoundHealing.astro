@@ -1,0 +1,172 @@
+---
+/**
+ * Vega, Osenberg, Seifert, Munk & Stier (2026) Biology Letters 22: 20260177.
+ * "Coral-associated fishes accelerate coral wound healing and photosynthetic recovery"
+ *
+ * From the paper (Methods, Results, Fig. 2):
+ * - Wounds: small 1.48 cm2, large 3.82 cm2 (mean initial size); fragments 3 cm thick, 4 cm long.
+ * - Healing rate (cm2/day, 21-day average, 95% CI):
+ *     small: no fish 0.057 (0.049-0.065), fish 0.079 (0.065-0.092)
+ *     large: no fish 0.131 (0.094-0.168), fish 0.204 (0.169-0.239)
+ * - Fully closed by day 21: 16/24 with fish vs 9/23 without.
+ * - A fixed 21-day rate underestimates healing for wounds that closed early, so the fish effect is
+ *   probably larger than shown.
+ */
+import InteractiveFrame from './InteractiveFrame.astro';
+---
+
+<InteractiveFrame
+  title="Watch the wounds close"
+  intro="Coral fragments were given a small or large wound and kept with or without yellowtail damselfish for three weeks. Pick a wound size and press play to see each coral heal at the rate measured in the experiment."
+  source="Rates from Vega, Osenberg, Seifert, Munk & Stier (2026), Biology Letters (Results, Fig. 2), drawn to scale on a 3 × 4 cm fragment. The animation assumes each coral healed at its average rate. The paper notes that this underestimates healing for wounds that closed before day 21, so the real fish effect is probably larger."
+>
+  <div class="cw" data-cw>
+    <div class="cw-top">
+      <div class="pi-seg" role="group" aria-label="Wound size">
+        <button type="button" data-size="small" aria-pressed="false">Small wound · 1.5 cm²</button>
+        <button type="button" data-size="large" aria-pressed="true">Large wound · 3.8 cm²</button>
+      </div>
+      <button type="button" class="pi-btn" data-cw-play>
+        <svg viewBox="0 0 16 16" width="12" height="12" aria-hidden="true"><path d="M4 2.5v11l9-5.5z" fill="currentColor"></path></svg>
+        <span>Play 21 days</span>
+      </button>
+    </div>
+
+    <div class="cw-panels">
+      {[{ k: 'none', label: 'Without damselfish' }, { k: 'fish', label: 'With damselfish' }].map((p) => (
+        <figure class={`cw-panel cw-${p.k}`}>
+          <svg viewBox="0 0 220 220" class="cw-svg" role="img" aria-label={`${p.label}: coral fragment with a healing wound`}>
+            <rect x="0" y="0" width="220" height="220" fill="#0b2545"></rect>
+            {p.k === 'fish' && (
+              <g class="cw-fishes" aria-hidden="true">
+                {[[25, 46, 0], [192, 74, 1], [25, 170, 2]].map(([x, y, i]) => (
+                  <g transform={`translate(${x} ${y})`}>
+                    <g class="cw-swim" style={`--i:${i}`}>
+                      <ellipse rx="13" ry="8" fill="#334155"></ellipse>
+                      <path d="M-9,-6 V6 M-3,-8 V8" stroke="#e2e8f0" stroke-width="2"></path>
+                      <path d="M12,0 L22,-7 L22,7 Z" fill="#facc15"></path>
+                      <circle cx="-8" cy="-2" r="1.6" fill="#fff"></circle>
+                    </g>
+                  </g>
+                ))}
+              </g>
+            )}
+            <!-- fragment: 3 cm x 4 cm at 40 px/cm -->
+            <rect x="50" y="30" width="120" height="160" rx="22" fill="#b07a4f"></rect>
+            <g fill="#8a5a36" opacity="0.6">
+              {[[72, 52], [100, 46], [130, 56], [62, 92], [150, 100], [70, 150], [104, 170], [140, 160]].map(([x, y]) => (
+                <circle cx={x} cy={y} r="5"></circle>
+              ))}
+            </g>
+            <rect class="cw-wound" x="110" y="110" width="0" height="0" fill="#f1f5f9" stroke="#cbd5e1" stroke-width="1"></rect>
+          </svg>
+          <figcaption>
+            <span class="cw-label">{p.label}</span>
+            <span class="cw-stat" data-cw-stat={p.k}></span>
+          </figcaption>
+        </figure>
+      ))}
+    </div>
+
+    <div class="pi-field">
+      <div class="pi-field-top"><label for="cw-day">Day</label><output for="cw-day" data-cw-day>0</output></div>
+      <input class="pi-range" id="cw-day" type="range" min="0" max="21" step="0.1" value="0">
+    </div>
+
+    <div class="pi-verdict" data-cw-verdict aria-live="polite"></div>
+  </div>
+</InteractiveFrame>
+
+<style>
+  .cw { display: grid; gap: 1.25rem; }
+  .cw-top { display: flex; flex-wrap: wrap; gap: 0.75rem; justify-content: space-between; align-items: center; }
+  .cw-panels { display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; }
+  .cw-panel { margin: 0; border-radius: 0.75rem; overflow: hidden; border: 1px solid rgba(255,255,255,0.08); }
+  .cw-svg { width: 100%; height: auto; display: block; }
+  .cw-panel figcaption { display: grid; gap: 0.15rem; padding: 0.6rem 0.75rem; background: rgba(255,255,255,0.03); }
+  .cw-label { font-size: 0.85rem; font-weight: 700; color: #fff; }
+  .cw-fish .cw-label { color: #4FB6A5; }
+  .cw-stat { font-size: 0.8rem; color: rgba(255,255,255,0.65); font-variant-numeric: tabular-nums; }
+  .cw-swim { animation: cw-bob 2.6s ease-in-out infinite; animation-delay: calc(var(--i) * -0.8s); }
+  @keyframes cw-bob { 0%, 100% { transform: translate(0, 0); } 50% { transform: translate(-6px, 4px); } }
+  @media (prefers-reduced-motion: reduce) { .cw-swim { animation: none; } }
+</style>
+
+<script>
+  type Size = 'small' | 'large';
+  const A0: Record<Size, number> = { small: 1.48, large: 3.82 };            // cm2
+  const RATE: Record<Size, { none: number; fish: number }> = {             // cm2/day
+    small: { none: 0.057, fish: 0.079 },
+    large: { none: 0.131, fish: 0.204 },
+  };
+  const PCT: Record<Size, number> = { small: 38, large: 55 };            // % increase reported in Results
+  const PX_PER_CM = 40;
+  const ASPECT = 1.6; // wound drawn as a rectangle, width:height
+
+  const init = () => {
+    document.querySelectorAll<HTMLElement>('[data-cw]').forEach((root) => {
+      if (root.dataset.bound) return;
+      root.dataset.bound = '1';
+      const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      const dayInput = root.querySelector<HTMLInputElement>('#cw-day')!;
+      const dayOut = root.querySelector<HTMLOutputElement>('[data-cw-day]')!;
+      const verdict = root.querySelector<HTMLElement>('[data-cw-verdict]')!;
+      const playBtn = root.querySelector<HTMLButtonElement>('[data-cw-play]')!;
+      const sizeBtns = Array.from(root.querySelectorAll<HTMLButtonElement>('[data-size]'));
+      const wound = { none: root.querySelector<SVGRectElement>('.cw-none .cw-wound')!, fish: root.querySelector<SVGRectElement>('.cw-fish .cw-wound')! };
+      const stat = { none: root.querySelector<HTMLElement>('[data-cw-stat="none"]')!, fish: root.querySelector<HTMLElement>('[data-cw-stat="fish"]')! };
+      let size: Size = 'large';
+      let raf: number | null = null;
+
+      const draw = (day: number) => {
+        dayOut.textContent = day.toFixed(0);
+        (['none', 'fish'] as const).forEach((k) => {
+          const a0 = A0[size], r = RATE[size][k];
+          const left = Math.max(0, a0 - r * day);
+          const hCm = Math.sqrt(left / ASPECT), wCm = hCm * ASPECT;
+          const w = wCm * PX_PER_CM, h = hCm * PX_PER_CM;
+          wound[k].setAttribute('x', (110 - w / 2).toFixed(1));
+          wound[k].setAttribute('y', (110 - h / 2).toFixed(1));
+          wound[k].setAttribute('width', w.toFixed(1));
+          wound[k].setAttribute('height', h.toFixed(1));
+          const closeDay = a0 / r;
+          const healed = Math.min(100, ((a0 - left) / a0) * 100);
+          stat[k].textContent = left === 0
+            ? `Closed on day ${closeDay.toFixed(0)} · ${r.toFixed(3)} cm²/day`
+            : `${healed.toFixed(0)}% healed · ${r.toFixed(3)} cm²/day`;
+        });
+        const n = RATE[size].none, f = RATE[size].fish;
+        const pct = PCT[size]; // as reported in the paper (from unrounded estimates)
+        const at21None = Math.min(100, (n * 21 / A0[size]) * 100);
+        const closeFish = A0[size] / f;
+        verdict.innerHTML = size === 'large'
+          ? `<strong>Damselfish sped healing by ${pct}% for large wounds.</strong> At the measured rates the large wound with fish closes around day ${closeFish.toFixed(0)}, while the one without fish is about ${at21None.toFixed(0)}% healed at day 21. Across the experiment, 16 of 24 wounded corals with fish had fully closed by day 21, compared with 9 of 23 without.`
+          : `<strong>Damselfish sped healing by ${pct}% for small wounds.</strong> The absolute gain was about a third of the gain for large wounds, which is why the paper found the fish effect depended on wound size. At the measured rates the small wound with fish closes around day ${closeFish.toFixed(0)}, while the one without fish is about ${at21None.toFixed(0)}% healed at day 21.`;
+      };
+
+      const stop = () => { if (raf !== null) { cancelAnimationFrame(raf); raf = null; } };
+      const play = () => {
+        stop();
+        if (reduce) { dayInput.value = '21'; draw(21); return; }
+        const start = performance.now(), dur = 6000;
+        const tick = (now: number) => {
+          const d = Math.min(21, ((now - start) / dur) * 21);
+          dayInput.value = String(d); draw(d);
+          if (d < 21) raf = requestAnimationFrame(tick); else raf = null;
+        };
+        raf = requestAnimationFrame(tick);
+      };
+
+      sizeBtns.forEach((b) => b.addEventListener('click', () => {
+        size = b.dataset.size as Size;
+        sizeBtns.forEach((x) => x.setAttribute('aria-pressed', String(x === b)));
+        stop(); dayInput.value = '0'; draw(0);
+      }));
+      dayInput.addEventListener('input', () => { stop(); draw(+dayInput.value); });
+      playBtn.addEventListener('click', play);
+      document.addEventListener('astro:before-swap', stop, { once: true });
+      draw(0);
+    });
+  };
+  document.addEventListener('astro:page-load', init);
+</script>
