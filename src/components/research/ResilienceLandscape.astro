@@ -1,0 +1,448 @@
+---
+/**
+ * ResilienceLandscape
+ * Interactive stability landscape ("ball in a basin") for the Resilience
+ * Across Scales section. Each card plays one process:
+ *   1 Resistance     – a small push; the ridge holds the system in place
+ *   2 Recovery       – a larger push; the system rolls back to its basin
+ *   3 Reorganization – a push past the ridge; the system settles elsewhere
+ * Conceptual sketch, not data.
+ */
+const processes = [
+  {
+    key: 'resistance',
+    n: 1,
+    title: 'Resistance',
+    lead: 'How high the ridge is.',
+    definition: 'What prevents collapse when disturbance hits',
+    scales: [
+      ['Individual', 'stress tolerance'],
+      ['Population', 'spatial refugia'],
+      ['Ecosystem', 'trophic structure'],
+    ],
+    status: 'Resistance: a disturbance nudges the system, but the ridge holds it in the healthy basin.',
+  },
+  {
+    key: 'recovery',
+    n: 2,
+    title: 'Recovery',
+    lead: 'How it rolls back.',
+    definition: 'What controls the rate and reliability of return',
+    scales: [
+      ['Individual', 'wound healing'],
+      ['Population', 'recruitment'],
+      ['Ecosystem', 'succession'],
+    ],
+    status: 'Recovery: a bigger disturbance pushes the system up the slope, and it rolls back to the healthy basin.',
+  },
+  {
+    key: 'reorganization',
+    n: 3,
+    title: 'Reorganization',
+    lead: 'Where it lands if it crosses.',
+    definition: "What determines the next system when return isn't possible",
+    scales: [
+      ['Individual', 'survivor filtering'],
+      ['Population', 'reassembly'],
+      ['Ecosystem', 'rewiring'],
+    ],
+    status: 'Reorganization: the disturbance pushes the system over the ridge, and it settles into a different state.',
+  },
+];
+const CURVE =
+  'M20,110 C120,110 180,330 290,330 C400,330 520,150 620,150 C720,150 780,270 860,270 C940,270 1010,130 1090,130';
+---
+
+<div class="rl" data-rl>
+  <figure class="rl-figure">
+    <svg
+      class="rl-svg"
+      viewBox="0 0 1100 390"
+      role="img"
+      aria-labelledby="rl-svg-title"
+    >
+      <title id="rl-svg-title">
+        A stability landscape. A ball, representing an ecosystem, rests in a deep basin labeled kelp forest or coral
+        reef. A ridge separates it from a shallower basin labeled urchin barren or algal reef.
+      </title>
+      <defs>
+        <linearGradient id="rl-ground" x1="0" x2="0" y1="0" y2="1">
+          <stop offset="0" stop-color="#1e3a5f"></stop>
+          <stop offset="1" stop-color="#0b1929" stop-opacity="0"></stop>
+        </linearGradient>
+        <marker id="rl-ar2" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+          <path d="M0,0 L10,5 L0,10 z" fill="#4FB6A5"></path>
+        </marker>
+        <marker id="rl-ar3" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+          <path d="M0,0 L10,5 L0,10 z" fill="#fbbf24"></path>
+        </marker>
+        <marker id="rl-ar1" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+          <path d="M0,0 L10,5 L0,10 z" fill="#4DA8C9"></path>
+        </marker>
+      </defs>
+
+      <path d={`${CURVE} L1090,390 L20,390 Z`} fill="url(#rl-ground)"></path>
+      <path class="rl-curve" d={CURVE} fill="none" stroke="#4DA8C9" stroke-width="3" stroke-linecap="round"></path>
+
+      <!-- 1 Resistance: ridge height -->
+      <g class="rl-anno" data-k="resistance">
+        <line x1="290" y1="330" x2="640" y2="330" stroke="#4DA8C9" stroke-opacity="0.45" stroke-width="1.5" stroke-dasharray="5 6"></line>
+        <line x1="640" y1="156" x2="640" y2="324" stroke="#4DA8C9" stroke-width="2" marker-start="url(#rl-ar1)" marker-end="url(#rl-ar1)"></line>
+        <g transform="translate(666 240)"><g class="rl-grow">
+          <circle r="15" fill="#4DA8C9"></circle>
+          <text y="5" text-anchor="middle" class="rl-num">1</text>
+        </g></g>
+      </g>
+
+      <!-- 2 Recovery: pushed and rolling back -->
+      <g class="rl-anno" data-k="recovery">
+        <circle cx="432" cy="239" r="17" fill="none" stroke="#4FB6A5" stroke-width="2" stroke-dasharray="4 4"></circle>
+        <path d="M412,246 Q360,262 314,300" fill="none" stroke="#4FB6A5" stroke-width="2.5" marker-end="url(#rl-ar2)"></path>
+        <g transform="translate(420 200)"><g class="rl-grow">
+          <circle r="15" fill="#4FB6A5"></circle>
+          <text y="5" text-anchor="middle" class="rl-num">2</text>
+        </g></g>
+      </g>
+
+      <!-- 3 Reorganization: over the ridge -->
+      <g class="rl-anno" data-k="reorganization">
+        <path d="M574,142 Q680,40 840,236" fill="none" stroke="#fbbf24" stroke-width="2.5" stroke-dasharray="7 6" marker-end="url(#rl-ar3)"></path>
+        <circle cx="860" cy="252" r="17" fill="none" stroke="#fbbf24" stroke-width="2" stroke-dasharray="4 4"></circle>
+        <g transform="translate(712 62)"><g class="rl-grow">
+          <circle r="15" fill="#fbbf24"></circle>
+          <text y="5" text-anchor="middle" class="rl-num">3</text>
+        </g></g>
+      </g>
+
+      <!-- Basin labels -->
+      <g transform="translate(290 372)"><g class="rl-grow rl-basin" data-basin="left">
+        <text text-anchor="middle" class="rl-label">Kelp forest · coral reef</text>
+      </g></g>
+      <g transform="translate(860 314)"><g class="rl-grow rl-basin" data-basin="right">
+        <text text-anchor="middle" class="rl-label">Urchin barren · algal reef</text>
+      </g></g>
+
+      <!-- Disturbance ripple and the ball (positioned by script) -->
+      <g class="rl-ball" transform="translate(290 311)">
+        <g class="rl-grow">
+          <circle class="rl-ripple" r="18" fill="none" stroke="#f1f5f9" stroke-width="2" opacity="0"></circle>
+          <circle r="18" fill="#f1f5f9"></circle>
+        </g>
+      </g>
+    </svg>
+    <figcaption class="rl-caption">
+      <span class="rl-status" aria-live="polite">Choose a process below to see it play out.</span>
+      <span class="rl-note">Conceptual sketch of a stability landscape, not data.</span>
+    </figcaption>
+  </figure>
+
+  <div class="rl-cards">
+    {processes.map((p) => (
+      <div class={`rl-card rl-card-${p.n}`} data-k={p.key}>
+        <button type="button" class="rl-play" data-k={p.key} data-status={p.status} aria-pressed="false">
+          <span class="rl-badge" aria-hidden="true">{p.n}</span>
+          <span class="rl-card-title">{p.title}</span>
+          <span class="rl-play-hint">
+            <svg viewBox="0 0 16 16" width="12" height="12" aria-hidden="true"><path d="M4 2.5v11l9-5.5z" fill="currentColor"></path></svg>
+            Play
+          </span>
+        </button>
+        <p class="rl-definition"><strong>{p.lead}</strong> {p.definition}.</p>
+        <div class="rl-scales">
+          {p.scales.map(([level, mech]) => (
+            <div class="rl-scale">
+              <span class="rl-level">{level}</span>
+              <span class="rl-mech">{mech}</span>
+            </div>
+          ))}
+        </div>
+      </div>
+    ))}
+  </div>
+</div>
+
+<style>
+  .rl { display: grid; gap: 1.5rem; max-width: 64rem; margin: 0 auto; }
+
+  .rl-figure {
+    margin: 0;
+    border-radius: 1rem;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    background: rgba(255, 255, 255, 0.03);
+    padding: 1.5rem 1.25rem 1rem;
+  }
+  .rl-svg { width: 100%; height: auto; display: block; overflow: visible; }
+  .rl-num { font: 800 15px Inter, system-ui, sans-serif; fill: #0f172a; }
+  .rl-label { font: 600 15px Inter, system-ui, sans-serif; fill: #e2e8f0; transition: fill 300ms ease, opacity 300ms ease; }
+  .rl-basin.is-dim .rl-label { opacity: 0.35; }
+  .rl-basin.is-lit .rl-label { fill: #fbbf24; }
+
+  /* Annotation emphasis: when one process is active, dim the others */
+  .rl-anno { transition: opacity 300ms ease; }
+  .rl[data-active] .rl-anno { opacity: 0.18; }
+  .rl[data-active='resistance'] .rl-anno[data-k='resistance'],
+  .rl[data-active='recovery'] .rl-anno[data-k='recovery'],
+  .rl[data-active='reorganization'] .rl-anno[data-k='reorganization'] { opacity: 1; }
+
+  /* Keep badges, labels and the ball legible when the SVG shrinks on phones */
+  .rl-grow { transform-box: fill-box; transform-origin: center; }
+  @media (max-width: 640px) {
+    .rl-figure { padding: 1rem 0.5rem 0.75rem; }
+    .rl-grow { transform: scale(1.9); }
+    .rl-basin { transform: scale(1.7); }
+  }
+
+  .rl-caption {
+    display: flex; flex-wrap: wrap; justify-content: space-between; gap: 0.25rem 1rem;
+    margin-top: 0.75rem; padding: 0 0.25rem;
+    font-size: 0.875rem;
+  }
+  .rl-status { color: rgba(255, 255, 255, 0.8); min-height: 1.5em; }
+  .rl-note { color: rgba(255, 255, 255, 0.4); font-size: 0.75rem; }
+
+  .rl-cards { display: grid; gap: 1rem; }
+  @media (min-width: 768px) { .rl-cards { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1.5rem; } }
+
+  .rl-card {
+    position: relative;
+    padding: 1.5rem;
+    border-radius: 1rem;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-top: 3px solid var(--rl-c);
+    background: rgba(255, 255, 255, 0.03);
+    transition: background-color 300ms ease, transform 300ms ease, box-shadow 300ms ease;
+  }
+  .rl-card-1 { --rl-c: #4DA8C9; }
+  .rl-card-2 { --rl-c: #4FB6A5; }
+  .rl-card-3 { --rl-c: #fbbf24; }
+  .rl-card:hover { background: rgba(255, 255, 255, 0.05); }
+  .rl-card.is-active {
+    background: rgba(255, 255, 255, 0.06);
+    box-shadow: 0 0 0 1px var(--rl-c), 0 20px 40px -12px rgba(0, 0, 0, 0.45);
+  }
+
+  .rl-play {
+    display: flex; align-items: center; gap: 0.75rem; width: 100%;
+    background: none; border: 0; padding: 0; margin: 0 0 0.75rem;
+    color: #fff; font: inherit; text-align: left; cursor: pointer;
+  }
+  /* Whole card is the click target */
+  .rl-play::after { content: ''; position: absolute; inset: 0; border-radius: 1rem; }
+  .rl-play:focus-visible { outline: none; }
+  .rl-play:focus-visible::after { outline: 2px solid var(--rl-c); outline-offset: 3px; }
+
+  .rl-badge {
+    flex: none; width: 2rem; height: 2rem; border-radius: 999px;
+    display: grid; place-items: center;
+    background: var(--rl-c); color: #0f172a; font-weight: 800; font-size: 0.875rem;
+  }
+  .rl-card-title { font-size: 1.25rem; font-weight: 700; }
+  .rl-play-hint {
+    margin-left: auto; display: inline-flex; align-items: center; gap: 0.35rem;
+    font-size: 0.75rem; font-weight: 600; letter-spacing: 0.04em; text-transform: uppercase;
+    color: var(--rl-c);
+    border: 1px solid color-mix(in srgb, var(--rl-c) 45%, transparent);
+    border-radius: 999px; padding: 0.3rem 0.65rem;
+  }
+
+  .rl-definition { margin: 0 0 1rem; font-size: 0.9rem; line-height: 1.5; color: rgba(255, 255, 255, 0.6); }
+  .rl-definition strong { color: rgba(255, 255, 255, 0.9); font-weight: 600; }
+
+  .rl-scales { display: grid; gap: 0; }
+  .rl-scale {
+    display: flex; justify-content: space-between; gap: 1rem;
+    padding: 0.5rem 0; border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  }
+  .rl-scale:last-child { border-bottom: 0; }
+  .rl-level { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: rgba(255, 255, 255, 0.35); }
+  .rl-mech { font-size: 0.875rem; color: rgba(255, 255, 255, 0.75); }
+</style>
+
+<script>
+  type Key = 'resistance' | 'recovery' | 'reorganization';
+  type Step = { x: number; ms: number; ease?: (t: number) => number; hold?: number };
+
+  const easeInOut = (t: number) => (t < 0.5 ? 2 * t * t : 1 - Math.pow(-2 * t + 2, 2) / 2);
+  const easeOut = (t: number) => 1 - Math.pow(1 - t, 3);
+  const easeIn = (t: number) => t * t * t;
+
+  const HOME = 290;   // healthy basin floor (x)
+  const RIDGE = 620;  // ridge top (x)
+  const OTHER = 860;  // alternative basin floor (x)
+  const R = 18;       // ball radius
+
+  // Push, then let it settle with a damped overshoot
+  const SEQUENCES: Record<Key, Step[]> = {
+    resistance: [
+      { x: 360, ms: 450, ease: easeOut },
+      { x: HOME - 30, ms: 500, ease: easeInOut },
+      { x: HOME + 12, ms: 420, ease: easeInOut },
+      { x: HOME, ms: 380, ease: easeInOut },
+    ],
+    recovery: [
+      { x: 470, ms: 700, ease: easeOut, hold: 250 },
+      { x: HOME - 70, ms: 1100, ease: easeInOut },
+      { x: HOME + 35, ms: 700, ease: easeInOut },
+      { x: HOME - 12, ms: 550, ease: easeInOut },
+      { x: HOME, ms: 420, ease: easeInOut },
+    ],
+    reorganization: [
+      { x: RIDGE, ms: 1100, ease: easeOut, hold: 150 },
+      { x: OTHER + 70, ms: 900, ease: easeIn },
+      { x: OTHER - 30, ms: 650, ease: easeInOut },
+      { x: OTHER + 10, ms: 480, ease: easeInOut },
+      { x: OTHER, ms: 380, ease: easeInOut },
+    ],
+  };
+  const FINAL: Record<Key, number> = { resistance: HOME, recovery: HOME, reorganization: OTHER };
+
+  let rafId: number | null = null;
+  let observer: IntersectionObserver | null = null;
+
+  const init = () => {
+    if (rafId !== null) { cancelAnimationFrame(rafId); rafId = null; }
+    if (observer) { observer.disconnect(); observer = null; }
+
+    const root = document.querySelector<HTMLElement>('[data-rl]');
+    if (!root) return;
+    const curve = root.querySelector<SVGPathElement>('.rl-curve');
+    const ball = root.querySelector<SVGGElement>('.rl-ball');
+    const ripple = root.querySelector<SVGCircleElement>('.rl-ripple');
+    const status = root.querySelector<HTMLElement>('.rl-status');
+    const buttons = Array.from(root.querySelectorAll<HTMLButtonElement>('.rl-play'));
+    const cards = Array.from(root.querySelectorAll<HTMLElement>('.rl-card'));
+    const basins = Array.from(root.querySelectorAll<SVGGElement>('.rl-basin'));
+    if (!curve || !ball || !status) return;
+
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const total = curve.getTotalLength();
+
+    // Arc length at a given x (the curve is monotonic in x)
+    const lengthAtX = (x: number) => {
+      let lo = 0, hi = total;
+      for (let i = 0; i < 28; i++) {
+        const mid = (lo + hi) / 2;
+        if (curve.getPointAtLength(mid).x < x) lo = mid; else hi = mid;
+      }
+      return (lo + hi) / 2;
+    };
+
+    // Sit the ball on the surface: offset the curve point along its upward normal
+    let currentX = HOME;
+    const place = (x: number) => {
+      currentX = x;
+      const L = lengthAtX(x);
+      const p = curve.getPointAtLength(L);
+      const a = curve.getPointAtLength(Math.max(0, L - 1));
+      const b = curve.getPointAtLength(Math.min(total, L + 1));
+      let nx = -(b.y - a.y), ny = b.x - a.x;
+      const len = Math.hypot(nx, ny) || 1;
+      nx /= len; ny /= len;
+      if (ny > 0) { nx = -nx; ny = -ny; }
+      ball.setAttribute('transform', `translate(${(p.x + nx * R).toFixed(1)} ${(p.y + ny * R).toFixed(1)})`);
+    };
+
+    const setBasins = (state: 'home' | 'other' | 'none') => {
+      basins.forEach((g) => {
+        const isRight = g.dataset.basin === 'right';
+        g.classList.toggle('is-lit', state === 'other' && isRight);
+        g.classList.toggle('is-dim', state === 'other' && !isRight);
+      });
+    };
+
+    const pulse = () => {
+      if (!ripple || reduceMotion) return;
+      ripple.animate(
+        [{ r: '18', opacity: 0.8 }, { r: '46', opacity: 0 }] as Keyframe[],
+        { duration: 650, easing: 'ease-out' }
+      );
+    };
+
+    const setActive = (key: Key | null, msg?: string) => {
+      if (key) root.dataset.active = key; else delete root.dataset.active;
+      buttons.forEach((b) => b.setAttribute('aria-pressed', String(b.dataset.k === key)));
+      cards.forEach((c) => c.classList.toggle('is-active', c.dataset.k === key));
+      if (msg) status.textContent = msg;
+    };
+
+    const runSteps = (steps: Step[], done?: () => void) => {
+      if (rafId !== null) cancelAnimationFrame(rafId);
+      let i = 0;
+      let from = currentX;
+      let start = performance.now();
+      let holdUntil = 0;
+      const tick = (now: number) => {
+        if (holdUntil) {
+          if (now < holdUntil) { rafId = requestAnimationFrame(tick); return; }
+          holdUntil = 0; start = now; from = currentX;
+        }
+        const step = steps[i];
+        const t = Math.min(1, (now - start) / step.ms);
+        place(from + (step.x - from) * (step.ease ?? easeInOut)(t));
+        if (t >= 1) {
+          i++;
+          if (i >= steps.length) { rafId = null; done?.(); return; }
+          if (step.hold) { holdUntil = now + step.hold; }
+          else { start = now; from = currentX; }
+        }
+        rafId = requestAnimationFrame(tick);
+      };
+      rafId = requestAnimationFrame(tick);
+    };
+
+    const play = (key: Key, msg: string) => {
+      setActive(key, msg);
+      const begin = () => {
+        if (reduceMotion) {
+          place(FINAL[key]);
+          setBasins(key === 'reorganization' ? 'other' : 'home');
+          return;
+        }
+        pulse();
+        runSteps(SEQUENCES[key], () => setBasins(key === 'reorganization' ? 'other' : 'home'));
+      };
+      // If the ball is in the other basin, bring it home first
+      if (currentX > RIDGE) {
+        setBasins('home');
+        if (reduceMotion) { place(HOME); begin(); return; }
+        runSteps([{ x: HOME, ms: 700, ease: easeInOut }], begin);
+      } else {
+        setBasins('home');
+        begin();
+      }
+    };
+
+    const figure = root.querySelector<HTMLElement>('.rl-figure');
+    buttons.forEach((btn) => {
+      btn.addEventListener('click', () => {
+        // On small screens the cards sit below the diagram: bring it into view first
+        if (figure) {
+          const r = figure.getBoundingClientRect();
+          if (r.top < 0 || r.bottom > window.innerHeight) {
+            figure.scrollIntoView({ behavior: reduceMotion ? 'auto' : 'smooth', block: 'center' });
+          }
+        }
+        play(btn.dataset.k as Key, btn.dataset.status ?? '');
+      });
+    });
+
+    place(HOME);
+
+    // Play recovery once when the section first comes into view
+    if (!reduceMotion && 'IntersectionObserver' in window) {
+      const recoveryBtn = buttons.find((b) => b.dataset.k === 'recovery');
+      observer = new IntersectionObserver((entries) => {
+        if (entries.some((e) => e.isIntersecting)) {
+          observer?.disconnect(); observer = null;
+          if (!root.dataset.active && recoveryBtn) {
+            window.setTimeout(() => play('recovery', recoveryBtn.dataset.status ?? ''), 400);
+          }
+        }
+      }, { threshold: 0.5 });
+      observer.observe(figure ?? root);
+    }
+  };
+
+  init();
+  document.addEventListener('astro:after-swap', init);
+</script>
