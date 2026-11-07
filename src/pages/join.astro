@@ -15,16 +15,26 @@ const recruitmentStatus = {
   title="Join Us"
   description="Join the Ocean Recoveries Lab - opportunities for undergraduates, graduate students, and postdocs at UC Santa Barbara."
 >
-  <!-- Hero Section -->
+  <!-- Hero Section
+       Gaze cue: the diver (left) faces right with dive lights on (photo is
+       mirrored from the Adobe Stock original), so the
+       viewer's eye travels along the beams to the headline and CTA (right). -->
   <section class="hero-section relative min-h-[60vh] md:min-h-[70vh] flex items-center overflow-hidden">
     <div
-      class="absolute inset-0 bg-cover bg-right md:bg-center parallax-bg"
-      style="background-image: url('/images/aerial-view-island-lagoon-barrier-reef.jpeg');"
+      class="hero-photo absolute inset-0 bg-cover parallax-bg"
+      style="background-image: url('/images/elkhorn-coral-diver-key-largo.jpg');"
+      role="img"
+      aria-label="A diver with dive lights on swims above a dense thicket of elkhorn coral"
     >
-      <div class="absolute inset-0 bg-gradient-to-b from-navy-deep/40 via-navy-deep/30 to-navy-deep/90 md:from-navy-deep/60 md:via-navy-deep/50 md:to-navy-deep/95"></div>
+      <!-- Mobile: top-to-bottom fade so centered text stays readable -->
+      <div class="absolute inset-0 bg-gradient-to-b from-navy-deep/30 via-navy-deep/60 to-navy-deep/95 md:hidden"></div>
+      <!-- Desktop: darken only the right side, where the diver is looking -->
+      <div class="absolute inset-0 hidden md:block bg-gradient-to-l from-navy-deep/95 via-navy-deep/70 to-transparent"></div>
+      <div class="absolute inset-x-0 bottom-0 h-1/3 hidden md:block bg-gradient-to-b from-transparent to-navy-deep/90"></div>
     </div>
 
-    <div class="relative z-10 container text-center px-4 pt-28 pb-20 md:pt-36 md:pb-28">
+    <div class="relative z-10 container text-center md:text-left px-4 pt-28 pb-20 md:pt-36 md:pb-28">
+      <div class="hero-copy md:ml-auto md:max-w-xl">
       <!-- Status Badge -->
       <div class="hero-badge inline-flex items-center gap-2.5 px-4 py-2 rounded-full bg-amber-500/20 backdrop-blur-sm border border-amber-500/30 mb-6">
         <span class="w-2 h-2 rounded-full bg-amber-400 animate-pulse"></span>
@@ -37,11 +47,11 @@ const recruitmentStatus = {
         <span class="text-white block">Ocean Recovery</span>
       </h1>
 
-      <p class="hero-description lead text-white/70 max-w-2xl mx-auto mb-10">
+      <p class="hero-description lead text-white/80 max-w-2xl mx-auto md:mx-0 mb-10">
         We integrate field experiments, quantitative models, and synthesis to find solutions that work.
       </p>
 
-      <div class="hero-cta flex flex-col sm:flex-row gap-4 justify-center">
+      <div class="hero-cta flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
         <a href="#opportunities" class="btn btn-primary btn-lg group">
           <span>See Open Roles</span>
           <svg class="w-5 h-5 transition-transform group-hover:translate-y-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -51,6 +61,7 @@ const recruitmentStatus = {
         <a href="#approach" class="btn btn-ghost btn-lg">
           Our Approach
         </a>
+      </div>
       </div>
     </div>
 
@@ -766,6 +777,17 @@ const recruitmentStatus = {
   .parallax-bg {
     transform: translateZ(0);
     will-change: transform;
+  }
+
+  /* Keep the diver in frame: left-of-center on phones, upper-left third on desktop */
+  .hero-photo {
+    background-position: 28% 30%;
+  }
+
+  @media (min-width: 768px) {
+    .hero-photo {
+      background-position: 0% 30%;
+    }
   }
 
   .hero-badge {
