@@ -1,0 +1,1925 @@
+[
+ {
+  "doi": "10.3389/fphys.2019.01166",
+  "kind": "curve",
+  "title": "How metabolism scales with body size",
+  "intro": "Bigger fish use more energy, but not in direct proportion to their size. This study pooled 1456 measurements and found the exponent within a species is near 0.89, steeper than the classic 0.75 rule. Drag the slider to compare how much energy a larger fish needs under each rule.",
+  "source": "Exponents from Jerde et al. (2019), Frontiers in Physiology: 0.89 estimated across 1456 observations in 55 trials, compared with the 0.75 and 1 hypotheses the paper tested. Curves show metabolic rate relative to the smallest fish.",
+  "xLabel": "Body mass (relative to smallest fish)",
+  "yLabel": "Metabolic rate (relative)",
+  "x": {
+   "label": "How many times heavier",
+   "min": 1,
+   "max": 100,
+   "step": 1,
+   "value": 10,
+   "unit": "×"
+  },
+  "series": [
+   {
+    "label": "Exponent 0.89 (this study)",
+    "fn": "power",
+    "a": 1,
+    "b": 0.89
+   },
+   {
+    "label": "Exponent 0.75 (classic rule)",
+    "fn": "power",
+    "a": 1,
+    "b": 0.75
+   },
+   {
+    "label": "Exponent 1 (proportional)",
+    "fn": "power",
+    "a": 1,
+    "b": 1
+   }
+  ],
+  "note": "A fish <strong>{x}× heavier</strong> uses about <strong>{y0}×</strong> the energy with an exponent of 0.89, versus {y1}× under the 0.75 rule. Using the classic rule would underestimate its needs by a factor of {r01}."
+ },
+ {
+  "doi": "10.1111/gcb.15904",
+  "kind": "compare",
+  "title": "Do remote reefs bounce back faster?",
+  "intro": "A common idea is that reefs far from people should recover better after disturbances. This global analysis compared recovery across reefs with different levels of human impact. Switch views to see what predicted faster recovery.",
+  "source": "Recovery rates from Baumann et al. (2022), Global Change Biology (Results, Table S6). Values are average increases in coral cover per year after disturbance.",
+  "metric": "Coral recovery rate",
+  "unit": "% cover per year",
+  "views": [
+   {
+    "label": "Human impact",
+    "bars": [
+     {
+      "label": "Low human impact",
+      "value": 1.28,
+      "display": "1.28%"
+     },
+     {
+      "label": "High human impact",
+      "value": 3.69,
+      "display": "3.69%",
+      "tone": "c"
+     }
+    ],
+    "note": "<strong>Remoteness didn't help.</strong> Reefs with high human impact recovered almost three times faster (3.69% per year) than reefs with low impact (1.28%). Recovery varied enormously, from −7.7% to 17% coral cover per year."
+   },
+   {
+    "label": "Coral before the disturbance",
+    "bars": [
+     {
+      "label": "Low starting cover",
+      "value": 1.13,
+      "display": "1.13%"
+     },
+     {
+      "label": "High starting cover",
+      "value": 2.22,
+      "display": "2.22%",
+      "tone": "b"
+     }
+    ],
+    "note": "<strong>Reefs that started with more coral recovered faster</strong>: 2.22% per year on average, versus 1.13% for reefs with low cover before the disturbance."
+   }
+  ]
+ },
+ {
+  "doi": "10.1002/ecs2.4110",
+  "kind": "compare",
+  "title": "Lobster catch inside and outside two reserves",
+  "intro": "Ten years after the 2008 survey, researchers repeated the same trapping at two Channel Islands reserves. Compare how catch per trap changed deep inside each reserve, at its edge, and in fished water at the border and further away.",
+  "source": "Change in mean weight of lobster per trap, 2008 to 2018, from Lenihan et al. (2022), Ecosphere (Results). Out-edge sites are fished water just outside the reserve border; out-far sites are fished water further away.",
+  "metric": "Change in lobster caught per trap, 2008 to 2018",
+  "unit": "%",
+  "views": [
+   {
+    "label": "Scorpion reserve",
+    "bars": [
+     {
+      "label": "Inside, deep",
+      "value": 465,
+      "display": "+465%",
+      "tone": "b"
+     },
+     {
+      "label": "Inside, edge",
+      "value": 335,
+      "display": "+335%",
+      "tone": "b"
+     },
+     {
+      "label": "Outside, at the border",
+      "value": 331,
+      "display": "+331%",
+      "tone": "c"
+     }
+    ],
+    "note": "<strong>Catch rose inside the reserve and spilled over its border.</strong> Fished traps just outside Scorpion caught 331% more by weight in 2018 than in 2008, close to the gain at the reserve edge."
+   },
+   {
+    "label": "Gull Island reserve",
+    "bars": [
+     {
+      "label": "Inside, deep",
+      "value": 144,
+      "display": "+144%",
+      "tone": "b"
+     },
+     {
+      "label": "Outside, at the border",
+      "value": 258,
+      "display": "+258%",
+      "tone": "c"
+     },
+     {
+      "label": "Outside, far away",
+      "value": 0,
+      "display": "−74%",
+      "tone": "d"
+     }
+    ],
+    "note": "<strong>The benefit stayed near the border.</strong> At Gull, catch per trap rose 258% just outside the reserve but fell 74% at fished sites further away."
+   }
+  ]
+ },
+ {
+  "doi": "10.1007/s00338-021-02076-z",
+  "kind": "compare",
+  "title": "What happens to small corals without protection",
+  "intro": "Small staghorn coral colonies were planted at different densities, with some caged against coral-eating fish and some left exposed. Compare how they fared after 30 days.",
+  "source": "From Kopecky et al. (2021), Coral Reefs (Results). Exposed corals counted here lost more than 95% of their tissue and skeleton within 30 days.",
+  "metric": "Corals almost entirely eaten after 30 days",
+  "unit": "% of corals",
+  "views": [
+   {
+    "label": "After 30 days",
+    "bars": [
+     {
+      "label": "Protected from corallivores",
+      "value": 0,
+      "display": "0%",
+      "tone": "b"
+     },
+     {
+      "label": "Exposed to corallivores",
+      "value": 64,
+      "display": "64%",
+      "tone": "d"
+     }
+    ],
+    "note": "<strong>Corallivores ate more than 95% of the coral in 64% of exposed colonies</strong>, while every protected coral survived without partial mortality. Over a year, protected coral volume grew by two orders of magnitude while exposed corals shrank by half. Growing in clusters didn't protect corals from being eaten."
+   }
+  ]
+ },
+ {
+  "doi": "10.1038/s41598-021-82371-5",
+  "kind": "compare",
+  "title": "Less fishing ground, more lobster",
+  "intro": "When two marine reserves closed part of a fishing block in the Channel Islands, fishers lost access to some of their grounds. Compare what happened to the area they could fish and to the lobster they landed.",
+  "source": "From Lenihan et al. (2021), Scientific Reports (Results, Table 1): fishing block 654, six years before vs six years after the reserves were established. Bars are relative to the period before.",
+  "metric": "Relative to before the reserves",
+  "unit": "",
+  "views": [
+   {
+    "label": "Fishable area",
+    "bars": [
+     {
+      "label": "Before reserves",
+      "value": 100,
+      "display": "100%"
+     },
+     {
+      "label": "After reserves",
+      "value": 65,
+      "display": "65%",
+      "tone": "d"
+     }
+    ],
+    "note": "The reserves removed <strong>35% of the fishable area</strong> in this block."
+   },
+   {
+    "label": "Lobster landed per year",
+    "bars": [
+     {
+      "label": "Before reserves",
+      "value": 1,
+      "display": "1×"
+     },
+     {
+      "label": "After reserves",
+      "value": 2,
+      "display": "more than 2×",
+      "tone": "b"
+     }
+    ],
+    "note": "<strong>Average annual landings more than doubled</strong> in the six years after the reserves were established, despite the smaller fishing area. Landings in the three nearby blocks without reserves didn't show this rise."
+   }
+  ]
+ },
+ {
+  "doi": "10.1007/s00338-021-02132-8",
+  "kind": "compare",
+  "title": "How common are lionfish, really?",
+  "intro": "Invasive lionfish are often described as overwhelming Caribbean reefs. This study counted them alongside native predators of similar size on reefs in Panama, then tested how each affected small gobies.",
+  "source": "From Samhouri & Stier (2021), Coral Reefs (Results, Table S1). Abundance compares native mesopredators with lionfish in timed counts.",
+  "metric": "Abundance in timed counts, relative to lionfish",
+  "unit": "×",
+  "views": [
+   {
+    "label": "Abundance",
+    "bars": [
+     {
+      "label": "Invasive lionfish",
+      "value": 1,
+      "display": "1×"
+     },
+     {
+      "label": "Native mesopredators",
+      "value": 40,
+      "lo": 30,
+      "hi": 40,
+      "display": "30–40×",
+      "tone": "b"
+     }
+    ],
+    "note": "<strong>Native predators were 30–40 times more abundant</strong> than lionfish in timed counts, and about 50% denser where they occurred. In the lab, lionfish and a native predator killed gobies at similar rates, with no difference in which sizes they took."
+   }
+  ]
+ },
+ {
+  "doi": "10.1002/ecy.2987",
+  "kind": "compare",
+  "title": "More species, steadier kelp forest communities",
+  "intro": "Giant kelp creates the habitat for hundreds of reef species. Using long-term plots in the Santa Barbara Channel, this study asked whether richer communities fluctuate less from year to year.",
+  "source": "From Lamy et al. (2020), Ecology (Results, Fig. 1): increases in stability along the natural diversity gradient across 32 plots.",
+  "metric": "Increase in stability along the diversity gradient",
+  "unit": "%",
+  "views": [
+   {
+    "label": "By group",
+    "bars": [
+     {
+      "label": "Whole community (16 more species)",
+      "value": 75,
+      "display": "+75%"
+     },
+     {
+      "label": "Reef algae",
+      "value": 219,
+      "display": "+219%",
+      "tone": "b"
+     },
+     {
+      "label": "Invertebrates",
+      "value": 323,
+      "display": "+323%",
+      "tone": "c"
+     }
+    ],
+    "note": "<strong>A gain of 16 species was linked to a 75% increase in community stability</strong>, and stability of reef algae and invertebrates rose by 219% and 323% along the gradient. A more stable kelp canopy supported more species, which in turn steadied the community."
+   }
+  ]
+ },
+ {
+  "kind": "compare",
+  "title": "A hungrier lobster in warmer water",
+  "intro": "California spiny lobsters were acclimated to four temperatures from 11 to 26°C, then offered mussels. Compare how warming changed what they ate and how much physiological headroom they had left.",
+  "source": "From Csik et al. (2023), Frontiers in Marine Science (Results, Figs. 2–3). Consumption is at the highest mussel density offered. Aerobic scope values are means.",
+  "metric": "11°C versus 26°C",
+  "unit": "",
+  "views": [
+   {
+    "label": "How much they ate",
+    "bars": [
+     {
+      "label": "11°C",
+      "value": 1,
+      "display": "1×"
+     },
+     {
+      "label": "26°C",
+      "value": 9.6,
+      "display": "9.6×",
+      "tone": "c"
+     }
+    ],
+    "note": "<strong>Consumption rose 9.6-fold</strong> from 11 to 26°C when mussels were plentiful, and resting metabolic rate rose by about 330%. Some lobsters ate more than twice as much as others at the same temperature."
+   },
+   {
+    "label": "Aerobic scope",
+    "bars": [
+     {
+      "label": "11°C",
+      "value": 14.5,
+      "display": "14.5"
+     },
+     {
+      "label": "26°C",
+      "value": 4.8,
+      "display": "4.80",
+      "tone": "d"
+     }
+    ],
+    "note": "<strong>Their headroom shrank.</strong> Factorial aerobic scope, the ratio of maximum to resting metabolism, fell from 14.5 at 11°C to 4.80 at 26°C, and 33% of lobsters died during acclimation to the hottest treatment."
+   }
+  ],
+  "doi": "10.3389/fmars.2023.1072807"
+ },
+ {
+  "kind": "grid",
+  "total": 100,
+  "unitLabel": "percent of the variation",
+  "title": "Size matters more than numbers",
+  "intro": "How hard lobsters hit urchin populations varies across sites and years. Combining feeding experiments with nine years of field data, this study split that variation between body size and density.",
+  "source": "From DiFiore & Stier (2023), Journal of Animal Ecology (Results): variation in lobster and urchin body size accounted for 82%–89% of the variation in interaction strength, density for the remainder.",
+  "views": [
+   {
+    "label": "Body size",
+    "count": 89,
+    "note": "<strong>Body size explained up to 89%</strong> of the variation in how strongly lobsters affected urchins (82%–89% depending on the analysis). Urchin densities were high almost everywhere, so differences in size did most of the work."
+   },
+   {
+    "label": "Density",
+    "count": 11,
+    "note": "<strong>Density explained the rest</strong>, about 11–18%. Predictions based only on animal counts would miss most of what drives this interaction."
+   }
+  ],
+  "doi": "10.1111/1365-2656.13918"
+ },
+ {
+  "kind": "grid",
+  "total": 55,
+  "unitLabel": "studies",
+  "title": "How carefully have North Sea regime shifts been tested?",
+  "intro": "Regime shifts are a central idea in ocean management. This review screened 211 papers and kept 55 that dealt with regime shifts in the North Sea. Each dot is one of those studies.",
+  "source": "From Sguotti et al. (2022), Frontiers in Marine Science (Results, Fig. 1): systematic review of 55 papers reporting 72 regime shifts.",
+  "views": [
+   {
+    "label": "Used methods to detect abrupt change",
+    "count": 24,
+    "note": "<strong>Only 24 of the 55 studies</strong> used statistical methods able to clearly identify abrupt changes in a time series."
+   },
+   {
+    "label": "Mentioned irreversibility",
+    "count": 5,
+    "tone": "d",
+    "note": "<strong>Only 5 of the 55</strong> mentioned hysteresis or irreversibility, even though whether a shift can be reversed is a key question for management. None of the empirical studies rigorously tested it."
+   }
+  ],
+  "doi": "10.3389/fmars.2022.945204"
+ },
+ {
+  "kind": "compare",
+  "title": "Hidden risk in local herring stocks",
+  "intro": "Pacific herring are managed as one large stock with a 20% harvest target, but the stock is made of local spawning groups. This study asked what that averaging hides.",
+  "source": "From Okamoto et al. (2020), Ecological Applications (Results, Figs. 2–3), Pacific herring in Haida Gwaii under the 20% harvest rule.",
+  "metric": "Aggregate stock versus local subpopulations",
+  "unit": "",
+  "views": [
+   {
+    "label": "Share harvested each year",
+    "bars": [
+     {
+      "label": "Whole stock (target)",
+      "value": 20,
+      "display": "20%"
+     },
+     {
+      "label": "A local subpopulation, at worst",
+      "value": 91,
+      "display": "up to 91%",
+      "tone": "d"
+     }
+    ],
+    "note": "<strong>The average hid heavy local fishing.</strong> The aggregate harvest rate stayed near the 20% target, but as much as 91% of a single subpopulation's biomass was taken in a year."
+   },
+   {
+    "label": "Risk of collapse",
+    "bars": [
+     {
+      "label": "Whole stock",
+      "value": 1,
+      "display": "1×"
+     },
+     {
+      "label": "Local subpopulations",
+      "value": 10,
+      "display": "up to 10×",
+      "tone": "d"
+     }
+    ],
+    "note": "<strong>Collapse risk was up to 10 times greater</strong> for local subpopulations than for the stock as a whole, under both 10% and 20% harvest rules."
+   }
+  ],
+  "doi": "10.1002/eap.2051"
+ },
+ {
+  "kind": "compare",
+  "title": "A herring portfolio losing its balance",
+  "intro": "Like a diversified investment portfolio, a fish stock made of many local groups is steadier when those groups rise and fall at different times. This study tracked whether that diversity held up in Pacific herring.",
+  "source": "From Stier et al. (2020), Ecosphere (Results). Synchrony is the mean pairwise correlation in realized growth among subpopulations.",
+  "metric": "",
+  "unit": "",
+  "views": [
+   {
+    "label": "Stability from diversity",
+    "bars": [
+     {
+      "label": "If all groups were alike",
+      "value": 1,
+      "display": "1×"
+     },
+     {
+      "label": "Actual herring population",
+      "value": 2.1,
+      "display": "2.1×",
+      "tone": "b"
+     }
+    ],
+    "note": "<strong>Diversity among subpopulations made the population 2.1 times more stable</strong> than a uniform population would be."
+   },
+   {
+    "label": "Synchrony over time",
+    "bars": [
+     {
+      "label": "1950–1994",
+      "value": 0.17,
+      "display": "0.17"
+     },
+     {
+      "label": "1995–2015",
+      "value": 0.28,
+      "display": "0.28",
+      "tone": "d"
+     }
+    ],
+    "note": "<strong>The groups moved more in step over time</strong>: synchrony rose by more than 60%, eroding that buffer. Since the fishery closed in 1994, 7 of 9 focal subpopulations have shown major declines in growth."
+   }
+  ],
+  "doi": "10.1002/ecs2.3283"
+ },
+ {
+  "kind": "compare",
+  "title": "Fear shapes the halos around reefs",
+  "intro": "From the air, many Caribbean patch reefs are ringed by a bare sand halo where fish graze close to shelter. This study measured 757 halos and asked how predators change grazing.",
+  "source": "From DiFiore et al. (2019), Marine Ecology Progress Series (Results, Fig. 2). Bars show grazing relative to the baseline predator density.",
+  "metric": "Grazing intensity",
+  "unit": "% of baseline",
+  "views": [
+   {
+    "label": "Predator density",
+    "bars": [
+     {
+      "label": "Baseline predators",
+      "value": 100,
+      "display": "100%"
+     },
+     {
+      "label": "Twice as many predators",
+      "value": 71,
+      "display": "−29%",
+      "tone": "d"
+     }
+    ],
+    "note": "<strong>When predator density doubled, grazing fell by 29%.</strong> Most grazing (80.4% on average) happened inside the halo boundary, and halos ranged from under 1 m to 69.7 m wide."
+   }
+  ],
+  "doi": "10.3354/meps13074"
+ },
+ {
+  "kind": "compare",
+  "title": "Lonely corals catch more settlers",
+  "intro": "Young reef fish settling from the plankton have to land somewhere. This model asked what happens when the same number of larvae arrive at corals that are isolated versus clustered together.",
+  "source": "From Hamman et al. (2018), Theoretical Ecology (Results). Settlement values are for the scenario with R = 1 and µ = 0.4.",
+  "metric": "Model results",
+  "unit": "",
+  "views": [
+   {
+    "label": "Settlement per coral",
+    "bars": [
+     {
+      "label": "Clustered coral",
+      "value": 1,
+      "display": "1×"
+     },
+     {
+      "label": "Isolated coral",
+      "value": 17.9,
+      "display": "17.9×",
+      "tone": "c"
+     }
+    ],
+    "note": "<strong>An isolated coral received almost 18 times more settlers</strong> than a clustered one. Larvae that would have spread across a cluster get redirected onto the lone coral."
+   },
+   {
+    "label": "Patchiness of residents",
+    "bars": [
+     {
+      "label": "Habitat quality alone",
+      "value": 1,
+      "display": "1×"
+     },
+     {
+      "label": "With propagule redirection",
+      "value": 1.6,
+      "display": "1.6×",
+      "tone": "b"
+     }
+    ],
+    "note": "<strong>Redirection made fish distributions 1.6 times more uneven</strong> than differences in habitat quality alone, so the layout of a reef can create lasting hotspots and cold spots."
+   }
+  ],
+  "doi": "10.1007/s12080-017-0352-1"
+ },
+ {
+  "kind": "compare",
+  "title": "Getting there first",
+  "intro": "Two damselfish species settle onto the same reefs. In this experiment, lemon damselfish arrived either alongside or three hours after Ambon damselfish.",
+  "source": "From Geange et al. (2017), Coral Reefs (Results, Figs. 1–2).",
+  "metric": "Likelihood of avoiding competitive interactions",
+  "unit": "",
+  "views": [
+   {
+    "label": "Arrival order",
+    "bars": [
+     {
+      "label": "Lemon damselfish arriving first",
+      "value": 1,
+      "display": "1×"
+     },
+     {
+      "label": "Arriving 3 hours later",
+      "value": 2.7,
+      "display": "2.7×",
+      "tone": "d"
+     }
+    ],
+    "note": "<strong>Arriving just three hours late mattered.</strong> Late-arriving lemon damselfish were 2.7 times more likely to avoid competitive interactions, were less aggressive and had lower survival."
+   }
+  ],
+  "doi": "10.1007/s00338-016-1503-3"
+ },
+ {
+  "kind": "compare",
+  "title": "Should predators or prey recover first?",
+  "intro": "When fished species recover, predators and their prey can rebound in different orders. This study compared recovery strategies for linked stocks.",
+  "source": "From Samhouri et al. (2017), Nature Ecology & Evolution (Results, Supplementary Figs. 1 and 4). Volatility is relative to synchronous recovery.",
+  "metric": "Compared with synchronous recovery",
+  "unit": "",
+  "views": [
+   {
+    "label": "Community volatility, overfished",
+    "bars": [
+     {
+      "label": "Synchronous recovery",
+      "value": 1,
+      "display": "1×",
+      "tone": "b"
+     },
+     {
+      "label": "Prey first",
+      "value": 14,
+      "display": "14×",
+      "tone": "d"
+     }
+    ],
+    "note": "<strong>Prey-first recovery was fourteen times more volatile</strong> than synchronous recovery when stocks had been overexploited, and four times more volatile when they had been underexploited."
+   },
+   {
+    "label": "Community volatility, underfished",
+    "bars": [
+     {
+      "label": "Synchronous recovery",
+      "value": 1,
+      "display": "1×",
+      "tone": "b"
+     },
+     {
+      "label": "Prey first",
+      "value": 4,
+      "display": "4×",
+      "tone": "d"
+     }
+    ],
+    "note": "Even from a lightly fished start, <strong>prey-first recovery was four times more volatile</strong>. Total yield differed by 5% or less among strategies, while predator-first recovery gave about 30% more predator yield."
+   }
+  ],
+  "doi": "10.1038/s41559-016-0068"
+ },
+ {
+  "kind": "compare",
+  "title": "Running the predation gauntlet",
+  "intro": "Small predators on reefs eat many young fish and invertebrates. Across ten experiments, this synthesis asked how mesopredators change the abundance and diversity of the prey community.",
+  "source": "From Stier et al. (2017), Coral Reefs (Results, Figs. 2–3): mean effects across ten focal studies.",
+  "metric": "Change on reefs with mesopredators",
+  "unit": "%",
+  "views": [
+   {
+    "label": "Prey community",
+    "bars": [
+     {
+      "label": "Abundance",
+      "value": 60,
+      "display": "−60%",
+      "tone": "d"
+     },
+     {
+      "label": "Total (gamma) diversity",
+      "value": 35,
+      "display": "−35%",
+      "tone": "d"
+     },
+     {
+      "label": "Local (alpha) diversity",
+      "value": 36,
+      "display": "−36%",
+      "tone": "d"
+     },
+     {
+      "label": "Differences among reefs (beta)",
+      "value": 15,
+      "display": "+15%",
+      "tone": "b"
+     }
+    ],
+    "note": "<strong>Prey were 60% less abundant</strong> where mesopredators were present, and diversity fell by about a third. But once the analysis accounted for there simply being fewer animals (rarefaction), those diversity effects disappeared: predators thinned prey without targeting particular species."
+   }
+  ],
+  "doi": "10.1007/s00338-017-1544-2"
+ },
+ {
+  "kind": "compare",
+  "title": "Does a bigger hawkfish hunt differently?",
+  "intro": "Hawkfish perch in coral heads and eat small reef fish. This study compared feeding rates of small and large hawkfish to see if predator size changes their effect on prey.",
+  "source": "From Gallagher et al. (2016), Royal Society Open Science (Results, Fig. 3). Attack rate estimates with 95% confidence intervals.",
+  "metric": "Attack rate (a)",
+  "unit": "",
+  "views": [
+   {
+    "label": "Attack rate",
+    "bars": [
+     {
+      "label": "Small hawkfish",
+      "value": 0.418,
+      "lo": 0.254,
+      "hi": 0.983,
+      "display": "0.418"
+     },
+     {
+      "label": "Large hawkfish",
+      "value": 0.243,
+      "lo": 0.164,
+      "hi": 0.502,
+      "display": "0.243",
+      "tone": "c"
+     }
+    ],
+    "note": "<strong>The intervals overlap, so size made no detectable difference.</strong> Small and large hawkfish had statistically similar attack rates, which is why the paper concluded body size variation did not alter their effects on prey."
+   }
+  ],
+  "doi": "10.1098/rsos.160414"
+ },
+ {
+  "kind": "compare",
+  "title": "When culling backfires",
+  "intro": "Bringing back an apex predator can depend on the other predators already present. This model asked what happens to a recovering apex predator when managers cull a competing mesopredator.",
+  "source": "From Stier et al. (2016), Science Advances (Results). Holds for nearly all parameter values that allow all three species to coexist.",
+  "metric": "Apex predator population",
+  "unit": "% of baseline",
+  "views": [
+   {
+    "label": "Culling the mesopredator",
+    "bars": [
+     {
+      "label": "No culling",
+      "value": 100,
+      "display": "100%"
+     },
+     {
+      "label": "Mesopredator death rate doubled",
+      "value": 50,
+      "display": "about half",
+      "tone": "d"
+     }
+    ],
+    "note": "<strong>Culling the mesopredator cut the apex predator population almost in half.</strong> The mesopredator was also part of the apex predator's food supply, so removing it hurt the species managers were trying to help. Context and history shape whether recoveries succeed."
+   }
+  ],
+  "doi": "10.1126/sciadv.1501769"
+ },
+ {
+  "kind": "compare",
+  "title": "Tree genes ripple into streams",
+  "intro": "Leaf litter from black cottonwood trees feeds stream food webs, and threespine stickleback eat the invertebrates there. In mesocosms, this study crossed litter from different cottonwood genotypes with the presence or absence of fish.",
+  "source": "From Rudman et al. (2015), Proceedings of the Royal Society B: Biological Sciences (Results, Fig. 2). Values are the effect of adding fish, for litter from different cottonwood genotypes (G2–G5).",
+  "metric": "Effect of adding fish",
+  "unit": "%",
+  "views": [
+   {
+    "label": "Light extinction",
+    "bars": [
+     {
+      "label": "Genotype G3 litter",
+      "value": 53,
+      "display": "−53%",
+      "tone": "d"
+     },
+     {
+      "label": "Genotype G5 litter",
+      "value": 661,
+      "display": "+661%",
+      "tone": "b"
+     }
+    ],
+    "note": "<strong>The same fish had opposite effects depending on the tree.</strong> With one genotype's litter, adding fish cut light extinction by 53%; with another, it raised it by 661%."
+   },
+   {
+    "label": "Nutrients (phosphorus)",
+    "bars": [
+     {
+      "label": "Genotype G4 litter",
+      "value": 118,
+      "display": "+118%"
+     },
+     {
+      "label": "Genotype G2 litter",
+      "value": 506,
+      "display": "+506%",
+      "tone": "b"
+     }
+    ],
+    "note": "<strong>Fish raised available phosphorus by 118% to 506%</strong>, depending on which tree genotype supplied the litter. Genetic variation in one species changed how a predator shaped the ecosystem."
+   }
+  ],
+  "doi": "10.1098/rspb.2015.1234"
+ },
+ {
+  "kind": "compare",
+  "title": "Axolotls lose their regenerative edge",
+  "intro": "Axolotls usually stay aquatic and juvenile-like for life, and can regrow whole limbs. This experiment induced metamorphosis in some individuals and compared how well they regenerated an amputated limb.",
+  "source": "From Monaghan et al. (2014), Regeneration (Results, Figs. 1, 3 and 4). Paedomorphs are the usual juvenile-form axolotls; metamorphs were induced to transform.",
+  "metric": "Paedomorphs versus metamorphs",
+  "unit": "",
+  "views": [
+   {
+    "label": "Time to regrow",
+    "bars": [
+     {
+      "label": "Paedomorphs",
+      "value": 26.2,
+      "display": "26.2 days",
+      "tone": "b"
+     },
+     {
+      "label": "Metamorphs",
+      "value": 54.7,
+      "display": "54.7 days",
+      "tone": "d"
+     }
+    ],
+    "note": "<strong>Metamorphs took about twice as long</strong> to reach the same stage of regeneration (54.7 vs 26.2 days on average). By the time paedomorphs had regrown a whole limb, metamorph limbs were only 62% of their original size."
+   },
+   {
+    "label": "Limbs with defects",
+    "bars": [
+     {
+      "label": "Paedomorphs",
+      "value": 7,
+      "display": "7% (2 of 28)",
+      "tone": "b"
+     },
+     {
+      "label": "Metamorphs",
+      "value": 100,
+      "display": "100% (15 of 15)",
+      "tone": "d"
+     }
+    ],
+    "note": "<strong>Every metamorph regrew a flawed limb.</strong> All 15 had moderate to severe skeletal defects, compared with slight defects in only 2 of 28 paedomorphs."
+   }
+  ],
+  "doi": "10.1002/reg2.8"
+ },
+ {
+  "kind": "compare",
+  "title": "Two hawkfish are worse than one",
+  "intro": "Branching corals shelter a hidden community of small crabs, shrimp and fish. This experiment added one or two predators of two species, flame hawkfish and coral crouchers, to see how they shaped that community.",
+  "source": "From Stier & Leray (2014), Coral Reefs (Results, Fig. 2).",
+  "metric": "Change in prey abundance",
+  "unit": "%",
+  "views": [
+   {
+    "label": "Any predator",
+    "bars": [
+     {
+      "label": "Predators present",
+      "value": 34,
+      "display": "−34%",
+      "tone": "d"
+     }
+    ],
+    "note": "<strong>Predators cut total prey abundance by 34%</strong> overall."
+   },
+   {
+    "label": "Doubling the predators",
+    "bars": [
+     {
+      "label": "Two flame hawkfish vs one",
+      "value": 76,
+      "display": "−76%",
+      "tone": "d"
+     },
+     {
+      "label": "Two coral crouchers vs one",
+      "value": 19,
+      "display": "+19%",
+      "tone": "b"
+     }
+    ],
+    "note": "<strong>Adding a second predator had opposite effects by species.</strong> A second flame hawkfish removed a further 76% of prey, while a second coral croucher was linked to 19% more prey."
+   }
+  ],
+  "doi": "10.1007/s00338-013-1077-2"
+ },
+ {
+  "kind": "compare",
+  "title": "Groupers versus reef size",
+  "intro": "Experimental reefs were built small or large, with or without groupers. This study separated the effects of a predator from the effects of habitat on young reef fish communities.",
+  "source": "From Stier et al. (2014), Ecology (Results, Fig. 2, Appendix E).",
+  "metric": "Effect on the reef fish community",
+  "unit": "%",
+  "views": [
+   {
+    "label": "Adding groupers",
+    "bars": [
+     {
+      "label": "Prey abundance",
+      "value": 50,
+      "display": "−50%",
+      "tone": "d"
+     },
+     {
+      "label": "Species richness",
+      "value": 66,
+      "display": "−66%",
+      "tone": "d"
+     },
+     {
+      "label": "Total (gamma) diversity",
+      "value": 45,
+      "display": "−45%",
+      "tone": "d"
+     }
+    ],
+    "note": "<strong>Groupers halved prey abundance</strong> and cut species richness by 66% across both reef sizes."
+   },
+   {
+    "label": "Doubling reef size",
+    "bars": [
+     {
+      "label": "Prey abundance",
+      "value": 36,
+      "display": "+36%",
+      "tone": "b"
+     },
+     {
+      "label": "Total (gamma) diversity",
+      "value": 30,
+      "display": "−30%",
+      "tone": "d"
+     }
+    ],
+    "note": "<strong>Bigger reefs held more fish but fewer species.</strong> Doubling patch size raised abundance by 36%, but large reefs together had 30% lower total diversity than the same area of small reefs."
+   }
+  ],
+  "doi": "10.1890/12-1441.1"
+ },
+ {
+  "kind": "compare",
+  "title": "What one seized boat was carrying",
+  "intro": "A fishing vessel, the Fer Mary I, was seized inside the Galápagos Marine Reserve with 379 sharks from seven species on board, 22.03 metric tons in all. Researchers documented the catch.",
+  "source": "From Carr et al. (2013), Marine Policy (Results, Table 2, Fig. 1). Immature means below the published minimum length at maturity.",
+  "metric": "Share of the catch that was immature",
+  "unit": "%",
+  "views": [
+   {
+    "label": "Immature sharks",
+    "bars": [
+     {
+      "label": "Female thresher sharks",
+      "value": 100,
+      "display": "100%",
+      "tone": "d"
+     },
+     {
+      "label": "Male thresher sharks",
+      "value": 79,
+      "display": "79%",
+      "tone": "d"
+     },
+     {
+      "label": "Silky sharks",
+      "value": 61,
+      "display": "61%",
+      "tone": "d"
+     }
+    ],
+    "note": "<strong>Most of the catch had never reproduced.</strong> Every female thresher and 79% of males were below maturity size, as were 61% of silky sharks. Female biomass (14.1 t) was almost twice male biomass (7.9 t)."
+   }
+  ],
+  "doi": "10.1016/j.marpol.2012.12.005"
+ },
+ {
+  "kind": "compare",
+  "title": "A pecking order among young wrasses",
+  "intro": "Three wrasse species settle onto the same reefs in Mo'orea. This experiment paired them to measure how each affected the others' survival.",
+  "source": "From Geange et al. (2013), Marine Ecology Progress Series (Results). Mean survival in the presence of each competitor.",
+  "metric": "Survival when a competitor is present",
+  "unit": "proportion",
+  "views": [
+   {
+    "label": "With bird wrasse",
+    "bars": [
+     {
+      "label": "Fivestripe wrasse",
+      "value": 0.42,
+      "display": "0.42"
+     },
+     {
+      "label": "Sixbar wrasse",
+      "value": 0.23,
+      "display": "0.23",
+      "tone": "d"
+     }
+    ],
+    "note": "Bird wrasse were the strongest competitor: <strong>sixbar wrasse survival fell to 0.23</strong> alongside them."
+   },
+   {
+    "label": "With fivestripe wrasse",
+    "bars": [
+     {
+      "label": "Bird wrasse",
+      "value": 0.25,
+      "display": "0.25"
+     },
+     {
+      "label": "Sixbar wrasse",
+      "value": 0.18,
+      "display": "0.18",
+      "tone": "d"
+     }
+    ],
+    "note": "Fivestripe wrasse also hit sixbar wrasse hard, with <strong>survival of just 0.18</strong>."
+   },
+   {
+    "label": "With sixbar wrasse",
+    "bars": [
+     {
+      "label": "Bird wrasse",
+      "value": 0.53,
+      "display": "0.53",
+      "tone": "b"
+     },
+     {
+      "label": "Fivestripe wrasse",
+      "value": 0.67,
+      "display": "0.67",
+      "tone": "b"
+     }
+    ],
+    "note": "<strong>Sixbar wrasse were at the bottom of the hierarchy</strong>: the other species survived best alongside them. The abundance of the two stronger competitors explained about 20% of the variation in sixbar wrasse density across reefs."
+   }
+  ],
+  "doi": "10.3354/meps10015"
+ },
+ {
+  "kind": "compare",
+  "title": "When the predator arrives matters",
+  "intro": "Experimental reefs received hawkfish at different densities and at different times while young fish were settling. After 120 days, researchers counted the prey fish community.",
+  "source": "From Stier et al. (2013), Ecology (Results, Figs. 3–4).",
+  "metric": "Change in prey fish abundance",
+  "unit": "%",
+  "views": [
+   {
+    "label": "Predator present",
+    "bars": [
+     {
+      "label": "Reefs with hawkfish",
+      "value": 50,
+      "display": "−50%",
+      "tone": "d"
+     }
+    ],
+    "note": "<strong>Reefs with hawkfish had half as many prey fish</strong> as reefs without."
+   },
+   {
+    "label": "Density and timing",
+    "bars": [
+     {
+      "label": "Two hawkfish vs one",
+      "value": 33,
+      "display": "−33%",
+      "tone": "d"
+     },
+     {
+      "label": "Late-arriving vs early hawkfish",
+      "value": 34,
+      "display": "−34%",
+      "tone": "d"
+     }
+    ],
+    "note": "<strong>A second hawkfish removed another 33% of prey</strong>, and, surprisingly, hawkfish that arrived late reduced prey abundance by 34% relative to those that arrived early."
+   }
+  ],
+  "doi": "10.1890/11-1983.1"
+ },
+ {
+  "kind": "compare",
+  "title": "Bodyguards that work better together",
+  "intro": "Pocillopora corals host guard crabs and snapping shrimp that fend off the coral-eating cushion star Culcita. This experiment tested corals with no defenders, one kind, or both.",
+  "source": "From McKeon et al. (2012), Oecologia (Results). Volume of coral consumed by Culcita.",
+  "metric": "Coral eaten by the cushion star",
+  "unit": "cm³",
+  "views": [
+   {
+    "label": "Defended or not",
+    "bars": [
+     {
+      "label": "No defenders",
+      "value": 184.03,
+      "display": "184 cm³",
+      "tone": "d"
+     },
+     {
+      "label": "With defenders",
+      "value": 2.76,
+      "display": "2.76 cm³",
+      "tone": "b"
+     }
+    ],
+    "note": "<strong>Defended corals lost almost nothing.</strong> Cushion stars ate about 184 cm³ of undefended coral versus 2.76 cm³ when defenders were present, and chose undefended corals in 90% of trials."
+   },
+   {
+    "label": "One defender pair or two",
+    "bars": [
+     {
+      "label": "One pair",
+      "value": 100,
+      "display": "baseline"
+     },
+     {
+      "label": "Two pairs",
+      "value": 35,
+      "display": "−65%",
+      "tone": "b"
+     }
+    ],
+    "note": "<strong>Two defender pairs cut the volume eaten by 65%</strong> compared with one, more than you'd expect from their separate effects: a synergy."
+   }
+  ],
+  "doi": "10.1007/s00442-012-2275-2"
+ },
+ {
+  "kind": "compare",
+  "title": "Crowded corals grow faster",
+  "intro": "Porites corals were planted at high or low density, with or without cages that kept out coral-eating fish. Compare how each factor changed growth.",
+  "source": "From Shantz et al. (2011), Coral Reefs (Results, Fig. 2).",
+  "metric": "Increase in coral growth",
+  "unit": "%",
+  "views": [
+   {
+    "label": "Each factor",
+    "bars": [
+     {
+      "label": "Excluding corallivores",
+      "value": 20,
+      "display": "+20%",
+      "tone": "b"
+     },
+     {
+      "label": "High vs low density",
+      "value": 30,
+      "display": "+30%",
+      "tone": "b"
+     }
+    ],
+    "note": "<strong>Keeping fish out raised growth by 20%, and crowding raised it by 30%.</strong> The two effects acted independently."
+   },
+   {
+    "label": "Density benefit, by predator",
+    "bars": [
+     {
+      "label": "Predators excluded",
+      "value": 20,
+      "display": "+20%"
+     },
+     {
+      "label": "Predators present",
+      "value": 40,
+      "display": "+40%",
+      "tone": "c"
+     }
+    ],
+    "note": "High density boosted growth by 40% when predators were present and 20% without them. <strong>This difference wasn't statistically significant</strong>, but it points toward corals diluting predator damage when they grow close together."
+   }
+  ],
+  "doi": "10.1007/s00338-010-0694-2"
+ },
+ {
+  "kind": "compare",
+  "title": "Late arrivals and a place to hide",
+  "intro": "Newly settled fivestripe wrasse arrived on experimental reefs in Mo'orea either alongside or five days after members of their own species, on reefs with more or less branching coral. This study measured who survived.",
+  "source": "From Geange & Stier (2010), Oecologia (Results). Survival is relative to reefs without competitors.",
+  "metric": "Survival relative to no competitors",
+  "unit": "",
+  "views": [
+   {
+    "label": "Arrival timing",
+    "bars": [
+     {
+      "label": "No competitors",
+      "value": 1,
+      "display": "1×"
+     },
+     {
+      "label": "Arriving with competitors",
+      "value": 0.87,
+      "display": "1.15× lower",
+      "tone": "c"
+     },
+     {
+      "label": "Arriving 5 days later",
+      "value": 0.3,
+      "display": "3.34× lower",
+      "tone": "d"
+     }
+    ],
+    "note": "<strong>Arriving five days late cut survival 3.34-fold</strong>, compared with a 1.15-fold drop for arriving at the same time as competitors. Survival also fell as competitors' aggression rose."
+   },
+   {
+    "label": "More coral habitat",
+    "bars": [
+     {
+      "label": "Simpler habitat",
+      "value": 1,
+      "display": "1×"
+     },
+     {
+      "label": "More complex habitat",
+      "value": 1.5,
+      "display": "1.50×",
+      "tone": "b"
+     }
+    ],
+    "note": "<strong>More complex habitat raised survival 1.50-fold</strong>, giving newcomers places to escape competitors."
+   }
+  ],
+  "doi": "10.1007/s00442-009-1554-z"
+ },
+ {
+  "kind": "compare",
+  "title": "Predators thin out new recruits",
+  "intro": "Experimental reefs with and without predatory fish were monitored as young reef fish arrived from the plankton.",
+  "source": "From Heinlein et al. (2010), Coral Reefs (Results, Figs. 2–3).",
+  "metric": "Reduction on reefs with predators",
+  "unit": "%",
+  "views": [
+   {
+    "label": "Whole community",
+    "bars": [
+     {
+      "label": "Recruit abundance",
+      "value": 74,
+      "display": "−74%",
+      "tone": "d"
+     },
+     {
+      "label": "Species per reef",
+      "value": 42,
+      "display": "−42%",
+      "tone": "d"
+     }
+    ],
+    "note": "<strong>Predators cut recruit abundance by 74%</strong> and the number of prey species per reef by 42%."
+   },
+   {
+    "label": "By fish family",
+    "bars": [
+     {
+      "label": "Damselfishes, surgeonfishes, puffers",
+      "value": 75,
+      "display": "~75%",
+      "tone": "d"
+     },
+     {
+      "label": "Gobies and wrasses",
+      "value": 30,
+      "display": "~30%",
+      "tone": "c"
+     }
+    ],
+    "note": "<strong>Some families were hit much harder than others</strong>: around 75% reductions for damselfishes, surgeonfishes and pufferfishes, about 30% for gobies and wrasses."
+   }
+  ],
+  "doi": "10.1007/s00338-010-0592-7"
+ },
+ {
+  "kind": "compare",
+  "title": "Build it, and they won't all come",
+  "intro": "If you add more habitat to a reef, should you expect proportionally more young fish? This experiment added sixfold more coral habitat and measured what actually settled.",
+  "source": "From Stier & Osenberg (2010), Ecology (Results, Figs. 1–2). Settlement averaged across four focal species.",
+  "metric": "Increase in settlement with sixfold more habitat",
+  "unit": "%",
+  "views": [
+   {
+    "label": "Predicted vs observed",
+    "bars": [
+     {
+      "label": "Predicted if more habitat simply draws more fish",
+      "value": 500,
+      "display": "+500%",
+      "tone": "e"
+     },
+     {
+      "label": "Observed",
+      "value": 36,
+      "display": "+36%",
+      "tone": "c"
+     }
+    ],
+    "note": "<strong>Settlement rose only about 36%</strong>, far short of the 500% expected. Larvae were redirected among nearby habitat: a neighboring coral got only 35% of the settlement a focal coral did."
+   },
+   {
+    "label": "Settlement vs recruitment",
+    "bars": [
+     {
+      "label": "Settlement (yellowtail dascyllus)",
+      "value": 16,
+      "display": "+16%"
+     },
+     {
+      "label": "Projected recruitment",
+      "value": 125,
+      "display": "+125%",
+      "tone": "b"
+     }
+    ],
+    "note": "<strong>More habitat still mattered later on.</strong> For yellowtail dascyllus, settlement was only 16% higher, but projected recruitment was 125% higher because spreading fish out reduced crowding deaths."
+   }
+  ],
+  "doi": "10.1890/09-1993.1"
+ },
+ {
+  "kind": "compare",
+  "title": "Is clove oil safe for corals?",
+  "intro": "Researchers often use clove oil to anesthetize small reef fish living among coral branches. This experiment exposed corals to clove oil mixtures to check for side effects.",
+  "source": "From Boyer et al. (2009), Journal of Experimental Marine Biology and Ecology (Results). Ranges show the share of coral samples that bleached.",
+  "metric": "Coral samples that bleached",
+  "unit": "%",
+  "views": [
+   {
+    "label": "Bleaching",
+    "bars": [
+     {
+      "label": "Control",
+      "value": 20,
+      "lo": 0,
+      "hi": 20,
+      "display": "0–20%",
+      "tone": "b"
+     },
+     {
+      "label": "14% clove oil in ethanol",
+      "value": 96,
+      "lo": 71,
+      "hi": 96,
+      "display": "71–96%",
+      "tone": "d"
+     }
+    ],
+    "note": "<strong>The ethanol mixture was the problem.</strong> Bleaching rose from 0–20% of control samples to 71–96% with 14% clove oil in ethanol, while 7% clove oil in seawater didn't differ from controls. Ethanol also delivered 7.9 times more clove oil after 5 seconds than seawater did."
+   }
+  ],
+  "doi": "10.1016/j.jembe.2008.10.020"
+ },
+ {
+  "kind": "compare",
+  "title": "Who got to the reef first",
+  "intro": "Fivestripe wrasse settled onto reefs either with no competitors or after sixbar wrasse had been resident for 0, 5 or 12 days.",
+  "source": "From Geange & Stier (2009), Ecology (Results, Fig. 2). Survival of fivestripe wrasse (Thalassoma quinquevittatum) after seven days.",
+  "metric": "Fivestripe wrasse survival after seven days",
+  "unit": "%",
+  "views": [
+   {
+    "label": "Competitor head start",
+    "bars": [
+     {
+      "label": "No competitor",
+      "value": 46,
+      "display": "46%",
+      "tone": "b"
+     },
+     {
+      "label": "Arrived together",
+      "value": 46,
+      "display": "46%",
+      "tone": "b"
+     },
+     {
+      "label": "Competitor resident 5 days",
+      "value": 21,
+      "display": "21%",
+      "tone": "d"
+     },
+     {
+      "label": "Competitor resident 12 days",
+      "value": 21,
+      "display": "21%",
+      "tone": "d"
+     }
+    ],
+    "note": "<strong>A few days' head start for the competitor halved survival</strong>, from 46% to 21%. Arriving later raised mortality risk by 93%. When the order was reversed, there was no significant effect."
+   }
+  ],
+  "doi": "10.1890/08-0630.1"
+ },
+ {
+  "kind": "compare",
+  "title": "How predators amplify crowding",
+  "intro": "When young reef fish settle densely, more of them die. This synthesis pulled together 147 estimates from 56 studies of 38 species to ask how strong that crowding effect is, and what makes it vary.",
+  "source": "From Stier & Osenberg (2025), Ecology Letters (Results). β is the increase in per capita mortality rate from one more fish per unit area (cm² per fish per day), back-transformed model means.",
+  "metric": "Density-dependent mortality, β",
+  "unit": "cm² per fish per day",
+  "views": [
+   {
+    "label": "Predators",
+    "bars": [
+     {
+      "label": "Predators absent",
+      "value": 12.83,
+      "display": "12.83"
+     },
+     {
+      "label": "Predators present",
+      "value": 208.75,
+      "display": "208.75",
+      "tone": "d"
+     }
+    ],
+    "note": "<strong>Crowding was far deadlier with predators around.</strong> Mean density-dependent mortality rose from 12.83 to 208.75, an average increase of about 1527% in these model predictions."
+   },
+   {
+    "label": "Where the variation lies",
+    "bars": [
+     {
+      "label": "Among species",
+      "value": 20,
+      "display": "~20%"
+     },
+     {
+      "label": "Among studies of the same species",
+      "value": 80,
+      "display": "~80%",
+      "tone": "c"
+     }
+    ],
+    "note": "<strong>Most of the variation was within species.</strong> Species identity explained roughly 20% of the variance; about 80% came from differences among studies of the same species, which sometimes disagreed by orders of magnitude."
+   }
+  ],
+  "doi": "10.1111/ele.70262"
+ },
+ {
+  "kind": "compare",
+  "title": "Adapting fisheries rules to a changing climate",
+  "intro": "As climate change shifts fish productivity, managers can update harvest rules or keep them fixed. This simulation compared the two over 50 years of declining carrying capacity.",
+  "source": "From Samhouri et al. (2025), PLOS Climate (Results, S5a Fig). Climate-adaptive management compared with fixed management.",
+  "metric": "Climate-adaptive relative to fixed management",
+  "unit": "%",
+  "views": [
+   {
+    "label": "Harvest and biomass",
+    "bars": [
+     {
+      "label": "Cumulative harvest",
+      "value": 136,
+      "display": "up to +36%",
+      "tone": "b"
+     },
+     {
+      "label": "Mean population biomass",
+      "value": 78,
+      "display": "−22%",
+      "tone": "d"
+     }
+    ],
+    "note": "<strong>Adapting the rules caught more fish but left fewer in the water.</strong> Cumulative harvest was as much as 36% greater and mean biomass 22% lower than under fixed management. Fixed management met the goal of keeping biomass 20% above BMSY under more climate scenarios."
+   }
+  ],
+  "doi": "10.1371/journal.pclm.0000624"
+ },
+ {
+  "kind": "compare",
+  "title": "What resident fish do for corals",
+  "intro": "Many small fish live in and around coral colonies. This review gathers the evidence for how those fish help corals, from defense to cleaning to fertilizing.",
+  "source": "Examples cited in Stier et al. (2025), Coral Reefs: butterflyfish feeding (Chase et al. 2014, 2018), farmerfish territories in Guam (Gochfeld 2010), and goby diets in the South China Sea (Zikova et al. 2011).",
+  "metric": "Examples from studies in the review",
+  "unit": "%",
+  "views": [
+   {
+    "label": "Defense",
+    "bars": [
+     {
+      "label": "Butterflyfish feeding with Dascyllus present",
+      "value": 90,
+      "display": "−90%",
+      "tone": "b"
+     },
+     {
+      "label": "Coral tissue loss inside farmerfish territories",
+      "value": 50,
+      "display": "−50%",
+      "tone": "b"
+     }
+    ],
+    "note": "<strong>Resident fish keep coral-eaters away.</strong> Humbug damselfish cut butterflyfish feeding on their coral by 90%, and coral tissue loss was 50% lower inside farmerfish territories."
+   },
+   {
+    "label": "Pest control",
+    "bars": [
+     {
+      "label": "Share of a coral goby's diet that was coral parasites",
+      "value": 25,
+      "display": "~25%",
+      "tone": "b"
+     }
+    ],
+    "note": "<strong>Some fish eat coral pests.</strong> About 25% of the invertebrates eaten by one Acropora-dwelling goby were coral parasites."
+   }
+  ],
+  "doi": "10.1007/s00338-025-02647-4"
+ },
+ {
+  "kind": "compare",
+  "title": "Coastal habitats already lost",
+  "intro": "Salt marshes, mangroves and other coastal habitats protect shorelines, store carbon and support fisheries. This review estimated what those services are worth and how much habitat has already disappeared.",
+  "source": "Loss estimates cited in Barbier et al. (2011), Ecological Monographs: salt marsh (Bromberg and Silliman 2009), mangroves (Valiela et al. 2001, Alongi 2002, FAO 2007).",
+  "metric": "Share of habitat degraded or lost",
+  "unit": "%",
+  "views": [
+   {
+    "label": "Habitat loss",
+    "bars": [
+     {
+      "label": "Salt marsh, globally",
+      "value": 50,
+      "display": "~50%",
+      "tone": "d"
+     },
+     {
+      "label": "Salt marsh, US West Coast",
+      "value": 90,
+      "display": "over 90%",
+      "tone": "d"
+     },
+     {
+      "label": "Mangroves, globally",
+      "value": 35,
+      "display": "at least 35%",
+      "tone": "d"
+     }
+    ],
+    "note": "<strong>About half of the world's salt marshes have been degraded or lost</strong>, over 90% in places like the US West Coast, and at least 35% of mangrove area is gone, with mangroves still disappearing at 1–2% a year. Salt marshes may support 66% of Gulf of Mexico shrimp production."
+   }
+  ],
+  "doi": "10.1890/10-1510.1"
+ },
+ {
+  "kind": "compare",
+  "title": "What people want versus what the ocean gets",
+  "intro": "Polls show strong public support for marine protection, yet protection stays low. This paper argues that costly, drawn-out stakeholder processes create inertia that keeps it that way.",
+  "source": "From Lynham et al. (2017), Marine Policy, which compiles published polls. Values are reported percentages.",
+  "metric": "Percent",
+  "unit": "%",
+  "views": [
+   {
+    "label": "Support for protection",
+    "bars": [
+     {
+      "label": "U.S. poll: support a system of MPAs (2001)",
+      "value": 83,
+      "display": "83%"
+     },
+     {
+      "label": "California: support fully protected areas",
+      "value": 71,
+      "display": "71%",
+      "tone": "b"
+     }
+    ],
+    "note": "<strong>Support is the majority view.</strong> In a 2001 national poll, 83% supported establishing a system of marine protected areas in U.S. waters; within California, 71% supported fully protected areas closed to all extraction."
+   },
+   {
+    "label": "New Zealand gap",
+    "bars": [
+     {
+      "label": "Public thought was protected",
+      "value": 30,
+      "display": "30%",
+      "tone": "c"
+     },
+     {
+      "label": "Public said should be protected",
+      "value": 36,
+      "display": "36%",
+      "tone": "b"
+     },
+     {
+      "label": "Actually protected (no-take)",
+      "value": 0.3,
+      "display": "0.3%",
+      "tone": "d"
+     }
+    ],
+    "note": "<strong>Belief, desire and reality were far apart.</strong> On average, New Zealanders thought 30% of their marine environment was in no-take reserves and wanted 36%. The actual figure was 0.3%."
+   }
+  ],
+  "doi": "10.1016/j.marpol.2016.11.011"
+ },
+ {
+  "kind": "compare",
+  "title": "Why predators get spread more evenly",
+  "intro": "Predatory reef fish spend longer drifting as larvae than their prey. Longer drift spreads them more evenly across the ocean, which predicts relatively more predators on small, isolated reefs.",
+  "source": "From Stier et al. (2014), Nature Communications (Results, Fig. 2a). Pelagic larval duration (PLD) from 382 Indo-Pacific reef fish species (347 prey, 35 predators); bars are scaled to mean prey PLD.",
+  "metric": "Mean larval duration, relative to prey",
+  "unit": "",
+  "views": [
+   {
+    "label": "Larval duration",
+    "bars": [
+     {
+      "label": "Prey species (n = 347)",
+      "value": 100,
+      "display": "baseline",
+      "tone": "b"
+     },
+     {
+      "label": "Predator species (n = 35)",
+      "value": 128,
+      "display": "+28%",
+      "tone": "d"
+     }
+    ],
+    "note": "<strong>Predator larvae drift 28% longer on average.</strong> In the model, that longer drift raises the ratio of predator to prey arrivals as habitat becomes more isolated. Across 35 Pacific reef fish communities, top-predator richness stayed relatively stable as isolation varied widely."
+   }
+  ],
+  "doi": "10.1038/ncomms6575"
+ },
+ {
+  "kind": "compare",
+  "title": "A tiny predator that grows algae",
+  "intro": "Sea hares graze cyanobacteria. A nudibranch that eats sea hares can flip that, letting the cyanobacteria grow back: a trophic cascade among very small animals.",
+  "source": "From Geange & Stier (2010), Coral Reefs (Results). Laboratory feeding and trophic cascade experiments.",
+  "metric": "Relative value",
+  "unit": "",
+  "views": [
+   {
+    "label": "Cyanobacteria",
+    "bars": [
+     {
+      "label": "Sea hares, no nudibranch",
+      "value": 100,
+      "display": "baseline",
+      "tone": "e"
+     },
+     {
+      "label": "Sea hares + nudibranch",
+      "value": 150,
+      "display": "1.5×",
+      "tone": "b"
+     }
+    ],
+    "note": "<strong>Adding the predator grew more cyanobacteria.</strong> With sea hares present, cyanobacterial biomass was 1.5 times greater when nudibranchs were also there, because the nudibranchs cut sea hare survival by 68%."
+   },
+   {
+    "label": "Sea hare survival",
+    "bars": [
+     {
+      "label": "No nudibranch",
+      "value": 100,
+      "display": "100%",
+      "tone": "b"
+     },
+     {
+      "label": "With nudibranch",
+      "value": 32,
+      "display": "−68%",
+      "tone": "d"
+     }
+    ],
+    "note": "<strong>Grazers disappeared.</strong> Sea hares without nudibranchs had 100% survival; nudibranchs reduced survival by 68%. Nudibranchs ate on average 2.4 sea hares per day."
+   },
+   {
+    "label": "Prey size",
+    "bars": [
+     {
+      "label": "Large sea hares eaten",
+      "value": 1,
+      "display": "1×",
+      "tone": "e"
+     },
+     {
+      "label": "Small sea hares eaten",
+      "value": 22,
+      "display": "22×",
+      "tone": "d"
+     }
+    ],
+    "note": "<strong>Small grazers were the easy target.</strong> Consumption of small sea hares was 22 times greater than consumption of large ones, so the cascade's strength depends on the grazers' size structure."
+   }
+  ],
+  "doi": "10.1007/s00338-010-0606-5"
+ },
+ {
+  "kind": "compare",
+  "title": "Bodyguards for a coral",
+  "intro": "Vermetid snails smother corals with mucus nets. Guard crabs living in the coral's branches can cancel that damage. This field experiment removed snails and tracked coral growth with and without crabs.",
+  "source": "From Stier et al. (2010), Coral Reefs (Results, Fig. 1). Daily growth of Pocillopora on manipulated patch reefs in Moorea.",
+  "metric": "Coral growth, relative to no vermetids",
+  "unit": "",
+  "views": [
+   {
+    "label": "No guard crabs",
+    "bars": [
+     {
+      "label": "No vermetids",
+      "value": 100,
+      "display": "baseline",
+      "tone": "e"
+     },
+     {
+      "label": "Vermetids present",
+      "value": 50,
+      "display": "−50%",
+      "tone": "d"
+     }
+    ],
+    "note": "<strong>Without crabs, snails halved coral growth.</strong> In the absence of a guard crab pair, vermetids reduced Pocillopora daily growth by 50%."
+   },
+   {
+    "label": "With guard crabs",
+    "bars": [
+     {
+      "label": "No vermetids",
+      "value": 100,
+      "display": "baseline",
+      "tone": "e"
+     },
+     {
+      "label": "Vermetids present",
+      "value": 100,
+      "display": "no detectable effect",
+      "tone": "b"
+     }
+    ],
+    "note": "<strong>With crabs, the snails' effect vanished.</strong> When guard crabs were present, vermetids had no demonstrable effect on coral growth; crabs doubled growth (+100%) on corals with vermetids."
+   }
+  ],
+  "doi": "10.1007/s00338-010-0663-9"
+ },
+ {
+  "kind": "compare",
+  "title": "How much a snail costs a coral",
+  "intro": "The vermetid snail Dendropoma maximum casts sticky mucus nets over reef corals. Transplant experiments in Moorea measured what that does to four coral species.",
+  "source": "From Shima et al. (2010), Biology Letters (Results, Fig. 2a). Reduction in skeletal growth under ambient vermetid densities; Pocillopora is shown at the middle of its reported range.",
+  "metric": "Reduction in coral growth",
+  "unit": "%",
+  "views": [
+   {
+    "label": "By species",
+    "bars": [
+     {
+      "label": "Pocillopora",
+      "value": 74.5,
+      "lo": 68,
+      "hi": 81,
+      "display": "68–81%",
+      "tone": "d"
+     },
+     {
+      "label": "Porites rus",
+      "value": 62,
+      "display": "62%",
+      "tone": "d"
+     },
+     {
+      "label": "Porites lobata",
+      "value": 51,
+      "lo": 40,
+      "hi": 62,
+      "display": "40–62%",
+      "tone": "c"
+     },
+     {
+      "label": "Montipora",
+      "value": 24,
+      "display": "24%",
+      "tone": "b"
+     }
+    ],
+    "note": "<strong>Every species grew less, but not equally.</strong> Growth losses ranged from 24% in Montipora to as much as 81% in Pocillopora."
+   },
+   {
+    "label": "Averaged",
+    "bars": [
+     {
+      "label": "Skeletal growth",
+      "value": 56,
+      "display": "−56%",
+      "tone": "d"
+     },
+     {
+      "label": "Colony survival (3 of 4 species)",
+      "value": 40,
+      "display": "−40%",
+      "tone": "c"
+     }
+    ],
+    "note": "<strong>Snails cut growth and survival.</strong> Averaged across species and lagoons, vermetids reduced growth by 56% and survival of three species by 40%. Montipora had 100% colony survival."
+   }
+  ],
+  "doi": "10.1098/rsbl.2010.0291"
+ },
+ {
+  "kind": "grid",
+  "title": "Corals rarely live alone",
+  "intro": "Branching Pocillopora corals host crabs and shrimps that clean and defend them. Before testing whether more symbionts help more, the team surveyed how many corals host them at all.",
+  "source": "From Stier et al. (2012), PLoS ONE (Results, Fig. S2). Field survey of 133 Pocillopora colonies in Moorea for five focal decapod symbiont species.",
+  "total": 133,
+  "unitLabel": "surveyed corals",
+  "views": [
+   {
+    "label": "Hosting symbionts",
+    "count": 129,
+    "tone": "b",
+    "note": "<strong>129 of 133 corals (97%)</strong> contained at least one of the five focal crab or shrimp species. Most held two of the five, so multi-species partnerships are the norm."
+   }
+  ],
+  "doi": "10.1371/journal.pone.0032079"
+ },
+ {
+  "kind": "compare",
+  "title": "Experts can see different futures",
+  "intro": "Food web managers often rely on expert knowledge. This study had experts map Haida Gwaii's food web and predict what would follow from changes, such as more herring.",
+  "source": "From Stier et al. (2017), Conservation Letters (Results, Fig. 5a). Two significantly divergent expert groups in the herring-increase scenario; bars are scaled to the other group.",
+  "metric": "Predicted change, relative to the other group",
+  "unit": "",
+  "views": [
+   {
+    "label": "Ecosystem reorganization",
+    "bars": [
+     {
+      "label": "Expert group 1",
+      "value": 100,
+      "display": "baseline",
+      "tone": "a"
+     },
+     {
+      "label": "Expert group 2",
+      "value": 282,
+      "display": "+182%",
+      "tone": "c"
+     }
+    ],
+    "note": "<strong>One group expected far more upheaval.</strong> For a herring increase, one group of experts predicted 182% greater ecosystem reorganization than the other."
+   },
+   {
+    "label": "Change in abundance",
+    "bars": [
+     {
+      "label": "Expert group 1",
+      "value": 100,
+      "display": "baseline",
+      "tone": "a"
+     },
+     {
+      "label": "Expert group 2",
+      "value": 178,
+      "display": "+78%",
+      "tone": "c"
+     }
+    ],
+    "note": "<strong>And bigger swings in abundance.</strong> The same group predicted a 78% higher average percent change in species' relative abundance. Making these splits visible is the paper's point: managers can see where expert views diverge."
+   }
+  ],
+  "doi": "10.1111/conl.12245"
+ },
+ {
+  "kind": "compare",
+  "title": "What long-term coastal sites measure",
+  "intro": "The International Long-Term Ecological Research network surveyed its coastal and marine sites to see how well they already cover the Essential Ocean Variables that global observing systems need.",
+  "source": "From Muelbert et al. (2019), Frontiers in Marine Science (Results, Figure 5). Share of surveyed ILTER coastal and marine sites routinely observing each variable.",
+  "metric": "Sites observing the variable",
+  "unit": "%",
+  "views": [
+   {
+    "label": "Physical",
+    "bars": [
+     {
+      "label": "Sea state",
+      "value": 42,
+      "display": "42%"
+     },
+     {
+      "label": "Surface currents",
+      "value": 42,
+      "display": "42%"
+     },
+     {
+      "label": "Subsurface currents",
+      "value": 42,
+      "display": "42%"
+     },
+     {
+      "label": "Sea surface height",
+      "value": 38,
+      "display": "38%"
+     }
+    ],
+    "note": "<strong>Beyond temperature and salinity, coverage is partial.</strong> Temperature and salinity were among the most observed; sea state and currents were measured at 42% of sites."
+   },
+   {
+    "label": "Biogeochemical",
+    "bars": [
+     {
+      "label": "Inorganic carbon",
+      "value": 40,
+      "display": "40%",
+      "tone": "b"
+     },
+     {
+      "label": "Dissolved organic carbon",
+      "value": 40,
+      "display": "40%",
+      "tone": "b"
+     },
+     {
+      "label": "Ocean color",
+      "value": 32,
+      "display": "32%",
+      "tone": "b"
+     }
+    ],
+    "note": "<strong>Carbon is well represented.</strong> Nutrients, oxygen and particulate matter were measured at more than half the sites; inorganic and dissolved organic carbon at 40%."
+   }
+  ],
+  "doi": "10.3389/fmars.2019.00527"
+ },
+ {
+  "kind": "grid",
+  "title": "A coral predator as a shelter",
+  "intro": "Crown-of-thorns seastars eat coral. In the Moorea lagoon, young fishes were found hiding among their venomous spines, but only when the seastar sat on sand away from the reef.",
+  "source": "From Stier et al. (2009), Coral Reefs. Transect surveys in the Moorea lagoon in January (29 seastars) and June (11 seastars).",
+  "total": 29,
+  "unitLabel": "seastars surveyed in January",
+  "views": [
+   {
+    "label": "Occupied",
+    "count": 6,
+    "tone": "b",
+    "note": "<strong>6 of 29 seastars hosted cardinalfish</strong>, 2 to 18 fish each (mean 6.2). Every occupied seastar was more than 5 m from the reef; none closer than 5 m held fish. In June, 3 of 11 seastars were occupied, again all more than 5 m from the reef."
+   }
+  ],
+  "doi": "10.1007/s00338-008-0445-9"
+ },
+ {
+  "kind": "compare",
+  "title": "Urchin personalities and lobster predation",
+  "intro": "Individual purple sea urchins behave consistently differently from one another. This experiment asked whether those differences decide which urchins a California spiny lobster eats.",
+  "source": "From Pretorius et al. (2019), Ethology (Results). Repeatability with 95% CIs from repeated behavior trials. Survival is from 108-hr mesocosm trials, four urchins with one lobster.",
+  "metric": "Repeatability (0 to 1)",
+  "unit": "",
+  "views": [
+   {
+    "label": "Consistent behavior",
+    "bars": [
+     {
+      "label": "Activity level",
+      "value": 0.3,
+      "lo": 0.03,
+      "hi": 0.57,
+      "display": "0.30"
+     },
+     {
+      "label": "Covering behavior",
+      "value": 0.73,
+      "lo": 0.38,
+      "hi": 0.87,
+      "display": "0.73",
+      "tone": "b"
+     }
+    ],
+    "note": "<strong>Urchins behaved like themselves over time.</strong> Activity level (0.30) and covering with pebbles and stones (0.73) were both significantly repeatable. In lobster trials, survival averaged 33.33%, and active urchins were eaten more, especially small ones; size and covering on their own did not predict survival."
+   }
+  ],
+  "doi": "10.1111/eth.12924"
+ }
+]

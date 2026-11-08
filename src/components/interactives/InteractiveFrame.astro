@@ -1,0 +1,75 @@
+---
+/**
+ * Shared frame for paper interactives on news pages.
+ * Every number inside an interactive must come from the paper; `source`
+ * says exactly where.
+ */
+interface Props {
+  title: string;
+  intro: string;
+  source: string;
+}
+const { title, intro, source } = Astro.props;
+---
+
+<section class="pi" aria-label={`Interactive: ${title}`}>
+  <header class="pi-head">
+    <span class="pi-eyebrow">Explore the finding</span>
+    <h2 class="pi-title">{title}</h2>
+    <p class="pi-intro">{intro}</p>
+  </header>
+  <div class="pi-body">
+    <slot />
+  </div>
+  <p class="pi-source">{source}</p>
+</section>
+
+<style is:global>
+  .pi {
+    margin: 3rem 0;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 1rem;
+    background: rgba(255, 255, 255, 0.03);
+    padding: 1.5rem;
+  }
+  @media (min-width: 640px) { .pi { padding: 2rem; } }
+  .pi-head { display: grid; gap: 0.5rem; margin-bottom: 1.5rem; }
+  .pi-eyebrow { font-size: 0.75rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: #4FB6A5; }
+  .pi-title { margin: 0; font-size: 1.5rem; font-weight: 800; line-height: 1.2; color: #fff; text-wrap: balance; }
+  .pi-intro { margin: 0; color: rgba(255, 255, 255, 0.7); font-size: 1rem; line-height: 1.6; }
+  .pi-body { display: grid; gap: 1.25rem; }
+  .pi-source { margin: 1.5rem 0 0; padding-top: 1rem; border-top: 1px solid rgba(255, 255, 255, 0.08); font-size: 0.8rem; line-height: 1.5; color: rgba(255, 255, 255, 0.45); }
+
+  /* Shared controls */
+  .pi-controls { display: grid; gap: 1rem; }
+  .pi-field { display: grid; gap: 0.35rem; }
+  .pi-field-top { display: flex; justify-content: space-between; gap: 1rem; font-size: 0.9rem; }
+  .pi-field-top label { color: rgba(255, 255, 255, 0.85); font-weight: 600; }
+  .pi-field-top output { color: #fff; font-variant-numeric: tabular-nums; font-weight: 700; }
+  .pi-range { width: 100%; accent-color: #4DA8C9; min-height: 28px; }
+  .pi-hint { font-size: 0.78rem; color: rgba(255, 255, 255, 0.45); }
+
+  .pi-seg { display: inline-flex; flex-wrap: wrap; gap: 0.4rem; }
+  .pi-seg button {
+    min-height: 40px; padding: 0.4rem 0.9rem; border-radius: 999px;
+    border: 1px solid rgba(255, 255, 255, 0.18); background: transparent;
+    color: rgba(255, 255, 255, 0.85); font: 600 0.875rem Inter, system-ui, sans-serif; cursor: pointer;
+  }
+  .pi-seg button:hover { border-color: rgba(255, 255, 255, 0.4); }
+  .pi-seg button[aria-pressed='true'] { background: #fff; color: #0f172a; border-color: #fff; }
+  .pi-seg button:focus-visible, .pi-btn:focus-visible { outline: 2px solid #4DA8C9; outline-offset: 3px; }
+
+  .pi-btn {
+    min-height: 40px; padding: 0.45rem 1rem; border-radius: 999px; border: 0;
+    background: #4DA8C9; color: #0f172a; font: 700 0.875rem Inter, system-ui, sans-serif; cursor: pointer;
+    display: inline-flex; align-items: center; gap: 0.4rem;
+  }
+
+  .pi-verdict {
+    border-radius: 0.75rem; padding: 1rem 1.1rem; font-size: 0.95rem; line-height: 1.55;
+    background: rgba(255, 255, 255, 0.05); color: rgba(255, 255, 255, 0.85);
+    border-left: 4px solid var(--pi-v, #4DA8C9);
+  }
+  .pi-verdict strong { color: #fff; }
+  .pi-note { font-size: 0.8rem; color: rgba(255, 255, 255, 0.5); margin: 0; }
+</style>

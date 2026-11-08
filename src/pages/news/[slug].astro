@@ -3,6 +3,7 @@ import Layout from '@layouts/Layout.astro';
 import Breadcrumbs from '@components/layout/Breadcrumbs.astro';
 import ArticleSchema from '@components/seo/ArticleSchema.astro';
 import BreadcrumbSchema from '@components/seo/BreadcrumbSchema.astro';
+import PaperInteractive from '@components/interactives/PaperInteractive.astro';
 import { posts } from '@data/posts';
 import { formatSiteDate, getSiteDateYear } from '@utils/date';
 
@@ -331,6 +332,9 @@ const hasToc = tableOfContents.length > 2; // More than just Citation and Share
               }
             })}
           </div>
+
+          <!-- Interactive figure built from this paper's model or results (if one exists) -->
+          <PaperInteractive doiUrl={post.doiUrl} />
 
           <!-- Citation Section -->
           <section class="citation-section" id="citation">
