@@ -1,0 +1,21 @@
+---
+/** Vega et al. (2026) Biology Letters 22: 20260177. Four-part story. */
+import StoryHeader from './StoryHeader.astro';
+import CoralWoundHealing from '../CoralWoundHealing.astro';
+import VegaEveryCoral from './VegaEveryCoral.astro';
+import VegaPhotosynthesis from './VegaPhotosynthesis.astro';
+import VegaAlgae from './VegaAlgae.astro';
+const slug = 'vega-2026';
+const parts = ['Watch the wounds close', 'Every coral, one dot', 'Closed is not the same as healthy', 'Who claims an open wound'];
+const eb = (n: number) => `Part ${n} of ${parts.length}`;
+---
+
+<StoryHeader
+  slug={slug}
+  headline="Damselfish that live in a coral help it recover from injury: wounds close faster, the new tissue photosynthesizes better, and algae get fewer chances to move in."
+  parts={parts}
+/>
+<CoralWoundHealing id={`${slug}-1`} eyebrow={eb(1)} />
+<VegaEveryCoral id={`${slug}-2`} eyebrow={eb(2)} />
+<VegaPhotosynthesis id={`${slug}-3`} eyebrow={eb(3)} />
+<VegaAlgae id={`${slug}-4`} eyebrow={eb(4)} />

@@ -6,8 +6,10 @@
  * else comes from src/data/interactives.json via DataInteractive.
  */
 import KelpDetritusBalance from './KelpDetritusBalance.astro';
-import CoralWoundHealing from './CoralWoundHealing.astro';
 import CarnivoreRecoveryGrid from './CarnivoreRecoveryGrid.astro';
+import VegaStory from './stories/VegaStory.astro';
+import DetmerStory from './stories/DetmerStory.astro';
+import WhiteStory from './stories/WhiteStory.astro';
 import DataInteractive from './DataInteractive.astro';
 import { findInteractive } from '@data/interactives';
 
@@ -19,7 +21,9 @@ const doi = (doiUrl || '').replace(/^https?:\/\/(dx\.)?doi\.org\//i, '').toLower
 
 const bespoke: Record<string, any> = {
   '10.1002/ecy.3673': KelpDetritusBalance,
-  '10.1098/rsbl.2026.0177': CoralWoundHealing,
+  '10.1098/rsbl.2026.0177': VegaStory,
+  '10.1016/j.ecolmodel.2026.111567': DetmerStory,
+  '10.1073/pnas.2532469123': WhiteStory,
   '10.1038/s41598-022-13671-7': CarnivoreRecoveryGrid,
 };
 const Bespoke = bespoke[doi];

@@ -8,13 +8,15 @@ interface Props {
   title: string;
   intro: string;
   source: string;
+  eyebrow?: string;
+  id?: string;
 }
-const { title, intro, source } = Astro.props;
+const { title, intro, source, eyebrow = 'Explore the finding', id } = Astro.props;
 ---
 
-<section class="pi" aria-label={`Interactive: ${title}`}>
+<section class="pi" id={id} aria-label={`Interactive: ${title}`}>
   <header class="pi-head">
-    <span class="pi-eyebrow">Explore the finding</span>
+    <span class="pi-eyebrow">{eyebrow}</span>
     <h2 class="pi-title">{title}</h2>
     <p class="pi-intro">{intro}</p>
   </header>
@@ -31,6 +33,7 @@ const { title, intro, source } = Astro.props;
     border-radius: 1rem;
     background: rgba(255, 255, 255, 0.03);
     padding: 1.5rem;
+    scroll-margin-top: 6rem;
   }
   @media (min-width: 640px) { .pi { padding: 2rem; } }
   .pi-head { display: grid; gap: 0.5rem; margin-bottom: 1.5rem; }

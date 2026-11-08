@@ -1,0 +1,117 @@
+---
+/**
+ * Vega et al. (2026) Biology Letters. Part 3: photosynthetic efficiency (Fv/Fm) of new tissue.
+ * Means and 95% CIs from Results text; small points are per-fragment values from the paper's
+ * repository (pam_undisturbed_healed_tissue_wound_no_wound.csv; healed tissue and unwounded corals),
+ * whose group means reproduce the reported means.
+ */
+import InteractiveFrame from '../InteractiveFrame.astro';
+import data from '@data/stories/vega-2026.json';
+interface Props { eyebrow?: string; id?: string }
+const { eyebrow, id } = Astro.props;
+
+// [mean, lo, hi] for no wound, small, large
+const MEANS = {
+  fish: [[0.686, 0.679, 0.693], [0.674, 0.657, 0.691], [0.684, 0.677, 0.692]],
+  none: [[0.684, 0.676, 0.691], [0.657, 0.629, 0.685], [0.633, 0.610, 0.656]],
+};
+const W = 600, H = 320, L = 58, R = 20, T = 20, B = 44;
+const YMIN = 0.54, YMAX = 0.72;
+const y = (v: number) => T + (1 - (v - YMIN) / (YMAX - YMIN)) * (H - T - B);
+const x = (i: number, off = 0) => L + ((i + 0.5) / 3) * (W - L - R) + off;
+const ticks = [0.56, 0.6, 0.64, 0.68, 0.72];
+const groups = ['No wound', 'Small wound', 'Large wound'];
+// deterministic jitter so the server render is stable
+const jit = (i: number) => (((i * 9301 + 49297) % 233280) / 233280 - 0.5) * 34;
+---
+
+<InteractiveFrame
+  eyebrow={eyebrow}
+  id={id}
+  title="Closed is not the same as healthy"
+  intro="A closed wound still has to work. The team measured how efficiently the newly grown tissue photosynthesized (Fv/Fm, the maximum efficiency of photosystem II). Step through to compare corals without and with damselfish."
+  source="Means and 95% confidence intervals from Vega, Osenberg, Seifert, Munk & Stier (2026), Biology Letters (Results, Fig. 3B). Small dots are individual fragments from the paper's public data repository. The y-axis starts at 0.54 to show differences that are small in absolute terms."
+>
+  <div class="vp" data-vp>
+    <div class="pi-seg" role="group" aria-label="Which corals to show">
+      <button type="button" data-step="none" aria-pressed="true">Without fish</button>
+      <button type="button" data-step="both" aria-pressed="false">Add damselfish</button>
+    </div>
+    <svg viewBox={`0 0 ${W} ${H}`} class="vp-svg" role="img" aria-label="Photosynthetic efficiency of coral tissue by wound size, with and without damselfish">
+      {ticks.map((t) => (
+        <g>
+          <line x1={L} x2={W - R} y1={y(t)} y2={y(t)} stroke="rgba(255,255,255,0.08)"></line>
+          <text x={L - 8} y={y(t) + 4} text-anchor="end" class="vp-tick">{t.toFixed(2)}</text>
+        </g>
+      ))}
+      <text x={14} y={T + (H - T - B) / 2} transform={`rotate(-90 14 ${T + (H - T - B) / 2})`} text-anchor="middle" class="vp-tick">Fv/Fm</text>
+      {groups.map((g, i) => <text x={x(i)} y={H - 16} text-anchor="middle" class="vp-group">{g}</text>)}
+
+      {(['none', 'fish'] as const).map((k) => {
+        const off = k === 'none' ? -22 : 22;
+        const pts = data.pam.filter((p) => p.fish === (k === 'fish'));
+        const m = MEANS[k];
+        return (
+          <g class={`vp-series vp-${k}`} data-series={k}>
+            {pts.map((p, i) => <circle cx={x(p.w, off + jit(i) * 0.5)} cy={y(Math.max(YMIN, p.v))} r="3" class="vp-pt"></circle>)}
+            <polyline points={m.map((v, i) => `${x(i, off)},${y(v[0])}`).join(' ')} class="vp-line"></polyline>
+            {m.map((v, i) => (
+              <g>
+                <line x1={x(i, off)} x2={x(i, off)} y1={y(v[1])} y2={y(v[2])} class="vp-ci"></line>
+                <circle cx={x(i, off)} cy={y(v[0])} r="7" class="vp-mean"></circle>
+              </g>
+            ))}
+          </g>
+        );
+      })}
+    </svg>
+    <div class="vp-key" aria-hidden="true">
+      <span class="vp-k vp-k-none">Without damselfish</span>
+      <span class="vp-k vp-k-fish">With damselfish</span>
+    </div>
+    <div class="pi-verdict" data-vp-verdict aria-live="polite"></div>
+  </div>
+</InteractiveFrame>
+
+<style>
+  .vp { display: grid; gap: 1rem; }
+  .vp-svg { width: 100%; height: auto; display: block; }
+  .vp-tick { fill: rgba(255,255,255,0.5); font-size: 12px; font-variant-numeric: tabular-nums; }
+  .vp-group { fill: rgba(255,255,255,0.8); font-size: 13px; font-weight: 600; }
+  .vp-series { transition: opacity 0.5s; }
+  .vp-none { --c: #E8A33D; }
+  .vp-fish { --c: #4FB6A5; }
+  .vp-pt { fill: var(--c); opacity: 0.35; }
+  .vp-line { fill: none; stroke: var(--c); stroke-width: 2.5; }
+  .vp-ci { stroke: var(--c); stroke-width: 2.5; }
+  .vp-mean { fill: #0f172a; stroke: var(--c); stroke-width: 3; }
+  .vp-fish .vp-mean { fill: var(--c); }
+  .vp-series.hidden { opacity: 0; }
+  .vp-key { display: flex; flex-wrap: wrap; gap: 1rem; font-size: 0.85rem; color: rgba(255,255,255,0.8); }
+  .vp-k::before { content: ''; display: inline-block; width: 0.75rem; height: 0.75rem; border-radius: 999px; margin-right: 0.4rem; vertical-align: -1px; }
+  .vp-k-none::before { border: 3px solid #E8A33D; width: 0.45rem; height: 0.45rem; }
+  .vp-k-fish::before { background: #4FB6A5; }
+  @media (prefers-reduced-motion: reduce) { .vp-series { transition: none; } }
+</style>
+
+<script>
+  const init = () => {
+    document.querySelectorAll<HTMLElement>('[data-vp]').forEach((root) => {
+      if (root.dataset.bound) return;
+      root.dataset.bound = '1';
+      const fish = root.querySelector<SVGGElement>('[data-series="fish"]')!;
+      const verdict = root.querySelector<HTMLElement>('[data-vp-verdict]')!;
+      const btns = Array.from(root.querySelectorAll<HTMLButtonElement>('[data-step]'));
+      const set = (step: string) => {
+        btns.forEach((b) => b.setAttribute('aria-pressed', String(b.dataset.step === step)));
+        fish.classList.toggle('hidden', step === 'none');
+        verdict.innerHTML = step === 'none'
+          ? '<strong>Without fish, bigger wounds grew weaker tissue.</strong> Photosynthetic efficiency fell from 0.684 in unwounded corals to 0.657 in tissue regrown over small wounds and 0.633 over large wounds.'
+          : '<strong>With damselfish, the new tissue worked as well as undamaged tissue.</strong> Efficiency stayed flat at 0.686, 0.674 and 0.684 across wound sizes. The effect of fish depended on wound size, and was largest for large wounds.';
+      };
+      btns.forEach((b) => b.addEventListener('click', () => set(b.dataset.step!)));
+      set('none');
+    });
+  };
+  document.addEventListener('astro:page-load', init);
+</script>

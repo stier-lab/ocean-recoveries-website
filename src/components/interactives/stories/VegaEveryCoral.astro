@@ -1,0 +1,136 @@
+---
+/**
+ * Vega et al. (2026) Biology Letters. Part 2: every wounded fragment as one dot.
+ * Data: final_wound_size_dascyllus_project - Sheet1.csv from the paper's public repository
+ * (github.com/haydenvega/damselfish_coral_healing_public). One no-fish fragment whose wound
+ * grew (coral 95, -105%) is left out, which reproduces the paper's 16/24 vs 9/23 closure counts.
+ */
+import InteractiveFrame from '../InteractiveFrame.astro';
+import data from '@data/stories/vega-2026.json';
+interface Props { eyebrow?: string; id?: string }
+const { eyebrow, id } = Astro.props;
+---
+
+<InteractiveFrame
+  eyebrow={eyebrow}
+  id={id}
+  title="Every coral, one dot"
+  intro="Averages hide the individual corals. Each dot is one wounded fragment, placed by how much of its wound had healed by day 21. Corals whose wounds closed completely gather in the shaded zone on the right."
+  source="Per-fragment measurements from the public data repository for Vega, Osenberg, Seifert, Munk & Stier (2026), Biology Letters. One fragment without fish whose wound grew larger is not shown; with it removed, the closure counts match the paper (16 of 24 with fish, 9 of 23 without)."
+>
+  <div class="ec" data-ec data-payload={JSON.stringify(data.heal)}>
+    <div class="pi-seg" role="group" aria-label="Wound size">
+      <button type="button" data-f="all" aria-pressed="true">All wounds</button>
+      <button type="button" data-f="small" aria-pressed="false">Small</button>
+      <button type="button" data-f="large" aria-pressed="false">Large</button>
+    </div>
+    <div class="ec-plot">
+      {[{ k: 'none', label: 'Without damselfish' }, { k: 'fish', label: 'With damselfish' }].map((r) => (
+        <div class={`ec-row ec-${r.k}`}>
+          <div class="ec-row-head"><span>{r.label}</span><span class="ec-count" data-count={r.k}></span></div>
+          <div class="ec-lane" data-lane={r.k}></div>
+        </div>
+      ))}
+      <div class="ec-axis" aria-hidden="true"><span style="left:0;transform:none">10% healed</span><span style="left:35%">50%</span><span style="left:68%">90%</span><span class="ec-ax-closed">Fully closed</span></div>
+    </div>
+    <p class="ec-tip" data-ec-tip aria-live="polite">Tap or hover a dot to see that coral.</p>
+    <div class="pi-verdict" data-ec-verdict aria-live="polite"></div>
+  </div>
+</InteractiveFrame>
+
+<style>
+  .ec { display: grid; gap: 1.1rem; }
+  .ec-plot { display: grid; gap: 0.9rem; }
+  .ec-row-head { display: flex; justify-content: space-between; font-size: 0.85rem; font-weight: 700; color: #fff; margin-bottom: 0.35rem; }
+  .ec-fish .ec-row-head span:first-child { color: #4FB6A5; }
+  .ec-count { color: rgba(255,255,255,0.7); font-weight: 600; font-variant-numeric: tabular-nums; }
+  .ec-lane { position: relative; height: 92px; border-radius: 0.6rem; background: linear-gradient(90deg, rgba(255,255,255,0.04) 0 80%, rgba(255,255,255,0.09) 80%); }
+</style>
+
+<style is:global>
+  .ec-dot {
+    position: absolute; width: 14px; height: 14px; margin: -7px 0 0 -7px; border-radius: 999px; padding: 0; border: 0;
+    background: rgba(255,255,255,0.28); cursor: pointer;
+    transition: left 0.6s cubic-bezier(.2,.8,.2,1), top 0.6s cubic-bezier(.2,.8,.2,1), opacity 0.4s, transform 0.2s;
+  }
+  .ec-dot.closed { background: #4FB6A5; box-shadow: 0 0 0 3px rgba(79,182,165,0.18); }
+  .ec-none .ec-dot.closed { background: #E8A33D; box-shadow: 0 0 0 3px rgba(232,163,61,0.18); }
+  .ec-dot.off { opacity: 0; pointer-events: none; transform: scale(0.4); }
+  .ec-dot:hover, .ec-dot:focus-visible, .ec-dot.on { transform: scale(1.35); outline: 2px solid #fff; outline-offset: 1px; }
+</style>
+
+<style>
+  .ec-axis { position: relative; height: 1.1rem; font-size: 0.75rem; color: rgba(255,255,255,0.5); }
+  .ec-axis span { position: absolute; top: 0; transform: translateX(-50%); white-space: nowrap; }
+  .ec-axis .ec-ax-closed { right: 0; left: auto; transform: none; color: rgba(255,255,255,0.8); font-weight: 600; }
+  .ec-tip { margin: 0; font-size: 0.85rem; color: rgba(255,255,255,0.65); min-height: 1.3em; }
+  @media (prefers-reduced-motion: reduce) { :global(.ec-dot) { transition: none; } }
+</style>
+
+<script>
+  type Coral = { id: string; fish: boolean; size: 'small' | 'large'; pct: number; a0: number };
+  const XMIN = 10, XMAX = 99; // percent healed axis
+
+  const init = () => {
+    document.querySelectorAll<HTMLElement>('[data-ec]').forEach((root) => {
+      if (root.dataset.bound) return;
+      root.dataset.bound = '1';
+      const corals: Coral[] = JSON.parse(root.dataset.payload || '[]');
+      const tip = root.querySelector<HTMLElement>('[data-ec-tip]')!;
+      const verdict = root.querySelector<HTMLElement>('[data-ec-verdict]')!;
+      const lanes = { none: root.querySelector<HTMLElement>('[data-lane="none"]')!, fish: root.querySelector<HTMLElement>('[data-lane="fish"]')! };
+      const counts = { none: root.querySelector<HTMLElement>('[data-count="none"]')!, fish: root.querySelector<HTMLElement>('[data-count="fish"]')! };
+      const btns = Array.from(root.querySelectorAll<HTMLButtonElement>('[data-f]'));
+
+      const dots = corals.map((c) => {
+        const b = document.createElement('button');
+        b.type = 'button';
+        b.className = 'ec-dot' + (c.pct >= 100 ? ' closed' : '');
+        const label = `Coral ${c.id}: ${c.size} wound of ${c.a0.toFixed(1)} cm², ${c.pct >= 100 ? 'fully closed' : Math.round(c.pct) + '% healed'} by day 21`;
+        b.setAttribute('aria-label', label);
+        const show = () => { root.querySelectorAll('.ec-dot.on').forEach((d) => d.classList.remove('on')); b.classList.add('on'); tip.textContent = label + (c.fish ? ', with damselfish.' : ', without damselfish.'); };
+        b.addEventListener('mouseenter', show); b.addEventListener('focus', show); b.addEventListener('click', show);
+        lanes[c.fish ? 'fish' : 'none'].appendChild(b);
+        return { c, b };
+      });
+
+      const layout = (f: string) => {
+        (['none', 'fish'] as const).forEach((k) => {
+          const shown = dots.filter((d) => (d.c.fish ? 'fish' : 'none') === k && (f === 'all' || d.c.size === f));
+          // open wounds: stack dots sharing a 3%-wide bin; closed wounds: their own zone at the right
+          const bins: Record<number, number> = {};
+          let nClosed = 0;
+          shown.sort((a, b) => a.c.pct - b.c.pct).forEach((d) => {
+            if (d.c.pct >= 100) {
+              const n = nClosed++;
+              d.b.style.left = `calc(100% - ${12 + (n % 4) * 16}px)`;
+              d.b.style.top = `${80 - Math.floor(n / 4) * 16}px`;
+              return;
+            }
+            const x = Math.max(XMIN, Math.min(XMAX, d.c.pct));
+            const n = (bins[Math.round(x / 3)] = (bins[Math.round(x / 3)] ?? -1) + 1);
+            const leftPct = 3 + ((x - XMIN) / (XMAX - XMIN)) * 72;
+            d.b.style.left = `calc(${leftPct}% - ${Math.floor(n / 5) * 15}px)`;
+            d.b.style.top = `${80 - (n % 5) * 15}px`;
+          });
+          dots.forEach((d) => { if ((d.c.fish ? 'fish' : 'none') === k) d.b.classList.toggle('off', !shown.includes(d)); });
+          const closed = shown.filter((d) => d.c.pct >= 100).length;
+          counts[k].textContent = `${closed} of ${shown.length} closed`;
+        });
+        const msg: Record<string, string> = {
+          all: '<strong>16 of 24 corals with fish closed their wounds, against 9 of 23 without.</strong> Without fish the dots spread out to the left: several corals were still only partly healed at day 21, including one at about 11%.',
+          small: '<strong>Small wounds mostly healed either way.</strong> Fish still tipped more of them to fully closed (8 of 12, against 6 of 11), but the difference is modest, as the averages in Part 1 suggest.',
+          large: '<strong>Large wounds are where fish mattered most.</strong> 8 of 12 large wounds closed with fish, but only 3 of 12 without. The slowest healers, at 11% and 44%, were both large wounds without fish.',
+        };
+        verdict.innerHTML = msg[f];
+      };
+
+      btns.forEach((b) => b.addEventListener('click', () => {
+        btns.forEach((x) => x.setAttribute('aria-pressed', String(x === b)));
+        layout(b.dataset.f!);
+      }));
+      layout('all');
+    });
+  };
+  document.addEventListener('astro:page-load', init);
+</script>

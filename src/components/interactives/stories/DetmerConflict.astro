@@ -1,0 +1,96 @@
+---
+/**
+ * Detmer et al. (2026) Ecological Modelling. Part 2: individual vs population optimum.
+ * Reported (Results 3.1–3.4, default strengths bx = 1): partner-maximizing ϕ ≈ 0.17 (nutritional),
+ * ≈ 0.86 (defensive); ESS ϕ ≈ 0.9 for both; host-maximizing ϕ = 0 for the nutritional mutualism.
+ * Consequences of ESS vs partner-maximizing ϕ are reported qualitatively (Fig. 3C, Fig. 5).
+ */
+import InteractiveFrame from '../InteractiveFrame.astro';
+interface Props { eyebrow?: string; id?: string }
+const { eyebrow, id } = Astro.props;
+---
+
+<InteractiveFrame
+  eyebrow={eyebrow}
+  id={id}
+  title="Best for one fish, worse for all fish"
+  intro="What is best for each fish is not always best for the fish population. The gap depends on how fish help their coral: by helping it grow (nutritional) or by helping it survive (defensive). Pick one to see where the model's optimum falls."
+  source="Values reported in Detmer, Osenberg, Stier & Moeller (2026), Ecological Modelling (Results, Figs. 3 and 5) at the default mutualism strength. Recovery and abundance differences are described in the paper qualitatively, so no numbers are drawn for them."
+>
+  <div class="dc" data-dc>
+    <div class="pi-seg" role="group" aria-label="How fish help their coral">
+      <button type="button" data-m="nut" aria-pressed="true">Fish help corals grow</button>
+      <button type="button" data-m="def" aria-pressed="false">Fish help corals survive</button>
+    </div>
+    <div class="dc-line" aria-hidden="true">
+      <div class="dc-track"></div>
+      <div class="dc-gap" data-dc-gap></div>
+      <div class="dc-mk dc-host" data-dc-host><span>Best for corals</span></div>
+      <div class="dc-mk dc-pop" data-dc-pop><span>Best for the fish population</span></div>
+      <div class="dc-mk dc-ess" data-dc-ess><span>What evolves</span></div>
+      <div class="dc-ends"><span>0 · settle anywhere</span><span>1 · adults only</span></div>
+    </div>
+    <div class="dc-cards">
+      <div class="dc-card"><span class="dc-num" data-dc-pop-n></span><span class="dc-cap">ϕ that maximizes fish numbers</span></div>
+      <div class="dc-card dc-card-ess"><span class="dc-num">≈0.9</span><span class="dc-cap">ϕ that evolves</span></div>
+    </div>
+    <div class="pi-verdict" data-dc-verdict aria-live="polite"></div>
+  </div>
+</InteractiveFrame>
+
+<style>
+  .dc { display: grid; gap: 1.2rem; }
+  .dc-line { position: relative; height: 7.5rem; margin: 0 0.5rem; }
+  .dc-track { position: absolute; left: 0; right: 0; top: 3.6rem; height: 6px; border-radius: 999px; background: rgba(255,255,255,0.12); }
+  .dc-gap { position: absolute; top: 3.6rem; height: 6px; border-radius: 999px; background: linear-gradient(90deg, #4FB6A5, #E8A33D); transition: left 0.7s cubic-bezier(.2,.8,.2,1), width 0.7s cubic-bezier(.2,.8,.2,1); }
+  .dc-mk { position: absolute; top: 3.15rem; width: 16px; height: 16px; margin-left: -8px; border-radius: 999px; transition: left 0.7s cubic-bezier(.2,.8,.2,1), opacity 0.4s; }
+  .dc-mk span { position: absolute; left: 50%; transform: translateX(-50%); white-space: nowrap; font-size: 0.72rem; font-weight: 700; }
+  .dc-pop { background: #4FB6A5; } .dc-pop span { bottom: 1.4rem; color: #4FB6A5; }
+  .dc-ess { background: #E8A33D; } .dc-ess span { top: 1.4rem; color: #E8A33D; transform: translateX(-85%); }
+  .dc-host { background: #fff; } .dc-host span { top: 1.4rem; color: rgba(255,255,255,0.8); transform: translateX(-10%); }
+  .dc-mk.off { opacity: 0; }
+  .dc-ends { position: absolute; left: 0; right: 0; top: 6.1rem; display: flex; justify-content: space-between; font-size: 0.7rem; color: rgba(255,255,255,0.45); }
+  .dc-cards { display: grid; grid-template-columns: 1fr 1fr; gap: 0.6rem; }
+  .dc-card { display: grid; gap: 0.2rem; padding: 0.8rem; border-radius: 0.75rem; background: rgba(79,182,165,0.1); border: 1px solid rgba(79,182,165,0.3); }
+  .dc-card-ess { background: rgba(232,163,61,0.1); border-color: rgba(232,163,61,0.3); }
+  .dc-num { font-size: 1.6rem; font-weight: 800; color: #fff; font-variant-numeric: tabular-nums; }
+  .dc-cap { font-size: 0.78rem; color: rgba(255,255,255,0.7); }
+  @media (prefers-reduced-motion: reduce) { .dc-gap, .dc-mk { transition: none; } }
+</style>
+
+<script>
+  const M = {
+    nut: { pop: 0.17, host: 0 as number | null, label: '≈0.17',
+      text: '<strong>A big gap.</strong> When fish help corals grow, the fish population does best if fish spread out (ϕ ≈ 0.17), and corals do best if fish ignore size entirely (ϕ = 0). But each fish is better off choosing adults, so ϕ ≈ 0.9 evolves. The model predicts fewer fish, less coral cover and slower recovery after a disturbance than the population optimum would give.' },
+    def: { pop: 0.86, host: null as number | null, label: '≈0.86',
+      text: '<strong>Almost no gap.</strong> When fish help corals survive, the best value for the fish population (ϕ ≈ 0.86) is close to what evolves (ϕ ≈ 0.9). Abundances and recovery after disturbance were essentially the same either way. Here, choosing big corals is good for each fish and for the population.' },
+  };
+  const init = () => {
+    document.querySelectorAll<HTMLElement>('[data-dc]').forEach((root) => {
+      if (root.dataset.bound) return;
+      root.dataset.bound = '1';
+      const pop = root.querySelector<HTMLElement>('[data-dc-pop]')!;
+      const ess = root.querySelector<HTMLElement>('[data-dc-ess]')!;
+      const host = root.querySelector<HTMLElement>('[data-dc-host]')!;
+      const gap = root.querySelector<HTMLElement>('[data-dc-gap]')!;
+      const popN = root.querySelector<HTMLElement>('[data-dc-pop-n]')!;
+      const verdict = root.querySelector<HTMLElement>('[data-dc-verdict]')!;
+      const btns = Array.from(root.querySelectorAll<HTMLButtonElement>('[data-m]'));
+      const set = (k: 'nut' | 'def') => {
+        const m = M[k];
+        btns.forEach((b) => b.setAttribute('aria-pressed', String(b.dataset.m === k)));
+        pop.style.left = `${m.pop * 100}%`;
+        ess.style.left = '90%';
+        host.classList.toggle('off', m.host === null);
+        host.style.left = `${(m.host ?? 0) * 100}%`;
+        gap.style.left = `${m.pop * 100}%`;
+        gap.style.width = `${Math.max(0, 0.9 - m.pop) * 100}%`;
+        popN.textContent = m.label;
+        verdict.innerHTML = m.text;
+      };
+      btns.forEach((b) => b.addEventListener('click', () => set(b.dataset.m as 'nut' | 'def')));
+      set('nut');
+    });
+  };
+  document.addEventListener('astro:page-load', init);
+</script>

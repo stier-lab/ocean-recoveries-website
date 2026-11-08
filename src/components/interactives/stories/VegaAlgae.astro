@@ -1,0 +1,82 @@
+---
+/**
+ * Vega et al. (2026) Biology Letters. Part 4: turf algae persisting on wounds at day 21.
+ * Paper (Results): algae persisted on 8 corals, 7 of them in tanks without fish; fragments without
+ * fish were ~9 times more likely to keep algae (p = 0.048). Mean Fv/Fm 0.609 with algae vs 0.677
+ * without (not significant, n = 8). Per-fragment flags from pam_healed.csv (24 with fish, 23 without).
+ */
+import InteractiveFrame from '../InteractiveFrame.astro';
+import data from '@data/stories/vega-2026.json';
+interface Props { eyebrow?: string; id?: string }
+const { eyebrow, id } = Astro.props;
+const groups = [
+  { k: 'none', label: 'Without damselfish', items: data.algae.filter((a) => !a.fish) },
+  { k: 'fish', label: 'With damselfish', items: data.algae.filter((a) => a.fish) },
+];
+---
+
+<InteractiveFrame
+  eyebrow={eyebrow}
+  id={id}
+  title="Who claims an open wound"
+  intro="Bare coral skeleton is open real estate. During healing, turf algae often moved into the wounds. Press the button to see which corals still had algae on their wounds at day 21."
+  source="From Vega, Osenberg, Seifert, Munk & Stier (2026), Biology Letters (Results). Each square is one wounded fragment; algal status for each fragment comes from the paper's public data repository."
+>
+  <div class="va" data-va>
+    <button type="button" class="pi-btn" data-va-go>Show day 21</button>
+    <div class="va-groups">
+      {groups.map((g) => (
+        <div class={`va-g va-${g.k}`}>
+          <div class="va-head"><span>{g.label}</span><span class="va-n" data-va-n={g.k}>{g.items.length} corals</span></div>
+          <div class="va-grid">
+            {g.items.map((a, i) => <span class={`va-cell${a.algae ? ' alg' : ''}`} style={`--d:${i * 25}ms`}></span>)}
+          </div>
+        </div>
+      ))}
+    </div>
+    <div class="va-key" aria-hidden="true"><span class="va-k va-k-alg">Algae still on the wound</span><span class="va-k va-k-clean">No algae</span></div>
+    <div class="pi-verdict" data-va-verdict aria-live="polite"><strong>Make a guess first.</strong> Out of 47 wounded corals, how many do you think kept algae on their wounds, and where?</div>
+  </div>
+</InteractiveFrame>
+
+<style>
+  .va { display: grid; gap: 1.1rem; justify-items: start; }
+  .va-groups { display: grid; gap: 1rem; width: 100%; }
+  @media (min-width: 640px) { .va-groups { grid-template-columns: 1fr 1fr; } }
+  .va-head { display: flex; justify-content: space-between; font-size: 0.85rem; font-weight: 700; color: #fff; margin-bottom: 0.45rem; }
+  .va-fish .va-head span:first-child { color: #4FB6A5; }
+  .va-n { color: rgba(255,255,255,0.7); font-weight: 600; font-variant-numeric: tabular-nums; }
+  .va-grid { display: grid; grid-template-columns: repeat(8, minmax(0, 1fr)); gap: 6px; }
+  .va-cell { aspect-ratio: 1; border-radius: 5px; background: #b07a4f; transition: background 0.5s var(--d), transform 0.5s var(--d); }
+  .va.go .va-cell { background: rgba(255,255,255,0.14); }
+  .va.go .va-cell.alg { background: #7BBF4A; transform: scale(1.06); box-shadow: 0 0 0 2px rgba(123,191,74,0.3); }
+  .va-key { display: flex; flex-wrap: wrap; gap: 1rem; font-size: 0.85rem; color: rgba(255,255,255,0.8); }
+  .va-k::before { content: ''; display: inline-block; width: 0.8rem; height: 0.8rem; border-radius: 3px; margin-right: 0.4rem; vertical-align: -1px; }
+  .va-k-alg::before { background: #7BBF4A; }
+  .va-k-clean::before { background: rgba(255,255,255,0.14); }
+  @media (prefers-reduced-motion: reduce) { .va-cell { transition: none; } }
+</style>
+
+<script>
+  const init = () => {
+    document.querySelectorAll<HTMLElement>('[data-va]').forEach((root) => {
+      if (root.dataset.bound) return;
+      root.dataset.bound = '1';
+      const btn = root.querySelector<HTMLButtonElement>('[data-va-go]')!;
+      const verdict = root.querySelector<HTMLElement>('[data-va-verdict]')!;
+      const n = { none: root.querySelector<HTMLElement>('[data-va-n="none"]')!, fish: root.querySelector<HTMLElement>('[data-va-n="fish"]')! };
+      let on = false;
+      btn.addEventListener('click', () => {
+        on = !on;
+        root.classList.toggle('go', on);
+        btn.textContent = on ? 'Back to day 0' : 'Show day 21';
+        n.none.textContent = on ? '7 of 23 with algae' : '23 corals';
+        n.fish.textContent = on ? '1 of 24 with algae' : '24 corals';
+        verdict.innerHTML = on
+          ? '<strong>7 of the 8 corals that kept algae had no fish.</strong> Every tank without fish had at least one. Corals without fish were roughly nine times more likely to keep algae on their wounds. Tissue under persistent algae also averaged lower photosynthetic efficiency (0.609 against 0.677), though with only 8 such corals that difference was not statistically significant.'
+          : '<strong>Make a guess first.</strong> Out of 47 wounded corals, how many do you think kept algae on their wounds, and where?';
+      });
+    });
+  };
+  document.addEventListener('astro:page-load', init);
+</script>
