@@ -1,0 +1,11 @@
+{
+  "_source": "White et al. (2026) PNAS, revised manuscript (round 1): Table 1, Results, Figs. 3-4 captions",
+  "programs": [
+    {"id":"MCR","name":"Moorea Coral Reef LTER","eco":"Coral reef","color":"#E8A33D","years":"2006–2022","sites":18,"stab":[3.4,1.1],"mag":[3.0,0.8],"rich":[39.3,9.9],"syncPr":1.00,"richPr":1.00},
+    {"id":"FCE","name":"Florida Coastal Everglades LTER","eco":"Mangrove creeks","color":"#7BBF4A","years":"2005–2023","sites":15,"stab":[2.1,0.9],"mag":[1.7,1.0],"rich":[4.9,1.5],"syncPr":1.00,"richPr":0.63},
+    {"id":"PCCS","name":"PISCO Coastal California South","eco":"Kelp forest","color":"#4DA8C9","years":"1999–2021","sites":60,"stab":[1.9,0.5],"mag":[2.1,0.8],"rich":[6.7,1.6],"syncPr":1.00,"richPr":0.99},
+    {"id":"PCCC","name":"PISCO Coastal California Central","eco":"Kelp forest","color":"#8B9CF7","years":"1999–2021","sites":26,"stab":[1.6,0.4],"mag":[1.8,0.6],"rich":[6.1,0.7],"syncPr":0.93,"richPr":0.83},
+    {"id":"SBC","name":"Santa Barbara Coastal LTER","eco":"Kelp forest","color":"#4FB6A5","years":"2000–2023","sites":11,"stab":[1.5,0.3],"mag":[1.1,1.2],"rich":[6.7,3.3],"syncPr":0.71,"richPr":0.83},
+    {"id":"VCR","name":"Virginia Coast Reserve LTER","eco":"Seagrass","color":"#E07A9B","years":"2012–2018","sites":16,"stab":[1.1,0.3],"mag":[0.2,0.1],"rich":[2.0,1.0],"syncPr":0.98,"richPr":0.65}
+  ]
+}

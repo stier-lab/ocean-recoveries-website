@@ -1,0 +1,94 @@
+---
+/**
+ * White et al. (2026) PNAS. Part 1: the six programs compared (Table 1, mean ± SD across sites).
+ * Values from the authors' revised manuscript (round 1); see src/data/stories/white-2026.json.
+ */
+import InteractiveFrame from '../InteractiveFrame.astro';
+import data from '@data/stories/white-2026.json';
+interface Props { eyebrow?: string; id?: string }
+const { eyebrow, id } = Astro.props;
+---
+
+<InteractiveFrame
+  eyebrow={eyebrow}
+  id={id}
+  title="Six ecosystems, one function"
+  intro="Fish excrete nitrogen that seaweeds, seagrasses and corals take up. The team estimated that supply for 146 fish communities, from coral reefs to kelp forests, and asked how steady it stayed from year to year. Switch the measure to compare the six monitoring programs."
+  source="Program means ± SD across sites, from Table 1 of White et al. (2026), PNAS (authors' revised manuscript). Stability is 1/CV of annual community nitrogen supply. Supply is in mg N per hour per m² (per m at FCE)."
+>
+  <div class="we" data-we data-payload={JSON.stringify(data.programs)}>
+    <div class="pi-seg" role="group" aria-label="Measure">
+      <button type="button" data-k="stab" aria-pressed="true">Stability of supply</button>
+      <button type="button" data-k="mag" aria-pressed="false">Nitrogen supply</button>
+      <button type="button" data-k="rich" aria-pressed="false">Fish species</button>
+    </div>
+    <div class="we-rows" style={`height:${data.programs.length * 56}px`}>
+      {data.programs.map((p) => (
+        <div class="we-row" data-row={p.id} style={`--c:${p.color}`}>
+          <div class="we-lab"><strong>{p.id}</strong><span>{p.eco} · {p.sites} sites</span></div>
+          <div class="we-track"><span class="we-sd" data-sd></span><span class="we-bar" data-bar></span></div>
+          <div class="we-val" data-val></div>
+        </div>
+      ))}
+    </div>
+    <div class="pi-verdict" data-we-verdict aria-live="polite"></div>
+  </div>
+</InteractiveFrame>
+
+<style>
+  .we { display: grid; gap: 1.1rem; }
+  .we-rows { position: relative; }
+  .we-row {
+    position: absolute; left: 0; right: 0; height: 48px;
+    display: grid; grid-template-columns: 7.5rem 1fr 4.6rem; gap: 0.6rem; align-items: center;
+    transition: top 0.6s cubic-bezier(.2,.8,.2,1);
+  }
+  @media (max-width: 480px) { .we-row { grid-template-columns: 5.6rem 1fr 4.2rem; } }
+  .we-lab { display: grid; line-height: 1.2; }
+  .we-lab strong { color: var(--c); font-size: 0.95rem; }
+  .we-lab span { font-size: 0.7rem; color: rgba(255,255,255,0.55); }
+  .we-track { position: relative; height: 14px; border-radius: 999px; background: rgba(255,255,255,0.06); }
+  .we-bar { position: absolute; left: 0; top: 0; bottom: 0; border-radius: 999px; background: var(--c); width: 0; transition: width 0.6s cubic-bezier(.2,.8,.2,1); }
+  .we-sd { position: absolute; top: 50%; height: 2px; margin-top: -1px; background: rgba(255,255,255,0.75); transition: left 0.6s, width 0.6s; z-index: 1; }
+  .we-sd::before, .we-sd::after { content: ''; position: absolute; top: -4px; width: 2px; height: 10px; background: rgba(255,255,255,0.75); }
+  .we-sd::before { left: 0; } .we-sd::after { right: 0; }
+  .we-val { font-size: 0.85rem; font-weight: 700; color: #fff; font-variant-numeric: tabular-nums; text-align: right; }
+  @media (prefers-reduced-motion: reduce) { .we-row, .we-bar, .we-sd { transition: none; } }
+</style>
+
+<script>
+  type P = { id: string; stab: number[]; mag: number[]; rich: number[] };
+  const TEXT: Record<string, string> = {
+    stab: '<strong>Moorea’s coral reef had the steadiest nitrogen supply</strong> (stability 3.4), three times that of Virginia’s seagrass beds (1.1). Stability differed significantly among the six programs.',
+    mag: '<strong>The reef also supplied the most nitrogen</strong>, about 3 mg N per hour per m², against 0.2 in the seagrass. Places with a larger supply tended to have a steadier one, though that link was only marginal (p = 0.07).',
+    rich: '<strong>And the reef held far more fish species:</strong> about 39 per site, against 2 to 7 elsewhere. Part 2 asks whether that richness is what keeps the supply steady.',
+  };
+  const init = () => {
+    document.querySelectorAll<HTMLElement>('[data-we]').forEach((root) => {
+      if (root.dataset.bound) return;
+      root.dataset.bound = '1';
+      const progs: P[] = JSON.parse(root.dataset.payload || '[]');
+      const verdict = root.querySelector<HTMLElement>('[data-we-verdict]')!;
+      const btns = Array.from(root.querySelectorAll<HTMLButtonElement>('[data-k]'));
+      const set = (k: 'stab' | 'mag' | 'rich') => {
+        btns.forEach((b) => b.setAttribute('aria-pressed', String(b.dataset.k === k)));
+        const max = Math.max(...progs.map((p) => p[k][0] + p[k][1])) * 1.05;
+        [...progs].sort((a, b) => b[k][0] - a[k][0]).forEach((p, i) => {
+          const row = root.querySelector<HTMLElement>(`[data-row="${p.id}"]`)!;
+          const [m, sd] = p[k];
+          row.style.top = `${i * 56}px`;
+          row.querySelector<HTMLElement>('[data-bar]')!.style.width = `${(m / max) * 100}%`;
+          const sdEl = row.querySelector<HTMLElement>('[data-sd]')!;
+          const lo = Math.max(0, m - sd);
+          sdEl.style.left = `${(lo / max) * 100}%`;
+          sdEl.style.width = `${((m + sd - lo) / max) * 100}%`;
+          row.querySelector<HTMLElement>('[data-val]')!.textContent = `${m.toFixed(1)} ± ${sd.toFixed(1)}`;
+        });
+        verdict.innerHTML = TEXT[k];
+      };
+      btns.forEach((b) => b.addEventListener('click', () => set(b.dataset.k as 'stab' | 'mag' | 'rich')));
+      set('stab');
+    });
+  };
+  document.addEventListener('astro:page-load', init);
+</script>
