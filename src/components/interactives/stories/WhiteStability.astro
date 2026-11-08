@@ -1,0 +1,137 @@
+---
+/**
+ * White et al. (2026) PNAS. Mechanism illustration, NOT the paper's data.
+ * The paper (abstract): 146 fish-community time series, ~25 years, six long-term monitoring
+ * programs; species richness and species asynchrony help stabilize nitrogen supply across
+ * coral reefs, mangrove creeks, seagrass beds and kelp forests.
+ * Here: simulated species excretion series with a shared and an independent component.
+ * Community CV = species CV · sqrt(ρ + (1 − ρ)/N); stability = 1 / CV.
+ * mode="richness" varies N at ρ = 0.3; mode="asynchrony" varies ρ at N = 6.
+ */
+import InteractiveFrame from '../InteractiveFrame.astro';
+interface Props { eyebrow?: string; id?: string; mode: 'richness' | 'asynchrony' }
+const { eyebrow, id, mode } = Astro.props;
+const copy = {
+  richness: {
+    title: 'More species, steadier nitrogen',
+    intro: 'Fish excrete nitrogen that reefs, seagrass and kelp take up. Each species’ contribution rises and falls from year to year. Add species and watch what happens to the total supply.',
+    label: 'Number of fish species',
+  },
+  asynchrony: {
+    title: 'Out of step is a good thing',
+    intro: 'Richness only helps if species do not all boom and bust together. Keep six species and change how much their good and bad years line up.',
+    label: 'How much species move together',
+  },
+}[mode];
+const W = 600, H = 220;
+---
+
+<InteractiveFrame
+  eyebrow={eyebrow}
+  id={id}
+  title={copy.title}
+  intro={copy.intro}
+  source="An illustration of the mechanism, not data from the paper. Lines are simulated species with the same average excretion and year-to-year variability over 25 years, each drawn as its departure from its own average; the bold line is the community total. Steadiness is the inverse of the coefficient of variation, relative to one species. The study itself analysed 146 fish-community time series spanning about 25 years from six long-term monitoring programs (White et al. 2026, PNAS)."
+>
+  <div class="ws" data-ws data-mode={mode}>
+    <svg viewBox={`0 0 ${W} ${H}`} class="ws-svg" role="img" aria-label="Simulated yearly nitrogen supply from each fish species and from the whole community">
+      <line x1="0" x2={W} y1={H / 2} y2={H / 2} stroke="rgba(255,255,255,0.12)" stroke-dasharray="4 4"></line>
+      <g data-ws-species></g>
+      <path data-ws-total class="ws-total" d=""></path>
+      <text x="6" y="16" class="ws-ax">above average</text>
+      <text x="6" y={H - 8} class="ws-ax">below average</text>
+      <text x={W - 6} y={H - 8} text-anchor="end" class="ws-ax">25 years →</text>
+    </svg>
+    <div class="ws-key" aria-hidden="true"><span class="ws-k ws-k-sp">Each species</span><span class="ws-k ws-k-tot">Community total</span></div>
+    <div class="pi-field">
+      <div class="pi-field-top"><label for={`ws-${mode}`}>{copy.label}</label><output data-ws-out></output></div>
+      {mode === 'richness'
+        ? <input class="pi-range" id={`ws-${mode}`} type="range" min="1" max="12" step="1" value="1" />
+        : <input class="pi-range" id={`ws-${mode}`} type="range" min="0" max="1" step="0.05" value="1" />}
+      <div class="ws-ends" aria-hidden="true">{mode === 'richness' ? <><span>1</span><span>12</span></> : <><span>independent</span><span>in lockstep</span></>}</div>
+    </div>
+    <div class="ws-meter">
+      <span>Steadiness vs one species</span>
+      <div class="ws-bar"><div class="ws-fill" data-ws-fill></div></div>
+      <output data-ws-stab></output>
+    </div>
+    <div class="pi-verdict" data-ws-verdict aria-live="polite"></div>
+  </div>
+</InteractiveFrame>
+
+<style>
+  .ws { display: grid; gap: 1rem; }
+  .ws-svg { width: 100%; height: auto; display: block; border-radius: 0.75rem; background: rgba(255,255,255,0.03); }
+  .ws-ax { fill: rgba(255,255,255,0.4); font-size: 11px; }
+  :global(.ws-sp) { fill: none; stroke: #4DA8C9; stroke-width: 1.2; opacity: 0.32; }
+  .ws-total { fill: none; stroke: #fff; stroke-width: 3.5; stroke-linejoin: round; transition: d 0.5s; }
+  .ws-key { display: flex; flex-wrap: wrap; gap: 1rem; font-size: 0.8rem; color: rgba(255,255,255,0.75); }
+  .ws-k::before { content: ''; display: inline-block; width: 1.1rem; height: 0; margin-right: 0.4rem; vertical-align: 3px; }
+  .ws-k-sp::before { border-top: 2px solid rgba(77,168,201,0.7); }
+  .ws-k-tot::before { border-top: 3.5px solid #fff; }
+  .ws-ends { display: flex; justify-content: space-between; font-size: 0.72rem; color: rgba(255,255,255,0.45); }
+  .ws-meter { display: grid; grid-template-columns: 1fr auto; gap: 0.75rem; align-items: center; font-size: 0.85rem; color: rgba(255,255,255,0.8); }
+  .ws-meter > span { grid-column: 1 / -1; }
+  .ws-bar { height: 10px; border-radius: 999px; background: rgba(255,255,255,0.1); overflow: hidden; }
+  .ws-fill { height: 100%; border-radius: 999px; background: linear-gradient(90deg, #E8A33D, #4FB6A5); transition: width 0.5s; }
+  .ws-meter output { font-weight: 800; color: #fff; font-variant-numeric: tabular-nums; min-width: 3.2rem; text-align: right; }
+  @media (prefers-reduced-motion: reduce) { .ws-total, .ws-fill { transition: none; } }
+</style>
+
+<script>
+  const YEARS = 25, MAXN = 12, CV = 0.5; // each species: mean 1, sd 0.5 (illustrative)
+  // seeded normal draws so the picture is the same on every visit
+  const rng = (seed: number) => () => { seed = (seed * 16807) % 2147483647; return seed / 2147483647; };
+  const normals = (n: number, seed: number) => {
+    const r = rng(seed); return Array.from({ length: n }, () => Math.sqrt(-2 * Math.log(r() + 1e-12)) * Math.cos(2 * Math.PI * r()));
+  };
+  const common = normals(YEARS, 7);
+  const indep = Array.from({ length: MAXN }, (_, i) => normals(YEARS, 101 + i * 31));
+  const W = 600, H = 220;
+
+  const init = () => {
+    document.querySelectorAll<HTMLElement>('[data-ws]').forEach((root) => {
+      if (root.dataset.bound) return;
+      root.dataset.bound = '1';
+      const mode = root.dataset.mode as 'richness' | 'asynchrony';
+      const input = root.querySelector<HTMLInputElement>('input')!;
+      const out = root.querySelector<HTMLOutputElement>('[data-ws-out]')!;
+      const spG = root.querySelector<SVGGElement>('[data-ws-species]')!;
+      const total = root.querySelector<SVGPathElement>('[data-ws-total]')!;
+      const fill = root.querySelector<HTMLElement>('[data-ws-fill]')!;
+      const stabOut = root.querySelector<HTMLOutputElement>('[data-ws-stab]')!;
+      const verdict = root.querySelector<HTMLElement>('[data-ws-verdict]')!;
+      const NS = 'http://www.w3.org/2000/svg';
+      const sp = Array.from({ length: MAXN }, () => { const p = document.createElementNS(NS, 'path'); p.setAttribute('class', 'ws-sp'); spG.appendChild(p); return p; });
+
+      // deviation from the long-run mean, as a fraction of that mean; ±1 fills the panel
+      const path = (dev: number[]) => dev.map((d, t) => `${t ? 'L' : 'M'}${((t / (YEARS - 1)) * W).toFixed(1)},${(H / 2 - Math.max(-1, Math.min(1, d)) * (H / 2 - 14)).toFixed(1)}`).join(' ');
+
+      const draw = () => {
+        const v = +input.value;
+        const N = mode === 'richness' ? v : 6;
+        const rho = mode === 'richness' ? 0.3 : v;
+        const series = Array.from({ length: N }, (_, i) => common.map((c, t) => CV * (Math.sqrt(rho) * c + Math.sqrt(1 - rho) * indep[i][t])));
+        sp.forEach((p, i) => { p.style.display = i < N ? '' : 'none'; if (i < N) p.setAttribute('d', path(series[i])); });
+        const tot = common.map((_, t) => series.reduce((a, s) => a + s[t], 0) / N);
+        total.setAttribute('d', path(tot));
+        const cvTot = CV * Math.sqrt(rho + (1 - rho) / N);
+        const rel = CV / cvTot; // stability (1/CV) relative to a single species
+        fill.style.width = `${Math.min(100, (rel / 3.5) * 100)}%`;
+        stabOut.textContent = `${rel.toFixed(1)}×`;
+        out.textContent = mode === 'richness' ? String(N) : rho === 0 ? 'independent' : rho === 1 ? 'in lockstep' : rho.toFixed(2);
+        const gain = rel.toFixed(1);
+        verdict.innerHTML = mode === 'richness'
+          ? (N === 1
+            ? '<strong>One species: the supply swings with it.</strong> Every bad year for that species is a bad year for nitrogen supply.'
+            : `<strong>${N} species: the total is ${gain} times steadier than one species alone.</strong> Bad years for some species are offset by good years for others. Gains level off, because species here still share part of their ups and downs.`)
+          : (rho >= 0.95
+            ? '<strong>In lockstep, six species behave like one.</strong> When every species has its good and bad years together, adding species does nothing for stability.'
+            : `<strong>The less species move together, the steadier the total.</strong> At this level of synchrony, six species give a supply ${gain} times steadier than one. That asynchrony is the second stabilizer the study identified.`);
+      };
+      input.addEventListener('input', draw);
+      draw();
+    });
+  };
+  document.addEventListener('astro:page-load', init);
+</script>

@@ -1,0 +1,15 @@
+---
+/** White et al. (2026) PNAS. Two-part mechanism story (illustrative; see WhiteStability). */
+import StoryHeader from './StoryHeader.astro';
+import WhiteStability from './WhiteStability.astro';
+const slug = 'white-2026';
+const parts = ['More species, steadier nitrogen', 'Out of step is a good thing'];
+---
+
+<StoryHeader
+  slug={slug}
+  headline="Across 146 fish communities, about 25 years of monitoring and four coastal ecosystems, more species and species that rise and fall out of step kept the nitrogen supply from fish steadier."
+  parts={parts}
+/>
+<WhiteStability id={`${slug}-1`} eyebrow="Part 1 of 2" mode="richness" />
+<WhiteStability id={`${slug}-2`} eyebrow="Part 2 of 2" mode="asynchrony" />

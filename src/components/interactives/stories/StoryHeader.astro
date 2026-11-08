@@ -1,0 +1,41 @@
+---
+/**
+ * Opens a multi-part paper story: a one-line framing and a jump list of the parts.
+ * Each part is an InteractiveFrame with id `${slug}-${n}` and eyebrow "Part n of N".
+ */
+interface Props {
+  slug: string;
+  headline: string;
+  parts: string[];
+}
+const { slug, headline, parts } = Astro.props;
+---
+
+<nav class="ps" aria-label="Parts of this story">
+  <span class="ps-eyebrow">The story in {parts.length} figures</span>
+  <p class="ps-headline">{headline}</p>
+  <ol class="ps-list">
+    {parts.map((p, i) => (
+      <li><a href={`#${slug}-${i + 1}`}><span class="ps-n">{i + 1}</span><span>{p}</span></a></li>
+    ))}
+  </ol>
+</nav>
+
+<style>
+  .ps { margin: 3rem 0 -1.5rem; display: grid; gap: 0.75rem; }
+  .ps-eyebrow { font-size: 0.75rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: #4FB6A5; }
+  .ps-headline { margin: 0; font-size: 1.15rem; line-height: 1.5; color: rgba(255,255,255,0.88); text-wrap: pretty; }
+  .ps-list { list-style: none; margin: 0; padding: 0; display: grid; gap: 0.4rem; }
+  @media (min-width: 640px) { .ps-list { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+  .ps-list a {
+    display: flex; gap: 0.6rem; align-items: center; min-height: 44px; padding: 0.4rem 0.75rem;
+    border-radius: 0.6rem; border: 1px solid rgba(255,255,255,0.1); color: rgba(255,255,255,0.85);
+    text-decoration: none; font-size: 0.9rem; font-weight: 600;
+  }
+  .ps-list a:hover { border-color: rgba(255,255,255,0.3); color: #fff; }
+  .ps-list a:focus-visible { outline: 2px solid #4DA8C9; outline-offset: 2px; }
+  .ps-n {
+    flex: none; width: 1.6rem; height: 1.6rem; border-radius: 999px; display: grid; place-items: center;
+    background: rgba(79,182,165,0.18); color: #4FB6A5; font-size: 0.8rem; font-weight: 800;
+  }
+</style>

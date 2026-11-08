@@ -1,0 +1,16 @@
+---
+/** Detmer, Osenberg, Stier & Moeller (2026) Ecological Modelling 516: 111567. Two-part story. */
+import StoryHeader from './StoryHeader.astro';
+import DetmerSettlement from './DetmerSettlement.astro';
+import DetmerConflict from './DetmerConflict.astro';
+const slug = 'detmer-2026';
+const parts = ['Where should a young damselfish settle?', 'Best for one fish, worse for all fish'];
+---
+
+<StoryHeader
+  slug={slug}
+  headline="Evolution pushes coral-dwelling fish to choose big corals. When fish help corals grow, that choice leaves both fish and corals worse off than if fish spread out."
+  parts={parts}
+/>
+<DetmerSettlement id={`${slug}-1`} eyebrow="Part 1 of 2" />
+<DetmerConflict id={`${slug}-2`} eyebrow="Part 2 of 2" />

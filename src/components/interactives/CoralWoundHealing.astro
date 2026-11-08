@@ -13,9 +13,13 @@
  *   probably larger than shown.
  */
 import InteractiveFrame from './InteractiveFrame.astro';
+interface Props { eyebrow?: string; id?: string }
+const { eyebrow, id } = Astro.props;
 ---
 
 <InteractiveFrame
+  eyebrow={eyebrow}
+  id={id}
   title="Watch the wounds close"
   intro="Coral fragments were given a small or large wound and kept with or without yellowtail damselfish for three weeks. Pick a wound size and press play to see each coral heal at the rate measured in the experiment."
   source="Rates from Vega, Osenberg, Seifert, Munk & Stier (2026), Biology Letters (Results, Fig. 2), drawn to scale on a 3 × 4 cm fragment. The animation assumes each coral healed at its average rate. The paper notes that this underestimates healing for wounds that closed before day 21, so the real fish effect is probably larger."

@@ -1,0 +1,151 @@
+---
+/**
+ * Detmer, Osenberg, Stier & Moeller (2026) Ecological Modelling 516: 111567. Part 1.
+ * The model's partner behavior parameter ϕ = fraction of recruits that ignore juvenile hosts.
+ * Eq. 12: x1 = (1 − ϕ) · H1·Amid,1 / Atot. Eq. 13: xj = (1 − ϕ) · Hj·Amid,j / Atot + ϕ · Hj·Amid,j / (adult area).
+ * Reported values: ESS ϕ ≈ 0.9 for both mutualism types; partner-maximizing ϕ ≈ 0.17 (nutritional)
+ * and ≈ 0.86 (defensive) at default strengths (bx = 1).
+ * The coral cover shares (20% juvenile, 35% mid, 45% large) are illustrative, not model output.
+ */
+import InteractiveFrame from '../InteractiveFrame.astro';
+interface Props { eyebrow?: string; id?: string }
+const { eyebrow, id } = Astro.props;
+const stages = [
+  { k: 'j', label: 'Juvenile corals', sub: 'not yet reproducing', r: 26 },
+  { k: 'm', label: 'Mid-size adults', sub: '', r: 40 },
+  { k: 'l', label: 'Large adults', sub: '', r: 54 },
+];
+---
+
+<InteractiveFrame
+  eyebrow={eyebrow}
+  id={id}
+  title="Where should a young damselfish settle?"
+  intro="Big corals are better homes: fish living there survive better. But fish also help their coral grow or survive. This model asks how choosy fish should be. Drag the slider to set the share of settling fish that skip juvenile corals."
+  source="Settlement rule from Detmer, Osenberg, Stier & Moeller (2026), Ecological Modelling (eqs. 12–13). Marked values are reported in the Results. The coral cover shares (20% juvenile, 35% mid-size, 45% large) are illustrative only. Each run of 40 settlers is drawn from the model's proportions."
+>
+  <div class="ds" data-ds>
+    <div class="ds-corals">
+      {stages.map((s) => (
+        <figure class={`ds-coral ds-${s.k}`}>
+          <svg viewBox="0 0 140 130" aria-hidden="true">
+            <g transform={`translate(70 ${120 - s.r * 0.15})`}>
+              {[-0.9, -0.45, 0, 0.45, 0.9].map((a) => (
+                <path d={`M0 0 Q ${Math.sin(a) * s.r * 0.6} ${-s.r * 0.7} ${Math.sin(a) * s.r} ${-Math.cos(a) * s.r * 1.5}`} stroke="#c58b5c" stroke-width={s.r / 6} stroke-linecap="round" fill="none"></path>
+              ))}
+            </g>
+            <g data-fishlayer={s.k}></g>
+          </svg>
+          <figcaption><span class="ds-lab">{s.label}</span><span class="ds-share" data-share={s.k}></span></figcaption>
+        </figure>
+      ))}
+    </div>
+
+    <div class="pi-field">
+      <div class="pi-field-top"><label for="ds-phi">Fish that skip juvenile corals (ϕ)</label><output data-ds-phi>0.00</output></div>
+      <input class="pi-range" id="ds-phi" type="range" min="0" max="1" step="0.01" value="0">
+      <div class="ds-marks" aria-hidden="true">
+        <span style="left:17%">0.17<br />best for fish numbers<br />(growth helpers)</span>
+        <span style="left:90%" class="ds-ess">≈0.9<br />what evolves</span>
+      </div>
+    </div>
+    <div class="pi-seg" role="group" aria-label="Jump to a value">
+      <button type="button" data-jump="0">Not choosy (0)</button>
+      <button type="button" data-jump="0.17">Best for the fish population (0.17)</button>
+      <button type="button" data-jump="0.9">What evolves (≈0.9)</button>
+    </div>
+    <div class="pi-verdict" data-ds-verdict aria-live="polite"></div>
+  </div>
+</InteractiveFrame>
+
+<style>
+  .ds { display: grid; gap: 1.2rem; }
+  .ds-corals { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0.5rem; }
+  .ds-coral { margin: 0; border-radius: 0.75rem; background: #0b2545; overflow: hidden; border: 1px solid rgba(255,255,255,0.08); }
+  .ds-coral svg { display: block; width: 100%; height: auto; }
+  .ds-coral figcaption { display: grid; gap: 0.1rem; padding: 0.5rem 0.6rem; background: rgba(255,255,255,0.03); }
+  .ds-lab { font-size: 0.78rem; font-weight: 700; color: #fff; }
+  .ds-share { font-size: 0.78rem; color: rgba(255,255,255,0.7); font-variant-numeric: tabular-nums; }
+  .ds-marks { position: relative; height: 3.2rem; font-size: 0.68rem; line-height: 1.25; color: rgba(255,255,255,0.55); }
+  .ds-marks span { position: absolute; top: 0; transform: translateX(-50%); text-align: center; white-space: nowrap; }
+  .ds-marks span::before { content: ''; display: block; width: 1px; height: 6px; background: currentColor; margin: 0 auto 2px; }
+  .ds-marks .ds-ess { color: #E8A33D; transform: translateX(-80%); }
+  :global(.ds-fish) { transition: transform 0.7s cubic-bezier(.2,.8,.2,1), opacity 0.5s; }
+  @media (prefers-reduced-motion: reduce) { :global(.ds-fish) { transition: none; } }
+</style>
+
+<script>
+  const COVER = { j: 0.2, m: 0.35, l: 0.45 }; // illustrative cover shares
+  const N = 40;
+
+  const shares = (phi: number) => {
+    const adult = COVER.m + COVER.l;
+    return {
+      j: (1 - phi) * COVER.j,
+      m: (1 - phi) * COVER.m + phi * (COVER.m / adult),
+      l: (1 - phi) * COVER.l + phi * (COVER.l / adult),
+    };
+  };
+
+  // largest-remainder rounding so the three counts always sum to N
+  const counts = (s: Record<'j' | 'm' | 'l', number>) => {
+    const keys = ['j', 'm', 'l'] as const;
+    const raw = keys.map((k) => s[k] * N);
+    const out = raw.map(Math.floor);
+    let left = N - out.reduce((a, b) => a + b, 0);
+    raw.map((r, i) => [r - out[i], i] as const).sort((a, b) => b[0] - a[0]).forEach(([, i]) => { if (left > 0) { out[i]++; left--; } });
+    return { j: out[0], m: out[1], l: out[2] };
+  };
+
+  const init = () => {
+    document.querySelectorAll<HTMLElement>('[data-ds]').forEach((root) => {
+      if (root.dataset.bound) return;
+      root.dataset.bound = '1';
+      const input = root.querySelector<HTMLInputElement>('#ds-phi')!;
+      const out = root.querySelector<HTMLOutputElement>('[data-ds-phi]')!;
+      const verdict = root.querySelector<HTMLElement>('[data-ds-verdict]')!;
+      const layers = { j: root.querySelector<SVGGElement>('[data-fishlayer="j"]')!, m: root.querySelector<SVGGElement>('[data-fishlayer="m"]')!, l: root.querySelector<SVGGElement>('[data-fishlayer="l"]')! };
+      const share = { j: root.querySelector<HTMLElement>('[data-share="j"]')!, m: root.querySelector<HTMLElement>('[data-share="m"]')!, l: root.querySelector<HTMLElement>('[data-share="l"]')! };
+      const NS = 'http://www.w3.org/2000/svg';
+
+      // fixed slots per coral so fish appear in stable places
+      const slots = (n: number, seed: number) => Array.from({ length: n }, (_, i) => {
+        const a = (i * 2.399 + seed) % (Math.PI * 2);
+        const rr = 14 + ((i * 37 + seed * 11) % 40);
+        return [70 + Math.cos(a) * rr * 1.1, 60 + Math.sin(a) * rr * 0.75];
+      });
+      const pool: Record<string, SVGGElement[]> = { j: [], m: [], l: [] };
+      (['j', 'm', 'l'] as const).forEach((k, ki) => {
+        slots(N, ki + 1).forEach(([x, y]) => {
+          const g = document.createElementNS(NS, 'g');
+          g.setAttribute('class', 'ds-fish');
+          g.setAttribute('transform', `translate(${x.toFixed(1)} ${y.toFixed(1)}) scale(0)`);
+          g.dataset.x = x.toFixed(1); g.dataset.y = y.toFixed(1);
+          g.innerHTML = '<ellipse rx="6" ry="3.6" fill="#e2e8f0"></ellipse><path d="M5 0 L10 -3.5 L10 3.5 Z" fill="#facc15"></path>';
+          layers[k].appendChild(g);
+          pool[k].push(g);
+        });
+      });
+
+      const draw = (phi: number) => {
+        out.textContent = phi.toFixed(2);
+        const s = shares(phi), c = counts(s);
+        (['j', 'm', 'l'] as const).forEach((k) => {
+          pool[k].forEach((g, i) => g.setAttribute('transform', `translate(${g.dataset.x} ${g.dataset.y}) scale(${i < c[k] ? 1 : 0})`));
+          share[k].textContent = `${(s[k] * 100).toFixed(0)}% of settlers`;
+        });
+        const pj = (s.j * 100).toFixed(1);
+        verdict.innerHTML = phi >= 0.8
+          ? `<strong>Choosy fish nearly abandon juvenile corals.</strong> At ϕ = ${phi.toFixed(2)}, only ${pj}% of settlers land on juveniles. This is close to what evolves in the model (ϕ ≈ 0.9), and matches a Moorea survey that found almost no damselfish on juvenile <em>Pocillopora</em>.`
+          : phi <= 0.3
+          ? `<strong>Fish spread out across coral sizes.</strong> At ϕ = ${phi.toFixed(2)}, ${pj}% of settlers land on juveniles. When fish help corals grow, a value near 0.17 produced the most fish overall, because helped juveniles grow into the big corals that keep fish alive.`
+          : `<strong>In between.</strong> At ϕ = ${phi.toFixed(2)}, ${pj}% of settlers land on juvenile corals. Each fish does better on a big coral, but spreading out spreads the fishes' benefit to the next generation of corals.`;
+      };
+
+      input.addEventListener('input', () => draw(+input.value));
+      root.querySelectorAll<HTMLButtonElement>('[data-jump]').forEach((b) => b.addEventListener('click', () => { input.value = b.dataset.jump!; draw(+input.value); }));
+      draw(0);
+    });
+  };
+  document.addEventListener('astro:page-load', init);
+</script>
