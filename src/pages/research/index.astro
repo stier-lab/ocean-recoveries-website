@@ -239,7 +239,18 @@ const breadcrumbs = [
         </p>
       </div>
 
-      <ResilienceLandscape />
+      <ResilienceLandscape>
+        <div slot="habitats" class="resilience-studies">
+          <figure>
+            <img src="/images/research/kelp-forest-habitat-pencil.jpg" alt="Colored-pencil drawing of tall stands of giant kelp rising from a rocky reef, with a sheephead swimming among the fronds" width="900" height="600" loading="lazy" />
+            <figcaption><strong>Kelp forest</strong><span>Giant kelp forms a canopy above the rocky reef.</span></figcaption>
+          </figure>
+          <figure>
+            <img src="/images/research/urchin-barren-pencil-v2.jpg" alt="Colored-pencil drawing of patches of purple sea urchins across an exposed rocky reef" width="900" height="600" loading="lazy" />
+            <figcaption><strong>Urchin barren</strong><span>Purple urchins on a reef with little kelp.</span></figcaption>
+          </figure>
+        </div>
+      </ResilienceLandscape>
     </div>
 
     <WaveDivider id="resilience-wave" fillColor="surface" />
@@ -830,6 +841,19 @@ const breadcrumbs = [
   /* ============================================
      Resilience Across Scales Section
      ============================================ */
+  .resilience-studies {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+    margin: 0 0 12px;
+  }
+
+  .resilience-studies figure { width: min(100%, 280px); margin: 0 auto; }
+  .resilience-studies img { display: block; width: 100%; height: auto; }
+  .resilience-studies figcaption { margin-top: 8px; color: #dce7e5; font-size: 14px; line-height: 1.5; }
+  .resilience-studies figcaption strong,
+  .resilience-studies figcaption span { display: block; }
+
   /* ============================================
      Pillars Section
      ============================================ */
