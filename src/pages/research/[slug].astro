@@ -152,8 +152,40 @@ const isCoral = theme.slug === 'coral-reefs';
   <!-- ============================================
        OVERVIEW SECTION
        ============================================ -->
-  <section class="section-overview">
-    <div class="container">
+  <section class:list={['section-overview', { 'illustrated-overview': isCoral }]} id="overview">
+    <div class:list={['container', { 'illustration-layout': isCoral }]}>
+      {isCoral && (
+        <div class="coral-artwork">
+          <figure class="coral-study">
+            <span class="study-label">FORM &amp; STRUCTURE</span>
+            <img src="/images/research/pocillopora-coral-associates.jpg"
+              alt="Colored-pencil illustration of pink cauliflower coral, with two blue-green chromis above it and a small red-spotted crab tucked between the lower-left branches."
+              width="1536" height="1024" loading="lazy" />
+            <figcaption>
+              <span><i>Pocillopora</i> / Cauliflower coral</span>
+              <span>AI-assisted illustration of coral with blue-green chromis and a red-spotted guard crab, two associates documented in Mo&lsquo;orea. It does not depict a particular colony.</span>
+            </figcaption>
+          </figure>
+          <section class="associate-studies" aria-labelledby="associate-studies-title">
+            <h2 id="associate-studies-title">Coral associates, up close</h2>
+            <div class="associate-grid">
+              <figure>
+                <img src="/images/research/harpiliopsis-spinigera-pencil.jpg" alt="Translucent blue-gray shrimp with orange speckles and fine antennae" width="600" height="400" loading="lazy" />
+                <figcaption><i>Harpiliopsis spinigera</i></figcaption>
+              </figure>
+              <figure>
+                <img src="/images/research/alpheus-lottini-pencil.jpg" alt="Red-orange snapping shrimp with one enlarged spotted claw" width="600" height="400" loading="lazy" />
+                <figcaption><i>Alpheus lottini</i><span>Snapping shrimp</span></figcaption>
+              </figure>
+              <figure>
+                <img src="/images/research/galathea-pencil.jpg" alt="Blue-gray squat lobster with pale bands on its legs and claws" width="600" height="400" loading="lazy" />
+                <figcaption><i>Galathea</i><span>Squat lobster</span></figcaption>
+              </figure>
+            </div>
+            <p>AI-assisted drawings based on CAFI reference photos.</p>
+          </section>
+        </div>
+      )}
       <div class="overview-content scroll-reveal">
         <div class="overview-eyebrow">
           <span class={`eyebrow-icon ${isCoral ? 'coral-icon' : 'kelp-icon'}`}>
@@ -173,6 +205,7 @@ const isCoral = theme.slug === 'coral-reefs';
         </div>
 
         <div class="overview-text">
+          {isCoral && <h2 class="study-heading">The life within a living reef</h2>}
           {theme.description.split('\n\n').map((paragraph) => (
             <p>{paragraph}</p>
           ))}
@@ -729,6 +762,33 @@ const isCoral = theme.slug === 'coral-reefs';
      ============================================ */
   .section-overview {
     @apply py-20 md:py-28 bg-surface;
+  }
+
+  section.illustrated-overview { background: #fff; color: #263c37; }
+  .illustration-layout { display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr); gap: 64px; align-items: center; }
+  .coral-study { margin: 0; min-width: 0; }
+  .study-label { display: block; font-size: 11px; font-weight: 600; color: #526a60; padding-bottom: 20px; border-top: 1px solid #b4c4ba; padding-top: 14px; }
+  .coral-study img { display: block; width: 100%; height: auto; }
+  .coral-study figcaption { display: grid; gap: 7px; border-top: 1px solid #b4c4ba; margin-top: 20px; padding-top: 14px; font-size: 12px; line-height: 1.6; color: #526359; }
+  .coral-study figcaption span:first-child { color: #263c37; font-size: 14px; }
+  .coral-artwork { min-width: 0; }
+  .associate-studies { margin-top: 24px; border-top: 1px solid #b4c4ba; padding-top: 14px; }
+  .associate-studies h2 { margin: 0 0 12px; color: #263c37; font-family: Georgia, serif; font-size: 19px; font-weight: 400; letter-spacing: 0; }
+  .associate-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; }
+  .associate-grid figure { margin: 0; min-width: 0; }
+  .associate-grid img { display: block; width: 100%; height: auto; aspect-ratio: 3 / 2; object-fit: contain; }
+  .associate-grid figcaption { display: grid; gap: 2px; margin-top: 7px; font-size: 12px; line-height: 1.35; overflow-wrap: anywhere; }
+  .associate-grid figcaption span, .associate-studies p { color: #526359; }
+  .associate-studies p { font-size: 12px; margin: 12px 0 0; }
+  .illustrated-overview .overview-content { max-width: none; margin: 0; text-align: left; }
+  .illustrated-overview .overview-eyebrow { justify-content: flex-start; }
+  .illustrated-overview .eyebrow-text { color: #526359; }
+  .illustrated-overview .study-heading { font-family: Georgia, serif; font-size: 42px; line-height: 1.12; font-weight: 400; margin: 0 0 28px; color: #263c37; }
+  .illustrated-overview .overview-text p { color: #43534c; font-size: 16px; line-height: 1.8; }
+  @media (max-width: 767px) {
+    .illustration-layout { grid-template-columns: minmax(0, 1fr); gap: 36px; }
+    .illustrated-overview .study-heading { font-size: 34px; }
+    section.illustrated-overview { padding: 40px 0; }
   }
 
   .overview-content {
