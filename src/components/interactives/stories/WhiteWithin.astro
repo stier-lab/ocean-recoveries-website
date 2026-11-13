@@ -1,0 +1,93 @@
+---
+/**
+ * White et al. (2026) PNAS. Part 3: within ecosystems, synchrony beats richness.
+ * Posterior probabilities from Results (single-term Bayesian hierarchical models):
+ * synchrony Pr(slope < 0); richness Pr(slope > 0). R²: synchrony marg 0.14 / cond 0.70;
+ * richness marg 0.04 / cond 0.58 (Fig. 4 caption).
+ */
+import InteractiveFrame from '../InteractiveFrame.astro';
+import data from '@data/stories/white-2026.json';
+interface Props { eyebrow?: string; id?: string }
+const { eyebrow, id } = Astro.props;
+---
+
+<InteractiveFrame
+  eyebrow={eyebrow}
+  id={id}
+  title="Within an ecosystem, synchrony matters more"
+  intro="Zoom in to the sites within each program and the story changes. For each program, the bar shows how sure the model is about the direction of an effect: 50% is a coin flip, 100% is certain. Compare synchrony with richness."
+  source="Posterior probabilities from single-term Bayesian hierarchical models in White et al. (2026), PNAS (Results, Fig. 4; authors' revised manuscript). For synchrony the probability is that the slope is negative (more synchrony, less stability); for richness, that it is positive."
+>
+  <div class="ww" data-ww data-payload={JSON.stringify(data.programs.map((p) => ({ id: p.id, eco: p.eco, color: p.color, sync: p.syncPr, rich: p.richPr })))}>
+    <div class="pi-seg" role="group" aria-label="Predictor">
+      <button type="button" data-k="sync" aria-pressed="true">Species synchrony</button>
+      <button type="button" data-k="rich" aria-pressed="false">Species richness</button>
+    </div>
+    <div class="ww-scale" aria-hidden="true"><span>50% coin flip</span><span>100% certain</span></div>
+    <div class="ww-rows" style={`height:${data.programs.length * 46}px`}>
+      {data.programs.map((p) => (
+        <div class="ww-row" data-row={p.id} style={`--c:${p.color}`}>
+          <span class="ww-lab">{p.id}</span>
+          <span class="ww-track"><span class="ww-bar" data-bar></span></span>
+          <span class="ww-val" data-val></span>
+        </div>
+      ))}
+    </div>
+    <div class="ww-r2">
+      <div><span class="ww-r2-n" data-r2m></span><span>explained by the shared trend across programs</span></div>
+      <div><span class="ww-r2-n" data-r2c></span><span>explained once each program gets its own slope</span></div>
+    </div>
+    <div class="pi-verdict" data-ww-verdict aria-live="polite"></div>
+  </div>
+</InteractiveFrame>
+
+<style>
+  .ww { display: grid; gap: 0.9rem; }
+  .ww-scale { display: flex; justify-content: space-between; margin-left: 4rem; margin-right: 3.4rem; font-size: 0.7rem; color: rgba(255,255,255,0.5); }
+  .ww-rows { position: relative; }
+  .ww-row { position: absolute; left: 0; right: 0; height: 38px; display: grid; grid-template-columns: 3.4rem 1fr 2.8rem; gap: 0.6rem; align-items: center; transition: top 0.6s cubic-bezier(.2,.8,.2,1); }
+  .ww-lab { font-weight: 800; color: var(--c); font-size: 0.9rem; }
+  .ww-track { position: relative; height: 16px; border-radius: 4px; background: repeating-linear-gradient(90deg, rgba(255,255,255,0.06) 0 calc(50% - 1px), rgba(255,255,255,0.2) calc(50% - 1px) 50%); }
+  .ww-bar { position: absolute; left: 0; top: 0; bottom: 0; border-radius: 4px; background: var(--c); width: 0; transition: width 0.6s cubic-bezier(.2,.8,.2,1), opacity 0.4s; }
+  .ww-val { font-size: 0.85rem; font-weight: 700; color: #fff; text-align: right; font-variant-numeric: tabular-nums; }
+  .ww-r2 { display: grid; grid-template-columns: 1fr 1fr; gap: 0.6rem; }
+  .ww-r2 > div { display: grid; gap: 0.2rem; padding: 0.7rem 0.8rem; border-radius: 0.7rem; background: rgba(255,255,255,0.05); font-size: 0.75rem; color: rgba(255,255,255,0.7); }
+  .ww-r2-n { font-size: 1.4rem; font-weight: 800; color: #fff; font-variant-numeric: tabular-nums; }
+  @media (prefers-reduced-motion: reduce) { .ww-row, .ww-bar { transition: none; } }
+</style>
+
+<script>
+  type P = { id: string; sync: number; rich: number };
+  const R2 = { sync: [14, 70], rich: [4, 58] };
+  const TEXT = {
+    sync: '<strong>Synchrony destabilized supply in all six programs.</strong> The direction was negative everywhere, with near certainty at MCR, PCCS and FCE and more uncertainty at SBC. But the strength varied a lot, so the shared trend explains only 14% of the variation; letting each program have its own slope raises that to 70%.',
+    rich: '<strong>Richness mattered in some places, not others.</strong> It clearly helped at MCR and PCCS, but at VCR and FCE the evidence was barely better than a coin flip. Within programs, richness explained only 4% of the variation through its shared trend. The variable that wins across ecosystems is not the one that wins within them.',
+  };
+  const init = () => {
+    document.querySelectorAll<HTMLElement>('[data-ww]').forEach((root) => {
+      if (root.dataset.bound) return;
+      root.dataset.bound = '1';
+      const progs: P[] = JSON.parse(root.dataset.payload || '[]');
+      const verdict = root.querySelector<HTMLElement>('[data-ww-verdict]')!;
+      const r2m = root.querySelector<HTMLElement>('[data-r2m]')!;
+      const r2c = root.querySelector<HTMLElement>('[data-r2c]')!;
+      const btns = Array.from(root.querySelectorAll<HTMLButtonElement>('[data-k]'));
+      const set = (k: 'sync' | 'rich') => {
+        btns.forEach((b) => b.setAttribute('aria-pressed', String(b.dataset.k === k)));
+        [...progs].sort((a, b) => b[k] - a[k]).forEach((p, i) => {
+          const row = root.querySelector<HTMLElement>(`[data-row="${p.id}"]`)!;
+          row.style.top = `${i * 46}px`;
+          // track spans 50%–100%
+          row.querySelector<HTMLElement>('[data-bar]')!.style.width = `${Math.max(0, (p[k] - 0.5) / 0.5) * 100}%`;
+          row.querySelector<HTMLElement>('[data-val]')!.textContent = `${Math.round(p[k] * 100)}%`;
+        });
+        r2m.textContent = `${R2[k][0]}%`;
+        r2c.textContent = `${R2[k][1]}%`;
+        verdict.innerHTML = TEXT[k];
+      };
+      btns.forEach((b) => b.addEventListener('click', () => set(b.dataset.k as 'sync' | 'rich')));
+      set('sync');
+    });
+  };
+  document.addEventListener('astro:page-load', init);
+</script>

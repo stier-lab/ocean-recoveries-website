@@ -1,15 +1,24 @@
 ---
-/** White et al. (2026) PNAS. Two-part mechanism story (illustrative; see WhiteStability). */
+/**
+ * White et al. (2026) PNAS. Four-part story. Parts 1–3 use results from the authors'
+ * revised manuscript (round 1); Part 4 is a labeled mechanism illustration.
+ */
 import StoryHeader from './StoryHeader.astro';
+import WhiteEcosystems from './WhiteEcosystems.astro';
+import WhiteAcross from './WhiteAcross.astro';
+import WhiteWithin from './WhiteWithin.astro';
 import WhiteStability from './WhiteStability.astro';
 const slug = 'white-2026';
-const parts = ['More species, steadier nitrogen', 'Out of step is a good thing'];
+const parts = ['Six ecosystems, one function', 'Across ecosystems, more species means a steadier supply', 'Within an ecosystem, synchrony matters more', 'Why out of step is a good thing'];
+const eb = (n: number) => `Part ${n} of ${parts.length}`;
 ---
 
 <StoryHeader
   slug={slug}
-  headline="Across 146 fish communities, about 25 years of monitoring and four coastal ecosystems, more species and species that rise and fall out of step kept the nitrogen supply from fish steadier."
+  headline="What keeps the nitrogen supply from fish steady depends on scale. Comparing ecosystems, species-rich communities were steadier. Within an ecosystem, what mattered most was whether species rose and fell together."
   parts={parts}
 />
-<WhiteStability id={`${slug}-1`} eyebrow="Part 1 of 2" mode="richness" />
-<WhiteStability id={`${slug}-2`} eyebrow="Part 2 of 2" mode="asynchrony" />
+<WhiteEcosystems id={`${slug}-1`} eyebrow={eb(1)} />
+<WhiteAcross id={`${slug}-2`} eyebrow={eb(2)} />
+<WhiteWithin id={`${slug}-3`} eyebrow={eb(3)} />
+<WhiteStability id={`${slug}-4`} eyebrow={eb(4)} mode="asynchrony" />
