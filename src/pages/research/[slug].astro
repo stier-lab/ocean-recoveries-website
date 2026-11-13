@@ -3,6 +3,7 @@ import Layout from '@layouts/Layout.astro';
 import Breadcrumbs from '@components/layout/Breadcrumbs.astro';
 import BreadcrumbSchema from '@components/seo/BreadcrumbSchema.astro';
 import { researchThemes } from '@data/research';
+import { researchArtwork } from '@data/researchArtwork';
 import { publications } from '@data/publications';
 import { posts } from '@data/posts';
 import { enrichPublicationsWithImages } from '@utils/publicationImages';
@@ -16,6 +17,7 @@ export function getStaticPaths() {
 }
 
 const { theme } = Astro.props;
+const artwork = researchArtwork[theme.slug];
 
 // Enrich publications with news post data
 const enrichedPubs = enrichPublicationsWithImages(publications, posts);
@@ -152,37 +154,29 @@ const isCoral = theme.slug === 'coral-reefs';
   <!-- ============================================
        OVERVIEW SECTION
        ============================================ -->
-  <section class:list={['section-overview', { 'illustrated-overview': isCoral }]} id="overview">
-    <div class:list={['container', { 'illustration-layout': isCoral }]}>
-      {isCoral && (
+  <section class:list={['section-overview', { 'illustrated-overview': artwork }]} id="overview">
+    <div class:list={['container', { 'illustration-layout': artwork }]}>
+      {artwork && (
         <div class="coral-artwork">
           <figure class="coral-study">
             <span class="study-label">FORM &amp; STRUCTURE</span>
-            <img src="/images/research/pocillopora-coral-associates.jpg"
-              alt="Colored-pencil illustration of pink cauliflower coral, with two blue-green chromis above it and a small red-spotted crab tucked between the lower-left branches."
-              width="1536" height="1024" loading="lazy" />
+            <img src={artwork.src} alt={artwork.alt} width="1536" height="1024" loading="lazy" />
             <figcaption>
-              <span><i>Pocillopora</i> / Cauliflower coral</span>
-              <span>AI-assisted illustration of coral with blue-green chromis and a red-spotted guard crab, two associates documented in Mo&lsquo;orea. It does not depict a particular colony.</span>
+              <span><i>{artwork.scientificName}</i> / {artwork.commonName}</span>
+              <span>{artwork.caption}</span>
             </figcaption>
           </figure>
           <section class="associate-studies" aria-labelledby="associate-studies-title">
-            <h2 id="associate-studies-title">Coral associates, up close</h2>
+            <h2 id="associate-studies-title">{artwork.detailsTitle}</h2>
             <div class="associate-grid">
-              <figure>
-                <img src="/images/research/harpiliopsis-spinigera-pencil.jpg" alt="Translucent blue-gray shrimp with orange speckles and fine antennae" width="600" height="400" loading="lazy" />
-                <figcaption><i>Harpiliopsis spinigera</i></figcaption>
-              </figure>
-              <figure>
-                <img src="/images/research/alpheus-lottini-pencil.jpg" alt="Red-orange snapping shrimp with one enlarged spotted claw" width="600" height="400" loading="lazy" />
-                <figcaption><i>Alpheus lottini</i><span>Snapping shrimp</span></figcaption>
-              </figure>
-              <figure>
-                <img src="/images/research/galathea-pencil.jpg" alt="Blue-gray squat lobster with pale bands on its legs and claws" width="600" height="400" loading="lazy" />
-                <figcaption><i>Galathea</i><span>Squat lobster</span></figcaption>
-              </figure>
+              {artwork.details.map(({ src, alt, scientificName, commonName }) => (
+                <figure>
+                  <img src={src} alt={alt} width="600" height="400" loading="lazy" />
+                  <figcaption><i>{scientificName}</i>{commonName && <span>{commonName}</span>}</figcaption>
+                </figure>
+              ))}
             </div>
-            <p>AI-assisted drawings based on CAFI reference photos.</p>
+            <p>{artwork.credit}</p>
           </section>
         </div>
       )}
@@ -205,7 +199,7 @@ const isCoral = theme.slug === 'coral-reefs';
         </div>
 
         <div class="overview-text">
-          {isCoral && <h2 class="study-heading">The life within a living reef</h2>}
+          {artwork && <h2 class="study-heading">{artwork.heading}</h2>}
           {theme.description.split('\n\n').map((paragraph) => (
             <p>{paragraph}</p>
           ))}
@@ -764,7 +758,7 @@ const isCoral = theme.slug === 'coral-reefs';
     @apply py-20 md:py-28 bg-surface;
   }
 
-  section.illustrated-overview { background: #fff; color: #263c37; }
+  section.illustrated-overview { background: #fff; color: #263c37; scroll-margin-top: 5rem; }
   .illustration-layout { display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr); gap: 64px; align-items: center; }
   .coral-study { margin: 0; min-width: 0; }
   .study-label { display: block; font-size: 11px; font-weight: 600; color: #526a60; padding-bottom: 20px; border-top: 1px solid #b4c4ba; padding-top: 14px; }
