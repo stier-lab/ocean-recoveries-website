@@ -10,7 +10,6 @@ interface ResearchArtwork extends SpeciesStudy {
   heading: string;
   detailsTitle: string;
   details: SpeciesStudy[];
-  credit: string;
 }
 
 export const researchArtwork: Partial<Record<string, ResearchArtwork>> = {
@@ -19,7 +18,7 @@ export const researchArtwork: Partial<Record<string, ResearchArtwork>> = {
     alt: 'Colored-pencil illustration of pink cauliflower coral, with two blue-green chromis above it and a small red-spotted crab tucked between the lower-left branches.',
     scientificName: 'Pocillopora',
     commonName: 'Cauliflower coral',
-    caption: 'AI-assisted illustration of coral with blue-green chromis and a red-spotted guard crab, two associates documented in Mo\u2018orea. It does not depict a particular colony.',
+    caption: 'Composite illustration of coral with blue-green chromis and a red-spotted guard crab, two associates documented in Mo\u2018orea. It does not depict a particular colony.',
     heading: 'The life within a living reef',
     detailsTitle: 'Coral associates, up close',
     details: [
@@ -41,7 +40,6 @@ export const researchArtwork: Partial<Record<string, ResearchArtwork>> = {
         commonName: 'Squat lobster',
       },
     ],
-    credit: 'AI-assisted drawings based on CAFI reference photos.',
   },
   'kelp-forests': {
     src: '/images/research/giant-kelp-pencil.jpg',
@@ -71,6 +69,5 @@ export const researchArtwork: Partial<Record<string, ResearchArtwork>> = {
         commonName: 'California sheephead',
       },
     ],
-    credit: 'AI-assisted drawings based on reference photos. Not to scale.',
   },
 };
