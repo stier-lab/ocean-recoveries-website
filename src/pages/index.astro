@@ -99,7 +99,7 @@ const formatDate = formatSiteDate;
       </div>
       <figure class="featured-healing-media">
         <div class="featured-healing-labels"><span>28 °C · Ambient</span><span>31 °C · Heated</span></div>
-        <video controls playsinline preload="none" width="752" height="286"
+        <video controls muted loop playsinline preload="none" data-scroll-video width="752" height="286"
           poster="/images/research/lth-healing-poster.jpg"
           aria-label="Side-by-side microscope time-lapse of coral healing and regeneration at 28 and 31 degrees Celsius">
           <source src="/videos/lth-healing-comparison.mp4" type="video/mp4" />
@@ -550,6 +550,47 @@ const formatDate = formatSiteDate;
     </div>
   </section>
 </Layout>
+
+<script>
+  const initScrollVideo = () => {
+    document.querySelectorAll<HTMLVideoElement>('[data-scroll-video]').forEach((video) => {
+      if (video.dataset.observed) return;
+      video.dataset.observed = 'true';
+      video.muted = true;
+      const motion = window.matchMedia('(prefers-reduced-motion: reduce)');
+      let inView = false;
+      let manuallyPaused = false;
+      let automaticPause = false;
+      const sync = () => {
+        if (inView && !document.hidden && !motion.matches && !manuallyPaused) {
+          video.play().catch(() => { /* Native controls remain available if autoplay is blocked. */ });
+        } else if (!video.paused) {
+          automaticPause = true;
+          video.pause();
+        }
+      };
+      video.addEventListener('pause', () => {
+        if (!automaticPause && inView && !document.hidden) manuallyPaused = true;
+        automaticPause = false;
+      });
+      video.addEventListener('play', () => { manuallyPaused = false; });
+      const observer = new IntersectionObserver(([entry]) => {
+        inView = entry.isIntersecting && entry.intersectionRatio >= 0.4;
+        sync();
+      }, { threshold: [0, 0.4] });
+      observer.observe(video);
+      motion.addEventListener('change', sync);
+      document.addEventListener('visibilitychange', sync);
+      document.addEventListener('astro:before-swap', () => {
+        observer.disconnect();
+        document.removeEventListener('visibilitychange', sync);
+        motion.removeEventListener('change', sync);
+      }, { once: true });
+    });
+  };
+  initScrollVideo();
+  document.addEventListener('astro:page-load', initScrollVideo);
+</script>
 
 <style>
   .featured-healing { padding: 48px 0; background: #fff; color: #253c39; }
