@@ -4,6 +4,7 @@ import Breadcrumbs from '@components/layout/Breadcrumbs.astro';
 import BreadcrumbSchema from '@components/seo/BreadcrumbSchema.astro';
 import { researchThemes } from '@data/research';
 import StudyPrograms from '@components/research/StudyPrograms.astro';
+import ResearchPlaces from '@components/research/ResearchPlaces.astro';
 import ResilienceLandscape from '@components/research/ResilienceLandscape.astro';
 import { publications } from '@data/publications';
 import { posts } from '@data/posts';
@@ -358,6 +359,7 @@ const isCoral = theme.slug === 'coral-reefs';
             )}
           </div>
         </div>
+        <ResearchPlaces slug={theme.slug} />
       </div>
     </section>
   )}

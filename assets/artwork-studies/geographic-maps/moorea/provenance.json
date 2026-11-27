@@ -1,0 +1,40 @@
+{
+  "region": "moorea",
+  "bounds_wgs84": [-149.94, -17.615, -149.74, -17.455],
+  "projected_epsg": 32706,
+  "coast_source": "https://www.soest.hawaii.edu/pwessel/gshhg/gshhg-shp-2.3.7.zip",
+  "coast_dataset": "GSHHG 2.3.7 full-resolution L1, LGPL",
+  "coastline_sha256": "093c3e6ce6945c6bd55b70df9f1f2f2091eb0c1c651462ec31168e488e707eaa",
+  "coastline_vertices": 507,
+  "dem_source": "Shom 2023, MNT topo-bathymetrique cotier de Moorea, edition 2.0, 0.0002 degrees, mean sea level, negative-down convention",
+  "dem_attribution": "https://doi.org/10.17183/MNT_COTIER_MOOREA_METEO-FRANCE_20m_WGS84",
+  "shom_source": {
+    "url": "https://services.data.shom.fr/INSPIRE/telechargement/prepackageGroup/MNT_COTIER_MOOREA_20m_PACK_DL/prepackage/MNT_COTIER_MOOREA_METEO-FRANCE_NM/file/MNT_COTIER_MOOREA_METEO-FRANCE_NM.7z",
+    "archive_sha256": "b4da2472793dbaffa607ca58dbe4b5919d223dbd9bf639205a3423b7d40d1836",
+    "grid_sha256": "565ee97e3fd18a7f4062cb2d5efd3de7c3a16572c3e27eb4490b67b5fb42e382"
+  },
+  "tile_zoom": 12,
+  "tiles": [],
+  "dem_sha256": "21fedd64293f2464baaa530e50b2265eae866e24ff6266949ce824defa864a3d",
+  "output_grid_metres": [20, 20],
+  "pencil_v2_material": {
+    "file": "../pencil-pigment-material.png",
+    "sha256": "77dbff338cefdb71057fe6fb6bc8cb44ed78cbe5da31c74551650c100932c0da",
+    "use": "Only high-pass luminance surface grain. No generated geographic features. Pencil strokes follow DEM aspect and hillshade, clipped to unchanged coastline polygons; no contour overlay.",
+    "strokes": 44502
+  },
+  "elevation_range_land_metres": [-35.4102, 1198.8733],
+  "land_cells": 339085,
+  "geometry_checks": {
+    "coastline_hash_unchanged_after_styling": true,
+    "elevation_hash_unchanged_after_styling": true,
+    "same_coastline_object_for_both_variants": true,
+    "coastline_simplification": false,
+    "coordinate_jitter": false,
+    "generative_redraw": false,
+    "same_dem_for_both_variants": true,
+    "missing_land_elevations": 0,
+    "coastal_negative_elevation_cells": 2953
+  },
+  "rendering": "North-up UTM, bilinear DEM reprojection, 315-degree hillshade at 45-degree sun altitude. Color, fine grain and hatching only; contour lines from elevation. No vertical perspective or invented terrain/habitat."
+}

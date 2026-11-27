@@ -1,6 +1,7 @@
 ---
 import Layout from '@layouts/Layout.astro';
 import WaveDivider from '@components/shared/WaveDivider.astro';
+import PencilFigure from '@components/shared/PencilFigure.astro';
 
 // Recruitment status
 const recruitmentStatus = {
@@ -116,6 +117,20 @@ const recruitmentStatus = {
     <WaveDivider id="work-wave" fillColor="surface" />
   </section>
 
+  <section class="field-notebook" aria-labelledby="field-notebook-title">
+    <div class="container notebook-layout">
+      <div>
+        <p class="notebook-label">Research practice</p>
+        <h2 id="field-notebook-title">Start with a careful observation</h2>
+        <p>Underwater photographs, field notes, and measurements give us observations to work with. Analysis connects those observations to questions about coral reefs and kelp forests.</p>
+        <p><a href="/research">Explore our research programs</a></p>
+        <p><a href="/teaching">See an observation exercise from Biology of Fishes</a></p>
+      </div>
+      <PencilFigure src="/images/research/field-kit-pencil.jpg" alt="Colored-pencil study of a camera in an underwater housing, dive mask, slate with pencil, and measuring tape">
+        Tools for looking closely and keeping a record.
+      </PencilFigure>
+    </div>
+  </section>
   <!-- Our Approach -->
   <section id="approach" class="section-lg bg-surface scroll-mt-20 relative overflow-hidden">
     <div class="blob-container" aria-hidden="true">
@@ -767,6 +782,15 @@ const recruitmentStatus = {
 </Layout>
 
 <style>
+  .field-notebook { background: #fff; color: #293f3b; padding: 48px 0; }
+  .notebook-layout { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr); align-items: center; gap: 32px; }
+  .notebook-layout > div { min-width: 0; }
+  .field-notebook h2 { font: 400 30px/1.2 Georgia, serif; color: #293f3b; margin: 12px 0 20px; letter-spacing: 0; }
+  .field-notebook p { line-height: 1.7; margin-bottom: 16px; color: #38504b; }
+  .field-notebook a { color: #22625c; text-decoration: underline; text-underline-offset: 4px; }
+  .field-notebook a:focus-visible { outline: 3px solid #22625c; outline-offset: 4px; }
+  .notebook-label { font-size: 12px; font-weight: 600; text-transform: uppercase; }
+  @media(max-width: 767px) { .notebook-layout { grid-template-columns: minmax(0, 1fr); gap: 8px; } }
   /* ========================================
      Hero Section
      ======================================== */

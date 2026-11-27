@@ -1,3 +1,6 @@
+---
+import PencilFigure from '@components/shared/PencilFigure.astro';
+---
 <section id="coral-healing" class="healing-photos" aria-labelledby="healing-photos-title">
   <div class="container">
     <div class="healing-layout">
@@ -17,6 +20,10 @@
         <figcaption>Representative microscope sequences. Day labels follow the source animation. <a href="/images/research/lth-healing-comparison.gif">Original GIF</a></figcaption>
       </figure>
     </div>
+    <PencilFigure src="/images/research/coral-tip-repair-pencil.jpg" alt="A cut Acropora fragment and enlarged stages showing exposed skeleton, tissue closure, and early reorganization of the growing tip">
+      <div class="healing-stages"><span>Exposed skeleton</span><span>Tissue closure</span><span>Tip reorganization</span></div>
+      <strong>From a cut surface to a new growing tip.</strong> Exposed skeleton, tissue closure, and early tip reorganization. Drawing follows Molly Brzezinski’s microscope photographs of <i>Acropora</i> cf. <i>pulchra</i>. These are representative stages, not treatment averages or a fully regrown branch.
+    </PencilFigure>
     <details class="healing-detail">
       <summary>See the growing tip in detail</summary>
       <div class="healing-movies">
@@ -52,6 +59,7 @@
   .healing-photos a { color: #22625c; text-decoration: underline; text-underline-offset: 3px; }
   .healing-photos a:focus-visible, summary:focus-visible { outline: 3px solid #22625c; outline-offset: 4px; }
   .healing-credit { font-size: 14px; }
+  .healing-stages { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; text-align: center; margin-bottom: 20px; font-size: 13px; font-weight: 600; }
   figure { margin: 0; min-width: 0; }
   video, img { display: block; width: 100%; height: auto; }
   video { background: #111; }

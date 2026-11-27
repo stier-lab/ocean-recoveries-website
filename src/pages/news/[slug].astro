@@ -4,6 +4,7 @@ import Breadcrumbs from '@components/layout/Breadcrumbs.astro';
 import ArticleSchema from '@components/seo/ArticleSchema.astro';
 import BreadcrumbSchema from '@components/seo/BreadcrumbSchema.astro';
 import PaperInteractive from '@components/interactives/PaperInteractive.astro';
+import StudyIllustration from '@components/news/StudyIllustration.astro';
 import { posts } from '@data/posts';
 import { publications } from '@data/publications';
 import { storyTakeaways } from '@data/storyTakeaways';
@@ -253,6 +254,7 @@ const hasToc = tableOfContents.length > 2; // More than just Citation and Share
             </aside>
           )}
 
+          <StudyIllustration publicationId={publication?.id} />
           <!-- Article Content -->
           <div class="prose-content">
             {post.content.split('\n\n').map((block, index) => {

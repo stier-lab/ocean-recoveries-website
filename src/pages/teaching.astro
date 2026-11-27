@@ -1,0 +1,45 @@
+---
+import Layout from '@layouts/Layout.astro';
+import PencilFigure from '@components/shared/PencilFigure.astro';
+---
+<Layout title="Teaching" description="Learning to turn observations into ecological evidence in EEMB 106, Biology of Fishes, at UC Santa Barbara.">
+  <div class="teaching-page">
+    <div class="container teaching-content">
+      <p class="course-label">UC Santa Barbara · EEMB 106</p>
+      <h1>Teaching</h1>
+      <h2>Biology of Fishes</h2>
+      <p class="intro">Watching a fish is easy. Deciding what to record, and what those records can tell us, takes practice.</p>
+      <PencilFigure src="/images/research/fish-observation-notebook-pencil.jpg" alt="An open field notebook with an opaleye, fish behavior sketches, and two blank observation grids for independent observers">
+        An opaleye, behavior sketches, and paired recording grids for independent observations.
+      </PencilFigure>
+      <section aria-labelledby="observation-exercise" class="exercise">
+        <p class="course-label">A lab exercise at The REEF</p>
+        <h2 id="observation-exercise">Turning live fish into data</h2>
+        <p>Partners watch the same fish independently and record its behavior at timed intervals. They compare their records before drawing conclusions. The exercise is observation only, without handling or disturbing the animals.</p>
+        <div class="exercise-parts">
+          <section><h3>Observe</h3><p>Record swimming, hovering, hiding, and other defined behaviors. Mark a fish as not visible rather than guessing what it is doing.</p></section>
+          <section><h3>Compare</h3><p>Check agreement between observers. Calculate activity budgets using visible observations, keeping missed sightings separate.</p></section>
+          <section><h3>Interpret</h3><p>Separate an observation from an inference. Explain what a short observation in a tank cannot establish about behavior in the ocean.</p></section>
+        </div>
+      </section>
+      <p class="teaching-links"><a href="/research">Explore the research</a><a href="/join">Research opportunities</a></p>
+    </div>
+  </div>
+</Layout>
+<style>
+  .teaching-page { background: #fff; color: #293f3b; padding: 130px 0 64px; }
+  .teaching-content { max-width: 960px; }
+  h1, h2, h3 { font-family: Georgia, serif; color: #293f3b; font-weight: 400; line-height: 1.2; letter-spacing: 0; }
+  h1 { font-size: 48px; margin: 10px 0 32px; }
+  h2 { font-size: 30px; margin: 12px 0 20px; }
+  h3 { font-size: 23px; margin: 0 0 12px; }
+  p { line-height: 1.7; margin-bottom: 20px; color: #38504b; }
+  .intro { max-width: 650px; font-size: 20px; }
+  .course-label { font-size: 12px; font-weight: 600; text-transform: uppercase; }
+  .exercise { border-top: 2px solid #a6b8a2; padding-top: 32px; }
+  .exercise-parts { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 28px; margin-top: 32px; }
+  .teaching-links { display: flex; gap: 20px 32px; flex-wrap: wrap; margin-top: 32px; }
+  a { color: #22625c; text-decoration: underline; text-underline-offset: 4px; }
+  a:focus-visible { outline: 3px solid #22625c; outline-offset: 4px; }
+  @media(max-width: 640px) { .exercise-parts { grid-template-columns: minmax(0, 1fr); gap: 16px; } h1 { font-size: 38px; } .teaching-page { padding-top: 110px; } }
+</style>

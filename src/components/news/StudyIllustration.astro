@@ -1,0 +1,31 @@
+---
+import PencilFigure from '@components/shared/PencilFigure.astro';
+interface Props { publicationId?: string; }
+const { publicationId } = Astro.props;
+---
+{publicationId === 'vega-2026-biolett' && (
+  <div class="study-drawing">
+    <PencilFigure src="/images/research/vega-fish-comparison-pencil.jpg" alt="Matched wounded Pocillopora colonies: a resident yellowtail dascyllus on the left, no fish on the right">
+      <div class="treatment-labels"><span>Fish present</span><span>Fish absent</span></div>
+      <strong>The experimental comparison.</strong> Wounded <i>Pocillopora</i> with and without resident <i>Dascyllus flavicaudus</i>. The drawing shows the treatments, not measured healing rates. Colony shape follows the study’s wound photographs.
+    </PencilFigure>
+  </div>
+)}
+{publicationId === '6' && (
+  <figure class="size-study study-drawing">
+    <div class="animals">
+      <div><img src="/images/research/california-spiny-lobster-pencil.jpg" width="600" height="400" loading="lazy" alt="Colored-pencil California spiny lobster" /><span>Predator size</span></div>
+      <div><img src="/images/research/purple-sea-urchin-pencil.jpg" width="600" height="400" loading="lazy" alt="Colored-pencil purple sea urchin" /><span>Prey size</span></div>
+    </div>
+    <figcaption><strong>Who can eat whom?</strong> The experiment varied lobster size, urchin size, and prey density. Body size changes feeding relationships; these drawings identify the study species, not an exact size ratio or a universal threshold. <i>Panulirus interruptus</i> and <i>Strongylocentrotus purpuratus</i>.</figcaption>
+  </figure>
+)}
+<style>
+  .study-drawing { margin-block: 32px; }
+  .treatment-labels { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); text-align: center; margin-bottom: 16px; font-weight: 600; gap: 12px; }
+  .size-study { background: #fff; color: #293f3b; padding: 20px; }
+  .animals { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); align-items: center; gap: 16px; }
+  .animals > div { min-width: 0; text-align: center; font-weight: 600; }
+  .animals img { width: 100%; height: auto; display: block; aspect-ratio: 3/2; object-fit: contain; }
+  figcaption { margin-top: 20px; font-size: 14px; line-height: 1.65; }
+</style>

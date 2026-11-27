@@ -1,0 +1,133 @@
+{
+  "region": "santa_barbara_channel",
+  "bounds_wgs84": [-120.6, 33.85, -119.12, 34.65],
+  "projected_epsg": 32611,
+  "coast_source": "https://www.soest.hawaii.edu/pwessel/gshhg/gshhg-shp-2.3.7.zip",
+  "coast_dataset": "GSHHG 2.3.7 full-resolution L1, LGPL",
+  "coastline_sha256": "c7e8aa80c572974ab2555e39b6b0084a4b04a21a086c0158bb939ebb6ebd7c1d",
+  "coastline_vertices": 2982,
+  "dem_source": "AWS Terrain Tiles / Tilezen: USGS SRTM, GMTED2010 and 3DEP source mosaic",
+  "dem_attribution": "https://github.com/tilezen/joerd/blob/master/docs/attribution.md",
+  "shom_source": {},
+  "tile_zoom": 10,
+  "tiles": [
+    {
+      "url": "https://s3.amazonaws.com/elevation-tiles-prod/geotiff/10/168/406.tif",
+      "sha256": "fe3145f716a4badb4da15ce893d38f89a54b9990939d886856efb8714e9396a0"
+    },
+    {
+      "url": "https://s3.amazonaws.com/elevation-tiles-prod/geotiff/10/168/407.tif",
+      "sha256": "bc78011533f965a803901757a381b451e6fa1b6ec8b27ed5bc37add42c4fbd69"
+    },
+    {
+      "url": "https://s3.amazonaws.com/elevation-tiles-prod/geotiff/10/168/408.tif",
+      "sha256": "d34f78a9a99ef055a5b75cebfc13b3194a6d8b8a50f15e98f97b062c8bc4c3e7"
+    },
+    {
+      "url": "https://s3.amazonaws.com/elevation-tiles-prod/geotiff/10/168/409.tif",
+      "sha256": "d77f41a5ddbb74979c94ea9e588c0572023c4087ff1f6af4c324151e05cd7d80"
+    },
+    {
+      "url": "https://s3.amazonaws.com/elevation-tiles-prod/geotiff/10/169/406.tif",
+      "sha256": "b5421c422374ed95f37ee2ebc5675d7b3b1c2d827d675dbdaea75d71c49d096d"
+    },
+    {
+      "url": "https://s3.amazonaws.com/elevation-tiles-prod/geotiff/10/169/407.tif",
+      "sha256": "7d4a4477f93a9c06ae7a38387eb95741ecaa2b581295d1c4d048c25bffe797dd"
+    },
+    {
+      "url": "https://s3.amazonaws.com/elevation-tiles-prod/geotiff/10/169/408.tif",
+      "sha256": "a1955cc8df63a108bf35824a28362bc2586ab0d8d27feaf7fa308d0039d15e92"
+    },
+    {
+      "url": "https://s3.amazonaws.com/elevation-tiles-prod/geotiff/10/169/409.tif",
+      "sha256": "3bfd103c053ab668b5c74290dd563cb8b9c34f3bbc1b11eb937da2b5d36975d2"
+    },
+    {
+      "url": "https://s3.amazonaws.com/elevation-tiles-prod/geotiff/10/170/406.tif",
+      "sha256": "0616a9e9b6f765c624a648a71fc3ed31a1ade881a7cbc64ebaea38b14f5a8e02"
+    },
+    {
+      "url": "https://s3.amazonaws.com/elevation-tiles-prod/geotiff/10/170/407.tif",
+      "sha256": "2ddb4eb8fb24b87073ec8e685b2e172dbfa6f763f3a6c24f83b5311941d9a5a5"
+    },
+    {
+      "url": "https://s3.amazonaws.com/elevation-tiles-prod/geotiff/10/170/408.tif",
+      "sha256": "cbc73e61c28bdae9723c422f9a3af153d6235b96e955e56843757be11a55ea90"
+    },
+    {
+      "url": "https://s3.amazonaws.com/elevation-tiles-prod/geotiff/10/170/409.tif",
+      "sha256": "9c29f4c7ead8aeec60a886da8128004eb723bdd85eee9030fc8d64a216922295"
+    },
+    {
+      "url": "https://s3.amazonaws.com/elevation-tiles-prod/geotiff/10/171/406.tif",
+      "sha256": "148033b5e7f4fde0cb77299758eeb3b3212a4176ff8752030ccb9fc02bdbffc4"
+    },
+    {
+      "url": "https://s3.amazonaws.com/elevation-tiles-prod/geotiff/10/171/407.tif",
+      "sha256": "9ef988538c81bd1df5bfc4a1c1be98a57ab73ad1023ea0b8c4ad583702f85000"
+    },
+    {
+      "url": "https://s3.amazonaws.com/elevation-tiles-prod/geotiff/10/171/408.tif",
+      "sha256": "3061a3fccc3ae46096465861d85606e75c3b5c81cadc419e17aec8cc608b2890"
+    },
+    {
+      "url": "https://s3.amazonaws.com/elevation-tiles-prod/geotiff/10/171/409.tif",
+      "sha256": "170238242867f24bce8e054c3bfda2cad47bef6830e913c5a7a3ef6fa82ce6ee"
+    },
+    {
+      "url": "https://s3.amazonaws.com/elevation-tiles-prod/geotiff/10/172/406.tif",
+      "sha256": "98e004e20367aebb4e734c8ca3869484542b4cf72b1fb44398a2916a4ecf94e5"
+    },
+    {
+      "url": "https://s3.amazonaws.com/elevation-tiles-prod/geotiff/10/172/407.tif",
+      "sha256": "7723c4374b32939601a09ee86a3bc1f232bca18e6a5d447db042a6105eac09fb"
+    },
+    {
+      "url": "https://s3.amazonaws.com/elevation-tiles-prod/geotiff/10/172/408.tif",
+      "sha256": "0289c5bcb2263697c030379b3f1c31f9ff534d73fea7def4ea59c2416a2c453b"
+    },
+    {
+      "url": "https://s3.amazonaws.com/elevation-tiles-prod/geotiff/10/172/409.tif",
+      "sha256": "f90c89ccb28b20909bc71fc5b6ca18cdbbe10d15aebea7e8f4b063fb2fc01ea8"
+    },
+    {
+      "url": "https://s3.amazonaws.com/elevation-tiles-prod/geotiff/10/173/406.tif",
+      "sha256": "eb2a9dc70b96542775def12f2908ae714925cfeaf6362d26ae0c23e38643ba8b"
+    },
+    {
+      "url": "https://s3.amazonaws.com/elevation-tiles-prod/geotiff/10/173/407.tif",
+      "sha256": "68d594ab83f2fe1090440e852c97a2e43e8c3f5614ccff4d30e2b16c3ba385ac"
+    },
+    {
+      "url": "https://s3.amazonaws.com/elevation-tiles-prod/geotiff/10/173/408.tif",
+      "sha256": "ea99b13f16e4e5e7ba4b554c6ddf312b7ffc15bcbb8be6e374586347c7f24de4"
+    },
+    {
+      "url": "https://s3.amazonaws.com/elevation-tiles-prod/geotiff/10/173/409.tif",
+      "sha256": "bf32761b5c60536ab055d231734dd47e327d1ef387cf574705138b2cd2bba82d"
+    }
+  ],
+  "dem_sha256": "8c751d3fce887c9edd5a34f050b40610aa1c0e861f399d3c655e39f7b90d11a1",
+  "output_grid_metres": [100, 100],
+  "pencil_v2_material": {
+    "file": "../pencil-pigment-material.png",
+    "sha256": "77dbff338cefdb71057fe6fb6bc8cb44ed78cbe5da31c74551650c100932c0da",
+    "use": "Only high-pass luminance surface grain. No generated geographic features. Pencil strokes follow DEM aspect and hillshade, clipped to unchanged coastline polygons; no contour overlay.",
+    "strokes": 44258
+  },
+  "elevation_range_land_metres": [-76.8851, 2279.293],
+  "land_cells": 436115,
+  "geometry_checks": {
+    "coastline_hash_unchanged_after_styling": true,
+    "elevation_hash_unchanged_after_styling": true,
+    "same_coastline_object_for_both_variants": true,
+    "coastline_simplification": false,
+    "coordinate_jitter": false,
+    "generative_redraw": false,
+    "same_dem_for_both_variants": true,
+    "missing_land_elevations": 0,
+    "coastal_negative_elevation_cells": 1690
+  },
+  "rendering": "North-up UTM, bilinear DEM reprojection, 315-degree hillshade at 45-degree sun altitude. Color, fine grain and hatching only; contour lines from elevation. No vertical perspective or invented terrain/habitat."
+}

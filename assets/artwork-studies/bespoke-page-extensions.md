@@ -1,0 +1,18 @@
+# Bespoke page extensions — November 27, 2026
+
+Adrian approved integration and publishing on November 27, 2026. Original generated PNGs live alongside this note; optimized 1200 × 800 JPEGs live in `public/images/research/`. Illustrations are interpretations, not measurements or photographs. Existing photographic/video credits remain attached to those media.
+
+- `coral-tip-repair-pencil`: follows Molly Brzezinski's `public/images/research/lth-morphology-timeline.jpg` (days 0–15). Acropora cf. pulchra: exposed skeleton, tissue closure, early tip reorganization. No claim of complete branch regrowth or measured treatment differences. Molly created the source photographs/time-lapses, not this drawing.
+- `rse-choices-pencil`: conceptual nursery/outplant/monitor/adjust workflow using Acropora palmata. Existing licensed stock elkhorn photograph `assets/elkhorn-coral-diver-key-largo.jpeg` informed morphology. Not a specific partner's protocol or a modeled outcome. Does not replace Sayo Studio's commissioned RSE decision cycle or its credit.
+- `field-kit-pencil`: generic observational equipment study, not a documented inventory of a particular lab member's kit.
+- `fish-observation-notebook-pencil`: based on the real EEMB 106 Fall 2026 Lab 1 observation exercise at The REEF. Canonical teaching repository: `/Users/adrianstier/courses/eemb106-biology-of-fishes`. Reference worksheet is the private course archive's `Lab/2026/Student Worksheets/lab-01-student-worksheet.pdf`; not copied or linked publicly. Timed independent behavior observations, interobserver agreement, visible-scan activity budgets, observation/inference/limitation. Blank grids only: no student data or assessment keys. Opaleye morphology informed by `assets/wikimedia_roban_kramer_opaleye.jpg`; no source photo republished here.
+- `vega-fish-comparison-pencil`: treatment design for Vega et al. 2026, DOI 10.1098/rsbl.2026.0177. Pocillopora morphology follows Hayden Vega's actual coral62 photo `15-coral_62.jpg`, in the private Moorea Fish Regen archive. No inferred day number. Fish is Dascyllus flavicaudus, not Chromis viridis. Morphology checked against Reef Life Survey's species account (https://reeflife.org/species/dascyllus-flavicaudus/); no copyrighted RLS photo copied into the repository. Equivalent wounds illustrate fish-present/absent treatments, not outcomes.
+- DiFiore & Stier 2023 story reuses existing California spiny lobster and purple urchin pencil art. Experimental factors checked against the paper abstract in `publications/extracted/Difiore and Stier (JAE) 2023.json`, DOI 10.1111/1365-2656.13918. No invented size threshold or exact relative scale.
+
+## Locators
+
+The approved maps use the final `geographic-maps/{moorea,santa_barbara_channel}/pencil-v2.png` renders. Their full-resolution web JPEGs are `moorea-pencil-map.jpg` and `santa-barbara-channel-pencil-map.jpg`. Both appear on the Research overview; each also appears beside its field-site section. `geographic-maps/README.md` records coastline/elevation sources, licenses, rendering, and fixed-geometry checks. `ResearchPlaces.astro` retains visible source credit and full-size links. Earlier flat Natural Earth locators and generative place studies were rejected and are not used.
+
+## Source artwork
+
+Generated image output IDs: `5c32706d-0bd6-45f8-a945-d9172e5e16ac` (healing), `11aeca74-8e6e-4a3a-b72d-591087e04838` (RSE), `15436487-7fba-4cd0-8e72-2ea14af23dbd` (kit), `69b2861e-ea5b-4f64-a929-4c50bcfa9bf5` (teaching), `49aad75a-a775-483a-b08e-10aadb96fa7c` (Vega). Built-in image-generation tool; no existing source file overwritten. Public copy reviewed for source-specific claims and AI-writing patterns.

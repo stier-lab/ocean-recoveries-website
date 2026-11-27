@@ -1,0 +1,17 @@
+---
+interface Props { src: string; alt: string; width?: number; height?: number; }
+const { src, alt, width = 1200, height = 800 } = Astro.props;
+---
+<figure class="pencil-figure">
+  <a href={src} aria-label={`Open full-size illustration: ${alt}`}>
+    <img src={src} alt={alt} width={width} height={height} loading="lazy" />
+  </a>
+  <figcaption><slot /></figcaption>
+</figure>
+<style>
+  .pencil-figure { margin: 24px 0; padding: 16px 0; background: #fff; color: #293f3b; min-width: 0; }
+  img { display: block; width: 100%; height: auto; }
+  figcaption { padding: 12px 20px 0; font-size: 14px; line-height: 1.65; }
+  a { display: block; }
+  a:focus-visible { outline: 3px solid #22625c; outline-offset: 3px; }
+</style>
