@@ -139,6 +139,10 @@ const absoluteImage = image.startsWith('http') ? image : new URL(image, Astro.si
     <!-- Command Palette (Cmd+K) -->
     <CommandPalette />
 
+    <script>
+      import '@utils/scrollVideos';
+    </script>
+
     <!-- Scroll reveal observer -->
     <script>
       let currentScrollRevealObserver: IntersectionObserver | null = null;

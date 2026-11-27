@@ -551,47 +551,6 @@ const formatDate = formatSiteDate;
   </section>
 </Layout>
 
-<script>
-  const initScrollVideo = () => {
-    document.querySelectorAll<HTMLVideoElement>('[data-scroll-video]').forEach((video) => {
-      if (video.dataset.observed) return;
-      video.dataset.observed = 'true';
-      video.muted = true;
-      const motion = window.matchMedia('(prefers-reduced-motion: reduce)');
-      let inView = false;
-      let manuallyPaused = false;
-      let automaticPause = false;
-      const sync = () => {
-        if (inView && !document.hidden && !motion.matches && !manuallyPaused) {
-          video.play().catch(() => { /* Native controls remain available if autoplay is blocked. */ });
-        } else if (!video.paused) {
-          automaticPause = true;
-          video.pause();
-        }
-      };
-      video.addEventListener('pause', () => {
-        if (!automaticPause && inView && !document.hidden) manuallyPaused = true;
-        automaticPause = false;
-      });
-      video.addEventListener('play', () => { manuallyPaused = false; });
-      const observer = new IntersectionObserver(([entry]) => {
-        inView = entry.isIntersecting && entry.intersectionRatio >= 0.4;
-        sync();
-      }, { threshold: [0, 0.4] });
-      observer.observe(video);
-      motion.addEventListener('change', sync);
-      document.addEventListener('visibilitychange', sync);
-      document.addEventListener('astro:before-swap', () => {
-        observer.disconnect();
-        document.removeEventListener('visibilitychange', sync);
-        motion.removeEventListener('change', sync);
-      }, { once: true });
-    });
-  };
-  initScrollVideo();
-  document.addEventListener('astro:page-load', initScrollVideo);
-</script>
-
 <style>
   .featured-healing { padding: 48px 0; background: #fff; color: #253c39; }
   .featured-healing-layout { display: grid; grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr); gap: 40px; align-items: center; }

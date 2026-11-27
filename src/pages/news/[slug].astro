@@ -910,6 +910,11 @@ const hasToc = tableOfContents.length > 2; // More than just Citation and Share
     @apply border-none cursor-pointer;
   }
 
+  :global(body:has(video[data-video-in-view])) .back-to-top {
+    visibility: hidden;
+    pointer-events: none;
+  }
+
   .back-to-top.visible {
     @apply opacity-100 pointer-events-auto;
   }

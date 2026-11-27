@@ -9,7 +9,7 @@
       </div>
       <figure class="healing-comparison">
         <div class="healing-labels"><span>28 °C · Ambient</span><span>31 °C · Heated</span></div>
-        <video controls playsinline preload="none" width="752" height="286" poster="/images/research/lth-healing-poster.jpg"
+        <video controls muted loop playsinline data-scroll-video preload="none" width="752" height="286" poster="/images/research/lth-healing-poster.jpg"
           aria-label="Side-by-side microscope time-lapse of coral wound healing under ambient and heated conditions">
           <source src="/videos/lth-healing-comparison.mp4" type="video/mp4" />
           <a href="/images/research/lth-healing-comparison.gif">View the original healing GIF</a>
@@ -23,7 +23,7 @@
         {['ambient', 'heated'].map((condition) => (
           <figure>
             <figcaption>{condition === 'ambient' ? '28 °C · Ambient' : '31 °C · Heated'}</figcaption>
-            <video controls playsinline preload="none" width="560" height="420"
+            <video controls muted loop playsinline data-scroll-video preload="none" width="560" height="420"
               poster={`/images/research/lth-${condition}-poster.jpg`}
               aria-label={`Close-up coral regeneration time-lapse under ${condition} conditions`}>
               <source src={`/videos/lth-${condition}-healing.mp4`} type="video/mp4" />
