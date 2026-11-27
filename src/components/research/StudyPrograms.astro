@@ -1,0 +1,148 @@
+---
+import { studyPrograms } from '@data/studyPrograms';
+import { researchArtwork } from '@data/researchArtwork';
+
+interface Props { slug: string }
+const { slug } = Astro.props;
+const programs = studyPrograms[slug] ?? [];
+const coral = researchArtwork['coral-reefs']!;
+const kelp = researchArtwork['kelp-forests']!;
+const shortLabels = {
+  healing: 'Regeneration', coral: 'CAFI', restoration: 'Restoration',
+  habitats: 'Persistence', kelp: 'Habitat', 'food-web': 'Food webs',
+};
+---
+
+<section class="active-programs" id="current-research" aria-labelledby="current-research-title">
+  <div class="container">
+    <header class="programs-header">
+      <p class="program-eyebrow">Current research</p>
+      <h2 id="current-research-title">{slug === 'coral-reefs' ? 'Repair, communities, and restoration' : 'Persistence, habitat, and food webs'}</h2>
+      <nav aria-label="Research programs">
+        {programs.map(program => <a href={`#${program.id}`}>{shortLabels[program.visual]}</a>)}
+      </nav>
+    </header>
+    {programs.map(program => (
+      <article class={`program program-${program.visual}`} id={program.id} aria-labelledby={`${program.id}-title`}>
+        <div class="program-copy">
+          <p class="program-eyebrow">{program.label}</p>
+          <h3 id={`${program.id}-title`}>{program.title}</h3>
+          {program.paragraphs.map(paragraph => <p>{paragraph}</p>)}
+          <p class="program-location">{program.location}</p>
+          <a class="program-link" href={program.link.href}>{program.link.label}<span aria-hidden="true"> &rarr;</span></a>
+        </div>
+        <div class="program-visual">
+          {program.visual === 'healing' && (
+            <figure>
+              <div class="healing-labels"><span>28 &deg;C &middot; Ambient</span><span>31 &deg;C &middot; Heated</span></div>
+              <video controls muted loop playsinline data-scroll-video preload="none" width="752" height="286"
+                poster="/images/research/lth-healing-poster.jpg"
+                aria-label="Side-by-side microscope time-lapses of coral wound healing at 28 and 31 degrees Celsius">
+                <source src="/videos/lth-healing-comparison.mp4" type="video/mp4" />
+                <a href="/images/research/lth-healing-comparison.gif">View the original healing GIF</a>
+              </video>
+              <figcaption>Cut tips of <i>Acropora</i> cf. <i>pulchra</i>. Representative sequences, not a summary of treatment effects. Time-lapses: <strong>Molly Brzezinski</strong>.</figcaption>
+            </figure>
+          )}
+          {program.visual === 'coral' && (
+            <>
+              <figure>
+                <img src={coral.src} alt={coral.alt} width="1536" height="1024" loading="lazy" />
+                <figcaption><i>Pocillopora</i> and its residents. Composite illustration, not a particular field colony.</figcaption>
+              </figure>
+              <div class="species-details">
+                {coral.details.map(species => (
+                  <figure><img src={species.src} alt={species.alt} width="600" height="400" loading="lazy" />
+                    <figcaption><i>{species.scientificName}</i>{species.commonName && <span>{species.commonName}</span>}</figcaption>
+                  </figure>
+                ))}
+              </div>
+            </>
+          )}
+          {program.visual === 'restoration' && (
+            <figure>
+              <a href="/images/research/rse-decision-cycle.png" aria-label="Open the full-size Restoration Strategy Evaluation diagram">
+                <img src="/images/research/rse-decision-cycle.png" width="1500" height="1501" loading="lazy"
+                  alt="Seven-step Restoration Strategy Evaluation cycle: set targets, build a model, simulate strategies, evaluate performance, implement strategies, monitor results, and assess and adjust" />
+              </a>
+              <figcaption>Modeling and implementation form an iterative decision cycle. Illustration: Sayo Studio; developed with the RSE team and The Nature Conservancy. <a href="/images/research/rse-decision-cycle.png">Full-size diagram</a></figcaption>
+            </figure>
+          )}
+          {program.visual === 'habitats' && (
+            <figure>
+              <div class="habitat-pair">
+                <div><img src="/images/research/kelp-forest-habitat-pencil.jpg" alt="Pencil illustration of giant kelp growing above a rocky reef" width="900" height="600" loading="lazy" /><span>Kelp forest</span></div>
+                <div><img src="/images/research/urchin-barren-pencil-v2.jpg" alt="Pencil illustration of an urchin-covered rocky reef without a kelp canopy" width="900" height="600" loading="lazy" /><span>Urchin barren</span></div>
+              </div>
+              <figcaption>Two reef states, illustrated. Their contrast is not an inevitable sequence or a prediction for a particular site.</figcaption>
+            </figure>
+          )}
+          {program.visual === 'kelp' && (
+            <figure class="kelp-specimen">
+              <img src={kelp.src} alt={kelp.alt} width="1536" height="1024" loading="lazy" />
+              <figcaption><i>Macrocystis pyrifera</i> &middot; Giant kelp. Its canopy is one layer of a much larger reef community.</figcaption>
+            </figure>
+          )}
+          {program.visual === 'food-web' && (
+            <figure>
+              <div class="food-web-species">
+                {kelp.details.map(species => (
+                  <figure><img src={species.src} alt={species.alt} width="600" height="400" loading="lazy" />
+                    <figcaption><i>{species.scientificName}</i><span>{species.commonName}</span></figcaption>
+                  </figure>
+                ))}
+              </div>
+              <figcaption>Lobsters, urchins, and sheephead are part of a food web that also includes sea stars, other grazers, and people.</figcaption>
+            </figure>
+          )}
+        </div>
+      </article>
+    ))}
+  </div>
+</section>
+
+<style>
+  .active-programs { background: #fff; color: #263c37; padding: 16px 0 72px; scroll-margin-top: 5rem; }
+  .programs-header { padding: 24px 0 36px; }
+  .program-eyebrow { color: #53665e; font-size: 12px; font-weight: 600; margin: 0 0 14px; }
+  .programs-header h2 { font: 400 38px/1.15 Georgia, serif; color: #263c37; margin: 0 0 24px; }
+  nav { display: flex; flex-wrap: wrap; gap: 12px 24px; }
+  a { color: #21625b; text-decoration: underline; text-underline-offset: 4px; }
+  nav a { font-size: 14px; padding: 6px 0; }
+  a:focus-visible { outline: 3px solid #21625b; outline-offset: 5px; }
+  .program { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr); align-items: center; gap: 64px; padding: 52px 0; border-top: 1px solid #c5d1ca; scroll-margin-top: 6rem; }
+  .program-copy, .program-visual { min-width: 0; }
+  .program h3 { font: 400 32px/1.2 Georgia, serif; color: #263c37; margin: 0 0 22px; }
+  .program-copy > p:not(.program-eyebrow) { color: #43534c; font-size: 16px; line-height: 1.75; margin: 0 0 16px; }
+  .program-copy > p.program-location { font-size: 13px; color: #53665e; margin-top: 24px; }
+  .program-link { font-size: 14px; font-weight: 600; line-height: 1.5; display: inline-block; padding: 4px 0; }
+  figure { margin: 0; min-width: 0; }
+  img, video { display: block; width: 100%; height: auto; }
+  figcaption { color: #53665e; font-size: 12px; line-height: 1.6; margin-top: 12px; }
+  .healing-labels { display: flex; justify-content: space-between; gap: 12px; margin-bottom: 10px; font-size: 13px; font-weight: 600; }
+  video { background: #111; }
+  .species-details, .food-web-species { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; }
+  .species-details { margin-top: 24px; padding-top: 14px; border-top: 1px solid #c5d1ca; }
+  .species-details img, .food-web-species img { aspect-ratio: 3/2; object-fit: contain; }
+  .species-details figcaption, .food-web-species figcaption { overflow-wrap: anywhere; font-size: 11px; line-height: 1.45; }
+  figcaption span { display: block; margin-top: 4px; }
+  .habitat-pair { display: grid; gap: 16px; }
+  .habitat-pair img { aspect-ratio: 3/2; object-fit: contain; }
+  .habitat-pair span { display: block; font-size: 13px; margin: 6px 0 0; }
+  .kelp-specimen img { max-height: 430px; object-fit: contain; }
+  @media (min-width: 1000px) {
+    .habitat-pair { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  }
+  @media (max-width: 767px) {
+    .active-programs { padding-bottom: 32px; }
+    .programs-header { padding-top: 8px; padding-bottom: 28px; }
+    .programs-header h2 { font-size: 30px; }
+    nav { gap: 4px 20px; }
+    .program { grid-template-columns: minmax(0, 1fr); gap: 28px; padding: 36px 0; }
+    .program h3 { font-size: 28px; margin-bottom: 18px; }
+    .program-copy > p:not(.program-eyebrow) { font-size: 15px; line-height: 1.75; }
+    .program-copy > p.program-location { font-size: 12px; margin-top: 20px; }
+    .program-visual { max-width: 100%; }
+    .habitat-pair { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+  }
+</style>

@@ -37,11 +37,9 @@ export const studySystems: StudySystem[] = [
   {
     slug: 'coral-reefs',
     title: 'Coral Reefs',
-    tagline: 'Field experiments and models reveal how biotic interactions, disturbance legacies, and species associations shape coral resilience.',
+    tagline: 'Coral regeneration, the communities within coral colonies, and decisions that guide reef restoration.',
     heroImage: '/images/cauliflower-coral-damselfish-reef.jpeg',
-    description: `Mo'orea, French Polynesia offers an ideal natural laboratory for studying coral reef resilience. The island's fringing reefs—accessible by shore, sheltered by a barrier reef, and spanning distinct habitat zones—allow controlled field experiments that would be impossible on more remote or fragmented reef systems. This accessibility has enabled decades of continuous research on the same reef communities.
-
-Our work here combines long-term field experiments with mathematical models to understand what drives coral recovery. We study how coral-associated fishes and invertebrates influence coral health, how disturbance legacies affect recovery trajectories, and how predator-prey interactions structure reef communities. The MCR Long Term Ecological Research site provides unparalleled baseline data—tracking reef recovery after cyclones, crown-of-thorns outbreaks, and bleaching events since 2004.`,
+    description: `We study how corals repair injury, how the animals living among their branches affect their hosts, and how restoration teams can compare their options. Field experiments in Mo\u2018orea connect coral biology with community ecology. Collaborations in the Dominican Republic and Florida extend that work to restoration decisions under uncertainty.`,
     questions: [
       'How do coral-associated fishes and invertebrates benefit coral health and resilience?',
       'What role do guard crabs play in protecting corals from predators and competitors?',
@@ -53,18 +51,18 @@ Our work here combines long-term field experiments with mathematical models to u
     findings: [
       {
         title: 'Fish provide services to corals',
-        summary: 'Coral-dwelling fishes offer multiple benefits including nutrient provision and predator defense.',
-        detail: 'Our synthesis reveals that coral-associated fishes enhance coral health through oxygenation, nutrient subsidies, sediment removal, and protection from predators and parasites (Stier et al. 2025, Coral Reefs).',
+        summary: 'Coral-associated fishes can provide nutrients, oxygenation, cleaning, and defense.',
+        detail: 'Our synthesis describes several ways fishes affect their coral hosts, including nutrient provision, oxygenation, sediment removal, and defense. The services depend on the fishes and interactions involved (Stier et al. 2025, Coral Reefs).',
       },
       {
         title: 'Guard crabs defend corals',
-        summary: 'Mutualist crustaceans provide synergistic defense against coral enemies.',
-        detail: 'Multiple species of guard crabs work together to protect branching corals from predators like crown-of-thorns starfish and competitors like vermetid snails (McKeon et al. 2012, Oecologia; Stier et al. 2010, Coral Reefs).',
+        summary: 'Coral-dwelling crabs can defend their hosts against coral consumers.',
+        detail: 'Our studies examine how guard crabs defend branching corals against enemies including crown-of-thorns starfish and vermetid snails. The outcome depends on which species interact (McKeon et al. 2012, Oecologia; Stier et al. 2010, Coral Reefs).',
       },
       {
-        title: 'Dead coral structures can trap reefs',
-        summary: 'Standing dead coral skeletons left after disturbance can promote regime shifts.',
-        detail: 'Our mathematical models show that structure-retaining disturbances can push reefs toward tipping points by providing substrate for algal competitors (Kopecky et al. 2023, Ecology).',
+        title: 'Disturbance leaves structural legacies',
+        summary: 'Models show how standing dead skeletons can change coral recovery.',
+        detail: 'Mathematical models examine how structure-retaining disturbances can favor algal competitors and change reef recovery. These are modeled mechanisms, not an inevitable outcome after coral mortality (Kopecky et al. 2023, Ecology).',
       },
       {
         title: 'Fish nutrients can backfire during bleaching',
@@ -145,11 +143,9 @@ Our work here combines long-term field experiments with mathematical models to u
   {
     slug: 'kelp-forests',
     title: 'Kelp Forests',
-    tagline: 'Understanding predator-prey dynamics, foundation species stability, and fisheries benefits along the California coast.',
+    tagline: 'How kelp forests persist, support reef communities, and respond to protection, fishing, and disturbance.',
     heroImage: '/images/giant-kelp-sunlight-underwater.jpeg',
-    description: `The Santa Barbara Channel offers exceptional conditions for studying kelp forest dynamics. Consistent upwelling drives high productivity, the Channel Islands create natural gradients of fishing pressure and oceanographic conditions, and established marine protected areas provide large-scale experimental contrasts. These features make it one of the best places in the world to study how predator-prey dynamics shape temperate reef ecosystems.
-
-Our research focuses on the interactions between spiny lobsters, sea urchins, and kelp—using field experiments, long-term monitoring data, and population models to understand ecosystem dynamics and inform fisheries management. We combine laboratory experiments on predator physiology with 20+ years of continuous field monitoring through the SBC Long Term Ecological Research site, detecting patterns that shorter studies miss.`,
+    description: `We combine long-term surveys, field experiments, and models to study California kelp forests. Our current work asks how forests persist through disturbance, how changing habitat affects reef communities, and when food webs, marine protection, and fisheries influence kelp recovery. The Santa Barbara Coastal LTER provides the long-term context for these questions.`,
     questions: [
       'What keeps urchin populations in check and prevents kelp forest collapse?',
       'How do marine protected areas benefit both conservation and fisheries?',
@@ -163,9 +159,9 @@ Our research focuses on the interactions between spiny lobsters, sea urchins, an
         detail: 'Spiny lobster populations build up within marine protected areas and spillover benefits the adjacent commercial fishery in southern California (Lenihan et al. 2021, Scientific Reports).',
       },
       {
-        title: 'Detritus prevents urchin barrens',
-        summary: 'Kelp detritus provides alternative food that keeps urchins from overgrazing live kelp.',
-        detail: 'When herbivore abundance is high, detrital supply can prevent regime shifts from productive kelp forests to denuded urchin barrens (Rennick et al. 2022, Ecology).',
+        title: 'Drift kelp can limit grazing',
+        summary: 'Detached kelp supplies food that can reduce grazing on attached kelp.',
+        detail: 'Feeding experiments and long-term observations link the balance between drift kelp supply and estimated urchin grazing capacity to kelp forest persistence and loss (Rennick et al. 2022, Ecology).',
       },
       {
         title: 'Warming limits predator control',

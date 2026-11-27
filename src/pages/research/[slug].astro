@@ -3,7 +3,7 @@ import Layout from '@layouts/Layout.astro';
 import Breadcrumbs from '@components/layout/Breadcrumbs.astro';
 import BreadcrumbSchema from '@components/seo/BreadcrumbSchema.astro';
 import { researchThemes } from '@data/research';
-import { researchArtwork } from '@data/researchArtwork';
+import StudyPrograms from '@components/research/StudyPrograms.astro';
 import { publications } from '@data/publications';
 import { posts } from '@data/posts';
 import { enrichPublicationsWithImages } from '@utils/publicationImages';
@@ -17,7 +17,6 @@ export function getStaticPaths() {
 }
 
 const { theme } = Astro.props;
-const artwork = researchArtwork[theme.slug];
 
 // Enrich publications with news post data
 const enrichedPubs = enrichPublicationsWithImages(publications, posts);
@@ -41,16 +40,17 @@ const newsKeywords = themeToNewsKeywords[theme.slug] || [theme.title.toLowerCase
 const relatedPubs = enrichedPubs
   .filter(pub => pub.themes.some(t => t.toLowerCase().includes(publicationTheme.toLowerCase())))
   .sort((a, b) => b.year - a.year || (b.citationCount || 0) - (a.citationCount || 0))
-  .slice(0, 6);
+  .slice(0, 3);
 
 // Get related news posts (matching keywords in title, excerpt, or tags)
 const relatedNews = posts
   .filter(post => {
+    if (relatedPubs.some(pub => pub.newsSlug === post.slug)) return false;
     const searchText = `${post.title} ${post.excerpt} ${post.tags.join(' ')}`.toLowerCase();
     return newsKeywords.some(keyword => searchText.includes(keyword.toLowerCase()));
   })
   .sort((a, b) => parseSiteDate(b.date).getTime() - parseSiteDate(a.date).getTime())
-  .slice(0, 6);
+  .slice(0, 3);
 
 const breadcrumbs = [
   { label: 'Research', href: '/research' },
@@ -91,16 +91,6 @@ const isCoral = theme.slug === 'coral-reefs';
       <div class="hero-vignette"></div>
     </div>
 
-    <!-- Floating Particles -->
-    <div class="hero-particles" aria-hidden="true">
-      <div class="particle particle-1"></div>
-      <div class="particle particle-2"></div>
-      <div class="particle particle-3"></div>
-      <div class="particle particle-4"></div>
-      <div class="particle particle-5"></div>
-      <div class="particle particle-6"></div>
-    </div>
-
     <!-- Hero Content -->
     <div class="hero-content">
       <div class="container">
@@ -117,16 +107,16 @@ const isCoral = theme.slug === 'coral-reefs';
         <!-- Location & Links -->
         <div class="hero-meta">
           {theme.fieldSite && (
-            <a href={theme.fieldSite.url} target="_blank" rel="noopener noreferrer" class="hero-location">
+            <a href={isCoral ? '#where-we-work' : theme.fieldSite.url} target={isCoral ? undefined : '_blank'} rel={isCoral ? undefined : 'noopener noreferrer'} class="hero-location">
               <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                 <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
                 <circle cx="12" cy="10" r="3"/>
               </svg>
-              <span>{theme.fieldSite.location}</span>
+              <span>{isCoral ? 'Mo\u2018orea \u00b7 Caribbean partner studies' : theme.fieldSite.location}</span>
             </a>
           )}
-          <a href="#publications" class="hero-pub-link">
-            <span>View Publications</span>
+          <a href="#current-research" class="hero-pub-link">
+            <span>Current Research</span>
             <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
               <path d="M7 17L17 7M17 7H7M17 7V17"/>
             </svg>
@@ -135,11 +125,6 @@ const isCoral = theme.slug === 'coral-reefs';
       </div>
     </div>
 
-    <!-- Scroll Indicator -->
-    <div class="scroll-indicator" aria-hidden="true">
-      <div class="scroll-line"></div>
-      <span class="scroll-text">Explore</span>
-    </div>
   </section>
 
   <!-- Wave Divider -->
@@ -154,32 +139,9 @@ const isCoral = theme.slug === 'coral-reefs';
   <!-- ============================================
        OVERVIEW SECTION
        ============================================ -->
-  <section class:list={['section-overview', { 'illustrated-overview': artwork }]} id="overview">
-    <div class:list={['container', { 'illustration-layout': artwork }]}>
-      {artwork && (
-        <div class="coral-artwork">
-          <figure class="coral-study">
-            <span class="study-label">FORM &amp; STRUCTURE</span>
-            <img src={artwork.src} alt={artwork.alt} width="1536" height="1024" loading="lazy" />
-            <figcaption>
-              <span><i>{artwork.scientificName}</i> / {artwork.commonName}</span>
-              <span>{artwork.caption}</span>
-            </figcaption>
-          </figure>
-          <section class="associate-studies" aria-labelledby="associate-studies-title">
-            <h2 id="associate-studies-title">{artwork.detailsTitle}</h2>
-            <div class="associate-grid">
-              {artwork.details.map(({ src, alt, scientificName, commonName }) => (
-                <figure>
-                  <img src={src} alt={alt} width="600" height="400" loading="lazy" />
-                  <figcaption><i>{scientificName}</i>{commonName && <span>{commonName}</span>}</figcaption>
-                </figure>
-              ))}
-            </div>
-          </section>
-        </div>
-      )}
-      <div class="overview-content scroll-reveal">
+  <section class="section-overview illustrated-overview" id="overview">
+    <div class="container">
+      <div class="overview-content">
         <div class="overview-eyebrow">
           <span class={`eyebrow-icon ${isCoral ? 'coral-icon' : 'kelp-icon'}`}>
             {isCoral ? (
@@ -194,11 +156,10 @@ const isCoral = theme.slug === 'coral-reefs';
               </svg>
             )}
           </span>
-          <span class="eyebrow-text">Overview</span>
+          <span class="eyebrow-text">Our approach</span>
         </div>
 
         <div class="overview-text">
-          {artwork && <h2 class="study-heading">{artwork.heading}</h2>}
           {theme.description.split('\n\n').map((paragraph) => (
             <p>{paragraph}</p>
           ))}
@@ -207,39 +168,7 @@ const isCoral = theme.slug === 'coral-reefs';
     </div>
   </section>
 
-  <!-- ============================================
-       QUESTIONS WE ASK SECTION
-       ============================================ -->
-  <section class="section-questions">
-    <div class="questions-bg" aria-hidden="true">
-      <div class={`questions-orb questions-orb-1 ${isCoral ? 'coral-orb' : 'kelp-orb'}`}></div>
-      <div class={`questions-orb questions-orb-2 ${isCoral ? 'coral-orb' : 'kelp-orb'}`}></div>
-    </div>
-
-    <div class="container relative z-10">
-      <div class="section-header scroll-reveal">
-        <span class="section-eyebrow">Our Curiosity</span>
-        <h2 class="section-title">Questions <span class="title-gradient">We Ask</span></h2>
-        <p class="section-desc">
-          A window into the types of questions driving our research in {theme.title.toLowerCase()}.
-        </p>
-      </div>
-
-      <div class="questions-grid">
-        {theme.questions.map((question, i) => (
-          <div class={`question-card scroll-reveal stagger-${i + 1}`}>
-            <div class={`question-number ${isCoral ? 'coral-number' : 'kelp-number'}`}>
-              <span>{String(i + 1).padStart(2, '0')}</span>
-            </div>
-            <div class="question-content">
-              <p class="question-text">{question}</p>
-            </div>
-            <div class={`question-accent ${isCoral ? 'coral-accent' : 'kelp-accent'}`}></div>
-          </div>
-        ))}
-      </div>
-    </div>
-  </section>
+  <StudyPrograms slug={theme.slug} />
 
   <!-- ============================================
        KEY FINDINGS SECTION
@@ -247,16 +176,15 @@ const isCoral = theme.slug === 'coral-reefs';
   <section class="section-findings">
     <div class="container">
       <div class="section-header scroll-reveal">
-        <span class="section-eyebrow">Discoveries</span>
-        <h2 class="section-title">Key <span class="title-gradient">Findings</span></h2>
+        <span class="section-eyebrow">Published research</span>
+        <h2 class="section-title">Selected Published Findings</h2>
         <p class="section-desc">
-          Breakthrough insights from our research.
-          <span class="text-sm block mt-2 text-muted/60">Click or press Enter to reveal details</span>
+          A selection of results from our earlier studies.
         </p>
       </div>
 
       <div class="findings-grid">
-        {theme.findings.map((finding, i) => (
+        {theme.findings.filter((_, index) => isCoral ? index < 3 : [0, 1, 3].includes(index)).map((finding, i) => (
           <button
             type="button"
             class={`finding-card scroll-reveal stagger-${i + 1}`}
@@ -311,7 +239,7 @@ const isCoral = theme.slug === 'coral-reefs';
         </div>
 
         <div class="gallery-grid">
-          {theme.gallery.map((image, i) => (
+          {theme.gallery.slice(0, 3).map((image, i) => (
             <figure class={`gallery-item scroll-reveal stagger-${(i % 4) + 1} ${i === 0 ? 'gallery-featured' : ''}`}>
               <div class="gallery-img-container">
                 <img
@@ -345,7 +273,7 @@ const isCoral = theme.slug === 'coral-reefs';
        FIELD SITE SECTION
        ============================================ -->
   {theme.fieldSite && (
-    <section class="section-fieldsite">
+    <section class="section-fieldsite" id="where-we-work">
       <div class="container">
         <div class="fieldsite-card scroll-reveal">
           <div class="fieldsite-image">
@@ -366,7 +294,7 @@ const isCoral = theme.slug === 'coral-reefs';
           </div>
 
           <div class="fieldsite-content">
-            <span class="section-eyebrow">Field Site</span>
+            <span class="section-eyebrow">{isCoral ? 'Mo\u2018orea field research' : 'Long-term field research'}</span>
 
             {theme.fieldSite.url ? (
               <a href={theme.fieldSite.url} target="_blank" rel="noopener noreferrer" class="fieldsite-link">
@@ -388,6 +316,9 @@ const isCoral = theme.slug === 'coral-reefs';
             </p>
 
             <p class="fieldsite-description">{theme.fieldSite.description}</p>
+            {isCoral && (
+              <p class="fieldsite-description">Our restoration collaborations also extend to the Caribbean: FUNDEMAR in the Dominican Republic works with us on <i>Acropora palmata</i>, while the separate Mote collaboration in Florida focuses on <i>Orbicella</i>.</p>
+            )}
 
             {theme.fieldSite.url && (
               <a href={theme.fieldSite.url} target="_blank" rel="noopener noreferrer" class={`fieldsite-btn ${isCoral ? 'coral-btn' : 'kelp-btn'}`}>
@@ -569,12 +500,14 @@ const isCoral = theme.slug === 'coral-reefs';
 </Layout>
 
 <style>
+  #publications, #where-we-work { scroll-margin-top: 5rem; }
   /* ============================================
      HERO SECTION
      ============================================ */
   .hero-section {
-    @apply relative min-h-screen flex items-center justify-center;
+    @apply relative flex items-center justify-center;
     @apply overflow-hidden;
+    min-height: min(560px, 64svh);
   }
 
   .hero-media {
@@ -636,7 +569,7 @@ const isCoral = theme.slug === 'coral-reefs';
   /* Hero Content */
   .hero-content {
     @apply relative z-10 text-center;
-    @apply pt-32 pb-24;
+    padding: 100px 0 64px;
   }
 
   .hero-breadcrumbs {
@@ -656,7 +589,7 @@ const isCoral = theme.slug === 'coral-reefs';
     display: inline-block;
     -webkit-background-clip: text;
     background-clip: text;
-    -webkit-text-fill-color: transparent;
+    -webkit-text-fill-color: #fff;
     background-size: 200% 200%;
     animation: gradientShift 8s ease-in-out infinite;
   }
@@ -742,7 +675,7 @@ const isCoral = theme.slug === 'coral-reefs';
 
   /* Wave Divider */
   .wave-divider {
-    @apply relative -mt-1 bg-surface;
+    display: none;
   }
 
   .wave-divider svg {
@@ -754,7 +687,7 @@ const isCoral = theme.slug === 'coral-reefs';
      OVERVIEW SECTION
      ============================================ */
   .section-overview {
-    @apply py-20 md:py-28 bg-surface;
+    @apply py-12 md:py-16 bg-surface;
   }
 
   section.illustrated-overview { background: #fff; color: #263c37; scroll-margin-top: 5rem; }
@@ -772,15 +705,28 @@ const isCoral = theme.slug === 'coral-reefs';
   .associate-grid img { display: block; width: 100%; height: auto; aspect-ratio: 3 / 2; object-fit: contain; }
   .associate-grid figcaption { display: grid; gap: 2px; margin-top: 7px; font-size: 12px; line-height: 1.35; overflow-wrap: anywhere; }
   .associate-grid figcaption span { color: #526359; }
-  .illustrated-overview .overview-content { max-width: none; margin: 0; text-align: left; }
+  .illustrated-overview .overview-content { max-width: 800px; margin: 0; text-align: left; }
   .illustrated-overview .overview-eyebrow { justify-content: flex-start; }
   .illustrated-overview .eyebrow-text { color: #526359; }
   .illustrated-overview .study-heading { font-family: Georgia, serif; font-size: 42px; line-height: 1.12; font-weight: 400; margin: 0 0 28px; color: #263c37; }
   .illustrated-overview .overview-text p { color: #43534c; font-size: 16px; line-height: 1.8; }
   @media (max-width: 767px) {
+    .hero-title { font-size: 40px; }
+    .hero-tagline { font-size: 17px; line-height: 1.65; }
+    .hero-breadcrumbs { margin-bottom: 20px; }
+    .hero-meta { margin-top: 24px; gap: 12px; }
+    .hero-content { padding: 96px 0 48px; }
     .illustration-layout { grid-template-columns: minmax(0, 1fr); gap: 36px; }
     .illustrated-overview .study-heading { font-size: 34px; }
     section.illustrated-overview { padding: 40px 0; }
+  }
+  @media (max-width: 767px) and (max-height: 700px) {
+    .hero-content { padding: 36px 0 20px; }
+    .hero-breadcrumbs { margin-bottom: 12px; }
+    .hero-title { font-size: 36px; margin-bottom: 16px; }
+    .hero-tagline { font-size: 16px; line-height: 1.5; }
+    .hero-meta { margin-top: 20px; gap: 8px; }
+    section.illustrated-overview { padding: 24px 0; }
   }
 
   .overview-content {
