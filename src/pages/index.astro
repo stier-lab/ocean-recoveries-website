@@ -130,14 +130,13 @@ const formatDate = formatSiteDate;
     </div>
   </section>
 
-  <section id="approach" class="approach-section">
+  <section id="approach" class="approach-section" aria-labelledby="approach-title">
     <div class="container">
       <!-- Intro block -->
       <div class="approach-intro scroll-reveal">
         <div class="approach-header">
           <span class="section-number">01 / Approach</span>
-          <span class="approach-eyebrow">Our Approach</span>
-          <h2 class="approach-headline">
+          <h2 id="approach-title" class="approach-headline">
             How We <span class="approach-headline-emphasis">Work</span>
           </h2>
         </div>
@@ -146,52 +145,41 @@ const formatDate = formatSiteDate;
         </p>
       </div>
 
-      <!-- Method cards with numbers -->
+      <!-- Companion field-sketch illustrations -->
       <div class="approach-grid">
-        <div class="approach-card scroll-reveal stagger-1">
-          <div class="approach-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M9.75 3.104v5.714a2.25 2.25 0 01-.659 1.591L5 14.5M9.75 3.104c-.251.023-.501.05-.75.082m.75-.082a24.301 24.301 0 014.5 0m0 0v5.714c0 .597.237 1.17.659 1.591L19.8 15.3M14.25 3.104c.251.023.501.05.75.082M19.8 15.3l-1.57.393A9.065 9.065 0 0112 15a9.065 9.065 0 00-6.23.693L5 14.5m14.8.8l1.402 1.402c1.232 1.232.65 3.318-1.067 3.611A48.309 48.309 0 0112 21c-2.773 0-5.491-.235-8.135-.687-1.718-.293-2.3-2.379-1.067-3.61L5 14.5" />
-            </svg>
-          </div>
+        <article class="approach-card scroll-reveal stagger-1">
+          <img class="approach-artwork" src="/images/research/how-we-work-field-experiments-pencil.jpg"
+            width="1000" height="666" loading="lazy" decoding="async"
+            alt="Pencil illustration of a diver photographing a branching coral and its resident fishes" />
           <h3 class="approach-title">Field Experiments</h3>
           <p class="approach-desc">
             Test mechanisms in the field by manipulating key species interactions and quantifying effects on ecosystem recovery.
           </p>
-        </div>
+        </article>
 
-        <div class="approach-card scroll-reveal stagger-2">
-          <div class="approach-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M6.429 9.75L2.25 12l4.179 2.25m0-4.5l5.571 3 5.571-3m-11.142 0L2.25 7.5 12 2.25l9.75 5.25-4.179 2.25m0 0L21.75 12l-4.179 2.25m0 0l4.179 2.25L12 21.75l-9.75-5.25 4.179-2.25m11.142 0l-5.571 3-5.571-3" />
-            </svg>
-          </div>
+        <article class="approach-card scroll-reveal stagger-2">
+          <img class="approach-artwork" src="/images/research/how-we-work-evidence-synthesis-pencil-v2.jpg"
+            width="1000" height="666" loading="lazy" decoding="async"
+            alt="Conceptual meta-analysis pipeline: collect papers, screen comparable studies, and combine their estimates in a schematic forest plot; no study results are shown" />
           <h3 class="approach-title">Evidence Synthesis</h3>
           <p class="approach-desc">
             Systematic review and meta-analysis to compare recovery drivers across ecosystems and estimate robust effect sizes.
           </p>
-        </div>
+        </article>
 
-        <div class="approach-card scroll-reveal stagger-3">
-          <div class="approach-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-              <circle cx="12" cy="5" r="2" />
-              <circle cx="5" cy="19" r="2" />
-              <circle cx="19" cy="19" r="2" />
-              <path stroke-linecap="round" stroke-linejoin="round" d="M12 7v4m0 0l-5 6m5-6l5 6" />
-            </svg>
-          </div>
-          <h3 class="approach-title">Predictive Modeling</h3>
+        <article class="approach-card scroll-reveal stagger-3">
+          <img class="approach-artwork" src="/images/research/how-we-work-quantitative-ecology-reef-model-pencil.jpg"
+            width="1200" height="800" loading="lazy" decoding="async"
+            alt="A colored-pencil coral and its resident fishes simplify into an interaction model, with an illustrative handwritten coral-growth equation. This is conceptual artwork, not a fitted study model." />
+          <h3 class="approach-title">Quantitative Ecology</h3>
           <p class="approach-desc">
-            Theory and simulation models that translate field data into thresholds and decision-support tools for managers.
+            We use statistics, theory, and simulation to understand ecological processes and compare management options.
           </p>
-        </div>
+        </article>
       </div>
 
     </div>
 
-    <!-- Gradient transition instead of wave -->
-    <div class="section-fade-dark"></div>
   </section>
 
   <!-- Field Sites Section -->
@@ -763,11 +751,15 @@ const formatDate = formatSiteDate;
      Approach Section - More Visual
      ============================================ */
   .approach-section {
-    @apply relative pt-20 md:pt-28 pb-12 md:pb-16 bg-surface;
+    scroll-margin-top: 5rem;
+    padding: 56px 0 64px;
+    background: #fff;
+    color: #253c39;
+    border-top: 1px solid #dce4df;
   }
 
   .approach-intro {
-    @apply max-w-3xl mb-12;
+    @apply max-w-3xl mb-10;
   }
 
   .approach-header {
@@ -779,61 +771,76 @@ const formatDate = formatSiteDate;
     @apply block text-[11px] tracking-[0.2em] text-muted-2 mb-3 uppercase;
   }
 
-  .approach-eyebrow {
-    @apply block text-xs font-bold uppercase tracking-widest text-accent mb-2;
+  .approach-section .section-number {
+    color: #53665e;
+    letter-spacing: 0;
   }
 
   .approach-headline {
-    @apply text-3xl md:text-4xl font-black text-ink leading-tight;
+    font: 400 34px/1.2 Georgia, serif;
+    color: #253c39;
   }
 
   .approach-headline-emphasis {
-    font-family: 'Playfair Display', Georgia, serif;
-    @apply font-semibold italic;
+    font-style: italic;
   }
 
   .approach-thesis {
-    @apply text-base md:text-lg text-ink/70 leading-relaxed;
+    font-size: 16px;
+    line-height: 1.75;
+    color: #43534c;
   }
 
-  /* Method cards with numbers */
   .approach-grid {
-    @apply grid md:grid-cols-3 gap-6 lg:gap-8;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 28px;
   }
 
   .approach-card {
-    @apply relative p-6 lg:p-8 rounded-2xl;
-    background: rgba(30, 41, 59, 0.4);
-    border: 1px solid rgba(255, 255, 255, 0.06);
-    transition: background 300ms cubic-bezier(0.4, 0, 0.2, 1),
-                border-color 300ms cubic-bezier(0.4, 0, 0.2, 1);
+    min-width: 0;
+    position: relative;
   }
 
-  .approach-card:hover {
-    background: rgba(30, 41, 59, 0.6);
-    border-color: rgba(255, 255, 255, 0.12);
+  .approach-card + .approach-card::before {
+    content: '';
+    position: absolute;
+    left: -14px;
+    top: 0;
+    bottom: 0;
+    width: 1px;
+    background: #dce4df;
   }
 
-  .approach-icon {
-    @apply w-10 h-10 mb-4 text-accent;
-  }
-
-  .approach-icon svg {
-    @apply w-full h-full;
+  .approach-artwork {
+    display: block;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 3 / 2;
+    object-fit: contain;
+    margin: 0 0 24px;
   }
 
   .approach-title {
-    @apply text-lg font-bold text-ink mb-2;
+    color: #253c39;
+    font: 400 23px/1.25 Georgia, serif;
+    margin: 0 0 12px;
   }
 
   .approach-desc {
-    @apply text-sm text-ink/60 leading-relaxed;
+    color: #43534c;
+    font-size: 15px;
+    line-height: 1.75;
+    margin: 0;
   }
 
-  /* Section fade transition */
-  .section-fade-dark {
-    @apply absolute bottom-0 left-0 right-0 h-32 pointer-events-none;
-    background: linear-gradient(to bottom, transparent, #0b1929);
+  @media (max-width: 767px) {
+    .approach-section { padding: 36px 0 40px; }
+    .approach-headline { font-size: 30px; }
+    .approach-grid { grid-template-columns: minmax(0, 1fr); gap: 28px; }
+    .approach-card + .approach-card { border-left: 0; padding-left: 0; border-top: 1px solid #dce4df; padding-top: 28px; }
+    .approach-card + .approach-card::before { display: none; }
+    .approach-artwork { margin-bottom: 20px; }
   }
 
   /* ============================================
