@@ -1,10 +1,19 @@
 ---
 import { studyPrograms } from '@data/studyPrograms';
 import { researchArtwork } from '@data/researchArtwork';
+import { publications } from '@data/publications';
+import { posts } from '@data/posts';
+import { enrichPublicationsWithImages } from '@utils/publicationImages';
 
 interface Props { slug: string }
 const { slug } = Astro.props;
 const programs = studyPrograms[slug] ?? [];
+const papersById = new Map(enrichPublicationsWithImages(publications, posts).map(paper => [paper.id, paper]));
+const programPapers = (program: (typeof programs)[number]) => program.papers.map(reference => {
+  const paper = papersById.get(reference.id);
+  if (!paper?.doi) throw new Error(`Missing published paper ${reference.id} for ${program.id}`);
+  return { ...paper, context: reference.context };
+});
 const coral = researchArtwork['coral-reefs']!;
 const kelp = researchArtwork['kelp-forests']!;
 const shortLabels = {
@@ -29,7 +38,27 @@ const shortLabels = {
           <h3 id={`${program.id}-title`}>{program.title}</h3>
           {program.paragraphs.map(paragraph => <p>{paragraph}</p>)}
           <p class="program-location">{program.location}</p>
-          <a class="program-link" href={program.link.href}>{program.link.label}<span aria-hidden="true"> &rarr;</span></a>
+          {['healing', 'restoration'].includes(program.visual) && (
+            <a class="program-link" href={program.link.href}>{program.link.label}<span aria-hidden="true"> &rarr;</span></a>
+          )}
+          <div class="program-papers" aria-labelledby={`${program.id}-papers`}>
+            <h4 id={`${program.id}-papers`}>Related published papers</h4>
+            {program.papersNote && <p class="papers-note">{program.papersNote}</p>}
+            <ul>
+              {programPapers(program).map(paper => (
+                <li>
+                  <span class="paper-context">{paper.context}</span>
+                  <a class="paper-title" href={`https://doi.org/${paper.doi}`} target="_blank" rel="noopener noreferrer">{paper.title}</a>
+                  <span class="paper-meta">{paper.journal} &middot; {paper.year}</span>
+                  <div class="paper-links">
+                    <a href={`https://doi.org/${paper.doi}`} target="_blank" rel="noopener noreferrer">Paper</a>
+                    {paper.newsSlug && <a href={`/news/${paper.newsSlug}`}>Study story</a>}
+                    {paper.codeUrl && <a href={paper.codeUrl} target="_blank" rel="noopener noreferrer">Research repository</a>}
+                  </div>
+                </li>
+              ))}
+            </ul>
+          </div>
         </div>
         <div class="program-visual">
           {program.visual === 'healing' && (
@@ -70,11 +99,8 @@ const shortLabels = {
           )}
           {program.visual === 'habitats' && (
             <figure>
-              <div class="habitat-pair">
-                <div><img src="/images/research/kelp-forest-habitat-pencil.jpg" alt="Pencil illustration of giant kelp growing above a rocky reef" width="900" height="600" loading="lazy" /><span>Kelp forest</span></div>
-                <div><img src="/images/research/urchin-barren-pencil-v2.jpg" alt="Pencil illustration of an urchin-covered rocky reef without a kelp canopy" width="900" height="600" loading="lazy" /><span>Urchin barren</span></div>
-              </div>
-              <figcaption>Two reef states, illustrated. Their contrast is not an inevitable sequence or a prediction for a particular site.</figcaption>
+              <img src="/images/kelp_canopy.jpg" alt="Giant kelp canopy viewed from below" width="1919" height="1080" loading="lazy" />
+              <figcaption>Below the giant kelp canopy. We study present-day habitat alongside the history of kelp cover.</figcaption>
             </figure>
           )}
           {program.visual === 'kelp' && (
@@ -116,6 +142,17 @@ const shortLabels = {
   .program-copy > p:not(.program-eyebrow) { color: #43534c; font-size: 16px; line-height: 1.75; margin: 0 0 16px; }
   .program-copy > p.program-location { font-size: 13px; color: #53665e; margin-top: 24px; }
   .program-link { font-size: 14px; font-weight: 600; line-height: 1.5; display: inline-block; padding: 4px 0; }
+  .program-papers { border-top: 1px solid #c5d1ca; padding-top: 18px; margin-top: 24px; }
+  .program-papers h4 { color: #263c37; font-size: 14px; font-weight: 600; margin: 0 0 12px; }
+  .papers-note { font-size: 13px; line-height: 1.6; color: #53665e; margin: 0 0 16px; }
+  .program-papers ul { list-style: none; padding: 0; margin: 0; }
+  .program-papers li + li { margin-top: 20px; }
+  .paper-context, .paper-meta { display: block; color: #53665e; font-size: 12px; line-height: 1.5; }
+  .paper-context { margin-bottom: 5px; }
+  .paper-title { display: block; font-size: 14px; line-height: 1.55; }
+  .paper-meta { margin-top: 5px; }
+  .paper-links { display: flex; flex-wrap: wrap; gap: 8px 20px; margin-top: 6px; font-size: 13px; }
+  .paper-links a { padding: 4px 0; }
   figure { margin: 0; min-width: 0; }
   img, video { display: block; width: 100%; height: auto; }
   figcaption { color: #53665e; font-size: 12px; line-height: 1.6; margin-top: 12px; }
@@ -126,13 +163,7 @@ const shortLabels = {
   .species-details img, .food-web-species img { aspect-ratio: 3/2; object-fit: contain; }
   .species-details figcaption, .food-web-species figcaption { overflow-wrap: anywhere; font-size: 11px; line-height: 1.45; }
   figcaption span { display: block; margin-top: 4px; }
-  .habitat-pair { display: grid; gap: 16px; }
-  .habitat-pair img { aspect-ratio: 3/2; object-fit: contain; }
-  .habitat-pair span { display: block; font-size: 13px; margin: 6px 0 0; }
   .kelp-specimen img { max-height: 430px; object-fit: contain; }
-  @media (min-width: 1000px) {
-    .habitat-pair { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-  }
   @media (max-width: 767px) {
     .active-programs { padding-bottom: 32px; }
     .programs-header { padding-top: 8px; padding-bottom: 28px; }
@@ -143,6 +174,5 @@ const shortLabels = {
     .program-copy > p:not(.program-eyebrow) { font-size: 15px; line-height: 1.75; }
     .program-copy > p.program-location { font-size: 12px; margin-top: 20px; }
     .program-visual { max-width: 100%; }
-    .habitat-pair { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
   }
 </style>

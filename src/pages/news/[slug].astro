@@ -5,6 +5,9 @@ import ArticleSchema from '@components/seo/ArticleSchema.astro';
 import BreadcrumbSchema from '@components/seo/BreadcrumbSchema.astro';
 import PaperInteractive from '@components/interactives/PaperInteractive.astro';
 import { posts } from '@data/posts';
+import { publications } from '@data/publications';
+import { storyTakeaways } from '@data/storyTakeaways';
+import { createPublicationPostMap } from '@utils/publicationImages';
 import { formatSiteDate, getSiteDateYear } from '@utils/date';
 
 export function getStaticPaths() {
@@ -34,41 +37,10 @@ const formatDate = (dateStr: string) => {
 const wordCount = post.content.split(/\s+/).length;
 const readingTime = Math.max(1, Math.ceil(wordCount / 200));
 
-// Extract key findings from content (sentences with numbers/percentages or key phrases)
-const extractKeyFindings = (content: string): string[] => {
-  const sentences = content.split(/[.!?]+/).filter(s => s.trim().length > 20);
-  const findings: string[] = [];
-
-  for (const sentence of sentences) {
-    // Look for sentences with statistics, percentages, or key finding indicators
-    if (
-      /\d+%|\d+x|\d+-fold|increased|decreased|found that|showed|demonstrated/i.test(sentence) &&
-      !/citation|doi|paper|read the full/i.test(sentence)
-    ) {
-      const cleaned = sentence.trim().replace(/^\*+|\*+$/g, '').trim();
-      if (cleaned.length > 30 && cleaned.length < 200 && findings.length < 3) {
-        findings.push(cleaned);
-      }
-    }
-  }
-
-  return findings;
-};
-
-// Extract a pull quote (a compelling sentence for highlighting)
-const extractPullQuote = (content: string): string | null => {
-  const sentences = content.split(/[.!?]+/).filter(s => s.trim().length > 40 && s.trim().length < 180);
-  for (const sentence of sentences) {
-    if (/surprising|important|substantial|essential|striking/i.test(sentence) &&
-        !/citation|doi/i.test(sentence)) {
-      return sentence.trim() + '.';
-    }
-  }
-  return null;
-};
-
-const keyFindings = extractKeyFindings(post.content);
-const pullQuote = extractPullQuote(post.content);
+const postDoiMap = createPublicationPostMap([post]);
+const publication = publications.find(paper => paper.doi && postDoiMap.has(paper.doi.toLowerCase()));
+const takeaway = publication ? storyTakeaways[publication.id] : undefined;
+const keyFindings = takeaway?.points ?? [];
 
 // Get related posts (same tags, excluding current)
 const relatedPosts = posts
@@ -270,22 +242,20 @@ const hasToc = tableOfContents.length > 2; // More than just Citation and Share
                 <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
                 </svg>
-                <span>Key Findings</span>
+                <span>Study Takeaways</span>
               </div>
               <ul class="key-findings-list">
                 {keyFindings.map((finding) => (
                   <li>{finding}</li>
                 ))}
               </ul>
+              {takeaway && <p class="takeaway-scope">{takeaway.scope}</p>}
             </aside>
           )}
 
           <!-- Article Content -->
           <div class="prose-content">
             {post.content.split('\n\n').map((block, index) => {
-              // Insert pull quote after 2nd paragraph
-              const showPullQuote = index === 2 && pullQuote;
-
               if (block.trim() === '---') {
                 return <hr class="content-divider" />;
               } else if (block.startsWith('## ')) {
@@ -321,11 +291,6 @@ const hasToc = tableOfContents.length > 2; // More than just Citation and Share
                       <p class="first-paragraph" set:html={processed} />
                     ) : (
                       <p class="content-paragraph" set:html={processed} />
-                    )}
-                    {showPullQuote && (
-                      <blockquote class="pull-quote">
-                        <p>"{pullQuote}"</p>
-                      </blockquote>
                     )}
                   </>
                 );
@@ -644,7 +609,7 @@ const hasToc = tableOfContents.length > 2; // More than just Citation and Share
 
   /* Key Findings Box */
   .key-findings {
-    @apply mb-12 p-6 rounded-2xl;
+    @apply mb-12 p-6 rounded-lg;
     @apply bg-gradient-to-br from-accent/10 to-accent-2/10;
     @apply border border-accent/20;
   }
@@ -654,16 +619,19 @@ const hasToc = tableOfContents.length > 2; // More than just Citation and Share
   }
 
   .key-findings-list {
-    @apply space-y-3 list-none p-0 m-0;
+    @apply space-y-3 list-disc pl-5 m-0;
   }
 
   .key-findings-list li {
-    @apply flex items-start gap-3 text-ink-2 leading-relaxed;
+    @apply pl-1 text-ink-2 leading-relaxed;
   }
 
-  .key-findings-list li::before {
-    content: '';
-    @apply text-accent font-bold flex-shrink-0 mt-0.5;
+  .key-findings-list li::marker {
+    @apply text-accent;
+  }
+
+  .takeaway-scope {
+    @apply mt-5 pt-4 border-t border-accent/20 text-ink-2 text-sm leading-relaxed;
   }
 
   /* Prose Content */

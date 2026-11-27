@@ -6,6 +6,8 @@ export interface StudyProgram {
   visual: 'healing' | 'coral' | 'restoration' | 'habitats' | 'kelp' | 'food-web';
   location: string;
   link: { href: string; label: string };
+  papers: { id: string; context: string }[];
+  papersNote?: string;
 }
 
 export const studyPrograms: Record<string, StudyProgram[]> = {
@@ -21,6 +23,8 @@ export const studyPrograms: Record<string, StudyProgram[]> = {
       visual: 'healing',
       location: 'Mo\u2018orea, French Polynesia',
       link: { href: '/research#coral-healing', label: 'See the healing sequences' },
+      papers: [{ id: 'vega-2026-biolett', context: 'Coral repair and fish associations' }],
+      papersNote: 'This published Pocillopora study is separate from the Acropora time-lapses above.',
     },
     {
       id: 'coral-associated-fauna',
@@ -33,6 +37,11 @@ export const studyPrograms: Record<string, StudyProgram[]> = {
       visual: 'coral',
       location: 'Mo\u2018orea, French Polynesia',
       link: { href: '/news/how-coral-associated-fish-help-corals-grow-and-recover', label: 'Read our published synthesis' },
+      papers: [
+        { id: '5', context: 'Measuring branching corals and their residents' },
+        { id: '1', context: 'Review of fish services to corals' },
+        { id: '2', context: 'Coral-associated animals and resilience' },
+      ],
     },
     {
       id: 'restoration-strategy-evaluation',
@@ -45,6 +54,11 @@ export const studyPrograms: Record<string, StudyProgram[]> = {
       visual: 'restoration',
       location: 'Dominican Republic \u00b7 Florida',
       link: { href: '#where-we-work', label: 'Explore our research locations' },
+      papers: [
+        { id: '15', context: 'Monitoring near ecological thresholds' },
+        { id: 'samhouri-2025-plosclim', context: 'Related strategy-evaluation methods in fisheries' },
+      ],
+      papersNote: 'Published methods and context, not results from the ongoing coral restoration applications.',
     },
   ],
   'kelp-forests': [
@@ -59,6 +73,7 @@ export const studyPrograms: Record<string, StudyProgram[]> = {
       visual: 'habitats',
       location: 'Southern California \u00b7 Santa Barbara Channel',
       link: { href: '/news/storm-disturbance-can-reshape-kelp-forest-communities', label: 'Read a related published study' },
+      papers: [{ id: '19', context: 'Storms, kelp, and benthic community dynamics' }],
     },
     {
       id: 'kelp-habitat',
@@ -71,6 +86,10 @@ export const studyPrograms: Record<string, StudyProgram[]> = {
       visual: 'kelp',
       location: 'Santa Barbara Channel, California',
       link: { href: '#publications', label: 'Explore published kelp research' },
+      papers: [
+        { id: '25', context: 'Giant kelp, biodiversity, and community stability' },
+        { id: 'white-2026-pnas-cnd', context: 'Fish diversity and nutrient stability across coastal habitats' },
+      ],
     },
     {
       id: 'kelp-food-webs',
@@ -83,6 +102,11 @@ export const studyPrograms: Record<string, StudyProgram[]> = {
       visual: 'food-web',
       location: 'California coast \u00b7 Santa Barbara Channel',
       link: { href: '/news/lobster-catches-rose-near-california-marine-reserves-after-a', label: 'Read our published spillover study' },
+      papers: [
+        { id: '6', context: 'Body size and lobster\u2013urchin interactions' },
+        { id: '12', context: 'Drift kelp and urchin grazing' },
+        { id: '17', context: 'Marine reserves and the lobster fishery' },
+      ],
     },
   ],
 };

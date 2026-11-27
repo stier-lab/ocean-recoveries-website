@@ -4,6 +4,7 @@ import Breadcrumbs from '@components/layout/Breadcrumbs.astro';
 import BreadcrumbSchema from '@components/seo/BreadcrumbSchema.astro';
 import { researchThemes } from '@data/research';
 import StudyPrograms from '@components/research/StudyPrograms.astro';
+import ResilienceLandscape from '@components/research/ResilienceLandscape.astro';
 import { publications } from '@data/publications';
 import { posts } from '@data/posts';
 import { enrichPublicationsWithImages } from '@utils/publicationImages';
@@ -115,8 +116,8 @@ const isCoral = theme.slug === 'coral-reefs';
               <span>{isCoral ? 'Mo\u2018orea \u00b7 Caribbean partner studies' : theme.fieldSite.location}</span>
             </a>
           )}
-          <a href="#current-research" class="hero-pub-link">
-            <span>Current Research</span>
+          <a href={isCoral ? '#current-research' : '#alternative-states'} class="hero-pub-link">
+            <span>{isCoral ? 'Current Research' : 'Alternative States'}</span>
             <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
               <path d="M7 17L17 7M17 7H7M17 7V17"/>
             </svg>
@@ -167,6 +168,33 @@ const isCoral = theme.slug === 'coral-reefs';
       </div>
     </div>
   </section>
+
+  {!isCoral && (
+    <section class="kelp-states" id="alternative-states" aria-labelledby="kelp-states-title">
+      <div class="container">
+        <header class="kelp-states-header">
+          <p class="kelp-states-eyebrow">Alternative states</p>
+          <h2 id="kelp-states-title">Kelp forest or urchin barren?</h2>
+          <p>Kelp forests and urchin barrens can persist under different ecological conditions. This conceptual landscape shows how a disturbance can leave a forest largely intact, allow recovery, or push it into a different state. It does not predict the outcome for a particular reef.</p>
+          <a href="#current-research">Our current kelp research <span aria-hidden="true">&darr;</span></a>
+        </header>
+        <ResilienceLandscape>
+          <div slot="habitats" class="kelp-state-artwork">
+            <figure>
+              <img src="/images/research/kelp-forest-habitat-pencil.jpg" width="900" height="600" loading="lazy"
+                alt="Colored-pencil illustration of a giant kelp forest above a rocky reef" />
+              <figcaption>Kelp forest</figcaption>
+            </figure>
+            <figure>
+              <img src="/images/research/urchin-barren-pencil-v2.jpg" width="900" height="600" loading="lazy"
+                alt="Colored-pencil illustration of an exposed rocky reef covered in purple sea urchins, with little kelp" />
+              <figcaption>Urchin barren</figcaption>
+            </figure>
+          </div>
+        </ResilienceLandscape>
+      </div>
+    </section>
+  )}
 
   <StudyPrograms slug={theme.slug} />
 
@@ -501,6 +529,30 @@ const isCoral = theme.slug === 'coral-reefs';
 
 <style>
   #publications, #where-we-work { scroll-margin-top: 5rem; }
+  .kelp-states { background: #142d30; color: #f1f5f9; padding: 56px 0 64px; scroll-margin-top: 5rem; }
+  .kelp-states-header { max-width: 64rem; margin: 0 auto 32px; }
+  .kelp-states-eyebrow { color: #a4d5cb; font-size: 12px; font-weight: 600; margin: 0 0 14px; }
+  .kelp-states-header h2 { font: 400 38px/1.2 Georgia, serif; color: #fff; margin: 0 0 20px; }
+  .kelp-states-header > p:not(.kelp-states-eyebrow) { max-width: 760px; font-size: 16px; line-height: 1.75; color: #d5e4df; margin: 0 0 20px; }
+  .kelp-states-header a { color: #b9e5da; font-size: 14px; text-decoration: underline; text-underline-offset: 4px; display: inline-block; padding: 6px 0; }
+  .kelp-states-header a:focus-visible { outline: 2px solid #b9e5da; outline-offset: 4px; }
+  .kelp-state-artwork { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; margin-bottom: 16px; }
+  .kelp-state-artwork figure { max-width: 360px; margin: 0 auto; min-width: 0; }
+  .kelp-state-artwork img { display: block; width: 100%; height: auto; }
+  .kelp-state-artwork figcaption { color: #e1ece8; font-size: 14px; margin-top: 10px; }
+  .kelp-states :global(.rl-note), .kelp-states :global(.rl-level) { color: #b8cbc5; }
+  .kelp-states :global(.rl-card) { min-width: 0; padding: 20px; }
+  .kelp-states :global(.rl-play) { display: grid; grid-template-columns: 2rem minmax(0, 1fr) auto; gap: 8px; }
+  .kelp-states :global(.rl-card-title) { font-size: 18px; min-width: 0; }
+  .kelp-states :global(.rl-play-hint) { padding: 5px 7px; font-size: 11px; letter-spacing: 0; }
+  @media (max-width: 767px) {
+    .kelp-states { padding: 36px 0 40px; }
+    .kelp-states-header h2 { font-size: 30px; }
+    .kelp-states-header > p:not(.kelp-states-eyebrow) { font-size: 15px; }
+    .kelp-state-artwork { gap: 12px; }
+    .kelp-state-artwork figcaption { font-size: 12px; }
+    .kelp-states :global(.rl-card) { padding: 16px; }
+  }
   /* ============================================
      HERO SECTION
      ============================================ */
