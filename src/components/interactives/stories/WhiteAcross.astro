@@ -1,0 +1,127 @@
+---
+/**
+ * White et al. (2026) PNAS. Part 2: across ecosystems, richness predicts stability.
+ * Scatter: program means from Table 1 (R² = 0.83, p = 0.01 for program means, Fig. 3b caption).
+ * Path model (Results): richness → stability 0.50; richness → synchrony −0.40;
+ * synchrony → stability −0.36; indirect effect 0.142; model R² = 0.67; χ² = 1.43, p = 0.698.
+ */
+import InteractiveFrame from '../InteractiveFrame.astro';
+import data from '@data/stories/white-2026.json';
+interface Props { eyebrow?: string; id?: string }
+const { eyebrow, id } = Astro.props;
+
+const W = 600, H = 330, L = 56, R = 24, T = 20, B = 50;
+const lx = (r: number) => L + (Math.log(r) - Math.log(1.5)) / (Math.log(50) - Math.log(1.5)) * (W - L - R);
+const ly = (s: number) => T + (1 - (s - 0.5) / (4.5 - 0.5)) * (H - T - B);
+const xt = [2, 5, 10, 20, 40];
+const yt = [1, 2, 3, 4];
+---
+
+<InteractiveFrame
+  eyebrow={eyebrow}
+  id={id}
+  title="Across ecosystems, more species means a steadier supply"
+  intro="Comparing whole ecosystems, the strongest predictor of a steady nitrogen supply was simply how many fish species lived there. Switch views to see the pattern, then the path model that splits richness into a direct effect and an effect that runs through synchrony."
+  source="Program means from Table 1 and path coefficients from the Results of White et al. (2026), PNAS (authors' revised manuscript). The x-axis is on a log scale. Path values are standardized coefficients."
+>
+  <div class="wa" data-wa>
+    <div class="pi-seg" role="group" aria-label="View">
+      <button type="button" data-v="scatter" aria-pressed="true">The pattern</button>
+      <button type="button" data-v="path" aria-pressed="false">Direct effect</button>
+      <button type="button" data-v="path2" aria-pressed="false">Through synchrony</button>
+    </div>
+
+    <svg viewBox={`0 0 ${W} ${H}`} class="wa-svg wa-scatter" role="img" aria-label="Mean fish species richness against mean stability of nitrogen supply for six monitoring programs">
+      {xt.map((t) => <g><line x1={lx(t)} x2={lx(t)} y1={T} y2={H - B} stroke="rgba(255,255,255,0.07)"></line><text x={lx(t)} y={H - B + 18} text-anchor="middle" class="wa-tick">{t}</text></g>)}
+      {yt.map((t) => <g><line x1={L} x2={W - R} y1={ly(t)} y2={ly(t)} stroke="rgba(255,255,255,0.07)"></line><text x={L - 8} y={ly(t) + 4} text-anchor="end" class="wa-tick">{t}</text></g>)}
+      <text x={(L + W - R) / 2} y={H - 8} text-anchor="middle" class="wa-axis">Fish species per site (log scale)</text>
+      <text x="14" y={(T + H - B) / 2} transform={`rotate(-90 14 ${(T + H - B) / 2})`} text-anchor="middle" class="wa-axis">Stability of N supply</text>
+      {data.programs.map((p, i) => (
+        <g class="wa-pt" style={`--c:${p.color}; --d:${i * 90}ms`}>
+          <line x1={lx(Math.max(1.5, p.rich[0] - p.rich[1]))} x2={lx(p.rich[0] + p.rich[1])} y1={ly(p.stab[0])} y2={ly(p.stab[0])} class="wa-err"></line>
+          <line x1={lx(p.rich[0])} x2={lx(p.rich[0])} y1={ly(p.stab[0] - p.stab[1])} y2={ly(p.stab[0] + p.stab[1])} class="wa-err"></line>
+          <circle cx={lx(p.rich[0])} cy={ly(p.stab[0])} r="9"></circle>
+          <text x={lx(p.rich[0]) + (p.id === 'MCR' || p.id === 'PCCC' ? -14 : 13)} y={ly(p.stab[0]) + (p.id === 'SBC' ? 24 : p.id === 'PCCC' ? 5 : -11)} text-anchor={p.id === 'MCR' || p.id === 'PCCC' ? 'end' : 'start'} class="wa-lab">{p.id}</text>
+        </g>
+      ))}
+    </svg>
+
+    <svg viewBox="0 0 460 290" class="wa-svg wa-path" role="img" aria-label="Path model: species richness affects stability directly and through species synchrony" data-hidden="1">
+      <defs>
+        <marker id="wa-arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="currentColor"></path></marker>
+      </defs>
+      <g class="wa-node"><rect x="5" y="200" width="150" height="72" rx="12" class="wa-n-div"></rect><text x="80" y="230" text-anchor="middle">Species</text><text x="80" y="254" text-anchor="middle">richness</text></g>
+      <g class="wa-node"><rect x="155" y="12" width="150" height="72" rx="12" class="wa-n-dyn"></rect><text x="230" y="42" text-anchor="middle">Species</text><text x="230" y="66" text-anchor="middle">synchrony</text></g>
+      <g class="wa-node"><rect x="305" y="200" width="150" height="72" rx="12" class="wa-n-out"></rect><text x="380" y="230" text-anchor="middle">Stability of</text><text x="380" y="254" text-anchor="middle">N supply</text></g>
+      <g class="wa-edge wa-direct" style="color:#4FB6A5">
+        <path d="M160 236 L298 236" marker-end="url(#wa-arr)"></path>
+        <text x="229" y="224" text-anchor="middle">+0.50</text>
+      </g>
+      <g class="wa-edge wa-via" style="color:#E8A33D">
+        <path d="M90 195 L175 92" marker-end="url(#wa-arr)"></path>
+        <text x="118" y="132" text-anchor="end">−0.40</text>
+        <path d="M285 92 L370 195" marker-end="url(#wa-arr)"></path>
+        <text x="342" y="132" text-anchor="start">−0.36</text>
+      </g>
+      <circle r="7" class="wa-pulse wa-pulse-d"><animateMotion dur="2.4s" repeatCount="indefinite" path="M160 236 L298 236"></animateMotion></circle>
+      <circle r="7" class="wa-pulse wa-pulse-v"><animateMotion dur="3.2s" repeatCount="indefinite" path="M90 195 L175 92 L230 92 L285 92 L370 195"></animateMotion></circle>
+    </svg>
+
+    <div class="pi-verdict" data-wa-verdict aria-live="polite"></div>
+  </div>
+</InteractiveFrame>
+
+<style>
+  .wa { display: grid; gap: 1rem; }
+  .wa-svg { width: 100%; height: auto; display: block; }
+  .wa-path { max-width: 520px; margin: 0 auto; }
+  .wa-svg[data-hidden='1'] { display: none; }
+  .wa-tick { fill: rgba(255,255,255,0.5); font-size: 12px; }
+  .wa-axis { fill: rgba(255,255,255,0.7); font-size: 13px; font-weight: 600; }
+  .wa-pt { animation: wa-in 0.5s var(--d) both; }
+  .wa-pt circle { fill: var(--c); stroke: #0f172a; stroke-width: 2; }
+  .wa-err { stroke: var(--c); stroke-width: 2; opacity: 0.45; }
+  .wa-lab { fill: var(--c); font-size: 14px; font-weight: 800; }
+  @keyframes wa-in { from { opacity: 0; transform: translateY(8px); } }
+  .wa-node rect { stroke-width: 2; }
+  .wa-n-div { fill: rgba(123,191,74,0.15); stroke: #7BBF4A; }
+  .wa-n-dyn { fill: rgba(77,168,201,0.15); stroke: #4DA8C9; }
+  .wa-n-out { fill: rgba(255,255,255,0.08); stroke: rgba(255,255,255,0.6); }
+  .wa-node text { fill: #fff; font-size: 20px; font-weight: 700; }
+  .wa-edge path { fill: none; stroke: currentColor; stroke-width: 4; transition: opacity 0.4s; }
+  .wa-edge text { fill: currentColor; font-size: 22px; font-weight: 800; transition: opacity 0.4s; }
+  .wa-pulse { transition: opacity 0.4s; }
+  .wa-pulse-d { fill: #4FB6A5; } .wa-pulse-v { fill: #E8A33D; }
+  .wa-path.only-direct .wa-via, .wa-path.only-direct .wa-pulse-v { opacity: 0.12; }
+  .wa-path.only-via .wa-direct, .wa-path.only-via .wa-pulse-d { opacity: 0.12; }
+  @media (prefers-reduced-motion: reduce) { .wa-pt { animation: none; } .wa-pulse { display: none; } }
+</style>
+
+<script>
+  const TEXT: Record<string, string> = {
+    scatter: '<strong>Richer communities, steadier supply.</strong> Across the six programs, mean species richness explained 83% of the variation in mean stability (R² = 0.83). Moorea, with about 39 species per site, sits far above Virginia’s seagrass beds with about 2.',
+    path: '<strong>Richness has a strong direct effect (+0.50).</strong> Richness was the strongest predictor of stability across ecosystems; in the path model its total effect was about 1.5 times that of any other predictor. The model explained 67% of the variation in stability and fit the data well.',
+    path2: '<strong>Richness also works through synchrony.</strong> More species meant less synchrony (−0.40), and less synchrony meant more stability (−0.36). Multiplying the two gives a smaller indirect effect of +0.14. Two negatives make a positive: species-rich communities rise and fall less in unison.',
+  };
+  const init = () => {
+    document.querySelectorAll<HTMLElement>('[data-wa]').forEach((root) => {
+      if (root.dataset.bound) return;
+      root.dataset.bound = '1';
+      const sc = root.querySelector<SVGSVGElement>('.wa-scatter')!;
+      const pa = root.querySelector<SVGSVGElement>('.wa-path')!;
+      const verdict = root.querySelector<HTMLElement>('[data-wa-verdict]')!;
+      const btns = Array.from(root.querySelectorAll<HTMLButtonElement>('[data-v]'));
+      const set = (v: string) => {
+        btns.forEach((b) => b.setAttribute('aria-pressed', String(b.dataset.v === v)));
+        sc.dataset.hidden = v !== 'scatter' ? '1' : '0';
+        pa.dataset.hidden = v === 'scatter' ? '1' : '0';
+        pa.classList.toggle('only-direct', v === 'path');
+        pa.classList.toggle('only-via', v === 'path2');
+        verdict.innerHTML = TEXT[v];
+      };
+      btns.forEach((b) => b.addEventListener('click', () => set(b.dataset.v!)));
+      set('scatter');
+    });
+  };
+  document.addEventListener('astro:page-load', init);
+</script>

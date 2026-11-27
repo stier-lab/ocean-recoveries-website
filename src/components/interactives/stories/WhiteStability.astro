@@ -18,8 +18,8 @@ const copy = {
     label: 'Number of fish species',
   },
   asynchrony: {
-    title: 'Out of step is a good thing',
-    intro: 'Richness only helps if species do not all boom and bust together. Keep six species and change how much their good and bad years line up.',
+    title: 'Why out of step is a good thing',
+    intro: 'Why would synchrony matter? A simulation shows the idea. Keep six species and change how much their good and bad years line up.',
     label: 'How much species move together',
   },
 }[mode];
@@ -127,7 +127,7 @@ const W = 600, H = 220;
             : `<strong>${N} species: the total is ${gain} times steadier than one species alone.</strong> Bad years for some species are offset by good years for others. Gains level off, because species here still share part of their ups and downs.`)
           : (rho >= 0.95
             ? '<strong>In lockstep, six species behave like one.</strong> When every species has its good and bad years together, adding species does nothing for stability.'
-            : `<strong>The less species move together, the steadier the total.</strong> At this level of synchrony, six species give a supply ${gain} times steadier than one. That asynchrony is the second stabilizer the study identified.`);
+            : `<strong>The less species move together, the steadier the total.</strong> At this level of synchrony, six species give a supply ${gain} times steadier than one. This is the portfolio effect behind the synchrony results in Part 3.`);
       };
       input.addEventListener('input', draw);
       draw();
