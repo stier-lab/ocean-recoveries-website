@@ -7,45 +7,23 @@ import PencilFigure from '@components/shared/PencilFigure.astro';
       <div class="healing-copy">
         <p class="healing-eyebrow">Keck-supported coral research</p>
         <h2 id="healing-photos-title">Healing is only the beginning</h2>
-        <p>Microscope photographs follow the cut tip of <i>Acropora</i> cf. <i>pulchra</i> as tissue covers the wound and the growing tip reforms. These examples compare fragments held at 28 °C and 31 °C.</p>
+        <p>Microscope photographs follow the cut tip of <i>Acropora</i> cf. <i>pulchra</i> as tissue covers the wound and the growing tip reforms. This sequence shows a fragment held in ambient water at 28 °C.</p>
         <p class="healing-credit">Time-lapses and photographic sequences created by <strong>Molly Brzezinski</strong>.</p>
       </div>
-      <figure class="healing-comparison">
-        <div class="healing-labels"><span>28 °C · Ambient</span><span>31 °C · Heated</span></div>
-        <video controls muted loop playsinline data-scroll-video preload="none" width="752" height="286" poster="/images/research/lth-healing-poster.jpg"
-          aria-label="Side-by-side microscope time-lapse of coral wound healing under ambient and heated conditions">
-          <source src="/videos/lth-healing-comparison.mp4" type="video/mp4" />
-          <a href="/images/research/lth-healing-comparison.gif">View the original healing GIF</a>
+      <figure class="healing-sequence">
+        <div class="healing-labels">28 °C · Ambient water</div>
+        <video controls muted loop playsinline data-scroll-video preload="none" width="560" height="420" poster="/images/research/lth-ambient-poster.jpg"
+          aria-label="Microscope time-lapse of Acropora wound healing in ambient water at 28 degrees Celsius">
+          <source src="/videos/lth-ambient-healing.mp4" type="video/mp4" />
+          <a href="/images/research/lth-ambient-healing.gif">View the healing GIF</a>
         </video>
-        <figcaption>Representative microscope sequences. Day labels follow the source animation. <a href="/images/research/lth-healing-comparison.gif">Original GIF</a></figcaption>
+        <figcaption>One representative fragment. Day labels follow the source animation. <a href="/images/research/lth-ambient-healing.gif">View as GIF</a></figcaption>
       </figure>
     </div>
-    <PencilFigure src="/images/research/coral-tip-repair-pencil.jpg" alt="A cut Acropora fragment and enlarged stages showing exposed skeleton, tissue closure, and early reorganization of the growing tip">
+    <PencilFigure src="/images/research/coral-tip-repair-pencil-v2.jpg" alt="A cylindrical Acropora branch with a cut tip, magnified wound, and stages of tissue closure and early tip reorganization">
       <div class="healing-stages"><span>Exposed skeleton</span><span>Tissue closure</span><span>Tip reorganization</span></div>
       <strong>From a cut surface to a new growing tip.</strong> Exposed skeleton, tissue closure, and early tip reorganization. Drawing follows Molly Brzezinski’s microscope photographs of <i>Acropora</i> cf. <i>pulchra</i>. These are representative stages, not treatment averages or a fully regrown branch.
     </PencilFigure>
-    <details class="healing-detail">
-      <summary>See the growing tip in detail</summary>
-      <div class="healing-movies">
-        {['ambient', 'heated'].map((condition) => (
-          <figure>
-            <figcaption>{condition === 'ambient' ? '28 °C · Ambient' : '31 °C · Heated'}</figcaption>
-            <video controls muted loop playsinline data-scroll-video preload="none" width="560" height="420"
-              poster={`/images/research/lth-${condition}-poster.jpg`}
-              aria-label={`Close-up coral regeneration time-lapse under ${condition} conditions`}>
-              <source src={`/videos/lth-${condition}-healing.mp4`} type="video/mp4" />
-            </video>
-          </figure>
-        ))}
-      </div>
-      <figure class="healing-timeline">
-        <a href="/images/research/lth-morphology-timeline.jpg">
-          <img src="/images/research/lth-morphology-timeline.jpg" width="2048" height="994" loading="lazy"
-            alt="Photographic timeline from day 0 to day 15: whole cut tips and close-ups under ambient conditions above, heated conditions below" />
-        </a>
-        <figcaption>Cut tips and enlarged views, days 0–15. Open the image for the full-size sequence. Photographic sequences: Molly Brzezinski.</figcaption>
-      </figure>
-    </details>
   </div>
 </section>
 
@@ -57,22 +35,16 @@ import PencilFigure from '@components/shared/PencilFigure.astro';
   .healing-copy p { margin: 0 0 16px; line-height: 1.7; color: #38504b; }
   .healing-eyebrow { font-size: 12px; text-transform: uppercase; font-weight: 700; }
   .healing-photos a { color: #22625c; text-decoration: underline; text-underline-offset: 3px; }
-  .healing-photos a:focus-visible, summary:focus-visible { outline: 3px solid #22625c; outline-offset: 4px; }
+  .healing-photos a:focus-visible { outline: 3px solid #22625c; outline-offset: 4px; }
   .healing-credit { font-size: 14px; }
   .healing-stages { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; text-align: center; margin-bottom: 20px; font-size: 13px; font-weight: 600; }
   figure { margin: 0; min-width: 0; }
   video, img { display: block; width: 100%; height: auto; }
   video { background: #111; }
-  .healing-labels { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; margin-bottom: 10px; font-size: 14px; font-weight: 600; }
-  .healing-labels span:last-child { text-align: right; }
+  .healing-labels { margin-bottom: 10px; font-size: 14px; font-weight: 600; }
   figcaption { margin-top: 10px; font-size: 13px; line-height: 1.6; color: #485d59; }
-  .healing-detail { margin-top: 32px; border-top: 1px solid #bfcfca; padding-top: 16px; }
-  summary { cursor: pointer; font-weight: 600; padding: 8px 0; }
-  .healing-movies { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px; margin: 20px 0 28px; }
-  .healing-movies figcaption { margin: 0 0 10px; }
-  .healing-timeline img { aspect-ratio: 2048 / 994; object-fit: contain; }
   @media (max-width: 767px) {
-    .healing-layout, .healing-movies { grid-template-columns: minmax(0, 1fr); gap: 24px; }
+    .healing-layout { grid-template-columns: minmax(0, 1fr); gap: 24px; }
     .healing-copy h2 { font-size: 26px; }
     .healing-photos { padding: 40px 0; }
   }

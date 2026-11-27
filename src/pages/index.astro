@@ -101,16 +101,16 @@ const formatDate = formatSiteDate;
         <p class="featured-healing-eyebrow">Coral reefs · Regeneration</p>
         <h2 id="featured-healing-title">Watch a coral rebuild its growing tip</h2>
       <figure class="featured-healing-media">
-        <div class="featured-healing-labels"><span>28 °C · Ambient</span><span>31 °C · Heated</span></div>
-        <video class="featured-visual" controls muted loop playsinline preload="none" data-scroll-video width="752" height="286"
-          poster="/images/research/lth-healing-poster.jpg"
-          aria-label="Side-by-side microscope time-lapse of coral healing and regeneration at 28 and 31 degrees Celsius">
-          <source src="/videos/lth-healing-comparison.mp4" type="video/mp4" />
-          <a href="/images/research/lth-healing-comparison.gif">View the healing GIF</a>
+        <div class="featured-healing-labels single-label">28 °C · Ambient water</div>
+        <video class="featured-visual" controls muted loop playsinline preload="none" data-scroll-video width="560" height="420"
+          poster="/images/research/lth-ambient-poster.jpg"
+          aria-label="Microscope time-lapse of coral healing and regeneration in ambient water at 28 degrees Celsius">
+          <source src="/videos/lth-ambient-healing.mp4" type="video/mp4" />
+          <a href="/images/research/lth-ambient-healing.gif">View the healing GIF</a>
         </video>
-        <figcaption>Time-lapse created by <strong>Molly Brzezinski</strong>. Individual examples, not treatment averages.</figcaption>
+        <figcaption>Time-lapse created by <strong>Molly Brzezinski</strong>. One representative fragment.</figcaption>
       </figure>
-        <p>After a branch tip is cut, tissue covers the wound and a new tip takes shape. These microscope sequences follow <i>Acropora</i> cf. <i>pulchra</i> at two temperatures.</p>
+        <p>After a branch tip is cut, tissue covers the wound and a new tip takes shape. This microscope sequence follows <i>Acropora</i> cf. <i>pulchra</i> in ambient water at 28 °C.</p>
         <a href="/research/coral-reefs#coral-regeneration">Coral regeneration research <span aria-hidden="true">&rarr;</span></a>
       </article>
       <article class="featured-study">
@@ -570,7 +570,8 @@ const formatDate = formatSiteDate;
   .featured-study a:focus-visible { outline: 3px solid #22625c; outline-offset: 4px; }
   .featured-healing-media { min-width: 0; margin: 0 0 20px; width: 100%; }
   .featured-visual { display: block; width: 100%; aspect-ratio: 5 / 2; height: auto; object-fit: contain; }
-  video.featured-visual { background: #111; }
+  video.featured-visual { background: #111; aspect-ratio: 4 / 3; }
+  .featured-healing-labels.single-label { display: block; }
   .homepage-habitats { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; align-items: center; }
   .homepage-habitats img { display: block; width: 100%; height: auto; }
   .featured-healing-labels { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; margin-bottom: 8px; font-size: 13px; font-weight: 600; }

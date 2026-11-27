@@ -2,7 +2,7 @@
 /**
  * ResilienceLandscape
  * Interactive stability landscape ("ball in a basin") for the Resilience
- * Across Scales section. Each card plays one process:
+ * Across Scales section. Each control plays one process:
  *   1 Resistance     – a small push; the ridge holds the system in place
  *   2 Recovery       – a larger push; the system rolls back to its basin
  *   3 Reorganization – a push past the ridge; the system settles elsewhere
@@ -55,15 +55,27 @@ const CURVE =
 
 <div class="rl" data-rl>
   <figure class="rl-figure">
-    <slot name="habitats" />
+    <div class="rl-controls" role="group" aria-label="Play a resilience process">
+      {processes.map((p) => (
+        <button type="button" class={`rl-play rl-control-${p.n}`} data-k={p.key} data-status={p.status} aria-pressed="false" aria-label={`Play ${p.title.toLowerCase()}`}>
+          <span class="rl-badge" aria-hidden="true">{p.n}</span>
+          <span class="rl-card-title">{p.title}</span>
+          <span class="rl-play-hint" aria-hidden="true">
+            <svg viewBox="0 0 16 16" width="12" height="12"><path d="M4 2.5v11l9-5.5z" fill="currentColor"></path></svg>
+            <span class="rl-play-word">Play</span>
+          </span>
+        </button>
+      ))}
+    </div>
+    <div class="rl-habitats"><slot name="habitats" /></div>
     <svg
       class="rl-svg"
-      viewBox="0 0 1100 390"
+      viewBox="0 0 1100 440"
       role="img"
       aria-labelledby="rl-svg-title"
     >
       <title id="rl-svg-title">
-        A stability landscape. A ball, representing a kelp forest ecosystem, rests in a deep basin labeled kelp forest.
+        A stability landscape. A ball represents the ecosystem. A deep basin is labeled kelp forest.
         A ridge separates it from a shallower basin labeled urchin barren.
       </title>
       <defs>
@@ -116,10 +128,10 @@ const CURVE =
       </g>
 
       <!-- Basin labels -->
-      <g transform="translate(290 372)"><g class="rl-grow rl-basin" data-basin="left">
+      <g transform="translate(290 410)"><g class="rl-grow rl-basin" data-basin="left">
         <text text-anchor="middle" class="rl-label">Kelp forest</text>
       </g></g>
-      <g transform="translate(860 314)"><g class="rl-grow rl-basin" data-basin="right">
+      <g transform="translate(860 410)"><g class="rl-grow rl-basin" data-basin="right">
         <text text-anchor="middle" class="rl-label">Urchin barren</text>
       </g></g>
 
@@ -132,22 +144,17 @@ const CURVE =
       </g>
     </svg>
     <figcaption class="rl-caption">
-      <span class="rl-status" aria-live="polite">Choose a process below to see it play out.</span>
+      <span class="rl-status" aria-live="polite">A kelp forest rests in its basin.</span>
       <span class="rl-note">Conceptual sketch of a stability landscape, not data.</span>
     </figcaption>
   </figure>
 
-  <div class="rl-cards">
+  <details class="rl-details">
+    <summary>Mechanisms across scales</summary>
+    <div class="rl-cards">
     {processes.map((p) => (
       <div class={`rl-card rl-card-${p.n}`} data-k={p.key}>
-        <button type="button" class="rl-play" data-k={p.key} data-status={p.status} aria-pressed="false">
-          <span class="rl-badge" aria-hidden="true">{p.n}</span>
-          <span class="rl-card-title">{p.title}</span>
-          <span class="rl-play-hint">
-            <svg viewBox="0 0 16 16" width="12" height="12" aria-hidden="true"><path d="M4 2.5v11l9-5.5z" fill="currentColor"></path></svg>
-            Play
-          </span>
-        </button>
+        <h3 class="rl-card-title">{p.title}</h3>
         <p class="rl-definition"><strong>{p.lead}</strong> {p.definition}.</p>
         <div class="rl-scales">
           {p.scales.map(([level, mech]) => (
@@ -159,22 +166,31 @@ const CURVE =
         </div>
       </div>
     ))}
-  </div>
+    </div>
+  </details>
 </div>
 
 <style>
-  .rl { display: grid; gap: 1.5rem; max-width: 64rem; margin: 0 auto; }
+  .rl { display: grid; gap: 1rem; max-width: 64rem; margin: 0 auto; scroll-margin-top: 6rem; }
+  @media (min-width: 1024px) { .rl { scroll-margin-top: 8.5rem; } }
 
   .rl-figure {
     margin: 0;
-    border-radius: 1rem;
+    border-radius: 8px;
     border: 1px solid rgba(255, 255, 255, 0.1);
     background: rgba(255, 255, 255, 0.03);
-    padding: 1.5rem 1.25rem 1rem;
+    padding: 1rem 1rem 0.75rem;
   }
-  .rl-svg { width: 100%; height: auto; display: block; overflow: visible; }
-  .rl-num { font: 800 15px Inter, system-ui, sans-serif; fill: #0f172a; }
-  .rl-label { font: 600 15px Inter, system-ui, sans-serif; fill: #e2e8f0; transition: fill 300ms ease, opacity 300ms ease; }
+  .rl-controls { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; margin-bottom: 16px; }
+  .rl-habitats { min-width: 0; margin-bottom: 12px; }
+  .rl .rl-habitats :global(.resilience-studies), .rl .rl-habitats :global(.kelp-state-artwork) { margin: 0; gap: 16px; }
+  .rl .rl-habitats :global(figure) { width: min(100%, 200px); max-width: 200px; min-width: 0; }
+  .rl .rl-habitats :global(img) { width: 100%; max-height: 120px; object-fit: contain; }
+  .rl .rl-habitats :global(figcaption) { font-size: 13px; line-height: 1.4; margin-top: 6px; }
+  .rl[data-rl] .rl-habitats :global(figcaption span) { display: none; }
+  .rl-svg { width: 100%; height: auto; max-height: 280px; display: block; overflow: visible; }
+  .rl-num { font: 800 18px Inter, system-ui, sans-serif; fill: #0f172a; }
+  .rl-label { font: 600 24px Inter, system-ui, sans-serif; fill: #e2e8f0; transition: fill 300ms ease, opacity 300ms ease; }
   .rl-basin.is-dim .rl-label { opacity: 0.35; }
   .rl-basin.is-lit .rl-label { fill: #fbbf24; }
 
@@ -190,7 +206,8 @@ const CURVE =
   @media (max-width: 640px) {
     .rl-figure { padding: 1rem 0.5rem 0.75rem; }
     .rl-grow { transform: scale(1.9); }
-    .rl-basin { transform: scale(1.7); }
+    .rl-basin { transform: none; }
+    .rl-label { font-size: 50px; }
   }
 
   .rl-caption {
@@ -198,24 +215,26 @@ const CURVE =
     margin-top: 0.75rem; padding: 0 0.25rem;
     font-size: 0.875rem;
   }
-  .rl-status { color: rgba(255, 255, 255, 0.8); min-height: 1.5em; }
-  .rl-note { color: rgba(255, 255, 255, 0.4); font-size: 0.75rem; }
+  .rl-status { color: rgba(255, 255, 255, 0.8); min-height: 3em; width: 100%; }
+  .rl-note { color: #b8c6d0; font-size: 0.75rem; }
+  .rl-details summary { color: #dce7ed; min-height: 44px; padding: 12px 0; cursor: pointer; font-size: 14px; }
+  .rl-details summary:focus-visible { outline: 2px solid #4FB6A5; outline-offset: 4px; }
 
   .rl-cards { display: grid; gap: 1rem; }
   @media (min-width: 768px) { .rl-cards { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1.5rem; } }
 
   .rl-card {
     position: relative;
-    padding: 1.5rem;
-    border-radius: 1rem;
+    padding: 1rem;
+    border-radius: 8px;
     border: 1px solid rgba(255, 255, 255, 0.1);
     border-top: 3px solid var(--rl-c);
     background: rgba(255, 255, 255, 0.03);
     transition: background-color 300ms ease, transform 300ms ease, box-shadow 300ms ease;
   }
-  .rl-card-1 { --rl-c: #4DA8C9; }
-  .rl-card-2 { --rl-c: #4FB6A5; }
-  .rl-card-3 { --rl-c: #fbbf24; }
+  .rl-card-1, .rl-control-1 { --rl-c: #4DA8C9; }
+  .rl-card-2, .rl-control-2 { --rl-c: #4FB6A5; }
+  .rl-card-3, .rl-control-3 { --rl-c: #fbbf24; }
   .rl-card:hover { background: rgba(255, 255, 255, 0.05); }
   .rl-card.is-active {
     background: rgba(255, 255, 255, 0.06);
@@ -223,27 +242,25 @@ const CURVE =
   }
 
   .rl-play {
-    display: flex; align-items: center; gap: 0.75rem; width: 100%;
-    background: none; border: 0; padding: 0; margin: 0 0 0.75rem;
+    display: flex; align-items: center; gap: 8px; width: 100%; min-width: 0; min-height: 48px;
+    background: #172a3a; border: 1px solid #526573; border-radius: 6px; padding: 8px 10px; margin: 0;
     color: #fff; font: inherit; text-align: left; cursor: pointer;
   }
-  /* Whole card is the click target */
-  .rl-play::after { content: ''; position: absolute; inset: 0; border-radius: 1rem; }
-  .rl-play:focus-visible { outline: none; }
-  .rl-play:focus-visible::after { outline: 2px solid var(--rl-c); outline-offset: 3px; }
+  .rl-play:hover, .rl-play[aria-pressed='true'] { border-color: var(--rl-c); background: #243b4b; }
+  .rl-play:focus-visible { outline: 3px solid var(--rl-c); outline-offset: 3px; }
 
   .rl-badge {
-    flex: none; width: 2rem; height: 2rem; border-radius: 999px;
+    flex: none; width: 1.5rem; height: 1.5rem; border-radius: 999px;
     display: grid; place-items: center;
     background: var(--rl-c); color: #0f172a; font-weight: 800; font-size: 0.875rem;
   }
-  .rl-card-title { font-size: 1.25rem; font-weight: 700; }
+  .rl-card-title { font-size: 16px; font-weight: 700; margin: 0 0 12px; color: #fff; letter-spacing: 0; }
+  .rl-play .rl-card-title { font-size: 15px; margin: 0; }
   .rl-play-hint {
     margin-left: auto; display: inline-flex; align-items: center; gap: 0.35rem;
-    font-size: 0.75rem; font-weight: 600; letter-spacing: 0.04em; text-transform: uppercase;
+    font-size: 12px; font-weight: 600; letter-spacing: 0;
     color: var(--rl-c);
-    border: 1px solid color-mix(in srgb, var(--rl-c) 45%, transparent);
-    border-radius: 999px; padding: 0.3rem 0.65rem;
+    white-space: nowrap;
   }
 
   .rl-definition { margin: 0 0 1rem; font-size: 0.9rem; line-height: 1.5; color: rgba(255, 255, 255, 0.6); }
@@ -255,8 +272,22 @@ const CURVE =
     padding: 0.5rem 0; border-bottom: 1px solid rgba(255, 255, 255, 0.05);
   }
   .rl-scale:last-child { border-bottom: 0; }
-  .rl-level { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: rgba(255, 255, 255, 0.35); }
+  .rl-level { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0; color: #b8c6d0; }
   .rl-mech { font-size: 0.875rem; color: rgba(255, 255, 255, 0.75); }
+  @media(max-width: 800px) { .rl-controls { grid-template-columns: minmax(0, 1fr); } .rl-play { min-height: 44px; } }
+  @media(max-width: 640px) { .rl-status { min-height: 6em; } }
+  @media(max-height: 550px) and (orientation: landscape) {
+    .rl { scroll-margin-top: 5rem; }
+    .rl-controls { grid-template-columns: repeat(3, minmax(0, 1fr)); margin-bottom: 8px; }
+    .rl-play { min-height: 44px; gap: 6px; padding: 6px; }
+    .rl-play .rl-card-title { font-size: 13px; }
+    .rl-play-word { display: none; }
+    .rl-badge { width: 20px; height: 20px; font-size: 12px; }
+    .rl-habitats { margin-bottom: 8px; }
+    .rl .rl-habitats :global(img) { max-height: 44px; }
+    .rl-svg { max-height: 120px; }
+    .rl-label { font-size: 44px; }
+  }
 </style>
 
 <script>
@@ -299,10 +330,18 @@ const CURVE =
 
   let rafId: number | null = null;
   let observer: IntersectionObserver | null = null;
+  let autoplayTimer: number | null = null;
+  let resizeObserver: ResizeObserver | null = null;
 
-  const init = () => {
+  const cleanup = () => {
     if (rafId !== null) { cancelAnimationFrame(rafId); rafId = null; }
     if (observer) { observer.disconnect(); observer = null; }
+    if (autoplayTimer !== null) { clearTimeout(autoplayTimer); autoplayTimer = null; }
+    if (resizeObserver) { resizeObserver.disconnect(); resizeObserver = null; }
+  };
+
+  const init = () => {
+    cleanup();
 
     const root = document.querySelector<HTMLElement>('[data-rl]');
     if (!root) return;
@@ -340,7 +379,8 @@ const CURVE =
       const len = Math.hypot(nx, ny) || 1;
       nx /= len; ny /= len;
       if (ny > 0) { nx = -nx; ny = -ny; }
-      ball.setAttribute('transform', `translate(${(p.x + nx * R).toFixed(1)} ${(p.y + ny * R).toFixed(1)})`);
+      const radius = R * (window.matchMedia('(max-width: 640px)').matches ? 1.9 : 1);
+      ball.setAttribute('transform', `translate(${(p.x + nx * radius).toFixed(1)} ${(p.y + ny * radius).toFixed(1)})`);
     };
 
     const setBasins = (state: 'home' | 'other' | 'none') => {
@@ -361,7 +401,13 @@ const CURVE =
 
     const setActive = (key: Key | null, msg?: string) => {
       if (key) root.dataset.active = key; else delete root.dataset.active;
-      buttons.forEach((b) => b.setAttribute('aria-pressed', String(b.dataset.k === key)));
+      buttons.forEach((b) => {
+        const active = b.dataset.k === key;
+        b.setAttribute('aria-pressed', String(active));
+        b.setAttribute('aria-label', `${active ? 'Replay' : 'Play'} ${b.dataset.k}`);
+        const word = b.querySelector('.rl-play-word');
+        if (word) word.textContent = active ? 'Replay' : 'Play';
+      });
       cards.forEach((c) => c.classList.toggle('is-active', c.dataset.k === key));
       if (msg) status.textContent = msg;
     };
@@ -402,8 +448,8 @@ const CURVE =
         pulse();
         runSteps(SEQUENCES[key], () => setBasins(key === 'reorganization' ? 'other' : 'home'));
       };
-      // If the ball is in the other basin, bring it home first
-      if (currentX > RIDGE) {
+      // Every process starts from the same forest state, including rapid switches.
+      if (Math.abs(currentX - HOME) > 1) {
         setBasins('home');
         if (reduceMotion) { place(HOME); begin(); return; }
         runSteps([{ x: HOME, ms: 700, ease: easeInOut }], begin);
@@ -416,18 +462,17 @@ const CURVE =
     const figure = root.querySelector<HTMLElement>('.rl-figure');
     buttons.forEach((btn) => {
       btn.addEventListener('click', () => {
-        // On small screens the cards sit below the diagram: bring it into view first
-        if (figure) {
-          const r = figure.getBoundingClientRect();
-          if (r.top < 0 || r.bottom > window.innerHeight) {
-            figure.scrollIntoView({ behavior: reduceMotion ? 'auto' : 'smooth', block: 'center' });
-          }
-        }
+        if (autoplayTimer !== null) { clearTimeout(autoplayTimer); autoplayTimer = null; }
         play(btn.dataset.k as Key, btn.dataset.status ?? '');
       });
     });
 
     place(HOME);
+    const svg = root.querySelector('.rl-svg');
+    if (svg && 'ResizeObserver' in window) {
+      resizeObserver = new ResizeObserver(() => place(currentX));
+      resizeObserver.observe(svg);
+    }
 
     // Play recovery once when the section first comes into view
     if (!reduceMotion && 'IntersectionObserver' in window) {
@@ -436,7 +481,10 @@ const CURVE =
         if (entries.some((e) => e.isIntersecting)) {
           observer?.disconnect(); observer = null;
           if (!root.dataset.active && recoveryBtn) {
-            window.setTimeout(() => play('recovery', recoveryBtn.dataset.status ?? ''), 400);
+            autoplayTimer = window.setTimeout(() => {
+              autoplayTimer = null;
+              if (root.isConnected) play('recovery', recoveryBtn.dataset.status ?? '');
+            }, 400);
           }
         }
       }, { threshold: 0.5 });
@@ -445,5 +493,6 @@ const CURVE =
   };
 
   init();
+  document.addEventListener('astro:before-swap', cleanup);
   document.addEventListener('astro:after-swap', init);
 </script>
