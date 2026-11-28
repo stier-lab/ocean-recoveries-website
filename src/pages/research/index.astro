@@ -1,1585 +1,191 @@
 ---
 import Layout from '@layouts/Layout.astro';
-import Breadcrumbs from '@components/layout/Breadcrumbs.astro';
-import WaveDivider from '@components/shared/WaveDivider.astro';
 import ResilienceLandscape from '@components/research/ResilienceLandscape.astro';
 import CoralHealingPhotos from '@components/research/CoralHealingPhotos.astro';
 import ResearchPlaces from '@components/research/ResearchPlaces.astro';
-import ResearchGlobe from '@components/research/ResearchGlobe';
 import StudySitesMap from '@components/research/StudySitesMap';
-import { studySystems, researchPillars } from '@data/research';
+import { studyPrograms } from '@data/studyPrograms';
+import { researchArtwork } from '@data/researchArtwork';
 
-const breadcrumbs = [
-  { label: 'Research' },
+const systems = [
+  { slug: 'coral-reefs', title: 'Coral reefs', place: 'Mo\u2018orea, the Dominican Republic, and Florida', summaries: [
+    'How warming, genetic variation, and injury affect wound closure and rebuilding.',
+    'How coral architecture shapes resident communities, and how those animals affect their hosts.',
+    'How demographic evidence and simulations can inform restoration choices.',
+  ] },
+  { slug: 'kelp-forests', title: 'Kelp forests', place: 'Southern California and the Santa Barbara Channel', summaries: [
+    'How the history of kelp loss and recovery relates to the communities beneath the canopy.',
+    'How fishes and seafloor communities respond to different layers of reef habitat.',
+    'When predators, grazers, marine protection, and fishing influence kelp persistence.',
+  ] },
 ];
 ---
 
-<Layout
-  title="Research"
-  description="Ocean Recoveries Lab research: understanding, restoring, and scaling ocean resilience through ecosystem dynamics, conservation science, and quantitative methods."
->
-  <!-- Hero Section - Cinematic -->
-  <section class="hero">
-    <div class="hero-media">
-      <div class="hero-image" style="background-image: url('/images/blacktip-reef-sharks-split-view-island.jpeg');"></div>
-      <div class="hero-overlay"></div>
-      <div class="hero-vignette"></div>
+<Layout title="Research" description="Current coral reef and kelp forest research: coral repair, resident communities, restoration decisions, habitat, and food webs.">
+  <header class="research-intro">
+    <div class="container">
+      <p class="eyebrow">Ocean Recoveries Lab · UC Santa Barbara</p>
+      <h1>Research</h1>
+      <p class="intro-copy">Why do some reefs and forests recover while others change? We study the organisms, interactions, and decisions that shape those outcomes.</p>
+      <nav aria-label="Research sections">
+        <a href="#current-research" data-astro-reload>Current programs</a>
+        <a href="#resilience" data-astro-reload>Resilience</a>
+        <a href="#sites" data-astro-reload>Places</a>
+        <a href="/notebook">Research notebook</a>
+      </nav>
     </div>
+  </header>
 
-    <!-- Floating particles for depth -->
-    <div class="hero-particles" aria-hidden="true">
-      <div class="particle particle-1"></div>
-      <div class="particle particle-2"></div>
-      <div class="particle particle-3"></div>
-      <div class="particle particle-4"></div>
-      <div class="particle particle-5"></div>
-      <div class="particle particle-6"></div>
-    </div>
-
-    <div class="hero-content">
-      <div class="container">
-        <Breadcrumbs items={breadcrumbs} class="justify-center mb-6 opacity-0 animate-fade-down" />
-
-        <div class="hero-text">
-          <!-- Badge -->
-          <div class="hero-badge scroll-reveal">
-            <span class="badge-dot"></span>
-            <span>Our Research</span>
-          </div>
-
-          <!-- Title -->
-          <h1 class="hero-title scroll-reveal stagger-1">
-            <span class="title-line title-gradient">Understanding, Restoring</span>
-            <span class="title-line title-gradient">&amp; Scaling</span>
-            <span class="title-line title-white">Ocean Resilience</span>
-          </h1>
-
-          <!-- Description -->
-          <p class="hero-desc scroll-reveal stagger-2">
-            We integrate ecological theory, quantitative methods, and field studies with a commitment to
-            <span class="highlight">open science</span> and <span class="highlight">decision support</span> —
-            moving insights from lab and field to classrooms, observatories, and coastal decision tables.
-          </p>
-
-          <!-- Research Area Cards -->
-          <div class="research-areas scroll-reveal stagger-3">
-            <a href="/research/coral-reefs" class="research-area-card research-area-coral">
-              <div class="research-area-image">
-                <img src="/images/cauliflower-coral-damselfish-reef.jpeg" alt="" loading="eager" />
-              </div>
-              <div class="research-area-content">
-                <span class="research-area-location">
-                  <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
-                  </svg>
-                  Mo'orea, French Polynesia
-                </span>
-                <h3 class="research-area-title">Coral Reefs</h3>
-                <p class="research-area-desc">How biotic interactions shape coral resilience</p>
-                <span class="research-area-cta">
-                  Explore research
-                  <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                  </svg>
-                </span>
-              </div>
-            </a>
-            <a href="/research/kelp-forests" class="research-area-card research-area-kelp">
-              <div class="research-area-image">
-                <img src="/images/giant-kelp-sunlight-underwater.jpeg" alt="" loading="eager" />
-              </div>
-              <div class="research-area-content">
-                <span class="research-area-location">
-                  <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
-                  </svg>
-                  Santa Barbara, California
-                </span>
-                <h3 class="research-area-title">Kelp Forests</h3>
-                <p class="research-area-desc">Predator-prey dynamics and fisheries benefits</p>
-                <span class="research-area-cta">
-                  Explore research
-                  <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                  </svg>
-                </span>
-              </div>
-            </a>
-          </div>
-
-          <!-- Jump Navigation -->
-          <nav class="jump-nav scroll-reveal stagger-4" aria-label="Jump to section">
-            <a href="#pillars" class="jump-link" data-section="pillars">
-              <span>Research Pillars</span>
-              <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
-              </svg>
-            </a>
-            <a href="#impact" class="jump-link" data-section="impact">
-              <span>Impact Pathway</span>
-              <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
-              </svg>
-            </a>
-            <a href="#systems" class="jump-link" data-section="systems">
-              <span>Study Systems</span>
-              <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
-              </svg>
-            </a>
-            <a href="#sites" class="jump-link" data-section="sites">
-              <span>Field Sites</span>
-              <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
-              </svg>
-            </a>
-          </nav>
-        </div>
-      </div>
-    </div>
-
-    <!-- Scroll indicator -->
-    <a href="#pillars" class="scroll-indicator">
-      <span class="scroll-text">Explore</span>
-      <div class="scroll-line">
-        <div class="scroll-dot"></div>
-      </div>
-    </a>
-
-    <WaveDivider id="hero-wave" fillColor="surface" />
-  </section>
-
-  <!-- Sticky Section Nav (Desktop) -->
-  <nav class="sticky-nav" id="sticky-nav" aria-label="Page sections">
-    <div class="sticky-nav-inner">
-      <a href="#pillars" class="sticky-nav-link" data-section="pillars">
-        <span>Pillars</span>
-      </a>
-      <a href="#resilience" class="sticky-nav-link" data-section="resilience">
-        <span>Resilience</span>
-      </a>
-      <a href="#impact" class="sticky-nav-link" data-section="impact">
-        <span>Impact</span>
-      </a>
-      <a href="#systems" class="sticky-nav-link" data-section="systems">
-        <span>Systems</span>
-      </a>
-      <a href="#sites" class="sticky-nav-link" data-section="sites">
-        <span>Sites</span>
-      </a>
-    </div>
-  </nav>
-
-  <!-- Three Research Pillars -->
-  <section id="pillars" class="pillars-section">
-    <div class="pillars-bg">
-      <div class="pillar-orb pillar-orb-1"></div>
-      <div class="pillar-orb pillar-orb-2"></div>
-    </div>
-
-    <div class="container relative z-10">
-      <div class="section-header scroll-reveal">
-        <span class="section-eyebrow">How We Work</span>
-        <h2 class="section-title">Three Research <span class="title-gradient">Pillars</span></h2>
-        <p class="section-desc">
-          Our work integrates across three interconnected approaches — from fundamental science to actionable solutions.
-        </p>
-      </div>
-
-      <div class="pillars-grid">
-        {researchPillars.map((pillar, i) => (
-          <div class={`pillar-card scroll-reveal stagger-${i + 1}`}>
-            <div class="pillar-number">{String(i + 1).padStart(2, '0')}</div>
-
-            <div class={`pillar-icon pillar-icon-${i + 1}`}>
-              {i === 0 && (
-                <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9" />
-                </svg>
-              )}
-              {i === 1 && (
-                <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" />
-                </svg>
-              )}
-              {i === 2 && (
-                <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 17v-2m3 2v-4m3 4v-6m2 10H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
-                </svg>
-              )}
-            </div>
-
-            <h3 class="pillar-title">{pillar.title}</h3>
-            <p class="pillar-desc">{pillar.description}</p>
-
-            <ul class="pillar-topics">
-              {pillar.topics.map(topic => (
+  <section id="current-research" class="program-guide" aria-labelledby="programs-title">
+    <div class="container">
+      <span id="systems" class="anchor-alias" aria-hidden="true"></span>
+      <p class="eyebrow">Current programs</p>
+      <h2 id="programs-title">Two ecosystems. Six connected questions.</h2>
+      {systems.map(system => (
+        <div class="system-guide">
+          <div class="system-copy">
+            <h3><a href={`/research/${system.slug}`}>{system.title}</a></h3>
+            <p class="place">{system.place}</p>
+            <ul>
+              {studyPrograms[system.slug].map((program, i) => (
                 <li>
-                  <svg class="w-3.5 h-3.5 text-accent-2 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
-                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
-                  </svg>
-                  <span>{topic}</span>
+                  <a href={`/research/${system.slug}#${program.id}`}>{program.label}</a>
+                  <p>{system.summaries[i]}</p>
                 </li>
               ))}
             </ul>
           </div>
-        ))}
-      </div>
+          <img src={researchArtwork[system.slug]!.src} alt={researchArtwork[system.slug]!.alt} width="1536" height="1024" loading="lazy" />
+        </div>
+      ))}
     </div>
-
-    <WaveDivider id="pillars-wave" fillColor="navy-deep" />
   </section>
 
-  <!-- Resilience Across Scales -->
-  <section id="resilience" class="resilience-section">
+  <section id="resilience" class="resilience-section" aria-labelledby="resilience-title">
     <div class="container">
-      <div class="section-header scroll-reveal">
-        <span class="section-eyebrow section-eyebrow-light">Conceptual Framework</span>
-        <h2 class="section-title section-title-light">Resilience <span class="title-gradient">Across Scales</span></h2>
-        <p class="section-desc section-desc-light">
-          Take a kelp forest. It sits in a basin. Disturbance pushes it uphill. Whether it rolls back, or tips into an urchin barren, depends on processes at the individual, population, and ecosystem level. We organize our work around these three processes.
-        </p>
-      </div>
-
+      <header class="section-heading">
+        <p class="eyebrow">A shared question</p>
+        <h2 id="resilience-title">Resistance, recovery, or a different state?</h2>
+        <p>Kelp forests can resist disturbance, recover after loss, or shift toward an urchin barren. This conceptual landscape separates those possibilities.</p>
+      </header>
       <ResilienceLandscape>
         <div slot="habitats" class="resilience-studies">
           <figure>
-            <img src="/images/research/kelp-forest-habitat-pencil.jpg" alt="Colored-pencil drawing of tall stands of giant kelp rising from a rocky reef, with a sheephead swimming among the fronds" width="900" height="600" loading="lazy" />
-            <figcaption><strong>Kelp forest</strong><span>Giant kelp forms a canopy above the rocky reef.</span></figcaption>
+            <img src="/images/research/kelp-forest-habitat-pencil.jpg" alt="Pencil drawing of giant kelp above a rocky reef" width="900" height="600" loading="lazy" />
+            <figcaption><strong>Kelp forest</strong></figcaption>
           </figure>
           <figure>
-            <img src="/images/research/urchin-barren-pencil-v2.jpg" alt="Colored-pencil drawing of patches of purple sea urchins across an exposed rocky reef" width="900" height="600" loading="lazy" />
-            <figcaption><strong>Urchin barren</strong><span>Purple urchins on a reef with little kelp.</span></figcaption>
+            <img src="/images/research/urchin-barren-pencil-v2.jpg" alt="Pencil drawing of purple urchins across a reef with little kelp" width="900" height="600" loading="lazy" />
+            <figcaption><strong>Urchin barren</strong></figcaption>
           </figure>
         </div>
       </ResilienceLandscape>
     </div>
-
-    <WaveDivider id="resilience-wave" fillColor="surface" />
   </section>
 
-  <!-- Impact Pathway -->
-  <CoralHealingPhotos />
-
-  <section id="impact" class="impact-section">
+  <section class="supporting-research">
     <div class="container">
-      <div class="section-header scroll-reveal">
-        <span class="section-eyebrow section-eyebrow-light">From Questions to Action</span>
-        <h2 class="section-title section-title-light">Our Impact <span class="title-gradient">Pathway</span></h2>
-        <p class="section-desc section-desc-light">
-          Research flows through four connected stages, each building on the last to create real-world impact.
-        </p>
-      </div>
-
-      <!-- Desktop Diagram -->
-      <div class="pipeline-diagram hidden md:block scroll-reveal" id="pipeline-diagram">
-        <svg class="pipeline-svg" viewBox="0 0 1000 300" preserveAspectRatio="xMidYMid meet" aria-hidden="true">
-          <defs>
-            <linearGradient id="lineGradient1" x1="0%" y1="0%" x2="100%" y2="0%">
-              <stop offset="0%" stop-color="#4DA8C9" stop-opacity="0.3" />
-              <stop offset="50%" stop-color="#4FB6A5" stop-opacity="0.6" />
-              <stop offset="100%" stop-color="#4DA8C9" stop-opacity="0.3" />
-            </linearGradient>
-            <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
-              <feGaussianBlur stdDeviation="3" result="blur" />
-              <feMerge>
-                <feMergeNode in="blur" />
-                <feMergeNode in="SourceGraphic" />
-              </feMerge>
-            </filter>
-          </defs>
-
-          <!-- Connection paths -->
-          <g class="connections">
-            <path id="path1" class="connection-path" d="M 165 120 C 220 60, 280 60, 335 120" />
-            <path id="path2" class="connection-path" d="M 415 120 C 470 180, 530 180, 585 120" />
-            <path id="path3" class="connection-path" d="M 665 120 C 720 60, 780 60, 835 120" />
-          </g>
-
-          <!-- Particles container -->
-          <g id="particles"></g>
-
-          <!-- Nodes -->
-          <g class="nodes">
-            {[
-              { cx: 125, label: 'First Principles', desc: 'Fundamental questions', desc2: 'about ecosystem dynamics' },
-              { cx: 375, label: 'Quantitative Models', desc: 'Predictive tools and', desc2: 'scenario forecasting' },
-              { cx: 625, label: 'Reproducible Data', desc: 'Open science and', desc2: 'shared datasets' },
-              { cx: 875, label: 'Tools & Protocols', desc: 'Practical implementation', desc2: 'guides' }
-            ].map((node, i) => (
-              <g class="node" data-node={i + 1}>
-                <circle class="node-glow" cx={node.cx} cy="120" r="52" style={`animation-delay: ${i * 0.4}s`} />
-                <circle class="node-ring" cx={node.cx} cy="120" r="44" />
-                <circle class="node-core" cx={node.cx} cy="120" r="38" />
-                <text class="node-number" x={node.cx} y="128" text-anchor="middle" fill="white" font-size="24" font-weight="800">{i + 1}</text>
-              </g>
-            ))}
-          </g>
-
-          <!-- Labels -->
-          <g class="labels">
-            <g transform="translate(125, 200)">
-              <text class="label-title" x="0" y="0" text-anchor="middle">First Principles</text>
-              <text class="label-desc" x="0" y="24" text-anchor="middle">Fundamental questions</text>
-              <text class="label-desc" x="0" y="42" text-anchor="middle">about ecosystem dynamics</text>
-            </g>
-            <g transform="translate(375, 200)">
-              <text class="label-title" x="0" y="0" text-anchor="middle">Quantitative Models</text>
-              <text class="label-desc" x="0" y="24" text-anchor="middle">Predictive tools and</text>
-              <text class="label-desc" x="0" y="42" text-anchor="middle">scenario forecasting</text>
-            </g>
-            <g transform="translate(625, 200)">
-              <text class="label-title" x="0" y="0" text-anchor="middle">Reproducible Data</text>
-              <text class="label-desc" x="0" y="24" text-anchor="middle">Open science and</text>
-              <text class="label-desc" x="0" y="42" text-anchor="middle">shared datasets</text>
-            </g>
-            <g transform="translate(875, 200)">
-              <text class="label-title" x="0" y="0" text-anchor="middle">Tools & Protocols</text>
-              <text class="label-desc" x="0" y="24" text-anchor="middle">Practical implementation</text>
-              <text class="label-desc" x="0" y="42" text-anchor="middle">guides</text>
-            </g>
-          </g>
-        </svg>
-      </div>
-
-      <!-- Mobile version - semantic ordered list -->
-      <nav class="pipeline-mobile md:hidden scroll-reveal" aria-label="Research impact pathway">
-        <ol class="mobile-flow" role="list">
-          {[
-            { title: 'First Principles', desc: 'Fundamental questions about ecosystem dynamics' },
-            { title: 'Quantitative Models', desc: 'Predictive tools and scenario forecasting' },
-            { title: 'Reproducible Data', desc: 'Open science and shared datasets' },
-            { title: 'Tools & Protocols', desc: 'Practical implementation guides' }
-          ].map((step, i) => (
-            <li class={`mobile-step-wrapper stagger-${i + 1}`}>
-              <div class="mobile-step">
-                <div class="mobile-node" aria-hidden="true">
-                  <span class="mobile-node-number">{i + 1}</span>
-                </div>
-                <div class="mobile-content">
-                  <h4>{step.title}</h4>
-                  <p>{step.desc}</p>
-                </div>
-              </div>
-              {i < 3 && (
-                <div class="mobile-connector" aria-hidden="true">
-                  <div class="mobile-line"></div>
-                  <div class="mobile-particle" style={`animation-delay: ${i * 0.3}s`}></div>
-                </div>
-              )}
-            </li>
-          ))}
-        </ol>
-      </nav>
-    </div>
-
-    <WaveDivider id="impact-wave" fillColor="surface" />
-  </section>
-
-  <!-- Study Systems -->
-  <section id="systems" class="systems-section">
-    <div class="container">
-      <div class="section-header scroll-reveal">
-        <span class="section-eyebrow">Where We Work</span>
-        <h2 class="section-title">Study <span class="title-gradient">Systems</span></h2>
-        <p class="section-desc">
-          Two ecosystems. Two LTER sites. Two modes of collapse. By comparing fast kelp dynamics with slow coral recovery, we discover which resilience mechanisms generalize—and which are system-specific.
-        </p>
-      </div>
-
-      <ResearchPlaces />
-      <!-- Interactive Study Sites Map -->
-      <div class="study-sites-map-container scroll-reveal">
-        <StudySitesMap client:load />
-      </div>
-
-      <div class="systems-grid">
-        {studySystems.map((system, i) => (
-          <a
-            href={`/research/${system.slug}`}
-            class={`system-card scroll-reveal stagger-${i + 1}`}
-          >
-            <div class="system-card-media">
-              <img src={system.heroImage} alt={system.title} loading="lazy" />
-              <div class="system-card-overlay"></div>
-            </div>
-
-            <div class="system-card-content">
-              <div class="system-location">
-                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
-                </svg>
-                <span>{system.slug === 'coral-reefs' ? 'Moorea, French Polynesia' : 'Santa Barbara, California'}</span>
-              </div>
-
-              <h3 class="system-title">{system.title}</h3>
-              <p class="system-tagline">{system.tagline}</p>
-
-              <div class="system-cta">
-                <span>Explore research</span>
-                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                </svg>
-              </div>
-            </div>
-
-            <div class={`system-accent system-accent-${system.slug}`}></div>
-          </a>
-        ))}
-      </div>
-    </div>
-
-    <WaveDivider id="systems-wave" fillColor="navy-deep" />
-  </section>
-
-  <!-- Field Sites - Interactive Globe -->
-  <section id="sites" class="sites-section">
-    <div class="container">
-      <div class="section-header scroll-reveal">
-        <span class="section-eyebrow section-eyebrow-light">Our Locations</span>
-        <h2 class="section-title section-title-light">Field <span class="title-gradient">Sites</span></h2>
-        <p class="section-desc section-desc-light">
-          Research stations across the Pacific where we conduct long-term experiments and monitor ecosystem change.
-        </p>
-      </div>
-
-      <div class="globe-container scroll-reveal">
-        <ResearchGlobe client:visible />
-      </div>
-    </div>
-
-    <WaveDivider id="sites-wave" fillColor="surface" />
-  </section>
-
-  <!-- Collaboration CTA -->
-  <section class="collab-section">
-    <div class="container">
-      <div class="collab-card scroll-reveal">
-        <div class="collab-content">
-          <span class="section-eyebrow">Partner With Us</span>
-          <h2 class="collab-title">Interested in <span class="title-gradient">Collaborating?</span></h2>
-          <p class="collab-desc">
-            We work with researchers, conservation organizations, and communities worldwide.
-            If you're interested in partnering on research or applying our findings, we'd love to hear from you.
-          </p>
-
-          <div class="collab-actions">
-            <a href="mailto:astier@ucsb.edu" class="btn-primary">
-              <span>Get in Touch</span>
-              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
-              </svg>
-            </a>
-            <a href="/publications" class="btn-secondary">
-              <span>View Publications</span>
-            </a>
-          </div>
-        </div>
-
-        <div class="collab-image">
-          <img src="/images/research-team-boats-turquoise-lagoon.webp" alt="Research team in the field" loading="lazy" />
-        </div>
-      </div>
+      <details class="research-detail" id="pillars">
+        <summary>How we work</summary>
+        <p>Field experiments test mechanisms. Evidence synthesis compares results across studies. Statistics, theory, and simulation help us understand processes and compare management options.</p>
+        <a href="/#approach">Our three approaches</a>
+      </details>
+      <details class="research-detail" id="impact">
+        <summary>From evidence to restoration decisions</summary>
+        <p>Our Restoration Strategy Evaluation work compares choices under uncertain growth, survival, and disturbance. Monitoring helps teams revisit those choices as evidence changes.</p>
+        <a href="/research/coral-reefs#restoration-strategy-evaluation">Restoration Strategy Evaluation</a>
+      </details>
+      <details class="research-detail" id="sites">
+        <summary>Research places and maps</summary>
+        <ResearchPlaces />
+        <details class="station-map">
+          <summary>Study-site locations</summary>
+          <StudySitesMap client:visible />
+        </details>
+      </details>
+      <details class="research-detail" id="healing-detail">
+        <summary>Coral repair under the microscope</summary>
+        <CoralHealingPhotos />
+      </details>
+      <p class="contact-line">Interested in a research collaboration? <a href="mailto:astier@ucsb.edu">Contact Adrian Stier</a>.</p>
     </div>
   </section>
 </Layout>
 
 <style>
-  /* ============================================
-     Hero Section
-     ============================================ */
-  .hero {
-    @apply relative min-h-[100svh] flex items-center overflow-hidden;
-  }
-
-  .hero-media {
-    @apply absolute inset-0;
-  }
-
-  .hero-image {
-    @apply absolute inset-0 bg-cover bg-center bg-no-repeat;
-    transform: scale(1.05);
-    animation: heroZoom 20s ease-out forwards;
-  }
-
-  @keyframes heroZoom {
-    from { transform: scale(1.05); }
-    to { transform: scale(1); }
-  }
-
-  .hero-overlay {
-    @apply absolute inset-0;
-    background: linear-gradient(
-      135deg,
-      rgba(11, 25, 41, 0.9) 0%,
-      rgba(11, 25, 41, 0.75) 40%,
-      rgba(11, 37, 69, 0.5) 70%,
-      rgba(11, 37, 69, 0.3) 100%
-    );
-  }
-
-  .hero-vignette {
-    @apply absolute inset-0;
-    background: radial-gradient(ellipse at center, transparent 40%, rgba(11, 25, 41, 0.5) 100%);
-  }
-
-  /* Floating particles */
-  .hero-particles {
-    @apply absolute inset-0 overflow-hidden pointer-events-none;
-    z-index: 1;
-  }
-
-  .particle {
-    @apply absolute rounded-full;
-    background: rgba(77, 168, 201, 0.4);
-    animation: float 15s ease-in-out infinite;
-  }
-
-  .particle-1 { width: 5px; height: 5px; top: 15%; left: 10%; animation-delay: 0s; }
-  .particle-2 { width: 7px; height: 7px; top: 55%; left: 85%; animation-delay: -3s; }
-  .particle-3 { width: 4px; height: 4px; top: 35%; left: 55%; animation-delay: -6s; }
-  .particle-4 { width: 6px; height: 6px; top: 75%; left: 20%; animation-delay: -9s; }
-  .particle-5 { width: 5px; height: 5px; top: 25%; left: 75%; animation-delay: -12s; }
-  .particle-6 { width: 4px; height: 4px; top: 65%; left: 45%; animation-delay: -4s; }
-
-  @keyframes float {
-    0%, 100% { transform: translateY(0) translateX(0); opacity: 0.3; }
-    25% { transform: translateY(-30px) translateX(10px); opacity: 0.7; }
-    50% { transform: translateY(-10px) translateX(-10px); opacity: 0.4; }
-    75% { transform: translateY(-40px) translateX(5px); opacity: 0.6; }
-  }
-
-  .hero-content {
-    @apply relative z-10 w-full text-center;
-    padding-top: 8rem;
-    padding-bottom: 10rem;
-  }
-
-  .hero-text {
-    @apply max-w-3xl mx-auto;
-  }
-
-  /* Badge */
-  .hero-badge {
-    @apply inline-flex items-center gap-2.5 px-4 py-2 rounded-full mb-6;
-    @apply bg-white/[0.08] backdrop-blur-sm border border-white/15;
-    @apply text-sm font-medium text-white/90 tracking-wide;
-  }
-
-  .badge-dot {
-    @apply w-2 h-2 rounded-full bg-accent-2;
-    animation: pulse 2s ease-in-out infinite;
-  }
-
-  @keyframes pulse {
-    0%, 100% { opacity: 1; transform: scale(1); }
-    50% { opacity: 0.5; transform: scale(1.2); }
-  }
-
-  /* Title */
-  .hero-title {
-    @apply text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black leading-[1.05] tracking-tight mb-6;
-  }
-
-  .title-line {
-    @apply block;
-  }
-
-  .title-gradient {
-    @apply bg-gradient-to-r from-accent via-accent-2 to-accent bg-clip-text text-transparent;
-    background-size: 200% auto;
-    animation: shimmer 8s ease-in-out infinite;
-  }
-
-  .title-white {
-    @apply text-white;
-  }
-
-  @keyframes shimmer {
-    0%, 100% { background-position: 0% center; }
-    50% { background-position: 100% center; }
-  }
-
-  /* Description */
-  .hero-desc {
-    @apply text-lg md:text-xl text-white/70 leading-relaxed mb-10 max-w-2xl mx-auto;
-  }
-
-  .highlight {
-    @apply text-accent font-semibold;
-  }
-
-  /* Research Area Cards in Hero */
-  .research-areas {
-    @apply grid md:grid-cols-2 gap-4 max-w-3xl mx-auto mb-8;
-  }
-
-  .research-area-card {
-    @apply relative flex overflow-hidden rounded-xl no-underline;
-    @apply bg-white/[0.06] border border-white/15;
-    @apply transition-all duration-300;
-    min-height: 120px;
-  }
-
-  .research-area-card:hover {
-    @apply bg-white/[0.1] border-white/25;
-    transform: translateY(-3px);
-  }
-
-  .research-area-card:focus-visible {
-    @apply outline-2 outline-offset-2 outline-accent;
-  }
-
-  .research-area-image {
-    @apply relative w-24 sm:w-28 flex-shrink-0;
-  }
-
-  .research-area-image img {
-    @apply absolute inset-0 w-full h-full object-cover;
-  }
-
-  .research-area-content {
-    @apply flex flex-col justify-center p-4 gap-1;
-  }
-
-  .research-area-location {
-    @apply flex items-center gap-1 text-[10px] uppercase tracking-wider font-semibold text-accent-2;
-  }
-
-  .research-area-title {
-    @apply text-base font-bold text-white;
-  }
-
-  .research-area-desc {
-    @apply text-xs text-white/60 leading-snug;
-  }
-
-  .research-area-cta {
-    @apply inline-flex items-center gap-1.5 text-xs font-semibold text-accent mt-1;
-    @apply transition-all duration-200;
-  }
-
-  .research-area-card:hover .research-area-cta {
-    @apply gap-2.5;
-  }
-
-  .research-area-coral {
-    border-left: 3px solid #f97316;
-  }
-
-  .research-area-kelp {
-    border-left: 3px solid #22c55e;
-  }
-
-  /* Jump Navigation */
-  .jump-nav {
-    @apply flex flex-wrap justify-center gap-3;
-  }
-
-  .jump-link {
-    @apply inline-flex items-center gap-2 px-4 py-2 rounded-full text-sm font-semibold;
-    @apply bg-white/[0.06] text-white/70 border border-white/10;
-    @apply transition-all duration-300 no-underline;
-  }
-
-  .jump-link:hover,
-  .jump-link.active {
-    @apply bg-accent/15 text-accent border-accent/30;
-  }
-
-  .jump-link svg {
-    @apply opacity-0 -translate-y-1;
-    @apply transition-all duration-200;
-  }
-
-  .jump-link:hover svg {
-    @apply opacity-100 translate-y-0;
-  }
-
-  /* Scroll indicator */
-  .scroll-indicator {
-    @apply absolute bottom-10 left-1/2 -translate-x-1/2;
-    @apply flex flex-col items-center gap-3 no-underline;
-    @apply text-white/60 transition-colors duration-300;
-    animation: fadeIn 1s ease-out 1.5s forwards;
-    opacity: 0;
-  }
-
-  .scroll-indicator:hover {
-    @apply text-white;
-  }
-
-  @keyframes fadeIn {
-    to { opacity: 1; }
-  }
-
-  .scroll-text {
-    @apply text-xs font-bold uppercase tracking-[0.2em];
-  }
-
-  .scroll-line {
-    @apply relative w-px h-12 bg-white/20 overflow-hidden;
-  }
-
-  .scroll-dot {
-    @apply absolute top-0 left-0 w-full h-3 bg-accent;
-    animation: scrollDown 2s ease-in-out infinite;
-  }
-
-  @keyframes scrollDown {
-    0% { top: -12px; }
-    50% { top: 48px; }
-    100% { top: -12px; }
-  }
-
-  .animate-fade-down {
-    animation: fadeDown 0.6s ease-out forwards;
-  }
-
-  @keyframes fadeDown {
-    from { opacity: 0; transform: translateY(-16px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
-
-  /* ============================================
-     Sticky Section Nav
-     ============================================ */
-  .sticky-nav {
-    @apply hidden md:block;
-    @apply sticky top-16 z-40;
-    @apply bg-surface/95 backdrop-blur-md;
-    @apply border-b border-line/30;
-    @apply opacity-0 -translate-y-full pointer-events-none;
-    transition: opacity 0.3s ease, transform 0.3s ease;
-  }
-
-  .sticky-nav.visible {
-    @apply opacity-100 translate-y-0 pointer-events-auto;
-  }
-
-  .sticky-nav-inner {
-    @apply max-w-5xl mx-auto px-6;
-    @apply flex items-center justify-center gap-1;
-    @apply py-3;
-  }
-
-  .sticky-nav-link {
-    @apply px-4 py-2 rounded-full text-sm font-medium;
-    @apply text-muted no-underline;
-    @apply transition-all duration-200;
-  }
-
-  .sticky-nav-link:hover {
-    @apply text-ink bg-white/5;
-  }
-
-  .sticky-nav-link:focus-visible {
-    @apply outline-2 outline-offset-2 outline-accent;
-  }
-
-  .sticky-nav-link.active {
-    @apply text-accent bg-accent/10;
-  }
-
-  /* ============================================
-     Section Styling
-     ============================================ */
-  section[id] {
-    scroll-margin-top: 8rem;
-  }
-
-  .pillars-section,
-  .systems-section,
-  .collab-section {
-    @apply relative py-20 md:py-28 pb-28 md:pb-36 bg-surface overflow-hidden;
-  }
-
-  .impact-section,
-  .sites-section,
-  .resilience-section {
-    @apply relative py-20 md:py-28 pb-28 md:pb-36 overflow-hidden;
-    background: linear-gradient(180deg, #0b1929 0%, #0f172a 50%, #0b1929 100%);
-  }
-
-  .collab-section {
-    @apply pb-20 md:pb-24;
-  }
-
-  .section-header {
-    @apply text-center mb-12;
-  }
-
-  .section-eyebrow {
-    @apply inline-block text-xs font-bold uppercase tracking-[0.2em] text-accent mb-4;
-  }
-
-  .section-eyebrow-light {
-    @apply text-accent-2;
-  }
-
-  .section-title {
-    @apply text-3xl md:text-4xl lg:text-5xl font-black text-ink tracking-tight mb-4 leading-tight;
-    text-wrap: balance;
-    max-width: 20ch;
-    margin-left: auto;
-    margin-right: auto;
-  }
-
-  @supports not (text-wrap: balance) {
-    .section-title {
-      max-width: 16ch;
-    }
-  }
-
-  .section-title-light {
-    @apply text-white;
-  }
-
-  .section-desc {
-    @apply text-lg text-muted leading-relaxed max-w-2xl mx-auto;
-  }
-
-  .section-desc-light {
-    @apply text-white/60;
-  }
-
-  /* ============================================
-     Resilience Across Scales Section
-     ============================================ */
-  .resilience-studies {
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 12px;
-    margin: 0 0 12px;
-  }
-
-  .resilience-studies figure { width: min(100%, 280px); margin: 0 auto; }
-  .resilience-studies img { display: block; width: 100%; height: auto; }
-  .resilience-studies figcaption { margin-top: 8px; color: #dce7e5; font-size: 14px; line-height: 1.5; }
-  .resilience-studies figcaption strong,
-  .resilience-studies figcaption span { display: block; }
-
-  /* ============================================
-     Pillars Section
-     ============================================ */
-  .pillars-bg {
-    @apply absolute inset-0 overflow-hidden pointer-events-none;
-  }
-
-  .pillar-orb {
-    @apply absolute rounded-full;
-    filter: blur(100px);
-  }
-
-  .pillar-orb-1 {
-    @apply w-[500px] h-[500px] -top-32 -right-32;
-    background: radial-gradient(circle, rgba(77, 168, 201, 0.12), transparent 70%);
-    animation: orbFloat 20s ease-in-out infinite;
-  }
-
-  .pillar-orb-2 {
-    @apply w-[400px] h-[400px] -bottom-24 -left-24;
-    background: radial-gradient(circle, rgba(79, 182, 165, 0.1), transparent 70%);
-    animation: orbFloat 25s ease-in-out infinite reverse;
-  }
-
-  @keyframes orbFloat {
-    0%, 100% { transform: translate(0, 0) scale(1); }
-    33% { transform: translate(30px, -20px) scale(1.05); }
-    66% { transform: translate(-20px, 30px) scale(0.95); }
-  }
-
-  .pillars-grid {
-    @apply grid md:grid-cols-3 gap-6 lg:gap-8 max-w-6xl mx-auto;
-  }
-
-  .pillar-card {
-    @apply relative p-6 lg:p-8 rounded-2xl h-full;
-    @apply border border-line/50;
-    @apply flex flex-col;
-    background: linear-gradient(135deg, rgba(30, 41, 59, 0.7) 0%, rgba(30, 41, 59, 0.5) 100%);
-    backdrop-filter: blur(10px);
-    transition: all 400ms ease;
-  }
-
-  .pillar-card:hover {
-    transform: translateY(-6px);
-    border-color: rgba(77, 168, 201, 0.3);
-    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.4), 0 0 30px rgba(77, 168, 201, 0.1);
-  }
-
-  .pillar-number {
-    @apply absolute top-5 right-5 text-3xl lg:text-4xl font-black;
-    background: linear-gradient(135deg, rgba(77, 168, 201, 0.25) 0%, rgba(79, 182, 165, 0.15) 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    transition: all 300ms ease;
-  }
-
-  .pillar-card:hover .pillar-number {
-    background: linear-gradient(135deg, rgba(77, 168, 201, 0.5) 0%, rgba(79, 182, 165, 0.4) 100%);
-    -webkit-background-clip: text;
-    background-clip: text;
-    transform: scale(1.1);
-  }
-
-  .pillar-icon {
-    @apply w-12 h-12 lg:w-14 lg:h-14 mb-4 rounded-xl;
-    @apply flex items-center justify-center;
-    transition: transform 400ms ease;
-  }
-
-  .pillar-card:hover .pillar-icon {
-    transform: scale(1.1);
-  }
-
-  .pillar-icon-1 { @apply bg-accent/20 text-accent; }
-  .pillar-icon-2 { @apply bg-accent-2/20 text-accent-2; }
-  .pillar-icon-3 { @apply bg-amber-500/20 text-amber-400; }
-
-  .pillar-title {
-    @apply text-lg lg:text-xl font-bold text-ink mb-2;
-  }
-
-  .pillar-desc {
-    @apply text-muted text-sm leading-relaxed mb-5;
-    max-width: 32ch;
-  }
-
-  .pillar-topics {
-    @apply space-y-2 border-t border-line/50 pt-4 mt-auto;
-  }
-
-  .pillar-topics li {
-    @apply flex items-start gap-2 text-muted text-sm leading-snug;
-  }
-
-  .pillar-topics li svg {
-    @apply mt-0.5 flex-shrink-0;
-  }
-
-  /* ============================================
-     Impact Pipeline Diagram
-     ============================================ */
-  .pipeline-diagram {
-    @apply relative max-w-5xl mx-auto;
-  }
-
-  .pipeline-svg {
-    @apply w-full h-auto;
-    max-height: 340px;
-  }
-
-  .connection-path {
-    fill: none;
-    stroke: url(#lineGradient1);
-    stroke-width: 3;
-    stroke-linecap: round;
-    stroke-dasharray: 8 4;
-    animation: dash-flow 20s linear infinite;
-  }
-
-  @keyframes dash-flow {
-    to { stroke-dashoffset: -100; }
-  }
-
-  .node-glow {
-    fill: rgba(77, 168, 201, 0.1);
-    animation: node-pulse 3s ease-in-out infinite;
-  }
-
-  @keyframes node-pulse {
-    0%, 100% { opacity: 0.3; r: 50; }
-    50% { opacity: 0.6; r: 54; }
-  }
-
-  .node-ring {
-    fill: none;
-    stroke: rgba(77, 168, 201, 0.3);
-    stroke-width: 2;
-  }
-
-  .node-core {
-    fill: #4DA8C9;
-    transition: fill 300ms ease;
-  }
-
-  .node:hover .node-core {
-    fill: #4FB6A5;
-  }
-
-  .node {
-    cursor: pointer;
-    transition: transform 300ms ease;
-  }
-
-  .node:hover {
-    transform: scale(1.05);
-    transform-origin: center;
-  }
-
-  .node-number {
-    font-family: inherit;
-    pointer-events: none;
-  }
-
-  .label-title {
-    fill: white;
-    font-size: 18px;
-    font-weight: 700;
-  }
-
-  .label-desc {
-    fill: rgba(255, 255, 255, 0.5);
-    font-size: 13px;
-  }
-
-  /* Mobile Pipeline */
-  .pipeline-mobile {
-    @apply max-w-md mx-auto;
-  }
-
-  .mobile-flow {
-    @apply list-none p-0 m-0;
-  }
-
-  .mobile-step-wrapper {
-    @apply list-none;
-  }
-
-  .mobile-step {
-    @apply flex items-start gap-5 p-5 rounded-2xl;
-    @apply bg-white/[0.03] border border-white/10;
-  }
-
-  .mobile-node {
-    @apply w-12 h-12 rounded-xl flex-shrink-0;
-    @apply bg-accent flex items-center justify-center;
-    @apply shadow-lg shadow-accent/20;
-  }
-
-  .mobile-node-number {
-    @apply text-white font-black text-lg;
-  }
-
-  .mobile-content h4 {
-    @apply text-white font-bold text-base mb-1;
-  }
-
-  .mobile-content p {
-    @apply text-white/50 text-sm leading-relaxed;
-  }
-
-  .mobile-connector {
-    @apply h-10 flex items-center justify-center relative ml-6;
-  }
-
-  .mobile-line {
-    @apply absolute left-0 top-0 bottom-0 w-0.5;
-    @apply bg-gradient-to-b from-accent/30 to-accent-2/30;
-  }
-
-  .mobile-particle {
-    @apply w-2 h-2 rounded-full bg-accent-2;
-    animation: flow-down 2s ease-in-out infinite;
-    box-shadow: 0 0 8px #4FB6A5;
-  }
-
-  @keyframes flow-down {
-    0% { transform: translateY(-16px); opacity: 0; }
-    20% { opacity: 1; }
-    80% { opacity: 1; }
-    100% { transform: translateY(16px); opacity: 0; }
-  }
-
-  /* ============================================
-     Study Sites Map Container
-     ============================================ */
-  .study-sites-map-container {
-    @apply max-w-5xl mx-auto mb-16;
-  }
-
-  /* ============================================
-     Study Systems Cards
-     ============================================ */
-  .systems-grid {
-    @apply grid lg:grid-cols-2 gap-6 lg:gap-8 max-w-5xl mx-auto;
-  }
-
-  .system-card {
-    @apply relative block rounded-2xl overflow-hidden no-underline;
-    @apply border border-line/50;
-    min-height: 400px;
-    transition: all 500ms cubic-bezier(0.4, 0, 0.2, 1);
-  }
-
-  .system-card:hover {
-    transform: translateY(-8px);
-    border-color: rgba(77, 168, 201, 0.4);
-    box-shadow: 0 30px 60px -12px rgba(0, 0, 0, 0.3), 0 0 40px rgba(77, 168, 201, 0.1);
-  }
-
-  .system-card-media {
-    @apply absolute inset-0;
-  }
-
-  .system-card-media img {
-    @apply w-full h-full object-cover;
-    transform: scale(1.05);
-    transition: transform 700ms cubic-bezier(0.4, 0, 0.2, 1);
-  }
-
-  .system-card:hover .system-card-media img {
-    transform: scale(1.12);
-  }
-
-  .system-card-overlay {
-    @apply absolute inset-0;
-    background: linear-gradient(
-      to top,
-      rgba(15, 23, 42, 0.98) 0%,
-      rgba(15, 23, 42, 0.8) 40%,
-      rgba(15, 23, 42, 0.3) 70%,
-      transparent 100%
-    );
-  }
-
-  .system-card-content {
-    @apply absolute bottom-0 left-0 right-0 p-6 md:p-8;
-  }
-
-  .system-location {
-    @apply inline-flex items-center gap-1.5 text-accent-2 text-xs font-bold uppercase tracking-wider mb-3;
-  }
-
-  .system-title {
-    @apply text-2xl md:text-3xl font-black text-white mb-3;
-    transition: color 300ms ease;
-  }
-
-  .system-card:hover .system-title {
-    @apply text-accent;
-  }
-
-  .system-tagline {
-    @apply text-white/60 text-sm leading-relaxed mb-4;
-    display: -webkit-box;
-    -webkit-line-clamp: 2;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
-  }
-
-  .system-cta {
-    @apply inline-flex items-center gap-2 text-accent text-sm font-bold;
-    transition: gap 300ms ease;
-  }
-
-  .system-card:hover .system-cta {
-    @apply gap-3;
-  }
-
-  .system-accent {
-    @apply absolute top-0 left-0 right-0 h-1;
-  }
-
-  .system-accent-coral-reefs {
-    background: linear-gradient(90deg, #f97316, #fb923c, #fdba74);
-  }
-
-  .system-accent-kelp-forests {
-    background: linear-gradient(90deg, #22c55e, #4ade80, #86efac);
-  }
-
-  /* ============================================
-     Globe Container
-     ============================================ */
-  .globe-container {
-    @apply max-w-4xl mx-auto;
-  }
-
-  /* ============================================
-     Collaboration CTA
-     ============================================ */
-  .collab-card {
-    @apply flex flex-col lg:flex-row gap-10 lg:gap-16 items-center;
-    @apply p-8 md:p-12 lg:p-16 rounded-3xl;
-    @apply bg-gradient-to-br from-accent/10 via-accent/5 to-accent-2/10;
-    @apply border border-accent/20;
-    @apply relative overflow-hidden;
-  }
-
-  .collab-card::before {
-    content: '';
-    @apply absolute inset-0 opacity-30;
-    background: radial-gradient(circle at top right, rgba(77, 168, 201, 0.15), transparent 50%),
-                radial-gradient(circle at bottom left, rgba(79, 182, 165, 0.15), transparent 50%);
-  }
-
-  .collab-content {
-    @apply relative z-10 flex-1;
-  }
-
-  .collab-title {
-    @apply text-2xl md:text-3xl font-black text-ink tracking-tight mb-4;
-    text-wrap: balance;
-  }
-
-  .collab-desc {
-    @apply text-muted text-lg leading-relaxed mb-8 max-w-lg;
-  }
-
-  .collab-actions {
-    @apply flex flex-col sm:flex-row gap-4;
-  }
-
-  .collab-image {
-    @apply relative z-10 w-full lg:w-2/5 aspect-video rounded-2xl overflow-hidden;
-    @apply border border-white/10;
-  }
-
-  .collab-image img {
-    @apply w-full h-full object-cover;
-    transition: transform 500ms ease;
-  }
-
-  .collab-card:hover .collab-image img {
-    transform: scale(1.05);
-  }
-
-  /* ============================================
-     Buttons
-     ============================================ */
-  .btn-primary {
-    @apply inline-flex items-center gap-2 px-6 py-3;
-    @apply bg-accent text-white font-bold text-sm;
-    @apply rounded-lg no-underline;
-    @apply transition-all duration-200;
-    @apply shadow-lg shadow-accent/25;
-  }
-
-  .btn-primary:hover {
-    @apply bg-accent/90 gap-3;
-    transform: translateY(-2px);
-  }
-
-  .btn-secondary {
-    @apply inline-flex items-center gap-2 px-6 py-3;
-    @apply text-ink font-bold text-sm;
-    @apply border border-line rounded-lg no-underline;
-    @apply transition-all duration-200;
-  }
-
-  .btn-secondary:hover {
-    @apply border-accent text-accent;
-  }
-
-  /* ============================================
-     Responsive Adjustments
-     ============================================ */
-  @media (max-width: 768px) {
-    .hero-content {
-      padding-top: 7rem;
-      padding-bottom: 8rem;
-    }
-
-    .hero-title {
-      @apply text-3xl;
-    }
-
-    .scroll-indicator {
-      @apply bottom-6;
-    }
-
-    .system-card {
-      min-height: 340px;
-    }
-  }
-
-  /* ============================================
-     Reduced Motion
-     ============================================ */
-  @media (prefers-reduced-motion: reduce) {
-    .hero-image {
-      animation: none;
-      transform: scale(1);
-    }
-
-    .particle {
-      animation: none;
-    }
-
-    .badge-dot {
-      animation: none;
-    }
-
-    .title-gradient {
-      animation: none;
-    }
-
-    .scroll-indicator {
-      animation: none;
-      opacity: 1;
-    }
-
-    .scroll-dot {
-      animation: none;
-    }
-
-    .pillar-orb-1,
-    .pillar-orb-2 {
-      animation: none;
-    }
-
-    .connection-path,
-    .node-glow,
-    .mobile-particle {
-      animation: none;
-    }
-
-    .pillar-card,
-    .system-card {
-      transition: none;
-    }
-
-    .system-card-media img {
-      transition: none;
-    }
+  .research-intro, .program-guide, .supporting-research { background: #fff; color: #293f3b; }
+  .research-intro { padding: 124px 0 36px; }
+  .eyebrow { font-size: 12px; color: #52675e; margin: 0 0 16px; }
+  h1 { color: #293f3b; font: 400 56px/1.1 Georgia, serif; margin: 0 0 24px; letter-spacing: 0; }
+  h2 { color: #293f3b; font: 400 34px/1.2 Georgia, serif; margin: 0 0 24px; letter-spacing: 0; }
+  h3 { font: 400 30px/1.2 Georgia, serif; margin: 0 0 8px; letter-spacing: 0; }
+  .intro-copy { font-size: 20px; line-height: 1.6; max-width: 680px; color: #43534c; margin-bottom: 28px; }
+  nav { display: flex; flex-wrap: wrap; gap: 4px 28px; }
+  a { color: #21625b; text-decoration: underline; text-underline-offset: 4px; }
+  a:focus-visible, summary:focus-visible { outline: 3px solid #328278; outline-offset: 4px; }
+  nav a { min-height: 44px; display: inline-flex; align-items: center; font-size: 14px; }
+  .program-guide { padding: 28px 0 48px; }
+  .system-guide { display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr); gap: 56px; align-items: center; padding: 36px 0; border-top: 1px solid #c5d1ca; }
+  .system-copy { min-width: 0; }
+  .place { color: #52675e; font-size: 13px; margin: 0 0 24px; }
+  ul { list-style: none; margin: 0; padding: 0; }
+  li + li { margin-top: 22px; }
+  li > a { font-size: 15px; font-weight: 600; display: inline-block; padding: 4px 0; }
+  li p { color: #43534c; font-size: 15px; line-height: 1.6; margin: 4px 0 0; }
+  .system-guide > img { width: 100%; height: auto; max-height: 380px; object-fit: contain; }
+  section[id], details[id], .anchor-alias { scroll-margin-top: 6rem; }
+  .resilience-section { background: #0f172a; padding: 56px 0; }
+  .section-heading { max-width: 760px; margin: 0 auto 32px; }
+  .section-heading h2 { color: #f1f5f9; }
+  .section-heading p { color: #cbd5e1; }
+  .section-heading .eyebrow { color: #80c8b8; }
+  .resilience-studies { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); justify-items: center; }
+  .resilience-studies figure { margin: 0; }
+  .resilience-studies img { display: block; }
+  .resilience-studies figcaption { color: #dce7ed; }
+  .supporting-research { padding: 40px 0 56px; }
+  .research-detail { border-bottom: 1px solid #c5d1ca; padding: 12px 0; }
+  summary { cursor: pointer; min-height: 44px; padding: 10px 0; font-size: 17px; }
+  .research-detail > p { color: #43534c; margin: 12px 0 20px; line-height: 1.7; }
+  .research-detail > a { display: inline-block; margin-bottom: 20px; }
+  .station-map { margin: 20px 0; }
+  .contact-line { color: #43534c; margin: 32px 0 0; }
+  @media(max-width: 767px) {
+    .research-intro { padding-top: 104px; padding-bottom: 20px; }
+    h1 { font-size: 44px; }
+    h2 { font-size: 28px; }
+    h3 { font-size: 27px; }
+    .intro-copy { font-size: 18px; }
+    .system-guide { grid-template-columns: minmax(0, 1fr); gap: 24px; }
+    .system-guide > img { max-height: 250px; }
+    .resilience-section { padding: 40px 0; }
   }
 </style>
 
 <script>
-  // Parallax effect for hero
-  let currentScrollHandler: (() => void) | null = null;
-
-  const initParallax = () => {
-    // Remove previous scroll handler to prevent listener leak
-    if (currentScrollHandler) {
-      window.removeEventListener('scroll', currentScrollHandler);
-      currentScrollHandler = null;
+  const revealLinkedDetail = () => {
+    if (!location.pathname.replace(/\/$/, '').endsWith('/research') || !location.hash) return;
+    let id: string;
+    try { id = decodeURIComponent(location.hash.slice(1)); } catch { return; }
+    const target = document.getElementById(id);
+    if (!target) return;
+    let node: HTMLElement | null = target;
+    while (node) {
+      if (node instanceof HTMLDetailsElement) node.open = true;
+      node = node.parentElement;
     }
-
-    const heroImage = document.querySelector('.hero-image') as HTMLElement;
-    if (!heroImage) return;
-
-    let ticking = false;
-
-    const handleScroll = () => {
-      if (!ticking) {
-        requestAnimationFrame(() => {
-          const scrolled = window.scrollY;
-          const rate = scrolled * 0.3;
-          heroImage.style.transform = `scale(1) translateY(${rate}px)`;
-          ticking = false;
-        });
-        ticking = true;
-      }
-    };
-
-    if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-      currentScrollHandler = handleScroll;
-      window.addEventListener('scroll', handleScroll, { passive: true });
-    }
-  };
-
-  // Active section indicator for jump navigation and sticky nav
-  const initJumpNavHighlight = () => {
-    const sections = document.querySelectorAll('section[id]');
-    const jumpLinks = document.querySelectorAll('.jump-link[data-section]');
-    const stickyNav = document.getElementById('sticky-nav');
-    const stickyLinks = document.querySelectorAll('.sticky-nav-link[data-section]');
-    const hero = document.querySelector('.hero');
-
-    if (sections.length === 0) return;
-
-    // Section active state observer
-    const sectionObserver = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          const sectionId = entry.target.id;
-
-          // Update jump links
-          jumpLinks.forEach((link) => {
-            const linkSection = link.getAttribute('data-section');
-            if (linkSection === sectionId) {
-              link.classList.add('active');
-            } else {
-              link.classList.remove('active');
-            }
-          });
-
-          // Update sticky nav links
-          stickyLinks.forEach((link) => {
-            const linkSection = link.getAttribute('data-section');
-            if (linkSection === sectionId) {
-              link.classList.add('active');
-              link.setAttribute('aria-current', 'true');
-            } else {
-              link.classList.remove('active');
-              link.removeAttribute('aria-current');
-            }
-          });
-        }
-      });
-    }, {
-      rootMargin: '-20% 0px -60% 0px',
-      threshold: 0
-    });
-
-    sections.forEach((section) => {
-      if (section.id) sectionObserver.observe(section);
-    });
-
-    // Sticky nav visibility observer
-    if (hero && stickyNav) {
-      const heroObserver = new IntersectionObserver((entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            stickyNav.classList.remove('visible');
-          } else {
-            stickyNav.classList.add('visible');
-          }
-        });
-      }, {
-        rootMargin: '-80px 0px 0px 0px',
-        threshold: 0
-      });
-
-      heroObserver.observe(hero);
-
-      return () => {
-        sectionObserver.disconnect();
-        heroObserver.disconnect();
-      };
-    }
-
-    return () => sectionObserver.disconnect();
-  };
-
-  // Particle Animation for Pipeline Diagram
-  const initPipelineAnimation = () => {
-    const svg = document.querySelector('.pipeline-svg');
-    const particlesContainer = document.getElementById('particles');
-
-    if (!svg || !particlesContainer) return;
-
-    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-
-    const path1 = document.getElementById('path1') as SVGPathElement | null;
-    const path2 = document.getElementById('path2') as SVGPathElement | null;
-    const path3 = document.getElementById('path3') as SVGPathElement | null;
-
-    if (!path1 || !path2 || !path3) return;
-
-    const paths: SVGPathElement[] = [path1, path2, path3];
-
-    const particleCount = 2;
-    const colors = ['#4DA8C9', '#4FB6A5'];
-
-    paths.forEach((_, pathIndex) => {
-      for (let i = 0; i < particleCount; i++) {
-        const particle = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
-        particle.setAttribute('r', '4');
-        particle.setAttribute('class', 'particle');
-        particle.style.fill = colors[i % colors.length];
-        particle.dataset.pathIndex = pathIndex.toString();
-        particle.dataset.offset = (i / particleCount).toString();
-        particle.dataset.speed = (0.0006 + Math.random() * 0.0003).toString();
-        particlesContainer.appendChild(particle);
-      }
-    });
-
-    let animationId: number;
-    let startTime: number;
-
-    const animate = (timestamp: number) => {
-      if (!startTime) startTime = timestamp;
-      const elapsed = timestamp - startTime;
-
-      const particles = particlesContainer.querySelectorAll('.particle') as NodeListOf<SVGCircleElement>;
-
-      particles.forEach((particle) => {
-        const pathIndex = parseInt(particle.dataset.pathIndex || '0');
-        const offset = parseFloat(particle.dataset.offset || '0');
-        const speed = parseFloat(particle.dataset.speed || '0.001');
-        const path = paths[pathIndex];
-
-        if (!path) return;
-
-        const pathLength = path.getTotalLength();
-        const progress = ((elapsed * speed) + offset) % 1;
-        const point = path.getPointAtLength(progress * pathLength);
-
-        particle.setAttribute('cx', point.x.toString());
-        particle.setAttribute('cy', point.y.toString());
-
-        let opacity = 1;
-        if (progress < 0.15) opacity = progress / 0.15;
-        else if (progress > 0.85) opacity = (1 - progress) / 0.15;
-        particle.style.opacity = opacity.toString();
-      });
-
-      animationId = requestAnimationFrame(animate);
-    };
-
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          startTime = 0;
-          animationId = requestAnimationFrame(animate);
-        } else {
-          cancelAnimationFrame(animationId);
-        }
-      });
-    }, { threshold: 0.2 });
-
-    const diagram = document.getElementById('pipeline-diagram');
-    if (diagram) observer.observe(diagram);
-
-    return () => {
-      cancelAnimationFrame(animationId);
-      observer.disconnect();
-    };
-  };
-
-  // System Card Tilt Effect
-  const initCardTilt = () => {
-    const cards = document.querySelectorAll('.system-card');
-
-    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-
-    cards.forEach((card) => {
-      card.addEventListener('mousemove', (e) => {
-        const event = e as MouseEvent;
-        const rect = (card as HTMLElement).getBoundingClientRect();
-        const x = event.clientX - rect.left;
-        const y = event.clientY - rect.top;
-        const centerX = rect.width / 2;
-        const centerY = rect.height / 2;
-
-        const rotateX = (y - centerY) / 25;
-        const rotateY = (centerX - x) / 25;
-
-        (card as HTMLElement).style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-8px)`;
-      });
-
-      card.addEventListener('mouseleave', () => {
-        (card as HTMLElement).style.transform = '';
-      });
+    requestAnimationFrame(() => {
+      if (target.isConnected) target.scrollIntoView({ block: 'start' });
     });
   };
-
-  // Initialize all
-  initParallax();
-  initJumpNavHighlight();
-  initPipelineAnimation();
-  initCardTilt();
-
-  // Re-init after view transitions
-  document.addEventListener('astro:after-swap', () => {
-    initParallax();
-    initJumpNavHighlight();
-    initPipelineAnimation();
-    initCardTilt();
-  });
+  const removeDetailListener = () => window.removeEventListener('hashchange', revealLinkedDetail);
+  const initDetailLinks = () => {
+    removeDetailListener();
+    if (location.pathname.replace(/\/$/, '') !== '/research') return;
+    window.addEventListener('hashchange', revealLinkedDetail);
+    revealLinkedDetail();
+  };
+  initDetailLinks();
+  document.addEventListener('astro:page-load', initDetailLinks);
+  document.addEventListener('astro:before-swap', removeDetailListener);
 </script>

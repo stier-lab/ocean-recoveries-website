@@ -6,6 +6,7 @@ import CommandPalette from '@components/shared/CommandPalette.astro';
 import OrganizationSchema from '@components/seo/OrganizationSchema.astro';
 import WebsiteSchema from '@components/seo/WebsiteSchema.astro';
 import '@styles/global.css';
+import '@styles/editorial.css';
 
 interface Props {
   title: string;
@@ -125,7 +126,7 @@ const absoluteImage = image.startsWith('http') ? image : new URL(image, Astro.si
       </>
     )}
   </head>
-  <body class="min-h-screen flex flex-col antialiased">
+  <body class="min-h-screen flex flex-col antialiased" data-editorial={!Astro.url.pathname.startsWith('/people') && !Astro.url.pathname.startsWith('/experiments/') ? '' : undefined}>
     <a href="#main-content" class="skip-link">Skip to main content</a>
 
     <Nav transition:persist />

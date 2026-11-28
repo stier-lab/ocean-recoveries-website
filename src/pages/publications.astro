@@ -1,6 +1,7 @@
 ---
 import Layout from '@layouts/Layout.astro';
 import PublicationList from '@components/publications/PublicationList';
+import ReadingStart from '@components/publications/ReadingStart.astro';
 import BreadcrumbSchema from '@components/seo/BreadcrumbSchema.astro';
 import { publications, allThemes } from '@data/publications';
 import { posts } from '@data/posts';
@@ -67,8 +68,10 @@ const yearRange = years.length > 0 ? `${Math.min(...years)}–${Math.max(...year
     </div>
   </section>
 
+  <ReadingStart />
+
   <!-- Publications -->
-  <section class="publications-section">
+  <section class="publications-section" id="all-publications" style="scroll-margin-top: 6rem;">
     <div class="container">
       <PublicationList
         client:load

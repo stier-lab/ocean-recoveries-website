@@ -1,0 +1,61 @@
+---
+import Layout from '@layouts/Layout.astro';
+---
+
+<Layout title="Research Notebook" description="Observations and questions from the Ocean Recoveries Lab. A closer look at coral wound repair through Molly Brzezinski’s microscope photographs." image="/images/research/lth-ambient-poster.jpg">
+  <div class="notebook-page">
+    <div class="container">
+      <header class="notebook-header">
+        <p class="eyebrow">Ocean Recoveries Lab</p>
+        <h1>Research notebook</h1>
+        <p>Observations worth a closer look, and the questions they leave open.</p>
+      </header>
+      <article id="coral-repair" aria-labelledby="note-title">
+        <div class="note-heading">
+          <p class="eyebrow">Lab observations · Entry added <time datetime="2026-11-28">28 November 2026</time></p>
+          <h2 id="note-title">A closed wound is not yet a rebuilt branch</h2>
+        </div>
+        <div class="note-layout">
+          <figure>
+            <img src="/images/research/lth-ambient-poster.jpg" alt="Day-zero microscope photograph looking onto the exposed cut surface of an Acropora branch" width="560" height="420" />
+            <figcaption><i>Acropora</i> cf. <i>pulchra</i>, day 0 in the ambient-water sequence. Photograph: <strong>Molly Brzezinski</strong>.</figcaption>
+          </figure>
+          <div class="note-copy">
+            <h3>What we can see</h3>
+            <p>The cut face exposes the coral’s skeleton. In the photographs that follow, tissue covers this surface and the tip begins to reorganize. Covering the wound and replacing the lost structure are different parts of recovery.</p>
+            <h3>The question</h3>
+            <p>When has a coral recovered from an injury: when the wound closes, when the growing tip reforms, or when the lost branch has been replaced?</p>
+            <p>Our Keck-supported regeneration work follows repair alongside coral condition and biological responses near and away from the wound. This photograph comes from a representative microscope sequence, not a comparison of treatment averages.</p>
+            <div class="note-links">
+              <a href="/research#coral-healing">Watch Molly’s healing sequence</a>
+              <a href="/research/coral-reefs#coral-regeneration">Coral regeneration research</a>
+            </div>
+          </div>
+        </div>
+      </article>
+      <p class="notebook-return"><a href="/research">All research programs</a></p>
+    </div>
+  </div>
+</Layout>
+
+<style>
+  .notebook-page { background: #fff; color: #293f3b; padding: 124px 0 64px; }
+  .notebook-header { padding-bottom: 36px; }
+  .eyebrow { color: #52675e; font-size: 12px; margin: 0 0 16px; }
+  h1 { color: #293f3b; font: 400 50px/1.15 Georgia, serif; letter-spacing: 0; margin: 0 0 20px; }
+  h2 { color: #293f3b; font: 400 34px/1.2 Georgia, serif; letter-spacing: 0; margin: 0 0 28px; max-width: 700px; }
+  h3 { color: #293f3b; font: 400 23px/1.3 Georgia, serif; letter-spacing: 0; margin: 0 0 14px; }
+  p { color: #43534c; line-height: 1.75; margin: 0 0 22px; }
+  article { border-top: 1px solid #c5d1ca; padding-top: 32px; scroll-margin-top: 6rem; }
+  .note-layout { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 48px; align-items: start; }
+  figure { margin: 0; min-width: 0; }
+  img { width: 100%; height: auto; display: block; }
+  figcaption { margin-top: 12px; font-size: 12px; line-height: 1.6; color: #52675e; }
+  .note-copy { min-width: 0; }
+  a { color: #21625b; text-decoration: underline; text-underline-offset: 4px; }
+  a:focus-visible { outline: 3px solid #328278; outline-offset: 4px; }
+  .note-links { display: flex; flex-direction: column; align-items: start; gap: 4px; }
+  .note-links a { min-height: 44px; padding-block: 10px; }
+  .notebook-return { border-top: 1px solid #c5d1ca; margin-top: 36px; padding-top: 28px; }
+  @media(max-width: 767px) { .notebook-page { padding-top: 104px; } h1 { font-size: 38px; } h2 { font-size: 28px; } .note-layout { grid-template-columns: minmax(0, 1fr); gap: 28px; } }
+</style>

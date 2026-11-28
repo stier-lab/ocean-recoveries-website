@@ -1,0 +1,69 @@
+---
+import { publications } from '@data/publications';
+import { posts } from '@data/posts';
+import { enrichPublicationsWithImages } from '@utils/publicationImages';
+
+const papers = enrichPublicationsWithImages(publications, posts);
+const selections = [
+  { id: 'vega-2026-biolett', topic: 'Coral repair', finding: 'Corals with resident damselfishes closed wounds faster in this experiment.', scope: 'Fish presence/absence experiment on wounded Pocillopora.', image: 'vega-fish-comparison-pencil.jpg', alt: 'Pencil study of the coral wound experiment with and without resident damselfish' },
+  { id: '12', topic: 'Kelp persistence', finding: 'Kelp loss was linked to the balance between estimated urchin grazing demand and kelp supply.', scope: 'Feeding experiments and long-term Southern California records.', image: 'purple-sea-urchin-pencil.jpg', alt: 'Pencil study of a purple sea urchin' },
+  { id: 'stier-osenberg-2025-ele', topic: 'Population regulation', finding: 'The strength of density-dependent mortality varied widely, even among studies of the same fish species.', scope: 'Meta-analysis of 38 nearshore fish species across 56 studies.', image: 'how-we-work-evidence-synthesis-pencil-v2.jpg', alt: 'Conceptual pencil study of studies being combined into a meta-analysis, not this paper’s results' },
+].map(selection => {
+  const paper = papers.find(paper => paper.id === selection.id);
+  if (!paper?.doi) throw new Error(`Missing reading selection ${selection.id}`);
+  return { ...selection, paper };
+});
+---
+
+<section class="reading-start" aria-labelledby="reading-start-title">
+  <div class="container">
+    <header>
+      <p class="reading-eyebrow">Selected studies</p>
+      <h2 id="reading-start-title">Three places to start</h2>
+    </header>
+    <div class="reading-grid">
+      {selections.map(({ topic, finding, scope, image, alt, paper }) => (
+        <article class="reading-study" data-publication={paper.id}>
+          <img src={`/images/research/${image}`} alt={alt} width="1200" height="800" loading="lazy" />
+          <p class="reading-eyebrow">{topic}</p>
+          <h3>{finding}</h3>
+          <p class="scope">{scope}</p>
+          <details>
+            <summary>Publication details</summary>
+            <p>{paper.title}</p>
+            <p>{paper.authors}</p>
+          </details>
+          <p class="paper-meta">{paper.journal} · {paper.year}</p>
+          <nav aria-label={`${topic} study links`}>
+            {paper.newsSlug && <a href={`/news/${paper.newsSlug}`}>Study story</a>}
+            <a href={`https://doi.org/${paper.doi}`}>Paper</a>
+            {paper.pdfUrl && <a href={paper.pdfUrl}>PDF</a>}
+            {paper.codeUrl && <a href={paper.codeUrl}>Code &amp; data</a>}
+          </nav>
+        </article>
+      ))}
+    </div>
+    <a class="all-papers" href="#all-publications">Full publication list <span aria-hidden="true">&darr;</span></a>
+  </div>
+</section>
+
+<style>
+  .reading-start { background: #fff; padding: 44px 0 36px; color: #293f3b; }
+  header { margin-bottom: 24px; }
+  .reading-eyebrow { color: #52675e; font-size: 12px; margin: 0 0 12px; }
+  h2 { font: 400 34px/1.2 Georgia, serif; color: #293f3b; margin: 0; letter-spacing: 0; }
+  .reading-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 32px; }
+  article { min-width: 0; border-top: 1px solid #c5d1ca; padding-top: 20px; }
+  img { display: block; width: 100%; aspect-ratio: 3 / 2; object-fit: contain; margin-bottom: 20px; }
+  h3 { font: 400 23px/1.35 Georgia, serif; color: #293f3b; letter-spacing: 0; margin: 0 0 16px; }
+  .scope { font-size: 14px; color: #43534c; line-height: 1.6; margin-bottom: 12px; }
+  details p { color: #43534c; font-size: 13px; margin: 12px 0; overflow-wrap: anywhere; }
+  summary { cursor: pointer; min-height: 44px; padding: 10px 0; color: #21625b; font-size: 13px; }
+  .paper-meta { font-size: 12px; color: #52675e; margin: 12px 0; }
+  nav { display: flex; flex-wrap: wrap; gap: 0 20px; }
+  a { color: #21625b; text-decoration: underline; text-underline-offset: 4px; }
+  nav a, .all-papers { display: inline-flex; align-items: center; min-height: 44px; font-size: 14px; }
+  .all-papers { margin-top: 28px; gap: 8px; }
+  a:focus-visible, summary:focus-visible { outline: 3px solid #328278; outline-offset: 4px; }
+  @media(max-width: 767px) { .reading-grid { grid-template-columns: minmax(0, 1fr); gap: 28px; } h2 { font-size: 28px; } img { max-height: 220px; } }
+</style>

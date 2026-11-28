@@ -1,0 +1,65 @@
+/* The artwork and photographs carry the visual detail; decorative effects stay quiet.
+   People and unpublished experiments retain their existing presentation. */
+body[data-editorial] main :is(
+  .hero-particles, .questions-orb, .publications-orb, .cta-orb,
+  .blob-container, .hero-orb, .pillar-orb, .hero-grain,
+  .header-bg, .scroll-cue, .approach-icon, .why-icon, .stat-icon,
+  .floating-bubbles, .value-icon
+) { display: none; }
+
+body[data-editorial] main :is(.title-gradient, .text-gradient) {
+  background: none;
+  -webkit-background-clip: border-box;
+  background-clip: border-box;
+  -webkit-text-fill-color: currentColor;
+  color: inherit;
+  animation: none;
+}
+
+body[data-editorial] main :is(.hero-title-gradient, .gradient-text) {
+  background: none;
+  -webkit-text-fill-color: currentColor;
+  color: #f1f5f9;
+  animation: none;
+}
+
+body[data-editorial] main :is(.hero-badge, .hero-eyebrow, .header-eyebrow, .hero-tag, .opp-badge) {
+  box-shadow: none;
+  background: none;
+  border-radius: 0;
+  backdrop-filter: none;
+}
+
+body[data-editorial] main :is(.hero-badge, .hero-eyebrow, .header-eyebrow) {
+  border: 0;
+  padding-inline: 0;
+}
+
+body[data-editorial] main :is(.badge-dot, .hero-badge > span:first-child:empty) { display: none; }
+
+body[data-editorial] main :is(
+  .question-card, .finding-card, .publication-card, .news-card,
+  .opp-card, .approach-card, .why-card, .stat-card, .work-card
+) {
+  box-shadow: none;
+  border-radius: 4px;
+}
+
+body[data-editorial] main :is(
+  .question-card, .finding-card, .publication-card, .news-card,
+  .opp-card, .approach-card, .why-card, .stat-card, .work-card
+):hover {
+  transform: none;
+  box-shadow: none;
+}
+
+body[data-editorial] main :is(.hero-image, .parallax-bg) { animation: none; }
+body[data-editorial] main :is(h1, h2, h3, h4, .eyebrow, .section-eyebrow) { letter-spacing: 0; }
+
+body[data-editorial] main :is(.section-title, .news-headline, .sites-headline, .approach-headline, .page-title) {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-weight: 400;
+}
+
+body[data-editorial] main .notebook-reference { margin-top: 16px; font-size: 14px; }
+body[data-editorial] main .notebook-reference a { font-weight: 400; }
